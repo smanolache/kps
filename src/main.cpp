@@ -50,7 +50,7 @@ static const char version[] = "0.7.x (0.7.3)";
 bool trace = false;
 
 extern "C"
-int kdemain(int argc, char **argv)
+int main(int argc, char **argv)
 {
 	KAboutData about("kpowersave", I18N_NOOP("KPowersave"), version, description,
 			 KAboutData::License_GPL, I18N_NOOP("(c) 2004-2006, Danny Kukawka\n"

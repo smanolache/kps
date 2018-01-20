@@ -1,0 +1,92 @@
+AC_INIT([kpowersave], [0.7.3], [bug-automake@gnu.org])
+AM_INIT_AUTOMAKE([-Wall -Werror foreign -Wno-portability -Wno-unsupported])
+AC_PROG_CXX
+AM_PROG_AR
+
+AC_ENABLE_STATIC(no)
+AC_CONFIG_MACRO_DIR([m4])
+AC_PROG_LIBTOOL
+
+
+AC_ARG_ENABLE(debug,
+	[AS_HELP_STRING([--enable-debug], [enable debug @<:@default=no@:>@])],
+	[ if test "${enable_debug:-no}" != no; then CXXFLAGS="${CXXFLAGS} -std=c++11 -Wall -Wnon-virtual-dtor -g -O0 -fno-inline"; fi ],
+	[CXXFLAGS="${CXXFLAGS} -std=c++11 -Wall -Wnon-virtual-dtor -O3"])
+
+AC_PREFIX_DEFAULT([/usr])
+AC_CONFIG_COMMANDS_PRE([
+if test "$sysconfdir" = '${prefix}/etc'; then sysconfdir=/etc; fi;
+if test "$localstatedir" = '${prefix}/var'; then localstatedir=/var; fi
+])
+
+dnl
+snippet='
+ifeq ($(strip $(foreach d,$(SUBDIRS),$(wildcard $(d)/*.gcda))),)
+ifeq ($(strip $(foreach d,$(SUBDIRS),$(wildcard $(d)/$(d).info))),)
+coverage-am:
+else
+coverage-am: $(notdir $(CURDIR)).info
+$(notdir $(CURDIR)).info: $(foreach d,$(SUBDIRS),$(wildcard $(d)/$(d).info))
+	if ! test -r $@; then \
+		lcovargs=""; \
+	else \
+		lcovargs=" --add-tracefile $@"; \
+	fi; \
+	for p in $?; do \
+		if test -s $${p}; \
+		then \
+			lcovargs+=" --add-tracefile $${p}"; \
+		fi; \
+	done; \
+	if ! test -z "$${lcovargs}"; \
+	then \
+		lcov -q --no-external --base-directory $(top_srcdir)/src --compat libtool=on,split_crc=on --test-name $(notdir $(CURDIR)) --output-file $@.tmp $${lcovargs}; \
+	fi; \
+	mv $@.tmp $@
+endif
+else
+coverage-am: $(notdir $(CURDIR)).info
+ifeq ($(strip $(foreach d,$(SUBDIRS),$(wildcard $(d)/$(d).info))),)
+$(notdir $(CURDIR)).info: $(foreach d,$(SUBDIRS) .libs,$(wildcard $(d)/*.gcda))
+	dirs=""; \
+	for p in $(sort $(dir $(filter %.gcda,$?))); do \
+		dirs+=" --directory $${p}"; \
+	done; \
+	lcov -q --no-external --base-directory $(top_srcdir)/src --compat libtool=on,split_crc=on --output-file $@.full --capture $$dirs --test-name $(notdir $(CURDIR)); \
+	lcov -q --no-external --base-directory $(top_srcdir)/src --compat libtool=on,split_crc=on --output-file $@.tmp --extract $@.full "*/$(notdir $(top_srcdir))/*"; \
+	lcov -q --no-external --base-directory $(top_srcdir)/src --compat libtool=on,split_crc=on --output-file $@ --remove $@.tmp "*/unit/*" "*/TestHelpers/*" "*/Cassandra/*"; \
+	rm $@.full $@.tmp
+else
+$(notdir $(CURDIR)).info: $(foreach d,$(SUBDIRS) .libs,$(wildcard $(d)/*.gcda)) $(foreach d,$(SUBDIRS),$(wildcard $(d)/$(d).info))
+	dirs=""; \
+	for p in $(sort $(dir $(filter %.gcda,$?))); do \
+		dirs+=" --directory $${p}"; \
+	done; \
+	lcov -q --no-external --base-directory $(top_srcdir)/src --compat libtool=on,split_crc=on --output-file $@.full --capture $$dirs --test-name $(notdir $(CURDIR)); \
+	lcov -q --no-external --base-directory $(top_srcdir)/src --compat libtool=on,split_crc=on --output-file $@.tmp --extract $@.full "*/$(notdir $(top_srcdir))/*" ; \
+	lcov -q --no-external --base-directory $(top_srcdir)/src --compat libtool=on,split_crc=on --output-file $@.tmpinfo --remove $@.tmp "*/unit/*" "*/TestHelpers/*" "*/Cassandra/*"; \
+	rm $@.full $@.tmp; \
+	lcovargs=" --add-tracefile $@.tmpinfo"; \
+	if test -r $@; then \
+		lcovargs=" --add-tracefile $@"; \
+	fi; \
+	for p in $(filter %.info,$?); do \
+		lcovargs+=" --add-tracefile $${p}"; \
+	done; \
+	lcov -q --no-external --base-directory $(top_srcdir)/src --compat libtool=on,split_crc=on --test-name $(notdir $(CURDIR)) --output-file $@.tmp $$lcovargs; \
+	rm $@.tmpinfo; \
+	mv $@.tmp $@
+endif
+endif
+'
+
+AC_SUBST([snippet])
+AM_SUBST_NOTMAKE([snippet])
+
+AC_CONFIG_HEADERS([config.h])
+AC_CONFIG_FILES([
+	Makefile
+	src/Makefile
+])
+
+AC_OUTPUT
