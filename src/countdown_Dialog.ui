@@ -1,0 +1,204 @@
+<!DOCTYPE UI><UI version="3.3" stdsetdef="1">
+<class>countdown_Dialog</class>
+<widget class="QDialog">
+    <property name="name">
+        <cstring>countdown_Dialog</cstring>
+    </property>
+    <property name="geometry">
+        <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>344</width>
+            <height>127</height>
+        </rect>
+    </property>
+    <property name="sizePolicy">
+        <sizepolicy>
+            <hsizetype>5</hsizetype>
+            <vsizetype>5</vsizetype>
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+        </sizepolicy>
+    </property>
+    <property name="caption">
+        <string></string>
+    </property>
+    <property name="sizeGripEnabled">
+        <bool>false</bool>
+    </property>
+    <grid>
+        <property name="name">
+            <cstring>unnamed</cstring>
+        </property>
+        <spacer row="2" column="0" rowspan="1" colspan="4">
+            <property name="name">
+                <cstring>spacer3</cstring>
+            </property>
+            <property name="orientation">
+                <enum>Horizontal</enum>
+            </property>
+            <property name="sizeType">
+                <enum>Expanding</enum>
+            </property>
+            <property name="sizeHint">
+                <size>
+                    <width>142</width>
+                    <height>21</height>
+                </size>
+            </property>
+        </spacer>
+        <widget class="QPushButton" row="2" column="4">
+            <property name="name">
+                <cstring>pB_cancel</cstring>
+            </property>
+            <property name="text">
+                <string>&amp;Cancel</string>
+            </property>
+            <property name="accel">
+                <string>Alt+C</string>
+            </property>
+        </widget>
+        <spacer row="1" column="0">
+            <property name="name">
+                <cstring>spacer1</cstring>
+            </property>
+            <property name="orientation">
+                <enum>Horizontal</enum>
+            </property>
+            <property name="sizeType">
+                <enum>Maximum</enum>
+            </property>
+            <property name="sizeHint">
+                <size>
+                    <width>30</width>
+                    <height>20</height>
+                </size>
+            </property>
+        </spacer>
+        <spacer row="2" column="5" rowspan="1" colspan="2">
+            <property name="name">
+                <cstring>spacer4</cstring>
+            </property>
+            <property name="orientation">
+                <enum>Horizontal</enum>
+            </property>
+            <property name="sizeType">
+                <enum>Expanding</enum>
+            </property>
+            <property name="sizeHint">
+                <size>
+                    <width>144</width>
+                    <height>21</height>
+                </size>
+            </property>
+        </spacer>
+        <widget class="QLabel" row="0" column="0" rowspan="1" colspan="2">
+            <property name="name">
+                <cstring>iconPixmap</cstring>
+            </property>
+            <property name="minimumSize">
+                <size>
+                    <width>48</width>
+                    <height>48</height>
+                </size>
+            </property>
+            <property name="maximumSize">
+                <size>
+                    <width>48</width>
+                    <height>48</height>
+                </size>
+            </property>
+            <property name="pixmap">
+                <pixmap>image0</pixmap>
+            </property>
+            <property name="scaledContents">
+                <bool>false</bool>
+            </property>
+        </widget>
+        <spacer row="0" column="2">
+            <property name="name">
+                <cstring>spacer5</cstring>
+            </property>
+            <property name="orientation">
+                <enum>Horizontal</enum>
+            </property>
+            <property name="sizeType">
+                <enum>Fixed</enum>
+            </property>
+            <property name="sizeHint">
+                <size>
+                    <width>5</width>
+                    <height>20</height>
+                </size>
+            </property>
+        </spacer>
+        <widget class="QLabel" row="0" column="3" rowspan="1" colspan="4">
+            <property name="name">
+                <cstring>textLabel</cstring>
+            </property>
+            <property name="text">
+                <string></string>
+            </property>
+            <property name="textFormat">
+                <enum>AutoText</enum>
+            </property>
+            <property name="alignment">
+                <set>WordBreak|AlignVCenter</set>
+            </property>
+        </widget>
+        <spacer row="1" column="6">
+            <property name="name">
+                <cstring>spacer2</cstring>
+            </property>
+            <property name="orientation">
+                <enum>Horizontal</enum>
+            </property>
+            <property name="sizeType">
+                <enum>Maximum</enum>
+            </property>
+            <property name="sizeHint">
+                <size>
+                    <width>30</width>
+                    <height>20</height>
+                </size>
+            </property>
+        </spacer>
+        <widget class="KProgress" row="1" column="1" rowspan="1" colspan="5">
+            <property name="name">
+                <cstring>progressBar</cstring>
+            </property>
+            <property name="sizePolicy">
+                <sizepolicy>
+                    <hsizetype>3</hsizetype>
+                    <vsizetype>5</vsizetype>
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                </sizepolicy>
+            </property>
+            <property name="minimumSize">
+                <size>
+                    <width>200</width>
+                    <height>20</height>
+                </size>
+            </property>
+        </widget>
+    </grid>
+</widget>
+<images>
+    <image name="image0">
+        <data format="XPM.GZ" length="2304">789c8593c9721a311086ef3cc5947573a5dacc303043a57230b6f1beef4ee530128bc1069bcd5b2aef9e5f52b702d855410cf0a9b7bf5b626d35ba39398c56d74a936931ed99c8dc17e368b5351b0cde7ffefaf1bbb4922411de59354a56be9556681c994895ddcbf12c70eeb8c19cb27d12d8d955c7711efc47cc6ca7a970ece2559739e77c3781bdff85b0f7a71d66c3fecf81bdff8be7b8ccfe75cb71b96c98ef3cc7a27f37b08fbf1266ff3eb3e879779c076e0ab3ff03b3e88985d95eb69cd42b329f4761b6f798a57ed572250efcc12cf56acc92ffd2732af932c775b03f9f4238f1f637cb699c72bc3281bdbe7bcbd5a456653e715c04ce99eb5c6f10d8db9f84b9de3a738bede7c2deae7cbd228bd99e58ae2562a7d47316b37f8bb9caac1c17b9c46f0973fc2db3e8df6716fd1b96b34a883f6516ff0ab3f4776839d745c1f98f2cd7d3c07b81eb8ebbcc6dd64b9e75c2fe078e8d663b5d5b2e52dde67a9bc21cdff36c12d63f0cecfd5bc29c6f9bb9c6f74f0973bc0eecedafc21c7fc65c707c4798ef4fdbb191fa4a0b73fc31b3d433817d3e89977a0533e73f9d06ce3d93a282d4fcb73ccbfbbedf85a5977861f9fa4bb93496a116b53fd798cbdfe1dc5dbaa71ef5e9811e69005aa839af1f11437aa2671ad1982678a634a317c4bc7ea95fc3fbcd79cee81d153e5063e2f80d96aff4af5303b9fbb4419bd0afd1c11635113d428d3658f46fb3ee1df8efd21ee77aa57d3aa043c48fa1f1888e17f41b3a419e199d22dad019f6cee9822e5169cbf5f3f4497f0fbb57748daeb79d36eb7543b788b8c3aff2d27c0ce637418c71bfd7e16975af439546e7638ad14d27e4b7937cc0ee87d36dbdc7e8654c899b5b0f99faf6f4e6f2b7713a53ecb6a802dd13e4f64f0a3d764655d273fa35340fb03b41779b5443fe017237dcca506744f9bff9b8b32d30cf3a229a98e0266ad83b94baf3b027b6a3e8d3fd39c644ed79f695822a5bf34015dc47e6e2b717ee8f565a19d7a93de30f74d9740a6d8d866a7dca8fa5dad0fd8c8899bf71aa8333cfe0ddc5ccf457f71f73eae22c7b98f73b6632806ef4a1eedd348ba5fbc97da81e3e87f018867d7916ef7f31f75feab86f1df6cd57faffbf56fe7c2ffd0519fbee77</data>
+    </image>
+</images>
+<connections>
+    <connection>
+        <sender>pB_cancel</sender>
+        <signal>pressed()</signal>
+        <receiver>countdown_Dialog</receiver>
+        <slot>pB_cancel_pressed()</slot>
+    </connection>
+</connections>
+<slots>
+    <slot>pB_cancel_pressed()</slot>
+</slots>
+<layoutdefaults spacing="6" margin="11"/>
+</UI>

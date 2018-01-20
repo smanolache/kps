@@ -1,0 +1,215 @@
+/*!
+* \page fixed_bugs Fixed Bugs 
+*
+* You will find the newest bugs at the top of this list. If there is no comment, the bugnumbers are
+* from the SUSE/Novell bugzilla (https://bugzilla.novell.com) \n
+*
+* Note: This list only contain reported and fixed bugs. The list is maybe not up-to-date.
+*
+* \section fixed_bugs_sec_0_7_x All fixed bugs for the 0.7.x tree
+*
+* \li   Bug \b #245081 - KPowersave does not set (ondemand) governor on startup \n
+* \li   Bug \b #244052 - Close lid of a laptop and suspend to ram cause KPowersave 100% CPU \n \n
+*	Needed to uncouple Action calls (as e.g. suspend on lidclose) which include blocking dialogs
+*	from the related events. This is needed because otherwise the D-Bus QT3 bindings run amok
+*	if the dialog block the filterfunction, since signals in QT are not really independent 
+*	(they are more function calls). Used QTimer:SingleShot() for this since they go into the 
+*	QT event loop and don't follow the workflow of the rest of the program. \n \n
+* \li   Bug \b #229960 - CPUFREQ_DYNAMIC_PERFORMANCE seems to be ignored during boot and scheme change \n
+* \li   Bug \b #230686 - KPowersave need to be restarted to set changed DPMS settings \n
+* \li   Bug \b #230965 - puzzling battery state info \n
+* \li   Bug \b #231709 - kpowersave-0.7.1-12: comparison with string literal \n
+* \li   Bug \b #231184 - KPowersave crashes due to uninitalized LibHalContext \n
+* \li   Bug \b #229234 - KPowersave does not fall back to userspace governor \n
+* \li   Bug \b #215262 - Suspend to disk with attached usb storage not working \n \n
+*	Depending on a KDE feature KPowersave umount all external media before suspend and display
+*	an error message if the umount fail. This need a special patch for the KDE mediamanager.\n \n
+* \li   Bug \b #223164 - After suspend, second core has performance governor set \n
+* \li   Bug \b #223517 - Powersave: CPU scheme "dynamic" reduces speed if only nice -19 processes run \n
+* \li   Bug \b #223637 - kpowersave crashes in first login \n
+* \li   Bug \b #225212 - KPowersave crash on ThinkPad X60s \n
+* \li   Bug \b #221715 - Functionality for configuring lid close event etc. to trigger suspend not in YaST 
+*       any more, but kpowersave doesn't have them either \n \n
+*	Needed changes in KPowersave to adapt the new powermanagement structur and allow the user 
+*	to configure options we had former in the powersave daemon. This include also changes in
+*	the configure dialog to provide a way to change settings as user. \n \n
+* \li   Bug \b #223922 - System not shuting down on pressing power button \n \n 
+*	Changes due to new powermanagement infrastructure. (see also #221715) \n \n
+* \li   Bug \b #220289 - kpowersave 0.7.0 gives battery level notifications while charging \n
+* \li   Bug \b #220271 - CPU Frequency Policy setting not possible with kpowersave \n \n
+*	Changes due to new powermanagement infrastructure. \n \n
+* \li   Bug \b #220222 - Restarting D-Bus makes KPowersave unusable \n
+* \li   Bug \b #220212 - KPowersave: Changing brightness does not work reliably \n
+* \li   Bug \b #220553 - suspend2disk doesn't lock the screen in KDE \n
+* \li   Bug \b #167919 - DPMS energy settings are ignored / lost in new kde session \n \n
+*	Added DCOP interface to allow KDE to check if KPowersave set special DPMS settings. \n \n
+*
+* \section fixed_bugs_sec_0_6_x All fixed bugs for the 0.6.x tree
+*
+* \li   Bug \b #198237 - message: DBUS daemon not running appears (part 1/2) \n \n
+*	For easier bugreporting and assign of warning messages about powersave/HAL/DBUS state added
+*	string "KPowersave" to window caption. \n \n
+* \li   Bug \b #184076 - KPowersave: display wrong command to start dbus daemon in errormessages \n \n
+*	If the dbus daemon is not running KPowersave popup a errormessage. This message contains the 
+*	command to restart/start dbus. This is the wrong command on SUSE/Debian/Ubuntu and other. \n \n
+* \li	Bug \b #183745 - KPowersave: open on SLES/SLED the wrong bugzilla site \n \n
+*	If the user clock on "Report a bug ..." in the kpowersave help menu on SLES/SLED, the wrong bugzilla
+*	website is used. Instead of opensuse.org we should open bugzilla.novell.com. \n \n
+*	\b Fix-comment: Added new configure option (--enable-suse-sles) to force SLES/SLED as detected 
+*			distribution and changed detection if SUSE Linux to detect SLES/SLED. Changed 
+*			the bugzilla site for the SUSE Enterprise products. (NOTE: the bug isn't public) \n \n
+* \li	Bug \b #176782 - KPowersave: Changing display brightness is to long winded \n \n
+*	If you like to change the display brightness with KPowersave (temporary), you have to perform five
+*	clicks, going through all the menus and the configuration dialog settings until reaching the 
+*	brightness settings [...]. \n \n
+*	\b Fix-comment:	Added slightly adopted patch from Timo Hoenig <thoenig@suse.de> to allow change
+*			brightness if supported by hardware and enabled in the scheme via mouse wheel. \n \n
+* \li	Bug \b #182515 - KPowersave: configure dialog allow set invalid dpms settings\n \n
+*	The KPowersave config dialog allow to not valid DPMS setting, wich result in not set DPMS timeouts.
+*	KPowersave does not follow the rules for the X-Server from www.xfree86.org/current/DPMSLib.pdf. \n \n
+* \li	Bug \b #168619 - Access to devices from remote session. \n \n
+*	If you start a remote desktop session, e.g. via VNC, KPowersave display "Powersave is not running ..."
+*	message also if the powersave daemon is running, but the remote user has not the rights to 
+*	access the DBUS interface of powersave. \n \n
+*	\b Fix-comment: Reworked detection if DBUS, HAL and powersave is not running and if the user has the 
+*			needed rights. Added new error messages and translations. \n \n
+* \li	Bug \b #177792 - KPowersave: changes via dcop are not set to applet menu, some dcop functions missing \n \n
+*	If autosuspend is disabled via the DCOP interface, the change is not set back to the 
+*	applet menu (enable applet entry). There is already a dcop function to get current scheme and 
+*	CPUFreq policy, but there is no function to change them.\n \n
+*	\b Fix-comment: fixed  disableAutosuspend(), added missing functions. This bug partly effect 
+*			sf.net bug #1483392. \n \n
+* \li   Bug \b #177788 - KPowersave: autosuspend does not suspend after set time if dpms is on 
+*			(also: (partial) sf.net bug #1483392) \n \n
+*	If the timeout for autosuspend is longer than a timeout for a dpms state (standb/suspend/off) 
+*	KPowersave suspend first if the user was as long as timout for current dpms state plus timout
+*	for autosuspend was idle. If dpms state changed befor reached autosuspend timout all start
+*	again from zero. The problem is: idleTime from XScreenSaver extension does not give (as descriped
+*	in the code comment in the header) the complete user idle time but minus the timeout for the current
+*	dpms state. \n \n
+*	\b Fix-comment: Added a function to workaround this. This was also effected by \b bug \b #180000 (dpms
+*			timeouts are additive, but they shouldn't)  \n \n
+* \li   Bug \b #168838 - KPowersave: event for resumeFromSuspendToDisk displayed twice in knotify dialog \n \n
+*       Fixed typo for resumeFromSuspendToRAM and corrected translations. \n \n
+* \li   Bug \b #167296 - KPowersave: always show the last known remaining time in tooltip on APM if charge \n \n
+*	Remove no longer needed (useless) checks from pdaemon. With this the time is set to -1 if charging and
+*	if the powersave daemon reports UNKNOW for remaining time. \n \n
+* \li   Bug \b #165462 - kpowersave: knotify messages have a strange source \n \n
+*	Fixed bad UTF in eventsrc from translation. \n \n
+*
+*
+* \section fixed_bugs_sec_old All fixed bugs since kpowersave-0.3.9-1 release until v0.6.0
+*
+* \li   Bug \b #134683 - KPowersave: Disables CPUs show as "Processor 2: 100% 734017 MHz" \n \n
+*	Fixed update processor info on machines with more than one CPU/Core and/or no CPUFreq support.
+*	Check now every two seconds for updates/changes in /sys and /proc. \n \n
+* \li   Bug \b #121965 - KPowersave should not complain about missing powersaved \n \n
+	Added new errormessage with checkbox to disable the message. \n \n
+* \li   Bug \b #116440 - KPowersave: missing space in minute field in several languages [de,fr,it,pt_BR] \n
+* \li   Bug \b #116439 - KPowersave: not update translation files [sv, tr, uk, sk, ru] \n
+* \li   Bug \b #116438 - KPowersave: missing Polish translation file \n
+* \li   Bug \b #116353 - KPowersave: ooopps, my desktop comp is "Charging" [KDE; Hungarian]. \n
+* \li   Bug \b #116079 - KPowersave: missing translation in the suspend progress dialog \n \n
+*	If machine suspend KPowersave display a suspend progress dialog. The messages in the dialog are 
+*	not translated, also if there are translations in the po files. \n
+*	Fix: The related messages come from powersave scripts and only start with the translated strings 
+*	from the po files. Added function to parse and replace them against translated messages. \n \n
+* \li   Bug \b #116079 - KPowersave: missing translation in the suspend progress dialog \n
+* \li   Bug \b #115903 - KPowersave: menu entry "set active scheme" visible if powersave is stopped \n
+* \li   Bug \b #115914 - KPowersave: problems with edit blacklist dialog with bigger fonts \n \n
+*	The dialog for edit blacklist is not correct resized for bigger fonts. There are also some overlays
+*	of some widgets in the dialog. \n \n
+* \li   Bug \b #115584 - KPowersave displays warning twice when powersave shuts down \n
+* \li   Bug \b #78953 - KPowersave: does not start at all (beta1, NLD9)\n \n
+*	Added new option --force-acpi-check to dektop file and added a new file for autostart, to force
+*	start and recheck for acpi on a machine where acpi ckeck failed at the first time. \n \n
+* \li   Bug \b #95250 - KPowersave has no online help. \n
+* \li   Bug \b #106177 - KPowersave: Show again the cpuinfo_cur_freq in tooltip. \n \n
+*	KPowersave currently does not display the cpu freqency in the tooltip. \n \n
+* \li   Bug \b #113559 - KPowersave: only one autosuspend. \n \n
+*	KPowersave make only one autosuspend. After resume you must restart KPowersave for the next autosuspend. \n \n
+* \li   Bug \b #105555 - KPowersave: Patch against ugly disabled icons. \n \n
+*	Attached patch is against ugly (=all grey) icons on disabled buttons within KPowerSave dialogs. \n \n
+* \li   Bug \b #104382 - SIGSEGV in KPowersave. \n \n
+*	When starting YaST Powermanagement module from the context menu of KPowersave's tray, the application exits 
+*	with a SEGV. (fixed also some file descriptor leaks) \n \n
+* \li   Bug \b #104603 - kpowersave says "Battery is chargin" - even if I run on battery. \n
+* \li   Bug \b #104445 - kpowersave: Suspend only possible if power is connected. \n \n
+*	As long as power is connected, could suspend via kpowersave but as soon as plug oput the cable, the menu 
+*	entries are greyed out. \n \n
+* \li   Bug \b #95279 -  kpowersave progress bar popup does not handle "close" event. \n \n
+*	If the progressbar popup does not get closed by a "101%"-event, it does never
+*	close. If you close it via the window manager, kpowersave never opens a popup again.
+*	Fix: Now the suspend/progress dialog is Qt::WDestructiveClose and KPowersave connect to the 
+*	destroyed() signal of the dialog \n \n
+* \li	Bug \b #82880 - KDE: KMessageBox::error not on top since KDE 3.4 \n \n
+*	All KPowersave error messages are not on the top, and popup in the background. \n \n
+* \li	Bug \b #81681 - kpowersave: progress shown below active window \n \n
+*	If you suspend with powersave (e.g. powersave -U or Fn-keys) the suspend dialog is not on top level. \n \n
+* \li	Bug \b #73805 - KPowersave files descriptor leak \n \n
+*	Bug in kpowersave: If kpowersave can't access /sys/devices/system/cpu/cpu0/cpufreq/scaling_setspeed the
+*	open filedescriptor is never closed. \n \n
+*	And: The update_info_cpufreq_speed_changed isn't set in all cases of the function. So could it happen that 
+*	kpowersave display wrong CPU Freq. \n \n
+* \li	Bug \b #73810 - KPowersave ignore screensaver/dpms settings under gnome/xscreensaver \n \n
+*	If you use GNOME and have a scheme setting where 'Enable specific screensaver settings' or 'Enable specific 
+*	display power management' is not enabled and you change from a scheme where it is, the settings are ignored 
+*	and not set back to user default. Same Problem on exit (selected by the user): kpowersave don't set 
+*	back to usersettings. \n \n
+* \li   Bug \b #72939 - kpowersave should set the KDE screensaver and dpms settings back if quit \n \n
+*	At the moment KPowersave don't set the KDE screensaver and dpms settings back on exit if changed trough 
+*	the scheme settings. This should be fixed. I think its enough to reset the settings in _quit() and not in 
+*	the destructor, because them need only to reset if the user exit kpowersave and not if the user logoff from 
+*	KDE. \n \n
+*	\b Comment: Problem also: kpowersave try to set KDE settings if scheme changed also if KDE isn't runnig 
+*	(e.g. GNOME). \n \n
+* \li	Bug \b #72846 - passive-popups are not sufficient for kpowersave \n \n
+*	Almost everything that is signalled through kpowersave popups now is important, so passive popups that 
+*	disappear after a short time are nut sufficient for this task. \n \n
+*	\b FIX-Comment:  Now the user can choose between KPassivPopup and KMessageBox be change configure variable 
+*	in kpowersaverc by hand. Default is KBessageBox. \n \n
+* \li	Bug \b #71955 - not set the schemesettings if user changed them via configure dialog \n \n
+*	If the user change the scheme or/and general settings of kpowersave trough the configure dialog kpowersave 
+*	set this settings first if there is a scheme change. \n \n
+* \li 	Bug \b #71192 - wrong enabled items in configure dialog if DPMS diabled \n \n
+*	If you disable in the kpowersave configure dialog DPMS, all work correct and the textlabel and spinboxes 
+*	for the DPMS settings get disabled. But if you change a scheme or restart the configure dialog them are 
+*	enabled also if DPMS is diabled. \n \n
+* \li	Bug \b #71016 - kpowersave never update the menu if powersaved not running on start \n \n
+*	If you start kpowersave (v0.3.10-6) without a running powersaved the user get no warning message. If you 
+*	start powersaved later kpowersave don't register that and never update the menu. \n  \n
+* \li	Bug \b #66662 - kde screensaver disable problem  \n \n
+*	Kpowersave overwrite the settings of the KDE Controlcenter. If the user select there 'disable screensaver'
+*	kpowersave ignore this settings on start or if a scheme is changed depending on the global settings of 
+*	powersave. The screensaver settings should be configurable by the user and should not depending on 'root' 
+*	settings. \n \n
+*	For more informations about the solution take a look at the \ref changelog . \n \n
+* \li   Bugs \b #66502 and \b #66652 -  kpowersave icon shows empty batteries on non-laptop \n \n
+*	" ... The tools panel in kde contains a kpowersave icon. For my workstation, which is 
+*	definitly to heavy to be a laptop, it shows empty batteries, next to a mains 
+*	connector. The connector is fine, but the batteries symbol should not be there. ..." \n \n
+*	\b Comment: Also a problem with the tooltip. The problem: powersave have the right status of AC-Adapter 
+*	within powersave (tested on commandline) but send a wrong value to the clients/over the libary. \n \n
+*
+* From now we use bugnumbers from the Novell Bugzilla, since the SuSE Bugzilla is moved and merged to the 
+* Novell Bugzilla.
+*
+* \li	Bugzilla \b #49845 - xscreensaver under KDE ignored [from screen.cpp] \n \n
+*	If we use Xscreensaver under KDE we don't get any information about this.
+*	The Problem is the function \ref screen::checkScreenSaverStatus() . We don't check
+*	for the XScreensaver, because we jump out of the KScreensaver-block. \n \n
+* \li   Bugzilla \b #49844 - 'disable screensaver' - 'overwritten' by scheme if AC removed  [from kpowersave.cpp] \n \n
+*	Interaction between mplayer and kpowersave if AC removed during the enterprise.
+*	This is the same problem, if 'disable screensaver' in the menu is activated and AC removed 
+*	or powersave change the scheme to 'powersave'. It's better to ignore the 'AC off' for the
+*	screensaver if user set 'disable screensaver'. \n \n
+* \li	Bugzilla \b #49632 - wrong path in message if powersaved not running [from kpowersave.cpp] \n \n
+*	There is an error in the message, which pop-up if powersave is stopped: \n
+*	"The powersave daemon is not running. Starting it will improve performance: /usr/sbin/rcpowersave 
+*	start". \n This is the wrong path. It must mean: /usr/sbin/rcpowersaved . Must be fix in the code and 
+*	the translation-files. \n \n
+* \li	Bugzilla \b #49445 - kpowersave: empty cs-translation-file  \n \n
+*	The czech translation don't work (no translation, kpowersave only with english text) because of empty 
+*	cs.po-file in the source. The file is empty in the cvs-tree since SUSE 9.2 final, the reason is unknown.  \n \n
+*
+*/

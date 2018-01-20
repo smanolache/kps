@@ -1,0 +1,51 @@
+/*!
+* \page process In process
+* \section process_sec All features/enhancements in the current development. 
+*
+* \subsection process_dim_onInactive Dimm the display if the user is inactive
+*	\b [Priority: \b I] \n \n
+*	A new nice feature would be if we could dimm the display if the user is inactive. This 
+*	should save batterypower and would be a eyecandy feature. The implementation would base on
+*	the existing brightness and autosuspend code. 
+*
+*	\b Status: [\b 15%]
+*	\li added strings for this feature to the code, translated strings
+*	\li splitted the current autosuspend code to a new class inactivity for reuse
+*
+*	\b Todo:
+*	\li add widgets and releated code to write/read in settings and config dialog
+*	\li integrate in KPowersave use case
+*	\li testing
+*	\n \n \n
+*
+* \subsection process_gnome_screensaver Runtime device powermanagement
+*	\b [Priority: \b D] (for v0.7 tree) \n \n
+*	Since gnomescreen-saver is default under GNOME on our products and no longer XScreenSaver, KPowersave
+*	should support this in a running GNOME session. Do this for a better GNOME default support.
+*
+*	\b Status: [\b 40%]
+*	\li added detecttion of gnomescreen-saver in \class screen
+*	\li added gnome-screensaver to configure dialog in GNOME sessions
+*	\li added support lock screen with gnome screensaver via gnome-screensaver-command
+*
+*	\b Todo:
+*	\li evaluate if KPowersave should support more settings in gnome-screensaver
+*	\li add support for enable/disable screensaver (via DBUS interface?)
+*	\li add support for set time values
+*	\n \n \n
+*
+* \subsection process_help Online-Help / user guide 
+*	\b [Priority: \b I] \n \n
+*	Since the funtionality of KPowersave is grown, we need a user guide and a help-feature for better
+*	help for the users. \n \n
+*
+*	\b Status: [\b 75%]
+*	\li Added english version of online help
+*	\li reformated and added screenshots
+*	\li added help button to kpowersave and the configure dialog
+*
+*	\b To \b do:
+*	\li translate to other languages (min. german version)
+*	\n \n \n
+*
+*/

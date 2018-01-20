@@ -1,0 +1,24 @@
+Index: kpowersave-0.7.3/src/kpowersave.cpp
+===================================================================
+--- kpowersave-0.7.3.orig/src/kpowersave.cpp	2007-09-17 19:39:45.000000000 +0200
++++ kpowersave-0.7.3/src/kpowersave.cpp	2008-10-11 12:14:45.000000000 +0200
+@@ -1258,6 +1258,7 @@
+ 		if (!display->resetKDEScreensaver()) {
+ 			settings->load_kde();
+ 			// reset to KDE screensaver settings
++			display->blankOnlyScreen(false);
+ 			if(!settings->kde->enabled) display->setScreenSaver(false);
+ 			else display->setScreenSaver(true);
+ 			
+@@ -1794,6 +1795,11 @@
+ 		// try to reset the complete screensaver settings. Ff this fail, use own methodes
+ 		if (!display->resetKDEScreensaver()) {
+ 			settings->load_kde();
++			// Always disable blankOnly screensaver setting (default). KDE does
++			// not provide a GUI to configure it and most likely we are the
++			// only ones messing with it
++			display->blankOnlyScreen(false);
++
+ 			// reset to global screensaver settings
+ 			if(!settings->kde->enabled) display->setScreenSaver(false);
+ 			else {

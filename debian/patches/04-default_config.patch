@@ -1,0 +1,25 @@
+Index: kpowersave-0.7.3/src/config/kpowersaverc_default
+===================================================================
+--- kpowersave-0.7.3.orig/src/config/kpowersaverc_default	2007-09-17 19:39:45.000000000 +0200
++++ kpowersave-0.7.3/src/config/kpowersaverc_default	2008-10-25 16:51:58.000000000 +0200
+@@ -1,9 +1,9 @@
+ [General]
+ lockOnSuspend=true
+ lockOnLidClose=true
+-ActionOnLidClose=
++ActionOnLidClose=SUSPEND2RAM
+ ActionOnLidCloseValue=
+-ActionOnPowerButton=SHUTDOWN
++ActionOnPowerButton=LOGOUT_DIALOG
+ ActionOnPowerButtonValue=
+ ActionOnSleepButton=SUSPEND2RAM
+ ActionOnS2DiskButton=SUSPEND2DISK
+@@ -12,7 +12,7 @@
+ AutoSuspendCountdownTimeOut=30
+ Autostart=true
+ AutostartNeverAsk=false
+-unmountExternalOnSuspend=true
++unmountExternalOnSuspend=false
+ callSetPowerSaveOnAC=true
+ lockMethod=automatic
+ timeToFakeKeyAfterLock=2500

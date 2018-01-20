@@ -1,0 +1,524 @@
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC
+   "-//KDE//DTD DocBook XML V4.1.2-Based Variant V1.1//EN"
+   "dtd/kdex.dtd"
+[
+  <!ENTITY app "<application>KPowersave</application>">
+  <!ENTITY apprelease " ">
+  <!-- chapters in separate docbook files -->
+
+  <!-- book related entities -->
+  <!ENTITY kappname "KPowersave">
+  <!ENTITY % addindex "INCLUDE">
+  <!ENTITY % Finnish "INCLUDE" > <!-- change language only here -->
+]>
+
+<!--
+NOTE:
+Entries which require special treatment are marked with comments starting with '###'. They should be visited on a regular basis.
+-->
+
+<book lang="&language;">
+
+<bookinfo>
+  <title>&app; Ohje</title>
+
+  <date>2006-03-06</date>
+  <releaseinfo>&apprelease;</releaseinfo>
+
+  <authorgroup>
+    <author>
+      <firstname>Danny</firstname>
+      <surname>Kukawka</surname>
+      <affiliation>
+        <address><email>Danny.Kukawka@web.de</email></address>
+      </affiliation>
+    </author>
+    <author>
+      <firstname>Thomas</firstname>
+      <surname>Renninger</surname>
+      <affiliation>
+        <address><email>trenn@suse.de</email></address>
+      </affiliation>
+    </author>
+  </authorgroup>
+ 
+  <copyright>
+    <year>2005</year>
+    <holder>Scott Rhoades</holder>
+  </copyright>
+  
+
+  <!--ROLES_OF_TRANSLATORS-->
+
+  <!--<legalnotice>&FDLNotice;</legalnotice>-->
+
+  <abstract>
+    <para>&app; on työkalu jota käytetään asettamaan virrankulutus ja -säästö valintoja.
+    </para> 
+  </abstract>
+
+  <keywordset>
+    <keyword>KDE</keyword>
+    <keyword>K-virransäästö</keyword>
+    <keyword>virta</keyword>
+    <keyword>akku</keyword>
+    <keyword>säästö</keyword>
+  </keywordset>
+
+</bookinfo>
+
+<!-- ====================================================================== -->
+
+<chapter id="introduction">
+  <chapterinfo>
+   <keywordset>
+    <keyword>K-virransäästö</keyword>
+   </keywordset>
+  </chapterinfo>
+<title>Esittely</title>
+  <mediaobject>
+  <imageobject>
+  <imagedata fileref="hi48-app-kpowersave.png" format="PNG"/>
+  </imageobject>
+  </mediaobject>
+  <para>Käytä K-virransäästöä, KDE:n virranhallinta käyttöliittymää, ohjataksesi
+   virranhallintaa ja seurataksesi kannettavan akunvaraustilaa. Voit esimerkiksi
+   määrittää kannettavan näytön sammutuksen jos tietokonetta ei ole käytetty
+   määritettynä aikana, parantaaksesi akun kestoa.
+  </para> 
+
+ <sect1 id="starting">  
+ <title>K-virransäästön käynnistäminen</title>
+  
+   <para>Käynnistääksesi K-virransäästön, avaa komentotulkki ja anna komento <command>kpowersave 
+     &amp;</command> tai valitse
+    <menuchoice><guimenu>Järjestelmä</guimenu><guimenu>Työpöytäsovelma</guimenu>
+     <guimenu>KPowersave</guimenu></menuchoice> GNOMEn tai KDE:n
+    valikosta. K-virransäästö avautuu järjestelmätarjottimelle.
+   </para> 
+   
+   <para>Määrittääksesi käynnistyykö K-virransäästö automaattisesti kirjautumisen yhteydessä,
+    napsauta <guimenu>Yleiset asetukset</guimenu> ja valitse tai jätä valitsematta
+    <guimenu>K-virransäästö käynnistyy automaattisesti sisäänkirjautuessa</guimenu>. Määritä myös
+    haluatko että K-virransäästö kysyy automaatista käynnistystä kun sammutat
+    sovelluksen.
+   </para>
+ </sect1>
+
+ <sect1 id="understandingicon">
+ <title>K-virransäästön kuvakkeen merkitykset</title>
+   <para>
+    K-virransäästön kuvake näyttää virtapistokkeelta akunvaraustilan ilmaisimen vieressä. 
+    Kuvake näyttää akunvarauksen tämän hetkisen tilan ja toimiiko tietokone
+    akulla vai onko kytkettynä virtaliittännässä. Kun akun varaus on matala,
+    kuvakkeen tausta välkkyy, oranssina varoitukseksi ja punaisena matalan 
+    tai kriittisen merkiksi. Jos jätät hiiren osoittimen kuvakkeen päälle, 
+    viesti näyttää onko tietokone kytketty verkkovirtaan vai käytetäänkö akkua,
+    tämän hetkisen akunvarauksen ja jos tietokone käyttää akkua,
+    odotettavissa olevan käyttöajan ennen akunvarauksen loppumista.
+   </para> 
+ </sect1>
+</chapter>   
+
+<chapter id="applet">
+ <title>Järjestelmätarjottimen sovelman valikko</title>
+
+  <sect1 id="selectschemes">
+   <title>Vaihda käytössä olevaa mallia</title>
+   <para>
+    Asettaaksesi käytössä olevan mallin, napsauta oikealla hiiren nappilla K-virransäästön kuvaketta ja valitse
+    <guimenu>Aseta käytössä oleva malli</guimenu> valitse sitten malli jota haluat käyttää. Jos 
+    muutat käytössä olevaa virranhallinta mallia <guimenu>Aseta käytössä olevaa 
+    virransäästö mallia</guimenu>, kaikki järjestelmäsi osat ottavat osaa virran
+    säästö toimiin. Virranhallinta malli sisältää asetukset prosessorin
+    nopeudensäädölle (jos tietokone tätä tukee), throttling, kiintolevyjen
+    hallinnalla, ja järjestelmän jäähdytykselle.
+   </para> 
+
+   <mediaobject>
+    <imageobject>
+      <imagedata fileref="fi_applet_schemes.png" format="PNG" align="center"/>
+    </imageobject>
+    <textobject>
+       <phrase>Mallin vaihtaminen K-virransäästön valikosta</phrase>
+    </textobject>
+   </mediaobject>
+  </sect1>
+
+  <sect1 id="yast">
+   <title>YaST Virranhallintamoduulin käynnistäminen</title>
+   <para>
+    YaST Virranhallintamoduuli tarjoaa useita asetuksia jotka ovat suunniteltu auttamaan virran 
+    säästössä. Käynnistääksesi moduulin, napsauta hiiren oikeaa näppäintä K-virransäästö kuvakkeen päällä
+    ja napsauta <guimenu>Käynnistä YaST2 Virranhallintamoduuli</guimenu>. Yksityiskohtaiset
+    ohjeet jokaiselle asetukselle ovat saatavissa YaST:issa.
+
+    <mediaobject>
+     <imageobject>
+      <imagedata fileref="fi_applet_yast.png" format="PNG" align="center"/>
+     </imageobject>
+     <textobject>
+       <phrase>YaST:in käynnistäminen K-virransäästön valikosta</phrase>
+      </textobject>
+    </mediaobject>
+
+   </para> 
+   <note>
+    <para>
+        YaST Virranhallintamoduulin käynnistäminen vaatii pääkäyttäjän salasanan.
+    </para>
+   </note> 
+  </sect1>
+ 
+  <sect1 id="suspend"> 
+  <title>Järjestelmän asettaminen lepotilaan</title>
+   <para>
+    Voit keskeyttää järjestelmän koska tahansa napsauttamalla hiiren oikeaa näppäintä
+    K-virransäästön kuvakkeen päällä ja valitsemalla <guimenu>Lepotila levylle</guimenu>,
+    <guimenu>Lepotila keskusmuistiin</guimenu>, tai 
+    <guimenu>Valmiustila</guimenu> (jos tietokone tukee
+    valmiustilaa).
+   </para>
+
+   <itemizedlist>
+    <listitem>
+      <para>
+	"Lepotila levylle" tallentaa kaiken avoimen tiedon levylle ennen tietokoneen pysäyttämistä. 
+        Tämä suojaa tietojasi jos virta katkeaa tai akku loppuu.
+      </para>
+    </listitem> 
+    <listitem>
+      <para>
+        "Lepotila keskusmuistiin" tallentaa tiedot RAM-muistiin, tehden tiedonpalauttamisesta nopeampaa kun 
+       tietokone palautetaan lepotilasta.
+      </para>
+    </listitem>
+    <listitem>
+      <para>
+        Valmiustila poistaa näytön käytöstä pitäen virran järjestelmässä niin 
+        että kaikki avoimet tiedot pysyvät RAM-muistissa.
+      </para>
+    </listitem> 
+    </itemizedlist>
+
+    <para>
+     Käytettävissä olevat valinnat riippuvat tavoista jotka jäjestelmävalvoja
+     on ottanut käyttöön YaST:issa ja onko valmiustila tietokoneesi tukema.
+     Valinnan tulisi riippua tietokoneen virran katkeamisen todennäköisyydestä.
+    </para> 
+
+   <mediaobject>
+     <imageobject>
+      <imagedata fileref="fi_applet_suspend.png" format="PNG" align="center"/>
+     </imageobject>
+     <textobject>
+       <phrase>K-virransäästö valikko valinnat lepotilalle/valmiustilalle</phrase>
+      </textobject>
+   </mediaobject>
+  </sect1>
+
+  <sect1 id="deactivateautossuspend">
+  <title>Automaattisen lepotilan poistaminen</title>
+   <para>
+    Jos automaattinen lepotila on käytössä tämän hetkisessä mallissa,
+    <guimenu>Ota pois toimettomuuden tapahtumat</guimenu> ilmestyy K-virransäästön
+    valikkoon. Jos valitset tämän valinnan, jokainen toiminto joka on määritetty
+    tapahtumaan kun tietokone on toimettomana ei toteudu, tämä poistaa käytöstä myös
+    automaattisen lepotilan.
+   </para> 
+
+   <mediaobject>
+     <imageobject>
+      <imagedata fileref="fi_applet_autosuspend.png" format="PNG" align="center"/>
+     </imageobject>
+     <textobject>
+       <phrase>K-virransäästön valikko "Ota pois toimettomuuden tapahtumat" toiminnon kanssa</phrase>
+      </textobject>
+   </mediaobject>
+  </sect1> 
+  
+  <sect1 id="setCPUFreq">
+  <title>CPU-taajuuskäytännön asettaminen</title>
+   <para>
+    Hallinnoi prosessorin käyttämää virran määrää muuttamalla prosessorin(CPU)
+    taajuuskäytäntöä, napsauta hiiren oikealla napilla K-virranhallinnan kuvaketta, napsauta <guimenu>Aseta CPU
+    -taajuuskäytäntöä</guimenu>, ja valitse yksi saatavilla olevista valinnoista:
+   </para> 
+   <itemizedlist>
+    <listitem>
+     <para>
+      Suorituskyky: Pitää prosessorin taajuuden pysyvästi korkeana prosessorin suurimman suorituskyvyn saavuttamiseksi.
+     </para>
+    </listitem> 
+    <listitem>
+      <para>
+       Dynaaminen: Vähentää prosessorin taajuutta kun järjestelmä on tyhjäkäytössä ja säätää sitä 
+       dynaamisesti kun lisää prosessoritehoa tarvitaan.
+      </para>
+    </listitem> 
+    <listitem>
+      <para>
+       Virransäästö: Pitää prosessorin taajuuden matalana säästääkseen virtaa.
+      </para>
+    </listitem>
+   </itemizedlist>
+   
+   <para>
+    CPU-taajuuskäytäntö on käytettävissä valikosta vain jos
+    tietokoneesi tukee sitä. Jos valintaa ei ole, 
+    järjestelmäsi ei tue toimintoa.
+   </para> 
+
+   <mediaobject>
+     <imageobject>
+      <imagedata fileref="fi_applet_cpufreq.png" format="PNG" align="center"/>
+     </imageobject>
+     <textobject>
+       <phrase>K-virransäästön valikko 'Aseta CPU-taajuuskäytäntöä' alivalikon kanssa</phrase>
+      </textobject>
+    </mediaobject>
+  </sect1>
+ </chapter>
+
+ <chapter id="conf_powerscheme"> 
+ <title>Virranhallintamallin määrittäminen</title>
+   <sect1 id="understand_scheme">
+   <title>Virranhallintamallin ymmärtäminen</title>
+   <para>
+    Malli sisältää virranhallinnan perusmääritykset jotka ovat
+    käytössä kun käytät tietokoneessasi K-virransäästöä. Saatavilla olevien
+    mallien lukumäärä riippuu virransäästö määrityksestäsi. Lisää tai poista malleja
+    YaST Virranhallinta moduulissa. Osa yleisistä malleista sisältävät 
+    seuraavat:
+   </para>  
+
+   <itemizedlist>
+    <listitem>
+      <para>Suorituskyky: Optimoitu täydelle suorituskyvylle pitempiaikaisia istuntoja varten</para>
+    </listitem> 
+    <listitem>
+      <para>Hiljainen: Optimoitu tietokoneen käyttämiseksi mahdollisimman hiljaisena</para>
+    </listitem> 
+    <listitem>
+      <para>Esitys: Optimoitu antamaan paras suorituskyky esityksiä pidettäessä</para>
+    </listitem> 
+    <listitem>
+      <para>Virransäästö: Optimoitu säästämään akunvarausta</para>
+    </listitem> 
+   </itemizedlist>
+   
+   <para>Valitaksesi mallin, avaa <guimenu>Malliasetukset</guimenu> välilehti,
+    napsauta käytettävää mallia, ja muokkaa sitä haluamaksesi, napsauta sitten
+    <guimenu>OK</guimenu>.
+   </para> 
+
+   <mediaobject>
+     <imageobject>
+      <imagedata fileref="fi_configdialog_schemes.png" format="PNG" align="center"/>
+     </imageobject>
+     <textobject>
+       <phrase>K-virransäästön määritysikkuna (valitse malleja).</phrase>
+      </textobject>
+   </mediaobject>
+
+   <para>
+     Malli hallitsee:
+   </para>
+   
+   <itemizedlist>
+    <listitem>
+      <para>
+        Onko näytönsäästäjän käyttö sallittu kun tietokone ei ole käytössä
+      </para>
+    </listitem> 
+    <listitem>
+      <para>
+        Kuinka kauan aikaa saa kulua ennen kuin näyttö menee valmiustilaan tai lepotilaan
+        tai sammutetaan
+      </para>
+    </listitem>  
+    <listitem>
+      <para>
+        Tulisiko tietokoneen mennä automaattisesti lepotilaan tietyn ajan jälkeen
+      </para>
+    </listitem> 
+    <listitem>
+      <para>
+        Toistaako tietokone virranhallintaan liittyviä äänimerkkejä
+      </para>
+    </listitem> 
+   </itemizedlist>
+  </sect1>
+
+  <sect1 id="procedure">
+  <title>Mallin asettamistoiminto</title>
+
+   <para>
+    Kaikki nämä valinnat säästävät virtaa estämällä virtaa vievien
+    toimintojen suorittamisen. Määrittääksesi mallin asetukset, tee seuraavasti:
+   </para> 
+   
+  <sect2 id="procedure_ss">
+  <title>Näytönsäästäjä</title>
+   <procedure>
+    <step><para>Napsauta hiiren oikealla napilla K-virransäästön kuvaketta järjestelmätarjottimella.</para></step>
+    <step><para>Valitse <guimenu>Määritä K-virransäästö</guimenu>.</para></step>
+    <step><para>Jos <guimenu>Malliasetukset</guimenu> välilehti ei ole jo
+      valittuna, napsauta <guimenu>Malliasetukset</guimenu>.</para></step> 
+    <step><para>Valinnaisesti, napsauta <guimenu>Ota käyttöön valitut näytönsäästäjän
+       asetukset</guimenu>.</para>
+
+     <substeps>
+      <step><para>Jos et halua näytönsäästäjän kuluttavan virtaa kun
+	järjestelmä ei ole käytössä, napsauta <guimenu>Ota näytönsäästäjä
+	pois käytöstä</guimenu>.</para></step> 
+      <step><para>Tyhjentääksesi näytön määritetyn näytönsäästäjän suorittamisen sijasta,
+	napsauta <guimenu>Vain ruudun tyhjennys</guimenu>. Tämä valinta
+	ei ole saatavilla jos 
+	näytönsäästäjä ei ole käytössä.</para></step> 
+     </substeps></step>
+    </procedure>
+   </sect2>
+    
+   <sect2 id="procedure_spms">
+    <title>Näytön virranhallinta</title>
+    <procedure>
+    <step><para>Hallitaksesi näytön virrankulutusta, napsauta
+      <guimenu>Ota käyttöön valittu virranhallinta</guimenu>.</para> 
+     <para>Määritetty näytön virranhallinta (DPMS) voidaan myös
+      poistaa käytöstä valitsemalla <guimenu>Ota pois näytön
+       virranhallinta</guimenu>. Tämä asetus ohittaa työpöytä
+      määrityksen.</para>  
+     <substeps>
+      <step><para>Valitse kuinka paljon aikaa tulisi kulua ennen kuin näyttö
+	menee valmiustilaan. Valmiustilassa, näyttö on tyhjä, mutta
+	jatkaa virran saamista. Tämä tarjoaa pienen virran
+	säästön.</para></step> 
+      <step><para>Määritä kuinka kauan kestää ennen kuin näyttö menee lepotilaan.
+	Lepotilassa, näyttö sammutetaan, mutta virtaa käytetään
+	säilyttämään nykyisen näytön tila.</para></step> 
+      <step><para>Määritä kuinka kauan kestää ennen kuin kaikki virta
+	näytöltä katkaistaan.</para></step> 
+     </substeps></step>
+    </procedure>
+    <mediaobject>
+       <imageobject>
+        <imagedata fileref="fi_configdialog_schemes_screen.png" format="PNG" align="center"/>
+       </imageobject>
+       <textobject>
+        <phrase>K-virransäästön määritysikkuna näytönsäästäjän asetuksille.</phrase>
+       </textobject>
+    </mediaobject>
+   </sect2>
+
+   <sect2 id="procedure_autosuspend">
+    <title>Automaattisen lepotilan asetus</title>
+    <procedure>
+    <step><para> Napsauta <guimenu>Automaattinen lepotila</guimenu> jos haluat
+      K-virransäästön asettavan järjestelmän lepotilaan automaattisesti jos nykyisen työpöydän
+      käyttäjä on toimettomana määritetyn ajan. Käytä sitten valintaikkunaa
+      määrittämään automaattisen lepotilan asetukset.</para> 
+     <para>Esimerkiksi, jos haluat järjestelmän lepotilaan levylle 30 minuutin jälkeen,
+      valitse asetuksista että näin tehdään. Kun 30 minuuttia on kulunut, kaikki avoimet tiedostot
+      tallennetaan levylle ja tietokone asetetaan lepotilaan.</para> 
+    </step>
+    </procedure>
+    <mediaobject>
+      <imageobject>
+        <imagedata fileref="fi_configdialog_schemes_autosuspend.png" format="PNG" align="center"/>
+      </imageobject>
+      <textobject>
+        <phrase>K-virransäästön määritysikkuna automaattisen lepotilan asetuksille.</phrase>
+      </textobject>
+     </mediaobject>
+   </sect2>
+
+   <sect2 id="procedure_notification">
+    <title>Aseta ääni</title>
+    <procedure>
+     <step><para>Määrittääksesi virransäästön äänivalinnoille, napsauta
+      <guimenu>Sekalaiset</guimenu>. Valitse äänityypit jotka poistetaan
+      estäen niitä toistumasta ja kuluttamasta akkua.
+     </para></step> 
+    </procedure>
+   </sect2>
+  </sect1>
+ </chapter>
+
+ <chapter id="generalsettings">
+ <title>Yleiset asetukset</title>
+  <sect1 id="lockscreen">
+   <title>Näytön lukitseminen</title>
+   <para>
+    Parantaaksesi tietoturvaa, voit lukita näytön ennen kuin tietokone
+    menee lepotilaan tai valmiustilaan tai kun laitat kannettavan kannen kiinni. Lukitse
+    näyttö näytönsäästäjän tai xkellon kanssa.
+   </para> 
+   <para>
+    Lukitaksesi näytön, napsauta <guimenu>Yleiset asetukset</guimenu> välilehteä
+    ja valitse sitten käyttöön haluamasi asetukset.
+   </para> 
+   
+   <mediaobject>
+     <imageobject>
+      <imagedata fileref="fi_configdialog_general.png" format="PNG" align="center"/>
+     </imageobject>
+     <textobject>
+       <phrase>K-virransäästön määritysikkuna yleisille asetuksille.</phrase>
+      </textobject>
+   </mediaobject>
+
+  </sect1>
+  
+  <sect1 id="autosuspendblacklist">
+   <title>Kieltoluettelon luominen automaattiselle lepotilalle</title>
+   <para>
+    K-virransäästö tarjoaa kieltoluettelon automaattiselle lepotilalle. Kieltoluettelo estää
+    järjestelmää menemästä lepotilaan jos jokin luetelluista sovelluksista
+    on käytössä. Esimerkiksi, et ehkä tahdo että kannettavasi menee
+    lepotilaan kun katselet DVD:tä, vain koska et painanut
+    näppäintä kymmeneen minuuttiin. Muokataksesi kieltoluetteloa, napsauta
+    <guimenu>Yleiset asetukset</guimenu> välilehteä ja sitten <guimenu>Muokkaa yleistä
+    kieltoluetteloa</guimenu>. Käytä <guimenu>Automaattisen lepotilan kieltoluettelon muokkaus</guimenu>
+    -ikkunaa lisäämään tai poistamaan sovelluksia kieltoluettelosta.
+   </para> 
+
+   <mediaobject>
+     <imageobject>
+      <imagedata fileref="fi_configdialog_general.png" format="PNG" align="center"/>
+     </imageobject>
+     <textobject>
+       <phrase>K-virransäästön määritysikkuna automaattisen lepotilan kieltoluettelolle</phrase>
+      </textobject>
+   </mediaobject>
+
+   <para>
+    Voit myös käyttää tätä asetusta luomaan ja muokkaamaan kieltoluetteloa jokaiselle
+    mallille. Luotaessa mallin kieltoluetteloa, voit tuoda yleisen
+    kieltoluettelon tai luoda mallikohtaisen kieltoluettelon. Mallikohtainen
+    kieltoluettelo ohittaa yleisen kieltoluettelon kun tämä malli on
+    käytössä.
+   </para>
+
+   <mediaobject>
+     <imageobject>
+      <imagedata fileref="fi_configdialog_blacklist.png" format="PNG" align="center"/>
+     </imageobject>
+     <textobject>
+       <phrase>K-virransäästön muokkausikkuna kieltoluetteloille</phrase>
+      </textobject>
+   </mediaobject>
+
+  </sect1> 
+ </chapter>
+ 
+</book>
+
+<!-- Keep this comment at the end of the file
+Local variables:
+mode: xml
+coding: utf-8
+sgml-indent-step: 1
+End:
+-->

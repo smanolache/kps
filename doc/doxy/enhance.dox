@@ -1,0 +1,94 @@
+/*!
+* \page enhance Enhancements
+* \section enhance_sec All planed or to be discussed enhancements/ enhancement requests.
+*
+* \subsection enhance_device_powermanagemnt Runtime device powermanagement
+*	\b [Priority: \b M] (for v0.8) \n \n
+*	Add device/runtime powermanagement to KPowersave and make it scheme specifi configurable via
+*	the configure dialog. At least allow this for 'Advanced Powersave' scheme. \n \n
+*	The powersave interface for this feature already exist, now we should allow the user to 
+*	change it. \n \n \n
+*
+* \subsection enhance_CPUhotplugging CPU Hotplugging
+*	\b [Priority: \b M] (for v0.8) \n \n
+*	Add CPU hotplugging to KPowersave. Allow enable/disable CPUs/Cores on multiprocessor/multicore 
+*	machines. We need scheme specific configuration. (translations and needed strings are already
+*	added to KPowersave) \n \n \n
+*
+* \subsection enhance_configure_display Display battery and CPU informations in the configure dialog
+*	\b [Priority: \b I] (for v0.8) \n \n
+*	It would be really usefull to display all known information about the current state of the machine
+*	and powersave/KPowersave in a new page in the configure dialog. This enclose CPU, Battery and 
+*	current scheme.\n \n \n
+*
+* \subsection enh_ControlCenter_plugin Plugin for the KDE Control Center 
+*	\b [Priority: \b D] \n \n
+*	It would be really usefull and easier/plainer for the user to add the configuredialog also to the 
+*	KDE Control Center. By this we can remove the klaptop-plugin under SUSE from the Control Center by
+*	default. So the user would be no longer confused through the klaptop plugin, which is obsolete under 
+*	SUSE. \n \n 
+*	We maybe also can move some/all of the powersave YaST-dialog to the dialog. We can use 'Administrator
+*	Mode' to protect this settings. This would be usefull for other distributions. \n \n \n 
+*
+* \subsection enh_tooltip Tooltip
+*	\li \b CPU \b Tooltip \b like \b kicker \b mouseover \b effects \n \n 
+*	\b [Priority: \b I] \n \n
+*	I like the nice mouseover effects on Kicker. Unforunately there is currently no QWidget for this.
+*	If we would implement this we need to adapt the wifget from amarok/src/tracktooltip.cpp.
+*
+*       \li \b Battery \b estimated \b empty \b at \b xx:yy \b in \b Tooltip \n \n 
+*	\b [Priority: \b I] \n \n
+*       It would be nice to be to know when (estimated) the battery is empty and not only to know remaining hours.
+*
+*	\li \b Optional \b full \b information \b Tooltip \n \n 
+*	\b [Priority: \b I] \n \n
+*	We need a optional "amarok-like" Tooltip to display more of the already existing and collected information 
+*	like current scheme, battery state, battery fill state, cpu freq ... and a icon/picture representing the
+*	current battery state. There should be a option in the configure dialog to switch beetween the normal and
+*	the enhanced tooltip.
+*
+*       \li \b CPU \b Temperature \b in \b Tooltip \n \n 
+*	\b [Priority: \b D] \n \n
+*       It would be nice to be able to add the current CPU temperature to the tool tip. We maybe could get this
+*       information from powersave or we need to poll a configured path in /proc/acpi/* . The user should be
+*	able to configure if he would like use this new or the normal tooltip. The best would be to read 
+*	the settings by default from the kicker settings and add also an own kpowersave option.
+*
+* \subsection enh_osd On Screen Display 
+*	\b [Priority: \b F] \n \n
+*	It would be usefull to have configureable OSD to display permanent or event-based information for
+*	the user on the display. Possible displayed events: 
+*	\li daemon.scheme.change
+*	\li acadapter.offline, acadapter.online
+*	\li battery.normal (full charged ), battery.warning, battery.low, battery.critical
+*	\li battery.info (displayed as permanent only)
+*	\li temperature.hot, temperature.critical
+*	\li processor.performance, processor.powersave, processor.dynamic
+*	\li cpu freq (displayed as permanent only ) \n \n
+*
+*
+* \n \n
+* \section design All to discuss and research design enhancements
+*
+*
+* \n \n \n \n 
+* \subsection LEGEND LEGEND
+*	\b Priority:
+*	\li \b M (Mandatory): \n \n 
+*			      The stable release shipment will be dependant on this component being included
+*			      within the release.\n \n
+*	\li \b I (Important): \n \n 
+*			      Adds significant features. Important features are stretch targets for this
+*			      release. Important features will become mandatory in the next release cycle.\n \n
+*	\li \b D (Desirable): \n \n 
+*			      Adds considerable value. Desirable features are targets of opportunity for 
+*			      this release. Desirable features may or may not become mandatory features 
+*			      over time.\n \n
+*	\li \b F (Future):    \n \n 
+*			      This requirement has been deferred to a future release. It is listed for
+*			      informational purposes so that product development may make informed
+*			      architectural choices.\n \n
+*	\li \b R (Rejected):  \n \n 
+*			      This requirement was suggested, but rejected as not in harmony with the value
+*			      proposition or positioning of the project. It will never be fulfilled.\n \n
+*/

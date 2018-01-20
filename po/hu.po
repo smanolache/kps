@@ -1,0 +1,1397 @@
+# translation of kpowersave.hu.po to
+# translation of kpowersave.po to
+# This file is distributed under the same license as the PACKAGE package.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER.
+#
+# Antje Faber <afaber@suse.de>, 2004.
+# Marcel Hilzinger <marcel.hilzinger@suselinux.hu>, 2004.
+# Szabolcs Varga <shirokuma@shirokuma.hu>, 2005.
+# Kalman Kemenczy <kkemenczy@novell.com>, 2006, 2007.
+# Gabor Kelemen <kelemeng@gnome.hu>, 2007.
+msgid ""
+msgstr ""
+"Project-Id-Version: kpowersave\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2007-08-10 03:16+0200\n"
+"PO-Revision-Date: 2007-08-15 17:12+0200\n"
+"Last-Translator: Kalman Kemenczy <kkemenczy@novell.com>\n"
+"Language-Team:  <hu@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.11.4\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: detailed_Dialog.cpp:228
+msgid "kpowersave"
+msgstr "kpowersave"
+
+#: detailed_Dialog.cpp:229
+msgid "General Information"
+msgstr "Általános információ"
+
+#: detailed_Dialog.cpp:232
+msgid "Battery Status"
+msgstr "Akkumulátor állapota"
+
+#: detailed_Dialog.cpp:233
+msgid "AC Adapter"
+msgstr "Hálózati adapter"
+
+#: detailed_Dialog.cpp:234 detaileddialog.cpp:391
+msgid "plugged in"
+msgstr "csatlakoztatva"
+
+#: detailed_Dialog.cpp:235
+msgid "Power Consumtion: "
+msgstr "Áramfogyasztás: "
+
+#: detailed_Dialog.cpp:237
+msgid "Processor Status"
+msgstr "Processzor állapota"
+
+#: detailed_Dialog.cpp:238 blacklistedit_Dialog.cpp:130 info_Dialog.cpp:198
+#: configure_Dialog.cpp:838
+msgid "OK"
+msgstr "OK"
+
+#: blacklisteditdialog.cpp:60
+msgid "General Blacklist"
+msgstr "Általános feketelista"
+
+#: blacklisteditdialog.cpp:63
+msgid "Scheme: "
+msgstr "Séma: "
+
+#: blacklisteditdialog.cpp:114
+msgid "Selected entry removed."
+msgstr "A kijelölt bejegyzés eltávolításra került."
+
+#: blacklisteditdialog.cpp:117
+msgid "Could not remove the selected entry."
+msgstr "A kiválasztott bejegyzés eltávolítása nem sikerült."
+
+#: blacklisteditdialog.cpp:137
+msgid "Inserted new entry."
+msgstr "Új bejegyzés beszúrva."
+
+#: blacklisteditdialog.cpp:141
+msgid "Entry exists already. Did not insert new entry."
+msgstr "A bejegyzés már létezik. Új bejegyzés nem lett beszúrva."
+
+#: blacklisteditdialog.cpp:144
+msgid "Empty entry was not inserted."
+msgstr "Üres bejegyzés lett beszúrva."
+
+#: inactivity.cpp:298
+msgid ""
+"Could not start 'pidof'. Could not autosuspend the machine.\n"
+"Please check your installation."
+msgstr ""
+"A 'pidof' elindítása nem sikerült. A gép automatikus felfüggesztése meghiúsult.\n"
+"Ellenőrizze a telepített rendszert."
+
+#: blacklistedit_Dialog.cpp:129
+msgid "Autosuspend Blacklist Edit"
+msgstr "Automatikus felfüggesztési feketelista módosítása"
+
+# cancel button label
+#: blacklistedit_Dialog.cpp:132 configuredialog.cpp:1079
+#: configure_Dialog.cpp:836
+msgid "Cancel"
+msgstr "Mégsem"
+
+#: blacklistedit_Dialog.cpp:135
+msgid "Add"
+msgstr "Hozzáadás"
+
+#: blacklistedit_Dialog.cpp:136
+msgid "Remove"
+msgstr "Eltávolítás"
+
+#: infodialog.cpp:76 infodialog.cpp:78 main.cpp:55
+msgid "KPowersave"
+msgstr "KPowersave"
+
+#: configuredialog.cpp:116 configuredialog.cpp:121 configuredialog.cpp:721
+msgid " - not supported"
+msgstr " - nem támogatott"
+
+#: configuredialog.cpp:150 configuredialog.cpp:317 detaileddialog.cpp:432
+#: kpowersave.cpp:192 settings.cpp:66 configure_Dialog.cpp:876
+msgid "Performance"
+msgstr "Teljesítmény"
+
+#: configuredialog.cpp:154 configuredialog.cpp:319 detaileddialog.cpp:438
+#: kpowersave.cpp:194 settings.cpp:68 configure_Dialog.cpp:878
+msgid "Powersave"
+msgstr "Energiatakarékosság"
+
+#: configuredialog.cpp:159 configuredialog.cpp:321 kpowersave.cpp:1478
+#: settings.cpp:70
+msgid "Presentation"
+msgstr "Bemutató"
+
+#: configuredialog.cpp:164 configuredialog.cpp:323 kpowersave.cpp:1473
+#: settings.cpp:72
+msgid "Acoustic"
+msgstr "Zajszint"
+
+#: configuredialog.cpp:169 configuredialog.cpp:171 configuredialog.cpp:172
+#: configuredialog.cpp:173 kpowersave.cpp:1484
+msgid "Advanced Powersave"
+msgstr "Powersave speciális beállítások"
+
+#: configuredialog.cpp:271
+msgid ""
+"This enables specific screen saver settings. \n"
+"Note: If selected, the global screen saver settings are \n"
+"overwritten while kpowersave runs."
+msgstr ""
+"Itt kapcsolhatók be az egyedi képernyővédő-beállítások.\n"
+"Megjegyzés: Ha kiválasztja, a kpowersave futása alatt\n"
+"a globális képernyővédő-beállítások felülíródnak."
+
+#: configuredialog.cpp:274
+msgid ""
+"This disables the screen saver. \n"
+"Note: If selected, the global screen saver settings are \n"
+"overwritten while kpowersave runs."
+msgstr ""
+"Itt tiltható le a képernyővédő.\n"
+"Megjegyzés: Ha kiválasztja, a kpowersave futása alatt\n"
+"a globális képernyővédő-beállítások felülíródnak."
+
+#: configuredialog.cpp:277
+msgid ""
+"This blanks the screen instead of using a specific screen saver. \n"
+"Note: This may work only with KScreensaver."
+msgstr ""
+"Ennek hatására a képernyő egyszerűen törlésre kerül, nem fog semmilyen képernyővédő futni.\n"
+"Megjegyzés: Lehet, hogy ez csak a KScreensaver esetén történik így."
+
+#: configuredialog.cpp:279
+msgid ""
+"This enables specific DPMS settings. \n"
+"Note: If selected, the global DPMS settings are \n"
+"overwritten while kpowersave runs."
+msgstr ""
+"Itt adhatók meg az egyedi DPMS-beállítások.\n"
+"Megjegyzés: Ha kiválasztja, a kpowersave futása alatt\n"
+"a globális DPMS-beállítások felülíródnak."
+
+#: configuredialog.cpp:282
+msgid "This disables DPMS support."
+msgstr "A DPMS-támogatás letiltása."
+
+#: configuredialog.cpp:283
+msgid "If selected, the screen is locked on suspend or standby."
+msgstr "Ha kiválasztja, Felfüggesztés és Készenlét módban a képernyő lezárásra kerül."
+
+#: configuredialog.cpp:284
+msgid "If selected, the screen is locked if the lid close event is triggered."
+msgstr "Ha kiválasztja, a Fedél zárva esemény hatására a képernyő lezárásra kerül."
+
+#: configuredialog.cpp:286
+msgid "Check this box to enable or disable automatic suspension of the computer."
+msgstr "A négyzet megjelölésével kapcsolhatja be a számítógép automatikus felfüggesztését."
+
+#: configuredialog.cpp:288
+msgid ""
+"Activate this action if the user was inactive for the defined time \n"
+"(greater than 0 minutes). If empty, nothing happens."
+msgstr ""
+"Akkor kerül ez a művelet aktiválásra, ha a felhasználó a megadott ideig\n"
+"(> 0 percig) inaktív. Ha üres, semmi sem történik."
+
+#: configuredialog.cpp:291
+msgid "All scheme-related screen saver and DPMS settings."
+msgstr "Az összes sémákkal kapcsolatos képernyővédő- és DPMS-beállítás."
+
+#: configuredialog.cpp:292
+msgid "All scheme-related display brightness settings."
+msgstr "Az összes sémával kapcsolatos képernyő fényerejének beállítása."
+
+#: configuredialog.cpp:293
+msgid "All scheme-related automatic suspend settings."
+msgstr "Az összes sémákkal kapcsolatos automatikus felfüggesztési beállítás."
+
+#: configuredialog.cpp:295
+msgid ""
+"Here you can change the brightness of your display. \n"
+"Use the slider to change the brightness directly for \n"
+"testing. To reset back to previous level, please press \n"
+"the 'Reset' button. "
+msgstr ""
+"Itt módosíthatja a képernyő fényerejét. \n"
+"A csúszkával próbálja ki a fényerőt közvetlenül.\n"
+"Egy korábbi szintre való visszaállításhoz nyomja meg a \n"
+"'Visszaállítás' gombot. "
+
+#: configuredialog.cpp:299
+msgid "Use this button to set back the slider and the display brightness."
+msgstr "Ezzel a gombbal állíthatja a potmétert és a képernyő fényerejét lejjebb."
+
+#: configuredialog.cpp:352
+msgid "Press this button to delete the selected scheme."
+msgstr "A kiválasztott séma törléséhez nyomja meg a gombot."
+
+#: configuredialog.cpp:357
+msgid "You can't delete the current AC or battery scheme."
+msgstr "Nem törölheti a jelenlegi hálózati- vagy akkumulátorsémát."
+
+#: configuredialog.cpp:363
+msgid "You can't delete this default scheme."
+msgstr "Nem törölheti le az alapértelmezett sémát."
+
+#: configuredialog.cpp:546
+msgid "Your hardware supports to change the brightness. The values of the slider are in percent and mapped to the available brightness levels of your hardware."
+msgstr "A hardver támogatja a fényerő módosítását. A csúszka értékei százalékban vannak megadva és le vannak képezve a hardver által támogatott fényerőszintekre."
+
+#: configuredialog.cpp:553
+msgid "Your Hardware currently not support changing the brightness of your display."
+msgstr "A hardver jelenleg nem támogatja a képernyő fényerejének módosítását."
+
+#: configuredialog.cpp:664
+msgid "Select Automatically"
+msgstr "automatikus kiválasztás"
+
+#: configuredialog.cpp:665
+msgid "KScreensaver"
+msgstr "KScreensaver (KDE képernyővédő)"
+
+#: configuredialog.cpp:666
+msgid "XScreensaver"
+msgstr "X-képernyővédő"
+
+#: configuredialog.cpp:667
+msgid "xlock"
+msgstr "xlock"
+
+#: configuredialog.cpp:668
+msgid "GNOME Screensaver"
+msgstr "GNOME képernyővédő"
+
+#: configuredialog.cpp:930
+msgid ""
+"There are unsaved changes in the active scheme.\n"
+"Apply the changes before jumping to the next scheme or discard the changes?"
+msgstr ""
+"Vannak el nem mentett módosítások az aktív sémában.\n"
+"Kívánja a módosításokat alkalmazni a következő sémára ugrás előtt, vagy elveti a módosításokat?"
+
+#: configuredialog.cpp:933 configuredialog.cpp:983
+msgid "Unsaved Changes"
+msgstr "El nem mentett módosítások"
+
+#: configuredialog.cpp:981
+msgid ""
+"There are unsaved changes.\n"
+"Apply the changes before cancel or discard the changes?"
+msgstr ""
+"Vannak el nem mentett módosítások.\n"
+"Kívánja a módosításokat alkalmazni, mielőtt elvetné a módosításokat?"
+
+#: configuredialog.cpp:1032
+msgid "Please insert a name for the new scheme:"
+msgstr "Adjon nevet az új sémának:"
+
+#: configuredialog.cpp:1038
+msgid "KPowersave Configuration"
+msgstr "KPowersave beállítása"
+
+#: configuredialog.cpp:1046
+msgid "Error: A scheme with this name already exist.\n"
+msgstr "Hiba: Ilyen névvel már létezik séma.\n"
+
+#: configuredialog.cpp:1076
+msgid "Do you really want to delete the %1 scheme?"
+msgstr "Valóban le akarja törölni a(z) %1 sémát?"
+
+#: configuredialog.cpp:1078
+msgid "Confirm delete scheme"
+msgstr "Séma törlésének jóváhagyása"
+
+#: configuredialog.cpp:1079 configure_Dialog.cpp:883
+msgid "Delete"
+msgstr "Törlés"
+
+#: configuredialog.cpp:1095
+msgid "Could not delete the selected scheme."
+msgstr "A kiválasztott séma törlése sikertelen."
+
+#: configuredialog.cpp:1324
+msgid "<b>Note:</b> If you select this option, the computer will suspend or standby if the current user is inactive for the defined time even if somebody is logged in remotely to the X server.<br><br> This feature can also produce problems with some programs, such as video players or cd burner. These programs can be blacklisted by checking <b>Enable scheme-specific blacklist</b> and click <b>Edit Blacklist...</b>. If this does not help, report the problem or deactivate autosuspend.<br><br> Really use this option?"
+msgstr "<b>Megjegyzés:</b> Ezt a lehetőséget kiválasztva a számítógép felfüggesztett vagy készenléti állapotba kerül, ha az aktuális felhasználó tétlen a megadott ideig, még akkor is, ha valaki távolról bejelentkezik az X kiszolgálóra. <br><br> Ez a funkció problémákat okozhat egyes programok, például videólejátszók vagy CD-írók esetében. Az ilyen programok feketelistára tehetők a <b>Sémaspecifikus feketelista bekapcsolása</b> és a <b>Feketelista módosítása...</b> segítségével. Ha ez nem segít, akkor jelentse be a problémát, vagy kapcsolja ki az automatikus felfüggesztést. <br><br> Biztosan használni kívánja a funkciót?"
+
+#: configuredialog.cpp:1402 configuredialog.cpp:1532
+msgid "The blacklist of the selected scheme is empty. Import the general blacklist?"
+msgstr "A kiválasztott séma feketelistája üres. Importálja az általános feketelistát?"
+
+#: configuredialog.cpp:1404 configuredialog.cpp:1534
+msgid "Import"
+msgstr "Importálás"
+
+#: configuredialog.cpp:1404 configuredialog.cpp:1534
+msgid "Do Not Import"
+msgstr "Importálás kihagyása"
+
+#: configuredialog.cpp:1416
+msgid "General Autosuspend Blacklist"
+msgstr "Általános Autosuspend feketelista"
+
+#: configuredialog.cpp:1546
+msgid "General Autodimm Blacklist"
+msgstr "Általános Autodimm feketelista"
+
+#: configuredialog.cpp:1779 configuredialog.cpp:1816
+msgid "Shutdown"
+msgstr "Lekapcsolás"
+
+#: configuredialog.cpp:1781 configuredialog.cpp:1819
+msgid "Logout Dialog"
+msgstr "Kijelentkezési párbeszédablak"
+
+#: configuredialog.cpp:1784 configuredialog.cpp:1822 kpowersave.cpp:182
+#: kpowersave.cpp:2096 kpowersave.cpp:2156 kpowersave.cpp:2247
+msgid "Suspend to Disk"
+msgstr "Felfüggesztés lemezre"
+
+#: configuredialog.cpp:1787 configuredialog.cpp:1825 kpowersave.cpp:186
+#: kpowersave.cpp:2101 kpowersave.cpp:2161 kpowersave.cpp:2250
+msgid "Suspend to RAM"
+msgstr "Felfüggesztés memóriába"
+
+#: configuredialog.cpp:1790 configuredialog.cpp:1828
+msgid "CPU Powersave policy"
+msgstr "CPU energiatakarékossági irányelv"
+
+#: configuredialog.cpp:1793 configuredialog.cpp:1831
+msgid "CPU Dynamic policy"
+msgstr "Dinamikus CPU irányelv"
+
+#: configuredialog.cpp:1796 configuredialog.cpp:1834
+msgid "CPU Performance policy"
+msgstr "CPU teljesítmény irányelv"
+
+#: configuredialog.cpp:1799 configuredialog.cpp:1837
+msgid "Set Brightness to"
+msgstr "Fényesség beállítása"
+
+#: main.cpp:43
+msgid "KDE Frontend for Power Management, Battery Monitoring and Suspend"
+msgstr "KDE előtét az energiagazdálkodáshoz, az akkumulátor figyeléséhez és a felfüggesztéshez"
+
+#: main.cpp:45
+msgid "Force a new check for ACPI support"
+msgstr "ACPI-támogatás új ellenőrzésének kényszerítése"
+
+#: main.cpp:46
+msgid "Trace function entry and leave points for debug\n"
+msgstr "Függvénybelépés követése és hibakeresési nyomok használata\n"
+
+#: main.cpp:59
+msgid "Current maintainer"
+msgstr "Aktuális gondozó"
+
+#: main.cpp:62
+msgid "Powersave developer and for D-Bus integration"
+msgstr "Powersave-fejlesztő és DBUS-integráció"
+
+#: main.cpp:64
+msgid "Powersave developer and tester"
+msgstr "Powersave-fejlesztő és -tesztelő"
+
+#: main.cpp:66
+msgid "Added basic detailed dialog"
+msgstr "Fő részletes párbeszédablak hozzáadása"
+
+#: main.cpp:67
+msgid "Packaging Debian and Ubuntu"
+msgstr "Debian és Ubuntu csomagolás"
+
+#: detaileddialog.cpp:61
+msgid "KPowersave Information Dialog"
+msgstr "KPowersave információs ablak"
+
+#: detaileddialog.cpp:65 configure_Dialog.cpp:882 configure_Dialog.cpp:922
+msgid "Miscellaneous"
+msgstr "Vegyes"
+
+#: detaileddialog.cpp:66
+msgid "CPUs"
+msgstr "CPU-k"
+
+#: detaileddialog.cpp:73 detaileddialog.cpp:453
+msgid "Battery state:"
+msgstr "Akkumulátor állapota:"
+
+#: detaileddialog.cpp:79
+msgid "Total:"
+msgstr "Összesen:"
+
+#: detaileddialog.cpp:81 detaileddialog.cpp:83
+msgid "Battery %1"
+msgstr "%1. akkumulátor"
+
+#: detaileddialog.cpp:114
+msgid "Processor %1"
+msgstr "%1. processzor"
+
+#: detaileddialog.cpp:230
+msgid "not present"
+msgstr "nincs jelen"
+
+#: detaileddialog.cpp:243
+msgid "charged"
+msgstr "feltöltve"
+
+#: detaileddialog.cpp:245
+msgid "%1:%2 h until charged"
+msgstr "%1:%2 h feltöltésig"
+
+#: detaileddialog.cpp:248
+msgid "%1:%2 h remaining"
+msgstr "%1:%2 h van hátra"
+
+#: detaileddialog.cpp:253 detaileddialog.cpp:441 detaileddialog.cpp:468
+msgid "unknown"
+msgstr "ismeretlen"
+
+#: detaileddialog.cpp:325 detaileddialog.cpp:368
+msgid "%v MHz"
+msgstr "%v MHz"
+
+#: detaileddialog.cpp:330 detaileddialog.cpp:363 dummy.cpp:58
+msgid "deactivated"
+msgstr "deaktivált"
+
+#: detaileddialog.cpp:395
+msgid "unplugged"
+msgstr "kihúzva"
+
+#: detaileddialog.cpp:412
+msgid "Current Scheme: "
+msgstr "Aktuális séma: "
+
+#: detaileddialog.cpp:429
+msgid "Current CPU Frequency Policy:"
+msgstr "Aktuális CPU-frekvenciabeállítási irányelv:"
+
+#: detaileddialog.cpp:435 kpowersave.cpp:193 configure_Dialog.cpp:877
+msgid "Dynamic"
+msgstr "Dinamikus"
+
+#: detaileddialog.cpp:456
+msgid "Critical"
+msgstr "Kritikus"
+
+#: detaileddialog.cpp:459
+msgid "Low"
+msgstr "Alacsony"
+
+#: detaileddialog.cpp:462 kpowersave.cpp:277 kpowersave.cpp:652
+#: kpowersave.cpp:659 kpowersave.cpp:705 kpowersave.cpp:713 kpowersave.cpp:761
+#: kpowersave.cpp:769 kpowersave.cpp:817 kpowersave.cpp:824
+#: kpowersave.cpp:1131 kpowersave.cpp:1243 kpowersave.cpp:1272
+#: kpowersave.cpp:1610 kpowersave.cpp:1670 kpowersave.cpp:2186
+msgid "Warning"
+msgstr "Figyelmeztetés"
+
+#: detaileddialog.cpp:465
+msgid "ok"
+msgstr "OK"
+
+#: detaileddialog.cpp:474 detaileddialog.cpp:477
+msgid "Set brightness supported:"
+msgstr "Fényerő beállítása támogatott:"
+
+#: detaileddialog.cpp:475
+msgid "yes"
+msgstr "igen"
+
+#: detaileddialog.cpp:478
+msgid "no"
+msgstr "nem"
+
+#: detaileddialog.cpp:481 detaileddialog.cpp:485
+msgid "HAL Daemon:"
+msgstr "HAL démon:"
+
+#: detaileddialog.cpp:482
+msgid "running"
+msgstr "fut"
+
+#: detaileddialog.cpp:486
+msgid "not running"
+msgstr "nem fut"
+
+#: info_Dialog.cpp:197
+msgid "Information"
+msgstr "információ"
+
+#: dummy.cpp:36
+msgid "If the current desktop user is inactive, dim the display to:"
+msgstr "Ha a jelenlegi asztali felhasználó tétlen, akkor a képernyő halványuljon el erre a szintre:"
+
+#: dummy.cpp:37
+msgid "Enable dim display on inactivity"
+msgstr "Tétlenség esetén sötétebb képernyőre kapcsolás"
+
+#: dummy.cpp:38
+msgid "Blacklist"
+msgstr "Feketelista"
+
+#: dummy.cpp:39
+msgid "Here you can add programs which should, if running, prevent the dimming of the display."
+msgstr "Itt veheti fel azokat a programokat, amelyek ha futnak, ne halványodjon el a képernyő."
+
+#: dummy.cpp:41
+msgid "Would you like to import a predefined blacklist?"
+msgstr "Kíván importálni egy előre megadott feketelistát?"
+
+#: dummy.cpp:42
+msgid "Disable CPUs/Cores"
+msgstr "CPU-k/magok lekapcsolása"
+
+#: dummy.cpp:43
+msgid "Max. running CPUs:"
+msgstr "Futó CPU-k max. száma:"
+
+#: dummy.cpp:44
+msgid "Max. running CPUs/Cores:"
+msgstr "Futó CPU-k/magok max. száma:"
+
+#: dummy.cpp:45
+msgid "Min. running CPUs:"
+msgstr "Futó CPU-k min. száma:"
+
+#: dummy.cpp:46
+msgid "Min. running CPUs/Cores:"
+msgstr "Futó CPU-k/magok min. száma:"
+
+#: dummy.cpp:47
+msgid "Enable to switch off CPUs/cores"
+msgstr "CPU-k/magok lekapcsolásának engedélyezése"
+
+#: dummy.cpp:48
+msgid "You have a multiprocessor/multicore machine."
+msgstr "Ez egy többprocesszoros/többmagos gép."
+
+#: dummy.cpp:49
+msgid "You can disable CPUs/cores to reduce power consumption and save battery power."
+msgstr "Egyes CPU-k/magok letilthatók az áramfogyasztás csökkentése és az akkumulátorral takarékoskodás érdekében."
+
+#: dummy.cpp:50
+msgid "Device"
+msgstr "Eszköz"
+
+#: dummy.cpp:51
+msgid "Devices"
+msgstr "Eszközök"
+
+#: dummy.cpp:52
+msgid "Device class"
+msgstr "Eszközosztály"
+
+#: dummy.cpp:53
+msgid "activate"
+msgstr "aktiválás"
+
+#: dummy.cpp:54
+msgid "Activate"
+msgstr "Aktiválás"
+
+#: dummy.cpp:55
+msgid "deactivate"
+msgstr "deaktiválás"
+
+#: dummy.cpp:56
+msgid "Deactivate"
+msgstr "Deaktiválás"
+
+#: dummy.cpp:57
+msgid "activated"
+msgstr "aktivált"
+
+#: dummy.cpp:59
+msgid "do nothing"
+msgstr "tétlenség"
+
+#: dummy.cpp:60
+msgid "Deactivate following devices:"
+msgstr "A következő eszközök deaktiválása:"
+
+#: dummy.cpp:61
+msgid "Activate following devices"
+msgstr "A következő eszközök aktiválása"
+
+#: dummy.cpp:62
+msgid "Reactivate following devices"
+msgstr "A következő eszközök újraaktiválása"
+
+#: dummy.cpp:63
+msgid "Deactivate following device classes:"
+msgstr "A következő eszközosztályok deaktiválása:"
+
+#: dummy.cpp:64
+msgid "Activate following devices classes"
+msgstr "A következő eszközosztályok aktiválása"
+
+#: dummy.cpp:65
+msgid "Reactivate following device classes"
+msgstr "A következő eszközosztályok újraaktiválása"
+
+#: dummy.cpp:66
+msgid "If the scheme switched all devices are again activated."
+msgstr "Sémaváltáskor minden eszköz újra aktiválásra kerül."
+
+#: dummy.cpp:67
+msgid "This is a experimental feature."
+msgstr "Ez egy kísérleti funkció."
+
+#: dummy.cpp:68
+msgid "If you have problems with this feature, please report them."
+msgstr "Ha gondjai vannak a funkcióval, kérjük, jelentse be őket."
+
+#: dummy.cpp:69
+msgid "Select one of the available devices and click on "
+msgstr "Válassza ki a rendelkezésre álló eszközök egyikét és kattintson "
+
+#: dummy.cpp:70
+msgid "Select one of the available device classes and click on "
+msgstr "Válassza ki a rendelkezésre álló eszközosztályok egyikét és kattintson "
+
+#: dummy.cpp:71
+msgid "Select one or more of the available devices and click on "
+msgstr "Válasszon ki néhányat a rendelkezésre álló eszközök közül és kattintson "
+
+#: dummy.cpp:72
+msgid "Select one or more of the available device classes and click on "
+msgstr "Válasszon ki néhányat a rendelkezésre álló eszközosztályok közül és kattintson "
+
+#: dummy.cpp:73
+msgid "Please note: If you e.g. deactivate a network device you may lose your internet connection."
+msgstr "Ne feledje: Ha deaktivál egy hálózati eszközt, akkor elveszíti az internetkapcsolatot."
+
+#: dummy.cpp:75
+msgid "<b>Note:</b> If you select this option, the computer will suspend or standby if the current user is inactive for the defined time. <br><br> This feature can also produce problems with some programs, such as video players or cd burner. These programs can be blacklisted by checking <b>Enable scheme-specific blacklist</b> and click <b>Edit Blacklist...</b>. If this does not help, report the problem or deactivate autosuspend.<br><br> Really use this option?"
+msgstr "<b>Megjegyzés:</b> Ezt a lehetőséget kiválasztva a számítógép felfüggesztett vagy készenléti állapotba kerül, ha az aktuális felhasználó tétlen a megadott ideig. <br><br> Ez a funkció problémákat okozhat egyes programok, például videólejátszók vagy CD-írók esetében. Az ilyen programok feketelistára tehetők a <b>Sémaspecifikus feketelista bekapcsolása</b> és a <b>Feketelista módosítása...</b> segítségével. Ha ez nem segít, akkor jelentse be a problémát, vagy kapcsolja ki az automatikus felfüggesztést. <br><br> Biztosan használni kívánja a funkciót?"
+
+#: dummy.cpp:82
+msgid "Try to use only one CPU/Core."
+msgstr "Próbáljon meg egy CPU-t/magot használni."
+
+#: dummy.cpp:83
+msgid "Reduce power consumption by try to use only one CPU/Core instead of spreading the work over all/multiple CPUs."
+msgstr "Energiafogyasztás csökkentése egyetlen processzor/mag használatával a terhelés elosztása helyett több processzor/mag között."
+
+#: dummy.cpp:87
+msgid "Could not load the global configuration."
+msgstr "A globális beállítások betöltése nem sikerült."
+
+#: dummy.cpp:88
+msgid "Could not load the requested scheme configuration."
+msgstr "A kért sémabeállítások betöltése nem sikerült."
+
+#: dummy.cpp:89
+msgid "Configure the current scheme."
+msgstr "Az aktuális séma beállítása."
+
+#: dummy.cpp:90
+msgid "Try loading the default configuration."
+msgstr "Próbálja meg betölteni az alapértelmezett beállításokat."
+
+#: dummy.cpp:91
+msgid "Maybe the global configuration file is empty or missing."
+msgstr "Lehet, hogy elveszett (vagy üres) a globális konfigurációs fájl."
+
+#: dummy.cpp:94
+msgid "Cannot connect to D-Bus. The D-Bus daemon may not be running."
+msgstr "Nem lehet csatlakozni a D-BUS-hoz. Lehet, hogy a D-BUS démon nem fut."
+
+#: dummy.cpp:95
+msgid ""
+"Scheme switched to %1. \n"
+" Deactivate following devices: %2"
+msgstr ""
+"Séma átváltva - új séma: %1. \n"
+" A következő eszközök deaktiválásra kerülnek: %2"
+
+#: dummy.cpp:96
+msgid ""
+"Scheme switched to %1. \n"
+" Activate following devices: %2"
+msgstr ""
+"Séma átváltva - új séma: %1. \n"
+" A következő eszközök aktiválásra kerülnek: %2"
+
+#: dummy.cpp:97
+msgid "Report ..."
+msgstr "Jelentés ..."
+
+#: dummy.cpp:98
+msgid "Suspend to RAM is not supported on your machine."
+msgstr "Ez a gép nem támogatja a memóriába felfüggesztést."
+
+#: dummy.cpp:99
+msgid "Additionally, please mail the output of %1 to %2 . Thanks!"
+msgstr "Legyen szíves továbbá elküldeni %1 kimenetét a következő címre: %2. Köszönjük!"
+
+#: dummy.cpp:100
+msgid "Power consumption"
+msgstr "Áramfogyasztás"
+
+#: dummy.cpp:103
+msgid "KScreensaver not found."
+msgstr "Nem található egy KScreensaver sem."
+
+#: dummy.cpp:104
+msgid "Try locking with XScreensaver or xlock."
+msgstr "Próbálja meg lezárni az XScreensaver vagy az xlock segítségével."
+
+#: dummy.cpp:105
+msgid "XScreensaver not found."
+msgstr "Nem található egy XScreensaver sem."
+
+#: dummy.cpp:106
+msgid "Try locking the screen with xlock."
+msgstr "Próbálja meg lezárni a képernyőt az xlock segítségével."
+
+#: dummy.cpp:107
+msgid "XScreensaver and xlock not found. It is not possible to lock the screen. Check your installation."
+msgstr "Sem XScreensaver képernyővédő, sem az xlock nem található. A képernyő nem zárható le. Vizsgálja át a telepített rendszert."
+
+#: dummy.cpp:111
+msgid "HAL daemon:"
+msgstr "HAL démon:"
+
+#: dummy.cpp:112
+msgid "D-Bus daemon:"
+msgstr "DBUS démon:"
+
+#: dummy.cpp:113
+msgid "ConsoleKit daemon:"
+msgstr "ConsoleKit démon:"
+
+#: dummy.cpp:114
+msgid "Autosuspend activated:"
+msgstr "Automatikus felfüggesztés aktiválva:"
+
+#: dummy.cpp:115
+msgid "Autodimm activated:"
+msgstr "Autodimm aktiválva:"
+
+#: dummy.cpp:116
+msgid "enabled"
+msgstr "bekapcsolva"
+
+#: dummy.cpp:117
+msgid "Session active:"
+msgstr "Munkamenet aktív:"
+
+#: dummy.cpp:120
+msgid "Inactivity detected."
+msgstr "Inaktivitás észlelve."
+
+#: dummy.cpp:121
+msgid "To stop the %1 press the 'Cancel' button before the countdown expire."
+msgstr "A(z) %1 leállításához nyomja meg a \"Mégsem\" gombot a visszaszámlálás vége előtt."
+
+#: dummy.cpp:122
+msgid "The computer autosuspend in: "
+msgstr "A számítógép automatikus felfüggesztése: "
+
+#: dummy.cpp:123
+#, c-format
+msgid "The display get dimmed down to %1% in: "
+msgstr "A képernyő sötétítése %1%-ra: "
+
+#: dummy.cpp:124
+msgid "%1 seconds"
+msgstr "%1 másodperc múlva"
+
+#: dummy.cpp:127
+msgid "Could not call %1. The current desktop session is not active."
+msgstr "%1 nem hívható. A jelenlegi asztali munkamenet nem aktív."
+
+#: dummy.cpp:128
+msgid "Could not set %1. The current desktop session is not active."
+msgstr "%1 nem állítható be. A jelenlegi asztali munkamenet nem aktív."
+
+#: dummy.cpp:129
+msgid "Stopped %1. The current desktop session is now inactive."
+msgstr "%1 leállítva. A jelenlegi asztali munkamenet már nem aktív."
+
+#: dummy.cpp:130
+msgid "Restarted %1. The current desktop session is now active again."
+msgstr "%1 újraindítva. A jelenlegi asztali munkamenet újra aktív."
+
+#: log_viewer.cpp:78
+msgid "Form1"
+msgstr "Form1"
+
+#: log_viewer.cpp:79
+msgid "Save As ..."
+msgstr "Mentés másként..."
+
+#: log_viewer.cpp:80
+msgid "Close"
+msgstr "Bezárás"
+
+#: logviewer.cpp:44
+msgid "KPowersave Logfile Viewer: %1"
+msgstr "KPowersave naplófájl-nézegető: %1"
+
+#: logviewer.cpp:89
+msgid "File already exist. Overwrite the file?"
+msgstr "A fájl már létezik. Felül akarja írni?"
+
+#: logviewer.cpp:90 logviewer.cpp:97
+msgid "Error while save logfile"
+msgstr "Hiba a naplófájl mentése közben"
+
+#: logviewer.cpp:95
+msgid "File already exist."
+msgstr "A fájl már létezik."
+
+#: logviewer.cpp:98
+msgid "Try other filename ..."
+msgstr "Próbáljon meg egy másik fájlnevet..."
+
+#: suspenddialog.cpp:70
+msgid "Preparing Suspend..."
+msgstr "Felfüggesztés előkészítése..."
+
+#: kpowersave.cpp:168
+msgid "Configure KPowersave..."
+msgstr "A KPowersave beállítása..."
+
+#: kpowersave.cpp:171 configure_Dialog.cpp:915
+msgid "Configure Notifications..."
+msgstr "Értesítések beállítása..."
+
+#: kpowersave.cpp:175
+msgid "Start YaST2 Power Management Module..."
+msgstr "A YaST2 Energiakezelő moduljának indítása..."
+
+#: kpowersave.cpp:189 kpowersave.cpp:2106 kpowersave.cpp:2166
+#: kpowersave.cpp:2253
+msgid "Standby"
+msgstr "Készenlét"
+
+#: kpowersave.cpp:191 kpowersave.cpp:198
+msgid "Set CPU Frequency Policy"
+msgstr "CPU-frekvenciabeállítási irányelv megadása"
+
+#: kpowersave.cpp:205 kpowersave.cpp:206
+msgid "Set Active Scheme"
+msgstr "Aktív séma beállítása"
+
+#: kpowersave.cpp:212
+msgid "Disable Actions on Inactivity"
+msgstr "Tétlenség esetén a műveletek kikapcsolása"
+
+#: kpowersave.cpp:219 kpowersave.cpp:229
+msgid "&Help"
+msgstr "&Súgó"
+
+#: kpowersave.cpp:221
+msgid "&KPowersave Handbook"
+msgstr "&KPowersave kézikönyv"
+
+#: kpowersave.cpp:224
+msgid "&Report a bug ..."
+msgstr "&Hiba bejelentése ..."
+
+#: kpowersave.cpp:226
+msgid "&About KPowersave"
+msgstr "KPowersave &névjegy"
+
+#: kpowersave.cpp:275 kpowersave.cpp:648 kpowersave.cpp:656 kpowersave.cpp:703
+#: kpowersave.cpp:710 kpowersave.cpp:759 kpowersave.cpp:766 kpowersave.cpp:815
+#: kpowersave.cpp:822 kpowersave.cpp:1126 kpowersave.cpp:1241
+#: kpowersave.cpp:1270 kpowersave.cpp:2183
+msgid "WARNING"
+msgstr "FIGYELEM"
+
+#: kpowersave.cpp:275
+msgid "Cannot find any schemes."
+msgstr "Egyetlen séma sem található."
+
+#: kpowersave.cpp:453
+msgid "No information about battery and AC status available"
+msgstr "Nem áll rendelkezésre információ az akkumulátor és a hálózat állapotáról"
+
+#: kpowersave.cpp:456
+msgid "Plugged in -- fully charged"
+msgstr "Csatlakoztatva -- teljesen feltöltve"
+
+#: kpowersave.cpp:460
+msgid "Plugged in"
+msgstr "Csatlakoztatva"
+
+#: kpowersave.cpp:464
+msgid "Plugged in -- %1% charged (%2:%3 h until full charged)"
+msgstr "Töltés alatt -- %1%-os töltöttség (még %2 óra és %3 perc a teljes feltöltésig)"
+
+#: kpowersave.cpp:467
+msgid "Plugged in -- %1% charged (%2:%3 remaining hours)"
+msgstr "Töltés alatt -- %1%-os töltöttség (még %2 óra és %3 perc)"
+
+#: kpowersave.cpp:471 kpowersave.cpp:475
+#, c-format
+msgid "Plugged in -- %1% charged"
+msgstr "Töltés alatt -- %1%-os töltöttség"
+
+#: kpowersave.cpp:474
+msgid "Plugged in -- no battery"
+msgstr "Csatlakoztatva -- nincs akkumulátor"
+
+#: kpowersave.cpp:480
+msgid "Running on batteries -- %1% charged (%2:%3 hours remaining)"
+msgstr "Akkumulátoros működés -- %1%-os töltöttség (még %2 óra és %3 perc)"
+
+#: kpowersave.cpp:484
+#, c-format
+msgid "Running on batteries -- %1% charged"
+msgstr "Akkumulátoros működés -- %1%-os töltöttség"
+
+#: kpowersave.cpp:491
+msgid " -- battery is charging"
+msgstr " -- az akkumulátor töltődik"
+
+#: kpowersave.cpp:649 kpowersave.cpp:657
+msgid "Could not start YaST Power Management Module. Check if it is installed."
+msgstr "A YaST energiakezelő moduljának indítása nem sikerült. Ellenőrizze, hogy telepítve van-e."
+
+#: kpowersave.cpp:703
+msgid "Suspend to disk failed"
+msgstr "A felfüggesztés lemezre sikertelen"
+
+#: kpowersave.cpp:711
+msgid "Suspend to disk disabled by administrator."
+msgstr "A felfüggesztést lemezre letiltotta a rendszergazda."
+
+#: kpowersave.cpp:759
+msgid "Suspend to RAM failed"
+msgstr "A felfüggesztés memóriába sikertelen"
+
+#: kpowersave.cpp:767
+msgid "Suspend to RAM disabled by administrator."
+msgstr "A memóriába felfüggesztést letiltotta a rendszergazda."
+
+#: kpowersave.cpp:815
+msgid "Standby failed"
+msgstr "Készenlét sikertelen"
+
+#: kpowersave.cpp:822
+msgid "Standby disabled by administrator."
+msgstr "A készenlétet letiltotta a rendszergazda."
+
+#: kpowersave.cpp:853
+msgid "System is going into suspend mode now"
+msgstr "A rendszer felfüggesztett módba kapcsol"
+
+#: kpowersave.cpp:1039
+msgid "Could not call DCOP interface to umount external media."
+msgstr "Nem sikerült meghívni a DCOP csatolót a külső adathordozó leválasztásához."
+
+#: kpowersave.cpp:1044
+msgid ""
+"Could not umount external media before suspend/standby. \n"
+" (Reason: %1)\n"
+" \n"
+" Would you like to continue suspend/standby anyway? \n"
+"(Warning: Continue suspend can cause data loss!)"
+msgstr ""
+"A külső adathordozó nem választható le a felfüggesztés/készenlét előtt. \n"
+" (Ok: %1)\n"
+" \n"
+" Mindenképp folytatni kívánja a felfüggesztést/készenlétet?\n"
+"(Figyelmeztetés: a felfüggesztés folytatása adatvesztést okozhat!)"
+
+#: kpowersave.cpp:1052
+msgid "Error while prepare %1"
+msgstr "Hiba történt a(z) %1 előkészítése közben"
+
+#: kpowersave.cpp:1053
+msgid "Suspend anyway"
+msgstr "Felfüggesztés mindenképp"
+
+#: kpowersave.cpp:1053
+msgid "Cancel suspend"
+msgstr "Felfüggesztés megszakítása"
+
+#: kpowersave.cpp:1127
+msgid ""
+"Could not lock the screen. There may be a problem with the selected \n"
+"lock method or something else."
+msgstr ""
+"A képernyő nem zárható le. Ezt okozhatja a kiválasztott lezárási mód \n"
+"problémája, vagy valami más."
+
+#: kpowersave.cpp:1144
+msgid "The Lid was closed."
+msgstr "A fedél le lett csukva."
+
+#: kpowersave.cpp:1156
+msgid "The Lid was opened."
+msgstr "A fedél fel lett nyitva."
+
+#: kpowersave.cpp:1223
+msgid "Start KPowersave automatically when you log in?"
+msgstr "Elinduljon a KPowersave automatikusan a bejelentkezéskor?"
+
+#: kpowersave.cpp:1224
+msgid "Question"
+msgstr "Kérdés"
+
+#: kpowersave.cpp:1225
+msgid "Start Automatically"
+msgstr "Automatikus indítás"
+
+#: kpowersave.cpp:1225
+msgid "Do Not Start"
+msgstr "Ne kerüljön elindításra"
+
+#: kpowersave.cpp:1242
+msgid "CPU Freq Policy %1 could not be set."
+msgstr "A(z) %1 CPU frekv. irányelv nem állítható be."
+
+#: kpowersave.cpp:1271
+msgid "Scheme %1 could not be activated."
+msgstr "A(z) %1 séma aktiválása nem sikerült."
+
+#: kpowersave.cpp:1600
+msgid ""
+"The D-Bus daemon is not running.\n"
+"Starting it will provide full functionality: /etc/init.d/dbus start"
+msgstr ""
+"A D-BUS démon nem fut.\n"
+"Elindítva teljes funkcionalitást biztosít: /etc/init.d/messagebus start"
+
+#: kpowersave.cpp:1611
+msgid "Don't show this message again."
+msgstr "Többet ne jelenjen meg ez az üzenet."
+
+#: kpowersave.cpp:1637
+msgid "ERROR"
+msgstr "HIBA"
+
+#: kpowersave.cpp:1638
+msgid "Could not get information from HAL. The haldaemon is maybe not running."
+msgstr "Nem sikerült lekérni az adatokat a HAL-tól. Lehet, hogy a HAL démon nem fut."
+
+#: kpowersave.cpp:1641
+msgid "Error"
+msgstr "Hiba"
+
+#: kpowersave.cpp:1912
+msgid "Battery state changed to WARNING -- remaining time: %1 hours and %2 minutes."
+msgstr "A akkumulátor kapacitása NAGYON ALACSONY -- fennmaradó idő: %1 óra és %2 perc."
+
+#: kpowersave.cpp:1921
+msgid "Battery state changed to LOW -- remaining time: %1 hours and %2 minutes."
+msgstr "A akkumulátor kapacitása ALACSONY -- fennmaradó idő: %1 óra és %2 perc."
+
+#: kpowersave.cpp:1932
+msgid ""
+"Battery state changed to CRITICAL -- remaining time: %1 hours and %2 minutes.\n"
+"Shut down your system or plug in the power cable immediately. Otherwise the machine\n"
+"will go shutdown in 30 seconds"
+msgstr ""
+"Az akkumulátor állapota KRITIKUSSÁ vált -- fennmaradó idő: %1 óra és %2 perc.\n"
+"Állítsa le a rendszert minél hamarabb, vagy csatlakoztassa a töltőt most azonnal.\n"
+"Ellenkező esetben a számítógép 30 másodpercen belül leáll."
+
+#: kpowersave.cpp:1943
+msgid ""
+"Battery state changed to CRITICAL -- remaining time: %1 hours and %2 minutes.\n"
+"Shut down your system or plug in the power cable immediately."
+msgstr "Az akkumulátor állapota KRITIKUSSÁ vált -- fennmaradó idő: %1 óra és %2 perc. Állítsa le a rendszert minél hamarabb, vagy csatlakoztassa a töltőt most azonnal."
+
+#: kpowersave.cpp:2041
+msgid "AC adapter plugged in"
+msgstr "AC adapter csatlakoztatva"
+
+#: kpowersave.cpp:2043
+msgid "AC adapter unplugged"
+msgstr "Hálózati adapter kihúzva"
+
+#: kpowersave.cpp:2078
+msgid "Switched to scheme: %1"
+msgstr "Átkapcsolva a következő sémára: %1"
+
+#: kpowersave.cpp:2095 kpowersave.cpp:2100 kpowersave.cpp:2105
+msgid "System is going into %1 now."
+msgstr "A rendszer %1 állapotba lép most."
+
+#: kpowersave.cpp:2155 kpowersave.cpp:2160 kpowersave.cpp:2165
+msgid "System is resumed from %1."
+msgstr "A rendszer visszaáll %1 állapotból."
+
+#: kpowersave.cpp:2184
+msgid "Could not remount (all) external storage media."
+msgstr "Nem csatolható újra minden külső tárolóeszköz."
+
+#: kpowersave.cpp:2192
+msgid "An unknown error occurred while %1. The errorcode is: '%2'"
+msgstr "Ismeretlen hiba történt a következő közben: %1. A hibakód: \"%2\""
+
+# power-off message
+#: kpowersave.cpp:2197
+msgid "Do you want to have a look at the log file?"
+msgstr "Meg kívánja tekinteni a naplófájlt?"
+
+#: kpowersave.cpp:2198 kpowersave.cpp:2224
+msgid "Error while %1"
+msgstr "Hiba a(z) %1 közben"
+
+#: configure_Dialog.cpp:831
+msgid "KPowersave Settings"
+msgstr "KPowersave beállítások"
+
+#: configure_Dialog.cpp:832
+msgid "Apply"
+msgstr "Alkalmazás"
+
+#: configure_Dialog.cpp:834
+msgid "Help"
+msgstr "Segítség"
+
+#: configure_Dialog.cpp:840
+msgid "Enable specific display power management"
+msgstr "Képernyő egyedi tápellátás-vezérlésének bekapcsolása"
+
+#: configure_Dialog.cpp:841
+msgid "Standby after:"
+msgstr "Készenlét ennyi idő után:"
+
+#: configure_Dialog.cpp:842
+msgid "Only blank the screen"
+msgstr "Csak a képernyő elsötétítése"
+
+#: configure_Dialog.cpp:843
+msgid "Disable screen saver"
+msgstr "Képernyővédő kikapcsolása"
+
+#: configure_Dialog.cpp:844
+msgid "Enable specific screensaver settings"
+msgstr "Egyedi képernyővédő-beállítások bekapcsolása"
+
+#: configure_Dialog.cpp:845
+msgid "Suspend after:"
+msgstr "Felfüggesztés ennyi idő után:"
+
+#: configure_Dialog.cpp:846
+msgid "Power off after:"
+msgstr "Kikapcsolás ennyi idő után:"
+
+#: configure_Dialog.cpp:847
+msgid "Disable display power management"
+msgstr "Képernyő tápellátás-vezérlésének kikapcsolása"
+
+#: configure_Dialog.cpp:848 configure_Dialog.cpp:849 configure_Dialog.cpp:850
+#: configure_Dialog.cpp:862 configure_Dialog.cpp:873
+msgid " min"
+msgstr " perc"
+
+#: configure_Dialog.cpp:851
+msgid "Screen Saver and DPMS"
+msgstr "Képernyővédő és DPMS"
+
+#: configure_Dialog.cpp:852
+msgid "Settings"
+msgstr "Beállítások"
+
+#: configure_Dialog.cpp:853
+msgid "Reset"
+msgstr "Visszaállítás"
+
+#: configure_Dialog.cpp:855
+msgid "Enable scheme specific Brightness settings"
+msgstr "Sémaspecifikus fényerő-beállítások bekapcsolása"
+
+#: configure_Dialog.cpp:858
+msgid "Brightness"
+msgstr "Fényerő"
+
+#: configure_Dialog.cpp:859
+msgid "Enable autosuspend"
+msgstr "Automatikus felfüggesztés bekapcsolása"
+
+#: configure_Dialog.cpp:860 configure_Dialog.cpp:867
+msgid "Enable scheme-specific blacklist"
+msgstr "Sémaspecifikus feketelista bekapcsolása"
+
+#: configure_Dialog.cpp:861 configure_Dialog.cpp:870
+msgid "after:"
+msgstr "ennyi idő után:"
+
+#: configure_Dialog.cpp:863 configure_Dialog.cpp:868
+msgid "Edit Blacklist..."
+msgstr "Feketelista módosítása..."
+
+#: configure_Dialog.cpp:864 configure_Dialog.cpp:869
+msgid "If the current desktop user is inactive the computer will:"
+msgstr "Ha a jelenlegi asztali felhasználó tétlen, akkor a számítógép:"
+
+#: configure_Dialog.cpp:865
+msgid "Autosuspend"
+msgstr "Automatikus felfüggesztés"
+
+#: configure_Dialog.cpp:866
+msgid "Enable autodimm the display"
+msgstr "A sötétebb képernyőre kapcsolás engedélyezése"
+
+#: configure_Dialog.cpp:871 configure_Dialog.cpp:893 configure_Dialog.cpp:894
+#: configure_Dialog.cpp:895 configure_Dialog.cpp:896 configure_Dialog.cpp:897
+#: configure_Dialog.cpp:898
+msgid " %"
+msgstr " %"
+
+#: configure_Dialog.cpp:872
+msgid "dimm to:"
+msgstr "Sötétítés:"
+
+#: configure_Dialog.cpp:874
+msgid "Autodimm"
+msgstr "Autodimm"
+
+#: configure_Dialog.cpp:879
+msgid "Set CPU Frequency Policy:"
+msgstr "CPU-frekvenciairányelv beállítása:"
+
+#: configure_Dialog.cpp:880
+msgid "CPU Frequency Policy"
+msgstr "CPU-frekvenciairányelv"
+
+#: configure_Dialog.cpp:881
+msgid "Disable Notifications"
+msgstr "Értesítések letiltása"
+
+#: configure_Dialog.cpp:884
+msgid "New"
+msgstr "Új"
+
+#: configure_Dialog.cpp:885
+msgid "Scheme Settings"
+msgstr "Sémabeállítások"
+
+#: configure_Dialog.cpp:886
+msgid "Define the battery warning levels (in percentage) and the releated action if the level get reached:"
+msgstr "Az akkumulátor figyelmeztetési szintjeinek (százalékban) és a kapcsolódó művelet megadása az adott szint elérésekor:"
+
+#: configure_Dialog.cpp:887
+msgid "Warning level:"
+msgstr "Figyelmeztetési szint:"
+
+#: configure_Dialog.cpp:888
+msgid "Low level:"
+msgstr "Alacsony szint:"
+
+# modules/inst_sw_select.ycp:159
+# /usr/lib/YaST2/clients/inst_sw_select.ycp:262
+# clients/inst_sw_single.ycp:1402
+#: configure_Dialog.cpp:889
+msgid "Critical level:"
+msgstr "Kritikus szint:"
+
+#: configure_Dialog.cpp:890 configure_Dialog.cpp:891 configure_Dialog.cpp:892
+msgid "if reached call:"
+msgstr "elérésekor hívandó:"
+
+#: configure_Dialog.cpp:899
+msgid "Battery"
+msgstr "Akkumulátor"
+
+#: configure_Dialog.cpp:900
+msgid "Define the action which should be executed if the related button get pressed:"
+msgstr "A kapcsolódó gomb megnyomásakor végrehajtandó művelet megadása:"
+
+#: configure_Dialog.cpp:901
+msgid "Suspend-to-disk Button:"
+msgstr "Felfüggesztés lemezre gomb:"
+
+#: configure_Dialog.cpp:902
+msgid "Sleep button:"
+msgstr "Alvás gomb:"
+
+#: configure_Dialog.cpp:903
+msgid "Lid close Button:"
+msgstr "Fedél lezárása gomb:"
+
+#: configure_Dialog.cpp:904
+msgid "Power Button:"
+msgstr "Főkapcsoló:"
+
+#: configure_Dialog.cpp:905
+msgid "Button Events"
+msgstr "Gombesemények"
+
+#: configure_Dialog.cpp:906
+msgid "Select the following schemes as default if the system is running on AC or on batteries."
+msgstr "Válassza ki alább az alapértelmezett sémákat, ha a rendszer hálózati ellátásról vagy akkumulátorról működik."
+
+#: configure_Dialog.cpp:907
+msgid "Battery scheme:"
+msgstr "Akkumulátor séma:"
+
+#: configure_Dialog.cpp:908
+msgid "AC scheme:"
+msgstr "Hálózati séma:"
+
+# src/create_utf8.c:50
+#: configure_Dialog.cpp:909
+msgid "Default Schemes"
+msgstr "Alapértelmezett sémák"
+
+#: configure_Dialog.cpp:910
+msgid "Lock screen before suspend or standby"
+msgstr "Felfüggesztés vagy készenlét előtt a képernyő lezárása"
+
+#: configure_Dialog.cpp:911
+msgid "Lock screen with:"
+msgstr "Képernyő lezárása ezzel: "
+
+#: configure_Dialog.cpp:912
+msgid "Lock screen on lid close"
+msgstr "Képernyő lezárása a fedél lecsukásakor"
+
+#: configure_Dialog.cpp:913
+msgid "Lock Screen"
+msgstr "Képernyő lezárása"
+
+#: configure_Dialog.cpp:914
+msgid "Notifications"
+msgstr "Értesítések"
+
+#: configure_Dialog.cpp:916
+msgid "Autostart"
+msgstr "Automatikus indítás"
+
+#: configure_Dialog.cpp:917
+msgid "Never ask me again on exit"
+msgstr "Kilépésnél ne kérdezzen vissza többet"
+
+#: configure_Dialog.cpp:918
+msgid "KPowersave starts automatically on login"
+msgstr "A KPowersave automatikusan elindul bejelentkezéskor"
+
+#: configure_Dialog.cpp:919
+msgid "General Blacklists"
+msgstr "Általános feketelisták"
+
+#: configure_Dialog.cpp:920
+msgid "Edit Autosuspend Blacklist..."
+msgstr "Autosuspend feketelista módosítása..."
+
+#: configure_Dialog.cpp:921
+msgid "Edit Autodimm Blacklist..."
+msgstr "Autodimm feketelista módosítása..."
+
+#: configure_Dialog.cpp:923
+msgid "General Settings"
+msgstr "Általános beállítások"
+

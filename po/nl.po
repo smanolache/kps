@@ -1,0 +1,1399 @@
+# translation of kpowersave.po to Nederlands
+# translation of kpowersave.po to
+# translation of 20050815 kpowersave.po to
+# translation of nl.po to
+# This file is distributed under the same license as the PACKAGE package.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER.
+#
+# Antje Faber <afaber@suse.de>, 2004.
+# Arthur & Ettie Kerkmeester <a.s.kerkmeester@hccnet.nl>, 2004, 2005.
+# beijnes@xs4all.nl <beijnes@xs4all.nl>, 2005.
+# Rinse de Vries <rinsedevries@kde.nl>, 2005, 2006, 2007.
+msgid ""
+msgstr ""
+"Project-Id-Version: kpowersave\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2007-08-10 03:16+0200\n"
+"PO-Revision-Date: 2007-08-20 22:11+0200\n"
+"Last-Translator: Rinse de Vries <rinsedevries@kde.nl>\n"
+"Language-Team: Nederlands <kde-i18n-nl@kde.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.11.4\n"
+"Plural-Forms:  nplurals=2; plural=(n != 1);\n"
+
+#: detailed_Dialog.cpp:228
+msgid "kpowersave"
+msgstr "kpowersave"
+
+#: detailed_Dialog.cpp:229
+msgid "General Information"
+msgstr "Algemene informatie"
+
+#: detailed_Dialog.cpp:232
+msgid "Battery Status"
+msgstr "Batterijstatus"
+
+#: detailed_Dialog.cpp:233
+msgid "AC Adapter"
+msgstr "AC-adapter"
+
+#: detailed_Dialog.cpp:234 detaileddialog.cpp:391
+msgid "plugged in"
+msgstr "aangesloten"
+
+#: detailed_Dialog.cpp:235
+msgid "Power Consumtion: "
+msgstr "Energieverbruik: "
+
+#: detailed_Dialog.cpp:237
+msgid "Processor Status"
+msgstr "Processorstatus"
+
+# ok button label
+#: detailed_Dialog.cpp:238 blacklistedit_Dialog.cpp:130 info_Dialog.cpp:198
+#: configure_Dialog.cpp:838
+msgid "OK"
+msgstr "Ok"
+
+#: blacklisteditdialog.cpp:60
+msgid "General Blacklist"
+msgstr "Algemene zwarte lijst"
+
+#: blacklisteditdialog.cpp:63
+msgid "Scheme: "
+msgstr "Schema: "
+
+#: blacklisteditdialog.cpp:114
+msgid "Selected entry removed."
+msgstr "Geselecteerd schema verwijderd."
+
+#: blacklisteditdialog.cpp:117
+msgid "Could not remove the selected entry."
+msgstr "Kon geselecteerd schema niet verwijderen."
+
+#: blacklisteditdialog.cpp:137
+msgid "Inserted new entry."
+msgstr "Voeg nieuw schema toe"
+
+#: blacklisteditdialog.cpp:141
+msgid "Entry exists already. Did not insert new entry."
+msgstr "Schema bestaat al. Geen nieuw schema toegevoegd."
+
+#: blacklisteditdialog.cpp:144
+msgid "Empty entry was not inserted."
+msgstr "Leeg schema is niet toegevoegd."
+
+#: inactivity.cpp:298
+msgid ""
+"Could not start 'pidof'. Could not autosuspend the machine.\n"
+"Please check your installation."
+msgstr ""
+"Kon 'pidof' niet starten. De computer kan niet automatisch in slaapstand worden gezet.\n"
+"Controleer uw installatie."
+
+#: blacklistedit_Dialog.cpp:129
+msgid "Autosuspend Blacklist Edit"
+msgstr "Zwarte lijst voor automatische slaapstand"
+
+# cancel button label
+#: blacklistedit_Dialog.cpp:132 configuredialog.cpp:1079
+#: configure_Dialog.cpp:836
+msgid "Cancel"
+msgstr "Annuleren"
+
+#: blacklistedit_Dialog.cpp:135
+msgid "Add"
+msgstr "Toevoegen"
+
+#: blacklistedit_Dialog.cpp:136
+msgid "Remove"
+msgstr "Verwijderen"
+
+#: infodialog.cpp:76 infodialog.cpp:78 main.cpp:55
+msgid "KPowersave"
+msgstr "KPowersave"
+
+#: configuredialog.cpp:116 configuredialog.cpp:121 configuredialog.cpp:721
+msgid " - not supported"
+msgstr " - niet ondersteund"
+
+#: configuredialog.cpp:150 configuredialog.cpp:317 detaileddialog.cpp:432
+#: kpowersave.cpp:192 settings.cpp:66 configure_Dialog.cpp:876
+msgid "Performance"
+msgstr "Prestaties"
+
+#: configuredialog.cpp:154 configuredialog.cpp:319 detaileddialog.cpp:438
+#: kpowersave.cpp:194 settings.cpp:68 configure_Dialog.cpp:878
+msgid "Powersave"
+msgstr "Energiebesparing"
+
+#: configuredialog.cpp:159 configuredialog.cpp:321 kpowersave.cpp:1478
+#: settings.cpp:70
+msgid "Presentation"
+msgstr "Presentatie"
+
+#: configuredialog.cpp:164 configuredialog.cpp:323 kpowersave.cpp:1473
+#: settings.cpp:72
+msgid "Acoustic"
+msgstr "Akoestisch"
+
+#: configuredialog.cpp:169 configuredialog.cpp:171 configuredialog.cpp:172
+#: configuredialog.cpp:173 kpowersave.cpp:1484
+msgid "Advanced Powersave"
+msgstr "Geavanceerde energiebesparing"
+
+#: configuredialog.cpp:271
+msgid ""
+"This enables specific screen saver settings. \n"
+"Note: If selected, the global screen saver settings are \n"
+"overwritten while kpowersave runs."
+msgstr ""
+"Dit schakelt specifieke instellingen van de schermbeveiliging in. \n"
+"Opmerking: als dit geselecteerd is, worden de globale instellingen van de \n"
+"schermbeveiliging overschreven zodra kpowersave actief wordt."
+
+#: configuredialog.cpp:274
+msgid ""
+"This disables the screen saver. \n"
+"Note: If selected, the global screen saver settings are \n"
+"overwritten while kpowersave runs."
+msgstr ""
+"Dit schakelt de schermbeveiliging uit. \n"
+"Opmerking: als dit geselecteerd is, worden de globaleinstellingen van de \n"
+"schermbeveiliging overschreven zodra kpowersave actief wordt."
+
+#: configuredialog.cpp:277
+msgid ""
+"This blanks the screen instead of using a specific screen saver. \n"
+"Note: This may work only with KScreensaver."
+msgstr ""
+"Dit maakt het scherm leeg in plaats van dat er een specifieke schermbeveiliging getoond wordt.\n"
+"Opmerking: het is mogelijk dat dit alleen met KScreensaver werkt."
+
+#: configuredialog.cpp:279
+msgid ""
+"This enables specific DPMS settings. \n"
+"Note: If selected, the global DPMS settings are \n"
+"overwritten while kpowersave runs."
+msgstr ""
+"Dit activeert specifieke DPMS-instellingen. \n"
+"Opmerking: als dit geselecteerd is, worden de globale DPMS \n"
+"instellingen overschreven zodra kpowersave actief wordt."
+
+#: configuredialog.cpp:282
+msgid "This disables DPMS support."
+msgstr "Dit schakelt DPMS-ondersteuning uit."
+
+#: configuredialog.cpp:283
+msgid "If selected, the screen is locked on suspend or standby."
+msgstr "Als dit geselecteerd is, wordt in de slaap- of standby-stand het scherm vergrendeld."
+
+#: configuredialog.cpp:284
+msgid "If selected, the screen is locked if the lid close event is triggered."
+msgstr "Als dit geselecteerd is, wordt het scherm vergrendeld zodra de 'deksel sluiten'-gebeurtenis' heeft plaatsgehad."
+
+#: configuredialog.cpp:286
+msgid "Check this box to enable or disable automatic suspension of the computer."
+msgstr "Selecteer dit om de automatische slaapstand van de computer in- of uit te schakelen."
+
+#: configuredialog.cpp:288
+msgid ""
+"Activate this action if the user was inactive for the defined time \n"
+"(greater than 0 minutes). If empty, nothing happens."
+msgstr ""
+"Schakel deze actie in als de gebruiker gedurende de gedefinieerde tijd \n"
+"(> 0 minuten) niet actief was. Er gebeurt niets als u dit leeg laat."
+
+#: configuredialog.cpp:291
+msgid "All scheme-related screen saver and DPMS settings."
+msgstr "Alle schema-gerelateerde instellingen voor de schermbeveiliging en DPMS."
+
+#: configuredialog.cpp:292
+msgid "All scheme-related display brightness settings."
+msgstr "Alle schemagerelateerde instellingen voor helderheid van het scherm."
+
+#: configuredialog.cpp:293
+msgid "All scheme-related automatic suspend settings."
+msgstr "Alle schema-gerelateerde instellingen voor automatische slaapstand."
+
+#: configuredialog.cpp:295
+msgid ""
+"Here you can change the brightness of your display. \n"
+"Use the slider to change the brightness directly for \n"
+"testing. To reset back to previous level, please press \n"
+"the 'Reset' button. "
+msgstr ""
+"Hier kunt u de helderheid van uw beeldscherm wijzigen.\n"
+"Gebruik de schuifregelaar om de helderheid direct te wijzigen\n"
+"om deze te testen. Om terug te gaan naar het vorige niveau,\n"
+"Klik op de knop 'Herstellen'. "
+
+#: configuredialog.cpp:299
+msgid "Use this button to set back the slider and the display brightness."
+msgstr "Gebruik deze knop om de helderheid van scherm te verminderen."
+
+#: configuredialog.cpp:352
+msgid "Press this button to delete the selected scheme."
+msgstr "Klik op deze knop om het geselecteerde schema te verwijderen."
+
+#: configuredialog.cpp:357
+msgid "You can't delete the current AC or battery scheme."
+msgstr "U kunt het huidige AC- of batterijschema niet verwijderen."
+
+#: configuredialog.cpp:363
+msgid "You can't delete this default scheme."
+msgstr "U kunt dit standaardschema niet verwijderen."
+
+#: configuredialog.cpp:546
+msgid "Your hardware supports to change the brightness. The values of the slider are in percent and mapped to the available brightness levels of your hardware."
+msgstr "De hardware ondersteunt het wijzigen van de helderheid. De waarden van de schuifregelaar worden in procenten weergegeven en toegewezen aan de beschikbare helderheidsniveaus van de hardware."
+
+#: configuredialog.cpp:553
+msgid "Your Hardware currently not support changing the brightness of your display."
+msgstr "Uw hardware biedt momenteel geen ondersteuning voor het veranderen van de helderheid van uw beeldscherm."
+
+#: configuredialog.cpp:664
+msgid "Select Automatically"
+msgstr "Automatisch selecteren"
+
+#: configuredialog.cpp:665
+msgid "KScreensaver"
+msgstr "KScreensaver"
+
+#: configuredialog.cpp:666
+msgid "XScreensaver"
+msgstr "XScreensaver "
+
+#: configuredialog.cpp:667
+msgid "xlock"
+msgstr "xlock"
+
+#: configuredialog.cpp:668
+msgid "GNOME Screensaver"
+msgstr "GNOME-schermbeveiliging"
+
+#: configuredialog.cpp:930
+msgid ""
+"There are unsaved changes in the active scheme.\n"
+"Apply the changes before jumping to the next scheme or discard the changes?"
+msgstr ""
+"Er zijn niet-opgeslagen wijzigingen in het actieve schema.\n"
+"De wijzigingen toepassen alvorens naar het volgende schema te gaan of de wijzigingen verwerpen?"
+
+#: configuredialog.cpp:933 configuredialog.cpp:983
+msgid "Unsaved Changes"
+msgstr "Niet-opgeslagen wijzigingen"
+
+#: configuredialog.cpp:981
+msgid ""
+"There are unsaved changes.\n"
+"Apply the changes before cancel or discard the changes?"
+msgstr ""
+"Er zijn niet-opgeslagen wijzigingen.\n"
+"De wijzigingen toepassen alvorens te annuleren of de wijzigingen verwerpen?"
+
+#: configuredialog.cpp:1032
+msgid "Please insert a name for the new scheme:"
+msgstr "Voer een naam in voor het nieuwe schema:"
+
+#: configuredialog.cpp:1038
+msgid "KPowersave Configuration"
+msgstr "KPowersave-configuratie"
+
+#: configuredialog.cpp:1046
+msgid "Error: A scheme with this name already exist.\n"
+msgstr "Fout: een schema met deze naam bestaat al.\n"
+
+#: configuredialog.cpp:1076
+msgid "Do you really want to delete the %1 scheme?"
+msgstr "Wilt u schema %1 verwijderen?"
+
+#: configuredialog.cpp:1078
+msgid "Confirm delete scheme"
+msgstr "Verwijderen van schema bevestigen"
+
+#: configuredialog.cpp:1079 configure_Dialog.cpp:883
+msgid "Delete"
+msgstr "Verwijderen"
+
+#: configuredialog.cpp:1095
+msgid "Could not delete the selected scheme."
+msgstr "Kon geselecteerd schema niet verwijderen."
+
+#: configuredialog.cpp:1324
+msgid "<b>Note:</b> If you select this option, the computer will suspend or standby if the current user is inactive for the defined time even if somebody is logged in remotely to the X server.<br><br> This feature can also produce problems with some programs, such as video players or cd burner. These programs can be blacklisted by checking <b>Enable scheme-specific blacklist</b> and click <b>Edit Blacklist...</b>. If this does not help, report the problem or deactivate autosuspend.<br><br> Really use this option?"
+msgstr "<b>Belangrijk:</b>Als deze optie geselecteerd is, wordt de computer in slaap- of standby-stand gebracht als de huidige gebruiker gedurende de ingestelde tijd niet actief is. Zelfs een gebruiker op afstand die bij de X-server is aangemeld.<br><br>Deze optie kan problemen veroorzaken in combinatie met bepaalde programma's, zoals videospelers en CD-branders. Dergelijke programma's kunt u op een zwarte lijst plaatsen. Selecteer <br>schema-specifieke zwarte lijst</B> en klik op <b>Zwarte lijst bewerken...</b>. Als dit niet helpt, rapporteer het probleem of schakel de automatische slaapstand uit.<br> <br> Wilt u deze optie inschakelen?"
+
+#: configuredialog.cpp:1402 configuredialog.cpp:1532
+msgid "The blacklist of the selected scheme is empty. Import the general blacklist?"
+msgstr "De zwarte lijst van het geselecteerde schema is leeg. Algemene zwarte lijst importeren?"
+
+#: configuredialog.cpp:1404 configuredialog.cpp:1534
+msgid "Import"
+msgstr "Importeren"
+
+#: configuredialog.cpp:1404 configuredialog.cpp:1534
+msgid "Do Not Import"
+msgstr "Niet importeren"
+
+#: configuredialog.cpp:1416
+msgid "General Autosuspend Blacklist"
+msgstr "Algemene zwarte lijst voor automatische slaapstand"
+
+#: configuredialog.cpp:1546
+msgid "General Autodimm Blacklist"
+msgstr "Algemene zwarte lijst voor automatisch dimmen"
+
+#: configuredialog.cpp:1779 configuredialog.cpp:1816
+msgid "Shutdown"
+msgstr "Afsluiten"
+
+# /usr/lib/YaST2/clients/dialup_dev_cfg.ycp:336
+#: configuredialog.cpp:1781 configuredialog.cpp:1819
+msgid "Logout Dialog"
+msgstr "Afmeldvenster"
+
+#: configuredialog.cpp:1784 configuredialog.cpp:1822 kpowersave.cpp:182
+#: kpowersave.cpp:2096 kpowersave.cpp:2156 kpowersave.cpp:2247
+msgid "Suspend to Disk"
+msgstr "Slaapstand naar schijf"
+
+#: configuredialog.cpp:1787 configuredialog.cpp:1825 kpowersave.cpp:186
+#: kpowersave.cpp:2101 kpowersave.cpp:2161 kpowersave.cpp:2250
+msgid "Suspend to RAM"
+msgstr "Slaapstand naar RAM"
+
+#: configuredialog.cpp:1790 configuredialog.cpp:1828
+msgid "CPU Powersave policy"
+msgstr "Energiebepeleid voor CPU"
+
+#: configuredialog.cpp:1793 configuredialog.cpp:1831
+msgid "CPU Dynamic policy"
+msgstr "Beleid voor dynamische CPU"
+
+#: configuredialog.cpp:1796 configuredialog.cpp:1834
+msgid "CPU Performance policy"
+msgstr "Beleid voor CPU-prestatie"
+
+#: configuredialog.cpp:1799 configuredialog.cpp:1837
+msgid "Set Brightness to"
+msgstr "Helderheid instellen op"
+
+#: main.cpp:43
+msgid "KDE Frontend for Power Management, Battery Monitoring and Suspend"
+msgstr "KDE-schil voor energiebeheer, batterijbewaking en slaapstand"
+
+#: main.cpp:45
+msgid "Force a new check for ACPI support"
+msgstr "Nieuwe controle voor ACPI-ondersteuning forceren"
+
+#: main.cpp:46
+msgid "Trace function entry and leave points for debug\n"
+msgstr "Trace-functie en leave points voor debugging\n"
+
+#: main.cpp:59
+msgid "Current maintainer"
+msgstr "Huidige onderhouder"
+
+#: main.cpp:62
+msgid "Powersave developer and for D-Bus integration"
+msgstr "Powersave-ontwikkelaar en integratie voor DBUS"
+
+#: main.cpp:64
+msgid "Powersave developer and tester"
+msgstr "Powersave-ontwikkelaar en -tester"
+
+#: main.cpp:66
+msgid "Added basic detailed dialog"
+msgstr "Legde de basis voor de gedetailleerde dialoog"
+
+#: main.cpp:67
+msgid "Packaging Debian and Ubuntu"
+msgstr "Pakketten voor Debian en Ubuntu"
+
+#: detaileddialog.cpp:61
+msgid "KPowersave Information Dialog"
+msgstr "KPowersave Informatiedialoog"
+
+#: detaileddialog.cpp:65 configure_Dialog.cpp:882 configure_Dialog.cpp:922
+msgid "Miscellaneous"
+msgstr "Diversen"
+
+#: detaileddialog.cpp:66
+msgid "CPUs"
+msgstr "CPU's"
+
+#: detaileddialog.cpp:73 detaileddialog.cpp:453
+msgid "Battery state:"
+msgstr "Batterijstatus:"
+
+#: detaileddialog.cpp:79
+msgid "Total:"
+msgstr "Totaal:"
+
+#: detaileddialog.cpp:81 detaileddialog.cpp:83
+msgid "Battery %1"
+msgstr "Batterij %1"
+
+#: detaileddialog.cpp:114
+msgid "Processor %1"
+msgstr "Processor %1"
+
+#: detaileddialog.cpp:230
+msgid "not present"
+msgstr "niet aanwezig."
+
+#: detaileddialog.cpp:243
+msgid "charged"
+msgstr "opgeladen"
+
+#: detaileddialog.cpp:245
+msgid "%1:%2 h until charged"
+msgstr "%1: na %2 u opgeladen"
+
+#: detaileddialog.cpp:248
+msgid "%1:%2 h remaining"
+msgstr "%1:%2 u resterend"
+
+#: detaileddialog.cpp:253 detaileddialog.cpp:441 detaileddialog.cpp:468
+msgid "unknown"
+msgstr "onbekend"
+
+#: detaileddialog.cpp:325 detaileddialog.cpp:368
+msgid "%v MHz"
+msgstr "%v MHz"
+
+#: detaileddialog.cpp:330 detaileddialog.cpp:363 dummy.cpp:58
+msgid "deactivated"
+msgstr "gedeactiveerd"
+
+#: detaileddialog.cpp:395
+msgid "unplugged"
+msgstr "niet aangesloten"
+
+#: detaileddialog.cpp:412
+msgid "Current Scheme: "
+msgstr "Huidig schema: "
+
+#: detaileddialog.cpp:429
+msgid "Current CPU Frequency Policy:"
+msgstr "Huidig beleid voor processorfrequentie:"
+
+#: detaileddialog.cpp:435 kpowersave.cpp:193 configure_Dialog.cpp:877
+msgid "Dynamic"
+msgstr "Dynamisch"
+
+#: detaileddialog.cpp:456
+msgid "Critical"
+msgstr "Kritiek"
+
+#: detaileddialog.cpp:459
+msgid "Low"
+msgstr "Laag"
+
+#: detaileddialog.cpp:462 kpowersave.cpp:277 kpowersave.cpp:652
+#: kpowersave.cpp:659 kpowersave.cpp:705 kpowersave.cpp:713 kpowersave.cpp:761
+#: kpowersave.cpp:769 kpowersave.cpp:817 kpowersave.cpp:824
+#: kpowersave.cpp:1131 kpowersave.cpp:1243 kpowersave.cpp:1272
+#: kpowersave.cpp:1610 kpowersave.cpp:1670 kpowersave.cpp:2186
+msgid "Warning"
+msgstr "Waarschuwing"
+
+#: detaileddialog.cpp:465
+msgid "ok"
+msgstr "ok"
+
+#: detaileddialog.cpp:474 detaileddialog.cpp:477
+msgid "Set brightness supported:"
+msgstr "Ondersteunde helderheid instellen:"
+
+#: detaileddialog.cpp:475
+msgid "yes"
+msgstr "ja"
+
+#: detaileddialog.cpp:478
+msgid "no"
+msgstr "nee"
+
+#: detaileddialog.cpp:481 detaileddialog.cpp:485
+msgid "HAL Daemon:"
+msgstr "HAL-daemon:"
+
+#: detaileddialog.cpp:482
+msgid "running"
+msgstr "actief"
+
+#: detaileddialog.cpp:486
+msgid "not running"
+msgstr "niet actief"
+
+#: info_Dialog.cpp:197
+msgid "Information"
+msgstr "Informatie"
+
+#: dummy.cpp:36
+msgid "If the current desktop user is inactive, dim the display to:"
+msgstr "Als het huidige bureaublad inactief is, dim het beeldscherm tot:"
+
+#: dummy.cpp:37
+msgid "Enable dim display on inactivity"
+msgstr "Het dimmen van beeldscherm bij inactiviteit inschakelen"
+
+#: dummy.cpp:38
+msgid "Blacklist"
+msgstr "Zwarte lijst"
+
+#: dummy.cpp:39
+msgid "Here you can add programs which should, if running, prevent the dimming of the display."
+msgstr "Hier kunt u programma's aan toevoegen die, als ze draaien, het dimmen van het beeldscherm zullen verhinderen."
+
+#: dummy.cpp:41
+msgid "Would you like to import a predefined blacklist?"
+msgstr "Wilt u een voorgedefinieerde zwarte lijst importeren?"
+
+#: dummy.cpp:42
+msgid "Disable CPUs/Cores"
+msgstr "CPU's/cores uitschakelen"
+
+#: dummy.cpp:43
+msgid "Max. running CPUs:"
+msgstr "Max. aantal draaiende CPU's:"
+
+#: dummy.cpp:44
+msgid "Max. running CPUs/Cores:"
+msgstr "Max. aantal draaiende CPU's/Cores:"
+
+#: dummy.cpp:45
+msgid "Min. running CPUs:"
+msgstr "Min. aantal draaiende CPU's:"
+
+#: dummy.cpp:46
+msgid "Min. running CPUs/Cores:"
+msgstr "Min. aantal draaiende CPU's/Cores:"
+
+#: dummy.cpp:47
+msgid "Enable to switch off CPUs/cores"
+msgstr "Uitschakelen van CPU's/kernen activeren"
+
+#: dummy.cpp:48
+msgid "You have a multiprocessor/multicore machine."
+msgstr "U hebt een multiprocessor/multicore computer."
+
+#: dummy.cpp:49
+msgid "You can disable CPUs/cores to reduce power consumption and save battery power."
+msgstr "U kunt CPU's/Cores uitschakelen om het energieverbruik te beperken en zo batterijkracht te besparen."
+
+#: dummy.cpp:50
+msgid "Device"
+msgstr "Apparaat"
+
+#: dummy.cpp:51
+msgid "Devices"
+msgstr "Apparaten"
+
+#: dummy.cpp:52
+msgid "Device class"
+msgstr "Apparaatklasse"
+
+#: dummy.cpp:53
+msgid "activate"
+msgstr "activeren"
+
+#: dummy.cpp:54
+msgid "Activate"
+msgstr "Activeren"
+
+#: dummy.cpp:55
+msgid "deactivate"
+msgstr "deactiveren"
+
+#: dummy.cpp:56
+msgid "Deactivate"
+msgstr "Deactiveren"
+
+#: dummy.cpp:57
+msgid "activated"
+msgstr "geactiveerd"
+
+#: dummy.cpp:59
+msgid "do nothing"
+msgstr "niets doen"
+
+#: dummy.cpp:60
+msgid "Deactivate following devices:"
+msgstr "Deactiveer de volgende apparaten:"
+
+#: dummy.cpp:61
+msgid "Activate following devices"
+msgstr "Activeer de volgende apparaten"
+
+#: dummy.cpp:62
+msgid "Reactivate following devices"
+msgstr "Reactiveer de volgende apparaten"
+
+#: dummy.cpp:63
+msgid "Deactivate following device classes:"
+msgstr "Deactiveer de volgende apparaatklassen:"
+
+#: dummy.cpp:64
+msgid "Activate following devices classes"
+msgstr "Activeer de volgende apparaatklassen"
+
+#: dummy.cpp:65
+msgid "Reactivate following device classes"
+msgstr "Reactiveer de volgende apparaatklassen"
+
+#: dummy.cpp:66
+msgid "If the scheme switched all devices are again activated."
+msgstr "Als het schema omschakelt worden alle apparaten opnieuw geactiveerd."
+
+#: dummy.cpp:67
+msgid "This is a experimental feature."
+msgstr "Dit is een experimentele functie."
+
+#: dummy.cpp:68
+msgid "If you have problems with this feature, please report them."
+msgstr "Als u problemen ondervindt bij het gebruik ervan, meld deze a.u.b. bij ons."
+
+#: dummy.cpp:69
+msgid "Select one of the available devices and click on "
+msgstr "Selecteer een van de beschikbare apparaten en klik op "
+
+#: dummy.cpp:70
+msgid "Select one of the available device classes and click on "
+msgstr "Selecteer een van de beschikbare apparaatklassen en klik op "
+
+#: dummy.cpp:71
+msgid "Select one or more of the available devices and click on "
+msgstr "Selecteer een of meer beschikbare apparaten en klik op "
+
+#: dummy.cpp:72
+msgid "Select one or more of the available device classes and click on "
+msgstr "Selecteer een of meer beschikbare apparaatklassen en klik op "
+
+#: dummy.cpp:73
+msgid "Please note: If you e.g. deactivate a network device you may lose your internet connection."
+msgstr "Opmerking: als u bijv. een netwerkapparaat uitschakelt, dan bent u uw internetverbinding kwijt."
+
+#: dummy.cpp:75
+msgid "<b>Note:</b> If you select this option, the computer will suspend or standby if the current user is inactive for the defined time. <br><br> This feature can also produce problems with some programs, such as video players or cd burner. These programs can be blacklisted by checking <b>Enable scheme-specific blacklist</b> and click <b>Edit Blacklist...</b>. If this does not help, report the problem or deactivate autosuspend.<br><br> Really use this option?"
+msgstr "<b>Belangrijk:</b> Als deze optie geselecteerd is, wordt de computer in slaap- of standby-stand gebracht als de huidige gebruiker gedurende de ingestelde tijd niet actief is.<br><br>Deze optie kan problemen veroorzaken in combinatie met bepaalde programma's, zoals videospelers en CD-branders. Dergelijke programma's kunt u op een zwarte lijst plaatsen. Selecteer <br>schemaspecifieke zwarte lijst</B> en klik op <b>Zwarte lijst bewerken...</b>. Als dit niet helpt, rapporteer het probleem of schakel de automatische slaapstand uit.<br> <br> Wilt u deze optie inschakelen?"
+
+#: dummy.cpp:82
+msgid "Try to use only one CPU/Core."
+msgstr "Probeer slechts één CPU/kern te gebruiken."
+
+#: dummy.cpp:83
+msgid "Reduce power consumption by try to use only one CPU/Core instead of spreading the work over all/multiple CPUs."
+msgstr "Verminder energieverbruik door te proberen slechts één CPU/kern te gebruiken in plaats van het werk te verspreiden over alle/meerdere CPU's."
+
+#: dummy.cpp:87
+msgid "Could not load the global configuration."
+msgstr "Kon de algemene configuratie niet laden."
+
+#: dummy.cpp:88
+msgid "Could not load the requested scheme configuration."
+msgstr "Kon het gewenste schema niet laden."
+
+#: dummy.cpp:89
+msgid "Configure the current scheme."
+msgstr "Configureer het huidige schema."
+
+#: dummy.cpp:90
+msgid "Try loading the default configuration."
+msgstr "Probeer de standaardconfiguratie te laden."
+
+#: dummy.cpp:91
+msgid "Maybe the global configuration file is empty or missing."
+msgstr "Misschien is het algemene configuratiebestand leeg of is het verloren gegaan."
+
+#: dummy.cpp:94
+msgid "Cannot connect to D-Bus. The D-Bus daemon may not be running."
+msgstr "Kan geen verbinding maken met D-BUS. Mogelijk draait de D-BUS-daemon niet."
+
+#: dummy.cpp:95
+msgid ""
+"Scheme switched to %1. \n"
+" Deactivate following devices: %2"
+msgstr ""
+"Schema overgeschakeld naar %1.\n"
+" Deactiveer de volgende apparaten: %2"
+
+#: dummy.cpp:96
+msgid ""
+"Scheme switched to %1. \n"
+" Activate following devices: %2"
+msgstr ""
+"Schema overgeschakeld naar %1.\n"
+" Activeer de volgende apparaten: %2"
+
+#: dummy.cpp:97
+msgid "Report ..."
+msgstr "Rapporteren..."
+
+#: dummy.cpp:98
+msgid "Suspend to RAM is not supported on your machine."
+msgstr "Slaapstand naar RAM wordt niet door uw computer ondersteund."
+
+#: dummy.cpp:99
+msgid "Additionally, please mail the output of %1 to %2 . Thanks!"
+msgstr "Aanvullend kunt u een e-mail sturen met de uitvoer van %1 tot %2. Bedankt!"
+
+#: dummy.cpp:100
+msgid "Power consumption"
+msgstr "Energieverbruik"
+
+#: dummy.cpp:103
+msgid "KScreensaver not found."
+msgstr "KScreensaver niet gevonden."
+
+#: dummy.cpp:104
+msgid "Try locking with XScreensaver or xlock."
+msgstr "Probeer vergrendelen met XScreensaver of xlock."
+
+#: dummy.cpp:105
+msgid "XScreensaver not found."
+msgstr "XScreensaver niet gevonden."
+
+#: dummy.cpp:106
+msgid "Try locking the screen with xlock."
+msgstr "Probeer vergrendelen met xlock."
+
+#: dummy.cpp:107
+msgid "XScreensaver and xlock not found. It is not possible to lock the screen. Check your installation."
+msgstr "XScreensaver of xlock niet gevonden. Het scherm kan niet worden vergrendeld. Controleer uw installatie."
+
+#: dummy.cpp:111
+msgid "HAL daemon:"
+msgstr "HAL-daemon:"
+
+#: dummy.cpp:112
+msgid "D-Bus daemon:"
+msgstr "D-BUS-daemon:"
+
+#: dummy.cpp:113
+msgid "ConsoleKit daemon:"
+msgstr "ConsoleKit-daemon:"
+
+#: dummy.cpp:114
+msgid "Autosuspend activated:"
+msgstr "Automatische slaapstand geactiveerd:"
+
+#: dummy.cpp:115
+msgid "Autodimm activated:"
+msgstr "Automatisch dimmen geactiveerd:"
+
+#: dummy.cpp:116
+msgid "enabled"
+msgstr "ingeschakeld"
+
+# /usr/lib/YaST2/clients/dialup_dev_cfg.ycp:71
+#: dummy.cpp:117
+msgid "Session active:"
+msgstr "Sessie actief:"
+
+#: dummy.cpp:120
+msgid "Inactivity detected."
+msgstr "Inactiviteit opgemerkt."
+
+#: dummy.cpp:121
+msgid "To stop the %1 press the 'Cancel' button before the countdown expire."
+msgstr "Om de %1 te stoppen, klik op de knop 'Annuleren' voordat het terugtellen is afgerond."
+
+#: dummy.cpp:122
+msgid "The computer autosuspend in: "
+msgstr "De computer gaat in slaapstand na: "
+
+#: dummy.cpp:123
+#, c-format
+msgid "The display get dimmed down to %1% in: "
+msgstr "Het scherm wordt gedimd naar %1% na: "
+
+#: dummy.cpp:124
+msgid "%1 seconds"
+msgstr "%1 seconden"
+
+#: dummy.cpp:127
+msgid "Could not call %1. The current desktop session is not active."
+msgstr "Kon %1 niet aanroepen. De huidige desktop-sessie is niet actief."
+
+#: dummy.cpp:128
+msgid "Could not set %1. The current desktop session is not active."
+msgstr "Kon %1 niet instellen. De huidige desktop-sessie is niet actief."
+
+#: dummy.cpp:129
+msgid "Stopped %1. The current desktop session is now inactive."
+msgstr "%1 gestopt. De huidige desktop-sessie is nu inactief."
+
+#: dummy.cpp:130
+msgid "Restarted %1. The current desktop session is now active again."
+msgstr "%1 opnieuw gestart. De huidige desktop-sessie is nu weer actief."
+
+#: log_viewer.cpp:78
+msgid "Form1"
+msgstr "Form1"
+
+#: log_viewer.cpp:79
+msgid "Save As ..."
+msgstr "Opslaan als..."
+
+#: log_viewer.cpp:80
+msgid "Close"
+msgstr "Sluiten"
+
+#: logviewer.cpp:44
+msgid "KPowersave Logfile Viewer: %1"
+msgstr "KPowersave Logbestandsviewer: %1"
+
+#: logviewer.cpp:89
+msgid "File already exist. Overwrite the file?"
+msgstr "Bestand bestaat al. Overschrijven?"
+
+#: logviewer.cpp:90 logviewer.cpp:97
+msgid "Error while save logfile"
+msgstr "Fout bij opslaan van logbestand"
+
+#: logviewer.cpp:95
+msgid "File already exist."
+msgstr "Bestand bestaat reeds."
+
+#: logviewer.cpp:98
+msgid "Try other filename ..."
+msgstr "Probeer een andere bestandsnaam..."
+
+#: suspenddialog.cpp:70
+msgid "Preparing Suspend..."
+msgstr "Slaapstand wordt voorbereid..."
+
+#: kpowersave.cpp:168
+msgid "Configure KPowersave..."
+msgstr "KPowersave instellen..."
+
+#: kpowersave.cpp:171 configure_Dialog.cpp:915
+msgid "Configure Notifications..."
+msgstr "Notificaties instellen..."
+
+#: kpowersave.cpp:175
+msgid "Start YaST2 Power Management Module..."
+msgstr "YaST2 Energiebeheermodule starten..."
+
+#: kpowersave.cpp:189 kpowersave.cpp:2106 kpowersave.cpp:2166
+#: kpowersave.cpp:2253
+msgid "Standby"
+msgstr "Standby"
+
+#: kpowersave.cpp:191 kpowersave.cpp:198
+msgid "Set CPU Frequency Policy"
+msgstr "Instellen beleid processorsnelheid"
+
+#: kpowersave.cpp:205 kpowersave.cpp:206
+msgid "Set Active Scheme"
+msgstr "Instellen actief schema"
+
+#: kpowersave.cpp:212
+msgid "Disable Actions on Inactivity"
+msgstr "Uitschakelen acties bij 'niet-actief'"
+
+#: kpowersave.cpp:219 kpowersave.cpp:229
+msgid "&Help"
+msgstr "&Help"
+
+#: kpowersave.cpp:221
+msgid "&KPowersave Handbook"
+msgstr "&KPowersave-handboek"
+
+#: kpowersave.cpp:224
+msgid "&Report a bug ..."
+msgstr "Bug &rapporteren..."
+
+#: kpowersave.cpp:226
+msgid "&About KPowersave"
+msgstr "Info &over KPowersave"
+
+#: kpowersave.cpp:275 kpowersave.cpp:648 kpowersave.cpp:656 kpowersave.cpp:703
+#: kpowersave.cpp:710 kpowersave.cpp:759 kpowersave.cpp:766 kpowersave.cpp:815
+#: kpowersave.cpp:822 kpowersave.cpp:1126 kpowersave.cpp:1241
+#: kpowersave.cpp:1270 kpowersave.cpp:2183
+msgid "WARNING"
+msgstr "WAARSCHUWING"
+
+#: kpowersave.cpp:275
+msgid "Cannot find any schemes."
+msgstr "Kan geen schema's vinden."
+
+#: kpowersave.cpp:453
+msgid "No information about battery and AC status available"
+msgstr "Geen informatie over batterij- en AC-status beschikbaar"
+
+#: kpowersave.cpp:456
+msgid "Plugged in -- fully charged"
+msgstr "Aangesloten -- volledig opgeladen"
+
+#: kpowersave.cpp:460
+msgid "Plugged in"
+msgstr "Aangesloten"
+
+#: kpowersave.cpp:464
+msgid "Plugged in -- %1% charged (%2:%3 h until full charged)"
+msgstr "Aangesloten -- %1% geladen (%2:%3 u. tot volledige lading)"
+
+#: kpowersave.cpp:467
+msgid "Plugged in -- %1% charged (%2:%3 remaining hours)"
+msgstr "Aangesloten -- %1% opgeladen (%2:%3 resterende uren)"
+
+#: kpowersave.cpp:471 kpowersave.cpp:475
+#, c-format
+msgid "Plugged in -- %1% charged"
+msgstr "Aangesloten -- %1% opgeladen"
+
+#: kpowersave.cpp:474
+msgid "Plugged in -- no battery"
+msgstr "Aangesloten -- geen batterij"
+
+#: kpowersave.cpp:480
+msgid "Running on batteries -- %1% charged (%2:%3 hours remaining)"
+msgstr "Werkt op batterijen -- %1% opgeladen (%2:%3 resterende uren)"
+
+#: kpowersave.cpp:484
+#, c-format
+msgid "Running on batteries -- %1% charged"
+msgstr "Werkt op batterijen -- %1% opgeladen"
+
+#: kpowersave.cpp:491
+msgid " -- battery is charging"
+msgstr " -- batterij wordt opgeladen"
+
+#: kpowersave.cpp:649 kpowersave.cpp:657
+msgid "Could not start YaST Power Management Module. Check if it is installed."
+msgstr "Kon de YaST energiebeheer module niet starten. Is deze wel geïnstalleerd?"
+
+#: kpowersave.cpp:703
+msgid "Suspend to disk failed"
+msgstr "Slaapstand naar schijf is mislukt"
+
+#: kpowersave.cpp:711
+msgid "Suspend to disk disabled by administrator."
+msgstr "Slaapstand naar schijf door beheerder uitgeschakeld."
+
+#: kpowersave.cpp:759
+msgid "Suspend to RAM failed"
+msgstr "Slaapstand naar RAM is mislukt"
+
+#: kpowersave.cpp:767
+msgid "Suspend to RAM disabled by administrator."
+msgstr "Slaapstand 'bewaar in geheugen' door beheerder uitgeschakeld."
+
+#: kpowersave.cpp:815
+msgid "Standby failed"
+msgstr "Standby mislukt."
+
+#: kpowersave.cpp:822
+msgid "Standby disabled by administrator."
+msgstr "Standby-stand door beheerder uitgeschakeld."
+
+#: kpowersave.cpp:853
+msgid "System is going into suspend mode now"
+msgstr "Systeem gaat nu in de slaapstand"
+
+#: kpowersave.cpp:1039
+msgid "Could not call DCOP interface to umount external media."
+msgstr "Kon de DCOP-interface niet aanroepen om externe media af te koppelen."
+
+#: kpowersave.cpp:1044
+msgid ""
+"Could not umount external media before suspend/standby. \n"
+" (Reason: %1)\n"
+" \n"
+" Would you like to continue suspend/standby anyway? \n"
+"(Warning: Continue suspend can cause data loss!)"
+msgstr ""
+"Kon externe media niet afkoppelen voordat er naar de slaapstand/standby-modus wordt gegaan. \n"
+"(Reden: %1)\n"
+"\n"
+"Wilt u toch naar de slaapstand/standby-modus gaan?\n"
+"(Waarschuwing: dit kan leiden tot gegevensverlies!)"
+
+#: kpowersave.cpp:1052
+msgid "Error while prepare %1"
+msgstr "Fout tijdens voorbereiden van %1"
+
+#: kpowersave.cpp:1053
+msgid "Suspend anyway"
+msgstr "Toch naar slaapstand gaan"
+
+#: kpowersave.cpp:1053
+msgid "Cancel suspend"
+msgstr "Slaapstand annuleren"
+
+#: kpowersave.cpp:1127
+msgid ""
+"Could not lock the screen. There may be a problem with the selected \n"
+"lock method or something else."
+msgstr ""
+"Kon het scherm niet vergrendelen. Mogelijk is er een probleem met de \n"
+"gekozen vergrendelmethode."
+
+#: kpowersave.cpp:1144
+msgid "The Lid was closed."
+msgstr "Het deksel werd gesloten."
+
+#: kpowersave.cpp:1156
+msgid "The Lid was opened."
+msgstr "Het deksel werd geopend."
+
+#: kpowersave.cpp:1223
+msgid "Start KPowersave automatically when you log in?"
+msgstr "KPowersave automatisch starten bij aanmelden?"
+
+#: kpowersave.cpp:1224
+msgid "Question"
+msgstr "Vraag"
+
+#: kpowersave.cpp:1225
+msgid "Start Automatically"
+msgstr "Automatisch starten"
+
+#: kpowersave.cpp:1225
+msgid "Do Not Start"
+msgstr "Niet starten"
+
+#: kpowersave.cpp:1242
+msgid "CPU Freq Policy %1 could not be set."
+msgstr "Kon processorsnelheid schema %1 niet instellen."
+
+#: kpowersave.cpp:1271
+msgid "Scheme %1 could not be activated."
+msgstr "Kon schema %1 niet activeren."
+
+#: kpowersave.cpp:1600
+msgid ""
+"The D-Bus daemon is not running.\n"
+"Starting it will provide full functionality: /etc/init.d/dbus start"
+msgstr ""
+"De DBUS-daemon draait niet.\n"
+"Start deze met het volgende commando: /etc/init.d/messagebus start"
+
+#: kpowersave.cpp:1611
+msgid "Don't show this message again."
+msgstr "Dit bericht niet meer tonen"
+
+#: kpowersave.cpp:1637
+msgid "ERROR"
+msgstr "FOUT"
+
+#: kpowersave.cpp:1638
+msgid "Could not get information from HAL. The haldaemon is maybe not running."
+msgstr "Kon geen informatie over HAL verkrijgen. De hal-daemon draait mogelijk niet."
+
+#: kpowersave.cpp:1641
+msgid "Error"
+msgstr "Fout"
+
+#: kpowersave.cpp:1912
+msgid "Battery state changed to WARNING -- remaining time: %1 hours and %2 minutes."
+msgstr "Batterijstatus gewijzigd in WAARSCHUWING -- resterende tijd: %1 uur en %2 minuten."
+
+#: kpowersave.cpp:1921
+msgid "Battery state changed to LOW -- remaining time: %1 hours and %2 minutes."
+msgstr "Batterijstatus gewijzigd in LAAG -- resterende tijd: %1 uur en %2 minuten."
+
+#: kpowersave.cpp:1932
+msgid ""
+"Battery state changed to CRITICAL -- remaining time: %1 hours and %2 minutes.\n"
+"Shut down your system or plug in the power cable immediately. Otherwise the machine\n"
+"will go shutdown in 30 seconds"
+msgstr ""
+"Batterijstatus gewijzigd in KRITIEK -- resterende tijd: %1 uur en %2 minuten.\n"
+"Schakel nu uw systeem uit of sluit onmiddellijk de voedingskabel aan. Anders zal de computer\n"
+"na 30 seconden worden uitgeschakeld."
+
+#: kpowersave.cpp:1943
+msgid ""
+"Battery state changed to CRITICAL -- remaining time: %1 hours and %2 minutes.\n"
+"Shut down your system or plug in the power cable immediately."
+msgstr ""
+"Batterijstatus gewijzigd in KRIETIEK -- resterende tijd: %1 uur en %2 minuten.\n"
+"Schakel uw systeem nu uit of sluit onmiddellijk de voedingskabel aan."
+
+#: kpowersave.cpp:2041
+msgid "AC adapter plugged in"
+msgstr "AC-adapter aangesloten"
+
+#: kpowersave.cpp:2043
+msgid "AC adapter unplugged"
+msgstr "AC-adapter niet aangesloten"
+
+#: kpowersave.cpp:2078
+msgid "Switched to scheme: %1"
+msgstr "Geschakeld naar schema: %1"
+
+#: kpowersave.cpp:2095 kpowersave.cpp:2100 kpowersave.cpp:2105
+msgid "System is going into %1 now."
+msgstr "Systeem gaat nu in %1."
+
+#: kpowersave.cpp:2155 kpowersave.cpp:2160 kpowersave.cpp:2165
+msgid "System is resumed from %1."
+msgstr "Systeem wordt voortgezet vanuit %1."
+
+#: kpowersave.cpp:2184
+msgid "Could not remount (all) external storage media."
+msgstr "Kon niet (alle) externe opslagapparaten opnieuw aankoppelen"
+
+#: kpowersave.cpp:2192
+msgid "An unknown error occurred while %1. The errorcode is: '%2'"
+msgstr "Er deed zich een fout voor tijdens %1. De foutcode is: '%2'"
+
+# power-off message
+#: kpowersave.cpp:2197
+msgid "Do you want to have a look at the log file?"
+msgstr "Wilt u het logbestand bekijken?"
+
+#: kpowersave.cpp:2198 kpowersave.cpp:2224
+msgid "Error while %1"
+msgstr "Fout tijdens %1"
+
+#: configure_Dialog.cpp:831
+msgid "KPowersave Settings"
+msgstr "KPowersave instellingen"
+
+#: configure_Dialog.cpp:832
+msgid "Apply"
+msgstr "Toepassen"
+
+#: configure_Dialog.cpp:834
+msgid "Help"
+msgstr "Help"
+
+#: configure_Dialog.cpp:840
+msgid "Enable specific display power management"
+msgstr "Schakel specifiek beeldschermenergiebeheer in."
+
+#: configure_Dialog.cpp:841
+msgid "Standby after:"
+msgstr "Ga in standby na:"
+
+#: configure_Dialog.cpp:842
+msgid "Only blank the screen"
+msgstr "Alleen het scherm leegmaken"
+
+#: configure_Dialog.cpp:843
+msgid "Disable screen saver"
+msgstr "Schakel schermbeveiliging uit"
+
+#: configure_Dialog.cpp:844
+msgid "Enable specific screensaver settings"
+msgstr "Schakel specifieke instellingen schermbeveiliging in"
+
+#: configure_Dialog.cpp:845
+msgid "Suspend after:"
+msgstr "Ga in slaapstand 'bewaar in geheugen' na:"
+
+#: configure_Dialog.cpp:846
+msgid "Power off after:"
+msgstr "Schakel systeem uit na:"
+
+#: configure_Dialog.cpp:847
+msgid "Disable display power management"
+msgstr "Schakel energiebeheer uit"
+
+#: configure_Dialog.cpp:848 configure_Dialog.cpp:849 configure_Dialog.cpp:850
+#: configure_Dialog.cpp:862 configure_Dialog.cpp:873
+msgid " min"
+msgstr " minuten"
+
+#: configure_Dialog.cpp:851
+msgid "Screen Saver and DPMS"
+msgstr "Schermbeveiliging en DPMS"
+
+#: configure_Dialog.cpp:852
+msgid "Settings"
+msgstr "Instellingen"
+
+#: configure_Dialog.cpp:853
+msgid "Reset"
+msgstr "Beginwaarde"
+
+#: configure_Dialog.cpp:855
+msgid "Enable scheme specific Brightness settings"
+msgstr "Schemaspecifieke helderheidsinstellingen activeren"
+
+#: configure_Dialog.cpp:858
+msgid "Brightness"
+msgstr "Helderheid"
+
+#: configure_Dialog.cpp:859
+msgid "Enable autosuspend"
+msgstr "Automatische slaapstand activeren"
+
+#: configure_Dialog.cpp:860 configure_Dialog.cpp:867
+msgid "Enable scheme-specific blacklist"
+msgstr "Schema-specifieke zwarte lijst inschakelen"
+
+#: configure_Dialog.cpp:861 configure_Dialog.cpp:870
+msgid "after:"
+msgstr "na:"
+
+#: configure_Dialog.cpp:863 configure_Dialog.cpp:868
+msgid "Edit Blacklist..."
+msgstr "Zwarte lijst bewerken..."
+
+#: configure_Dialog.cpp:864 configure_Dialog.cpp:869
+msgid "If the current desktop user is inactive the computer will:"
+msgstr "Als de huidige lokale gebruiker niet actief is zal de computer:"
+
+#: configure_Dialog.cpp:865
+msgid "Autosuspend"
+msgstr "Automatische slaapstand"
+
+#: configure_Dialog.cpp:866
+msgid "Enable autodimm the display"
+msgstr "Dimmen van beeldscherm bij inactiviteit inschakelen"
+
+#: configure_Dialog.cpp:871 configure_Dialog.cpp:893 configure_Dialog.cpp:894
+#: configure_Dialog.cpp:895 configure_Dialog.cpp:896 configure_Dialog.cpp:897
+#: configure_Dialog.cpp:898
+msgid " %"
+msgstr " %"
+
+#: configure_Dialog.cpp:872
+msgid "dimm to:"
+msgstr "dimmen naar:"
+
+#: configure_Dialog.cpp:874
+msgid "Autodimm"
+msgstr "Automatisch dimmen"
+
+#: configure_Dialog.cpp:879
+msgid "Set CPU Frequency Policy:"
+msgstr "CPU-frequentiebeleid instellen:"
+
+#: configure_Dialog.cpp:880
+msgid "CPU Frequency Policy"
+msgstr "CPU-frequentiebeleid"
+
+#: configure_Dialog.cpp:881
+msgid "Disable Notifications"
+msgstr "Notificaties uitschakelen"
+
+#: configure_Dialog.cpp:884
+msgid "New"
+msgstr "Nieuw"
+
+#: configure_Dialog.cpp:885
+msgid "Scheme Settings"
+msgstr "Schema instellingen"
+
+#: configure_Dialog.cpp:886
+msgid "Define the battery warning levels (in percentage) and the releated action if the level get reached:"
+msgstr "Definieer de batterijwaarschuwingsniveaus (in procenten) en de bijhorende actie als een niveau wordt bereikt:"
+
+#: configure_Dialog.cpp:887
+msgid "Warning level:"
+msgstr "Waarschuwingsniveau:"
+
+#: configure_Dialog.cpp:888
+msgid "Low level:"
+msgstr "Laag niveau:"
+
+#: configure_Dialog.cpp:889
+msgid "Critical level:"
+msgstr "Kritiek niveau:"
+
+#: configure_Dialog.cpp:890 configure_Dialog.cpp:891 configure_Dialog.cpp:892
+msgid "if reached call:"
+msgstr "Indien bereikt, aanroepen:"
+
+#: configure_Dialog.cpp:899
+msgid "Battery"
+msgstr "Batterij"
+
+#: configure_Dialog.cpp:900
+msgid "Define the action which should be executed if the related button get pressed:"
+msgstr "Definieer de actie die dient te worden uitgevoerd als op de bijhorende knop wordt gedrukt:"
+
+#: configure_Dialog.cpp:901
+msgid "Suspend-to-disk Button:"
+msgstr "Slaapstand-naar-schijf-knop:"
+
+#: configure_Dialog.cpp:902
+msgid "Sleep button:"
+msgstr "Slaapknop:"
+
+#: configure_Dialog.cpp:903
+msgid "Lid close Button:"
+msgstr "Deksel-sluiten-knop:"
+
+#: configure_Dialog.cpp:904
+msgid "Power Button:"
+msgstr "Aan/Uit-knop:"
+
+#: configure_Dialog.cpp:905
+msgid "Button Events"
+msgstr "Knopgebeurtenissen"
+
+#: configure_Dialog.cpp:906
+msgid "Select the following schemes as default if the system is running on AC or on batteries."
+msgstr "Selecteer de volgende schema's als standaard als het systeem op AC of op batterijen draait."
+
+#: configure_Dialog.cpp:907
+msgid "Battery scheme:"
+msgstr "Batterijschema:"
+
+#: configure_Dialog.cpp:908
+msgid "AC scheme:"
+msgstr "AC-schema:"
+
+#: configure_Dialog.cpp:909
+msgid "Default Schemes"
+msgstr "Standaardschema's"
+
+#: configure_Dialog.cpp:910
+msgid "Lock screen before suspend or standby"
+msgstr "Scherm vergrendelen vóór slaapstand of standby"
+
+#: configure_Dialog.cpp:911
+msgid "Lock screen with:"
+msgstr "Vergrendel scherm met:"
+
+#: configure_Dialog.cpp:912
+msgid "Lock screen on lid close"
+msgstr "Scherm vergrendelen als deksel gesloten wordt"
+
+#: configure_Dialog.cpp:913
+msgid "Lock Screen"
+msgstr "Scherm vergrendelen"
+
+#: configure_Dialog.cpp:914
+msgid "Notifications"
+msgstr "Notificaties"
+
+#: configure_Dialog.cpp:916
+msgid "Autostart"
+msgstr "Automatisch starten"
+
+#: configure_Dialog.cpp:917
+msgid "Never ask me again on exit"
+msgstr "Bij afsluiten vraag niet meer stellen"
+
+#: configure_Dialog.cpp:918
+msgid "KPowersave starts automatically on login"
+msgstr "KPowersave start automatisch bij aanmelden"
+
+#: configure_Dialog.cpp:919
+msgid "General Blacklists"
+msgstr "Algemene zwarte lijsten"
+
+#: configure_Dialog.cpp:920
+msgid "Edit Autosuspend Blacklist..."
+msgstr "Zwarte lijst voor automatische slaapstand bewerken..."
+
+#: configure_Dialog.cpp:921
+msgid "Edit Autodimm Blacklist..."
+msgstr "Zwarte lijst voor automatisch dimmen bewerken..."
+
+#: configure_Dialog.cpp:923
+msgid "General Settings"
+msgstr "Algemene instellingen"
+

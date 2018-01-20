@@ -1,0 +1,25 @@
+The directory contains:
+- style sheets
+- header and footerfiles
+- central project informations
+
+for the Doxygen Documentation of KPowersave.
+
+---------------------------------
+
+Filelist:
+
+changelog.dox
+enhance.dox
+fixed_bugs.dox
+main.dox
+powersave_msgs.dox
+process.dox
+
+footer.html
+header.html
+styleSheet.css
+
+and this README
+
+--------------------------------

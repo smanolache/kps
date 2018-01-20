@@ -1,0 +1,205 @@
+<?xml version="1.0"?>
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.1.2-Based Variant V1.1//EN" "dtd/kdex.dtd" [
+<!ENTITY app "<application>KPowersave</application>">
+<!ENTITY apprelease " ">
+<!-- chapters in separate docbook files --><!-- book related entities --><!ENTITY kappname "KPowersave">
+<!ENTITY % addindex "INCLUDE">
+<!ENTITY % Norwegian "INCLUDE">
+<!-- change language only here -->]>
+<!--
+NOTE:
+Entries which require special treatment are marked with comments starting with '###'. They should be visited on a regular basis.
+-->
+<book lang="&language;">
+  <bookinfo><title><application moreinfo="none">&kappname;</application>-hjelp</title><date>2006-03-06</date> <releaseinfo> </releaseinfo><authorgroup><author> <firstname>Danny</firstname> <surname>Kukawka</surname> <affiliation><address format="linespecific"><email>Danny.Kukawka@web.de</email></address></affiliation></author><author> <firstname>Thomas</firstname> <surname>Renninger</surname> <affiliation><address format="linespecific"><email>trenn@suse.de</email></address></affiliation></author></authorgroup><copyright> <year>2005</year> <holder>Scott Rhoades</holder></copyright><!--ROLES_OF_TRANSLATORS--><!--<legalnotice>&FDLNotice;</legalnotice>--><abstract><para>Med <application moreinfo="none">&kappname;</application> kan du velge innstillinger for strømforbruk og strømsparing.</para></abstract><keywordset> <keyword>KDE</keyword> <keyword>&kappname;</keyword> <keyword>strøm</keyword> <keyword>batteri</keyword> <keyword>strømsparing</keyword> </keywordset></bookinfo>
+<!-- ====================================================================== -->
+  <chapter id="introduction">
+    <chapterinfo>
+      <keywordset> <keyword>&kappname;</keyword> </keywordset>
+    </chapterinfo>
+    <title>Innledning</title>
+    <mediaobject>
+      <imageobject>
+        <imagedata fileref="hi48-app-kpowersave.png" format="PNG"/>
+      </imageobject>
+    </mediaobject>
+    <para>Bruk &kappname;, det grafiske strømstyringsgrensesnittet i KDE, for å administrere strømstyringsfunksjonene og overvåke batteriet på din bærbare datamaskin. For å spare batteristrøm kan du for eksempel velge at skjermen skal slås av etter et bestemt tidsrom dersom du ikke bruker den bærbare maskinen. </para>
+    <sect1 id="starting">
+      <title>Starte &kappname;</title>
+      <para>For å starte &kappname; kan du skrive <command moreinfo="none">kpowersave &amp;</command> i en terminal eller velge <menuchoice moreinfo="none"><guimenu moreinfo="none">System</guimenu><guimenu moreinfo="none">Panelprogrammer</guimenu> <guimenu moreinfo="none">&kappname;</guimenu></menuchoice> i GNOME- eller KDE-menyen. &kappname;-ikonet blir lagt til i systemkurven. </para>
+      <para>Du kan velge at &kappname; skal starte automatisk når du logger inn, ved å klikke på <guimenu moreinfo="none">Generelle innstillinger</guimenu> og krysse av for <guimenu moreinfo="none">'&kappname; starter automatisk når du logger inn'</guimenu>. Du kan også velge om du vil bli spurt om &kappname; skal starte automatisk når du avslutter programmet. </para>
+    </sect1>
+    <sect1 id="understandingicon">
+      <title>&kappname;-ikonet</title>
+      <para> &kappname;-ikonet ser ut som en strømkontakt ved siden av en indikator for batteristatus. Ikonet viser gjeldende batteristatus og om datamaskinen bruker batteristrøm eller er koblet til strømnettet. Når det er lite strøm på batteriet, blinker ikonbakgrunnen oransje, eller rødt når det er svært lite eller nesten ingen strøm igjen. Hvis du plasserer musepekeren over ikonet, kommer det opp en melding som viser om datamaskinen er koblet til strømnettet eller bruker batteriet. Dersom maskinen bruker batteristrøm, vises også gjeldende batteristatus samt hvor lang tid det er igjen før batteriet er helt tomt. </para>
+    </sect1>
+  </chapter>
+  <chapter id="applet">
+    <title>Panelprogrammets meny</title>
+    <sect1 id="selectschemes">
+      <title>Definere aktiv strategi</title>
+      <para> Velg strømstyringsstrategi ved å høyreklikke på &kappname;-ikonet. Velg <guimenu moreinfo="none">Definer aktiv strategi</guimenu> i menyen og deretter ønsket strategi. Hvis du bytter strømstyringsstrategi under <guimenu moreinfo="none">Velg aktiv strategi</guimenu>, vil alle komponentene i systemet bruke innstillingene i denne strategien. En strømstyringsstrategi omfatter innstillinger for CPU-frekvensskalering (hvis datamaskinen støtter dette), bremsing, harddiskstyring og kjøling. </para>
+      <mediaobject><imageobject><imagedata align="center" fileref="nb_applet_schemes.png" format="PNG"/></imageobject><textobject> <phrase>&kappname;-meny med ulike strømsparingsstrategier</phrase> </textobject> </mediaobject>
+    </sect1>
+    <sect1 id="yast">
+      <title>Starte strømstyringsmodulen i YaST</title>
+      <para> Strømstyringsmodulen i YaST har ulike innstillinger for strømsparing. Høyreklikk på &kappname;-ikonet og deretter på <guimenu moreinfo="none">Start strømstyringsmodulen i YaST2</guimenu> for å åpne modulen. Du finner detaljerte anvisninger om hver enkelt innstilling i YaST. <mediaobject><imageobject><imagedata align="center" fileref="nb_applet_yast.png" format="PNG"/></imageobject><textobject> <phrase>&kappname;-meny med valg for å starte YaST</phrase> </textobject> </mediaobject></para>
+      <note>
+        <para> Du blir bedt om rotpassordet for å åpne strømsparingsmodulen i YaST. </para>
+      </note>
+    </sect1>
+    <sect1 id="suspend">
+      <title>Dvalefunksjoner</title>
+      <para> Høyreklikk på &kappname;-ikonet og velg <guimenu moreinfo="none">Diskdvale</guimenu>, <guimenu moreinfo="none">RAM-dvale</guimenu> eller <guimenu moreinfo="none">Ventemodus</guimenu> (hvis datamaskinen støtter ventemodus). </para>
+      <itemizedlist>
+        <listitem>
+          <para> Med diskdvale lagres alle åpne data på harddisken før dvalefunksjonen aktiveres. Dette beskytter dataene ved strømbrudd eller hvis batteriet blir tomt. </para>
+        </listitem>
+        <listitem>
+          <para> Med RAM-dvale lagres dataene på den fysiske minnebrikken, noe som gjøre det raskere å hente frem dataene igjen når dvalefunksjonen deaktiveres. </para>
+        </listitem>
+        <listitem>
+          <para> Med ventemodus blir skjermen slått av, men systemet tilføres fremdeles strøm, slik at alle åpne data beholdes i det fysiske minnet. </para>
+        </listitem>
+      </itemizedlist>
+      <para> Tilgjengelige valg avhenger av hvilke metoder som er aktivert i YaST av administratoren, og om datamaskinen støtter ventemodus. Du bør velge metode i henhold til sannsynligheten for at det vil bli lite strøm på maskinen. </para>
+      <mediaobject><imageobject><imagedata align="center" fileref="nb_applet_suspend.png" format="PNG"/></imageobject><textobject> <phrase>&kappname;-meny med valg for dvale/ventemodus</phrase> </textobject> </mediaobject>
+    </sect1>
+    <sect1 id="deactivateautossuspend">
+      <title>Deaktivere automatisk dvale</title>
+      <para> Hvis automatisk dvale er aktivert for gjeldende strategi, vil <guimenu moreinfo="none">Deaktiver handlinger ved inaktivitet</guimenu> vises i &kappname;-menyen. Med dette alternativet vil eventuelle handlinger som er valgt når datamaskinen er inaktiv, ikke bli utført. I praksis betyr dette at automatisk dvale deaktiveres. </para>
+      <mediaobject><imageobject><imagedata align="center" fileref="nb_applet_autosuspend.png" format="PNG"/></imageobject><textobject> <phrase>&kappname;-meny med valget Deaktiver handlinger ved inaktivitet"</phrase> </textobject> </mediaobject>
+    </sect1>
+    <sect1 id="setCPUFreq">
+      <title>Velge innstilling for CPU-frekvens</title>
+      <para> Du kan velge hvor mye strøm som skal brukes av prosessoren ved å endre innstillingen for CPU-frekvens. Høyreklikk på &kappname;-ikonet, og velg <guimenu moreinfo="none">Definer retningslinjer for CPU-frekvens</guimenu>. Velg deretter ett av de tilgjengelige alternativene: </para>
+      <itemizedlist>
+        <listitem>
+          <para> Ytelse:  CPU-frekvensen er alltid høy for å gi maksimal prosessorytelse. </para>
+        </listitem>
+        <listitem>
+          <para> Dynamisk: CPU-frekvensen reduseres når systemet ikke er i bruk, og tilpasses dynamisk dersom mer prosessorkraft er nødvendig. </para>
+        </listitem>
+        <listitem>
+          <para> Strømsparing: Lav CPU-frekvens for å spare strøm. </para>
+        </listitem>
+      </itemizedlist>
+      <para> Innstillingen for CPU-frekvens er bare tilgjengelig i menyen dersom datamaskinen støtter dette. Hvis valget ikke vises, støttes ikke denne funksjonen av systemet. </para>
+      <mediaobject><imageobject><imagedata align="center" fileref="nb_applet_cpufreq.png" format="PNG"/></imageobject><textobject> <phrase>&kappname;-meny med undermenyen 'Definer retningslinjer for CPU-frekvens'</phrase> </textobject> </mediaobject>
+    </sect1>
+  </chapter>
+  <chapter id="conf_powerscheme">
+    <title>Konfigurere en strømstyringsstrategi</title>
+    <sect1 id="understand_scheme">
+      <title>Definisjon av en strømstyringsstrategi</title>
+      <para> En strategi inneholder den grunnleggende strømstyringskonfigurasjonen som benyttes når du bruker &kappname; på datamaskinen. Antall tilgjengelige strategier avhenger av strømstyringskonfigurasjonen. Strategier kan legges til eller slettes i strømstyringsmodulen i YaST. Vanlige strategier: </para>
+      <itemizedlist>
+        <listitem>
+          <para> Ytelse: Optimalisert for maksimal ytelse under lange økter</para>
+        </listitem>
+        <listitem>
+          <para>Støy: Optimalisert for at maskinen skal være så stillegående som mulig</para>
+        </listitem>
+        <listitem>
+          <para>Presentasjon: Optimalisert for best mulig ytelse ved presentasjoner</para>
+        </listitem>
+        <listitem>
+          <para>Strømsparing: Optimalisert for å spare batteristrøm</para>
+        </listitem>
+      </itemizedlist>
+      <para>Velg en strategi under fanen <guimenu moreinfo="none">Strategi-inntillinger</guimenu>, klikk på strategien du vil bruke og rediger den etter behov. Bekreft med <guimenu moreinfo="none">OK</guimenu>. </para>
+      <mediaobject><imageobject><imagedata align="center" fileref="nb_configdialog_schemes.png" format="PNG"/></imageobject><textobject> <phrase>Konfigurasjonsdialog for &kappname; (velg strategier).</phrase> </textobject> </mediaobject>
+      <para> Strategien bestemmer: </para>
+      <itemizedlist>
+        <listitem>
+          <para> Om skjermspareren skal kunne kjøre når datamaskinen ikke er i bruk </para>
+        </listitem>
+        <listitem>
+          <para> Hvor lang tid det skal gå før ventemodus eller dvale blir aktivert eller til skjermen blir slått av </para>
+        </listitem>
+        <listitem>
+          <para> Om dvalefunksjonen skal aktiveres automatisk etter et spesifisert tidsrom </para>
+        </listitem>
+        <listitem>
+          <para> Om strømrelaterte hendelser skal varsles med lydsignaler </para>
+        </listitem>
+      </itemizedlist>
+    </sect1>
+    <sect1 id="procedure">
+      <title>Konfigurere en strategi</title>
+      <para> Alle disse valgene sparer strøm ved å hindre at prosesser som bruker strøm kjøres. En strategi konfigureres på følgende måte: </para>
+      <sect2 id="procedure_ss">
+        <title>Skjermsparer</title>
+        <procedure>
+          <step performance="required">
+            <para>Høyreklikk på &kappname;-ikonet i systemkurven.</para>
+          </step>
+          <step performance="required">
+            <para>Velg <guimenu moreinfo="none">Konfigurer &kappname;</guimenu>.</para>
+          </step>
+          <step performance="required">
+            <para>Hvis fanen <guimenu moreinfo="none">Strategi-inntillinger</guimenu> ikke allerede er valgt, klikk på <guimenu moreinfo="none">Strategi-inntillinger</guimenu>.</para>
+          </step>
+          <step performance="required">
+            <para>Klikk eventuelt på <guimenu moreinfo="none">Aktiver spesifikke skjermsparerinnstillinger</guimenu>.</para>
+            <substeps performance="required">
+              <step performance="required">
+                <para>Hvis du ikke vil at skjermspareren skal bruke strøm når systemet ikke er i bruk, klikk på <guimenu moreinfo="none">Deaktiver skjermsparer</guimenu>.</para>
+              </step>
+              <step performance="required">
+                <para>Hvis du ønsker en tom skjerm i stedet for en spesiell skjermsparer, klikk på <guimenu moreinfo="none">Bare slå av skjermen</guimenu>. Dette valget er ikke tilgjengelig hvis skjermspareren er deaktivert.</para>
+              </step>
+            </substeps>
+          </step>
+        </procedure>
+       </sect2>
+      <sect2 id="procedure_spms">
+        <title>Strømstyring for skjerm</title>
+        <procedure>
+          <step performance="required">
+            <para>Klikk på <guimenu moreinfo="none">Aktiver spesifikk strømstyring for skjerm</guimenu> for å tilpasse skjermens strømforbruk.</para>
+            <para>Spesifikk strømstyring for skjerm (DPMS) kan deaktiveres ved å krysse av for <guimenu moreinfo="none">Deaktiver spesifikk strømsparing for skjerm</guimenu>. Denne innstillingen overstyrer den generelle skrivebordskonfigurasjonen.</para>
+            <substeps performance="required">
+              <step performance="required">
+                <para>Velg hvor lang tid det skal gå før ventemodus aktiveres. I ventemodus tømmes skjermen, men forsynes fremdeles med strøm. Dette sparer litt strøm.</para>
+              </step>
+              <step performance="required">
+                <para>Angi hvor lang tid det skal gå før dvalefunksjonen skal aktiveres. I dvalemodus blir skjermen slått av, men den tilføres nok strøm til å lagre gjeldende skjerminformasjon.</para>
+              </step>
+              <step performance="required">
+                <para>Angi hvor lang tid det skal gå før strømforsyningen til skjermen skal slås helt av.</para>
+              </step>
+            </substeps>
+          </step>
+        </procedure>
+        <mediaobject><imageobject><imagedata align="center" fileref="nb_configdialog_schemes_screen.png" format="PNG"/></imageobject><textobject> <phrase>Konfigurasjonsdialog for &kappname; med skjermsparerinnstillinger.</phrase> </textobject> </mediaobject>
+      </sect2>
+      <sect2 id="procedure_autosuspend">
+        <title>Konfigurere automatisk dvale</title>
+        <procedure>
+          <step performance="required">
+            <para>Klikk på <guimenu moreinfo="none">Automatisk dvale</guimenu> hvis du vil at &kappname; skal aktivere dvalefunksjonen automatisk dersom gjeldende bruker er inaktiv i et spesifisert tidsrom. Velg deretter spesielle innstillinger for automatisk dvale i dialogen.</para>
+            <para>Du kan for eksempel velge at systemet skal aktivere diskdvale etter 30 minutter. Etter 30 minutter lagres alle åpne filer på harddisken, og dvalefunksjonen aktiveres.</para>
+          </step>
+        </procedure>
+        <mediaobject><imageobject><imagedata align="center" fileref="nb_configdialog_schemes_autosuspend.png" format="PNG"/></imageobject><textobject> <phrase>Konfigurasjonsdialog for &kappname; med innstillinger for automatisk dvale.</phrase> </textobject> </mediaobject>
+      </sect2>
+    </sect1>
+  </chapter>
+  <chapter id="generalsettings">
+    <title>Generelle innstillinger</title>
+    <sect1 id="lockscreen">
+      <title>Låse skjermen</title>
+      <para> For å forbedre sikkerheten kan du låse skjermen før dvale- eller ventemodus aktiveres, eller når du lukker lokket på en bærbar datamaskin. Skjermen kan låses med en skjermsparer eller med xlock. </para>
+      <para> Klikk på <guimenu moreinfo="none">Generelle innstillinger</guimenu>-fanen og velg innstillingene du vil bruke for å låse skjermen. </para>
+      <mediaobject><imageobject><imagedata align="center" fileref="nb_configdialog_general.png" format="PNG"/></imageobject><textobject> <phrase>Konfigurasjonsdialog for &kappname; med generelle innstillinger.</phrase> </textobject> </mediaobject>
+    </sect1>
+    <sect1 id="autosuspendblacklist">
+      <title>Opprette en unntaksliste for automatisk dvale</title>
+      <para> &kappname; har en unntaksliste for automatisk dvale. Unntakslisten hindrer at dvalefunksjonen aktiveres dersom en av programmene på listen kjører. Du ønsker sannsynligvis ikke at dvalefunksjonen skal aktiveres på din bærbare datamaskin når du ser en DVD-film bare fordi du ikke har trykket på noen tast de siste ti minuttene. Klikk på <guimenu moreinfo="none">Generelle innstillinger</guimenu>-fanen og deretter på <guimenu moreinfo="none">Rediger generell unntaksliste</guimenu> for å redigere listen. Bruk dialogen <guimenu moreinfo="none">Rediger unntaksliste for automatisk dvale</guimenu> for å legge til eller fjerne programmer på unntakslisten. </para>
+      <mediaobject><imageobject><imagedata align="center" fileref="nb_configdialog_general.png" format="PNG"/></imageobject><textobject> <phrase>Konfigurasjonsdialog for &kappname; med innstillinger for unntaksliste for automatisk dvale.</phrase> </textobject> </mediaobject>
+      <para> Du kan også bruke denne innstillingen for å opprette og redigere unntakslister for hver enkelt strategi. Når du oppretter en unntaksliste for en strategi, kan du importere den generelle unntakslisten eller opprette en ny unntaksliste for den aktuelle strategien. En strategispesifikk unntaksliste overstyrer den generelle unntakslisten når den aktuelle strategien benyttes. </para>
+      <mediaobject><imageobject><imagedata align="center" fileref="nb_configdialog_blacklist.png" format="PNG"/></imageobject><textobject> <phrase>&kappname;-dialog for redigering av unntaksliste</phrase> </textobject> </mediaobject>
+    </sect1>
+  </chapter>
+</book>

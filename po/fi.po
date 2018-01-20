@@ -1,0 +1,1394 @@
+# translation of kpowersave.fi.po to Suomi
+# translation of kpowersave-fi.po to
+# translation of fi.po to
+# This file is distributed under the same license as the PACKAGE package.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER.
+#
+# Ilkka Pirskanen <ilkka.pirskanen@kolumbus.fi>, 2005, 2006.
+# Jyri Palokangas <jmp@netti.fi>, 2006.
+# Janne Ahlskog <j.ahlskog@multi.fi>, 2006.
+# Joonas Niilola <juippis@roskakori.org>, 2006.
+# Jyri Palokangas <jmp@opensuse.fi>, 2007.
+# Erkka Hakkarainen <erkka.hakkarainen@pp.inet.fi>, 2007.
+msgid ""
+msgstr ""
+"Project-Id-Version: kpowersave.fi\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2007-08-10 03:16+0200\n"
+"PO-Revision-Date: 2007-09-12 21:23+0300\n"
+"Last-Translator: Jyri Palokangas <jmp@opensuse.fi>\n"
+"Language-Team: Suomi <fi@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.11.4\n"
+
+#: detailed_Dialog.cpp:228
+msgid "kpowersave"
+msgstr "kpowersave"
+
+#: detailed_Dialog.cpp:229
+msgid "General Information"
+msgstr "Yleiset tiedot"
+
+#: detailed_Dialog.cpp:232
+msgid "Battery Status"
+msgstr "Akun varaustila"
+
+#: detailed_Dialog.cpp:233
+msgid "AC Adapter"
+msgstr "Verkkovirta"
+
+#: detailed_Dialog.cpp:234 detaileddialog.cpp:391
+msgid "plugged in"
+msgstr "kytketty"
+
+#: detailed_Dialog.cpp:235
+msgid "Power Consumtion: "
+msgstr "Virrankulutus: "
+
+#: detailed_Dialog.cpp:237
+msgid "Processor Status"
+msgstr "Prosessorin tila"
+
+#: detailed_Dialog.cpp:238 blacklistedit_Dialog.cpp:130 info_Dialog.cpp:198
+#: configure_Dialog.cpp:838
+msgid "OK"
+msgstr "OK"
+
+#: blacklisteditdialog.cpp:60
+msgid "General Blacklist"
+msgstr "Yleinen kieltoluettelo"
+
+#: blacklisteditdialog.cpp:63
+msgid "Scheme: "
+msgstr "Malliasetukset: "
+
+#: blacklisteditdialog.cpp:114
+msgid "Selected entry removed."
+msgstr "Valittu merkintä poistettiin."
+
+#: blacklisteditdialog.cpp:117
+msgid "Could not remove the selected entry."
+msgstr "Valittua merkintää ei voitu poistaa."
+
+#: blacklisteditdialog.cpp:137
+msgid "Inserted new entry."
+msgstr "Uusi merkintä lisättiin."
+
+#: blacklisteditdialog.cpp:141
+msgid "Entry exists already. Did not insert new entry."
+msgstr "Merkintä on jo olemassa. Uutta merkintää ei lisätty."
+
+#: blacklisteditdialog.cpp:144
+msgid "Empty entry was not inserted."
+msgstr "Tyhjää merkintää ei lisätty."
+
+#: inactivity.cpp:298
+msgid ""
+"Could not start 'pidof'. Could not autosuspend the machine.\n"
+"Please check your installation."
+msgstr ""
+"'pidof' suorittaminen ei onnistu. Tietokonetta ei voi asettaa automaattiseen lepotilaan.\n"
+"Tarkista asennuksesi."
+
+#: blacklistedit_Dialog.cpp:129
+msgid "Autosuspend Blacklist Edit"
+msgstr "Automaattisen lepotilan kieltoluettelon muokkaus"
+
+# cancel button label
+#: blacklistedit_Dialog.cpp:132 configuredialog.cpp:1079
+#: configure_Dialog.cpp:836
+msgid "Cancel"
+msgstr "Peruuta"
+
+#: blacklistedit_Dialog.cpp:135
+msgid "Add"
+msgstr "Lisää"
+
+#: blacklistedit_Dialog.cpp:136
+msgid "Remove"
+msgstr "Poista"
+
+#: infodialog.cpp:76 infodialog.cpp:78 main.cpp:55
+msgid "KPowersave"
+msgstr "KPowersave"
+
+#: configuredialog.cpp:116 configuredialog.cpp:121 configuredialog.cpp:721
+msgid " - not supported"
+msgstr " - ei tuettu"
+
+#: configuredialog.cpp:150 configuredialog.cpp:317 detaileddialog.cpp:432
+#: kpowersave.cpp:192 settings.cpp:66 configure_Dialog.cpp:876
+msgid "Performance"
+msgstr "Suorituskyky"
+
+#: configuredialog.cpp:154 configuredialog.cpp:319 detaileddialog.cpp:438
+#: kpowersave.cpp:194 settings.cpp:68 configure_Dialog.cpp:878
+msgid "Powersave"
+msgstr "Virransäästö"
+
+#: configuredialog.cpp:159 configuredialog.cpp:321 kpowersave.cpp:1478
+#: settings.cpp:70
+msgid "Presentation"
+msgstr "Esitys"
+
+#: configuredialog.cpp:164 configuredialog.cpp:323 kpowersave.cpp:1473
+#: settings.cpp:72
+msgid "Acoustic"
+msgstr "Hiljainen"
+
+#: configuredialog.cpp:169 configuredialog.cpp:171 configuredialog.cpp:172
+#: configuredialog.cpp:173 kpowersave.cpp:1484
+msgid "Advanced Powersave"
+msgstr "Edistynyt virransäästö"
+
+#: configuredialog.cpp:271
+msgid ""
+"This enables specific screen saver settings. \n"
+"Note: If selected, the global screen saver settings are \n"
+"overwritten while kpowersave runs."
+msgstr ""
+"Tämä ottaa käyttöön valitut näytönsäästäjäasetukset. \n"
+"Huomaa: Mikäli valittu, yleiset näytönsäästäjäasetukset \n"
+"jätetään huomiotta kpowersaven ollessa käynnissä."
+
+#: configuredialog.cpp:274
+msgid ""
+"This disables the screen saver. \n"
+"Note: If selected, the global screen saver settings are \n"
+"overwritten while kpowersave runs."
+msgstr ""
+"Tämä ottaa näytönsäästäjän pois käytöstä. \n"
+"Huomaa: Mikäli valittu, yleiset näytönsäästäjäasetukset \n"
+"jätetään huomiotta kpowersaven ollessa käynnissä."
+
+#: configuredialog.cpp:277
+msgid ""
+"This blanks the screen instead of using a specific screen saver. \n"
+"Note: This may work only with KScreensaver."
+msgstr ""
+"Tämä tyhjentää ruudun näytönsäästäjän käyttämisen sijaan. \n"
+"Huomaa: Tämä saattaa toimia vain K-näytönsäästäjän kanssa."
+
+#: configuredialog.cpp:279
+msgid ""
+"This enables specific DPMS settings. \n"
+"Note: If selected, the global DPMS settings are \n"
+"overwritten while kpowersave runs."
+msgstr ""
+"Tämä ottaa käyttöön valitut DPMS-asetukset. \n"
+"Huomaa: Mikäli valittu, yleiset DPMS-asetukset \n"
+"jätetään huomiotta kpowersaven ollessa käynnissä."
+
+#: configuredialog.cpp:282
+msgid "This disables DPMS support."
+msgstr "Tämä ottaa DPMS-tuen pois käytöstä."
+
+#: configuredialog.cpp:283
+msgid "If selected, the screen is locked on suspend or standby."
+msgstr "Mikäli valittu, ruutu lukitaan lepo- tai valmiustilaan siirryttäessä."
+
+#: configuredialog.cpp:284
+msgid "If selected, the screen is locked if the lid close event is triggered."
+msgstr "Mikäli valittu, ruutu lukitaan suljettaessa kannettavan kansi."
+
+#: configuredialog.cpp:286
+msgid "Check this box to enable or disable automatic suspension of the computer."
+msgstr "Valitse tämä valintaruutu ottaaksesi käyttöön tai poistaaksesi käytöstä tietokoneen automaattisen lepotilan."
+
+#: configuredialog.cpp:288
+msgid ""
+"Activate this action if the user was inactive for the defined time \n"
+"(greater than 0 minutes). If empty, nothing happens."
+msgstr ""
+"Ota tämä toiminto käyttöön, mikäli käyttäjä ei käytä tietokonetta määriteltyyn aikaan \n"
+"(enemmän kuin 0 minuuttia). Mikäli tyhjä, mitään ei tapahdu."
+
+#: configuredialog.cpp:291
+msgid "All scheme-related screen saver and DPMS settings."
+msgstr "Kaikki malleihin liittyvät näytönsäästäjä- ja DPMS-asetukset."
+
+#: configuredialog.cpp:292
+msgid "All scheme-related display brightness settings."
+msgstr "Kaikki malleihin liittyvät näytön kirkkauden asetukset."
+
+#: configuredialog.cpp:293
+msgid "All scheme-related automatic suspend settings."
+msgstr "Kaikki malleihin liittyvät automaattisen lepotilan asetukset."
+
+#: configuredialog.cpp:295
+msgid ""
+"Here you can change the brightness of your display. \n"
+"Use the slider to change the brightness directly for \n"
+"testing. To reset back to previous level, please press \n"
+"the 'Reset' button. "
+msgstr ""
+"Tässä voit muuttaa näytön kirkkautta. \n"
+"Käytä liukusäädintä muuttamaan kirkkautta\n"
+"kokeillaksesi. Palataksesi aikaisemmalle tasolle paina\n"
+"'Palauta'-painiketta. "
+
+#: configuredialog.cpp:299
+msgid "Use this button to set back the slider and the display brightness."
+msgstr "Käytä tätä painiketta asettaaksesi näytön kirkkauden."
+
+#: configuredialog.cpp:352
+msgid "Press this button to delete the selected scheme."
+msgstr "Painikkeella poistetaan valittu malli (scheme)."
+
+#: configuredialog.cpp:357
+msgid "You can't delete the current AC or battery scheme."
+msgstr "Et voi poistaa käytössä olevaa AC- tai akkukäyttö -mallia."
+
+#: configuredialog.cpp:363
+msgid "You can't delete this default scheme."
+msgstr "Et voi poistaa oletusmallia"
+
+#: configuredialog.cpp:546
+msgid "Your hardware supports to change the brightness. The values of the slider are in percent and mapped to the available brightness levels of your hardware."
+msgstr "Laitteistosi tukee kirkkauden säätämistä. Liukusäätimen arvot ovat prosentteja, ja ne on asetettu vastaamaan laitteiston tukemia kirkkaustasoja."
+
+#: configuredialog.cpp:553
+msgid "Your Hardware currently not support changing the brightness of your display."
+msgstr "Laitteisto ei tue näytön kirkkauden säätämistä."
+
+#: configuredialog.cpp:664
+msgid "Select Automatically"
+msgstr "Valitse automaattisesti"
+
+#: configuredialog.cpp:665
+msgid "KScreensaver"
+msgstr "K-näytönsäästäjä"
+
+#: configuredialog.cpp:666
+msgid "XScreensaver"
+msgstr "X-näytönsäästäjä"
+
+#: configuredialog.cpp:667
+msgid "xlock"
+msgstr "xlock"
+
+#: configuredialog.cpp:668
+msgid "GNOME Screensaver"
+msgstr "GNOME-näytönsäästäjä"
+
+#: configuredialog.cpp:930
+msgid ""
+"There are unsaved changes in the active scheme.\n"
+"Apply the changes before jumping to the next scheme or discard the changes?"
+msgstr ""
+"Käytössä olevassa mallissa on tallentamattomia muutoksia.\n"
+"Otetaanko muutokset käyttöön ennen siirtymistä seuraavaan malliin vai hylätäänkö muutokset?"
+
+#: configuredialog.cpp:933 configuredialog.cpp:983
+msgid "Unsaved Changes"
+msgstr "Tallentamattomat muutokset"
+
+#: configuredialog.cpp:981
+msgid ""
+"There are unsaved changes.\n"
+"Apply the changes before cancel or discard the changes?"
+msgstr ""
+"Tallentamattomia muutoksia.\n"
+"Otetaanko muutokset käyttöön ennen peruuttamista vai hylätäänkö muutokset?"
+
+#: configuredialog.cpp:1032
+msgid "Please insert a name for the new scheme:"
+msgstr "Anna nimi uudelle mallille:"
+
+#: configuredialog.cpp:1038
+msgid "KPowersave Configuration"
+msgstr "Kpowersave määritykset"
+
+#: configuredialog.cpp:1046
+msgid "Error: A scheme with this name already exist.\n"
+msgstr "Virhe: tämänniminen malli on jo olemassa.\n"
+
+#: configuredialog.cpp:1076
+msgid "Do you really want to delete the %1 scheme?"
+msgstr "Haluatko varmasti poistaa mallin %1 ?"
+
+#: configuredialog.cpp:1078
+msgid "Confirm delete scheme"
+msgstr "Vahvista mallin poisto"
+
+#: configuredialog.cpp:1079 configure_Dialog.cpp:883
+msgid "Delete"
+msgstr "Poista"
+
+#: configuredialog.cpp:1095
+msgid "Could not delete the selected scheme."
+msgstr "Valittua mallia ei voitu poistaa."
+
+#: configuredialog.cpp:1324
+msgid "<b>Note:</b> If you select this option, the computer will suspend or standby if the current user is inactive for the defined time even if somebody is logged in remotely to the X server.<br><br> This feature can also produce problems with some programs, such as video players or cd burner. These programs can be blacklisted by checking <b>Enable scheme-specific blacklist</b> and click <b>Edit Blacklist...</b>. If this does not help, report the problem or deactivate autosuspend.<br><br> Really use this option?"
+msgstr "<b>Huomaa:</b> Jos tämä valinta valitaan, tietokone siirtyy lepo- tai valmiustilaan, mikäli työpöydän käyttäjä on ollut toimettomana määritellyn ajan, vaikka joku toinen olisi etäkirjautuneena X-palvelimella.<br><br> Tämä ominaisuus voi myös aiheuttaa ongelmia joillekin ohjelmilla, kuten videosoittimille tai CD-polttajille. Nämä ohjelmat voidaan luetteloida valitsemalla <b>Ota käyttöön mallikohtainen kieltoluettelo</b> ja napsauttamalla <b>Muokkaa kieltoluetteloa...</b>. Mikäli tämä ei auta, ilmoita virheestä, tai ota automaattinen lepotila pois käytöstä.<br><br> Käytetäänkö varmasti tätä valintaa?"
+
+#: configuredialog.cpp:1402 configuredialog.cpp:1532
+msgid "The blacklist of the selected scheme is empty. Import the general blacklist?"
+msgstr "Valitun mallin kieltoluettelo on tyhjä. Tuodaanko yleinen kieltoluettelo?"
+
+#: configuredialog.cpp:1404 configuredialog.cpp:1534
+msgid "Import"
+msgstr "Tuo"
+
+#: configuredialog.cpp:1404 configuredialog.cpp:1534
+msgid "Do Not Import"
+msgstr "Älä tuo"
+
+#: configuredialog.cpp:1416
+msgid "General Autosuspend Blacklist"
+msgstr "Yleinen autosuspend kieltoluettelo"
+
+#: configuredialog.cpp:1546
+msgid "General Autodimm Blacklist"
+msgstr "Yleinen himmennyksen kieltoluettelo"
+
+#: configuredialog.cpp:1779 configuredialog.cpp:1816
+msgid "Shutdown"
+msgstr "Sammuta"
+
+#: configuredialog.cpp:1781 configuredialog.cpp:1819
+msgid "Logout Dialog"
+msgstr "Uloskirjautumisikkuna"
+
+#: configuredialog.cpp:1784 configuredialog.cpp:1822 kpowersave.cpp:182
+#: kpowersave.cpp:2096 kpowersave.cpp:2156 kpowersave.cpp:2247
+msgid "Suspend to Disk"
+msgstr "Lepotila levylle"
+
+#: configuredialog.cpp:1787 configuredialog.cpp:1825 kpowersave.cpp:186
+#: kpowersave.cpp:2101 kpowersave.cpp:2161 kpowersave.cpp:2250
+msgid "Suspend to RAM"
+msgstr "Lepotila keskusmuistiin"
+
+#: configuredialog.cpp:1790 configuredialog.cpp:1828
+msgid "CPU Powersave policy"
+msgstr "CPU:n virransäästökäytäntö"
+
+#: configuredialog.cpp:1793 configuredialog.cpp:1831
+msgid "CPU Dynamic policy"
+msgstr "CPU:n dynaaminen käytäntö"
+
+#: configuredialog.cpp:1796 configuredialog.cpp:1834
+msgid "CPU Performance policy"
+msgstr "CPU:n suorituskyky käytäntö"
+
+#: configuredialog.cpp:1799 configuredialog.cpp:1837
+msgid "Set Brightness to"
+msgstr "Aseta kirkkaus arvoon"
+
+#: main.cpp:43
+msgid "KDE Frontend for Power Management, Battery Monitoring and Suspend"
+msgstr "KDE-käyttöliittymä virransäästön hallinnalle, akunvaraustilan seurannalle ja sammutusasetuksille"
+
+#: main.cpp:45
+msgid "Force a new check for ACPI support"
+msgstr "Pakota uusi ACPI-tuen tarkistus"
+
+#: main.cpp:46
+msgid "Trace function entry and leave points for debug\n"
+msgstr "Jäljitä funktion merkinnät ja jätä debug pisteitä\n"
+
+#: main.cpp:59
+msgid "Current maintainer"
+msgstr "Tämän hetkinen ylläpitäjä"
+
+#: main.cpp:62
+msgid "Powersave developer and for D-Bus integration"
+msgstr "Virransäästön kehittäjä ja D-Bus-integrointi"
+
+#: main.cpp:64
+msgid "Powersave developer and tester"
+msgstr "Virransäästön kehittäjä ja testaaja"
+
+#: main.cpp:66
+msgid "Added basic detailed dialog"
+msgstr "Kehitti käyttöliittymää"
+
+#: main.cpp:67
+msgid "Packaging Debian and Ubuntu"
+msgstr "Debian ja Ubuntu paketit"
+
+#: detaileddialog.cpp:61
+msgid "KPowersave Information Dialog"
+msgstr "K-virransäästö tietoikkuna"
+
+#: detaileddialog.cpp:65 configure_Dialog.cpp:882 configure_Dialog.cpp:922
+msgid "Miscellaneous"
+msgstr "Sekalaiset"
+
+#: detaileddialog.cpp:66
+msgid "CPUs"
+msgstr "CPU:t"
+
+#: detaileddialog.cpp:73 detaileddialog.cpp:453
+msgid "Battery state:"
+msgstr "Akun varaustila:"
+
+#: detaileddialog.cpp:79
+msgid "Total:"
+msgstr "Yhteensä:"
+
+#: detaileddialog.cpp:81 detaileddialog.cpp:83
+msgid "Battery %1"
+msgstr "Akku %1"
+
+#: detaileddialog.cpp:114
+msgid "Processor %1"
+msgstr "Prosessori %1"
+
+#: detaileddialog.cpp:230
+msgid "not present"
+msgstr "ei saatavilla"
+
+#: detaileddialog.cpp:243
+msgid "charged"
+msgstr "latautunut"
+
+#: detaileddialog.cpp:245
+msgid "%1:%2 h until charged"
+msgstr "%1:%2 h täyteen lataukseen"
+
+#: detaileddialog.cpp:248
+msgid "%1:%2 h remaining"
+msgstr "%1:%2 h jäljellä"
+
+#: detaileddialog.cpp:253 detaileddialog.cpp:441 detaileddialog.cpp:468
+msgid "unknown"
+msgstr "tuntematon"
+
+#: detaileddialog.cpp:325 detaileddialog.cpp:368
+msgid "%v MHz"
+msgstr "%v Mhz"
+
+#: detaileddialog.cpp:330 detaileddialog.cpp:363 dummy.cpp:58
+msgid "deactivated"
+msgstr "poistettu käytöstä"
+
+#: detaileddialog.cpp:395
+msgid "unplugged"
+msgstr "ei käytössä"
+
+#: detaileddialog.cpp:412
+msgid "Current Scheme: "
+msgstr "Nykyinen malli: "
+
+#: detaileddialog.cpp:429
+msgid "Current CPU Frequency Policy:"
+msgstr "Nykyinen CPU-taajuuskäytäntö:"
+
+#: detaileddialog.cpp:435 kpowersave.cpp:193 configure_Dialog.cpp:877
+msgid "Dynamic"
+msgstr "Dynaaminen"
+
+#: detaileddialog.cpp:456
+msgid "Critical"
+msgstr "Kriittinen"
+
+#: detaileddialog.cpp:459
+msgid "Low"
+msgstr "Matala"
+
+#: detaileddialog.cpp:462 kpowersave.cpp:277 kpowersave.cpp:652
+#: kpowersave.cpp:659 kpowersave.cpp:705 kpowersave.cpp:713 kpowersave.cpp:761
+#: kpowersave.cpp:769 kpowersave.cpp:817 kpowersave.cpp:824
+#: kpowersave.cpp:1131 kpowersave.cpp:1243 kpowersave.cpp:1272
+#: kpowersave.cpp:1610 kpowersave.cpp:1670 kpowersave.cpp:2186
+msgid "Warning"
+msgstr "Varoitus"
+
+#: detaileddialog.cpp:465
+msgid "ok"
+msgstr "ok"
+
+#: detaileddialog.cpp:474 detaileddialog.cpp:477
+msgid "Set brightness supported:"
+msgstr "Näytön kirkkauden säätö tuettu:"
+
+#: detaileddialog.cpp:475
+msgid "yes"
+msgstr "kyllä"
+
+#: detaileddialog.cpp:478
+msgid "no"
+msgstr "ei"
+
+#: detaileddialog.cpp:481 detaileddialog.cpp:485
+msgid "HAL Daemon:"
+msgstr "Hal-demoni:"
+
+#: detaileddialog.cpp:482
+msgid "running"
+msgstr "käytössä"
+
+#: detaileddialog.cpp:486
+msgid "not running"
+msgstr "ei käytössä"
+
+#: info_Dialog.cpp:197
+msgid "Information"
+msgstr "Tietoja"
+
+#: dummy.cpp:36
+msgid "If the current desktop user is inactive, dim the display to:"
+msgstr "Mikäli työpöydän käyttäjä on toimettomana, himmennä näyttö:"
+
+#: dummy.cpp:37
+msgid "Enable dim display on inactivity"
+msgstr "Ota himmennys käyttöön, jos toimettomana"
+
+#: dummy.cpp:38
+msgid "Blacklist"
+msgstr "Kieltoluettelo"
+
+#: dummy.cpp:39
+msgid "Here you can add programs which should, if running, prevent the dimming of the display."
+msgstr "Tässä voit lisätä ohjelmia joiden tulisi, jos ovat käytössä, estää näytön himmennys."
+
+#: dummy.cpp:41
+msgid "Would you like to import a predefined blacklist?"
+msgstr "Haluatko tuoda esimääritetyn kieltoluettelon?"
+
+#: dummy.cpp:42
+msgid "Disable CPUs/Cores"
+msgstr "Poista prosessorit/ytimet käytöstä"
+
+#: dummy.cpp:43
+msgid "Max. running CPUs:"
+msgstr "Käytössä olevien prosessorien enimmäismäärä:"
+
+#: dummy.cpp:44
+msgid "Max. running CPUs/Cores:"
+msgstr "Käytössä olevien prosessorien/ytimien enimmäismäärä:"
+
+#: dummy.cpp:45
+msgid "Min. running CPUs:"
+msgstr "Käytössä olevien prosessorien vähimmäismäärä:"
+
+#: dummy.cpp:46
+msgid "Min. running CPUs/Cores:"
+msgstr "Suorituksessa olevien prosessoreiden/ytimien vähimmäismäärä:"
+
+#: dummy.cpp:47
+msgid "Enable to switch off CPUs/cores"
+msgstr "Ota käyttöön, halutessasi poistaa käytöstä suorittimia/ytimiä"
+
+#: dummy.cpp:48
+msgid "You have a multiprocessor/multicore machine."
+msgstr "Tietokoneesi on moniprosessorinen/moniytiminen."
+
+#: dummy.cpp:49
+msgid "You can disable CPUs/cores to reduce power consumption and save battery power."
+msgstr "Voit poistaa prosessoreita/ytimiä käytöstä vähentääksesi virrankulutusta ja säästää akkua."
+
+#: dummy.cpp:50
+msgid "Device"
+msgstr "Laite"
+
+#: dummy.cpp:51
+msgid "Devices"
+msgstr "Laitteet"
+
+#: dummy.cpp:52
+msgid "Device class"
+msgstr "Laiteluokka"
+
+#: dummy.cpp:53
+msgid "activate"
+msgstr "ota käyttöön"
+
+#: dummy.cpp:54
+msgid "Activate"
+msgstr "Ota käyttöön"
+
+#: dummy.cpp:55
+msgid "deactivate"
+msgstr "poista käytöstä"
+
+#: dummy.cpp:56
+msgid "Deactivate"
+msgstr "Poista käytöstä"
+
+#: dummy.cpp:57
+msgid "activated"
+msgstr "otettu käyttöön"
+
+#: dummy.cpp:59
+msgid "do nothing"
+msgstr "älä tee mitään"
+
+#: dummy.cpp:60
+msgid "Deactivate following devices:"
+msgstr "Poista seuraavat laitteet käytöstä:"
+
+#: dummy.cpp:61
+msgid "Activate following devices"
+msgstr "Ota seuraavat laitteet käyttöön"
+
+#: dummy.cpp:62
+msgid "Reactivate following devices"
+msgstr "Ota seuraavat laitteet uudelleen käyttöön"
+
+#: dummy.cpp:63
+msgid "Deactivate following device classes:"
+msgstr "Poista seuraavat laiteluokat käytöstä:"
+
+#: dummy.cpp:64
+msgid "Activate following devices classes"
+msgstr "Ota seuraavat laiteluokat käyttöön"
+
+#: dummy.cpp:65
+msgid "Reactivate following device classes"
+msgstr "Ota seuraavat laiteluokat uudelleen käyttöön"
+
+#: dummy.cpp:66
+msgid "If the scheme switched all devices are again activated."
+msgstr "Jos mallia vaihdetaan, kaikki laitteet otetaan uudelleen käyttöön."
+
+#: dummy.cpp:67
+msgid "This is a experimental feature."
+msgstr "Tämä on kokeellinen ominaisuus."
+
+#: dummy.cpp:68
+msgid "If you have problems with this feature, please report them."
+msgstr "Mikäli kohtaat ongelmia, ilmoita niistä."
+
+#: dummy.cpp:69
+msgid "Select one of the available devices and click on "
+msgstr "Valitse yksi laitteista ja napsauta "
+
+#: dummy.cpp:70
+msgid "Select one of the available device classes and click on "
+msgstr "Valitse yksi laiteluokka ja napsauta "
+
+#: dummy.cpp:71
+msgid "Select one or more of the available devices and click on "
+msgstr "Valitse yksi tai useampi laite ja napsauta "
+
+#: dummy.cpp:72
+msgid "Select one or more of the available device classes and click on "
+msgstr "Valitse yksi tai useampi laiteluokka ja napsauta "
+
+#: dummy.cpp:73
+msgid "Please note: If you e.g. deactivate a network device you may lose your internet connection."
+msgstr "Huomaa: Jos otat pois käytöstä esim. verkkolaitteen, menetät verkkoyhteyden."
+
+#: dummy.cpp:75
+msgid "<b>Note:</b> If you select this option, the computer will suspend or standby if the current user is inactive for the defined time. <br><br> This feature can also produce problems with some programs, such as video players or cd burner. These programs can be blacklisted by checking <b>Enable scheme-specific blacklist</b> and click <b>Edit Blacklist...</b>. If this does not help, report the problem or deactivate autosuspend.<br><br> Really use this option?"
+msgstr "<b>Huomaa:</b> Jos tämä valinta valitaan, tietokone siirtyy lepo- tai valmiustilaan, mikäli työpöydän käyttäjä on toimettomana määritellyn ajan.<br><br> Tämä ominaisuus voi myös aiheuttaa ongelmia joillekin ohjelmilla, kuten videosoittimille tai CD-polttajille. Nämä ohjelmat voidaan luetteloida valitsemalla <b>Ota käyttöön mallikohtainen kieltoluettelo</b> ja napsauttamalla <b>Muokkaa kieltoluetteloa...</b>. Mikäli tämä ei auta, ilmoita virheestä tai ota automaattinen lepotila pois käytöstä.<br><br> Käytetäänkö varmasti tätä valintaa?"
+
+#: dummy.cpp:82
+msgid "Try to use only one CPU/Core."
+msgstr "Yritä käyttää vain yhtä prosessoria/ydintä."
+
+#: dummy.cpp:83
+msgid "Reduce power consumption by try to use only one CPU/Core instead of spreading the work over all/multiple CPUs."
+msgstr "Vähennä virrankulutusta yrittämällä käyttää vain yhtä prosessoria/ydintä, sen sijaan että käytettäisiin kaikkia/useita ytimiä."
+
+#: dummy.cpp:87
+msgid "Could not load the global configuration."
+msgstr "Yleisten asetusten lataus ei onnistunut."
+
+#: dummy.cpp:88
+msgid "Could not load the requested scheme configuration."
+msgstr "Pyydetyn mallimäärityksen lataus ei onnistunut."
+
+#: dummy.cpp:89
+msgid "Configure the current scheme."
+msgstr "Määritä nykyinen malli."
+
+#: dummy.cpp:90
+msgid "Try loading the default configuration."
+msgstr "Yritä ladata oletusmalli."
+
+#: dummy.cpp:91
+msgid "Maybe the global configuration file is empty or missing."
+msgstr "Ehkä yleinen määritystiedosto on tyhjä tai puuttuu."
+
+#: dummy.cpp:94
+msgid "Cannot connect to D-Bus. The D-Bus daemon may not be running."
+msgstr "D-BUS:siin kytkeytyminen ei onnistu. D-BUS-demoni ei ehkä ole käynnissä."
+
+#: dummy.cpp:95
+msgid ""
+"Scheme switched to %1. \n"
+" Deactivate following devices: %2"
+msgstr ""
+"Malliksi vaihdettiin %1. \n"
+" Otetaan seuraavat laitteet pois käytöstä: %2"
+
+#: dummy.cpp:96
+msgid ""
+"Scheme switched to %1. \n"
+" Activate following devices: %2"
+msgstr ""
+"Malliksi vaihdettiin %1. \n"
+" Otetaan seuraavat laitteet käyttöön: %2"
+
+#: dummy.cpp:97
+msgid "Report ..."
+msgstr "Ilmoita ..."
+
+#: dummy.cpp:98
+msgid "Suspend to RAM is not supported on your machine."
+msgstr "Tietokoneesi ei tue lepotila muistiin toimintoa."
+
+#: dummy.cpp:99
+msgid "Additionally, please mail the output of %1 to %2 . Thanks!"
+msgstr "Lisäksi, lähetä %1 tuloste sähköpostilla %2 . Kiitos!"
+
+#: dummy.cpp:100
+msgid "Power consumption"
+msgstr "Virrankulutus"
+
+#: dummy.cpp:103
+msgid "KScreensaver not found."
+msgstr "K-näytönsäästäjää ei löydetty."
+
+#: dummy.cpp:104
+msgid "Try locking with XScreensaver or xlock."
+msgstr "Kokeile lukitusta X-näytönsäästäjällä tai xlock:illa."
+
+#: dummy.cpp:105
+msgid "XScreensaver not found."
+msgstr "X-näytönsäästäjää ei löydetty."
+
+#: dummy.cpp:106
+msgid "Try locking the screen with xlock."
+msgstr "Kokeile näytön lukitusta xlock:illa."
+
+#: dummy.cpp:107
+msgid "XScreensaver and xlock not found. It is not possible to lock the screen. Check your installation."
+msgstr "X-näytönsäästäjää eikä xlock:ia löydetty. Ruudun lukitus ei ole mahdollista. Tarkista asennuksesi."
+
+#: dummy.cpp:111
+msgid "HAL daemon:"
+msgstr "HAL-demoni:"
+
+#: dummy.cpp:112
+msgid "D-Bus daemon:"
+msgstr "D-BUS-demoni:"
+
+#: dummy.cpp:113
+msgid "ConsoleKit daemon:"
+msgstr "ConsoleKit demoni:"
+
+#: dummy.cpp:114
+msgid "Autosuspend activated:"
+msgstr "Automaattinen lepotila otettu käyttöön:"
+
+#: dummy.cpp:115
+msgid "Autodimm activated:"
+msgstr "Himmennys aktivoitu:"
+
+#: dummy.cpp:116
+msgid "enabled"
+msgstr "otettu käyttöön"
+
+#: dummy.cpp:117
+msgid "Session active:"
+msgstr "Istunto aktiivinen:"
+
+#: dummy.cpp:120
+msgid "Inactivity detected."
+msgstr "Aktiviteettia ei ole havaittu."
+
+#: dummy.cpp:121
+msgid "To stop the %1 press the 'Cancel' button before the countdown expire."
+msgstr "Pysäyttääksesi %1 paina 'Peruuta' ennen kuin laskuri menee nollaan."
+
+#: dummy.cpp:122
+msgid "The computer autosuspend in: "
+msgstr "Suorita autosuspend ajassa: "
+
+#: dummy.cpp:123
+#, c-format
+msgid "The display get dimmed down to %1% in: "
+msgstr "Tummenna näyttö arvoon %1% ajassa: "
+
+#: dummy.cpp:124
+msgid "%1 seconds"
+msgstr "%1 sekuntia"
+
+#: dummy.cpp:127
+msgid "Could not call %1. The current desktop session is not active."
+msgstr "Ei voitu kutsua %1. Nykyinen työpöytäistunto ei ole aktiivinen."
+
+#: dummy.cpp:128
+msgid "Could not set %1. The current desktop session is not active."
+msgstr "Ei voitu asettaa %1. Nykyinen työpöytäistunto ei ole aktiivinen."
+
+#: dummy.cpp:129
+msgid "Stopped %1. The current desktop session is now inactive."
+msgstr "Pysäytetty %1. Nykyinen työpöytäistunto ei enää ole aktiivinen."
+
+#: dummy.cpp:130
+msgid "Restarted %1. The current desktop session is now active again."
+msgstr "Uudelleenkäynnistetty %1. Nykyinen työpöytäistunto on taas aktiivinen."
+
+#: log_viewer.cpp:78
+msgid "Form1"
+msgstr "Form1"
+
+#: log_viewer.cpp:79
+msgid "Save As ..."
+msgstr "Tallenna nimellä..."
+
+#: log_viewer.cpp:80
+msgid "Close"
+msgstr "Sulje"
+
+#: logviewer.cpp:44
+msgid "KPowersave Logfile Viewer: %1"
+msgstr "KPowersave lokitiedoston katseluohjelma: %1"
+
+#: logviewer.cpp:89
+msgid "File already exist. Overwrite the file?"
+msgstr "Tiedosto on jo olemassa. Ylikirjoita se?"
+
+#: logviewer.cpp:90 logviewer.cpp:97
+msgid "Error while save logfile"
+msgstr "Virhe kirjoitettaessa lokitiedostoon"
+
+#: logviewer.cpp:95
+msgid "File already exist."
+msgstr "Tiedosto on jo olemassa."
+
+#: logviewer.cpp:98
+msgid "Try other filename ..."
+msgstr "Kokeile toista tiedostonimeä ..."
+
+#: suspenddialog.cpp:70
+msgid "Preparing Suspend..."
+msgstr "Valmistellaan lepotilaa..."
+
+#: kpowersave.cpp:168
+msgid "Configure KPowersave..."
+msgstr "Määritä K-virransäästö..."
+
+#: kpowersave.cpp:171 configure_Dialog.cpp:915
+msgid "Configure Notifications..."
+msgstr "Määritä ilmoitukset..."
+
+#: kpowersave.cpp:175
+msgid "Start YaST2 Power Management Module..."
+msgstr "Käynnistä YaST2 Virranhallintamoduuli..."
+
+#: kpowersave.cpp:189 kpowersave.cpp:2106 kpowersave.cpp:2166
+#: kpowersave.cpp:2253
+msgid "Standby"
+msgstr "Valmiustila"
+
+#: kpowersave.cpp:191 kpowersave.cpp:198
+msgid "Set CPU Frequency Policy"
+msgstr "Aseta CPU-taajuuskäytäntö"
+
+#: kpowersave.cpp:205 kpowersave.cpp:206
+msgid "Set Active Scheme"
+msgstr "Aseta käytössä oleva malli"
+
+#: kpowersave.cpp:212
+msgid "Disable Actions on Inactivity"
+msgstr "Ota pois toimettomuuden tapahtumat"
+
+#: kpowersave.cpp:219 kpowersave.cpp:229
+msgid "&Help"
+msgstr "O&hje"
+
+#: kpowersave.cpp:221
+msgid "&KPowersave Handbook"
+msgstr "&K-virranhallinnan ohjekirja"
+
+#: kpowersave.cpp:224
+msgid "&Report a bug ..."
+msgstr "Ilmoita vi&rheestä..."
+
+#: kpowersave.cpp:226
+msgid "&About KPowersave"
+msgstr "Tietoj&a K-virransäästöstä"
+
+#: kpowersave.cpp:275 kpowersave.cpp:648 kpowersave.cpp:656 kpowersave.cpp:703
+#: kpowersave.cpp:710 kpowersave.cpp:759 kpowersave.cpp:766 kpowersave.cpp:815
+#: kpowersave.cpp:822 kpowersave.cpp:1126 kpowersave.cpp:1241
+#: kpowersave.cpp:1270 kpowersave.cpp:2183
+msgid "WARNING"
+msgstr "ALHAINEN"
+
+#: kpowersave.cpp:275
+msgid "Cannot find any schemes."
+msgstr "Profiileja ei löydetty."
+
+#: kpowersave.cpp:453
+msgid "No information about battery and AC status available"
+msgstr "Akku- tai verkkovirran tilasta ei tietoja saatavilla"
+
+#: kpowersave.cpp:456
+msgid "Plugged in -- fully charged"
+msgstr "Verkkovirta -- täysi varaustila"
+
+#: kpowersave.cpp:460
+msgid "Plugged in"
+msgstr "Verkkovirta"
+
+#: kpowersave.cpp:464
+msgid "Plugged in -- %1% charged (%2:%3 h until full charged)"
+msgstr "Verkkovirta -- %1% varaustila (%2:%3 tuntia jäljellä täyteen varaustilaan)"
+
+#: kpowersave.cpp:467
+msgid "Plugged in -- %1% charged (%2:%3 remaining hours)"
+msgstr "Verkkovirta -- %1% varaustila (%2:%3 tuntia jäljellä)"
+
+#: kpowersave.cpp:471 kpowersave.cpp:475
+#, c-format
+msgid "Plugged in -- %1% charged"
+msgstr "Verkkovirta -- %1% varaustila"
+
+#: kpowersave.cpp:474
+msgid "Plugged in -- no battery"
+msgstr "Verkkovirta -- ei akkua"
+
+#: kpowersave.cpp:480
+msgid "Running on batteries -- %1% charged (%2:%3 hours remaining)"
+msgstr "Akkuvirta -- %1% varaustila (%2:%3 tuntia jäljellä)"
+
+#: kpowersave.cpp:484
+#, c-format
+msgid "Running on batteries -- %1% charged"
+msgstr "Akkuvirta -- %1% varaustila"
+
+#: kpowersave.cpp:491
+msgid " -- battery is charging"
+msgstr " -- akku on latauksessa"
+
+#: kpowersave.cpp:649 kpowersave.cpp:657
+msgid "Could not start YaST Power Management Module. Check if it is installed."
+msgstr "YaST Virransäästömoduulin käynnistys ei onnistunut. Tarkista, onko se asennettu."
+
+#: kpowersave.cpp:703
+msgid "Suspend to disk failed"
+msgstr "Lepotila levylle epäonnistui"
+
+#: kpowersave.cpp:711
+msgid "Suspend to disk disabled by administrator."
+msgstr "Ylläpitäjä on ottanut \"lepotilan levylle\" pois käytöstä."
+
+#: kpowersave.cpp:759
+msgid "Suspend to RAM failed"
+msgstr "Lepotila keskusmuistiin epäonnistui"
+
+#: kpowersave.cpp:767
+msgid "Suspend to RAM disabled by administrator."
+msgstr "Ylläpitäjä on ottanut \"lepotilan keskusmuistiin\" pois käytöstä."
+
+#: kpowersave.cpp:815
+msgid "Standby failed"
+msgstr "Valmiustila epäonnistui"
+
+#: kpowersave.cpp:822
+msgid "Standby disabled by administrator."
+msgstr "Ylläpitäjä on ottanut valmiustilan pois käytöstä."
+
+#: kpowersave.cpp:853
+msgid "System is going into suspend mode now"
+msgstr "Järjestelmä on nyt menossa lepotilaan"
+
+#: kpowersave.cpp:1039
+msgid "Could not call DCOP interface to umount external media."
+msgstr "Ei voitu kutsua DCOP-liittymää ulkoisen media irrottamiseen."
+
+#: kpowersave.cpp:1044
+msgid ""
+"Could not umount external media before suspend/standby. \n"
+" (Reason: %1)\n"
+" \n"
+" Would you like to continue suspend/standby anyway? \n"
+"(Warning: Continue suspend can cause data loss!)"
+msgstr ""
+"Ei voitu irrottaa ulkoista mediaa ennen lepotilaa. \n"
+" (Syy: %1)\n"
+" \n"
+" Haluaisitko silti että mennään lepotilaan? \n"
+"(Varoitus: lepotilaan siirtyminen voi aiheuttaa tietojen menetyksen!)"
+
+#: kpowersave.cpp:1052
+msgid "Error while prepare %1"
+msgstr "Virhe valmisteltaessa %1"
+
+#: kpowersave.cpp:1053
+msgid "Suspend anyway"
+msgstr "Siirry lepotilaan joka tapauksessa"
+
+#: kpowersave.cpp:1053
+msgid "Cancel suspend"
+msgstr "Peruuta lepotila"
+
+#: kpowersave.cpp:1127
+msgid ""
+"Could not lock the screen. There may be a problem with the selected \n"
+"lock method or something else."
+msgstr "Ruudun lukitus ei onnistunut. Valitussa lukitusmenetelmässä tai jossakin muualla saattaa olla ongelma."
+
+#: kpowersave.cpp:1144
+msgid "The Lid was closed."
+msgstr "Kansi suljettiin."
+
+#: kpowersave.cpp:1156
+msgid "The Lid was opened."
+msgstr "Kansi avattiin."
+
+#: kpowersave.cpp:1223
+msgid "Start KPowersave automatically when you log in?"
+msgstr "Käynnistetäänkö K-virransäästö automaattisesti sisäänkirjautuessa?"
+
+#: kpowersave.cpp:1224
+msgid "Question"
+msgstr "Kysymys"
+
+#: kpowersave.cpp:1225
+msgid "Start Automatically"
+msgstr "Käynnistä automaattisesti"
+
+#: kpowersave.cpp:1225
+msgid "Do Not Start"
+msgstr "Älä käynnistä"
+
+#: kpowersave.cpp:1242
+msgid "CPU Freq Policy %1 could not be set."
+msgstr "CPU-taajuuskäytäntöä %1 ei voitu asettaa."
+
+#: kpowersave.cpp:1271
+msgid "Scheme %1 could not be activated."
+msgstr "Mallia %1 ei voitu ottaa käyttöön."
+
+#: kpowersave.cpp:1600
+msgid ""
+"The D-Bus daemon is not running.\n"
+"Starting it will provide full functionality: /etc/init.d/dbus start"
+msgstr ""
+"DBUS-demoni ei ole käynnissä.\n"
+"Sen käynnistäminen tarjoaa täyden toiminnallisuuden: /etc/init.d/messagebus start"
+
+#: kpowersave.cpp:1611
+msgid "Don't show this message again."
+msgstr "Älä näytä tätä ilmoitusta uudestaan."
+
+#: kpowersave.cpp:1637
+msgid "ERROR"
+msgstr "VIRHE"
+
+#: kpowersave.cpp:1638
+msgid "Could not get information from HAL. The haldaemon is maybe not running."
+msgstr "Tietoja HAL-demonilta ei saatu. Ehkä HAL-demoni ei ole käynnissä."
+
+#: kpowersave.cpp:1641
+msgid "Error"
+msgstr "Virhe"
+
+#: kpowersave.cpp:1912
+msgid "Battery state changed to WARNING -- remaining time: %1 hours and %2 minutes."
+msgstr "Akun varaustila laski ALHAISEKSI -- jäljellä oleva aika: %1 tuntia %2 minuuttia."
+
+#: kpowersave.cpp:1921
+msgid "Battery state changed to LOW -- remaining time: %1 hours and %2 minutes."
+msgstr "Akun varaustila laski LÄHES KRIITTISEN ALHAISEKSI -- jäljellä oleva aika: %1 tuntia %2 minuuttia."
+
+#: kpowersave.cpp:1932
+msgid ""
+"Battery state changed to CRITICAL -- remaining time: %1 hours and %2 minutes.\n"
+"Shut down your system or plug in the power cable immediately. Otherwise the machine\n"
+"will go shutdown in 30 seconds"
+msgstr ""
+"Akun varaustila laski KRIITTISEN ALHAISEKSI. -- jäljellä: %1 tuntia %2 minuuttia.\n"
+"Sammuta järjestelmä tai kytke verkkovirta välittömästi. Muuten kone sulkeutuu\n"
+"30:n sekunnin kuluttua"
+
+#: kpowersave.cpp:1943
+msgid ""
+"Battery state changed to CRITICAL -- remaining time: %1 hours and %2 minutes.\n"
+"Shut down your system or plug in the power cable immediately."
+msgstr ""
+"Akun varaustila laski KRIITTISEN ALHAISEKSI. -- jäljellä: %1 tuntia %2 minuuttia.\n"
+"Sammuta järjestelmä tai kytke verkkovirta välittömästi."
+
+#: kpowersave.cpp:2041
+msgid "AC adapter plugged in"
+msgstr "Verkkovirta kytkettynä"
+
+#: kpowersave.cpp:2043
+msgid "AC adapter unplugged"
+msgstr "Verkkovirta ei kytkettynä"
+
+#: kpowersave.cpp:2078
+msgid "Switched to scheme: %1"
+msgstr "Virranhallinta vaihdettu malliin: %1"
+
+#: kpowersave.cpp:2095 kpowersave.cpp:2100 kpowersave.cpp:2105
+msgid "System is going into %1 now."
+msgstr "Järjestelmä on nyt menossa %1."
+
+#: kpowersave.cpp:2155 kpowersave.cpp:2160 kpowersave.cpp:2165
+msgid "System is resumed from %1."
+msgstr "Järjestelmä on palautunut %1."
+
+#: kpowersave.cpp:2184
+msgid "Could not remount (all) external storage media."
+msgstr "Ei voitu liittää (kaikkia) ulkoisia medioita uudelleen."
+
+#: kpowersave.cpp:2192
+msgid "An unknown error occurred while %1. The errorcode is: '%2'"
+msgstr "Tuntematon virhe toiminnossa %1. Virhekoodi: '%2'"
+
+# power-off message
+#: kpowersave.cpp:2197
+msgid "Do you want to have a look at the log file?"
+msgstr "Haluatko katsella lokitiedostoa?"
+
+#: kpowersave.cpp:2198 kpowersave.cpp:2224
+msgid "Error while %1"
+msgstr "Virhe toiminnossa %1"
+
+#: configure_Dialog.cpp:831
+msgid "KPowersave Settings"
+msgstr "K-virransäästön asetukset"
+
+#: configure_Dialog.cpp:832
+msgid "Apply"
+msgstr "Käytä"
+
+#: configure_Dialog.cpp:834
+msgid "Help"
+msgstr "Ohje"
+
+#: configure_Dialog.cpp:840
+msgid "Enable specific display power management"
+msgstr "Ota käyttöön valittu virranhallinta"
+
+#: configure_Dialog.cpp:841
+msgid "Standby after:"
+msgstr "Valmiustila ajan kuluttua:"
+
+#: configure_Dialog.cpp:842
+msgid "Only blank the screen"
+msgstr "Vain ruudun tyhjennys"
+
+#: configure_Dialog.cpp:843
+msgid "Disable screen saver"
+msgstr "Ota näytönsäästäjä pois käytöstä"
+
+#: configure_Dialog.cpp:844
+msgid "Enable specific screensaver settings"
+msgstr "Ota käyttöön valitut näytönsäästäjän asetukset"
+
+#: configure_Dialog.cpp:845
+msgid "Suspend after:"
+msgstr "Lepotila ajan kuluttua:"
+
+#: configure_Dialog.cpp:846
+msgid "Power off after:"
+msgstr "Sammutus ajan kuluttua:"
+
+#: configure_Dialog.cpp:847
+msgid "Disable display power management"
+msgstr "Ota pois näytön virranhallinta"
+
+#: configure_Dialog.cpp:848 configure_Dialog.cpp:849 configure_Dialog.cpp:850
+#: configure_Dialog.cpp:862 configure_Dialog.cpp:873
+msgid " min"
+msgstr " minuuttia"
+
+#: configure_Dialog.cpp:851
+msgid "Screen Saver and DPMS"
+msgstr "Näytönsäästäjä ja DPMS"
+
+#: configure_Dialog.cpp:852
+msgid "Settings"
+msgstr "Asetukset"
+
+#: configure_Dialog.cpp:853
+msgid "Reset"
+msgstr "Palauta"
+
+#: configure_Dialog.cpp:855
+msgid "Enable scheme specific Brightness settings"
+msgstr "Ota käyttöön mallikohtaiset kirkkaudensäädöt"
+
+#: configure_Dialog.cpp:858
+msgid "Brightness"
+msgstr "Kirkkaus"
+
+#: configure_Dialog.cpp:859
+msgid "Enable autosuspend"
+msgstr "Ota käyttöön automaattinen lepotila"
+
+#: configure_Dialog.cpp:860 configure_Dialog.cpp:867
+msgid "Enable scheme-specific blacklist"
+msgstr "Ota käyttöön mallikohtainen kieltoluettelo"
+
+#: configure_Dialog.cpp:861 configure_Dialog.cpp:870
+msgid "after:"
+msgstr "ajan kuluttua:"
+
+#: configure_Dialog.cpp:863 configure_Dialog.cpp:868
+msgid "Edit Blacklist..."
+msgstr "Muokkaa kieltoluetteloa..."
+
+#: configure_Dialog.cpp:864 configure_Dialog.cpp:869
+msgid "If the current desktop user is inactive the computer will:"
+msgstr "Mikäli työpöydän käyttäjä on toimettomana, tietokone:"
+
+#: configure_Dialog.cpp:865
+msgid "Autosuspend"
+msgstr "Automaattinen lepotila"
+
+#: configure_Dialog.cpp:866
+msgid "Enable autodimm the display"
+msgstr "Ota näytön himmennys käyttöön"
+
+#: configure_Dialog.cpp:871 configure_Dialog.cpp:893 configure_Dialog.cpp:894
+#: configure_Dialog.cpp:895 configure_Dialog.cpp:896 configure_Dialog.cpp:897
+#: configure_Dialog.cpp:898
+msgid " %"
+msgstr " %"
+
+#: configure_Dialog.cpp:872
+msgid "dimm to:"
+msgstr "himmennä arvoon:"
+
+#: configure_Dialog.cpp:874
+msgid "Autodimm"
+msgstr "Himmennys"
+
+#: configure_Dialog.cpp:879
+msgid "Set CPU Frequency Policy:"
+msgstr "Aseta CPU-kellotaajuuskäytäntö:"
+
+#: configure_Dialog.cpp:880
+msgid "CPU Frequency Policy"
+msgstr "Aseta CPU-taajuuskäytäntö"
+
+#: configure_Dialog.cpp:881
+msgid "Disable Notifications"
+msgstr "Poista ilmoitukset"
+
+#: configure_Dialog.cpp:884
+msgid "New"
+msgstr "Uusi"
+
+#: configure_Dialog.cpp:885
+msgid "Scheme Settings"
+msgstr "Malliasetukset"
+
+#: configure_Dialog.cpp:886
+msgid "Define the battery warning levels (in percentage) and the releated action if the level get reached:"
+msgstr "Määritän akun kapasiteetin varoitustasot [%] ja niihin liitettävät toiminnot:"
+
+#: configure_Dialog.cpp:887
+msgid "Warning level:"
+msgstr "Varoitustaso:"
+
+#: configure_Dialog.cpp:888
+msgid "Low level:"
+msgstr "Matala taso:"
+
+#: configure_Dialog.cpp:889
+msgid "Critical level:"
+msgstr "Kriittinen taso:"
+
+#: configure_Dialog.cpp:890 configure_Dialog.cpp:891 configure_Dialog.cpp:892
+msgid "if reached call:"
+msgstr "jos saavutettu, suorita:"
+
+#: configure_Dialog.cpp:899
+msgid "Battery"
+msgstr "Akku"
+
+#: configure_Dialog.cpp:900
+msgid "Define the action which should be executed if the related button get pressed:"
+msgstr "Määritä toiminto, joka suoritetaan, jos siihen liitettyä painiketta painetaan:"
+
+#: configure_Dialog.cpp:901
+msgid "Suspend-to-disk Button:"
+msgstr "Lepotila levylle -painike:"
+
+#: configure_Dialog.cpp:902
+msgid "Sleep button:"
+msgstr "Nukahda -painike:"
+
+#: configure_Dialog.cpp:903
+msgid "Lid close Button:"
+msgstr "Sulje kansi -painike:"
+
+#: configure_Dialog.cpp:904
+msgid "Power Button:"
+msgstr "Virtapainike:"
+
+#: configure_Dialog.cpp:905
+msgid "Button Events"
+msgstr "Painikkeisiin liitetyt toiminnot"
+
+#: configure_Dialog.cpp:906
+msgid "Select the following schemes as default if the system is running on AC or on batteries."
+msgstr "Valitse seuraava malli järjestelmän oletusmalliksi joko AC- tai akkukäyttöön."
+
+#: configure_Dialog.cpp:907
+msgid "Battery scheme:"
+msgstr "Akkukäytön malli:"
+
+#: configure_Dialog.cpp:908
+msgid "AC scheme:"
+msgstr "AC-käytön malli: "
+
+#: configure_Dialog.cpp:909
+msgid "Default Schemes"
+msgstr "Oletusmallit"
+
+#: configure_Dialog.cpp:910
+msgid "Lock screen before suspend or standby"
+msgstr "Lukitse näyttö ennen lepo- tai valmiustilaa"
+
+#: configure_Dialog.cpp:911
+msgid "Lock screen with:"
+msgstr "Lukitse näyttö ohjelmalla:"
+
+#: configure_Dialog.cpp:912
+msgid "Lock screen on lid close"
+msgstr "Lukitse näyttö, kun kannettavan kansi suljetaan"
+
+#: configure_Dialog.cpp:913
+msgid "Lock Screen"
+msgstr "Lukitse näyttö"
+
+#: configure_Dialog.cpp:914
+msgid "Notifications"
+msgstr "Ilmoitukset"
+
+#: configure_Dialog.cpp:916
+msgid "Autostart"
+msgstr "Automaattinen käynnistys"
+
+#: configure_Dialog.cpp:917
+msgid "Never ask me again on exit"
+msgstr "Älä kysy enää uudelleen poistumisen yhteydessä"
+
+#: configure_Dialog.cpp:918
+msgid "KPowersave starts automatically on login"
+msgstr "K-virransäästö käynnistyy automaattisesti sisäänkirjautuessa"
+
+#: configure_Dialog.cpp:919
+msgid "General Blacklists"
+msgstr "Yleinen kieltoluettelo"
+
+#: configure_Dialog.cpp:920
+msgid "Edit Autosuspend Blacklist..."
+msgstr "Lepotilan kieltoluettelon muokkaus..."
+
+#: configure_Dialog.cpp:921
+msgid "Edit Autodimm Blacklist..."
+msgstr "Muokkaa himmennyksen kieltoluetteloa..."
+
+#: configure_Dialog.cpp:923
+msgid "General Settings"
+msgstr "Yleiset asetukset"
+

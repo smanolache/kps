@@ -1,0 +1,2 @@
+von='..\/common\/kde_logo.png' nach='kde_logo.png'; filetype='*.html'; OLDIFS=$IFS; IFS='
+' ; files=`find . -name "$filetype"`; for f in $files;do cp $f $f.bak; g="$f.mettytmp"; echo "Searching in $f ..."; cat "$f" | sed "s/$von/$nach/" > "$g" && mv "$g" "$f"; rm -f *.mettytmp; done; IFS=$OLDIFS;

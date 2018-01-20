@@ -1,0 +1,364 @@
+[!Global!]
+IconName=kpowersave
+Comment=KPowersave
+Comment[cs]=KPowersave
+Comment[de]=KPowersave
+Comment[es]=KPowersave
+Comment[fr]=KPowersave
+Comment[it]=KPowersave
+Comment[ja]=KPowersave
+Comment[pl]=KPowersave
+Comment[pt]=KPowersave
+Comment[pt_BR]=KPowersave
+Comment[ru]=KPowersave
+Comment[zh_CN]=KPowersave
+Comment[zh_TW]=KPowersave
+
+[plug_event]
+Name=PlugEvent
+Comment=AC adapter plugged in
+Comment[cs]=Připojen do sítě
+Comment[de]=Netzstecker angeschlossen
+Comment[es]=Adaptador de CA conectado
+Comment[fr]=Adaptateur CA branché
+Comment[it]=Adattatore CA collegato
+Comment[ja]=ACアダプタプラグ接続
+Comment[pl]=Zasilacz sieciowy podłączony
+Comment[pt]=Foi ligado o Adaptador CA
+Comment[pt_BR]=Adaptador de CA conectado
+Comment[ru]=Питание подключено
+Comment[zh_CN]=AC 适配器已插入
+Comment[zh_TW]=已插入 AC 介面卡
+default_sound=KDE_Dialog_Appear.ogg
+default_presentation=17
+
+[unplug_event]
+Name=UnplugEvent
+Comment=AC adpater unplugged
+Comment[cs]=Odpojen ze sítě
+Comment[de]=Netzstecker entfernt
+Comment[es]=Adaptador de CA desconectado
+Comment[fr]=Adaptateur CA non branché
+Comment[it]=Adattatore CA scollegato
+Comment[ja]=ACアダプタプラグ非接続
+Comment[pl]=Zasilacz sieciowy odłączony
+Comment[pt]=O Adaptador CA foi desligado
+Comment[pt_BR]=Adaptador de CA desconectado
+Comment[ru]=Питание отключено
+Comment[zh_CN]=AC 适配器已拔出
+Comment[zh_TW]=未插入 AC 介面卡
+default_sound=KDE_Dialog_Disappear.ogg
+default_presentation=17
+
+[battery_warning_event]
+Name=BatteryWarningEvent
+Comment=Battery charge dropped to level WARNING
+Comment[cs]=Stav baterie dosáhl úrovně POPLACH
+Comment[de]=Batteriestand erreicht Level WARNUNG
+Comment[es]=El nivel de carga de la batería es ADVERTENCIA
+Comment[fr]=Le niveau de charge de la batterie est tombé au niveau AVERTISSEMENT
+Comment[it]=La carica della batteria è sul livello AVVERTENZA
+Comment[ja]=充電量が警告レベルまで下がりました
+Comment[pl]=Naładowanie baterii spadło do poziomu OSTRZEŻENIE
+Comment[pt]=Estado da bateria baixou para o nível de AVISO
+Comment[pt_BR]=A carga da bateria caiu para o nível AVISO
+Comment[ru]=Уровень заряда батареи сменился на ПРЕДУПРЕЖДЕНИ
+Comment[zh_CN]=电池电量降至"警告"级别
+Comment[zh_TW]=電池充電量已降至「警告」層級
+default_sound=KDE_Event_1.ogg
+default_presentation=17
+
+[battery_low_event]
+Name=BatteryLowEvent
+Comment=Battery charge dropped to level LOW
+Comment[cs]=Stav baterie dosáhl NÍZKĚ úrovně
+Comment[de]=Batteriestand erreicht Level NIEDRIG
+Comment[es]=El nivel de carga de la batería es BAJO
+Comment[fr]=Le niveau de charge de la batterie est tombé au niveau FAIBLE
+Comment[it]=La carica della batteria è sul livello BASSA
+Comment[ja]=充電量が低レベルまで下がりました
+Comment[pl]=Naładowanie baterii spadło do poziomu NISKI
+Comment[pt]=Estado da bateria baixou para o nível de BAIXO
+Comment[pt_BR]=A carga da bateria caiu para o nível BAIXO
+Comment[ru]=Состояние батареи изменилось к НИЗКОМУ
+Comment[zh_CN]=电池电量降至"低电量"级别
+Comment[zh_TW]=電池充電量已降至「低」層級
+default_sound=KDE_Event_1.ogg
+default_presentation=17
+
+[battery_critical_event]
+Name=BatteryCriticalEvent
+Comment=Battery charge dropped to level CRITICAL
+Comment[cs]=Stav baterie dosáhl KRITICKÉ úrovně
+Comment[de]=Batteriestand erreicht Level KRITISCH
+Comment[es]=El nivel de carga de la batería es CRÍTICO
+Comment[fr]=Le niveau de charge de la batterie est tombé au niveau CRITIQUE
+Comment[it]=La carica della batteria è sul livello CRITICA
+Comment[ja]=充電量が致命的レベルまで下がりました
+Comment[pl]=Naładowanie baterii spadło do poziomu OSTRZEŻENIE
+Comment[pt]=Estado da bateria baixou para o nível CRÍTICO
+Comment[pt_BR]=A carga da bateria caiu para o nível CRÍTICO
+Comment[ru]=Состояние батареи изменилось к КРИТИЧЕСКОМУ
+Comment[zh_CN]=电池电量降至"电量严重不足"级别
+Comment[zh_TW]=電池充電量已降至「危急」層級
+default_sound=KDE_Event_1.ogg
+default_presentation=17
+
+[autosuspend_event]
+Name=AutosupendEvent
+Comment=Autosuspend is going to be executed
+Comment[cs]=Vykonává se automatické uspání
+Comment[de]=Autosuspend wird ausgeführt
+Comment[es]=Se ejecutará la suspensión automática
+Comment[fr]=La mise en veille automatique va être exécutée
+Comment[it]=Attivazione in corso della sospensione automatica
+Comment[ja]=自動サスペンドが実行されます。
+Comment[pl]=Zostanie wykonane automatyczne uśpienie
+Comment[pt]=Será executada a sustensão automática
+Comment[pt_BR]=A suspensão automática será executada
+Comment[ru]=Запускается автозасыпание
+Comment[zh_CN]=将执行自动暂停
+Comment[zh_TW]=即將執行自動暫停
+default_sound=KDE_Event_2.ogg
+default_presentation=17
+
+[autodimm_down_event]
+Name=AutodimmDownEvent
+Comment=Autodimm dimm the display down
+default_presentation=0
+
+[autodimm_up_event]
+Name=AutodimmUpEvent
+Comment=Autodimm dimm the display up
+default_presentation=0
+
+[scheme_Performance]
+Name=SchemeSwitchToPerformanceEvent
+Comment=Switched to scheme Performance
+Comment[cs]=Powersave přepnut do schématu Výkon
+Comment[de]=Zu Schema Leistung gewechselt.
+Comment[es]=Powersave ha pasado al esquema de rendimiento
+Comment[fr]=La fonction d'économie d'énergie a été basculée sur le profil Performance
+Comment[it]=Powersave attivato nello schema Prestazioni
+Comment[ja]=省電力がスキーム「パフォーマンス」に切り替わりました
+Comment[pl]=Schemat oszczędzania przełączono na Wydajność
+Comment[pt]=Powersave alterou para o esquema de Desempenho
+Comment[pt_BR]=O Powersave mudou para o esquema Desempenhodefault_presentation=0
+Comment[ru]=Управление питанием переключено на схему Производительность
+Comment[zh_CN]=Powersave 切换为"执行"方案
+Comment[zh_TW]=Powersave 已切換至「效能」規劃
+default_presentation=0
+
+[scheme_Powersave]
+Name=SchemeSwitchToPowersaveEvent
+Comment=Switched to scheme Powersave
+Comment[cs]=Powersave přepnut do schématu Úspora energie
+Comment[de]=Zu Schema Energiesparen gewechselt
+Comment[es]=Powersave ha pasado al esquema de ahorro de energía
+Comment[fr]=La fonction d'économie d'énergie a été basculée sur le profil Économie d'énergie
+Comment[it]=Powersave attivato nello schema Risparmio energetico
+Comment[ja]=省電力がスキーム「省電力」に切り替わりました
+Comment[pl]=Schemat oszczędzania przełączono na Oszczędzanie
+Comment[pt]=Powersave alterou para o esquema de Economia
+Comment[pt_BR]=O Powersave mudou para o esquema Powersave
+Comment[ru]=Управление питанием переключено на схему Энергосбережение
+Comment[zh_CN]=Powersave 切换为"省电"方案
+Comment[zh_TW]=Powersave 已切換至 Powersave 規劃
+default_presentation=0
+
+[scheme_Acoustic]
+Name=SchemeSwitchToAcousticEvent
+Comment=Switched to scheme Acoustic
+Comment[cs]=Powersave přepnut do schématu Tichý
+Comment[de]=Zu Schema Akustik gewechselt
+Comment[es]=Powersave ha pasado al esquema acústico
+Comment[fr]=La fonction d'économie d'énergie a été basculée sur le profil Acoustique
+Comment[it]=Powersave attivato nello schema Acustica
+Comment[ja]=省電力がスキーム「アコースティック」に切り替わりました
+Comment[pl]=Schemat oszczędzania przełączono na Hałas
+Comment[pt]=Powersave alterou para o esquema Silencioso
+Comment[pt_BR]=O Powersave mudou para o esquema Acústica
+Comment[ru]=Управление питанием переключилено на схему Шумоподавление
+Comment[zh_CN]=Powersave 切换为"声音"方案
+Comment[zh_TW]=Powersave 已切換至「音效」規劃
+default_presentation=0
+
+[scheme_Presentation]
+Name=SchemeSwitchToPresentationEvent
+Comment=Switched to scheme Presentation
+Comment[cs]=Powersave přepnut do schématu Prezentace
+Comment[de]=Zu Schema Präsentation gewechselt
+Comment[es]=Powersave ha pasado al esquema de presentación
+Comment[fr]=La fonction d'économie d'énergie a été basculée sur le profil Présentation
+Comment[it]=Powersave attivato nello schema Presentazione
+Comment[ja]=省電力がスキーム「プレゼンテーション」に切り替わりました:
+Comment[pl]=Schemat oszczędzania przełączono na Prezentacja
+Comment[pt]=Powersave alterou para o esquema de Apresentação
+Comment[pt_BR]=O Powersave mudou para o esquema Apresentação
+Comment[ru]=Управление питанием переключено на схему Презентация
+Comment[zh_CN]=Powersave 切换为"演示"方案
+Comment[zh_TW]=Powersave 已切換至「簡報」規劃
+default_presentation=0
+
+[scheme_Unknown]
+Name=SchemeSwitchToUnknownEvent
+Comment=Switched to unknown/user defined scheme
+Comment[cs]=Powersave přepnut do neznámého/uživatelem definovaného schématu
+Comment[de]=Zu unbekanntem/benutzerdefiniertem Schema gewechselt
+Comment[es]=Powersave ha pasado a un esquema desconocido o definido por el usuario
+Comment[fr]=La fonction d'économie d'énergie a été basculée sur un profil inconnu/défini par un utilisateur
+Comment[it]=Powersave attivato nello schema sconosciuto/definito dall'utente
+Comment[ja]=省電力が不明/ユーザ定義スキームに切り替わりました:
+Comment[pl]=Schemat oszczędzania przełączono na schemat nieznany lub użytkownika
+Comment[pt]=Powersave alterou para um esquema desconhecido ou definido pelo utilizador
+Comment[pt_BR]=O Powersave mudou para um esquema desconhecido/definido pelo usuário
+Comment[ru]=Управление питанием переключилось на определяемую пользователем схему
+Comment[zh_CN]=Powersave 切换为未知/用户定义的方案。
+Comment[zh_TW]=Powersave 已切換至未知的/使用者定義的規劃
+default_presentation=0
+
+[suspend2disk_event]
+Name=SuspendToDiskEvent
+Comment=Suspend to Disk is started
+Comment[cs]=Uspávání na disk
+Comment[de]='Suspend to Disk' wurde gestartet
+Comment[es]=Se ha iniciado la suspensión en disco
+Comment[fr]=La mise en veille sur disque a été lancée
+Comment[it]=Sospendi su disco avviata
+Comment[ja]=サスペンド(ディスク)を開始しました
+Comment[pl]=Rozpoczęto Usypianie na Dysk
+Comment[pt]=Iniciou-se a Suspensão para o Disco
+Comment[pt_BR]=Suspender para Disco foi iniciado
+Comment[ru]=Запуск Уснуть на диск
+Comment[zh_CN]=启动暂挂到磁盘
+Comment[zh_TW]=已啟動「暫停寫入到磁碟」
+default_presentation=0
+
+[suspend2ram_event]
+Name=SuspendToRamEvent
+Comment=Suspend to RAM is started
+Comment[cs]=Uspávání do RAM
+Comment[de]='Suspend to RAM' wurde gestartet
+Comment[es]=Se ha iniciado la suspensión en RAM
+Comment[fr]=La mise en veille sur RAM a été lancée
+Comment[it]=Sospensione su RAM avviata
+Comment[ja]=サスペンド(RAM)を開始しました
+Comment[pl]=Rozpoczęto Usypianie do pamięci RAM
+Comment[pt]=Iniciou-se a Suspensão para a Memória
+Comment[pt_BR]=Suspender para RAM foi iniciado
+Comment[ru]=Запуск Уснуть в память
+Comment[zh_CN]=启动暂挂到 RAM
+Comment[zh_TW]=已啟動「暫停寫入到 RAM」
+default_presentation=0
+
+[standby_event]
+Name=StandbyEvent
+Comment=Standby is started
+Comment[cs]=Přepínání do pohotovosti
+Comment[de]=Stand-by wurde gestartet
+Comment[es]=Se ha iniciado el modo de stand-by
+Comment[fr]=La mise en attente a été lancée
+Comment[it]=Standby avviato
+Comment[ja]=スタンバイを開始しました
+Comment[pl]=Przechodzenie w Stan Uśpienia
+Comment[pt]=Iniciou-se o StandBy
+Comment[pt_BR]=O Standby foi iniciado
+Comment[ru]=Запуск ждущего режима
+Comment[zh_CN]=启动待机
+Comment[zh_TW]=已啟動「待機」
+default_presentation=0
+
+[resume_from_suspend2disk_event]
+Name=ResumeFromSuspendToDiskEvent
+Comment=Resumed from Suspend to Disk
+Comment[cs]=Probouzení z uspání na disk
+Comment[de]=Wiederaufnahme nach 'Suspend to Disk'
+Comment[es]=Reanudación desde suspensión en disco
+Comment[fr]=Reprise après la mise en veille sur disque
+Comment[it]=Ripristinato da Sospendi su disco
+Comment[ja]=サスペンド(ディスク)から再開しました
+Comment[pl]=Wznowiono po Uśpieniu na Dysk
+Comment[pt]=O Sistema acordou da Suspensão para Disco
+Comment[pt_BR]=Continuação a partir da Suspensão para Disco
+Comment[ru]=Возврат из режима 'Уснуть на диск'
+Comment[zh_CN]=已从暂挂到磁盘恢复
+Comment[zh_TW]=從「暫停寫入到磁碟」繼續
+default_presentation=0
+
+[resume_from_suspend2ram_event]
+Name=ResumeFromSuspendToRamEvent
+Comment=Resumed from Suspend to RAM 
+Comment[cs]=Probouzení z uspání do RAM
+Comment[de]=Wiederaufnahme nach 'Suspend to RAM'
+Comment[es]=Reanudación desde suspensión en RAM
+Comment[fr]=Reprise après la mise en veille sur RAM
+Comment[it]=Ripristinato da Sospendi su RAM
+Comment[ja]=サスペンド(RAM)から再開しました
+Comment[pl]=Wznowiono po Uśpieniu do pamięci RAM
+Comment[pt]=O Sistema acordou da Suspensão para Memória
+Comment[pt_BR]=Continuação a partir da Suspensão para a Memória
+Comment[ru]=Возврат из режима 'уснуть в память'
+Comment[zh_CN]=从“暂挂到 RAM”继续执行
+Comment[zh_TW]=從「暫停寫入到 RAM」繼續執行
+default_presentation=0
+
+[resume_from_standby_event]
+Name=ResumeFromStandbyEvent
+Comment=Resumed from Standby
+Comment[cs]=Probouzení z pohotovosti
+Comment[de]=Wiederaufnahme nach Stand-by
+Comment[es]=Reanudación desde stand-by
+Comment[fr]=Reprise après la mise en attente
+Comment[it]=Ripristinato da Standby
+Comment[ja]=スタンバイから再開しました
+Comment[pl]=Wznowiono ze Stanu Uśpienia
+Comment[pt]=O Sistema acordou do StandBy
+Comment[pt_BR]=Continuação a partir do Standby
+Comment[ru]=Возврат из ждущего режима
+Comment[zh_CN]=已从待机恢复
+Comment[zh_TW]=從「待機」繼續
+default_presentation=0
+
+[lid_closed_event]
+Name=LidCloseEvent
+Comment=The lid was closed
+Comment[cs]=Víko zavřeno
+Comment[de]=Der Laptop wurde geschlossen
+Comment[es]=Tapa cerrada
+Comment[fr]=L'écran était fermé
+Comment[it]=Lo schermo è stato chiuso
+Comment[ja]=Lidがクローズしました
+Comment[pl]=Pokrywa została zamknięta
+Comment[pt]=A tampa foi fechada
+Comment[pt_BR]=A tampa foi fechada
+Comment[ru]=Дисплей ноутбука закрыт
+Comment[zh_CN]=此盖已关闭
+Comment[zh_TW]=蓋子已關閉
+default_presentation=0
+
+[lid_opened_event]
+Name=LidOpenedEvent
+Comment=The lid was opened
+Comment[cs]=Víko otevřeno
+Comment[de]=Der Laptop wurde geöffnet
+Comment[es]=Tapa abierta
+Comment[fr]=L'écran était ouvert
+Comment[it]=Lo schermo è stato aperto
+Comment[ja]=Lidがオープンしました
+Comment[pl]=Pokrywa została otwarta
+Comment[pt]=A tampa foi aberta
+Comment[pt_BR]=A tampa foi aberta
+Comment[ru]=Дисплей ноутбука открыт
+Comment[zh_CN]=此盖已打开
+Comment[zh_TW]=蓋子已開啟
+default_presentation=0
+
+[brightness_up_event]
+Name=BrightnessUpEvent
+Comment=The brightness up key was pressed
+default_presentation=0
+
+[brightness_down_event]
+Name=BrightnessDownEvent
+Comment=The brightness down key was pressed
+default_presentation=0

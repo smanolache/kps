@@ -1,0 +1,17 @@
+kpowersave for Debian
+=====================
+
+Access control
+--------------
+
+kpowersave uses HAL as power management backend. The D-Bus configuration file
+/etc/dbus-1/system.d/hal.conf defines, who is allowed to access the HAL service.
+
+There are two ways to grant users access to the HAL power management functions:
+
+a) Add the user to group "powerdev". Use a command like "adduser user powerdev"
+or one of the graphical user management frontends.
+After that you have to reload D-Bus with the command "/etc/init.d/dbus reload".
+
+b) Dynamically grant access to locally logged in users using the "at_console"
+policy. This requires that the "consolekit" package is installed.

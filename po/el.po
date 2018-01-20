@@ -1,0 +1,1677 @@
+# translation of kpowersave.el.po to Greek
+# translation of el.po to
+# translation of el.po to
+# translation of el.po to
+# translation of el.po to
+# translation of el.po to
+# This file is distributed under the same license as the PACKAGE package.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER.
+#
+# Antje Faber <afaber@suse.de>, 2004.
+# Klara Cihlarova <koty@seznam.cz>, 2004.
+# Filippos Papadopoulos <filip@cs.uoi.gr>, 2004, 2005.
+# Hellenic SuSE Translators Group <hstg@billg.gr>, 2005.
+# Kostas Boukouvalas <quantis@hellug.gr>, 2005, 2007.
+# Hellenic SuSE Translation Team <hstg@billg.gr>, 2005.
+# Hellenic SuSE Translation Group <hstg@billg.gr>, 2005.
+# Vasileios Giannakopoulos <billg@hellug.gr>, 2007.
+msgid ""
+msgstr ""
+"Project-Id-Version: kpowersave.el\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2007-08-10 03:16+0200\n"
+"PO-Revision-Date: 2007-04-01 23:17+0300\n"
+"Last-Translator: Kostas Boukouvalas <quantis@hellug.gr>\n"
+"Language-Team: Greek <i18ngr@lists.hellug.gr>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.11.4\n"
+"Plural-Forms:  nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
+"10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#: detailed_Dialog.cpp:228
+#, fuzzy
+msgid "kpowersave"
+msgstr "Powersave"
+
+#: detailed_Dialog.cpp:229
+msgid "General Information"
+msgstr "Γενικές Πληροφορίες"
+
+#: detailed_Dialog.cpp:232
+msgid "Battery Status"
+msgstr "Κατάσταση Μπαταρίας"
+
+#: detailed_Dialog.cpp:233
+msgid "AC Adapter"
+msgstr "Μετασχηματιστής AC"
+
+#: detailed_Dialog.cpp:234 detaileddialog.cpp:391
+msgid "plugged in"
+msgstr "στο ρεύμα"
+
+#: detailed_Dialog.cpp:235
+#, fuzzy
+msgid "Power Consumtion: "
+msgstr "Κατανάλωση ενέργειας"
+
+#: detailed_Dialog.cpp:237
+msgid "Processor Status"
+msgstr "Κατάσταση Επεξεργαστή"
+
+#: detailed_Dialog.cpp:238 blacklistedit_Dialog.cpp:130 info_Dialog.cpp:198
+#: configure_Dialog.cpp:838
+msgid "OK"
+msgstr ""
+
+#: blacklisteditdialog.cpp:60
+msgid "General Blacklist"
+msgstr "Γενική Μαύρη Λίστα"
+
+#: blacklisteditdialog.cpp:63
+msgid "Scheme: "
+msgstr "Σχήμα: "
+
+#: blacklisteditdialog.cpp:114
+msgid "Selected entry removed."
+msgstr "Η επιλεγμένη εγγραφή αφαιρέθηκε."
+
+#: blacklisteditdialog.cpp:117
+msgid "Could not remove the selected entry."
+msgstr "Δεν ήταν δυνατή η αφαίρεση της συγκεκριμένης εγγραφής."
+
+#: blacklisteditdialog.cpp:137
+msgid "Inserted new entry."
+msgstr "Εισαγωγή νέας εγγραφής."
+
+#: blacklisteditdialog.cpp:141
+msgid "Entry exists already. Did not insert new entry."
+msgstr "Η εγγραφή υπάρχει ήδη. Μην εισάγετε νέα."
+
+#: blacklisteditdialog.cpp:144
+msgid "Empty entry was not inserted."
+msgstr "Η άδεια εγγραφή δεν εισήχθηκε."
+
+#: inactivity.cpp:298
+msgid ""
+"Could not start 'pidof'. Could not autosuspend the machine.\n"
+"Please check your installation."
+msgstr ""
+"Αδυναμία εκκίνησης 'pidof'. Αδυναμία αυτόματης ανάκλησης του μηχανήματος.\n"
+"Παρακαλώ ελέγξτε την εγκατάσταση σας."
+
+#: blacklistedit_Dialog.cpp:129
+msgid "Autosuspend Blacklist Edit"
+msgstr "Επεξεργασία Μαύρης Λίστας Αυτόματου Κλεισίματος"
+
+#: blacklistedit_Dialog.cpp:132 configuredialog.cpp:1079
+#: configure_Dialog.cpp:836
+#, fuzzy
+msgid "Cancel"
+msgstr "&Ακύρωση"
+
+#: blacklistedit_Dialog.cpp:135
+msgid "Add"
+msgstr "Προσθήκη"
+
+#: blacklistedit_Dialog.cpp:136
+#, fuzzy
+msgid "Remove"
+msgstr "Αφαίρεσ&η"
+
+#: infodialog.cpp:76 infodialog.cpp:78 main.cpp:55
+#, fuzzy
+msgid "KPowersave"
+msgstr "Powersave"
+
+#: configuredialog.cpp:116 configuredialog.cpp:121 configuredialog.cpp:721
+msgid " - not supported"
+msgstr ""
+
+#: configuredialog.cpp:150 configuredialog.cpp:317 detaileddialog.cpp:432
+#: kpowersave.cpp:192 settings.cpp:66 configure_Dialog.cpp:876
+msgid "Performance"
+msgstr "Απόδοση"
+
+#: configuredialog.cpp:154 configuredialog.cpp:319 detaileddialog.cpp:438
+#: kpowersave.cpp:194 settings.cpp:68 configure_Dialog.cpp:878
+msgid "Powersave"
+msgstr "Powersave"
+
+#: configuredialog.cpp:159 configuredialog.cpp:321 kpowersave.cpp:1478
+#: settings.cpp:70
+msgid "Presentation"
+msgstr "Παρουσίαση"
+
+#: configuredialog.cpp:164 configuredialog.cpp:323 kpowersave.cpp:1473
+#: settings.cpp:72
+msgid "Acoustic"
+msgstr "Ακουστικό"
+
+#: configuredialog.cpp:169 configuredialog.cpp:171 configuredialog.cpp:172
+#: configuredialog.cpp:173 kpowersave.cpp:1484
+msgid "Advanced Powersave"
+msgstr "Για Προχωρημένους Powersave"
+
+#: configuredialog.cpp:271
+msgid ""
+"This enables specific screen saver settings. \n"
+"Note: If selected, the global screen saver settings are \n"
+"overwritten while kpowersave runs."
+msgstr ""
+"Αυτό ενεργοποιεί συγκεκριμένες ρυθμίσεις προστασίας οθόνης. \n"
+"Σημείωση: Εάν επιλεγεί, οι καθολικές ρυθμίσεις προστασίας οθόνης θα \n"
+"επανεγγραφούν ενώ τρέχει ο kpowersave."
+
+#: configuredialog.cpp:274
+msgid ""
+"This disables the screen saver. \n"
+"Note: If selected, the global screen saver settings are \n"
+"overwritten while kpowersave runs."
+msgstr ""
+"Αυτό απενεργοποιεί την προστασία οθόνης. \n"
+"Σημείωση: Εάν επιλεγεί, οι καθολικές ρυθμίσεις προστασίας οθόνης θα \n"
+"επανεγγραφούν ενώ τρέχει ο kpowersave."
+
+#: configuredialog.cpp:277
+msgid ""
+"This blanks the screen instead of using a specific screen saver. \n"
+"Note: This may work only with KScreensaver."
+msgstr ""
+"Αυτό σβήνει μόνο την οθόνη αντί να χρησιμοποιεί μία συγκεκριμένη προστασία "
+"οθόνης. \n"
+"Σημείωση: Αυτό μπορεί να δουλέψει μόνο με το KScreensaver."
+
+#: configuredialog.cpp:279
+msgid ""
+"This enables specific DPMS settings. \n"
+"Note: If selected, the global DPMS settings are \n"
+"overwritten while kpowersave runs."
+msgstr ""
+"Αυτό ενεργοποιεί συγκεκριμένες ρυθμίσεις DPMS. \n"
+"Σημείωση:Εάν επιλεγεί, οι καθολικές ρυθμίσεις DPMS θα επανεγγραφούν ενώ \n"
+"τρέχει ο kpowersave."
+
+#: configuredialog.cpp:282
+msgid "This disables DPMS support."
+msgstr "Αυτό απενεργοποιεί την υποστήριξη DPMS."
+
+#: configuredialog.cpp:283
+msgid "If selected, the screen is locked on suspend or standby."
+msgstr "Εάν επιλεχθεί, η οθόνη κλειδώνεται σε αναστολή ή αναμονή."
+
+#: configuredialog.cpp:284
+msgid "If selected, the screen is locked if the lid close event is triggered."
+msgstr ""
+"Εάν επιλεχθεί, η οθόνη κλειδώνεται εάν το γεγονός 'lid close' ενεργοποιηθεί."
+
+#: configuredialog.cpp:286
+msgid ""
+"Check this box to enable or disable automatic suspension of the computer."
+msgstr ""
+"Επιλέξτε αυτό το κουτί για να ενεργοποιήσετε ή να απενεργοποιήσετε το "
+"αυτόματο κλείσιμο του υπολογιστή."
+
+#: configuredialog.cpp:288
+msgid ""
+"Activate this action if the user was inactive for the defined time \n"
+"(greater than 0 minutes). If empty, nothing happens."
+msgstr ""
+"Ενεργοποιήστε αυτήν την ενέργεια, εάν ο χρήστης ήταν τον ορισμένο χρόνο \n"
+"(>0 λεπτά) ανενεργός. Εάν επιλέξετε την άδεια καταχώρηση τίποτα δε συμβαίνει."
+
+#: configuredialog.cpp:291
+msgid "All scheme-related screen saver and DPMS settings."
+msgstr ""
+"Όλες οι ρυθμίσεις που έχουν σχέση με τα σχήματα του screen saver και του "
+"DPMS."
+
+#: configuredialog.cpp:292
+msgid "All scheme-related display brightness settings."
+msgstr "Όλες οι ρυθμίσεις του σχήματος που σχετίζονται με τη φωτεινότητα."
+
+#: configuredialog.cpp:293
+msgid "All scheme-related automatic suspend settings."
+msgstr "Όλες οι ρυθμίσεις που έχουν σχέση με τα σχήματα του κλεισίματος."
+
+#: configuredialog.cpp:295
+msgid ""
+"Here you can change the brightness of your display. \n"
+"Use the slider to change the brightness directly for \n"
+"testing. To reset back to previous level, please press \n"
+"the 'Reset' button. "
+msgstr ""
+"Εδώ μπορείτε να αλλάξετε τη φωτεινότητα της οθόνης σας. \n"
+"Χρησιμοποιήστε τον κανόνα για να αλλάξετε την φωτεινότητα απευθείας ή \n"
+"δοκιμαστικά. Για να επαναφέρετε το προηγούμενο επίπεδο, παρακαλώ πατήστε \n"
+"το κουμπί 'Επαναφορά'."
+
+#: configuredialog.cpp:299
+msgid "Use this button to set back the slider and the display brightness."
+msgstr ""
+"Χρησιμοποιήστε αυτό το κουμπί για να πάτε πίσω τον κανόνα και την "
+"φωτεινότητα της οθόνης."
+
+#: configuredialog.cpp:352
+msgid "Press this button to delete the selected scheme."
+msgstr ""
+
+#: configuredialog.cpp:357
+msgid "You can't delete the current AC or battery scheme."
+msgstr ""
+
+#: configuredialog.cpp:363
+msgid "You can't delete this default scheme."
+msgstr ""
+
+#: configuredialog.cpp:546
+msgid ""
+"Your hardware supports to change the brightness. The values of the slider "
+"are in percent and mapped to the available brightness levels of your "
+"hardware."
+msgstr ""
+"Το υλικό σας υποστηρίζει την αλλαγή της φωτεινότητας. Οι τιμές του κανόνα "
+"είναι σε επι τοις εκατό και αντιστοιχούν στα διαθέσιμα επίπεδα φωτεινότητας "
+"του υλικού."
+
+#: configuredialog.cpp:553
+msgid ""
+"Your Hardware currently not support changing the brightness of your display."
+msgstr ""
+"Το υλικό σας αυτή τη στιγμή δεν υποστηρίζει αλλαγή της φωτεινότητας της "
+"οθόνης."
+
+#: configuredialog.cpp:664
+msgid "Select Automatically"
+msgstr "αυτόματη επιλογή"
+
+#: configuredialog.cpp:665
+msgid "KScreensaver"
+msgstr "KScreensaver"
+
+#: configuredialog.cpp:666
+msgid "XScreensaver"
+msgstr "XScreensaver"
+
+#: configuredialog.cpp:667
+msgid "xlock"
+msgstr "xlock"
+
+#: configuredialog.cpp:668
+msgid "GNOME Screensaver"
+msgstr "Προστασία Οθόνης GNOME"
+
+#: configuredialog.cpp:930
+msgid ""
+"There are unsaved changes in the active scheme.\n"
+"Apply the changes before jumping to the next scheme or discard the changes?"
+msgstr ""
+"Υπάρχουν μη αποθηκευμένες αλλαγές στο ενεργό σχήμα.\n"
+"Θέλετε να εφαρμοστούν οι αλλαγές πριν την αλλαγή στο επόμενο σχήμα ή να "
+"παραβλεφθούν;"
+
+#: configuredialog.cpp:933 configuredialog.cpp:983
+msgid "Unsaved Changes"
+msgstr "Μη αποθηκευμένες αλλαγές"
+
+#: configuredialog.cpp:981
+msgid ""
+"There are unsaved changes.\n"
+"Apply the changes before cancel or discard the changes?"
+msgstr ""
+"Υπάρχουν αλλαγές που δεν έχουν σωθεί.\n"
+"Θέλετε να εφαρμόσετε τις αλλαγές πριν την ακύρωση ή να παραλειφθούν;"
+
+#: configuredialog.cpp:1032
+msgid "Please insert a name for the new scheme:"
+msgstr ""
+
+#: configuredialog.cpp:1038
+#, fuzzy
+msgid "KPowersave Configuration"
+msgstr "Διάλογος Πληροφοριών KPowersave"
+
+#: configuredialog.cpp:1046
+msgid "Error: A scheme with this name already exist.\n"
+msgstr ""
+
+#: configuredialog.cpp:1076
+msgid "Do you really want to delete the %1 scheme?"
+msgstr ""
+
+#: configuredialog.cpp:1078
+#, fuzzy
+msgid "Confirm delete scheme"
+msgstr "Ρυθμίστε το τρέχον σχήμα."
+
+#: configuredialog.cpp:1079 configure_Dialog.cpp:883
+msgid "Delete"
+msgstr ""
+
+#: configuredialog.cpp:1095
+#, fuzzy
+msgid "Could not delete the selected scheme."
+msgstr "Δεν ήταν δυνατή η αφαίρεση της συγκεκριμένης εγγραφής."
+
+#: configuredialog.cpp:1324
+msgid ""
+"<b>Note:</b> If you select this option, the computer will suspend or standby "
+"if the current user is inactive for the defined time even if somebody is "
+"logged in remotely to the X server.<br><br> This feature can also produce "
+"problems with some programs, such as video players or cd burner. These "
+"programs can be blacklisted by checking <b>Enable scheme-specific blacklist</"
+"b> and click <b>Edit Blacklist...</b>. If this does not help, report the "
+"problem or deactivate autosuspend.<br><br> Really use this option?"
+msgstr ""
+"<b>Σημείωση</b> Εαν επιλέξετε αυτή τη ρύθμιση ο υπολογιστής σας θα μπει σε "
+"αναστολή η αναμονή εαν ο τρέχων χρήστης είναι ανενεργός για τον καθορισμένο "
+"χρόνο ακόμα και αν κάποιος είναι συνδεμένος απομακρυσμένα στον X server."
+"<br><br> Αυτό το χαρακτηριστικό μπορεί επίσης να προκαλέσει προβλήματα σε "
+"ορισμένα προγράμματα όπως αναπαραγωγείς βίντεο και εγγραφείς cd. Αυτά τα "
+"προγράμματα μπορούν να καταλογιστούν στην μαύρη λίστα με επιλογή "
+"<b>Ενεργοποίησης μαύρης λίστας συγκεκριμένου σχήματος</b> και πάτημα "
+"<b>Επεξεργασία Μαύρης Λίστας...</b>. Εαν αυτό δε βοηθήσει, αναφέρετε το "
+"πρόβλημα η απενεργοποιήστε την αυτόματη ανάκληση.<br><br> Πράγματι χρήση "
+"αυτής της επιλογής;"
+
+#: configuredialog.cpp:1402 configuredialog.cpp:1532
+msgid ""
+"The blacklist of the selected scheme is empty. Import the general blacklist?"
+msgstr ""
+"Η μαύρη λίστα των επιλεγμένων σχημάτων είναι άδεια. Εισαγωγή της γενικής "
+"μαύρης λίστας;"
+
+#: configuredialog.cpp:1404 configuredialog.cpp:1534
+msgid "Import"
+msgstr "Εισαγωγή"
+
+#: configuredialog.cpp:1404 configuredialog.cpp:1534
+msgid "Do Not Import"
+msgstr "Να Μην Εισαχθεί"
+
+#: configuredialog.cpp:1416
+#, fuzzy
+msgid "General Autosuspend Blacklist"
+msgstr "Επεξεργασία Μαύρης Λίστας Αυτόματου Κλεισίματος"
+
+#: configuredialog.cpp:1546
+#, fuzzy
+msgid "General Autodimm Blacklist"
+msgstr "Γενική Μαύρη Λίστα"
+
+#: configuredialog.cpp:1779 configuredialog.cpp:1816
+msgid "Shutdown"
+msgstr ""
+
+#: configuredialog.cpp:1781 configuredialog.cpp:1819
+msgid "Logout Dialog"
+msgstr ""
+
+#: configuredialog.cpp:1784 configuredialog.cpp:1822 kpowersave.cpp:182
+#: kpowersave.cpp:2096 kpowersave.cpp:2156 kpowersave.cpp:2247
+msgid "Suspend to Disk"
+msgstr "Suspend to Disk"
+
+#: configuredialog.cpp:1787 configuredialog.cpp:1825 kpowersave.cpp:186
+#: kpowersave.cpp:2101 kpowersave.cpp:2161 kpowersave.cpp:2250
+msgid "Suspend to RAM"
+msgstr "Suspend to RAM"
+
+#: configuredialog.cpp:1790 configuredialog.cpp:1828
+#, fuzzy
+msgid "CPU Powersave policy"
+msgstr "Powersave"
+
+#: configuredialog.cpp:1793 configuredialog.cpp:1831
+msgid "CPU Dynamic policy"
+msgstr ""
+
+#: configuredialog.cpp:1796 configuredialog.cpp:1834
+#, fuzzy
+msgid "CPU Performance policy"
+msgstr "Απόδοση"
+
+#: configuredialog.cpp:1799 configuredialog.cpp:1837
+#, fuzzy
+msgid "Set Brightness to"
+msgstr "Φωτεινότητα"
+
+#: main.cpp:43
+#, fuzzy
+msgid "KDE Frontend for Power Management, Battery Monitoring and Suspend"
+msgstr ""
+"Περιβάλλον εργασίας KDE για το powersave Πακέτο, Παρακολούθηση Μπαταρίας και "
+"Γενική Υποστήριξη Διαχείρισης Ενέργειας"
+
+#: main.cpp:45
+#, fuzzy
+msgid "Force a new check for ACPI support"
+msgstr "Εξαναγκασμός νέου ελέγχου για υποστήριξη ACPI\n"
+
+#: main.cpp:46
+msgid "Trace function entry and leave points for debug\n"
+msgstr ""
+
+#: main.cpp:59
+msgid "Current maintainer"
+msgstr "Τρέχων συντηρητής"
+
+#: main.cpp:62
+#, fuzzy
+msgid "Powersave developer and for D-Bus integration"
+msgstr "Προγραμματιστής του powersave και για ενσωμάτωση DBUS"
+
+#: main.cpp:64
+msgid "Powersave developer and tester"
+msgstr "Προγραμματιστής του powersave και δοκιμαστής"
+
+#: main.cpp:66
+msgid "Added basic detailed dialog"
+msgstr "Προσθήκη βασικού λεπτομερούς διαλόγου"
+
+#: main.cpp:67
+msgid "Packaging Debian and Ubuntu"
+msgstr "Πακετάρισμα Debian και Ubuntu"
+
+#: detaileddialog.cpp:61
+msgid "KPowersave Information Dialog"
+msgstr "Διάλογος Πληροφοριών KPowersave"
+
+#: detaileddialog.cpp:65 configure_Dialog.cpp:882 configure_Dialog.cpp:922
+msgid "Miscellaneous"
+msgstr "Διάφορα"
+
+#: detaileddialog.cpp:66
+msgid "CPUs"
+msgstr "CPUs"
+
+#: detaileddialog.cpp:73 detaileddialog.cpp:453
+msgid "Battery state:"
+msgstr "Κατάσταση μπαταρίας:"
+
+#: detaileddialog.cpp:79
+msgid "Total:"
+msgstr "Συνολικά:"
+
+#: detaileddialog.cpp:81 detaileddialog.cpp:83
+msgid "Battery %1"
+msgstr "Μπαταρία %1"
+
+#: detaileddialog.cpp:114
+msgid "Processor %1"
+msgstr "Επεξεργαστής %1"
+
+#: detaileddialog.cpp:230
+#, fuzzy
+msgid "not present"
+msgstr "μη παρόν."
+
+#: detaileddialog.cpp:243
+msgid "charged"
+msgstr "φορτισμένη"
+
+#: detaileddialog.cpp:245
+msgid "%1:%2 h until charged"
+msgstr "%1:%2 h μέχρι τη φόρτιση"
+
+#: detaileddialog.cpp:248
+msgid "%1:%2 h remaining"
+msgstr "%1:%2 h απομένουν"
+
+#: detaileddialog.cpp:253 detaileddialog.cpp:441 detaileddialog.cpp:468
+msgid "unknown"
+msgstr "άγνωστη"
+
+#: detaileddialog.cpp:325 detaileddialog.cpp:368
+msgid "%v MHz"
+msgstr "%v MHz"
+
+#: detaileddialog.cpp:330 detaileddialog.cpp:363 dummy.cpp:58
+msgid "deactivated"
+msgstr "απενεργοποιημένο"
+
+#: detaileddialog.cpp:395
+msgid "unplugged"
+msgstr "μη συνδεμένο"
+
+#: detaileddialog.cpp:412
+msgid "Current Scheme: "
+msgstr "Τρέχον Σχήμα: "
+
+#: detaileddialog.cpp:429
+msgid "Current CPU Frequency Policy:"
+msgstr "Τρέχουσα Πολιτική Συχνότητας CPU:"
+
+#: detaileddialog.cpp:435 kpowersave.cpp:193 configure_Dialog.cpp:877
+msgid "Dynamic"
+msgstr "Δυναμική"
+
+#: detaileddialog.cpp:456
+msgid "Critical"
+msgstr "Κρίσιμο"
+
+#: detaileddialog.cpp:459
+msgid "Low"
+msgstr "Χαμηλή"
+
+#: detaileddialog.cpp:462 kpowersave.cpp:277 kpowersave.cpp:652
+#: kpowersave.cpp:659 kpowersave.cpp:705 kpowersave.cpp:713 kpowersave.cpp:761
+#: kpowersave.cpp:769 kpowersave.cpp:817 kpowersave.cpp:824
+#: kpowersave.cpp:1131 kpowersave.cpp:1243 kpowersave.cpp:1272
+#: kpowersave.cpp:1610 kpowersave.cpp:1670 kpowersave.cpp:2186
+msgid "Warning"
+msgstr "Προσοχή"
+
+#: detaileddialog.cpp:465
+msgid "ok"
+msgstr "ΟΚ"
+
+#: detaileddialog.cpp:474 detaileddialog.cpp:477
+msgid "Set brightness supported:"
+msgstr "Υποστηρίζεται ρύθμιση της φωτεινότητας:"
+
+#: detaileddialog.cpp:475
+msgid "yes"
+msgstr "ναι"
+
+#: detaileddialog.cpp:478
+msgid "no"
+msgstr "όχι"
+
+#: detaileddialog.cpp:481 detaileddialog.cpp:485
+#, fuzzy
+msgid "HAL Daemon:"
+msgstr "Δαίμονας HAL:"
+
+#: detaileddialog.cpp:482
+msgid "running"
+msgstr "εκτελείται"
+
+#: detaileddialog.cpp:486
+msgid "not running"
+msgstr "δεν εκτελείται"
+
+#: info_Dialog.cpp:197
+msgid "Information"
+msgstr "Πληροφορίες"
+
+#: dummy.cpp:36
+msgid "If the current desktop user is inactive, dim the display to:"
+msgstr ""
+"Εαν ο τρέχων χρήστης επιφάνειας εργασίας είναι ανενεργός, μείωσε τη "
+"φωτεινότητα σε:"
+
+#: dummy.cpp:37
+msgid "Enable dim display on inactivity"
+msgstr "Ενεργοποίηση φωτεινότητας οθόνης σε ανενεργεία"
+
+#: dummy.cpp:38
+msgid "Blacklist"
+msgstr "Μαύρη Λίστα"
+
+#: dummy.cpp:39
+msgid ""
+"Here you can add programs which should, if running, prevent the dimming of "
+"the display."
+msgstr ""
+"Εδώ μπορείτε να προσθέσετε προγράμματα τα οποία θα μπορούσαν, εαν "
+"εκτελεστούν, να βοηθήσουν στο μη σβήσιμο της οθόνης."
+
+#: dummy.cpp:41
+msgid "Would you like to import a predefined blacklist?"
+msgstr "Θέλετε να εισάγετε μια προκαθορισμένη μαύρη λίστα;"
+
+#: dummy.cpp:42
+msgid "Disable CPUs/Cores"
+msgstr "Απενεργοποίηση CPUs/Πυρήνων"
+
+#: dummy.cpp:43
+msgid "Max. running CPUs:"
+msgstr "Μέγιστος αριθμός CPUs που εκτελούνται:"
+
+#: dummy.cpp:44
+msgid "Max. running CPUs/Cores:"
+msgstr "Μέγιστος αριθμός CPUs/Πυρήνων που εκτελούνται:"
+
+#: dummy.cpp:45
+msgid "Min. running CPUs:"
+msgstr "Ελάχιστος αριθμός CPUs που εκτελούνται:"
+
+#: dummy.cpp:46
+msgid "Min. running CPUs/Cores:"
+msgstr "Ελάχιστος αριθμός CPUs/Πυρήνων που εκτελούνται:"
+
+#: dummy.cpp:47
+#, fuzzy
+msgid "Enable to switch off CPUs/cores"
+msgstr "Ενεργοποίηση του διακόπτη για CPUs/Πυρήνες"
+
+#: dummy.cpp:48
+msgid "You have a multiprocessor/multicore machine."
+msgstr "Έχετε ένα μηχάνημα με πολλούς επεξεργαστές/πυρήνες."
+
+#: dummy.cpp:49
+msgid ""
+"You can disable CPUs/cores to reduce power consumption and save battery "
+"power."
+msgstr ""
+"Μπορείτε να απενεργοποιήσετε CPUs/πυρήνες για να μειώσετε την κατανάλωση "
+"ρεύματος και να σώσετε αποθέματα μπαταρίας."
+
+#: dummy.cpp:50
+msgid "Device"
+msgstr "Συσκευή"
+
+#: dummy.cpp:51
+msgid "Devices"
+msgstr "Συσκευές"
+
+#: dummy.cpp:52
+msgid "Device class"
+msgstr "Τάξη συσκευής"
+
+#: dummy.cpp:53
+msgid "activate"
+msgstr "ενεργοποίηση"
+
+#: dummy.cpp:54
+msgid "Activate"
+msgstr "Ενεργοποίηση"
+
+#: dummy.cpp:55
+msgid "deactivate"
+msgstr "απενεργοποίηση"
+
+#: dummy.cpp:56
+msgid "Deactivate"
+msgstr "Απενεργοποίηση"
+
+#: dummy.cpp:57
+msgid "activated"
+msgstr "ενεργοποιημένο"
+
+#: dummy.cpp:59
+msgid "do nothing"
+msgstr "μη κάνεις τίποτα"
+
+#: dummy.cpp:60
+msgid "Deactivate following devices:"
+msgstr "Απενεργοποίηση των ακόλουθων συσκευών:"
+
+#: dummy.cpp:61
+msgid "Activate following devices"
+msgstr "Ενεργοποίηση των ακόλουθων συσκευών"
+
+#: dummy.cpp:62
+msgid "Reactivate following devices"
+msgstr "Επανενεργοποίηση των ακόλουθων συσκευών"
+
+#: dummy.cpp:63
+msgid "Deactivate following device classes:"
+msgstr "Απενεργοποίηση των ακόλουθων τάξεων συσκευών:"
+
+#: dummy.cpp:64
+msgid "Activate following devices classes"
+msgstr "Ενεργοποίηση των ακόλουθων τάξεων συσκευών"
+
+#: dummy.cpp:65
+msgid "Reactivate following device classes"
+msgstr "Επανενεργοποίηση των ακόλουθων τάξεων συσκευών"
+
+#: dummy.cpp:66
+msgid "If the scheme switched all devices are again activated."
+msgstr "Εαν αυτό το σχήμα άλλαξε όλες οι συσκευές είναι ξανά ενεργοποιημένες."
+
+#: dummy.cpp:67
+msgid "This is a experimental feature."
+msgstr "Αυτό είναι ένα πειραματικό χαρακτηριστικό."
+
+#: dummy.cpp:68
+msgid "If you have problems with this feature, please report them."
+msgstr ""
+"Εαν έχετε προβλήματα με αυτό το χαρακτηριστικό, παρακαλούμε να τα αναφέρετε."
+
+#: dummy.cpp:69
+msgid "Select one of the available devices and click on "
+msgstr "Επιλέξτε μια από τις διαθέσιμες συσκευές και πατήστε on "
+
+#: dummy.cpp:70
+msgid "Select one of the available device classes and click on "
+msgstr "Επιλέξτε μια από τις διαθέσιμες τάξεις συσκευών και πατήστε on "
+
+#: dummy.cpp:71
+msgid "Select one or more of the available devices and click on "
+msgstr ""
+"Επιλέξτε μια ή περισσότερες από τις διαθέσιμες συσκευές και πατήστε on "
+
+#: dummy.cpp:72
+msgid "Select one or more of the available device classes and click on "
+msgstr ""
+"Επιλέξτε μια ή περισσότερες από τις διαθέσιμες τάξεις συσκευών και πατήστε "
+"on "
+
+#: dummy.cpp:73
+msgid ""
+"Please note: If you e.g. deactivate a network device you may lose your "
+"internet connection."
+msgstr ""
+"Παρακαλώ σημειώστε: Εαν έχετε π.χ. απενεργοποιήσει μια δικτυακή συσκευή "
+"μπορεί να χάσετε την διασύνδεση δικτύου σας."
+
+#: dummy.cpp:75
+msgid ""
+"<b>Note:</b> If you select this option, the computer will suspend or standby "
+"if the current user is inactive for the defined time. <br><br> This feature "
+"can also produce problems with some programs, such as video players or cd "
+"burner. These programs can be blacklisted by checking <b>Enable scheme-"
+"specific blacklist</b> and click <b>Edit Blacklist...</b>. If this does not "
+"help, report the problem or deactivate autosuspend.<br><br> Really use this "
+"option?"
+msgstr ""
+"<b>Σημείωση:</b> Εαν επιλέξετε αυτή τη ρύθμιση, ο υπολογιστής θα μπει σε "
+"ανάκληση ή αναμονή αν ο τρέχων χρήστης είναι αδρανής για τον καθορισμένο "
+"χρόνο. <br><br> Αυτό το χαρακτηριστικό μπορεί επίσης να δημιουργήσει "
+"προβλήματα με κάποια προγράμματα όπως αναπαραγωγείς βίντεο ή εγγραφείς cd. "
+"Αυτά τα προγράμματα μπορούν να καταλογιστούν σε μαύρη λίστα με επιλογή του "
+"<b>Ενεργοποίηση συγκεκριμένου σχήματος Μαύρης Λίστας </b> και πάτημα "
+"<b>Επεξεργασία Μαύρης Λίστας...</b>. Εαν αυτό δε βοηθήσει παρακαλούμε "
+"αναφέρετε το πρόβλημα ή απενεργοποιήστε την αυτόματη ανάκληση.<br><br> "
+"Πράγματι χρήση αυτής της ρύθμισης;"
+
+#: dummy.cpp:82
+msgid "Try to use only one CPU/Core."
+msgstr ""
+
+#: dummy.cpp:83
+msgid ""
+"Reduce power consumption by try to use only one CPU/Core instead of "
+"spreading the work over all/multiple CPUs."
+msgstr ""
+
+#: dummy.cpp:87
+msgid "Could not load the global configuration."
+msgstr "Δεν ήταν δυνατή η φόρτωση των γενικών ρυθμίσεων."
+
+#: dummy.cpp:88
+msgid "Could not load the requested scheme configuration."
+msgstr "Δεν ήταν δυνατή η φόρτωση της ρύθμισης του επιθυμητού σχήματος."
+
+#: dummy.cpp:89
+msgid "Configure the current scheme."
+msgstr "Ρυθμίστε το τρέχον σχήμα."
+
+#: dummy.cpp:90
+msgid "Try loading the default configuration."
+msgstr "Προσπάθεια για φόρτωση της προεπιλεγμένης ρύθμισης."
+
+#: dummy.cpp:91
+msgid "Maybe the global configuration file is empty or missing."
+msgstr "Ίσως το αρχείο καθολικών ρυθμίσεων είναι άδειο ή χαμένο."
+
+#: dummy.cpp:94
+#, fuzzy
+msgid "Cannot connect to D-Bus. The D-Bus daemon may not be running."
+msgstr "Αδυναμία σύνδεσης στο D-BUS. Ο δαίμων D-BUS μπορεί να μην τρέχει."
+
+#: dummy.cpp:95
+msgid ""
+"Scheme switched to %1. \n"
+" Deactivate following devices: %2"
+msgstr ""
+"Το σχήμα άλλαξε σε %1. \n"
+" Απενεργοποίηση των ακόλουθων συσκευών: %2"
+
+#: dummy.cpp:96
+msgid ""
+"Scheme switched to %1. \n"
+" Activate following devices: %2"
+msgstr ""
+"Το σχήμα άλλαξε σε %1. \n"
+" Ενεργοποίηση ακόλουθων συσκευών: %2"
+
+#: dummy.cpp:97
+msgid "Report ..."
+msgstr "Αναφορά ..."
+
+#: dummy.cpp:98
+msgid "Suspend to RAM is not supported on your machine."
+msgstr "Ανάκληση στη RAM δεν υποστηρίζεται από το μηχάνημα σας."
+
+#: dummy.cpp:99
+msgid "Additionally, please mail the output of %1 to %2 . Thanks!"
+msgstr ""
+"Επιπρόσθετα, παρακαλώ αλληλογραφήστε τα μηνύματα εξόδου του %1 στο %2 . "
+"Ευχαριστώ!"
+
+#: dummy.cpp:100
+msgid "Power consumption"
+msgstr "Κατανάλωση ενέργειας"
+
+#: dummy.cpp:103
+msgid "KScreensaver not found."
+msgstr "Δεν βρέθηκε το KScreensaver."
+
+#: dummy.cpp:104
+msgid "Try locking with XScreensaver or xlock."
+msgstr "Προσπαθήστε να κλειδώσετε με το XScreensaver ή το xlock."
+
+#: dummy.cpp:105
+msgid "XScreensaver not found."
+msgstr "Το XScreensaver δεν βρέθηκε."
+
+#: dummy.cpp:106
+msgid "Try locking the screen with xlock."
+msgstr "Προσπαθήστε να κλειδώσετε την οθόνη με το xlock."
+
+#: dummy.cpp:107
+msgid ""
+"XScreensaver and xlock not found. It is not possible to lock the screen. "
+"Check your installation."
+msgstr ""
+"Το XScreensaver και το xlock δεν βρέθηκαν. Δεν είναι δυνατό το κλείδωμα της "
+"οθόνης. Ελέγξτε την εγκατάσταση σας."
+
+#: dummy.cpp:111
+msgid "HAL daemon:"
+msgstr "Δαίμονας HAL:"
+
+#: dummy.cpp:112
+#, fuzzy
+msgid "D-Bus daemon:"
+msgstr "Δαίμονας D-BUS:"
+
+#: dummy.cpp:113
+msgid "ConsoleKit daemon:"
+msgstr ""
+
+#: dummy.cpp:114
+msgid "Autosuspend activated:"
+msgstr "Αυτόματη ανάκληση ενεργοποιήθηκε:"
+
+#: dummy.cpp:115
+#, fuzzy
+msgid "Autodimm activated:"
+msgstr "Αυτόματη ανάκληση ενεργοποιήθηκε:"
+
+#: dummy.cpp:116
+msgid "enabled"
+msgstr "ενεργοποιημένο"
+
+#: dummy.cpp:117
+msgid "Session active:"
+msgstr ""
+
+#: dummy.cpp:120
+msgid "Inactivity detected."
+msgstr ""
+
+#: dummy.cpp:121
+msgid "To stop the %1 press the 'Cancel' button before the countdown expire."
+msgstr ""
+
+#: dummy.cpp:122
+msgid "The computer autosuspend in: "
+msgstr ""
+
+#: dummy.cpp:123
+#, c-format
+msgid "The display get dimmed down to %1% in: "
+msgstr ""
+
+#: dummy.cpp:124
+msgid "%1 seconds"
+msgstr ""
+
+#: dummy.cpp:127
+msgid "Could not call %1. The current desktop session is not active."
+msgstr ""
+
+#: dummy.cpp:128
+msgid "Could not set %1. The current desktop session is not active."
+msgstr ""
+
+#: dummy.cpp:129
+msgid "Stopped %1. The current desktop session is now inactive."
+msgstr ""
+
+#: dummy.cpp:130
+msgid "Restarted %1. The current desktop session is now active again."
+msgstr ""
+
+#: log_viewer.cpp:78
+msgid "Form1"
+msgstr ""
+
+#: log_viewer.cpp:79
+msgid "Save As ..."
+msgstr ""
+
+#: log_viewer.cpp:80
+msgid "Close"
+msgstr ""
+
+#: logviewer.cpp:44
+#, fuzzy
+msgid "KPowersave Logfile Viewer: %1"
+msgstr "Το powersave άλλαξε στο σχήμα: %1"
+
+#: logviewer.cpp:89
+msgid "File already exist. Overwrite the file?"
+msgstr ""
+
+#: logviewer.cpp:90 logviewer.cpp:97
+msgid "Error while save logfile"
+msgstr ""
+
+#: logviewer.cpp:95
+msgid "File already exist."
+msgstr ""
+
+#: logviewer.cpp:98
+msgid "Try other filename ..."
+msgstr ""
+
+#: suspenddialog.cpp:70
+msgid "Preparing Suspend..."
+msgstr "Ετοιμάζοντας το κλείσιμο..."
+
+#: kpowersave.cpp:168
+msgid "Configure KPowersave..."
+msgstr "Ρύθμιση KPowersave..."
+
+#: kpowersave.cpp:171 configure_Dialog.cpp:915
+msgid "Configure Notifications..."
+msgstr "Ρύθμιση Ειδοποιήσεων"
+
+#: kpowersave.cpp:175
+msgid "Start YaST2 Power Management Module..."
+msgstr "Εκκίνηση της Μονάδας Διαχείρισης Ενέργειας του YaST2..."
+
+#: kpowersave.cpp:189 kpowersave.cpp:2106 kpowersave.cpp:2166
+#: kpowersave.cpp:2253
+msgid "Standby"
+msgstr "Αναμονή"
+
+#: kpowersave.cpp:191 kpowersave.cpp:198
+msgid "Set CPU Frequency Policy"
+msgstr "Ορίστε την Πολιτική Συχνότητας της KME"
+
+#: kpowersave.cpp:205 kpowersave.cpp:206
+msgid "Set Active Scheme"
+msgstr "Ορίστε Ενεργό Σχήμα"
+
+#: kpowersave.cpp:212
+msgid "Disable Actions on Inactivity"
+msgstr "Απενεργοποίηση Ενεργειών σε Αδράνεια"
+
+#: kpowersave.cpp:219 kpowersave.cpp:229
+msgid "&Help"
+msgstr "&Βοήθεια"
+
+#: kpowersave.cpp:221
+msgid "&KPowersave Handbook"
+msgstr "&Εγχειρίδιο KPowersave"
+
+#: kpowersave.cpp:224
+msgid "&Report a bug ..."
+msgstr "&Αναφορά ενός σφάλματος ..."
+
+#: kpowersave.cpp:226
+msgid "&About KPowersave"
+msgstr "&Σχετικά με το KPowersave"
+
+#: kpowersave.cpp:275 kpowersave.cpp:648 kpowersave.cpp:656 kpowersave.cpp:703
+#: kpowersave.cpp:710 kpowersave.cpp:759 kpowersave.cpp:766 kpowersave.cpp:815
+#: kpowersave.cpp:822 kpowersave.cpp:1126 kpowersave.cpp:1241
+#: kpowersave.cpp:1270 kpowersave.cpp:2183
+msgid "WARNING"
+msgstr "ΠΡΟΕΙΔΟΠΟΙΗΣΗ"
+
+#: kpowersave.cpp:275
+msgid "Cannot find any schemes."
+msgstr ""
+
+#: kpowersave.cpp:453
+msgid "No information about battery and AC status available"
+msgstr ""
+"Δεν υπάρχουν πληροφορίες σχετικά με την μπαταρία και την κατάσταση του AC"
+
+#: kpowersave.cpp:456
+msgid "Plugged in -- fully charged"
+msgstr "Συνδεδεμένο -- πλήρως φορτισμένο"
+
+#: kpowersave.cpp:460
+msgid "Plugged in"
+msgstr "Συνδεδεμένο"
+
+#: kpowersave.cpp:464
+msgid "Plugged in -- %1% charged (%2:%3 h until full charged)"
+msgstr "Συνδεμένο σε -- %1% φορτισμένη (%2:%3 h μέχρι την πλήρη φόρτιση)"
+
+#: kpowersave.cpp:467
+msgid "Plugged in -- %1% charged (%2:%3 remaining hours)"
+msgstr "Συνδεδεμένο -- %1% φορτισμένο (%2:%3 απομένουσες ώρες)"
+
+#: kpowersave.cpp:471 kpowersave.cpp:475
+#, c-format
+msgid "Plugged in -- %1% charged"
+msgstr "Συνδεδεμένο -- %1% φορτισμένο"
+
+#: kpowersave.cpp:474
+msgid "Plugged in -- no battery"
+msgstr "Συνδεδεμένο -- χωρίς μπαταρία"
+
+#: kpowersave.cpp:480
+msgid "Running on batteries -- %1% charged (%2:%3 hours remaining)"
+msgstr "Λειτουργία με μπαταρίες -- %1% φορτισμένο(%2:%3 απομένουσες ώρες)"
+
+#: kpowersave.cpp:484
+#, c-format
+msgid "Running on batteries -- %1% charged"
+msgstr "Λειτουργία με μπαταρίες -- %1% φορτισμένο"
+
+#: kpowersave.cpp:491
+msgid " -- battery is charging"
+msgstr " -- η μπαταρία φορτίζει"
+
+#: kpowersave.cpp:649 kpowersave.cpp:657
+msgid "Could not start YaST Power Management Module. Check if it is installed."
+msgstr ""
+"Αδυναμία εκκίνησης της Μονάδας Διαχείρισης Ενέργειας του YaST2. Ελέγξτε αν "
+"είναι εγκατεστημένη."
+
+#: kpowersave.cpp:703
+#, fuzzy
+msgid "Suspend to disk failed"
+msgstr "Suspend to Disk"
+
+#: kpowersave.cpp:711
+msgid "Suspend to disk disabled by administrator."
+msgstr ""
+"Η λειτουργία suspend to disk είναι απενεργοποιημένη από τον διαχειριστή."
+
+#: kpowersave.cpp:759
+#, fuzzy
+msgid "Suspend to RAM failed"
+msgstr "Suspend to RAM"
+
+#: kpowersave.cpp:767
+msgid "Suspend to RAM disabled by administrator."
+msgstr ""
+"Η λειτουργία suspend to RAM είναι απενεργοποιημένη από τον διαχειριστή."
+
+#: kpowersave.cpp:815
+#, fuzzy
+msgid "Standby failed"
+msgstr "Αναμονή μετά από:"
+
+#: kpowersave.cpp:822
+msgid "Standby disabled by administrator."
+msgstr "Η λειτουργία αναμονής είναι απενεργοποιημένη από τον διαχειριστή."
+
+#: kpowersave.cpp:853
+msgid "System is going into suspend mode now"
+msgstr "Το σύστημα αυτή τη στιγμή οδεύει προς ανάκληση"
+
+#: kpowersave.cpp:1039
+msgid "Could not call DCOP interface to umount external media."
+msgstr ""
+
+#: kpowersave.cpp:1044
+msgid ""
+"Could not umount external media before suspend/standby. \n"
+" (Reason: %1)\n"
+" \n"
+" Would you like to continue suspend/standby anyway? \n"
+"(Warning: Continue suspend can cause data loss!)"
+msgstr ""
+
+#: kpowersave.cpp:1052
+msgid "Error while prepare %1"
+msgstr ""
+
+#: kpowersave.cpp:1053
+#, fuzzy
+msgid "Suspend anyway"
+msgstr "Ανάκληση μετά από:"
+
+#: kpowersave.cpp:1053
+#, fuzzy
+msgid "Cancel suspend"
+msgstr "Ενεργοποίηση αυτόματης ανάκλησης"
+
+#: kpowersave.cpp:1127
+msgid ""
+"Could not lock the screen. There may be a problem with the selected \n"
+"lock method or something else."
+msgstr ""
+"Αδυναμία κλειδώματος της οθόνης. Μπορεί να υπάρχει πρόβλημα με την "
+"επιλεγμένη μέθοδο κλειδώματος ή κάτι άλλο."
+
+#: kpowersave.cpp:1144
+msgid "The Lid was closed."
+msgstr "Το Lid έκλεισε."
+
+#: kpowersave.cpp:1156
+msgid "The Lid was opened."
+msgstr "Το Lid άνοιξε."
+
+#: kpowersave.cpp:1223
+msgid "Start KPowersave automatically when you log in?"
+msgstr "Να ξεκινά αυτόματα το KPowersave με την σύνδεση σας;"
+
+#: kpowersave.cpp:1224
+msgid "Question"
+msgstr "Ερώτηση"
+
+#: kpowersave.cpp:1225
+msgid "Start Automatically"
+msgstr "Αυτόματη Εκκίνηση"
+
+#: kpowersave.cpp:1225
+msgid "Do Not Start"
+msgstr "Να Μην Ξεκινήσει"
+
+#: kpowersave.cpp:1242
+msgid "CPU Freq Policy %1 could not be set."
+msgstr "Η πολιτική Συχνότητας CPU %1 δεν ήταν δυνατό να οριστεί."
+
+#: kpowersave.cpp:1271
+msgid "Scheme %1 could not be activated."
+msgstr "To σχήμα %1 δεν ήταν δυνατό να ενεργοποιηθεί."
+
+#: kpowersave.cpp:1600
+#, fuzzy
+msgid ""
+"The D-Bus daemon is not running.\n"
+"Starting it will provide full functionality: /etc/init.d/dbus start"
+msgstr ""
+"Ο δαίμονας DBUS (messagebus) δεν εκτελείται\n"
+"Η εκκίνηση του θα σας παρέχει πλήρη λειτουργικότητα: /etc/init.d/messagebus "
+"start"
+
+#: kpowersave.cpp:1611
+msgid "Don't show this message again."
+msgstr "Να μη ξαναεμφανιστεί αυτό το μήνυμα πάλι."
+
+#: kpowersave.cpp:1637
+msgid "ERROR"
+msgstr "ΣΦΑΛΜΑ"
+
+#: kpowersave.cpp:1638
+msgid "Could not get information from HAL. The haldaemon is maybe not running."
+msgstr ""
+"Αδυναμία λήψης πληροφοριών από HAL. Ο haldaemon μπορεί να μην εκτελείται."
+
+#: kpowersave.cpp:1641
+msgid "Error"
+msgstr "Σφάλμα"
+
+#: kpowersave.cpp:1912
+msgid ""
+"Battery state changed to WARNING -- remaining time: %1 hours and %2 minutes."
+msgstr ""
+"Η κατάσταση μπαταρίας άλλαξε σε ΠΡΟΕΙΔΟΠΟΙΗΣΗ -- απομένων χρόνος: %1 ώρες "
+"και %2 λεπτά."
+
+#: kpowersave.cpp:1921
+msgid ""
+"Battery state changed to LOW -- remaining time: %1 hours and %2 minutes."
+msgstr ""
+"Η κατάσταση μπαταρίας άλλαξε σε ΧΑΜΗΛΗ -- απομένων χρόνος:%1 ώρες και %2 "
+"λεπτά."
+
+#: kpowersave.cpp:1932
+#, fuzzy
+msgid ""
+"Battery state changed to CRITICAL -- remaining time: %1 hours and %2 "
+"minutes.\n"
+"Shut down your system or plug in the power cable immediately. Otherwise the "
+"machine\n"
+"will go shutdown in 30 seconds"
+msgstr ""
+"Η κατάσταση μπαταρίας άλλαξε σε ΚΡΙΣΙΜΗ -- απομένων χρόνος:%1 ώρες και %2 "
+"λεπτά. Τερματίστε το σύστημα σας ή συνδέστε αμέσως το καλώδιο ρεύματος."
+
+#: kpowersave.cpp:1943
+#, fuzzy
+msgid ""
+"Battery state changed to CRITICAL -- remaining time: %1 hours and %2 "
+"minutes.\n"
+"Shut down your system or plug in the power cable immediately."
+msgstr ""
+"Η κατάσταση μπαταρίας άλλαξε σε ΚΡΙΣΙΜΗ -- απομένων χρόνος:%1 ώρες και %2 "
+"λεπτά. Τερματίστε το σύστημα σας ή συνδέστε αμέσως το καλώδιο ρεύματος."
+
+#: kpowersave.cpp:2041
+msgid "AC adapter plugged in"
+msgstr "Ο μετασχηματιστής AC είναι συνδεμένος"
+
+#: kpowersave.cpp:2043
+msgid "AC adapter unplugged"
+msgstr "Ο μετασχηματιστής AC δεν είναι συνδεμένος"
+
+#: kpowersave.cpp:2078
+#, fuzzy
+msgid "Switched to scheme: %1"
+msgstr "Το powersave άλλαξε στο σχήμα: %1"
+
+#: kpowersave.cpp:2095 kpowersave.cpp:2100 kpowersave.cpp:2105
+msgid "System is going into %1 now."
+msgstr "Το σύστημα οδεύει προς %1 τώρα."
+
+#: kpowersave.cpp:2155 kpowersave.cpp:2160 kpowersave.cpp:2165
+msgid "System is resumed from %1."
+msgstr "Το σύστημα επανέρχεται από %1."
+
+#: kpowersave.cpp:2184
+msgid "Could not remount (all) external storage media."
+msgstr ""
+
+#: kpowersave.cpp:2192
+msgid "An unknown error occurred while %1. The errorcode is: '%2'"
+msgstr ""
+
+#: kpowersave.cpp:2197
+msgid "Do you want to have a look at the log file?"
+msgstr ""
+
+#: kpowersave.cpp:2198 kpowersave.cpp:2224
+msgid "Error while %1"
+msgstr ""
+
+#: configure_Dialog.cpp:831
+msgid "KPowersave Settings"
+msgstr "Ρυθμίσεις KPowersave"
+
+#: configure_Dialog.cpp:832
+#, fuzzy
+msgid "Apply"
+msgstr "&Εφαρμογή"
+
+#: configure_Dialog.cpp:834
+#, fuzzy
+msgid "Help"
+msgstr "&Βοήθεια"
+
+#: configure_Dialog.cpp:840
+msgid "Enable specific display power management"
+msgstr "Ενεργοποίηση καθορισμένης εμφάνισης διαχείρισης ενέργειας"
+
+#: configure_Dialog.cpp:841
+msgid "Standby after:"
+msgstr "Αναμονή μετά από:"
+
+#: configure_Dialog.cpp:842
+msgid "Only blank the screen"
+msgstr "Μόνο καθαρισμός οθόνης"
+
+#: configure_Dialog.cpp:843
+msgid "Disable screen saver"
+msgstr "Απενεργοποίηση προφύλαξης οθόνης"
+
+#: configure_Dialog.cpp:844
+msgid "Enable specific screensaver settings"
+msgstr "Ενεργοποίηση βασικών ρυθμίσεων προστασίας οθόνης"
+
+#: configure_Dialog.cpp:845
+msgid "Suspend after:"
+msgstr "Ανάκληση μετά από:"
+
+#: configure_Dialog.cpp:846
+msgid "Power off after:"
+msgstr "Τερματισμός μετά από:"
+
+#: configure_Dialog.cpp:847
+msgid "Disable display power management"
+msgstr "Απενεργοποίηση διαχείρισης ενέργειας οθόνης"
+
+#: configure_Dialog.cpp:848 configure_Dialog.cpp:849 configure_Dialog.cpp:850
+#: configure_Dialog.cpp:862 configure_Dialog.cpp:873
+msgid " min"
+msgstr " λεπ"
+
+#: configure_Dialog.cpp:851
+msgid "Screen Saver and DPMS"
+msgstr "Προστασία Οθόνης και DPMS"
+
+#: configure_Dialog.cpp:852
+msgid "Settings"
+msgstr "Ρυθμίσεις"
+
+#: configure_Dialog.cpp:853
+msgid "Reset"
+msgstr "Επανεκκίνηση"
+
+#: configure_Dialog.cpp:855
+#, fuzzy
+msgid "Enable scheme specific Brightness settings"
+msgstr "Ενεργοποίηση σχήματος συγκεκριμένων ρυθμίσεων &Φωτεινότητας"
+
+#: configure_Dialog.cpp:858
+msgid "Brightness"
+msgstr "Φωτεινότητα"
+
+#: configure_Dialog.cpp:859
+msgid "Enable autosuspend"
+msgstr "Ενεργοποίηση αυτόματης ανάκλησης"
+
+#: configure_Dialog.cpp:860 configure_Dialog.cpp:867
+msgid "Enable scheme-specific blacklist"
+msgstr "Ενεργοποίηση μαύρης λίστας συγκεκριμένου σχήματος"
+
+#: configure_Dialog.cpp:861 configure_Dialog.cpp:870
+msgid "after:"
+msgstr "μετά από:"
+
+#: configure_Dialog.cpp:863 configure_Dialog.cpp:868
+msgid "Edit Blacklist..."
+msgstr "Επεξεργασία Μαύρης Λίστας..."
+
+#: configure_Dialog.cpp:864 configure_Dialog.cpp:869
+msgid "If the current desktop user is inactive the computer will:"
+msgstr "Εαν η τρέχουσα επιφάνεια εργασίας είναι αδρανής ο υπολογιστής θα:"
+
+#: configure_Dialog.cpp:865
+msgid "Autosuspend"
+msgstr "Αυτόματη ανάκληση"
+
+#: configure_Dialog.cpp:866
+#, fuzzy
+msgid "Enable autodimm the display"
+msgstr "Ενεργοποίηση φωτεινότητας οθόνης σε ανενεργεία"
+
+#: configure_Dialog.cpp:871 configure_Dialog.cpp:893 configure_Dialog.cpp:894
+#: configure_Dialog.cpp:895 configure_Dialog.cpp:896 configure_Dialog.cpp:897
+#: configure_Dialog.cpp:898
+msgid " %"
+msgstr ""
+
+#: configure_Dialog.cpp:872
+msgid "dimm to:"
+msgstr ""
+
+#: configure_Dialog.cpp:874
+msgid "Autodimm"
+msgstr ""
+
+#: configure_Dialog.cpp:879
+#, fuzzy
+msgid "Set CPU Frequency Policy:"
+msgstr "Ορίστε την Πολιτική Συχνότητας της KME"
+
+#: configure_Dialog.cpp:880
+#, fuzzy
+msgid "CPU Frequency Policy"
+msgstr "Ορίστε την Πολιτική Συχνότητας της KME"
+
+#: configure_Dialog.cpp:881
+msgid "Disable Notifications"
+msgstr "Απενεργοποίηση Ειδοποιήσεων"
+
+#: configure_Dialog.cpp:884
+msgid "New"
+msgstr ""
+
+#: configure_Dialog.cpp:885
+msgid "Scheme Settings"
+msgstr "Ρυθμίσεις Σχήματος"
+
+#: configure_Dialog.cpp:886
+msgid ""
+"Define the battery warning levels (in percentage) and the releated action if "
+"the level get reached:"
+msgstr ""
+
+#: configure_Dialog.cpp:887
+#, fuzzy
+msgid "Warning level:"
+msgstr "Προσοχή"
+
+#: configure_Dialog.cpp:888
+msgid "Low level:"
+msgstr ""
+
+#: configure_Dialog.cpp:889
+#, fuzzy
+msgid "Critical level:"
+msgstr "Κρίσιμο"
+
+#: configure_Dialog.cpp:890 configure_Dialog.cpp:891 configure_Dialog.cpp:892
+msgid "if reached call:"
+msgstr ""
+
+#: configure_Dialog.cpp:899
+#, fuzzy
+msgid "Battery"
+msgstr "Μπαταρία %1"
+
+#: configure_Dialog.cpp:900
+msgid ""
+"Define the action which should be executed if the related button get pressed:"
+msgstr ""
+
+#: configure_Dialog.cpp:901
+#, fuzzy
+msgid "Suspend-to-disk Button:"
+msgstr "Suspend to Disk"
+
+#: configure_Dialog.cpp:902
+msgid "Sleep button:"
+msgstr ""
+
+#: configure_Dialog.cpp:903
+msgid "Lid close Button:"
+msgstr ""
+
+#: configure_Dialog.cpp:904
+#, fuzzy
+msgid "Power Button:"
+msgstr "Κατανάλωση ενέργειας"
+
+#: configure_Dialog.cpp:905
+msgid "Button Events"
+msgstr ""
+
+#: configure_Dialog.cpp:906
+msgid ""
+"Select the following schemes as default if the system is running on AC or on "
+"batteries."
+msgstr ""
+
+#: configure_Dialog.cpp:907
+#, fuzzy
+msgid "Battery scheme:"
+msgstr "Κατάσταση μπαταρίας:"
+
+#: configure_Dialog.cpp:908
+#, fuzzy
+msgid "AC scheme:"
+msgstr "Σχήμα: "
+
+#: configure_Dialog.cpp:909
+msgid "Default Schemes"
+msgstr ""
+
+#: configure_Dialog.cpp:910
+msgid "Lock screen before suspend or standby"
+msgstr "Κλείδωμα οθόνης πριν την ανάκληση ή την αναμονή"
+
+#: configure_Dialog.cpp:911
+msgid "Lock screen with:"
+msgstr "Κλείδωμα οθόνης με:"
+
+#: configure_Dialog.cpp:912
+msgid "Lock screen on lid close"
+msgstr "Κλείδωμα οθόνης στο κλείσιμο του lid"
+
+#: configure_Dialog.cpp:913
+msgid "Lock Screen"
+msgstr "Κλείδωμα Οθόνης"
+
+#: configure_Dialog.cpp:914
+msgid "Notifications"
+msgstr "Ειδοποιήσεις"
+
+#: configure_Dialog.cpp:916
+msgid "Autostart"
+msgstr "Αυτόματη εκκίνηση"
+
+#: configure_Dialog.cpp:917
+msgid "Never ask me again on exit"
+msgstr "Να μη ξαναερωτηθώ στην έξοδο"
+
+#: configure_Dialog.cpp:918
+msgid "KPowersave starts automatically on login"
+msgstr "Το KPowersave ξεκινά αυτόματα με την είσοδο"
+
+#: configure_Dialog.cpp:919
+#, fuzzy
+msgid "General Blacklists"
+msgstr "Γενική Μαύρη Λίστα"
+
+#: configure_Dialog.cpp:920
+#, fuzzy
+msgid "Edit Autosuspend Blacklist..."
+msgstr "Επεξεργασία Μαύρης Λίστας Αυτόματου Κλεισίματος"
+
+#: configure_Dialog.cpp:921
+#, fuzzy
+msgid "Edit Autodimm Blacklist..."
+msgstr "Επεξεργασία Μαύρης Λίστας..."
+
+#: configure_Dialog.cpp:923
+msgid "General Settings"
+msgstr "Γενικές Ρυθμίσεις"
+
+#~ msgid "Modules unloaded:"
+#~ msgstr "Οι μονάδες αποφορτώθηκαν:"
+
+#~ msgid "Powersave Daemon:"
+#~ msgstr "Δαίμονας powersave:"
+
+#~ msgid ""
+#~ "Inactivity detected.\n"
+#~ " Machine autosuspend in %1 seconds."
+#~ msgstr ""
+#~ "Ανιχνεύθηκε αδράνεια.\n"
+#~ " Αυτόματο κλείσιμο μηχανής σε %1 δευτερόλεπτα."
+
+#~ msgid ""
+#~ "Inactivity detected.\n"
+#~ " Dim display in %1 seconds to %2%."
+#~ msgstr ""
+#~ "Ανιχνεύθηκε αδράνεια.\n"
+#~ " Η φωτεινότητα θα μειωθεί σε %1 δευτερόλεπτα στο %2%."
+
+#~ msgid ""
+#~ "If you know that it should work, you might override this detection with "
+#~ "setting SUSPEND2RAM_FORCE=\"yes\" in /etc/powersave/sleep."
+#~ msgstr ""
+#~ "Εαν ξέρετε οτι θα δουλέψει σωστά, μπορείτε να παραβλέψετε αυτή την "
+#~ "ανίχνευση με τον ορισμό SUSPEND2RAM_FORCE=\"yes\" στο /etc/powersave/"
+#~ "sleep."
+
+#~ msgid ""
+#~ "Cannot find any schemes. Maybe the powersave daemon is not running.\n"
+#~ "Starting it with '/etc/init.d/powersaved start' should help."
+#~ msgstr ""
+#~ "Δεν μπορούν να βρεθούν σχήματα. Ίσως ο δαίμονας powersave δεν "
+#~ "εκτελείται.\n"
+#~ "Η εκκίνηση του θα αυξήσει την απόδοση: /etc/init.d/powersaved start"
+
+#~ msgid ""
+#~ "The powersave daemon must be running in the background for a suspend to "
+#~ "disk."
+#~ msgstr ""
+#~ "Η αναμονή απαιτεί ο δαίμονας powersave να εκτελείται στο παρασκήνιο."
+
+#~ msgid ""
+#~ "The powersave daemon must be running in the background for a suspend to "
+#~ "RAM."
+#~ msgstr ""
+#~ "Η λειτουργία 'suspend to RAM' απαιτεί τον powersave δαίμονα να εκτελείται "
+#~ "στο παρασκήνιο."
+
+#~ msgid "The powersave daemon must be running in the background for standby."
+#~ msgstr ""
+#~ "Η αναμονή απαιτεί τον powersave δαίμονα να εκτελείται στο παρασκήνιο."
+
+#~ msgid ""
+#~ "This scheme support suspend and disable devices. This is a EXPERIMENTAL "
+#~ "feature of powersave to save more power on laptops. If you select this "
+#~ "scheme you can get in trouble (e.g. kernel oops). You can configure this "
+#~ "feature currently in the powersave config files. Please report all "
+#~ "problems via http://www.opensuse.org/Submit_a_bug \n"
+#~ "\n"
+#~ "Would you switch the scheme (on your own risk)?"
+#~ msgstr ""
+#~ "Αυτό το σχήμα υποστηρίζει την ανάκληση ή την απενεργοποίηση συσκευών. "
+#~ "Αυτό είναι ΠΕΙΡΑΜΑΤΙΚΟ χαρακτηριστικό του powersave για να σωθεί "
+#~ "περισσότερη ενέργεια στα laptops. Εαν επιλέξετε αυτό το σχήμα μπορεί να "
+#~ "βρεθείτε σε μπελάδες (π.χ. kernel oops). Μπορείτε να ρυθμίσετε αυτό το "
+#~ "χαρακτηριστικό στα αρχεία ρυθμίσεων του powersave. Παρακαλούμε αναφέρετε "
+#~ "όλα τα σφάλματα δια μέσου τουhttp://www.opensuse.org/Submit_a_bug \n"
+#~ "\n"
+#~ "Θέλετε να αλλάξετε σε αυτό το σχήμα (με δικό σας ρίσκο);"
+
+#~ msgid "Continue"
+#~ msgstr "Συνέχεια"
+
+#~ msgid ""
+#~ "The powersave daemon is not running.\n"
+#~ "Starting it will improve performance: /etc/init.d/powersaved start"
+#~ msgstr ""
+#~ "Ο powersave δαίμονας δεν εκτελείται.\n"
+#~ "Η εκκίνηση του θα αυξήσει την απόδοση: /etc/init.d/powersaved start"
+
+#~ msgid "checking resume kernel"
+#~ msgstr "γενικός έλεγχος πυρήνα"
+
+#~ msgid "checking for swap partition"
+#~ msgstr "έλεγχος για κατάτμηση swap"
+
+#~ msgid "unmounting FAT/NTFS partitions"
+#~ msgstr "αποπροσάρτηση κατατμήσεων FAT/NTFS"
+
+#~ msgid "stopping services"
+#~ msgstr "τερματισμός υπηρεσιών"
+
+#~ msgid "stopping service:"
+#~ msgstr "τερματισμός υπηρεσίας:"
+
+#~ msgid "unloading modules"
+#~ msgstr "αποφόρτωση μονάδων"
+
+#~ msgid "unloading module:"
+#~ msgstr "αποφόρτωση μονάδας:"
+
+#~ msgid "syncing file systems"
+#~ msgstr "συγχρονισμός συστημάτων αρχείων"
+
+#~ msgid "preparing bootloader"
+#~ msgstr "προετοιμασία διαχειριστή εκκίνησης"
+
+#~ msgid "Edit General Blacklist..."
+#~ msgstr "Επεξεργασίας Γενικής Μαύρης Λίστας..."
+
+#~ msgid " -- %1 MHz"
+#~ msgstr " -- %1 MHz"
+
+#~ msgid "Enabled"
+#~ msgstr "Ενεργοποιημένο"
+
+#~ msgid "In"
+#~ msgstr "Μέσα"
+
+#~ msgid "Out"
+#~ msgstr "Έξω"
+
+#~ msgid ""
+#~ "You are not permitted to connect to the powersave daemon via DBUS. Please "
+#~ "check your DBUS configuration and installation. "
+#~ msgstr ""
+#~ "Δεν σας επιτρέπεται να συνδεθείτε στον δαίμονα powersave δια μέσου DBUS. "
+#~ "Παρακαλώ ελέγξτε τις ρυθμίσεις DBUS και την εγκατάσταση του."

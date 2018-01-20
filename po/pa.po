@@ -1,0 +1,1410 @@
+# translation of kpowersave.pa.po to Panjabi
+# translation of pa.po to
+# This file is distributed under the same license as the PACKAGE package.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER.
+#
+# Antje Faber <afaber@suse.de>, 2004.
+# Klara Cihlarova <koty@seznam.cz>, 2004.
+# Kanwaljeet Singh Brar <kanwaljeetbrar@yahoo.co.in>, 2005.
+# Amanpreet Singh Alam[ਆਲਮ] <amanpreetalam@yahoo.com>, 2005.
+# Amanpreet Singh Brar Alamwalia <amanpreetsinghalam@yahoo.com>, 2005.
+# A S Alam <aalam@users.sf.net>, 2007.
+msgid ""
+msgstr ""
+"Project-Id-Version: kpowersave.pa\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2007-08-10 03:16+0200\n"
+"PO-Revision-Date: 2007-08-23 22:33+0530\n"
+"Last-Translator: A S Alam <aalam@users.sf.net>\n"
+"Language-Team: Panjabi <punjabi-l10n@lists.sf.net>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.11.4\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#: detailed_Dialog.cpp:228
+msgid "kpowersave"
+msgstr "ਕੇ-ਪਾਵਰਸੇਵ"
+
+#: detailed_Dialog.cpp:229
+msgid "General Information"
+msgstr "ਆਮ ਜਾਣਕਾਰੀ"
+
+#: detailed_Dialog.cpp:232
+msgid "Battery Status"
+msgstr "ਬੈਟਰੀ ਹਾਲਤ"
+
+#: detailed_Dialog.cpp:233
+msgid "AC Adapter"
+msgstr "AC ਅਡੈਪਟਰ"
+
+#: detailed_Dialog.cpp:234 detaileddialog.cpp:391
+msgid "plugged in"
+msgstr "ਪਲੱਗ ਲੱਗਾ"
+
+#: detailed_Dialog.cpp:235
+msgid "Power Consumtion: "
+msgstr "ਪਾਵਰ ਖਰਚ: "
+
+#: detailed_Dialog.cpp:237
+msgid "Processor Status"
+msgstr "ਪ੍ਰੋਸੈਸਰ ਹਾਲਤ"
+
+# ok button label
+#: detailed_Dialog.cpp:238 blacklistedit_Dialog.cpp:130 info_Dialog.cpp:198
+#: configure_Dialog.cpp:838
+msgid "OK"
+msgstr "ਠੀਕ ਹੈ"
+
+#: blacklisteditdialog.cpp:60
+msgid "General Blacklist"
+msgstr "ਆਮ ਬਲੈਕਲਿਸਟ"
+
+#: blacklisteditdialog.cpp:63
+msgid "Scheme: "
+msgstr "ਸਕੀਮ: "
+
+#: blacklisteditdialog.cpp:114
+msgid "Selected entry removed."
+msgstr "ਚੁਣੀ ਐਂਟਰੀ ਹਟਾਈ ਗਈ।"
+
+#: blacklisteditdialog.cpp:117
+msgid "Could not remove the selected entry."
+msgstr "ਚੁਣੀ ਐਂਟਰੀ ਹਟਾਈ ਨਹੀਂ ਜਾ ਸਕਦੀ।"
+
+#: blacklisteditdialog.cpp:137
+msgid "Inserted new entry."
+msgstr "ਨਵੀਂ ਐਂਟਰੀ ਸ਼ਾਮਲ ਕੀਤੀ ਗਈ।"
+
+#: blacklisteditdialog.cpp:141
+msgid "Entry exists already. Did not insert new entry."
+msgstr "ਐਂਟਰੀ ਪਹਿਲਾਂ ਹੀ ਮੌਜੂਦ ਹੈ। ਨਵਾਂ ਐਂਟਰੀ ਨਹੀਂ ਜੋੜੀ ਗਈ ਸੀ।"
+
+#: blacklisteditdialog.cpp:144
+msgid "Empty entry was not inserted."
+msgstr "ਖਾਲੀ ਐਂਟਰੀ ਦਿੱਤੀ ਨਹੀਂ ਗਈ ਸੀ।"
+
+#: inactivity.cpp:298
+msgid ""
+"Could not start 'pidof'. Could not autosuspend the machine.\n"
+"Please check your installation."
+msgstr ""
+"'pidof' ਸ਼ੁਰੂ ਨਹੀਂ ਕੀਤਾ ਜਾ ਸਕਿਆ। ਮਸ਼ੀਨ ਆਟੋ ਸਸਪੈਂਡ ਨਹੀਂ ਹੋ ਸਕੀ।\n"
+"ਆਪਣੀ ਇੰਸਟਾਲੇਸ਼ਨ ਚੈੱਕ ਕਰੋ ਜੀ।"
+
+#: blacklistedit_Dialog.cpp:129
+msgid "Autosuspend Blacklist Edit"
+msgstr "ਆਟੋ-ਸਸਪੈਂਡ ਬਲੈਕਲਿਸਟ ਸੋਧ"
+
+# cancel button label
+#: blacklistedit_Dialog.cpp:132 configuredialog.cpp:1079
+#: configure_Dialog.cpp:836
+msgid "Cancel"
+msgstr "ਰੱਦ ਕਰੋ"
+
+#: blacklistedit_Dialog.cpp:135
+msgid "Add"
+msgstr "ਸ਼ਾਮਲ"
+
+#: blacklistedit_Dialog.cpp:136
+msgid "Remove"
+msgstr "ਹਟਾਓ"
+
+#: infodialog.cpp:76 infodialog.cpp:78 main.cpp:55
+msgid "KPowersave"
+msgstr "ਕੇ-ਪਾਵਰਸੇਵ"
+
+#: configuredialog.cpp:116 configuredialog.cpp:121 configuredialog.cpp:721
+msgid " - not supported"
+msgstr " - ਸਹਾਇਕ ਨਹੀਂ"
+
+#: configuredialog.cpp:150 configuredialog.cpp:317 detaileddialog.cpp:432
+#: kpowersave.cpp:192 settings.cpp:66 configure_Dialog.cpp:876
+msgid "Performance"
+msgstr "ਕਾਰਗੁਜ਼ਾਰੀ"
+
+#: configuredialog.cpp:154 configuredialog.cpp:319 detaileddialog.cpp:438
+#: kpowersave.cpp:194 settings.cpp:68 configure_Dialog.cpp:878
+msgid "Powersave"
+msgstr "ਪਾਵਰਸੇਵ"
+
+#: configuredialog.cpp:159 configuredialog.cpp:321 kpowersave.cpp:1478
+#: settings.cpp:70
+msgid "Presentation"
+msgstr "ਪਰਿਜ਼ੈੱਨਟੇਸ਼ਨ"
+
+#: configuredialog.cpp:164 configuredialog.cpp:323 kpowersave.cpp:1473
+#: settings.cpp:72
+msgid "Acoustic"
+msgstr "ਅਕੂਸਟਿਕ"
+
+#: configuredialog.cpp:169 configuredialog.cpp:171 configuredialog.cpp:172
+#: configuredialog.cpp:173 kpowersave.cpp:1484
+msgid "Advanced Powersave"
+msgstr "ਤਕਨੀਕੀ ਪਾਵਰ-ਸੇਵ"
+
+#: configuredialog.cpp:271
+msgid ""
+"This enables specific screen saver settings. \n"
+"Note: If selected, the global screen saver settings are \n"
+"overwritten while kpowersave runs."
+msgstr ""
+"ਇਹ ਖਾਸ ਸਕਰੀਨ-ਸੇਵਰ ਸੈਟਿੰਗ ਯੋਗ ਕਰਦੀ ਹੈ।\n"
+"ਨੋਟ: ਜੇ ਇਹ ਚੋਣ ਕੀਤੀ ਗਈ ਤਾਂ ਗਲੋਬਲ ਸਕਰੀਨ-ਸੇਵਰ ਸੈਟਿੰਗ ਨੂੰ "
+"kpowersave ਚੱਲਣ ਦੌਰਾਨ ਅਣਡਿੱਠਾ ਕਰ ਦਿੱਤਾ ਜਾਵੇਗਾ।"
+
+#: configuredialog.cpp:274
+msgid ""
+"This disables the screen saver. \n"
+"Note: If selected, the global screen saver settings are \n"
+"overwritten while kpowersave runs."
+msgstr ""
+"ਇਹ ਸਕਰੀਨ-ਸੇਵਰ ਆਯੋਗ ਕਰਦੀ ਹੈ।\n"
+"ਨੋਟ: ਜੇ ਇਹ ਚੋਣ ਕੀਤੀ ਗਈ ਤਾਂ ਗਲੋਬਲ ਸਕਰੀਨ-ਸੇਵਰ ਸੈਟਿੰਗ ਨੂੰ "
+"kpowersave ਚੱਲਣ ਦੌਰਾਨ ਅਣਡਿੱਠਾ ਕਰ ਦਿੱਤਾ ਜਾਵੇਗਾ।"
+
+#: configuredialog.cpp:277
+msgid ""
+"This blanks the screen instead of using a specific screen saver. \n"
+"Note: This may work only with KScreensaver."
+msgstr ""
+"ਇਹ ਇੱਕ ਖਾਸ ਸਕਰੀਨ-ਸੇਵਰ ਵਰਤਣ ਦੀ ਬਜਾਏ ਸਕਰੀਨ ਨੂੰ ਖਾਲੀ ਰੱਖਦੀ ਹੈ।\n"
+"ਨੋਟ: ਇਹ ਸਿਰਫ਼ ਕੇ-ਸਕਰੀਨ-ਸੇਵਰ ਨਾਲ ਹੀ ਕੰਮ ਕਰਦੀ ਹੈ।"
+
+#: configuredialog.cpp:279
+msgid ""
+"This enables specific DPMS settings. \n"
+"Note: If selected, the global DPMS settings are \n"
+"overwritten while kpowersave runs."
+msgstr ""
+"ਇਹ ਖਾਸ DPMS ਸੈਟਿੰਗ ਯੋਗ ਕਰਦੀ ਹੈ।\n"
+"ਨੋਟ: ਜੇ ਇਹ ਚੋਣ ਕੀਤੀ ਗਈ ਤਾਂ ਗਲੋਬਲ DPMS ਸੈਟਿੰਗ ਨੂੰ "
+"kpowersave ਚੱਲਣ ਦੌਰਾਨ ਅਣਡਿੱਠਾ ਕਰ ਦਿੱਤਾ ਜਾਵੇਗਾ।"
+
+#: configuredialog.cpp:282
+msgid "This disables DPMS support."
+msgstr "ਇਹ DPMS ਸਹਿਯੋਗ ਅਯੋਗ ਕਰਦਾ ਹੈ।"
+
+#: configuredialog.cpp:283
+msgid "If selected, the screen is locked on suspend or standby."
+msgstr "ਜੇਕਰ ਇਹ ਚੋਣ ਕੀਤੀ ਗਈ ਤਾਂ ਸਕਰੀਨ ਸਸਪੈਂਡ ਜਾਂ ਸਟੈਂਡਬਾਏ ਸਮੇਂ ਲਾਕ ਕੀਤੀ ਜਾਂਦੀ ਹੈ।"
+
+#: configuredialog.cpp:284
+msgid "If selected, the screen is locked if the lid close event is triggered."
+msgstr "ਜੇ ਚੋਣ ਕੀਤੀ ਤਾਂ, ਸਕਰੀਨ ਨੂੰ ਲਾਕ ਕੀਤਾ ਜਾਵੇਗਾ, ਜਦੋਂ ਵੀ lid ਬੰਦ ਘਟਨਾ ਨੂੰ ਦੱਬਿਆ ਜਾਵੇਗਾ।"
+
+#: configuredialog.cpp:286
+msgid "Check this box to enable or disable automatic suspension of the computer."
+msgstr "ਕੰਪਿਊਟਰ ਨੂੰ ਆਟੋਮੈਟਿਕ ਸਸਪੈਂਡ ਨੂੰ ਯੋਗ ਜਾਂ ਅਯੋਗ ਕਰਨ ਲਈ ਇਹ ਬਾਕਸ ਚੁਣੋ।"
+
+#: configuredialog.cpp:288
+msgid ""
+"Activate this action if the user was inactive for the defined time \n"
+"(greater than 0 minutes). If empty, nothing happens."
+msgstr ""
+"ਜੇ ਯੂਜ਼ਰ ਦਿੱਤੇ ਟਾਇਮ ਲਈ ਨਹੀਂ ਕੁਝ ਕਰਦਾ ਤਾਂ ਇਹ ਕਾਰਵਾਈ ਐਕਟਿਵੇਟ ਕਰੋ\n"
+"(0 ਮਿੰਟ ਤੋਂ ਵੱਧ)। ਜੇ ਖਾਲੀ ਹੈ ਤਾਂ ਕੁਝ ਨਹੀਂ ਕਰਨਾ।"
+
+#: configuredialog.cpp:291
+msgid "All scheme-related screen saver and DPMS settings."
+msgstr "ਸਭ ਸਕੀਮ-ਸਬੰਧਤ ਸਕਰੀਨ-ਸੇਵਰ ਅਤੇ DPMS ਸੈਟਿੰਗ ਹਨ।"
+
+#: configuredialog.cpp:292
+msgid "All scheme-related display brightness settings."
+msgstr "ਸਭ ਸਕੀਮ-ਸਬੰਧਤ ਡਿਸਪਲੇਅ ਚਮਕ ਸੈਟਿੰਗ ਹੈ।"
+
+#: configuredialog.cpp:293
+msgid "All scheme-related automatic suspend settings."
+msgstr "ਸਭ ਸਕੀਮ-ਸਬੰਧਤ ਆਟੋਮੈਟਿਕ ਸਸਪੈਂਡ ਸੈਟਿੰਗ ਹੈ।"
+
+#: configuredialog.cpp:295
+msgid ""
+"Here you can change the brightness of your display. \n"
+"Use the slider to change the brightness directly for \n"
+"testing. To reset back to previous level, please press \n"
+"the 'Reset' button. "
+msgstr ""
+"ਇੱਥੇ ਤੁਸੀਂ ਆਪਣੇ ਡਿਸਪਲੇਅ ਲਈ ਚਮਕ ਕੰਟਰੋਲ ਕਰ ਸਕਦੇ ਹੋ।\n"
+"ਟੈਸਟਿੰਗ ਲਈ ਚਮਕ ਸਿੱਧੀ ਬਦਲਣ ਲਈ ਸਲਾਇਡਰ ਵਰਤੋਂ।\n"
+"ਪਿਛਲੇ ਲੈਵਲ ਨੂੰ ਫੇਰ ਮੁੜ-ਸੈੱਟ ਕਰਨ ਲਈ, 'ਰੀ-ਸੈੱਟ' ਬਟਨ\n"
+"ਦਬਾਓ।"
+
+#: configuredialog.cpp:299
+msgid "Use this button to set back the slider and the display brightness."
+msgstr "ਇਹ ਬਟਨ ਨੂੰ ਸਲਾਇਡਰ ਅਤੇ ਡਿਸਪਲੇਅ ਚਮਕ ਸੈੱਟ ਕਰਨ ਲਈ ਵਰਤੋਂ।"
+
+#: configuredialog.cpp:352
+msgid "Press this button to delete the selected scheme."
+msgstr "ਚੁਣੀ ਸਕੀਮ ਹਟਾਉਣ ਲਈ ਇਹ ਬਟਨ ਦੱਬੋ।"
+
+#: configuredialog.cpp:357
+msgid "You can't delete the current AC or battery scheme."
+msgstr "ਤੁਸੀਂ ਮੌਜੂਦਾ AC ਜਾਂ ਬੈਟਰੀ ਸਕੀਮ ਨਹੀਂ ਹਟਾ ਸਕਦੇ ਹੋ।"
+
+#: configuredialog.cpp:363
+msgid "You can't delete this default scheme."
+msgstr "ਤੁਸੀਂ ਇਹ ਡਿਫਾਲਟ ਸਕੀਮ ਨਹੀਂ ਹਟਾ ਸਕਦੇ ਹੋ।"
+
+#: configuredialog.cpp:546
+msgid "Your hardware supports to change the brightness. The values of the slider are in percent and mapped to the available brightness levels of your hardware."
+msgstr ""
+"ਤੁਹਾਡਾ ਹਾਰਡਵੇਅਰ ਚਮਕ ਬਦਲਣ ਲਈ ਸਹਾਇਕ ਹੈ। ਸਲਾਇਡ ਦਾ ਮੁੱਲ ਫੀ-ਸਦੀ ਵਿੱਚ ਹੈ ਅਤੇ ਤੁਹਾਡੇ ਹਾਰਡਵੇਅਰ ਦੀ ਉਪਲੱਬਧ ਚਮਕ "
+"ਲੈਵਲ ਨਾਲ ਮੈਪ ਕੀਤਾ ਗਿਆ ਹੈ।"
+
+#: configuredialog.cpp:553
+msgid "Your Hardware currently not support changing the brightness of your display."
+msgstr "ਤੁਹਾਡਾ ਹਾਰਡਵੇਅਰ ਹਾਲੇ ਤੁਹਾਡੇ ਡਿਸਪਲੇਅ ਦੀ ਚਮਕ ਬਦਲਣ ਲਈ ਸਹਿਯੋਗੀ ਨਹੀਂ ਹੈ।"
+
+#: configuredialog.cpp:664
+msgid "Select Automatically"
+msgstr "ਆਟੋਮੈਟਿਕ ਚੁਣੋ"
+
+#: configuredialog.cpp:665
+msgid "KScreensaver"
+msgstr "ਕੇ-ਸਕਰੀਨ-ਸੇਵਰ"
+
+#: configuredialog.cpp:666
+msgid "XScreensaver"
+msgstr "X-ਸਕਰੀਨ-ਸੇਵਰ"
+
+#: configuredialog.cpp:667
+msgid "xlock"
+msgstr "xlock"
+
+#: configuredialog.cpp:668
+msgid "GNOME Screensaver"
+msgstr "ਗਨੋਮ ਸਕਰੀਨ-ਸੇਵਰ"
+
+#: configuredialog.cpp:930
+msgid ""
+"There are unsaved changes in the active scheme.\n"
+"Apply the changes before jumping to the next scheme or discard the changes?"
+msgstr ""
+"ਐਕਟਿਵ ਸਕੀਮ ਵਿੱਚ ਕੁਝ ਅਣ-ਸੰਭਾਲੇ ਬਦਲਾਅ ਬਾਕੀ ਹਨ।\n"
+"ਅਗਲੀ ਸਕੀਮ ਉੱਤੇ ਜਾਣ ਤੋਂ ਪਹਿਲਾਂ ਕੀ ਇਹ ਬਦਲਾਅ ਲਾਗੂ ਕਰਨ ਹਨ ਜਾਂ ਅਣਡਿੱਠੇ?"
+
+#: configuredialog.cpp:933 configuredialog.cpp:983
+msgid "Unsaved Changes"
+msgstr "ਅਣ-ਸੰਭਾਲੇ ਬਦਲਾਅ"
+
+#: configuredialog.cpp:981
+msgid ""
+"There are unsaved changes.\n"
+"Apply the changes before cancel or discard the changes?"
+msgstr ""
+"ਕੁਝ ਅਣ-ਸੰਭਾਲੇ ਬਦਲਾਅ ਹਨ।\n"
+"ਬਦਲਾਅ ਸੰਭਾਲਣ ਜਾਂ ਰੱਦ ਕਰਨ ਤੋਂ ਪਹਿਲਾਂ ਇਹਨਾਂ ਨੂੰ ਲਾਗੂ ਕਰਨਾ ਹੈ?"
+
+#: configuredialog.cpp:1032
+msgid "Please insert a name for the new scheme:"
+msgstr "ਨਵੀਂ ਸਕੀਮ ਲਈ ਇੱਕ ਨਾਂ ਦਿਓ ਜੀ:"
+
+#: configuredialog.cpp:1038
+msgid "KPowersave Configuration"
+msgstr "ਕੇ-ਪਾਵਰਸੇਵ ਸੰਰਚਨਾ"
+
+#: configuredialog.cpp:1046
+msgid "Error: A scheme with this name already exist.\n"
+msgstr "ਗਲਤੀ: ਇਸ ਨਾਂ ਨਾਲ ਇੱਕ ਸਕੀਮ ਪਹਿਲਾਂ ਹੀ ਮੌਜੂਦ ਹੈ।\n"
+
+#: configuredialog.cpp:1076
+msgid "Do you really want to delete the %1 scheme?"
+msgstr "ਕੀ ਤੁਸੀਂ %1 ਸਕੀਮ ਹਟਾਉਣੀ ਚਾਹੁੰਦੇ ਹੋ?"
+
+#: configuredialog.cpp:1078
+msgid "Confirm delete scheme"
+msgstr "ਸਕੀਮ ਹਟਾਉਣ ਪੁਸ਼ਟੀ"
+
+#: configuredialog.cpp:1079 configure_Dialog.cpp:883
+msgid "Delete"
+msgstr "ਹਟਾਓ"
+
+#: configuredialog.cpp:1095
+msgid "Could not delete the selected scheme."
+msgstr "ਚੁਣੀ ਸਕੀਮ ਹਟਾਈ ਨਹੀਂ ਜਾ ਸਕੀ ਹੈ।"
+
+#: configuredialog.cpp:1324
+msgid "<b>Note:</b> If you select this option, the computer will suspend or standby if the current user is inactive for the defined time even if somebody is logged in remotely to the X server.<br><br> This feature can also produce problems with some programs, such as video players or cd burner. These programs can be blacklisted by checking <b>Enable scheme-specific blacklist</b> and click <b>Edit Blacklist...</b>. If this does not help, report the problem or deactivate autosuspend.<br><br> Really use this option?"
+msgstr ""
+"<b>ਨੋਟ:</b> ਜੇ ਤੁਸੀਂ ਇਹ ਚੋਣ ਕੀਤੀ ਤਾਂ ਕੰਪਿਊਟਰ ਸਸਪੈਂਡ ਜਾਂ ਸਟੈਂਡ-ਬਾਏ ਹੋ ਜਾਵੇ, ਜਦੋਂ ਵੀ ਮੌਜੂਦ ਯੂਜ਼ਰ ਦਿੱਤੇ ਸਮੇਂ ਲਈ "
+"ਇਨ-ਐਕਟਿਵ ਹੋਵੇਗਾ, ਭਾਵੇਂ ਕਿ ਕੋਈ ਵੀ ਰਿਮੋਟ ਤੋਂ X ਸਰਵਰ ਉੱਤੇ ਲਾਗਇਨ ਹੋਵੇ।<br><br>ਇਹ ਫੀਚਰ ਕੁਝ ਪਰੋਗਰਾਮਾਂ, "
+"ਜਿਵੇਂ ਕਿ ਵੀਡਿਓ ਪਲੇਅਰ ਅਤੇ CD- ਬਰਨਰ ਨਾਲ ਵੀ ਸਮੱਸਿਆਵਾਂ ਦੇ ਸਕਦਾ ਹੈ। ਇਹ ਪਰੋਗਰਾਮਾਂ ਨੂੰ <b>ਖਾਸ ਬਲੈਕ-ਲਿਸਟ ਸਕੀਮ ਯੋਗ</b> ਦੀ ਚੋਣ ਅਤੇ <b>ਬਲੈਕਲਿਸਟ ਸੋਧ...</b> ਕਲਿੱਕ ਕਰਨ ਨਾਲ ਬਲੈਕ-ਲਿਸਟ ਕੀਤਾ ਜਾ ਸਕਦਾ ਹੈ। ਜੇ ਇਹ ਮੱਦਦ ਨਾ ਕਰੇ ਤਾਂ "
+"ਸਮੱਸਿਆ ਦੀ ਰਿਪੋਰਟ ਦਿਓ ਜਾਂ ਆਟੋ-ਸਸਪੈਂਡ ਡਿ-ਐਕਟਿਵ ਕਰੋ।<br><br>ਕੀ ਇਹ ਚੋਣ ਵਰਤਣੀ ਹੈ?"
+
+#: configuredialog.cpp:1402 configuredialog.cpp:1532
+msgid "The blacklist of the selected scheme is empty. Import the general blacklist?"
+msgstr "ਚੁਣੀ ਸਕੀਮ ਦੀ ਬਲੈਕਲਿਸਟ ਖਾਲੀ ਹੈ। ਕੀ ਆਮ ਬਲੈਕਲਿਸਟ ਅਯਾਤ ਕਰਨੀ ਹੈ?"
+
+#: configuredialog.cpp:1404 configuredialog.cpp:1534
+msgid "Import"
+msgstr "ਆਯਾਤ"
+
+#: configuredialog.cpp:1404 configuredialog.cpp:1534
+msgid "Do Not Import"
+msgstr "ਆਯਾਤ ਨਾ ਕਰੋ"
+
+#: configuredialog.cpp:1416
+msgid "General Autosuspend Blacklist"
+msgstr "ਆਮ ਆਟੋ-ਸਸਪੈਂਡ ਬਲੈਕਲਿਸਟ"
+
+#: configuredialog.cpp:1546
+msgid "General Autodimm Blacklist"
+msgstr "ਆਮ ਆਟੋਡਿਮ ਬਲੈਕਲਿਸਟ"
+
+#: configuredialog.cpp:1779 configuredialog.cpp:1816
+msgid "Shutdown"
+msgstr "ਬੰਦ ਕਰੋ"
+
+#: configuredialog.cpp:1781 configuredialog.cpp:1819
+msgid "Logout Dialog"
+msgstr "ਲਾਗਆਉਟ ਡਾਈਲਾਗ"
+
+#: configuredialog.cpp:1784 configuredialog.cpp:1822 kpowersave.cpp:182
+#: kpowersave.cpp:2096 kpowersave.cpp:2156 kpowersave.cpp:2247
+msgid "Suspend to Disk"
+msgstr "ਡਿਸਕ ਉੱਤੇ ਸਸਪੈਂਡ"
+
+#: configuredialog.cpp:1787 configuredialog.cpp:1825 kpowersave.cpp:186
+#: kpowersave.cpp:2101 kpowersave.cpp:2161 kpowersave.cpp:2250
+msgid "Suspend to RAM"
+msgstr "RAM ਉੱਤੇ ਸਸਪੈਂਡ"
+
+#: configuredialog.cpp:1790 configuredialog.cpp:1828
+msgid "CPU Powersave policy"
+msgstr "CPU ਪਾਵਰ-ਸੇਵ ਪਾਲਸੀ"
+
+#: configuredialog.cpp:1793 configuredialog.cpp:1831
+msgid "CPU Dynamic policy"
+msgstr "CPU ਡਾਇਨੈਮਿਕ ਪਾਲਸੀ"
+
+#: configuredialog.cpp:1796 configuredialog.cpp:1834
+msgid "CPU Performance policy"
+msgstr "CPU ਕਾਰਗੁਜ਼ਾਰੀ ਪਾਲਸੀ"
+
+#: configuredialog.cpp:1799 configuredialog.cpp:1837
+msgid "Set Brightness to"
+msgstr "ਚਮਕ ਸੈੱਟ ਕਰੋ"
+
+#: main.cpp:43
+msgid "KDE Frontend for Power Management, Battery Monitoring and Suspend"
+msgstr "ਊਰਜਾ ਪਰਬੰਧ, ਬੈਟਰੀ ਮਾਨੀਟਰਿੰਗ ਅਤੇ ਸਸਪੈਂਡ ਲਈ KDE ਫਰੰਟ-ਐਂਡ"
+
+#: main.cpp:45
+msgid "Force a new check for ACPI support"
+msgstr "ACPI ਸਹਿਯੋਗ ਲਈ ਨਵੀਂ ਜਾਂਚ ਲਈ ਮਜ਼ਬੂਰ ਕਰੋ"
+
+#: main.cpp:46
+msgid "Trace function entry and leave points for debug\n"
+msgstr "ਫੰਕਸ਼ਨ ਐਂਟਰੀ ਟਰੇਸ ਕਰੋ ਅਤੇ ਪੁਆਇੰਟ ਡੀਬੱਗ ਲਈ ਛੱਡ ਦਿਓ\n"
+
+#: main.cpp:59
+msgid "Current maintainer"
+msgstr "ਮੌਜੂਦਾ ਪਰਬੰਧਕ"
+
+#: main.cpp:62
+msgid "Powersave developer and for D-Bus integration"
+msgstr "ਪਾਵਰਸੇਵ ਡਿਵੈਲਪਰ ਅਤੇ D-BUS ਐਂਟੀਗਰੇਟਰ"
+
+#: main.cpp:64
+msgid "Powersave developer and tester"
+msgstr "ਪਾਵਰਸੇਵ ਡਿਵੈਲਪਰ ਅਤੇ ਟੈਸਟਰ"
+
+#: main.cpp:66
+msgid "Added basic detailed dialog"
+msgstr "ਮੁੱਖ ਵੇਰਵਾ ਡਾਈਲਾਗ ਜੋੜਿਆ"
+
+#: main.cpp:67
+msgid "Packaging Debian and Ubuntu"
+msgstr "ਡੈਬੀਅਨ ਅਤੇ ਊਬੰਤੂ ਪੈਕੇਜ"
+
+#: detaileddialog.cpp:61
+msgid "KPowersave Information Dialog"
+msgstr "ਕੇ-ਪਾਵਰਸੇਵ ਜਾਣਕਾਰੀ ਡਾਈਲਾਗ"
+
+#: detaileddialog.cpp:65 configure_Dialog.cpp:882 configure_Dialog.cpp:922
+msgid "Miscellaneous"
+msgstr "ਫੁਟਕਲ"
+
+#: detaileddialog.cpp:66
+msgid "CPUs"
+msgstr "CPU"
+
+#: detaileddialog.cpp:73 detaileddialog.cpp:453
+msgid "Battery state:"
+msgstr "ਬੈਟਰੀ ਹਾਲਤ:"
+
+#: detaileddialog.cpp:79
+msgid "Total:"
+msgstr "ਕੁੱਲ:"
+
+#: detaileddialog.cpp:81 detaileddialog.cpp:83
+msgid "Battery %1"
+msgstr "ਬੈਟਰੀ %1"
+
+#: detaileddialog.cpp:114
+msgid "Processor %1"
+msgstr "ਪ੍ਰੋਸੈਸਰ %1"
+
+#: detaileddialog.cpp:230
+msgid "not present"
+msgstr "ਮੌਜੂਦ ਨਹੀਂ।"
+
+#: detaileddialog.cpp:243
+msgid "charged"
+msgstr "ਚਾਰਜ ਹੋਈ"
+
+#: detaileddialog.cpp:245
+msgid "%1:%2 h until charged"
+msgstr "%1:%2 h ਚਾਰਜ ਹੋਣ ਲਈ ਬਾਕੀ"
+
+#: detaileddialog.cpp:248
+msgid "%1:%2 h remaining"
+msgstr "%1:%2 ਘੰ ਬਾਕੀ"
+
+#: detaileddialog.cpp:253 detaileddialog.cpp:441 detaileddialog.cpp:468
+msgid "unknown"
+msgstr "ਅਣਜਾਣ"
+
+#: detaileddialog.cpp:325 detaileddialog.cpp:368
+msgid "%v MHz"
+msgstr "%v MHz"
+
+#: detaileddialog.cpp:330 detaileddialog.cpp:363 dummy.cpp:58
+msgid "deactivated"
+msgstr "ਡਿ-ਐਕਟੀਵੇਟ"
+
+#: detaileddialog.cpp:395
+msgid "unplugged"
+msgstr "ਪਲੱਗ ਕੱਢਿਆ"
+
+#: detaileddialog.cpp:412
+msgid "Current Scheme: "
+msgstr "ਮੌਜੂਦਾ ਸਕੀਮ: "
+
+#: detaileddialog.cpp:429
+msgid "Current CPU Frequency Policy:"
+msgstr "ਮੌਜੂਦਾ CPU ਫਰੀਕਿਊਂਸੀ ਨੀਤੀ:"
+
+#: detaileddialog.cpp:435 kpowersave.cpp:193 configure_Dialog.cpp:877
+msgid "Dynamic"
+msgstr "ਡਾਇਨੈਮਿਕ"
+
+#: detaileddialog.cpp:456
+msgid "Critical"
+msgstr "ਨਾਜ਼ੁਕ"
+
+#: detaileddialog.cpp:459
+msgid "Low"
+msgstr "ਘੱਟ"
+
+#: detaileddialog.cpp:462 kpowersave.cpp:277 kpowersave.cpp:652
+#: kpowersave.cpp:659 kpowersave.cpp:705 kpowersave.cpp:713 kpowersave.cpp:761
+#: kpowersave.cpp:769 kpowersave.cpp:817 kpowersave.cpp:824
+#: kpowersave.cpp:1131 kpowersave.cpp:1243 kpowersave.cpp:1272
+#: kpowersave.cpp:1610 kpowersave.cpp:1670 kpowersave.cpp:2186
+msgid "Warning"
+msgstr "ਸਾਵਧਾਨ"
+
+#: detaileddialog.cpp:465
+msgid "ok"
+msgstr "ਠੀਕ ਹੈ"
+
+#: detaileddialog.cpp:474 detaileddialog.cpp:477
+msgid "Set brightness supported:"
+msgstr "ਚਮਕ ਸਹਿਯੋਗ ਸੈੱਟ:"
+
+#: detaileddialog.cpp:475
+msgid "yes"
+msgstr "ਹਾਂ"
+
+#: detaileddialog.cpp:478
+msgid "no"
+msgstr "ਨਹੀਂ"
+
+#: detaileddialog.cpp:481 detaileddialog.cpp:485
+msgid "HAL Daemon:"
+msgstr "HAL ਡੈਮਨ:"
+
+#: detaileddialog.cpp:482
+msgid "running"
+msgstr "ਚੱਲ ਰਿਹਾ ਹੈ"
+
+#: detaileddialog.cpp:486
+msgid "not running"
+msgstr "ਚੱਲ ਨਹੀਂ ਰਿਹਾ"
+
+#: info_Dialog.cpp:197
+msgid "Information"
+msgstr "ਜਾਣਕਾਰੀ"
+
+#: dummy.cpp:36
+msgid "If the current desktop user is inactive, dim the display to:"
+msgstr "ਜੇ ਮੌਜੂਦਾ ਡੈਸਕਟਾਪ ਯੂਜ਼ਰ ਇਨ-ਐਕਟਿਵ ਹੋਇਆ ਡਿਸਪਲੇਅ ਡਿਮ ਕਰੋ:"
+
+#: dummy.cpp:37
+msgid "Enable dim display on inactivity"
+msgstr "ਇਨ-ਐਕਟਿਵਟੀ ਉੱਤੇ ਡਿਸਪਲੇਅਰ ਡਿਮ ਯੋਗ"
+
+#: dummy.cpp:38
+msgid "Blacklist"
+msgstr "ਬਲੈਕ-ਲਿਸਟ"
+
+#: dummy.cpp:39
+msgid "Here you can add programs which should, if running, prevent the dimming of the display."
+msgstr "ਇੱਥੇ ਤੁਸੀਂ ਉਹ ਪਰੋਗਰਾਮ ਜੋੜ ਸਕਦੇ ਹੋ ਜੋ, ਜਦੋਂ ਚੱਲਦੇ ਹੋਣ ਤਾਂ ਡਿਸਪਲੇਅ ਡਿਮ ਨਾ ਹੋਵੇ।"
+
+#: dummy.cpp:41
+msgid "Would you like to import a predefined blacklist?"
+msgstr "ਕੀ ਤੁਸੀਂ ਪ੍ਰੀ-ਡਿਫਾਇਨਡ ਬਲੈਕਲਿਸਟ ਲੈਣੀ ਚਾਹੁੰਦੇ ਹੋ?"
+
+#: dummy.cpp:42
+msgid "Disable CPUs/Cores"
+msgstr "CPU/ਕੋਰ ਆਯੋਗ"
+
+#: dummy.cpp:43
+msgid "Max. running CPUs:"
+msgstr "ਵੱਧ ਤੋਂ ਵੱਧ ਚੱਲਦੇ CPU:"
+
+#: dummy.cpp:44
+msgid "Max. running CPUs/Cores:"
+msgstr "ਵੱਧ ਤੋਂ ਵੱਧ ਚੱਲਦੇ CPU/ਕੋਰ:"
+
+#: dummy.cpp:45
+msgid "Min. running CPUs:"
+msgstr "ਘੱਟੋ-ਘੱਟ ਚੱਲਦੇ CPU:"
+
+#: dummy.cpp:46
+msgid "Min. running CPUs/Cores:"
+msgstr "ਘੱਟੋ-ਘੱਟ ਚੱਲਦੇ CPU/ਕੋਰ:"
+
+#: dummy.cpp:47
+msgid "Enable to switch off CPUs/cores"
+msgstr "CPU/ਕੋਰ ਬੰਦ ਕਰਨਾ ਯੋਗ"
+
+#: dummy.cpp:48
+msgid "You have a multiprocessor/multicore machine."
+msgstr "ਤੁਹਾਡੇ ਕੋਲ ਇੱਕ ਮਲਟੀ-ਪ੍ਰੋਸੈਸਰ/ਮਲਟੀ-ਕੋਰ ਮਸ਼ੀਨ ਹੈ।"
+
+#: dummy.cpp:49
+msgid "You can disable CPUs/cores to reduce power consumption and save battery power."
+msgstr "ਤੁਸੀਂ CPU/ਕੋਰ ਨੂੰ ਪਾਵਰ ਵਰਤੋਂ ਘਟਾਉਣ ਅਤੇ ਬੈਟਰੀ ਊਰਜਾ ਬਚਾਉਣ ਲਈ ਬੰਦ ਵੀ ਕਰ ਸਕਦੇ ਹੋ।"
+
+#: dummy.cpp:50
+msgid "Device"
+msgstr "ਜੰਤਰ"
+
+#: dummy.cpp:51
+msgid "Devices"
+msgstr "ਜੰਤਰ"
+
+#: dummy.cpp:52
+msgid "Device class"
+msgstr "ਜੰਤਰ ਕਲਾਸ"
+
+#: dummy.cpp:53
+msgid "activate"
+msgstr "ਐਕਟਿਵੇਟ"
+
+#: dummy.cpp:54
+msgid "Activate"
+msgstr "ਐਕਟਿਵੇਟ"
+
+#: dummy.cpp:55
+msgid "deactivate"
+msgstr "ਡਿ-ਐਕਟਿਵੇਟ"
+
+#: dummy.cpp:56
+msgid "Deactivate"
+msgstr "ਡਿ-ਐਕਟਿਵੇਟ"
+
+#: dummy.cpp:57
+msgid "activated"
+msgstr "ਐਕਟਿਵੇਟ ਕੀਤਾ"
+
+#: dummy.cpp:59
+msgid "do nothing"
+msgstr "ਕੁਝ ਨਾ ਕਰੋ"
+
+#: dummy.cpp:60
+msgid "Deactivate following devices:"
+msgstr "ਹੇਠ ਦਿੱਤੇ ਜੰਤਰ ਡਿ-ਐਕਟਿਵੇਟ:"
+
+#: dummy.cpp:61
+msgid "Activate following devices"
+msgstr "ਹੇਠ ਦਿੱਤੇ ਜੰਤਰ ਐਕਟਿਵੇਟ"
+
+#: dummy.cpp:62
+msgid "Reactivate following devices"
+msgstr "ਹੇਠ ਦਿੱਤੇ ਜੰਤਰ ਰੀ-ਐਕਟਿਵੇਟ"
+
+#: dummy.cpp:63
+msgid "Deactivate following device classes:"
+msgstr "ਹੇਠ ਦਿੱਤੀਆਂ ਜੰਤਰ ਕਲਾਸਾਂ ਡਿ-ਐਕਟਿਵੇਟ:"
+
+#: dummy.cpp:64
+msgid "Activate following devices classes"
+msgstr "ਹੇਠ ਦਿੱਤੀਆਂ ਜੰਤਰ ਕਲਾਸਾਂ ਐਕਟਿਵੇਟ"
+
+#: dummy.cpp:65
+msgid "Reactivate following device classes"
+msgstr "ਹੇਠ ਦਿੱਤੀਆਂ ਜੰਤਰ ਕਲਾਸਾਂ ਰੀ-ਐਕਟਿਵੇਟ"
+
+#: dummy.cpp:66
+msgid "If the scheme switched all devices are again activated."
+msgstr "ਜੇ ਸਕੀਮ ਨੇ ਸਭ ਜੰਤਰ ਬਦਲੇ ਹੋਣ ਤਾਂ ਮੁੜ ਐਕਟਿਵੇਟ ਕਰੋ।"
+
+#: dummy.cpp:67
+msgid "This is a experimental feature."
+msgstr "ਇਹ ਤਜਰਬੇ ਅਧੀਨ ਫੀਚਰ ਹੈ।"
+
+#: dummy.cpp:68
+msgid "If you have problems with this feature, please report them."
+msgstr "ਜੇ ਤੁਹਾਨੂੰ ਇਹ ਫੀਚਰ ਨਾਲ ਸਮੱਸਿਆ ਹੈ ਤਾਂ ਰਿਪੋਰਟ ਦਿਓ ਜੀ।"
+
+#: dummy.cpp:69
+msgid "Select one of the available devices and click on "
+msgstr "ਇੱਕ ਉਪਲੱਬਧ ਜੰਤਰ ਚੁਣੋ ਅਤੇ ਕਲਿੱਕ ਕਰੋ "
+
+#: dummy.cpp:70
+msgid "Select one of the available device classes and click on "
+msgstr "ਇੱਕ ਉਪਲੱਬਧ ਜੰਤਰ ਕਲਾਸਾਂ ਚੁਣੋ ਅਤੇ ਕਲਿੱਕ ਕਰੋ "
+
+#: dummy.cpp:71
+msgid "Select one or more of the available devices and click on "
+msgstr "ਇੱਕ ਜਾਂ ਵੱਧ ਉਪਲੱਬਧ ਜੰਤਰ ਚੁਣੋ ਅਤੇ ਕਲਿੱਕ ਕਰੋ "
+
+#: dummy.cpp:72
+msgid "Select one or more of the available device classes and click on "
+msgstr "ਇੱਕ ਜਾਂ ਵੱਧ ਉਪਲੱਬਧ ਜੰਤਰ ਕਲਾਸ ਚੁਣੋ ਅਤੇ ਕਲਿੱਕ ਕਰੋ "
+
+#: dummy.cpp:73
+msgid "Please note: If you e.g. deactivate a network device you may lose your internet connection."
+msgstr "ਧਿਆਨ ਰੱਖੋ ਜੀ: ਜੇ ਤੁਸੀਂ ਆਪਣੇ ਨੈੱਟਵਰਕ ਜੰਤਰ ਨੂੰ ਡਿ-ਐਕਟਿਵੇਟ ਕਰ ਦਿੱਤਾ ਤਾਂ ਤੁਹਾਡਾ ਇੰਟਰਨੈੱਟ ਕੁਨੈਕਸ਼ਨ ਟੁੱਟ ਜਾਵੇਗਾ।"
+
+#: dummy.cpp:75
+msgid "<b>Note:</b> If you select this option, the computer will suspend or standby if the current user is inactive for the defined time. <br><br> This feature can also produce problems with some programs, such as video players or cd burner. These programs can be blacklisted by checking <b>Enable scheme-specific blacklist</b> and click <b>Edit Blacklist...</b>. If this does not help, report the problem or deactivate autosuspend.<br><br> Really use this option?"
+msgstr ""
+"<b>ਨੋਟ:</b> ਜੇ ਤੁਸੀਂ ਇਹ ਚੋਣ ਕੀਤੀ ਤਾਂ ਕੰਪਿਊਟਰ ਸਸਪੈਂਡ ਜਾਂ ਸਟੈਂਡ-ਬਾਏ ਹੋ ਜਾਵੇ, ਜਦੋਂ ਵੀ ਮੌਜੂਦ ਯੂਜ਼ਰ ਦਿੱਤੇ ਸਮੇਂ ਲਈ "
+"ਇਨ-ਐਕਟਿਵ ਹੋਵੇਗਾ।<br><br>ਇਹ ਫੀਚਰ ਕੁਝ ਪਰੋਗਰਾਮਾਂ, ਜਿਵੇਂ ਕਿ ਵੀਡਿਓ ਪਲੇਅਰ ਅਤੇ CD- ਬਰਨਰ ਨਾਲ ਵੀ ਸਮੱਸਿਆਵਾਂ "
+"ਦੇ ਸਕਦਾ ਹੈ। ਇਹ ਪਰੋਗਰਾਮਾਂ ਨੂੰ <b>ਖਾਸ ਬਲੈਕ-ਲਿਸਟ ਸਕੀਮ ਯੋਗ</b> ਦੀ ਚੋਣ ਅਤੇ <b>ਬਲੈਕਲਿਸਟ ਸੋਧ...</b> "
+"ਕਲਿੱਕ ਕਰਨ ਨਾ ਬਲੈਕ-ਲਿਸਟ ਕੀਤਾ ਜਾ ਸਕਦਾ ਹੈ। ਜੇ ਇਹ ਮੱਦਦ ਨਾ ਕਰੇ ਤਾਂ ਸਮੱਸਿਆ ਦੀ ਰਿਪੋਰਟ ਦਿਓ ਜਾਂ ਆਟੋ-ਸਸਪੈਂਡ "
+"ਡਿ-ਐਕਟਿਵ ਕਰੋ।<br><br>ਕੀ ਇਹ ਚੋਣ ਵਰਤਣੀ ਹੈ?"
+
+#: dummy.cpp:82
+msgid "Try to use only one CPU/Core."
+msgstr "ਕੇਵਲ ਇੱਕ CPU/ਕੋਰ ਵਰਤ ਕੇ ਕੋਸ਼ਿਸ਼ ਕਰੋ।"
+
+#: dummy.cpp:83
+msgid "Reduce power consumption by try to use only one CPU/Core instead of spreading the work over all/multiple CPUs."
+msgstr "ਪਾਵਰ ਖਪਤ ਨੂੰ ਸਭ/ਕਈ CPU ਉੱਤੇ ਕੰਮ ਵੰਡਣ ਦੀ ਬਜਾਏ ਇੱਕ ਹੀ CPU/ਕੋਰ ਦੀ ਵਰਤੋਂ ਕਰਕੇ ਘਟਾ ਸਕਦੇ ਹੋ।"
+
+#: dummy.cpp:87
+msgid "Could not load the global configuration."
+msgstr "ਗਲੋਬਲ ਸੰਰਚਨਾ ਲੋਡ ਨਹੀਂ ਹੋ ਸਕੀ ਹੈ।"
+
+#: dummy.cpp:88
+msgid "Could not load the requested scheme configuration."
+msgstr "ਮੰਗੀ ਸਕੀਮ ਸੰਰਚਨਾ ਲੋਡ ਨਹੀਂ ਹੋ ਸਕਦੀ ਹੈ।"
+
+#: dummy.cpp:89
+msgid "Configure the current scheme."
+msgstr "ਮੌਜੂਦਾ ਸਕੀਮ ਸੰਰਚਨਾ ਹੈ।"
+
+#: dummy.cpp:90
+msgid "Try loading the default configuration."
+msgstr "ਡਿਫਾਲਟ ਸੰਰਚਨਾ ਲੋਡ ਕੀਤੀ ਜਾ ਰਹੀ ਹੈ।"
+
+#: dummy.cpp:91
+msgid "Maybe the global configuration file is empty or missing."
+msgstr "ਹੋ ਸਕਦਾ ਹੈ ਕਿ ਗਲੋਬਲ ਸੰਰਚਨਾ ਫਾਇਲ ਖਾਲੀ ਹੈ ਜਾਂ ਗੁੰਮ ਹੈ।"
+
+#: dummy.cpp:94
+msgid "Cannot connect to D-Bus. The D-Bus daemon may not be running."
+msgstr "D-BUS ਨਾਲ ਕੁਨੈਕਟ ਨਹੀਂ ਹੋ ਸਕਦਾ। D-BUS ਡੈਮਨ ਚੱਲਦਾ ਨਹੀਂ ਜਾਪਦਾ।"
+
+#: dummy.cpp:95
+msgid ""
+"Scheme switched to %1. \n"
+" Deactivate following devices: %2"
+msgstr ""
+"ਸਕੀਮ %1 ਬਦਲੀ ਹੈ।\n"
+" ਅੱਗੇ ਦਿੱਤੇ ਜੰਤਰ ਡਿ-ਐਕਟਿਵੇਟ: %2"
+
+#: dummy.cpp:96
+msgid ""
+"Scheme switched to %1. \n"
+" Activate following devices: %2"
+msgstr ""
+"%1 ਸਕੀਮ ਬਦਲੀ ਗਈ।\n"
+" ਅੱਗੇ ਦਿੱਤੇ ਜੰਤਰ ਐਕਟਿਵੇਟ: %2"
+
+#: dummy.cpp:97
+msgid "Report ..."
+msgstr "ਰਿਪੋਰਟ..."
+
+#: dummy.cpp:98
+msgid "Suspend to RAM is not supported on your machine."
+msgstr "ਤੁਹਾਡੀ ਮਸ਼ੀਨ RAM ਉੱਤੇ ਸਸਪੈਂਡ ਵਾਸਤੇ ਸਹਿਯੋਗੀ ਨਹੀਂ ਹੈ।"
+
+#: dummy.cpp:99
+msgid "Additionally, please mail the output of %1 to %2 . Thanks!"
+msgstr "ਇਸ ਤੋਂ ਬਿਨਾਂ %1 ਦੀ ਆਉਟਪੁੱਟ %2 ਨੂੰ ਮੇਲ ਕਰ ਦਿਓ। ਧੰਨਵਾਦ!"
+
+#: dummy.cpp:100
+msgid "Power consumption"
+msgstr "ਪਾਵਰ ਖਰਚ"
+
+#: dummy.cpp:103
+msgid "KScreensaver not found."
+msgstr "ਕੇ-ਸਕਰੀਨਸੇਵਰ ਨਹੀਂ ਮਿਲਿਆ ਹੈ।"
+
+#: dummy.cpp:104
+msgid "Try locking with XScreensaver or xlock."
+msgstr "XScreensaver ਜਾਂ xlock ਨਾਲ ਲਾਕ ਕਰਨ ਦੀ ਕੋਸ਼ਸ਼ ਹੈ।"
+
+#: dummy.cpp:105
+msgid "XScreensaver not found."
+msgstr "XScreensaver ਨਹੀਂ ਮਿਲਿਆ ਹੈ।"
+
+#: dummy.cpp:106
+msgid "Try locking the screen with xlock."
+msgstr "xlock ਨਾਲ ਸਕਰੀਨ ਲਾਕ ਕਰਨ ਦੀ ਕੋਸ਼ਸ਼ ਹੈ।"
+
+#: dummy.cpp:107
+msgid "XScreensaver and xlock not found. It is not possible to lock the screen. Check your installation."
+msgstr "X-ਸਕਰੀਨ-ਸੇਵਰ ਅਤੇ xlock ਨਹੀਂ ਲੱਭੇ। ਸਕਰੀਨ ਨੂੰ ਲਾਕ ਕਰਨਾ ਸੰਭਵ ਨਹੀਂ ਹੈ। ਆਪਣੀ ਇੰਸਟਾਲੇਸ਼ਨ ਦੀ ਜਾਂਚ ਕਰੋ।"
+
+#: dummy.cpp:111
+msgid "HAL daemon:"
+msgstr "HAL ਡੈਮਨ:"
+
+#: dummy.cpp:112
+msgid "D-Bus daemon:"
+msgstr "D-Bus ਡੈਮਨ:"
+
+#: dummy.cpp:113
+msgid "ConsoleKit daemon:"
+msgstr "ConsoleKit ਡੈਮਨ:"
+
+#: dummy.cpp:114
+msgid "Autosuspend activated:"
+msgstr "ਆਟੋ-ਸਸਪੈਂਡ ਐਕਟਿਵੇਟਡ:"
+
+#: dummy.cpp:115
+msgid "Autodimm activated:"
+msgstr "ਆਟੋ-ਡਿਮ ਐਕਟਿਵੇਟਡ:"
+
+#: dummy.cpp:116
+msgid "enabled"
+msgstr "ਚਾਲੂ"
+
+#: dummy.cpp:117
+msgid "Session active:"
+msgstr "ਐਕਟਿਵ ਸ਼ੈਸ਼ਨ:"
+
+#: dummy.cpp:120
+msgid "Inactivity detected."
+msgstr "ਇਨ-ਐਕਟਿਵਟੀ ਮਿਲੀ।"
+
+#: dummy.cpp:121
+msgid "To stop the %1 press the 'Cancel' button before the countdown expire."
+msgstr "%1 ਰੋਕਣ ਲਈ, ਉਲਟੀ ਗਿਣਤੀ ਖਤਮ ਹੋਣ ਤੋਂ ਪਹਿਲਾਂ 'ਰੱਦ ਕਰੋ' ਬਟਨ ਦੱਬੋ।"
+
+#: dummy.cpp:122
+msgid "The computer autosuspend in: "
+msgstr "ਕੰਪਿਊਟਰ ਆਟੋ-ਸਸਪੈਂਡ ਹੋਵੇ: "
+
+#: dummy.cpp:123
+#, c-format
+msgid "The display get dimmed down to %1% in: "
+msgstr "ਡਿਸਪਲੇਅ %1% ਲਈ ਡਿਮ ਹੋ ਜਾਵੇ, ਸਮੇਂ ਵਿੱਚ: "
+
+#: dummy.cpp:124
+msgid "%1 seconds"
+msgstr "%1 ਸਕਿੰਟ"
+
+#: dummy.cpp:127
+msgid "Could not call %1. The current desktop session is not active."
+msgstr "%1 ਨੂੰ ਕਾਲ ਨਹੀਂ ਕੀਤਾ ਜਾ ਸਕਿਆ। ਮੌਜੂਦਾ ਡੈਸਕਟਾਪ ਸ਼ੈਸ਼ਨ ਐਕਟਿਵ ਨਹੀਂ ਹੈ।"
+
+#: dummy.cpp:128
+msgid "Could not set %1. The current desktop session is not active."
+msgstr "%1 ਨੂੰ ਸੈੱਟ ਨਹੀਂ ਕੀਤਾ ਜਾ ਸਕਿਆ। ਮੌਜੂਦਾ ਡੈਸਕਟਾਪ ਸ਼ੈਸ਼ਨ ਐਕਟਿਵ ਨਹੀਂ ਹੈ।"
+
+#: dummy.cpp:129
+msgid "Stopped %1. The current desktop session is now inactive."
+msgstr "%1 ਰੋਕਿਆ। ਮੌਜੂਦਾ ਡੈਸਕਟਾਪ ਸ਼ੈਸ਼ਨ ਹੁਣ ਇਨ-ਐਕਟਿਵ ਹੈ।"
+
+#: dummy.cpp:130
+msgid "Restarted %1. The current desktop session is now active again."
+msgstr "%1 ਮੁੜ-ਚਾਲੂ ਕੀਤਾ। ਮੌਜੂਦਾ ਡੈਸਕਟਾਪ ਸ਼ੈਸ਼ਨ ਹੁਣ ਮੁੜ ਐਕਟਿਵ ਹੈ।"
+
+#: log_viewer.cpp:78
+msgid "Form1"
+msgstr "Form1"
+
+#: log_viewer.cpp:79
+msgid "Save As ..."
+msgstr "ਇੰਝ ਸੰਭਾਲੋ..."
+
+#: log_viewer.cpp:80
+msgid "Close"
+msgstr "ਬੰਦ ਕਰੋ"
+
+#: logviewer.cpp:44
+msgid "KPowersave Logfile Viewer: %1"
+msgstr "ਕੇ-ਪਾਵਰਸੇਵ ਲਾਗ ਫਾਇਲ ਦਰਸ਼ਕ: %1"
+
+#: logviewer.cpp:89
+msgid "File already exist. Overwrite the file?"
+msgstr "ਫਾਇਲ ਪਹਿਲਾਂ ਹੀ ਮੌਜੂਦ ਹੈ। ਕੀ ਫਾਇਲ ਉੱਤੇ ਲਿਖਣਾ?"
+
+#: logviewer.cpp:90 logviewer.cpp:97
+msgid "Error while save logfile"
+msgstr "ਲਾਗ-ਫਾਇਲ ਸੰਭਾਲਣ ਦੌਰਾਨ ਗਲਤੀ"
+
+#: logviewer.cpp:95
+msgid "File already exist."
+msgstr "ਫਾਇਲ ਪਹਿਲਾਂ ਹੀ ਮੌਜੂਦ ਹੈ"
+
+#: logviewer.cpp:98
+msgid "Try other filename ..."
+msgstr "ਹੋਰ ਫਾਇਲ-ਨਾਂ ਨਾਲ ਕੋਸ਼ਿਸ਼..."
+
+#: suspenddialog.cpp:70
+msgid "Preparing Suspend..."
+msgstr "ਸਸਪੈਂਡ ਲਈ ਤਿਆਰ ਕੀਤਾ ਜਾ ਰਿਹਾ ਹੈ..."
+
+#: kpowersave.cpp:168
+msgid "Configure KPowersave..."
+msgstr "ਕੇ-ਪਾਵਰਸੇਵ ਸੰਰਚਨਾ..."
+
+#: kpowersave.cpp:171 configure_Dialog.cpp:915
+msgid "Configure Notifications..."
+msgstr "ਨੋਟੀਫਿਕੇਸ਼ਨ ਸੰਰਚਨਾ..."
+
+#: kpowersave.cpp:175
+msgid "Start YaST2 Power Management Module..."
+msgstr "YaST2 ਊਰਜਾ ਪਰਬੰਧਨ ਮੋਡੀਊਲ ਸ਼ੁਰੂ..."
+
+#: kpowersave.cpp:189 kpowersave.cpp:2106 kpowersave.cpp:2166
+#: kpowersave.cpp:2253
+msgid "Standby"
+msgstr "ਸਟੈਂਡਬਾਏ"
+
+#: kpowersave.cpp:191 kpowersave.cpp:198
+msgid "Set CPU Frequency Policy"
+msgstr "CPU ਫਰੀਕਿਊਂਸੀ ਪਾਲਸੀ"
+
+#: kpowersave.cpp:205 kpowersave.cpp:206
+msgid "Set Active Scheme"
+msgstr "ਐਕਟਿਵ ਸਕੀਮ ਸੈੱਟ ਕਰੋ"
+
+#: kpowersave.cpp:212
+msgid "Disable Actions on Inactivity"
+msgstr "ਇਨ-ਐਕਟਿਵੇਟੀ ਉੱਤੇ ਕਾਰਵਾਈਆਂ ਆਯੋਗ"
+
+#: kpowersave.cpp:219 kpowersave.cpp:229
+msgid "&Help"
+msgstr "ਮੱਦਦ(&H)"
+
+#: kpowersave.cpp:221
+msgid "&KPowersave Handbook"
+msgstr "ਕੇ-ਪਾਵਰਸੇਵ ਹੈਂਡ-ਬੁੱਕ(&K)"
+
+#: kpowersave.cpp:224
+msgid "&Report a bug ..."
+msgstr "ਬੱਗ ਜਾਣਕਾਰੀ ਦਿਓ(&R)..."
+
+#: kpowersave.cpp:226
+msgid "&About KPowersave"
+msgstr "ਕੇ-ਪਾਵਰਸੇਵ ਬਾਰੇ(&A)"
+
+#: kpowersave.cpp:275 kpowersave.cpp:648 kpowersave.cpp:656 kpowersave.cpp:703
+#: kpowersave.cpp:710 kpowersave.cpp:759 kpowersave.cpp:766 kpowersave.cpp:815
+#: kpowersave.cpp:822 kpowersave.cpp:1126 kpowersave.cpp:1241
+#: kpowersave.cpp:1270 kpowersave.cpp:2183
+msgid "WARNING"
+msgstr "ਸਾਵਧਾਨ"
+
+#: kpowersave.cpp:275
+msgid "Cannot find any schemes."
+msgstr "ਕੋਈ ਸਕੀਮ ਨਹੀਂ ਲੱਭੀ ਹੈ।"
+
+#: kpowersave.cpp:453
+msgid "No information about battery and AC status available"
+msgstr "ਬੈਟਰੀ ਅਤੇ AC ਹਾਲਤ ਬਾਰੇ ਕੋਈ ਜਾਣਕਾਰੀ ਨਹੀਂ ਹੈ।"
+
+#: kpowersave.cpp:456
+msgid "Plugged in -- fully charged"
+msgstr "ਪਲੱਗ ਲੱਗਾ -- ਪੂਰਾ ਚਾਰਜ"
+
+#: kpowersave.cpp:460
+msgid "Plugged in"
+msgstr "ਪਲੱਗ ਲੱਗਾ"
+
+#: kpowersave.cpp:464
+msgid "Plugged in -- %1% charged (%2:%3 h until full charged)"
+msgstr "ਪਲੱਗ ਲੱਗਾ --  %1% ਚਾਰਜ (%2:%3 ਘੰਟੇ ਪੂਰਾ ਚਾਰਜ ਹੋਣ ਲਈ ਬਾਕੀ)"
+
+#: kpowersave.cpp:467
+msgid "Plugged in -- %1% charged (%2:%3 remaining hours)"
+msgstr "ਪਲੱਗ ਲੱਗਾ --  %1% ਚਾਰਜ (%2:%3 ਬਾਕੀ ਘੰਟੇ)"
+
+#: kpowersave.cpp:471 kpowersave.cpp:475
+#, c-format
+msgid "Plugged in -- %1% charged"
+msgstr "ਪਲੱਗ ਲੱਗਾ -- %1% ਚਾਰਜ"
+
+#: kpowersave.cpp:474
+msgid "Plugged in -- no battery"
+msgstr "ਪਲੱਗ ਲੱਗਾ -- ਕੋਈ ਬੈਟਰੀ ਨਹੀਂ"
+
+#: kpowersave.cpp:480
+msgid "Running on batteries -- %1% charged (%2:%3 hours remaining)"
+msgstr "ਬੈਟਰੀ ਉੱਤੇ ਚੱਲ ਰਿਹਾ ਹੈ -- %1% ਚਾਰਜ (%2:%3 ਘੰਟੇ ਬਾਕੀ)"
+
+#: kpowersave.cpp:484
+#, c-format
+msgid "Running on batteries -- %1% charged"
+msgstr "ਬੈਟਰੀ ਉੱਤੇ ਚੱਲ ਰਿਹਾ ਹੈ -- %1% ਚਾਰਜ"
+
+#: kpowersave.cpp:491
+msgid " -- battery is charging"
+msgstr " -- ਬੈਟਰੀ ਚਾਰਜ ਹੋ ਰਹੀ ਹੈ"
+
+#: kpowersave.cpp:649 kpowersave.cpp:657
+msgid "Could not start YaST Power Management Module. Check if it is installed."
+msgstr "YaST ਊਰਜਾ ਪਰਬੰਧ ਮੋਡੀਊਲ ਨੂੰ ਸ਼ੁਰੂ ਨਹੀਂ ਕੀਤਾ ਜਾ ਸਕਿਆ। ਜਾਂਚ ਕਰੋ ਕਿ ਇਹ ਇੰਸਟਾਲ ਹੈ।"
+
+#: kpowersave.cpp:703
+msgid "Suspend to disk failed"
+msgstr "ਡਿਸਕ ਉੱਤੇ ਸਸਪੈਂਡ ਫੇਲ੍ਹ ਹੋਇਆ"
+
+#: kpowersave.cpp:711
+msgid "Suspend to disk disabled by administrator."
+msgstr "ਪਰਸ਼ਾਸ਼ਕ ਨੇ ਡਿਸਕ ਲਈ ਸਸਪੈਂਡ ਨੂੰ ਆਯੋਗ ਕੀਤਾ ਹੈ।"
+
+#: kpowersave.cpp:759
+msgid "Suspend to RAM failed"
+msgstr "ਰੈਮ ਵਿੱਚ ਸਸਪੈਂਡ ਫੇਲ੍ਹ ਹੋਇਆ"
+
+#: kpowersave.cpp:767
+msgid "Suspend to RAM disabled by administrator."
+msgstr "ਪਰਸ਼ਾਸ਼ਕ ਨੇ ਰੈਮ (RAM) ਲਈ ਸਸਪੈਂਡ ਆਯੋਗ ਕੀਤਾ ਹੈ।"
+
+#: kpowersave.cpp:815
+msgid "Standby failed"
+msgstr "ਸਟੈਂਡਬਾਏ ਫੇਲ੍ਹ"
+
+#: kpowersave.cpp:822
+msgid "Standby disabled by administrator."
+msgstr "ਪਰਸ਼ਾਸ਼ਕ ਨੇ ਸਟੈਂਡਬਾਏ ਨੂੰ ਆਯੋਗ ਕੀਤਾ ਹੈ।"
+
+#: kpowersave.cpp:853
+msgid "System is going into suspend mode now"
+msgstr "ਸਿਸਟਮ ਹੁਣ ਸਸਪੈਂਡ ਮੋਡ 'ਚ ਜਾ ਰਿਹਾ ਹੈ।"
+
+#: kpowersave.cpp:1039
+msgid "Could not call DCOP interface to umount external media."
+msgstr "ਬਾਹਰੀ ਮੀਡਿਆ ਨੂੰ ਅਣ-ਮਾਊਂਟ ਕਰਨ ਲਈ DCOP ਇੰਟਰਫੇਸ ਕਾਲ ਨਹੀਂ ਕੀਤਾ ਜਾ ਸਕਿਆ।"
+
+#: kpowersave.cpp:1044
+msgid ""
+"Could not umount external media before suspend/standby. \n"
+" (Reason: %1)\n"
+" \n"
+" Would you like to continue suspend/standby anyway? \n"
+"(Warning: Continue suspend can cause data loss!)"
+msgstr ""
+"ਬਾਹਰੀ ਮੀਡਿਆ ਸਸਪੈਂਡ/ਸਟੈਂਡਬਾਏ ਤੋਂ ਅਣ-ਮਾਊਂਟ ਨਹੀਂ ਕੀਤਾ ਜਾ ਸਕਿਆ।\n"
+" (ਕਾਰਨ: %1)\n"
+" \n"
+" ਕੀ ਤੁਸੀਂ ਹਾਲੇ ਵੀ ਸਸਪੈਂਡ/ਸਟੈਂਡਬਾਏ ਕਰਨਾ ਚਾਹੁੰਦੇ ਹੋ?\n"
+" (ਸਾਵਧਾਨ: ਸਸਪੈਂਡ ਕਰਨ ਨਾਲ ਡਾਟਾ ਖਰਾਬ ਹੋਣ ਦਾ ਖਤਰਾ ਹੈ!)"
+
+#: kpowersave.cpp:1052
+msgid "Error while prepare %1"
+msgstr "%1 ਤਿਆਰੀ ਦੌਰਾਨ ਗਲਤੀ"
+
+#: kpowersave.cpp:1053
+msgid "Suspend anyway"
+msgstr "ਕਿਵੇਂ ਵੀ ਸਸਪੈਂਡ"
+
+#: kpowersave.cpp:1053
+msgid "Cancel suspend"
+msgstr "ਸਸਪੈਂਡ ਰੱਦ ਕਰੋ"
+
+#: kpowersave.cpp:1127
+msgid ""
+"Could not lock the screen. There may be a problem with the selected \n"
+"lock method or something else."
+msgstr ""
+"ਸਕਰੀਨ ਲਾਕ ਨਹੀਂ ਹੋ ਸਕੀ ਹੈ। ਚੁਣੇ ਲਾਕ ਢੰਗ ਨਾਲ ਸਮੱਸਿਆ ਹੋ ਸਕਦੀ ਹੈ\n"
+"ਜਾਂ ਕੁਝ ਹੋਰ ਸਕਦਾ ਹੈ।"
+
+#: kpowersave.cpp:1144
+msgid "The Lid was closed."
+msgstr "Lid ਬੰਦ ਸੀ।"
+
+#: kpowersave.cpp:1156
+msgid "The Lid was opened."
+msgstr "Lid ਖੁੱਲ੍ਹੀ ਸੀ।"
+
+#: kpowersave.cpp:1223
+msgid "Start KPowersave automatically when you log in?"
+msgstr "ਕੀ ਕੇ-ਪਾਵਰਸੇਵ ਤੁਹਾਡੇ ਲਾਗਇਨ ਕਰਨ 'ਤੇ ਆਟੋਮੈਟਿਕ ਹੀ ਚਾਲੂ ਹੋ ਜਾਵੇ?"
+
+#: kpowersave.cpp:1224
+msgid "Question"
+msgstr "ਸਵਾਲ"
+
+#: kpowersave.cpp:1225
+msgid "Start Automatically"
+msgstr "ਆਟੋਮੈਟਿਕ ਚਾਲੂ ਕਰੋ"
+
+#: kpowersave.cpp:1225
+msgid "Do Not Start"
+msgstr "ਨਾ ਸ਼ੁਰੂ ਕਰੋ"
+
+#: kpowersave.cpp:1242
+msgid "CPU Freq Policy %1 could not be set."
+msgstr "CPU ਫਰੀਕਿ ਪਾਲਸੀ %1 ਨੂੰ ਸੈਟ ਨਹੀਂ ਕੀਤਾ ਜਾ ਸਕਿਆ।"
+
+#: kpowersave.cpp:1271
+msgid "Scheme %1 could not be activated."
+msgstr "ਸਕੀਮ %1 ਐਕਟਿਵੇਟ ਨਹੀਂ ਕੀਤੀ ਜਾ ਸਕੀ।"
+
+#: kpowersave.cpp:1600
+msgid ""
+"The D-Bus daemon is not running.\n"
+"Starting it will provide full functionality: /etc/init.d/dbus start"
+msgstr ""
+"D-Bus ਡੈਮਨ ਚੱਲ ਨਹੀਂ ਰਹੀ ਹੈ।\n"
+"ਇਸ ਨੂੰ ਚਲਾਉਣ ਪੂਰੇ ਫੰਕਸ਼ਨ ਮਿਲਣਗੇ: /etc/init.d/dbus start"
+
+#: kpowersave.cpp:1611
+msgid "Don't show this message again."
+msgstr "ਇਹ ਸੁਨੇਹਾ ਮੁੜ ਨਾ ਵੇਖਾਓ।"
+
+#: kpowersave.cpp:1637
+msgid "ERROR"
+msgstr "ਗਲਤੀ"
+
+#: kpowersave.cpp:1638
+msgid "Could not get information from HAL. The haldaemon is maybe not running."
+msgstr "HAL ਤੋਂ ਜਾਣਕਾਰੀ ਲਈ ਨਹੀਂ ਜਾ ਸਕੀ। haldaemon ਚੱਲ ਨਹੀਂ ਰਹੀ ਹੋ ਸਕਦੀ ਹੈ।"
+
+#: kpowersave.cpp:1641
+msgid "Error"
+msgstr "ਗਲਤੀ"
+
+#: kpowersave.cpp:1912
+msgid "Battery state changed to WARNING -- remaining time: %1 hours and %2 minutes."
+msgstr "ਬੈਟਰੀ ਹਾਲਤ ਲਈ *ਸਾਵਧਾਨ* ਹੋਈ -- ਬਾਕੀ ਸਮਾਂ: %1 ਘੰਟੇ ਅਤੇ %2 ਮਿੰਟ"
+
+#: kpowersave.cpp:1921
+msgid "Battery state changed to LOW -- remaining time: %1 hours and %2 minutes."
+msgstr "ਬੈਟਰੀ ਹਾਲਤ *ਘੱਟ* ਹੋਈ -- ਬਾਕੀ ਸਮਾਂ: %1 ਘੰਟੇ ਅਤੇ %2 ਮਿੰਟ"
+
+#: kpowersave.cpp:1932
+msgid ""
+"Battery state changed to CRITICAL -- remaining time: %1 hours and %2 minutes.\n"
+"Shut down your system or plug in the power cable immediately. Otherwise the machine\n"
+"will go shutdown in 30 seconds"
+msgstr ""
+"ਬੈਟਰੀ ਹਾਲਤ *ਨਾਜ਼ੁਕ* ਹੋਈ -- ਬਾਕੀ ਸਮਾਂ: %1 ਘੰਟੇ ਅਤੇ %2 ਮਿੰਟ\n"
+"ਆਪਣੇ ਕੰਪਿਊਟਰ ਨੂੰ ਬੰਦ ਕਰੋ ਜਾਂ ਹੁਣ ਪਲੱਗ ਲਗਾਓ। ਨਹੀਂ ਤਾਂ ਮਸ਼ੀਨ\n"
+"30 ਸਕਿੰਟਾਂ 'ਚ ਬੰਦ ਹੋ ਜਾਵੇਗੀ।"
+
+#: kpowersave.cpp:1943
+msgid ""
+"Battery state changed to CRITICAL -- remaining time: %1 hours and %2 minutes.\n"
+"Shut down your system or plug in the power cable immediately."
+msgstr ""
+"ਬੈਟਰੀ ਹਾਲਤ *ਨਾਜ਼ੁਕ* ਹੋਈ -- ਬਾਕੀ ਸਮਾਂ: %1 ਘੰਟੇ ਅਤੇ %2 ਮਿੰਟ\n"
+"ਆਪਣੇ ਕੰਪਿਊਟਰ ਨੂੰ ਬੰਦ ਕਰੋ ਜਾਂ ਹੁਣ ਪਲੱਗ ਲਗਾਓ।"
+
+#: kpowersave.cpp:2041
+msgid "AC adapter plugged in"
+msgstr "AC ਅਡੈਪਟਰ ਪਲੱਗ ਲਾਇਆ"
+
+#: kpowersave.cpp:2043
+msgid "AC adapter unplugged"
+msgstr "AC ਅਡੈਪਟਰ ਪਲੱਗ ਕੱਢਿਆ"
+
+#: kpowersave.cpp:2078
+msgid "Switched to scheme: %1"
+msgstr "ਸਕੀਮ ਲਈ ਬਦਲੋ: %1"
+
+#: kpowersave.cpp:2095 kpowersave.cpp:2100 kpowersave.cpp:2105
+msgid "System is going into %1 now."
+msgstr "ਸਿਸਟਮ ਹੁਣ %1 ਹੋ ਰਿਹਾ ਹੈ।"
+
+#: kpowersave.cpp:2155 kpowersave.cpp:2160 kpowersave.cpp:2165
+msgid "System is resumed from %1."
+msgstr "ਸਿਸਟਮ %1 ਤੋਂ ਰੀ-ਜਿਊਮ ਕੀਤਾ ਗਿਆ।"
+
+#: kpowersave.cpp:2184
+msgid "Could not remount (all) external storage media."
+msgstr "(ਸਭ) ਬਾਹਰੀ ਸਟਰੋਜ਼ ਮੀਡਿਆ ਰੀ-ਮਾਊਂਟ ਨਹੀਂ ਕੀਤੇ ਜਾ ਸਕੇ।"
+
+#: kpowersave.cpp:2192
+msgid "An unknown error occurred while %1. The errorcode is: '%2'"
+msgstr "%1 ਦੌਰਾਨ ਇੱਕ ਅਣਜਾਣੀ ਗਲਤੀ ਆਈ ਹੈ। ਗਲਤੀ-ਕੋਡ: '%2'"
+
+# power-off message
+#: kpowersave.cpp:2197
+msgid "Do you want to have a look at the log file?"
+msgstr "ਕੀ ਤੁਸੀਂ ਲਾਗ ਫਾਇਲ ਵੇਖਣੀ ਚਾਹੁੰਦੇ ਹੋ?"
+
+#: kpowersave.cpp:2198 kpowersave.cpp:2224
+msgid "Error while %1"
+msgstr "%1 ਦੌਰਾਨ ਗਲਤੀ"
+
+#: configure_Dialog.cpp:831
+msgid "KPowersave Settings"
+msgstr "ਕੇ-ਪਾਵਰਸੇਵ ਸੈਟਿੰਗ"
+
+#: configure_Dialog.cpp:832
+msgid "Apply"
+msgstr "ਲਾਗੂ ਕਰੋ"
+
+#: configure_Dialog.cpp:834
+msgid "Help"
+msgstr "ਮੱਦਦ"
+
+#: configure_Dialog.cpp:840
+msgid "Enable specific display power management"
+msgstr "ਖਾਸ ਡਿਸਪਲੇਅ ਪਾਵਰ ਪਰਬੰਧ ਯੋਗ"
+
+#: configure_Dialog.cpp:841
+msgid "Standby after:"
+msgstr "ਸਟੈਂਡਬਾਏ ਬਾਅਦ:"
+
+#: configure_Dialog.cpp:842
+msgid "Only blank the screen"
+msgstr "ਸਿਰਫ਼ ਖਾਲੀ ਸਕਰੀਨ ਹੀ"
+
+#: configure_Dialog.cpp:843
+msgid "Disable screen saver"
+msgstr "ਸਕਰੀਨ ਸੇਵਰ ਅਯੋਗ"
+
+#: configure_Dialog.cpp:844
+msgid "Enable specific screensaver settings"
+msgstr "ਖਾਸ ਸਕਰੀਨ-ਸੇਵਰ ਸੈਟਿੰਗ ਯੋਗ"
+
+#: configure_Dialog.cpp:845
+msgid "Suspend after:"
+msgstr "ਸਸਪੈਂਡ ਬਾਅਦ:"
+
+#: configure_Dialog.cpp:846
+msgid "Power off after:"
+msgstr "ਬੰਦ ਕਰੋ ਬਾਅਦ:"
+
+#: configure_Dialog.cpp:847
+msgid "Disable display power management"
+msgstr "ਡਿਸਪਲੇਅ ਪਾਵਰ ਪਰਬੰਧ ਅਯੋਗ"
+
+#: configure_Dialog.cpp:848 configure_Dialog.cpp:849 configure_Dialog.cpp:850
+#: configure_Dialog.cpp:862 configure_Dialog.cpp:873
+msgid " min"
+msgstr " ਮਿੰਟ"
+
+#: configure_Dialog.cpp:851
+msgid "Screen Saver and DPMS"
+msgstr "ਸਕਰੀਨ ਸੇਵਰ ਅਤੇ DPMS"
+
+#: configure_Dialog.cpp:852
+msgid "Settings"
+msgstr "ਸੈਟਿੰਗ"
+
+#: configure_Dialog.cpp:853
+msgid "Reset"
+msgstr "ਮੁੜ-ਸੈੱਟ"
+
+#: configure_Dialog.cpp:855
+msgid "Enable scheme specific Brightness settings"
+msgstr "ਖਾਸ ਚਮਕ ਸੈਟਿੰਗ ਸਕੀਮ ਯੋਗ ਕਰੋ"
+
+#: configure_Dialog.cpp:858
+msgid "Brightness"
+msgstr "ਚਮਕ"
+
+#: configure_Dialog.cpp:859
+msgid "Enable autosuspend"
+msgstr "ਆਟੋ-ਸਸਪੈਂਡ ਯੋਗ"
+
+#: configure_Dialog.cpp:860 configure_Dialog.cpp:867
+msgid "Enable scheme-specific blacklist"
+msgstr "ਖਾਸ-ਸਕੀਮ ਬਲੈਕ-ਲਿਸਟ ਯੋਗ"
+
+#: configure_Dialog.cpp:861 configure_Dialog.cpp:870
+msgid "after:"
+msgstr "ਬਾਅਦ:"
+
+#: configure_Dialog.cpp:863 configure_Dialog.cpp:868
+msgid "Edit Blacklist..."
+msgstr "ਬਲੈਕ-ਲਿਸਟ ਸੋਧ..."
+
+#: configure_Dialog.cpp:864 configure_Dialog.cpp:869
+msgid "If the current desktop user is inactive the computer will:"
+msgstr "ਜੇ ਮੌਜੂਦਾ ਡੈਸਕਟਾਪ ਯੂਜ਼ਰ ਇਨ-ਐਕਟਿਵੇਟ ਹੋਇਆ ਤਾਂ ਕੰਪਿਊਟਰ:"
+
+#: configure_Dialog.cpp:865
+msgid "Autosuspend"
+msgstr "ਆਟੋ-ਸਸਪੈਂਡ"
+
+#: configure_Dialog.cpp:866
+msgid "Enable autodimm the display"
+msgstr "ਡਿਸਪਲੇਅ ਆਟੋ-ਡਿਮ ਯੋਗ"
+
+#: configure_Dialog.cpp:871 configure_Dialog.cpp:893 configure_Dialog.cpp:894
+#: configure_Dialog.cpp:895 configure_Dialog.cpp:896 configure_Dialog.cpp:897
+#: configure_Dialog.cpp:898
+msgid " %"
+msgstr " %"
+
+#: configure_Dialog.cpp:872
+msgid "dimm to:"
+msgstr "ਡਿਮ ਕਰੋ:"
+
+#: configure_Dialog.cpp:874
+msgid "Autodimm"
+msgstr "ਆਟੋ-ਡਿਮ"
+
+#: configure_Dialog.cpp:879
+msgid "Set CPU Frequency Policy:"
+msgstr "CPU ਫਰੀਕਿਊਂਸੀ ਪਾਲਸੀ ਸੈੱਟ:"
+
+#: configure_Dialog.cpp:880
+msgid "CPU Frequency Policy"
+msgstr "CPU ਫਰੀਕਿਊਂਸੀ ਪਾਲਸੀ"
+
+#: configure_Dialog.cpp:881
+msgid "Disable Notifications"
+msgstr "ਨੋਟੀਫਿਕੇਸ਼ਨ ਆਯੋਗ"
+
+#: configure_Dialog.cpp:884
+msgid "New"
+msgstr "ਨਵਾਂ"
+
+#: configure_Dialog.cpp:885
+msgid "Scheme Settings"
+msgstr "ਸਕੀਮ ਸੈਟਿੰਗ"
+
+#: configure_Dialog.cpp:886
+msgid "Define the battery warning levels (in percentage) and the releated action if the level get reached:"
+msgstr "ਬੈਟਰੀ ਚੇਤਾਵਨੀ ਲੈਵਲ (ਫੀਸਦੀ 'ਚ) ਦਿਓ ਅਤੇ ਢੁੱਕਵੀਆਂ ਕਾਰਵਾਈਆਂ ਵੀ, ਜੇ ਲੈਵਲ ਅੱਪੜ ਜਾਵੇ:"
+
+#: configure_Dialog.cpp:887
+msgid "Warning level:"
+msgstr "ਚੇਤਾਵਨੀ ਲੈਵਲ:"
+
+#: configure_Dialog.cpp:888
+msgid "Low level:"
+msgstr "ਘੱਟ ਲੈਵਲ:"
+
+#: configure_Dialog.cpp:889
+msgid "Critical level:"
+msgstr "ਨਾਜ਼ੁਕ ਲੈਵਲ:"
+
+#: configure_Dialog.cpp:890 configure_Dialog.cpp:891 configure_Dialog.cpp:892
+msgid "if reached call:"
+msgstr "ਜੇ ਹੋਵੇ ਤਾਂ ਕਾਲ ਕਰੋ:"
+
+#: configure_Dialog.cpp:899
+msgid "Battery"
+msgstr "ਬੈਟਰੀ"
+
+#: configure_Dialog.cpp:900
+msgid "Define the action which should be executed if the related button get pressed:"
+msgstr "ਐਕਸ਼ਨ ਦਿਓ, ਜੋ ਕਿ ਲਿਆ ਜਾਵੇ, ਜਦੋਂ ਕਿ ਢੁੱਕਵਾਂ ਬਟਨ ਦੱਬਿਆ ਜਾਵੇ:"
+
+#: configure_Dialog.cpp:901
+msgid "Suspend-to-disk Button:"
+msgstr "ਡਿਸਕ-ਉੱਤੇ-ਸਸਪੈਂਡ ਬਟਨ:"
+
+#: configure_Dialog.cpp:902
+msgid "Sleep button:"
+msgstr "ਸਲੀਪ ਬਟਨ:"
+
+#: configure_Dialog.cpp:903
+msgid "Lid close Button:"
+msgstr "Lid ਬੰਦ ਬਟਨ:"
+
+#: configure_Dialog.cpp:904
+msgid "Power Button:"
+msgstr "ਪਾਵਰ ਬਟਨ:"
+
+#: configure_Dialog.cpp:905
+msgid "Button Events"
+msgstr "ਬਟਨ ਘਟਨਾਵਾਂ"
+
+#: configure_Dialog.cpp:906
+msgid "Select the following schemes as default if the system is running on AC or on batteries."
+msgstr "ਅੱਗੇ ਦਿੱਤੀ ਸਕੀਮ ਡਿਫਾਲਟ ਵਾਂਗ ਵਰਤੋਂ, ਜੇ ਸਿਸਟਮ AC ਨਾਲ ਚੱਲਦਾ ਜਾਂ ਬੈਟਰੀਆਂ ਉੱਤੇ।"
+
+#: configure_Dialog.cpp:907
+msgid "Battery scheme:"
+msgstr "ਬੈਟਰੀ ਸਕੀਮ:"
+
+#: configure_Dialog.cpp:908
+msgid "AC scheme:"
+msgstr "AC ਸਕੀਮ:"
+
+#: configure_Dialog.cpp:909
+msgid "Default Schemes"
+msgstr "ਡਿਫਾਲਟ ਸਕੀਮਾਂ"
+
+#: configure_Dialog.cpp:910
+msgid "Lock screen before suspend or standby"
+msgstr "ਸਸਪੈਂਡ ਜਾਂ ਸਟੈਂਡਬਾਏ ਤੋਂ ਪਹਿਲਾਂ ਸਕਰੀਨ ਲਾਕ"
+
+#: configure_Dialog.cpp:911
+msgid "Lock screen with:"
+msgstr "ਸਕਰੀਨ ਲਾਕ: "
+
+#: configure_Dialog.cpp:912
+msgid "Lock screen on lid close"
+msgstr "lid ਬੰਦ ਕਰਨ ਉੱਤੇ ਸਕੀਰਨ ਲਾਕ"
+
+#: configure_Dialog.cpp:913
+msgid "Lock Screen"
+msgstr "ਸਕਰੀਨ ਲਾਕ"
+
+#: configure_Dialog.cpp:914
+msgid "Notifications"
+msgstr "ਨੋਟੀਫਿਕੇਸ਼ਨ"
+
+#: configure_Dialog.cpp:916
+msgid "Autostart"
+msgstr "ਆਟੋ-ਸ਼ੁਰੂ"
+
+#: configure_Dialog.cpp:917
+msgid "Never ask me again on exit"
+msgstr "ਬੰਦ ਕਰਨ ਸਮੇਂ ਮੈਨੂੰ ਕਦੇ ਨਾ ਪੁੱਛੋ।"
+
+#: configure_Dialog.cpp:918
+msgid "KPowersave starts automatically on login"
+msgstr "ਕੇ-ਪਾਵਰਸੇਵ ਲਾਗਇਨ ਸਮੇਂ ਆਟੋਮੈਟਿਕ ਹੀ ਚਾਲੂ ਹੋ ਜਾਵੇਗਾ।"
+
+#: configure_Dialog.cpp:919
+msgid "General Blacklists"
+msgstr "ਆਮ ਬਲੈਕਲਿਸਟ"
+
+#: configure_Dialog.cpp:920
+msgid "Edit Autosuspend Blacklist..."
+msgstr "ਆਟੋ-ਸਸਪੈਂਡ ਬਲੈਕਲਿਸਟ ਸੋਧ..."
+
+#: configure_Dialog.cpp:921
+msgid "Edit Autodimm Blacklist..."
+msgstr "ਆਟੋ-ਡਿਮ ਬਲੈਕ-ਲਿਸਟ ਸੋਧ..."
+
+#: configure_Dialog.cpp:923
+msgid "General Settings"
+msgstr "ਆਮ ਸੈਟਿੰਗ"
+

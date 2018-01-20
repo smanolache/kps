@@ -1,0 +1,1397 @@
+# translation of kpowersave.po to
+# This file is distributed under the same license as the PACKAGE package.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER.
+#
+# Antje Faber <afaber@suse.de>, 2004.
+# Klara Cihlarova <koty@seznam.cz>, 2004, 2005, 2006.
+# Klára Cihlářová <cihlarov@suse.cz>, 2004.
+# Jakub Friedl <jfried@suse.cz>, 2005.
+# Marek Stopka (m4r3k) <marekstopka@gmail.com>, 2007.
+# Klára Cihlářová <koty@seznam.cz>, 2007.
+msgid ""
+msgstr ""
+"Project-Id-Version: kpowersave\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2007-08-10 03:16+0200\n"
+"PO-Revision-Date: 2007-08-31 01:05+0200\n"
+"Last-Translator: Marek Stopka (m4r3k) <marekstopka@gmail.com>\n"
+"Language-Team:  <cs@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.11.4\n"
+"Plural-Forms:  nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+"10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#: detailed_Dialog.cpp:228
+msgid "kpowersave"
+msgstr "kpowersave"
+
+#: detailed_Dialog.cpp:229
+msgid "General Information"
+msgstr "Základní informace"
+
+#: detailed_Dialog.cpp:232
+msgid "Battery Status"
+msgstr "Stav baterií"
+
+#: detailed_Dialog.cpp:233
+msgid "AC Adapter"
+msgstr "AC adaptér"
+
+#: detailed_Dialog.cpp:234 detaileddialog.cpp:391
+msgid "plugged in"
+msgstr "připojen"
+
+#: detailed_Dialog.cpp:235
+msgid "Power Consumtion: "
+msgstr "Spotřeba energie. "
+
+#: detailed_Dialog.cpp:237
+msgid "Processor Status"
+msgstr "Stav procesoru"
+
+#: detailed_Dialog.cpp:238 blacklistedit_Dialog.cpp:130 info_Dialog.cpp:198
+#: configure_Dialog.cpp:838
+msgid "OK"
+msgstr "OK"
+
+#: blacklisteditdialog.cpp:60
+msgid "General Blacklist"
+msgstr "Obecná černá listina"
+
+#: blacklisteditdialog.cpp:63
+msgid "Scheme: "
+msgstr "Schéma: "
+
+#: blacklisteditdialog.cpp:114
+msgid "Selected entry removed."
+msgstr "Zvolená položka byla odstraněna."
+
+#: blacklisteditdialog.cpp:117
+msgid "Could not remove the selected entry."
+msgstr "Nelze odstranit zvolenou položku."
+
+#: blacklisteditdialog.cpp:137
+msgid "Inserted new entry."
+msgstr "Vložena nová položka."
+
+#: blacklisteditdialog.cpp:141
+msgid "Entry exists already. Did not insert new entry."
+msgstr "Položka již existuje. Nová nebyla vložena."
+
+#: blacklisteditdialog.cpp:144
+msgid "Empty entry was not inserted."
+msgstr "Prázdná položka nebyla vložena."
+
+#: inactivity.cpp:298
+msgid ""
+"Could not start 'pidof'. Could not autosuspend the machine.\n"
+"Please check your installation."
+msgstr ""
+"Nelze spustit 'pidof'. Systém nepůjde automaticky\n"
+"uspat. Překontrolujte svou instalaci."
+
+#: blacklistedit_Dialog.cpp:129
+msgid "Autosuspend Blacklist Edit"
+msgstr "Úprava černé listiny automatického uspání"
+
+# cancel button label
+#: blacklistedit_Dialog.cpp:132 configuredialog.cpp:1079
+#: configure_Dialog.cpp:836
+msgid "Cancel"
+msgstr "Zrušit"
+
+#: blacklistedit_Dialog.cpp:135
+msgid "Add"
+msgstr "Přidat"
+
+#: blacklistedit_Dialog.cpp:136
+msgid "Remove"
+msgstr "Odstranit"
+
+#: infodialog.cpp:76 infodialog.cpp:78 main.cpp:55
+msgid "KPowersave"
+msgstr "KPowersave"
+
+#: configuredialog.cpp:116 configuredialog.cpp:121 configuredialog.cpp:721
+msgid " - not supported"
+msgstr " - není podporováno"
+
+#: configuredialog.cpp:150 configuredialog.cpp:317 detaileddialog.cpp:432
+#: kpowersave.cpp:192 settings.cpp:66 configure_Dialog.cpp:876
+msgid "Performance"
+msgstr "Výkon"
+
+#: configuredialog.cpp:154 configuredialog.cpp:319 detaileddialog.cpp:438
+#: kpowersave.cpp:194 settings.cpp:68 configure_Dialog.cpp:878
+msgid "Powersave"
+msgstr "Powersave"
+
+#: configuredialog.cpp:159 configuredialog.cpp:321 kpowersave.cpp:1478
+#: settings.cpp:70
+msgid "Presentation"
+msgstr "Prezentace"
+
+#: configuredialog.cpp:164 configuredialog.cpp:323 kpowersave.cpp:1473
+#: settings.cpp:72
+msgid "Acoustic"
+msgstr "Tichý"
+
+#: configuredialog.cpp:169 configuredialog.cpp:171 configuredialog.cpp:172
+#: configuredialog.cpp:173 kpowersave.cpp:1484
+msgid "Advanced Powersave"
+msgstr "Pokročilá správa napájení"
+
+#: configuredialog.cpp:271
+msgid ""
+"This enables specific screen saver settings. \n"
+"Note: If selected, the global screen saver settings are \n"
+"overwritten while kpowersave runs."
+msgstr ""
+"Zde lze povolit zvláštní nastavení spořiče.\n"
+"Poznámka: Pokud je zvoleno, jsou při běhu kpowersave\n"
+"přepsána obecná nastavení spořiče."
+
+#: configuredialog.cpp:274
+msgid ""
+"This disables the screen saver. \n"
+"Note: If selected, the global screen saver settings are \n"
+"overwritten while kpowersave runs."
+msgstr ""
+"Zde lze zakázat spořič obrazovky.\n"
+"Poznámka: Pokud je zvoleno, jsou při běhu kpowersave\n"
+"přepsána obecná nastavení spořiče."
+
+#: configuredialog.cpp:277
+msgid ""
+"This blanks the screen instead of using a specific screen saver. \n"
+"Note: This may work only with KScreensaver."
+msgstr ""
+"Místo spořiče se bude zobrazovat jen prázdná obrazovka.\n"
+"Poznámka: Tato volba funguje pouze při použití KScreensaver."
+
+#: configuredialog.cpp:279
+msgid ""
+"This enables specific DPMS settings. \n"
+"Note: If selected, the global DPMS settings are \n"
+"overwritten while kpowersave runs."
+msgstr ""
+"Zde povolíte zvláštní nastavení DPMS.\n"
+"Poznámka: Pokud je zvoleno, jsou při běhu kpowersave\n"
+"přepsána obecná nastavení DPMS."
+
+#: configuredialog.cpp:282
+msgid "This disables DPMS support."
+msgstr "Tímto zakážete DPMS podporu."
+
+#: configuredialog.cpp:283
+msgid "If selected, the screen is locked on suspend or standby."
+msgstr ""
+"Pokud je zvoleno, uzamkne se obrazovka\n"
+"při uspání nebo v pohotovostním režimu."
+
+#: configuredialog.cpp:284
+msgid "If selected, the screen is locked if the lid close event is triggered."
+msgstr "Pokud je zvoleno, uzamkne se obrazovka při zachycení události 'Zavření víka'."
+
+#: configuredialog.cpp:286
+msgid "Check this box to enable or disable automatic suspension of the computer."
+msgstr "Zde lze povolit či zakázat automatické uspání počítače."
+
+#: configuredialog.cpp:288
+msgid ""
+"Activate this action if the user was inactive for the defined time \n"
+"(greater than 0 minutes). If empty, nothing happens."
+msgstr "Aktivuje akce, pokud bude uživatel po určitou dobu (> 0 min) neaktivní. Pokud nic nezvolíte, nic se neprovede."
+
+#: configuredialog.cpp:291
+msgid "All scheme-related screen saver and DPMS settings."
+msgstr "Všechna nastavení šetřiče obrazovky a DPMS vázaná na schéma."
+
+#: configuredialog.cpp:292
+msgid "All scheme-related display brightness settings."
+msgstr "Všechna nastavení jasu obrazovky vázaná na schéma."
+
+#: configuredialog.cpp:293
+msgid "All scheme-related automatic suspend settings."
+msgstr "Všechna nastavení automatického uspání vázaná na schéma."
+
+#: configuredialog.cpp:295
+msgid ""
+"Here you can change the brightness of your display. \n"
+"Use the slider to change the brightness directly for \n"
+"testing. To reset back to previous level, please press \n"
+"the 'Reset' button. "
+msgstr ""
+"Zde můžete změnit jas monitoru.\n"
+"Jas se bude měnit přímo při změně\n"
+"hodnoty na posuvníku. Změnu\n"
+"na původní hodnotu provedete kliknutím\n"
+"na tlačítko 'Obnovit'."
+
+#: configuredialog.cpp:299
+msgid "Use this button to set back the slider and the display brightness."
+msgstr "Toto tlačítko použijte pro obnovení polohy posuvníku a jasu obrazovky."
+
+#: configuredialog.cpp:352
+msgid "Press this button to delete the selected scheme."
+msgstr "Použijte toto tlačítko ke smazání vybraného schématu."
+
+#: configuredialog.cpp:357
+msgid "You can't delete the current AC or battery scheme."
+msgstr "Nemůžete smazat současné schéma pro zdroj, nebo baterii."
+
+#: configuredialog.cpp:363
+msgid "You can't delete this default scheme."
+msgstr "Nemůžete smazat toto výchozí schéma."
+
+#: configuredialog.cpp:546
+msgid "Your hardware supports to change the brightness. The values of the slider are in percent and mapped to the available brightness levels of your hardware."
+msgstr "Váš hardware podporuje změnu jasu obrazovky. Hodnoty posuvníku jsou v procentech a jsou namapovány na úrovně jasu podporované vaším zařízením."
+
+#: configuredialog.cpp:553
+msgid "Your Hardware currently not support changing the brightness of your display."
+msgstr "Váš hardware nyní nepodporuje změnu jasu obrazovky."
+
+#: configuredialog.cpp:664
+msgid "Select Automatically"
+msgstr "vybrat automaticky"
+
+#: configuredialog.cpp:665
+msgid "KScreensaver"
+msgstr "KScreensaver"
+
+#: configuredialog.cpp:666
+msgid "XScreensaver"
+msgstr "XScreensaver"
+
+#: configuredialog.cpp:667
+msgid "xlock"
+msgstr "xlock"
+
+#: configuredialog.cpp:668
+msgid "GNOME Screensaver"
+msgstr "GNOME šetřič obrazovky"
+
+#: configuredialog.cpp:930
+msgid ""
+"There are unsaved changes in the active scheme.\n"
+"Apply the changes before jumping to the next scheme or discard the changes?"
+msgstr ""
+"V aktivním schématu jsou neuložené změny.\n"
+"Chcete tyto změny před přechodem na jiné schéma uložit nebo zrušit?"
+
+#: configuredialog.cpp:933 configuredialog.cpp:983
+msgid "Unsaved Changes"
+msgstr "Neuložené změny"
+
+#: configuredialog.cpp:981
+msgid ""
+"There are unsaved changes.\n"
+"Apply the changes before cancel or discard the changes?"
+msgstr ""
+"Zjištěny neuložené změny.\n"
+"Chcete tyto změny použít nebo zahodit?"
+
+#: configuredialog.cpp:1032
+msgid "Please insert a name for the new scheme:"
+msgstr "Prosím zadejte jméno nového schématu:"
+
+#: configuredialog.cpp:1038
+msgid "KPowersave Configuration"
+msgstr "Nastavení KPowersave"
+
+#: configuredialog.cpp:1046
+msgid "Error: A scheme with this name already exist.\n"
+msgstr "Chyba: Schéma s tímto jménem již existuje.\n"
+
+#: configuredialog.cpp:1076
+msgid "Do you really want to delete the %1 scheme?"
+msgstr "Opravdu chcete vymazat schéma %1?"
+
+#: configuredialog.cpp:1078
+msgid "Confirm delete scheme"
+msgstr "Potvrďte vymazání schématu"
+
+#: configuredialog.cpp:1079 configure_Dialog.cpp:883
+msgid "Delete"
+msgstr "Smazat"
+
+#: configuredialog.cpp:1095
+msgid "Could not delete the selected scheme."
+msgstr "Nelze odstranit zvolené schéma."
+
+#: configuredialog.cpp:1324
+msgid "<b>Note:</b> If you select this option, the computer will suspend or standby if the current user is inactive for the defined time even if somebody is logged in remotely to the X server.<br><br> This feature can also produce problems with some programs, such as video players or cd burner. These programs can be blacklisted by checking <b>Enable scheme-specific blacklist</b> and click <b>Edit Blacklist...</b>. If this does not help, report the problem or deactivate autosuspend.<br><br> Really use this option?"
+msgstr "<b>Poznámka:</b> Pokud zvolíte tuto volbu, počítač se uspí nebo přejde do pohotovostního režimu, pokud je aktuální uživatel po nastavený čas neaktivní, a to i v případě, že je někdo vzdáleně přihlášen k X serveru.<br><br> Tato funkce může též způsobit problémy při používání programů jako jsou přehrávače videa nebo vypalovací programy. Takové programy je možno uvést na černé listině zaškrtnutím <b>Povolit černou listinu specifickou pro schéma</b> a kliknutím na <b>Upravit černou listinu...</b>. Pokud to nepomůže, nahlaste problém nebo vypněte automatické uspávání. <br><br>Opravdu použít tuto volbu?"
+
+#: configuredialog.cpp:1402 configuredialog.cpp:1532
+msgid "The blacklist of the selected scheme is empty. Import the general blacklist?"
+msgstr "Černá listina zvoleného schématu je prázdná. Importovat obecnou listinu?"
+
+#: configuredialog.cpp:1404 configuredialog.cpp:1534
+msgid "Import"
+msgstr "Importovat"
+
+#: configuredialog.cpp:1404 configuredialog.cpp:1534
+msgid "Do Not Import"
+msgstr "Neimportovat"
+
+#: configuredialog.cpp:1416
+msgid "General Autosuspend Blacklist"
+msgstr "Úprava černé listiny automatického uspání"
+
+#: configuredialog.cpp:1546
+msgid "General Autodimm Blacklist"
+msgstr "Obecná černá listina"
+
+#: configuredialog.cpp:1779 configuredialog.cpp:1816
+msgid "Shutdown"
+msgstr "Vypnout"
+
+#: configuredialog.cpp:1781 configuredialog.cpp:1819
+msgid "Logout Dialog"
+msgstr "Odhlašovací obrazovka"
+
+#: configuredialog.cpp:1784 configuredialog.cpp:1822 kpowersave.cpp:182
+#: kpowersave.cpp:2096 kpowersave.cpp:2156 kpowersave.cpp:2247
+msgid "Suspend to Disk"
+msgstr "Uspání na disk"
+
+#: configuredialog.cpp:1787 configuredialog.cpp:1825 kpowersave.cpp:186
+#: kpowersave.cpp:2101 kpowersave.cpp:2161 kpowersave.cpp:2250
+msgid "Suspend to RAM"
+msgstr "Uspání do RAM"
+
+#: configuredialog.cpp:1790 configuredialog.cpp:1828
+msgid "CPU Powersave policy"
+msgstr "Úsporný režim CPU"
+
+#: configuredialog.cpp:1793 configuredialog.cpp:1831
+msgid "CPU Dynamic policy"
+msgstr "Dynamický režim CPU"
+
+#: configuredialog.cpp:1796 configuredialog.cpp:1834
+msgid "CPU Performance policy"
+msgstr "Výkonnostní režim CPU"
+
+#: configuredialog.cpp:1799 configuredialog.cpp:1837
+msgid "Set Brightness to"
+msgstr "Nastav jas na"
+
+#: main.cpp:43
+msgid "KDE Frontend for Power Management, Battery Monitoring and Suspend"
+msgstr "KDE rozhraní pro správu napájení, sledování baterie a uspávání"
+
+#: main.cpp:45
+msgid "Force a new check for ACPI support"
+msgstr "Vynutit novou kontrolu podpory ACPI"
+
+#: main.cpp:46
+msgid "Trace function entry and leave points for debug\n"
+msgstr ""
+
+#: main.cpp:59
+msgid "Current maintainer"
+msgstr "Současný správce"
+
+#: main.cpp:62
+msgid "Powersave developer and for D-Bus integration"
+msgstr "Za vývoj Powersave a integraci D-Bus"
+
+#: main.cpp:64
+msgid "Powersave developer and tester"
+msgstr "Powersave vývoj a testování"
+
+#: main.cpp:66
+msgid "Added basic detailed dialog"
+msgstr "Vložen základní podrobný dialog"
+
+#: main.cpp:67
+msgid "Packaging Debian and Ubuntu"
+msgstr "Balíčky pro Debian a Ubuntu"
+
+#: detaileddialog.cpp:61
+msgid "KPowersave Information Dialog"
+msgstr "Informační dialog KPowersave"
+
+#: detaileddialog.cpp:65 configure_Dialog.cpp:882 configure_Dialog.cpp:922
+msgid "Miscellaneous"
+msgstr "Různé"
+
+#: detaileddialog.cpp:66
+msgid "CPUs"
+msgstr "Procesory"
+
+#: detaileddialog.cpp:73 detaileddialog.cpp:453
+msgid "Battery state:"
+msgstr "Stav baterie:"
+
+#: detaileddialog.cpp:79
+msgid "Total:"
+msgstr "Celkem:"
+
+#: detaileddialog.cpp:81 detaileddialog.cpp:83
+msgid "Battery %1"
+msgstr "Baterie %1"
+
+#: detaileddialog.cpp:114
+msgid "Processor %1"
+msgstr "Procesor %1"
+
+#: detaileddialog.cpp:230
+msgid "not present"
+msgstr "není přítomna"
+
+#: detaileddialog.cpp:243
+msgid "charged"
+msgstr "nabitý"
+
+#: detaileddialog.cpp:245
+msgid "%1:%2 h until charged"
+msgstr "%1:%2 h do nabití"
+
+#: detaileddialog.cpp:248
+msgid "%1:%2 h remaining"
+msgstr "%1:%2 h zbývá"
+
+#: detaileddialog.cpp:253 detaileddialog.cpp:441 detaileddialog.cpp:468
+msgid "unknown"
+msgstr "neznámé"
+
+#: detaileddialog.cpp:325 detaileddialog.cpp:368
+msgid "%v MHz"
+msgstr "%v MHz"
+
+#: detaileddialog.cpp:330 detaileddialog.cpp:363 dummy.cpp:58
+msgid "deactivated"
+msgstr "deaktivovaný"
+
+#: detaileddialog.cpp:395
+msgid "unplugged"
+msgstr "odpojen"
+
+#: detaileddialog.cpp:412
+msgid "Current Scheme: "
+msgstr "Aktuální schéma: "
+
+#: detaileddialog.cpp:429
+msgid "Current CPU Frequency Policy:"
+msgstr "Aktuální politika frekvence CPU:"
+
+#: detaileddialog.cpp:435 kpowersave.cpp:193 configure_Dialog.cpp:877
+msgid "Dynamic"
+msgstr "Dynamické"
+
+#: detaileddialog.cpp:456
+msgid "Critical"
+msgstr "Kritický"
+
+#: detaileddialog.cpp:459
+msgid "Low"
+msgstr "Nízký"
+
+#: detaileddialog.cpp:462 kpowersave.cpp:277 kpowersave.cpp:652
+#: kpowersave.cpp:659 kpowersave.cpp:705 kpowersave.cpp:713 kpowersave.cpp:761
+#: kpowersave.cpp:769 kpowersave.cpp:817 kpowersave.cpp:824
+#: kpowersave.cpp:1131 kpowersave.cpp:1243 kpowersave.cpp:1272
+#: kpowersave.cpp:1610 kpowersave.cpp:1670 kpowersave.cpp:2186
+msgid "Warning"
+msgstr "Upozornění"
+
+#: detaileddialog.cpp:465
+msgid "ok"
+msgstr "ok"
+
+#: detaileddialog.cpp:474 detaileddialog.cpp:477
+msgid "Set brightness supported:"
+msgstr "Nastavení jasu podporováno:"
+
+#: detaileddialog.cpp:475
+msgid "yes"
+msgstr "ano"
+
+#: detaileddialog.cpp:478
+msgid "no"
+msgstr "ne"
+
+#: detaileddialog.cpp:481 detaileddialog.cpp:485
+msgid "HAL Daemon:"
+msgstr "HAL démon:"
+
+#: detaileddialog.cpp:482
+msgid "running"
+msgstr "běží"
+
+#: detaileddialog.cpp:486
+msgid "not running"
+msgstr "neběží"
+
+#: info_Dialog.cpp:197
+msgid "Information"
+msgstr "Informace"
+
+#: dummy.cpp:36
+msgid "If the current desktop user is inactive, dim the display to:"
+msgstr "Pokud je aktuální uživatel grafického prostředí neaktivní, ztlumit obrazovku na:"
+
+#: dummy.cpp:37
+msgid "Enable dim display on inactivity"
+msgstr "Povolit ztlumení obrazovky při neaktivitě"
+
+#: dummy.cpp:38
+msgid "Blacklist"
+msgstr "Černá listina"
+
+#: dummy.cpp:39
+msgid "Here you can add programs which should, if running, prevent the dimming of the display."
+msgstr "Zde můžete zadat programy, při jejichž běhu nemá docházet k ztlumení obrazovky."
+
+#: dummy.cpp:41
+msgid "Would you like to import a predefined blacklist?"
+msgstr "Chcete importovat předdefinovanou černou listinu?"
+
+#: dummy.cpp:42
+msgid "Disable CPUs/Cores"
+msgstr "Zakázat CPU/jádra"
+
+#: dummy.cpp:43
+msgid "Max. running CPUs:"
+msgstr "Max. počet běžících CPU:"
+
+#: dummy.cpp:44
+msgid "Max. running CPUs/Cores:"
+msgstr "Max. počet běžících CPU/jader:"
+
+#: dummy.cpp:45
+msgid "Min. running CPUs:"
+msgstr "Min. počet běžících CPU:"
+
+#: dummy.cpp:46
+msgid "Min. running CPUs/Cores:"
+msgstr "Min. počet běžících CPU/jader:"
+
+#: dummy.cpp:47
+msgid "Enable to switch off CPUs/cores"
+msgstr "Povolit vypínání CPU/jader"
+
+#: dummy.cpp:48
+msgid "You have a multiprocessor/multicore machine."
+msgstr "Máte víceprocesorový/vícejaderný systém."
+
+#: dummy.cpp:49
+msgid "You can disable CPUs/cores to reduce power consumption and save battery power."
+msgstr "K omezení spotřeby a prodloužení délky životnosti baterie můžete zakázat CPU/jádra."
+
+#: dummy.cpp:50
+msgid "Device"
+msgstr "Zařízení"
+
+#: dummy.cpp:51
+msgid "Devices"
+msgstr "Zařízení"
+
+#: dummy.cpp:52
+msgid "Device class"
+msgstr "Třída zařízení"
+
+#: dummy.cpp:53
+msgid "activate"
+msgstr "aktivovat"
+
+#: dummy.cpp:54
+msgid "Activate"
+msgstr "Aktivovat"
+
+#: dummy.cpp:55
+msgid "deactivate"
+msgstr "deaktivovat"
+
+#: dummy.cpp:56
+msgid "Deactivate"
+msgstr "Deaktivovat"
+
+#: dummy.cpp:57
+msgid "activated"
+msgstr "aktivovaný"
+
+#: dummy.cpp:59
+msgid "do nothing"
+msgstr "nedělat nic"
+
+#: dummy.cpp:60
+msgid "Deactivate following devices:"
+msgstr "Deaktivovat tato zařízení:"
+
+#: dummy.cpp:61
+msgid "Activate following devices"
+msgstr "Aktivovat tato zařízení"
+
+#: dummy.cpp:62
+msgid "Reactivate following devices"
+msgstr "Reaktivovat tato zařízení"
+
+#: dummy.cpp:63
+msgid "Deactivate following device classes:"
+msgstr "Deaktivovat tyto třídy zařízení:"
+
+#: dummy.cpp:64
+msgid "Activate following devices classes"
+msgstr "Aktivovat tyto třídy zařízení"
+
+#: dummy.cpp:65
+msgid "Reactivate following device classes"
+msgstr "Reaktivovat tyto třídy zařízení"
+
+#: dummy.cpp:66
+msgid "If the scheme switched all devices are again activated."
+msgstr "Při přepnutí schématu jsou všechna zařízení opět aktivována."
+
+#: dummy.cpp:67
+msgid "This is a experimental feature."
+msgstr "Toto je experimentální funkce."
+
+#: dummy.cpp:68
+msgid "If you have problems with this feature, please report them."
+msgstr "Pokud máte s touto funkcí problémy, nahlaste je prosím."
+
+#: dummy.cpp:69
+msgid "Select one of the available devices and click on "
+msgstr "Vyberte jedno z dostupných zařízení a klikněte na "
+
+#: dummy.cpp:70
+msgid "Select one of the available device classes and click on "
+msgstr "Vyberte jednu z dostupných tříd zařízení a klikněte na "
+
+#: dummy.cpp:71
+msgid "Select one or more of the available devices and click on "
+msgstr "Vyberte jedno nebo více dostupných zařízení a klikněte na "
+
+#: dummy.cpp:72
+msgid "Select one or more of the available device classes and click on "
+msgstr "Vyberte jednu nebo více dostupných tříd zařízení a klikněte na "
+
+#: dummy.cpp:73
+msgid "Please note: If you e.g. deactivate a network device you may lose your internet connection."
+msgstr "Prosím uvědomte si, že pokud např. deaktivujete-li síťové zařízení, ztratíte připojení k Internetu."
+
+#: dummy.cpp:75
+msgid "<b>Note:</b> If you select this option, the computer will suspend or standby if the current user is inactive for the defined time. <br><br> This feature can also produce problems with some programs, such as video players or cd burner. These programs can be blacklisted by checking <b>Enable scheme-specific blacklist</b> and click <b>Edit Blacklist...</b>. If this does not help, report the problem or deactivate autosuspend.<br><br> Really use this option?"
+msgstr "<b>Poznámka:</b> Pokud zvolíte tuto volbu, počítač se uspí nebo přejde do pohotovostního režimu, pokud je aktuální uživatel po nastavený čas neaktivní.<br><br> Tato funkce může způsobit problémy při používání programů jako jsou přehrávače videa nebo vypalovací programy. Takové programy je možno uvést na černé listině zaškrtnutím <b>Povolit černou listinu specifickou pro schéma</b> a kliknutím na <b>Upravit černou listinu...</b>. Pokud to nepomůže, nahlaste problém nebo vypněte automatické uspávání. <br><br>Opravdu použít tuto volbu?"
+
+#: dummy.cpp:82
+msgid "Try to use only one CPU/Core."
+msgstr "Zkus použít pouze jedno CPU/jádro."
+
+#: dummy.cpp:83
+msgid "Reduce power consumption by try to use only one CPU/Core instead of spreading the work over all/multiple CPUs."
+msgstr "Snížit spotřebu tím, že zkusí použít jen jedno CPU/jádro místo práce všech/více CPU."
+
+#: dummy.cpp:87
+msgid "Could not load the global configuration."
+msgstr "Nelze nahrát obecné nastavení."
+
+#: dummy.cpp:88
+msgid "Could not load the requested scheme configuration."
+msgstr "Nelze nahrát požadované nastavení schéma."
+
+#: dummy.cpp:89
+msgid "Configure the current scheme."
+msgstr "Nastavte aktuální schéma."
+
+#: dummy.cpp:90
+msgid "Try loading the default configuration."
+msgstr "Pokuste se nahrát výchozí nastavení."
+
+#: dummy.cpp:91
+msgid "Maybe the global configuration file is empty or missing."
+msgstr "Soubor s obecným nastavením je možná prázdný nebo neexistuje."
+
+#: dummy.cpp:94
+msgid "Cannot connect to D-Bus. The D-Bus daemon may not be running."
+msgstr "Nelze se připojit k systému D-BUS. D-BUS démon možná neběží."
+
+#: dummy.cpp:95
+msgid ""
+"Scheme switched to %1. \n"
+" Deactivate following devices: %2"
+msgstr ""
+"Schéma přepnuto na %1. \n"
+" Deaktivovat tato zařízení: %2"
+
+#: dummy.cpp:96
+msgid ""
+"Scheme switched to %1. \n"
+" Activate following devices: %2"
+msgstr ""
+"Schéma přepnuto na %1. \n"
+" Aktivovat tato zařízení: %2"
+
+#: dummy.cpp:97
+msgid "Report ..."
+msgstr "Nahlásit chybu..."
+
+#: dummy.cpp:98
+msgid "Suspend to RAM is not supported on your machine."
+msgstr "Uspání do RAM není vaším počítačem podporováno."
+
+#: dummy.cpp:99
+msgid "Additionally, please mail the output of %1 to %2 . Thanks!"
+msgstr "Zašlete prosím výstup %1 na %2. Děkujeme!"
+
+#: dummy.cpp:100
+msgid "Power consumption"
+msgstr "Spotřeba energie"
+
+#: dummy.cpp:103
+msgid "KScreensaver not found."
+msgstr "Nebyl nalezen KScreensaver."
+
+#: dummy.cpp:104
+msgid "Try locking with XScreensaver or xlock."
+msgstr "Pokuste se o uzamčení pomocí  XScreensaver nebo xlock."
+
+#: dummy.cpp:105
+msgid "XScreensaver not found."
+msgstr "Nebyl nalezen XScreensaver."
+
+#: dummy.cpp:106
+msgid "Try locking the screen with xlock."
+msgstr "Pokuste se obrazovku uzamknout pomocí xlock."
+
+#: dummy.cpp:107
+msgid "XScreensaver and xlock not found. It is not possible to lock the screen. Check your installation."
+msgstr "Nebyl nalezen XScreensaver ani xlock. Není možné uzamknout obrazovku. Prosím překontrolujte instalaci."
+
+#: dummy.cpp:111
+msgid "HAL daemon:"
+msgstr "HAL démon:"
+
+#: dummy.cpp:112
+msgid "D-Bus daemon:"
+msgstr "D-BUS démon:"
+
+#: dummy.cpp:113
+msgid "ConsoleKit daemon:"
+msgstr "ConsoleKit démon:"
+
+#: dummy.cpp:114
+msgid "Autosuspend activated:"
+msgstr "Automatické uspání aktivováno:"
+
+#: dummy.cpp:115
+msgid "Autodimm activated:"
+msgstr "Automatické uspání aktivováno:"
+
+#: dummy.cpp:116
+msgid "enabled"
+msgstr "povoleno"
+
+#: dummy.cpp:117
+msgid "Session active:"
+msgstr "Aktivní sezení:"
+
+#: dummy.cpp:120
+msgid "Inactivity detected."
+msgstr "detekována neaktivita."
+
+#: dummy.cpp:121
+msgid "To stop the %1 press the 'Cancel' button before the countdown expire."
+msgstr "Pokud chcete zastavit %1 stiskněte tlačítko \"Zrušit\" dokud odpočítávadlo nevyprší."
+
+#: dummy.cpp:122
+msgid "The computer autosuspend in: "
+msgstr "Počítač se automaticky uspí za:"
+
+#: dummy.cpp:123
+#, c-format
+msgid "The display get dimmed down to %1% in: "
+msgstr "Obrazovka ztmavne o %1% za: "
+
+#: dummy.cpp:124
+msgid "%1 seconds"
+msgstr " %1 s"
+
+#: dummy.cpp:127
+msgid "Could not call %1. The current desktop session is not active."
+msgstr "Nemohu zavolat %1. Současné sezení není aktivní."
+
+#: dummy.cpp:128
+msgid "Could not set %1. The current desktop session is not active."
+msgstr "Nemohu nastavit %1. Současné sezení není aktivní."
+
+#: dummy.cpp:129
+msgid "Stopped %1. The current desktop session is now inactive."
+msgstr "Bylo zastaveno %1. Současné sezení nyní aktivní."
+
+#: dummy.cpp:130
+msgid "Restarted %1. The current desktop session is now active again."
+msgstr "Bylo znovuspuštěno %1. Současné sezení je nyní aktivní."
+
+#: log_viewer.cpp:78
+msgid "Form1"
+msgstr "Form1"
+
+#: log_viewer.cpp:79
+msgid "Save As ..."
+msgstr "Uložit jako ..."
+
+#: log_viewer.cpp:80
+msgid "Close"
+msgstr "Zavřít"
+
+#: logviewer.cpp:44
+msgid "KPowersave Logfile Viewer: %1"
+msgstr "Prohlížeč logovacího souboru KPowersave: %1"
+
+#: logviewer.cpp:89
+msgid "File already exist. Overwrite the file?"
+msgstr "Soubor již existuje. Přepsat jej?"
+
+#: logviewer.cpp:90 logviewer.cpp:97
+msgid "Error while save logfile"
+msgstr "Chyba při ukládání logovacího souboru"
+
+#: logviewer.cpp:95
+msgid "File already exist."
+msgstr "Soubor již existuje."
+
+#: logviewer.cpp:98
+msgid "Try other filename ..."
+msgstr "Zkuste jiný název souboru ..."
+
+#: suspenddialog.cpp:70
+msgid "Preparing Suspend..."
+msgstr "Příprava uspání..."
+
+#: kpowersave.cpp:168
+msgid "Configure KPowersave..."
+msgstr "Nastavit KPowersave..."
+
+#: kpowersave.cpp:171 configure_Dialog.cpp:915
+msgid "Configure Notifications..."
+msgstr "Nastavit upozornění..."
+
+#: kpowersave.cpp:175
+msgid "Start YaST2 Power Management Module..."
+msgstr "Spustit modul správy napájení programu YaST2..."
+
+#: kpowersave.cpp:189 kpowersave.cpp:2106 kpowersave.cpp:2166
+#: kpowersave.cpp:2253
+msgid "Standby"
+msgstr "Pohotovostní režim"
+
+#: kpowersave.cpp:191 kpowersave.cpp:198
+msgid "Set CPU Frequency Policy"
+msgstr "Nastavit politiku frekvence CPU"
+
+#: kpowersave.cpp:205 kpowersave.cpp:206
+msgid "Set Active Scheme"
+msgstr "Nastavit aktivní schéma"
+
+#: kpowersave.cpp:212
+msgid "Disable Actions on Inactivity"
+msgstr "Zakázat akce při neaktivitě"
+
+#: kpowersave.cpp:219 kpowersave.cpp:229
+msgid "&Help"
+msgstr "&Nápověda"
+
+#: kpowersave.cpp:221
+msgid "&KPowersave Handbook"
+msgstr "&Příručka aplikace KPowersave"
+
+#: kpowersave.cpp:224
+msgid "&Report a bug ..."
+msgstr "&Nahlásit chybu..."
+
+#: kpowersave.cpp:226
+msgid "&About KPowersave"
+msgstr "&O aplikaci KPowersave"
+
+#: kpowersave.cpp:275 kpowersave.cpp:648 kpowersave.cpp:656 kpowersave.cpp:703
+#: kpowersave.cpp:710 kpowersave.cpp:759 kpowersave.cpp:766 kpowersave.cpp:815
+#: kpowersave.cpp:822 kpowersave.cpp:1126 kpowersave.cpp:1241
+#: kpowersave.cpp:1270 kpowersave.cpp:2183
+msgid "WARNING"
+msgstr "POPLACH"
+
+#: kpowersave.cpp:275
+msgid "Cannot find any schemes."
+msgstr "Nemohu najít žádné schéma."
+
+#: kpowersave.cpp:453
+msgid "No information about battery and AC status available"
+msgstr "Nejsou dostupné informace o baterii a stavu napájení"
+
+#: kpowersave.cpp:456
+msgid "Plugged in -- fully charged"
+msgstr "Připojen -- nabitý"
+
+#: kpowersave.cpp:460
+msgid "Plugged in"
+msgstr "Připojen"
+
+#: kpowersave.cpp:464
+msgid "Plugged in -- %1% charged (%2:%3 h until full charged)"
+msgstr "Připojen -- %1% nabito (zbývá %2:%3)"
+
+#: kpowersave.cpp:467
+msgid "Plugged in -- %1% charged (%2:%3 remaining hours)"
+msgstr "Připojen -- %1% nabito (zbývá %2:%3)"
+
+#: kpowersave.cpp:471 kpowersave.cpp:475
+#, c-format
+msgid "Plugged in -- %1% charged"
+msgstr "Připojen -- nabito %1%"
+
+#: kpowersave.cpp:474
+msgid "Plugged in -- no battery"
+msgstr "Připojen -- bez baterie"
+
+#: kpowersave.cpp:480
+msgid "Running on batteries -- %1% charged (%2:%3 hours remaining)"
+msgstr "Běh na baterii -- nabito %1% (zbývá %2:%3)"
+
+#: kpowersave.cpp:484
+#, c-format
+msgid "Running on batteries -- %1% charged"
+msgstr "Běh na baterii -- nabito %1%"
+
+#: kpowersave.cpp:491
+msgid " -- battery is charging"
+msgstr " -- baterie se nabíjí"
+
+#: kpowersave.cpp:649 kpowersave.cpp:657
+msgid "Could not start YaST Power Management Module. Check if it is installed."
+msgstr "Nelze spustit modul správy napájení programu YaST2. Je nainstalován?"
+
+#: kpowersave.cpp:703
+msgid "Suspend to disk failed"
+msgstr "Uspání na disk selhalo"
+
+#: kpowersave.cpp:711
+msgid "Suspend to disk disabled by administrator."
+msgstr "Uspání na disk zakázáno administrátorem."
+
+#: kpowersave.cpp:759
+msgid "Suspend to RAM failed"
+msgstr "Uspání do RAM selhalo"
+
+#: kpowersave.cpp:767
+msgid "Suspend to RAM disabled by administrator."
+msgstr "Uspání do RAM zakázáno administrátorem."
+
+#: kpowersave.cpp:815
+msgid "Standby failed"
+msgstr "Pohotovostní režim selhal"
+
+#: kpowersave.cpp:822
+msgid "Standby disabled by administrator."
+msgstr "Pohotovostní režim byl zakázán administrátorem."
+
+#: kpowersave.cpp:853
+msgid "System is going into suspend mode now"
+msgstr "Systém bude nyní uspán"
+
+#: kpowersave.cpp:1039
+msgid "Could not call DCOP interface to umount external media."
+msgstr "Nemohu zavolat DCOP rozhraní pro odpojení externích médií."
+
+#: kpowersave.cpp:1044
+msgid ""
+"Could not umount external media before suspend/standby. \n"
+" (Reason: %1)\n"
+" \n"
+" Would you like to continue suspend/standby anyway? \n"
+"(Warning: Continue suspend can cause data loss!)"
+msgstr ""
+"Nemohu odpojít externí média před uspáním/pohotovostí. \n"
+" (Důvod: %1)\n"
+" \n"
+" Přejete si pokračovat v uspávání/přechodu do pohotovosti? \n"
+"(Varování: Pokračování v uspávání může způsobit ztrátu dat!)"
+
+#: kpowersave.cpp:1052
+msgid "Error while prepare %1"
+msgstr "Chyba při přípravě %1"
+
+#: kpowersave.cpp:1053
+msgid "Suspend anyway"
+msgstr "I tak uspat"
+
+#: kpowersave.cpp:1053
+msgid "Cancel suspend"
+msgstr "Přerušit uspávání"
+
+#: kpowersave.cpp:1127
+msgid ""
+"Could not lock the screen. There may be a problem with the selected \n"
+"lock method or something else."
+msgstr ""
+"Nelze uzamknout obrazovku. Možná nastal problém se zvolenou\n"
+"metodou uzamykání, případně jiný problém."
+
+#: kpowersave.cpp:1144
+msgid "The Lid was closed."
+msgstr "Víko bylo zavřeno."
+
+#: kpowersave.cpp:1156
+msgid "The Lid was opened."
+msgstr "Víko bylo otevřeno."
+
+#: kpowersave.cpp:1223
+msgid "Start KPowersave automatically when you log in?"
+msgstr "Má se KPowersave spouštět automaticky po přihlášení?"
+
+#: kpowersave.cpp:1224
+msgid "Question"
+msgstr "Dotaz"
+
+#: kpowersave.cpp:1225
+msgid "Start Automatically"
+msgstr "Spustit automaticky"
+
+#: kpowersave.cpp:1225
+msgid "Do Not Start"
+msgstr "Nespouštět"
+
+#: kpowersave.cpp:1242
+msgid "CPU Freq Policy %1 could not be set."
+msgstr "Nelze nastavit politiku frekvence CPU %1."
+
+#: kpowersave.cpp:1271
+msgid "Scheme %1 could not be activated."
+msgstr "Schéma %1 nelze aktivovat."
+
+#: kpowersave.cpp:1600
+msgid ""
+"The D-Bus daemon is not running.\n"
+"Starting it will provide full functionality: /etc/init.d/dbus start"
+msgstr ""
+"DBUS démon neběží.\n"
+"Plnou funkčnost získáte jeho spuštěním příkazem: /etc/init.d/dbus start"
+
+#: kpowersave.cpp:1611
+msgid "Don't show this message again."
+msgstr "Nezobrazovat tuto zprávu znovu."
+
+#: kpowersave.cpp:1637
+msgid "ERROR"
+msgstr "CHYBA"
+
+#: kpowersave.cpp:1638
+msgid "Could not get information from HAL. The haldaemon is maybe not running."
+msgstr "Nelze získat informace z HAL. Potřebný hal démon možná neběží."
+
+#: kpowersave.cpp:1641
+msgid "Error"
+msgstr "Chyba"
+
+#: kpowersave.cpp:1912
+msgid "Battery state changed to WARNING -- remaining time: %1 hours and %2 minutes."
+msgstr "Stav baterií vyvolal POPLACH -- zbývající čas: %1 hod a %2 min."
+
+#: kpowersave.cpp:1921
+msgid "Battery state changed to LOW -- remaining time: %1 hours and %2 minutes."
+msgstr "Stav baterií je NÍZKÝ -- zbývající čas: %1 hod. a %2 min."
+
+#: kpowersave.cpp:1932
+msgid ""
+"Battery state changed to CRITICAL -- remaining time: %1 hours and %2 minutes.\n"
+"Shut down your system or plug in the power cable immediately. Otherwise the machine\n"
+"will go shutdown in 30 seconds"
+msgstr ""
+"Stav baterií je KRITICKÝ -- zbývající čas: %1 hod. a %2 min. Vypněte okamžitě systém nebo jej připojte do sítě! Nebo se počítač vypne \n"
+"za během 30 sekund"
+
+#: kpowersave.cpp:1943
+msgid ""
+"Battery state changed to CRITICAL -- remaining time: %1 hours and %2 minutes.\n"
+"Shut down your system or plug in the power cable immediately."
+msgstr ""
+"Stav baterií je KRITICKÝ -- zbývající čas: %1 hod. a %2 min. \n"
+"Vypněte okamžitě systém nebo jej připojte do sítě!"
+
+#: kpowersave.cpp:2041
+msgid "AC adapter plugged in"
+msgstr "Zapojen do sítě"
+
+#: kpowersave.cpp:2043
+msgid "AC adapter unplugged"
+msgstr "Odpojen od sítě"
+
+#: kpowersave.cpp:2078
+msgid "Switched to scheme: %1"
+msgstr "Přepnuto na schéma: %1"
+
+#: kpowersave.cpp:2095 kpowersave.cpp:2100 kpowersave.cpp:2105
+msgid "System is going into %1 now."
+msgstr "Systém přechází do stavu: %1"
+
+#: kpowersave.cpp:2155 kpowersave.cpp:2160 kpowersave.cpp:2165
+msgid "System is resumed from %1."
+msgstr "%1: systém probuzen."
+
+#: kpowersave.cpp:2184
+msgid "Could not remount (all) external storage media."
+msgstr "Nemohu přepřipojit (všechna) externí média."
+
+#: kpowersave.cpp:2192
+msgid "An unknown error occurred while %1. The errorcode is: '%2'"
+msgstr "Došlo k neznámé chybě během %1. Kód chyby je: '%2'"
+
+# power-off message
+#: kpowersave.cpp:2197
+msgid "Do you want to have a look at the log file?"
+msgstr "Chcete se podívat na logovací soubor?"
+
+#: kpowersave.cpp:2198 kpowersave.cpp:2224
+msgid "Error while %1"
+msgstr "Chyba při %1"
+
+#: configure_Dialog.cpp:831
+msgid "KPowersave Settings"
+msgstr "Nastavení KPowersave"
+
+#: configure_Dialog.cpp:832
+msgid "Apply"
+msgstr "Použít"
+
+#: configure_Dialog.cpp:834
+msgid "Help"
+msgstr "Nápověda"
+
+#: configure_Dialog.cpp:840
+msgid "Enable specific display power management"
+msgstr "Povolit zvláštní správu napájení obrazovky"
+
+#: configure_Dialog.cpp:841
+msgid "Standby after:"
+msgstr "Pohotovostní režim po:"
+
+#: configure_Dialog.cpp:842
+msgid "Only blank the screen"
+msgstr "Pouze smazat obrazovku"
+
+#: configure_Dialog.cpp:843
+msgid "Disable screen saver"
+msgstr "Zakázat šetřič obrazovky"
+
+#: configure_Dialog.cpp:844
+msgid "Enable specific screensaver settings"
+msgstr "Povolit zvláštní nastavení šetřiče obrazovky"
+
+#: configure_Dialog.cpp:845
+msgid "Suspend after:"
+msgstr "Uspání po:"
+
+#: configure_Dialog.cpp:846
+msgid "Power off after:"
+msgstr "Vypnutí po:"
+
+#: configure_Dialog.cpp:847
+msgid "Disable display power management"
+msgstr "Zakázat správu napájení obrazovky"
+
+#: configure_Dialog.cpp:848 configure_Dialog.cpp:849 configure_Dialog.cpp:850
+#: configure_Dialog.cpp:862 configure_Dialog.cpp:873
+msgid " min"
+msgstr " min"
+
+#: configure_Dialog.cpp:851
+msgid "Screen Saver and DPMS"
+msgstr "Spořič obrazovky a DPMS"
+
+#: configure_Dialog.cpp:852
+msgid "Settings"
+msgstr "Nastavení"
+
+#: configure_Dialog.cpp:853
+msgid "Reset"
+msgstr "Obnovit"
+
+#: configure_Dialog.cpp:855
+msgid "Enable scheme specific Brightness settings"
+msgstr "Povolit pro schémata specifická nastavení jasu"
+
+#: configure_Dialog.cpp:858
+msgid "Brightness"
+msgstr "Jas"
+
+#: configure_Dialog.cpp:859
+msgid "Enable autosuspend"
+msgstr "Povolit automatické uspání"
+
+#: configure_Dialog.cpp:860 configure_Dialog.cpp:867
+msgid "Enable scheme-specific blacklist"
+msgstr "Povolit černou listinu specifickou pro schéma"
+
+#: configure_Dialog.cpp:861 configure_Dialog.cpp:870
+msgid "after:"
+msgstr "po:"
+
+#: configure_Dialog.cpp:863 configure_Dialog.cpp:868
+msgid "Edit Blacklist..."
+msgstr "Upravit černou listinu..."
+
+#: configure_Dialog.cpp:864 configure_Dialog.cpp:869
+msgid "If the current desktop user is inactive the computer will:"
+msgstr "Pokud je uživatel grafického prostředí neaktivní počítač:"
+
+#: configure_Dialog.cpp:865
+msgid "Autosuspend"
+msgstr "Automatické uspání"
+
+#: configure_Dialog.cpp:866
+msgid "Enable autodimm the display"
+msgstr "Povolit ztlumení obrazovky při neaktivitě"
+
+#: configure_Dialog.cpp:871 configure_Dialog.cpp:893 configure_Dialog.cpp:894
+#: configure_Dialog.cpp:895 configure_Dialog.cpp:896 configure_Dialog.cpp:897
+#: configure_Dialog.cpp:898
+msgid " %"
+msgstr " %"
+
+#: configure_Dialog.cpp:872
+msgid "dimm to:"
+msgstr "ztlumit na:"
+
+#: configure_Dialog.cpp:874
+msgid "Autodimm"
+msgstr "Automatické ztlumení"
+
+#: configure_Dialog.cpp:879
+msgid "Set CPU Frequency Policy:"
+msgstr "Nastavit politiku frekvence CPU:"
+
+#: configure_Dialog.cpp:880
+msgid "CPU Frequency Policy"
+msgstr "Politika frekvence CPU"
+
+#: configure_Dialog.cpp:881
+msgid "Disable Notifications"
+msgstr "Zakázat upozornění"
+
+#: configure_Dialog.cpp:884
+msgid "New"
+msgstr "Nový"
+
+#: configure_Dialog.cpp:885
+msgid "Scheme Settings"
+msgstr "Nastavení schémat"
+
+#: configure_Dialog.cpp:886
+msgid "Define the battery warning levels (in percentage) and the releated action if the level get reached:"
+msgstr "Nastavte úrovně baterie pro varování (v procentech) a nastavte akci, která se provede, pokud jí bude dosaženo:"
+
+#: configure_Dialog.cpp:887
+msgid "Warning level:"
+msgstr "Úroveň varování:"
+
+#: configure_Dialog.cpp:888
+msgid "Low level:"
+msgstr "Nízká úroveň:"
+
+#: configure_Dialog.cpp:889
+msgid "Critical level:"
+msgstr "Kritická úroveň:"
+
+#: configure_Dialog.cpp:890 configure_Dialog.cpp:891 configure_Dialog.cpp:892
+msgid "if reached call:"
+msgstr "pokud je dosaženo zavolej:"
+
+#: configure_Dialog.cpp:899
+msgid "Battery"
+msgstr "Baterie"
+
+#: configure_Dialog.cpp:900
+msgid "Define the action which should be executed if the related button get pressed:"
+msgstr "Nastavte akci, která se provede, pokud bude stisknuto daná tlačítko:"
+
+#: configure_Dialog.cpp:901
+msgid "Suspend-to-disk Button:"
+msgstr "Klávesa uspání na disk:"
+
+#: configure_Dialog.cpp:902
+msgid "Sleep button:"
+msgstr "Tlačítko uspání:"
+
+#: configure_Dialog.cpp:903
+msgid "Lid close Button:"
+msgstr "Tlačítko přiklopení displaye:"
+
+#: configure_Dialog.cpp:904
+msgid "Power Button:"
+msgstr "Tlačítko napájení:"
+
+#: configure_Dialog.cpp:905
+msgid "Button Events"
+msgstr "Události tlačítek"
+
+#: configure_Dialog.cpp:906
+msgid "Select the following schemes as default if the system is running on AC or on batteries."
+msgstr "Vyberte z následujících schémat takové, které bude aktivní pokud bude systém v síti, nebo na baterii."
+
+#: configure_Dialog.cpp:907
+msgid "Battery scheme:"
+msgstr "Schéma baterie:"
+
+#: configure_Dialog.cpp:908
+msgid "AC scheme:"
+msgstr "Schéma zdroje:"
+
+#: configure_Dialog.cpp:909
+msgid "Default Schemes"
+msgstr "Výchozí schéma"
+
+#: configure_Dialog.cpp:910
+msgid "Lock screen before suspend or standby"
+msgstr "Zamknout obrazovku před uspáním či přechodem do pohotovostního režimu"
+
+#: configure_Dialog.cpp:911
+msgid "Lock screen with:"
+msgstr "Uzamknout obrazovku pomocí:"
+
+#: configure_Dialog.cpp:912
+msgid "Lock screen on lid close"
+msgstr "Uzamknout obrazovku při zavření víka"
+
+#: configure_Dialog.cpp:913
+msgid "Lock Screen"
+msgstr "Uzamknout obrazovku"
+
+#: configure_Dialog.cpp:914
+msgid "Notifications"
+msgstr "Upozornění"
+
+#: configure_Dialog.cpp:916
+msgid "Autostart"
+msgstr "Automatické spuštění"
+
+#: configure_Dialog.cpp:917
+msgid "Never ask me again on exit"
+msgstr "Při ukončení se již neptat"
+
+#: configure_Dialog.cpp:918
+msgid "KPowersave starts automatically on login"
+msgstr "KPowersave se po přihlášení automaticky spouští"
+
+#: configure_Dialog.cpp:919
+msgid "General Blacklists"
+msgstr "Obecná černá listina"
+
+#: configure_Dialog.cpp:920
+msgid "Edit Autosuspend Blacklist..."
+msgstr "Upravit černou listinu automatického uspání..."
+
+#: configure_Dialog.cpp:921
+msgid "Edit Autodimm Blacklist..."
+msgstr "Upravit černou listinu automatického ztlumení..."
+
+#: configure_Dialog.cpp:923
+msgid "General Settings"
+msgstr "Obecná nastavení"
+

@@ -1,0 +1,1516 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: kpowersave\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2007-08-10 03:16+0200\n"
+"PO-Revision-Date: 2007-04-30 20:49+0300\n"
+"Last-Translator: عبدالعزيز الشريف <a.a-a.s at hotmail dot com>\n"
+"Language-Team: Arabeyes <doc@arabeyes.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: Arabic\n"
+"X-Poedit-SourceCharset: utf-8\n"
+
+#: detailed_Dialog.cpp:228
+msgid "kpowersave"
+msgstr "kpowersave"
+
+#: detailed_Dialog.cpp:229
+msgid "General Information"
+msgstr "معلومات عامة"
+
+#: detailed_Dialog.cpp:232
+msgid "Battery Status"
+msgstr "حالة البطارية"
+
+#: detailed_Dialog.cpp:233
+msgid "AC Adapter"
+msgstr "محول التيار المتردد"
+
+#: detailed_Dialog.cpp:234 detaileddialog.cpp:391
+msgid "plugged in"
+msgstr "موصول"
+
+#: detailed_Dialog.cpp:235
+msgid "Power Consumtion: "
+msgstr "إستهلاك الطاقة:"
+
+#: detailed_Dialog.cpp:237
+msgid "Processor Status"
+msgstr "حالة المعالج"
+
+#: detailed_Dialog.cpp:238 blacklistedit_Dialog.cpp:130 info_Dialog.cpp:198
+#: configure_Dialog.cpp:838
+msgid "OK"
+msgstr "موافق"
+
+#: blacklisteditdialog.cpp:60
+msgid "General Blacklist"
+msgstr "القائمة السوداء العامة"
+
+#: blacklisteditdialog.cpp:63
+msgid "Scheme: "
+msgstr "نظام:"
+
+#: blacklisteditdialog.cpp:114
+msgid "Selected entry removed."
+msgstr "المدخل المختار تم إزالته."
+
+#: blacklisteditdialog.cpp:117
+msgid "Could not remove the selected entry."
+msgstr "لايمكن إزالة المدخل المختار."
+
+#: blacklisteditdialog.cpp:137
+msgid "Inserted new entry."
+msgstr "إدخال مدخل جديد."
+
+#: blacklisteditdialog.cpp:141
+msgid "Entry exists already. Did not insert new entry."
+msgstr "المدخل موجود مسبقاً. لا تدخل مدخل جديد."
+
+#: blacklisteditdialog.cpp:144
+msgid "Empty entry was not inserted."
+msgstr "المدخل الفارغ لم يدخل."
+
+#: inactivity.cpp:298
+msgid ""
+"Could not start 'pidof'. Could not autosuspend the machine.\n"
+"Please check your installation."
+msgstr ""
+"لايمكن بدء  'pidof'. لايمكن التعليق التلقائي للجهاز.\n"
+"الرجاء التأكد من تركيبك."
+
+#: blacklistedit_Dialog.cpp:129
+msgid "Autosuspend Blacklist Edit"
+msgstr "تحرير القائمة السوداء للتعليق التلقائي"
+
+#: blacklistedit_Dialog.cpp:132 configuredialog.cpp:1079
+#: configure_Dialog.cpp:836
+msgid "Cancel"
+msgstr "إلغاء"
+
+#: blacklistedit_Dialog.cpp:135
+msgid "Add"
+msgstr "إضافة"
+
+#: blacklistedit_Dialog.cpp:136
+msgid "Remove"
+msgstr "إزالة"
+
+#: infodialog.cpp:76 infodialog.cpp:78 main.cpp:55
+msgid "KPowersave"
+msgstr "KPowersave"
+
+#: configuredialog.cpp:116 configuredialog.cpp:121 configuredialog.cpp:721
+msgid " - not supported"
+msgstr " - غير مدعوم"
+
+#: configuredialog.cpp:150 configuredialog.cpp:317 detaileddialog.cpp:432
+#: kpowersave.cpp:192 settings.cpp:66 configure_Dialog.cpp:876
+msgid "Performance"
+msgstr "مشغل دائماً"
+
+#: configuredialog.cpp:154 configuredialog.cpp:319 detaileddialog.cpp:438
+#: kpowersave.cpp:194 settings.cpp:68 configure_Dialog.cpp:878
+msgid "Powersave"
+msgstr "موفر الطاقة"
+
+#: configuredialog.cpp:159 configuredialog.cpp:321 kpowersave.cpp:1478
+#: settings.cpp:70
+msgid "Presentation"
+msgstr "عرض تقديمي"
+
+#: configuredialog.cpp:164 configuredialog.cpp:323 kpowersave.cpp:1473
+#: settings.cpp:72
+msgid "Acoustic"
+msgstr "سمعي"
+
+#: configuredialog.cpp:169 configuredialog.cpp:171 configuredialog.cpp:172
+#: configuredialog.cpp:173 kpowersave.cpp:1484
+msgid "Advanced Powersave"
+msgstr "موفر الطاقة المتقدم"
+
+#: configuredialog.cpp:271
+msgid ""
+"This enables specific screen saver settings. \n"
+"Note: If selected, the global screen saver settings are \n"
+"overwritten while kpowersave runs."
+msgstr ""
+"هذا يمكن خصائص موفر الشاشة الخاصة. \n"
+"ملاحظة: إذا تم اختياره, خصائص موفر الشاشة العالمية \n"
+"ستعاد كتابتها بينما kpowersave يعمل."
+
+#: configuredialog.cpp:274
+msgid ""
+"This disables the screen saver. \n"
+"Note: If selected, the global screen saver settings are \n"
+"overwritten while kpowersave runs."
+msgstr ""
+"هذا يعطل موفر الشاشة. \n"
+"ملاحظة: إذا تم اختياره, خصائص موفر الشاشة العالمية \n"
+"ستعاد كتابتها بينما kpowersave يعمل."
+
+#: configuredialog.cpp:277
+msgid ""
+"This blanks the screen instead of using a specific screen saver. \n"
+"Note: This may work only with KScreensaver."
+msgstr ""
+"هذه فراغات الشاشة عوضاً عن استخدام موفر الشاشة الخاص. \n"
+"ملاحظة: هذا يمكن أن يعمل فقط مع KScreensaver."
+
+#: configuredialog.cpp:279
+msgid ""
+"This enables specific DPMS settings. \n"
+"Note: If selected, the global DPMS settings are \n"
+"overwritten while kpowersave runs."
+msgstr ""
+"هذا يمكن خصائص DPMS الخاصة. \n"
+"ملاحظة: إذا تم اختياره, خصائص DPMS العالمية \n"
+"ستعاد كتابتها بينما kpowersave يعمل."
+
+#: configuredialog.cpp:282
+msgid "This disables DPMS support."
+msgstr "هذا يعطل دعم DPMS."
+
+#: configuredialog.cpp:283
+msgid "If selected, the screen is locked on suspend or standby."
+msgstr "إذا تم اختياره, الشاشة ستغلق على التعليق أو الإسبات."
+
+#: configuredialog.cpp:284
+msgid "If selected, the screen is locked if the lid close event is triggered."
+msgstr "إذا تم اختياره, الشاشة ستقفل بسبب إغلاق الغطاء."
+
+#: configuredialog.cpp:286
+msgid ""
+"Check this box to enable or disable automatic suspension of the computer."
+msgstr "ضع علامة أمام المربع لتمكين أو تعطيل التعليق التلقائي للحاسوب."
+
+#: configuredialog.cpp:288
+msgid ""
+"Activate this action if the user was inactive for the defined time \n"
+"(greater than 0 minutes). If empty, nothing happens."
+msgstr ""
+"تنشيط هذا الإجراء إذا كان المستخدم غير نشط لمدة زمنية  \n"
+"(أكثر من 0 دقائق). إذا كان فارغاً, لاتفعل شيئاً."
+
+#: configuredialog.cpp:291
+msgid "All scheme-related screen saver and DPMS settings."
+msgstr "جميع الأنظمة المتصلة بخصائص موفر الشاشة وDPMS."
+
+#: configuredialog.cpp:292
+msgid "All scheme-related display brightness settings."
+msgstr "جميع الأنظمة المتصلة تعرض خصائص السطوع."
+
+#: configuredialog.cpp:293
+msgid "All scheme-related automatic suspend settings."
+msgstr "جميع الأنظمة المتصلة لها خصائص التعليق التلقائي."
+
+#: configuredialog.cpp:295
+msgid ""
+"Here you can change the brightness of your display. \n"
+"Use the slider to change the brightness directly for \n"
+"testing. To reset back to previous level, please press \n"
+"the 'Reset' button. "
+msgstr ""
+"هنا يمكن تغيير سطوع الشاشة. \n"
+"استخدم المزلاج لتغيير السطوع مباشرة   \n"
+"للإختبار. للعودة إلى المستوى السابقl, الرجاء ضغط \n"
+"'زر' إعادة. "
+
+#: configuredialog.cpp:299
+msgid "Use this button to set back the slider and the display brightness."
+msgstr "استخدم هذا الزر للرجوع للخلف للمزلاج وسطوع الشاشة ."
+
+#: configuredialog.cpp:352
+msgid "Press this button to delete the selected scheme."
+msgstr "اضغط هذا الزر لحذف النظام المختار."
+
+#: configuredialog.cpp:357
+msgid "You can't delete the current AC or battery scheme."
+msgstr "لايمكنك حذف نظام التيار المتردد أو البطارية."
+
+#: configuredialog.cpp:363
+msgid "You can't delete this default scheme."
+msgstr "لايمكنك حذف النظام الافتراضي."
+
+#: configuredialog.cpp:546
+msgid ""
+"Your hardware supports to change the brightness. The values of the slider "
+"are in percent and mapped to the available brightness levels of your "
+"hardware."
+msgstr ""
+"عتادك يدعم تغيير السطوع. قيم المزلاج بالنسبة المئوية تم وضعها لتوفير مستويات "
+"السطوع لعتادك."
+
+#: configuredialog.cpp:553
+msgid ""
+"Your Hardware currently not support changing the brightness of your display."
+msgstr "عتادك حالياً لايدعم تغيير سطوع العرض."
+
+#: configuredialog.cpp:664
+msgid "Select Automatically"
+msgstr "أختر تلقائياً"
+
+#: configuredialog.cpp:665
+msgid "KScreensaver"
+msgstr "KScreensaver"
+
+#: configuredialog.cpp:666
+msgid "XScreensaver"
+msgstr "XScreensaver"
+
+#: configuredialog.cpp:667
+msgid "xlock"
+msgstr "xlock"
+
+#: configuredialog.cpp:668
+msgid "GNOME Screensaver"
+msgstr "GNOME موفر الشاشة"
+
+#: configuredialog.cpp:930
+msgid ""
+"There are unsaved changes in the active scheme.\n"
+"Apply the changes before jumping to the next scheme or discard the changes?"
+msgstr ""
+"هناك تغييرات غير محفوظة في النظام النشط.\n"
+"قم بتطبيق التغييرات قبل القفز إلى النظام التالي أو اهمل التغييرات?"
+
+#: configuredialog.cpp:933 configuredialog.cpp:983
+msgid "Unsaved Changes"
+msgstr "تغييرات غير محفوظة"
+
+#: configuredialog.cpp:981
+msgid ""
+"There are unsaved changes.\n"
+"Apply the changes before cancel or discard the changes?"
+msgstr ""
+"هناك تغييرات غير محفوظة.\n"
+"قم بتطبيق هذه التغييرات قبل الإلغاء أو اهمل التغييرات?"
+
+#: configuredialog.cpp:1032
+msgid "Please insert a name for the new scheme:"
+msgstr "الرجاء إدخال اسم النظام الجديد:"
+
+#: configuredialog.cpp:1038
+msgid "KPowersave Configuration"
+msgstr "KPowersave إعدادات"
+
+#: configuredialog.cpp:1046
+msgid "Error: A scheme with this name already exist.\n"
+msgstr "خطأ: اسم النظام هذا موجود مسبقاً.\n"
+
+#: configuredialog.cpp:1076
+msgid "Do you really want to delete the %1 scheme?"
+msgstr "هل تريد حذف %1 نظام?"
+
+#: configuredialog.cpp:1078
+msgid "Confirm delete scheme"
+msgstr "تأكيد حذف النظام"
+
+#: configuredialog.cpp:1079 configure_Dialog.cpp:883
+msgid "Delete"
+msgstr "حذف"
+
+#: configuredialog.cpp:1095
+msgid "Could not delete the selected scheme."
+msgstr "لايمكن حذف النظام المختار."
+
+#: configuredialog.cpp:1324
+msgid ""
+"<b>Note:</b> If you select this option, the computer will suspend or standby "
+"if the current user is inactive for the defined time even if somebody is "
+"logged in remotely to the X server.<br><br> This feature can also produce "
+"problems with some programs, such as video players or cd burner. These "
+"programs can be blacklisted by checking <b>Enable scheme-specific blacklist</"
+"b> and click <b>Edit Blacklist...</b>. If this does not help, report the "
+"problem or deactivate autosuspend.<br><br> Really use this option?"
+msgstr ""
+"<b>ملاحظة:</b> اذا اخترت هذا الخيار, حاسوبك سيتم تعليقه أو إسباته إذا كان "
+"المستخدم الحالي غير نشط لمدة زمنية محددة أيضاً إذا قام شخص ما بالدخول عن بعد "
+"إلى خادم X .<br><br> هذه الميزة يمكن أن تحدث أيضاً مشاكل مع بعض البرامج, مثل "
+"حال مشغلات الفيديو أو حارق الاسطوانة . تلك البرامج قد تكون محظورة بواسطة "
+"الفحص <b>تمكين القائمة السوداء للنظام-المختار</b> واضغط <b>تحرير القائمة "
+"السوداء...</b>. اذا لم تساعدك, بلغ عن الخطأ أو لاتنشط التعليق التلقائي."
+"<br><br> حقاً استخدم هذا الخيار?"
+
+#: configuredialog.cpp:1402 configuredialog.cpp:1532
+msgid ""
+"The blacklist of the selected scheme is empty. Import the general blacklist?"
+msgstr "القائمة السوداء للنظام المختار فارغة. استيراد القائمة السوداء العامة؟"
+
+#: configuredialog.cpp:1404 configuredialog.cpp:1534
+msgid "Import"
+msgstr "استيراد"
+
+#: configuredialog.cpp:1404 configuredialog.cpp:1534
+msgid "Do Not Import"
+msgstr "لاتستورد"
+
+#: configuredialog.cpp:1416
+#, fuzzy
+msgid "General Autosuspend Blacklist"
+msgstr "تحرير القائمة السوداء للتعليق التلقائي"
+
+#: configuredialog.cpp:1546
+#, fuzzy
+msgid "General Autodimm Blacklist"
+msgstr "القائمة السوداء العامة"
+
+#: configuredialog.cpp:1779 configuredialog.cpp:1816
+msgid "Shutdown"
+msgstr "إطفاء"
+
+#: configuredialog.cpp:1781 configuredialog.cpp:1819
+msgid "Logout Dialog"
+msgstr "مربع حوار الخروج"
+
+#: configuredialog.cpp:1784 configuredialog.cpp:1822 kpowersave.cpp:182
+#: kpowersave.cpp:2096 kpowersave.cpp:2156 kpowersave.cpp:2247
+msgid "Suspend to Disk"
+msgstr "التعليق إلى القرص"
+
+#: configuredialog.cpp:1787 configuredialog.cpp:1825 kpowersave.cpp:186
+#: kpowersave.cpp:2101 kpowersave.cpp:2161 kpowersave.cpp:2250
+msgid "Suspend to RAM"
+msgstr "التعليق إلى الرام"
+
+#: configuredialog.cpp:1790 configuredialog.cpp:1828
+msgid "CPU Powersave policy"
+msgstr "سياسة موفر الطاقة للمعالج"
+
+#: configuredialog.cpp:1793 configuredialog.cpp:1831
+msgid "CPU Dynamic policy"
+msgstr "سياسة ديناميكية المعالج"
+
+#: configuredialog.cpp:1796 configuredialog.cpp:1834
+msgid "CPU Performance policy"
+msgstr "سياسة التشغيل الدائم للمعالج"
+
+#: configuredialog.cpp:1799 configuredialog.cpp:1837
+msgid "Set Brightness to"
+msgstr "ضبط السطوع إلى"
+
+#: main.cpp:43
+msgid "KDE Frontend for Power Management, Battery Monitoring and Suspend"
+msgstr "KDE Frontend for Power Management, Battery Monitoring and Suspend"
+
+#: main.cpp:45
+#, fuzzy
+msgid "Force a new check for ACPI support"
+msgstr "فرض فحص جديد لدعم واجهة إعداد الطاقة المتقدمة\n"
+
+#: main.cpp:46
+msgid "Trace function entry and leave points for debug\n"
+msgstr ""
+
+#: main.cpp:59
+msgid "Current maintainer"
+msgstr "المتعهد الحالي"
+
+#: main.cpp:62
+msgid "Powersave developer and for D-Bus integration"
+msgstr "مطور موفر الشاشة وتوحيد D-Bus"
+
+#: main.cpp:64
+msgid "Powersave developer and tester"
+msgstr "مطور موفر الطاقة والفاحص"
+
+#: main.cpp:66
+msgid "Added basic detailed dialog"
+msgstr "أضف نافذة التفصيل الأساسية"
+
+#: main.cpp:67
+msgid "Packaging Debian and Ubuntu"
+msgstr "حزم Debian و Ubuntu"
+
+#: detaileddialog.cpp:61
+msgid "KPowersave Information Dialog"
+msgstr "نافذة معلومات KPowersave"
+
+#: detaileddialog.cpp:65 configure_Dialog.cpp:882 configure_Dialog.cpp:922
+msgid "Miscellaneous"
+msgstr "متنوع"
+
+#: detaileddialog.cpp:66
+msgid "CPUs"
+msgstr "المعالجات"
+
+#: detaileddialog.cpp:73 detaileddialog.cpp:453
+msgid "Battery state:"
+msgstr "حالة البطارية:"
+
+#: detaileddialog.cpp:79
+msgid "Total:"
+msgstr "المجموع:"
+
+#: detaileddialog.cpp:81 detaileddialog.cpp:83
+msgid "Battery %1"
+msgstr "بطارية %1"
+
+#: detaileddialog.cpp:114
+msgid "Processor %1"
+msgstr "معالج %1"
+
+#: detaileddialog.cpp:230
+msgid "not present"
+msgstr "غير موجود"
+
+#: detaileddialog.cpp:243
+msgid "charged"
+msgstr "الشحن"
+
+#: detaileddialog.cpp:245
+msgid "%1:%2 h until charged"
+msgstr "%1:%2 h حتى الشحن"
+
+#: detaileddialog.cpp:248
+msgid "%1:%2 h remaining"
+msgstr "%1:%2 متبقي س"
+
+#: detaileddialog.cpp:253 detaileddialog.cpp:441 detaileddialog.cpp:468
+msgid "unknown"
+msgstr "مجهول"
+
+#: detaileddialog.cpp:325 detaileddialog.cpp:368
+msgid "%v MHz"
+msgstr "%v ميغا هرتز"
+
+#: detaileddialog.cpp:330 detaileddialog.cpp:363 dummy.cpp:58
+msgid "deactivated"
+msgstr "غير نشط"
+
+#: detaileddialog.cpp:395
+msgid "unplugged"
+msgstr "غير موصول"
+
+#: detaileddialog.cpp:412
+msgid "Current Scheme: "
+msgstr "النظام الحالي:"
+
+#: detaileddialog.cpp:429
+msgid "Current CPU Frequency Policy:"
+msgstr "سياسة تردد المعالج الحالية:"
+
+#: detaileddialog.cpp:435 kpowersave.cpp:193 configure_Dialog.cpp:877
+msgid "Dynamic"
+msgstr "ديناميكي"
+
+#: detaileddialog.cpp:456
+msgid "Critical"
+msgstr "حرج"
+
+#: detaileddialog.cpp:459
+msgid "Low"
+msgstr "منخفض"
+
+#: detaileddialog.cpp:462 kpowersave.cpp:277 kpowersave.cpp:652
+#: kpowersave.cpp:659 kpowersave.cpp:705 kpowersave.cpp:713 kpowersave.cpp:761
+#: kpowersave.cpp:769 kpowersave.cpp:817 kpowersave.cpp:824
+#: kpowersave.cpp:1131 kpowersave.cpp:1243 kpowersave.cpp:1272
+#: kpowersave.cpp:1610 kpowersave.cpp:1670 kpowersave.cpp:2186
+msgid "Warning"
+msgstr "تحذير"
+
+#: detaileddialog.cpp:465
+msgid "ok"
+msgstr "حسنا"
+
+#: detaileddialog.cpp:474 detaileddialog.cpp:477
+msgid "Set brightness supported:"
+msgstr "ضبط دعم السطوع:"
+
+#: detaileddialog.cpp:475
+msgid "yes"
+msgstr "نعم"
+
+#: detaileddialog.cpp:478
+msgid "no"
+msgstr "لا"
+
+#: detaileddialog.cpp:481 detaileddialog.cpp:485
+msgid "HAL Daemon:"
+msgstr "HAL Daemon:"
+
+#: detaileddialog.cpp:482
+msgid "running"
+msgstr "تشغيل"
+
+#: detaileddialog.cpp:486
+msgid "not running"
+msgstr "غير مشغل"
+
+#: info_Dialog.cpp:197
+msgid "Information"
+msgstr "معلومات"
+
+#: dummy.cpp:36
+msgid "If the current desktop user is inactive, dim the display to:"
+msgstr "إذا كان سطح المكتب للمستخدم غير نشط, قم بتعتيم الشاشة إلى:"
+
+#: dummy.cpp:37
+msgid "Enable dim display on inactivity"
+msgstr "تمكين العرض المعتم  أثناء الخمول"
+
+#: dummy.cpp:38
+msgid "Blacklist"
+msgstr "القائمة السوداء"
+
+#: dummy.cpp:39
+msgid ""
+"Here you can add programs which should, if running, prevent the dimming of "
+"the display."
+msgstr "هنا يمكنك إضافة البرامج اللازمة, اذا كانت تعمل, امنع تعتيم العرض."
+
+#: dummy.cpp:41
+msgid "Would you like to import a predefined blacklist?"
+msgstr "هل تود استيراد القائمة السوداء الغير محددة؟"
+
+#: dummy.cpp:42
+msgid "Disable CPUs/Cores"
+msgstr "تعطيل CPUs/Cores"
+
+#: dummy.cpp:43
+msgid "Max. running CPUs:"
+msgstr "Max. running CPUs:"
+
+#: dummy.cpp:44
+msgid "Max. running CPUs/Cores:"
+msgstr "Max. running CPUs/Cores:"
+
+#: dummy.cpp:45
+msgid "Min. running CPUs:"
+msgstr "Min. running CPUs:"
+
+#: dummy.cpp:46
+msgid "Min. running CPUs/Cores:"
+msgstr "Min. running CPUs/Cores:"
+
+#: dummy.cpp:47
+msgid "Enable to switch off CPUs/cores"
+msgstr "Enable to switch off CPUs/cores"
+
+#: dummy.cpp:48
+msgid "You have a multiprocessor/multicore machine."
+msgstr "You have a multiprocessor/multicore machine."
+
+#: dummy.cpp:49
+msgid ""
+"You can disable CPUs/cores to reduce power consumption and save battery "
+"power."
+msgstr "يمكنك تعطيل CPUs/cores لخفض استهلاك الطاقة وحفظ طاقة البطارية."
+
+#: dummy.cpp:50
+msgid "Device"
+msgstr "جهاز"
+
+#: dummy.cpp:51
+msgid "Devices"
+msgstr "إجهزة"
+
+#: dummy.cpp:52
+msgid "Device class"
+msgstr "صنف الجهاز"
+
+#: dummy.cpp:53
+msgid "activate"
+msgstr "نشط"
+
+#: dummy.cpp:54
+msgid "Activate"
+msgstr "نشط"
+
+#: dummy.cpp:55
+msgid "deactivate"
+msgstr "غير نشط"
+
+#: dummy.cpp:56
+msgid "Deactivate"
+msgstr "غير نشط"
+
+#: dummy.cpp:57
+msgid "activated"
+msgstr "منشط"
+
+#: dummy.cpp:59
+msgid "do nothing"
+msgstr "لاشيء"
+
+#: dummy.cpp:60
+msgid "Deactivate following devices:"
+msgstr "لاتنشط الأجهزة التالية:"
+
+#: dummy.cpp:61
+msgid "Activate following devices"
+msgstr "تنشيط الأجهزة التالية"
+
+#: dummy.cpp:62
+msgid "Reactivate following devices"
+msgstr "تنشيط الأجهزة التالية"
+
+#: dummy.cpp:63
+msgid "Deactivate following device classes:"
+msgstr "تعطيل أصناف الأجهزة التالية:"
+
+#: dummy.cpp:64
+msgid "Activate following devices classes"
+msgstr "تنشيط أصناف الأجهزة التالية"
+
+#: dummy.cpp:65
+msgid "Reactivate following device classes"
+msgstr "إعادة تنشيط أصناف الأجهزة التالية"
+
+#: dummy.cpp:66
+msgid "If the scheme switched all devices are again activated."
+msgstr "اذا تبدل النظام جميع الأجهزة ستنشط مجدداً."
+
+#: dummy.cpp:67
+msgid "This is a experimental feature."
+msgstr "هذه ميزة تجريبية."
+
+#: dummy.cpp:68
+msgid "If you have problems with this feature, please report them."
+msgstr "اذا كان لديك مشاكل مع هذه الميزة, الرجاء إبلاغنا."
+
+#: dummy.cpp:69
+msgid "Select one of the available devices and click on "
+msgstr "اختر احدى الأجهزة المتوفرة واضغط عليه"
+
+#: dummy.cpp:70
+msgid "Select one of the available device classes and click on "
+msgstr "اختر احدى أصناف الأجهزة المتوفرة واضغط عليه"
+
+#: dummy.cpp:71
+msgid "Select one or more of the available devices and click on "
+msgstr "اختر واحد أو أكثر من الأجهزة المتوفرة واضغط عليه"
+
+#: dummy.cpp:72
+msgid "Select one or more of the available device classes and click on "
+msgstr "ختر واحد أو أكثر من أصناف الجهاز المتوفرة واضغط عليه"
+
+#: dummy.cpp:73
+msgid ""
+"Please note: If you e.g. deactivate a network device you may lose your "
+"internet connection."
+msgstr ""
+"الرجاء ملاحظة:اذا كنت على سبيل المثال عطلت جهاز الشبكة يمكن أن تخسر اتصالك "
+"بالإنترنت."
+
+#: dummy.cpp:75
+msgid ""
+"<b>Note:</b> If you select this option, the computer will suspend or standby "
+"if the current user is inactive for the defined time. <br><br> This feature "
+"can also produce problems with some programs, such as video players or cd "
+"burner. These programs can be blacklisted by checking <b>Enable scheme-"
+"specific blacklist</b> and click <b>Edit Blacklist...</b>. If this does not "
+"help, report the problem or deactivate autosuspend.<br><br> Really use this "
+"option?"
+msgstr ""
+"<b>ملاحظة:</b>اذا اخترت هذا الخيار, الحاسوب سيتم تعليقه أو إسباته اذا كان "
+"سطح المكتب للمستخدم غير نشط لمدة زمنية محددة. <br><br> هذه الميزة قد تحدث "
+"أيضاً مشاكل مع بعض البرامج, مثل مشغلات الفيديو أو حارق الاسطوانة. تلك البرامج "
+"قد محظورة بواسطة الفحص <b>تمكين نظام القائمة السوداء المخصصة</b> واضغط "
+"<b>تحرير القائمة السوداء...</b>. اذا لم تساعدك, بلغ عن المشكلة أو لاتنشط "
+"التعليق التلقائي.<br><br> حقاً استخدم هذا الخيار?"
+
+#: dummy.cpp:82
+msgid "Try to use only one CPU/Core."
+msgstr ""
+
+#: dummy.cpp:83
+msgid ""
+"Reduce power consumption by try to use only one CPU/Core instead of "
+"spreading the work over all/multiple CPUs."
+msgstr ""
+
+#: dummy.cpp:87
+msgid "Could not load the global configuration."
+msgstr "لايمكن تحميل الإعدادات العالمية."
+
+#: dummy.cpp:88
+msgid "Could not load the requested scheme configuration."
+msgstr "لايمكن تحميل إعدادات النظام المطلوب."
+
+#: dummy.cpp:89
+msgid "Configure the current scheme."
+msgstr "إعداد النظام الحالي:"
+
+#: dummy.cpp:90
+msgid "Try loading the default configuration."
+msgstr "محاولة تحميل الإعدادات الافتراضية."
+
+#: dummy.cpp:91
+msgid "Maybe the global configuration file is empty or missing."
+msgstr "ربما يكون ملف الإعدادات العالمية فارغ أو مفقود ."
+
+#: dummy.cpp:94
+msgid "Cannot connect to D-Bus. The D-Bus daemon may not be running."
+msgstr "Cannot connect to D-Bus. The D-Bus daemon may not be running."
+
+#: dummy.cpp:95
+msgid ""
+"Scheme switched to %1. \n"
+" Deactivate following devices: %2"
+msgstr ""
+"النظام يتبدل إلى %1. \n"
+" لاتنشط الأجهزة التالية: %2"
+
+#: dummy.cpp:96
+msgid ""
+"Scheme switched to %1. \n"
+" Activate following devices: %2"
+msgstr ""
+"النظام يتبدل إلى %1. \n"
+" نشط الأجهزة التالية: %2"
+
+#: dummy.cpp:97
+msgid "Report ..."
+msgstr "بلغ..."
+
+#: dummy.cpp:98
+msgid "Suspend to RAM is not supported on your machine."
+msgstr "التعليق إلى الرام غير مدعوم على جهازك."
+
+#: dummy.cpp:99
+msgid "Additionally, please mail the output of %1 to %2 . Thanks!"
+msgstr "إضافياً, الرجاء إرسال نتيجة %1 to %2 . شكراً!"
+
+#: dummy.cpp:100
+msgid "Power consumption"
+msgstr "استهلاك الطاقة"
+
+#: dummy.cpp:103
+msgid "KScreensaver not found."
+msgstr "KScreensaver غير موجود."
+
+#: dummy.cpp:104
+msgid "Try locking with XScreensaver or xlock."
+msgstr "محاولة الإقفال بواسطة XScreensaver أو xlock."
+
+#: dummy.cpp:105
+msgid "XScreensaver not found."
+msgstr "XScreensaver غير موجود."
+
+#: dummy.cpp:106
+msgid "Try locking the screen with xlock."
+msgstr "محاولة إقفال الشاشة مع xlock."
+
+#: dummy.cpp:107
+msgid ""
+"XScreensaver and xlock not found. It is not possible to lock the screen. "
+"Check your installation."
+msgstr ""
+"XScreensaver و xlock غير موجودان. من غير المستحيل إقفال الشاشة. افحص تركيبك."
+
+#: dummy.cpp:111
+msgid "HAL daemon:"
+msgstr "HAL daemon:"
+
+#: dummy.cpp:112
+msgid "D-Bus daemon:"
+msgstr "D-Bus daemon:"
+
+#: dummy.cpp:113
+msgid "ConsoleKit daemon:"
+msgstr ""
+
+#: dummy.cpp:114
+msgid "Autosuspend activated:"
+msgstr "تنشيط التعليق التلقائي:"
+
+#: dummy.cpp:115
+#, fuzzy
+msgid "Autodimm activated:"
+msgstr "تنشيط التعليق التلقائي:"
+
+#: dummy.cpp:116
+msgid "enabled"
+msgstr "تمكين"
+
+#: dummy.cpp:117
+msgid "Session active:"
+msgstr ""
+
+#: dummy.cpp:120
+msgid "Inactivity detected."
+msgstr ""
+
+#: dummy.cpp:121
+msgid "To stop the %1 press the 'Cancel' button before the countdown expire."
+msgstr ""
+
+#: dummy.cpp:122
+msgid "The computer autosuspend in: "
+msgstr ""
+
+#: dummy.cpp:123
+#, c-format
+msgid "The display get dimmed down to %1% in: "
+msgstr ""
+
+#: dummy.cpp:124
+msgid "%1 seconds"
+msgstr ""
+
+#: dummy.cpp:127
+msgid "Could not call %1. The current desktop session is not active."
+msgstr ""
+
+#: dummy.cpp:128
+msgid "Could not set %1. The current desktop session is not active."
+msgstr ""
+
+#: dummy.cpp:129
+msgid "Stopped %1. The current desktop session is now inactive."
+msgstr ""
+
+#: dummy.cpp:130
+msgid "Restarted %1. The current desktop session is now active again."
+msgstr ""
+
+#: log_viewer.cpp:78
+msgid "Form1"
+msgstr ""
+
+#: log_viewer.cpp:79
+msgid "Save As ..."
+msgstr ""
+
+#: log_viewer.cpp:80
+msgid "Close"
+msgstr ""
+
+#: logviewer.cpp:44
+#, fuzzy
+msgid "KPowersave Logfile Viewer: %1"
+msgstr "موفر الطاقة يتبدل إلى نظام:%1"
+
+#: logviewer.cpp:89
+msgid "File already exist. Overwrite the file?"
+msgstr ""
+
+#: logviewer.cpp:90 logviewer.cpp:97
+#, fuzzy
+msgid "Error while save logfile"
+msgstr "خطأ بينما يهيئ %1"
+
+#: logviewer.cpp:95
+msgid "File already exist."
+msgstr ""
+
+#: logviewer.cpp:98
+msgid "Try other filename ..."
+msgstr ""
+
+#: suspenddialog.cpp:70
+msgid "Preparing Suspend..."
+msgstr "الاستعداد للتعليق..."
+
+#: kpowersave.cpp:168
+msgid "Configure KPowersave..."
+msgstr "إعداد KPowersave..."
+
+#: kpowersave.cpp:171 configure_Dialog.cpp:915
+msgid "Configure Notifications..."
+msgstr "إعداد التنبيهات..."
+
+#: kpowersave.cpp:175
+msgid "Start YaST2 Power Management Module..."
+msgstr "ابدأ بوحدة إدارة الطاقة YaST2..."
+
+#: kpowersave.cpp:189 kpowersave.cpp:2106 kpowersave.cpp:2166
+#: kpowersave.cpp:2253
+msgid "Standby"
+msgstr "استعداد"
+
+#: kpowersave.cpp:191 kpowersave.cpp:198
+msgid "Set CPU Frequency Policy"
+msgstr "ضبط سياسة تردد المعالج"
+
+#: kpowersave.cpp:205 kpowersave.cpp:206
+msgid "Set Active Scheme"
+msgstr "ضبط النظام النشط"
+
+#: kpowersave.cpp:212
+msgid "Disable Actions on Inactivity"
+msgstr "تعطيل الإجراءات أثناء الخمول "
+
+#: kpowersave.cpp:219 kpowersave.cpp:229
+msgid "&Help"
+msgstr "&مساعدة"
+
+#: kpowersave.cpp:221
+msgid "&KPowersave Handbook"
+msgstr "&KPowersave كتيب"
+
+#: kpowersave.cpp:224
+msgid "&Report a bug ..."
+msgstr "&بلغ عن خطأ ..."
+
+#: kpowersave.cpp:226
+msgid "&About KPowersave"
+msgstr "&حول KPowersave"
+
+#: kpowersave.cpp:275 kpowersave.cpp:648 kpowersave.cpp:656 kpowersave.cpp:703
+#: kpowersave.cpp:710 kpowersave.cpp:759 kpowersave.cpp:766 kpowersave.cpp:815
+#: kpowersave.cpp:822 kpowersave.cpp:1126 kpowersave.cpp:1241
+#: kpowersave.cpp:1270 kpowersave.cpp:2183
+msgid "WARNING"
+msgstr "تحذير"
+
+#: kpowersave.cpp:275
+msgid "Cannot find any schemes."
+msgstr "لايمكن إيجاد أي أنظمة."
+
+#: kpowersave.cpp:453
+msgid "No information about battery and AC status available"
+msgstr "لا معلومات متوفرة عن حالة التيار المتردد والبطارية"
+
+#: kpowersave.cpp:456
+msgid "Plugged in -- fully charged"
+msgstr "موصول -- مشحون بالكامل"
+
+#: kpowersave.cpp:460
+msgid "Plugged in"
+msgstr "موصول"
+
+#: kpowersave.cpp:464
+msgid "Plugged in -- %1% charged (%2:%3 h until full charged)"
+msgstr "موصول -- %1%يشحن (%2:%3 h حتى الشحن الكامل)"
+
+#: kpowersave.cpp:467
+msgid "Plugged in -- %1% charged (%2:%3 remaining hours)"
+msgstr "موصول -- %1% يشحن (%2:%3 الساعات المتبقية)"
+
+#: kpowersave.cpp:471 kpowersave.cpp:475
+#, c-format
+msgid "Plugged in -- %1% charged"
+msgstr "موصول -- %1% يشحن"
+
+#: kpowersave.cpp:474
+msgid "Plugged in -- no battery"
+msgstr "موصول -- لا بطارية"
+
+#: kpowersave.cpp:480
+msgid "Running on batteries -- %1% charged (%2:%3 hours remaining)"
+msgstr "يعمل على البطاريات -- %1% يشحن (%2:%3 ساعات متبقية)"
+
+#: kpowersave.cpp:484
+#, c-format
+msgid "Running on batteries -- %1% charged"
+msgstr "يعمل على البطاريات -- %1% يشحن"
+
+#: kpowersave.cpp:491
+msgid " -- battery is charging"
+msgstr " -- البطارية مشحونة"
+
+#: kpowersave.cpp:649 kpowersave.cpp:657
+msgid "Could not start YaST Power Management Module. Check if it is installed."
+msgstr "لايمكن البدء بوحدة إدارة الطاقة Yast. تأكد من تركيبها"
+
+#: kpowersave.cpp:703
+msgid "Suspend to disk failed"
+msgstr "التعليق إلى القرص فشل"
+
+#: kpowersave.cpp:711
+msgid "Suspend to disk disabled by administrator."
+msgstr "التعليق إلى القرص معطل بواسطة المدير."
+
+#: kpowersave.cpp:759
+msgid "Suspend to RAM failed"
+msgstr "التعليق إلى الرام فشل."
+
+#: kpowersave.cpp:767
+msgid "Suspend to RAM disabled by administrator."
+msgstr "التعليق إلى الرام معطل بواسطة المدير."
+
+#: kpowersave.cpp:815
+msgid "Standby failed"
+msgstr "وضع الاستعداد فشل"
+
+#: kpowersave.cpp:822
+msgid "Standby disabled by administrator."
+msgstr "وضع الاستعداد معطل بواسطة المدير."
+
+#: kpowersave.cpp:853
+msgid "System is going into suspend mode now"
+msgstr "النظام يتجه إلى نمط التعليق الآن"
+
+#: kpowersave.cpp:1039
+msgid "Could not call DCOP interface to umount external media."
+msgstr "Could not call DCOP interface to umount external media."
+
+#: kpowersave.cpp:1044
+msgid ""
+"Could not umount external media before suspend/standby. \n"
+" (Reason: %1)\n"
+" \n"
+" Would you like to continue suspend/standby anyway? \n"
+"(Warning: Continue suspend can cause data loss!)"
+msgstr ""
+"Could not umount external media before suspend/standby. \n"
+" (Reason: %1)\n"
+" \n"
+" Would you like to continue suspend/standby anyway? \n"
+"(Warning: Continue suspend can cause data loss!)"
+
+#: kpowersave.cpp:1052
+msgid "Error while prepare %1"
+msgstr "خطأ بينما يهيئ %1"
+
+#: kpowersave.cpp:1053
+msgid "Suspend anyway"
+msgstr "التعليق بأية حال"
+
+#: kpowersave.cpp:1053
+msgid "Cancel suspend"
+msgstr "إلغي التعليق"
+
+#: kpowersave.cpp:1127
+msgid ""
+"Could not lock the screen. There may be a problem with the selected \n"
+"lock method or something else."
+msgstr ""
+"لايمكن إقفال الشاشة. يمكن أن تكون هناك مشكلة مع المختار \n"
+"طريقة القفل أو شي آخر."
+
+#: kpowersave.cpp:1144
+msgid "The Lid was closed."
+msgstr "الغطاء تم إغلاقه."
+
+#: kpowersave.cpp:1156
+msgid "The Lid was opened."
+msgstr "الغطاء تم فتحه."
+
+#: kpowersave.cpp:1223
+msgid "Start KPowersave automatically when you log in?"
+msgstr "بدء KPowersave تلقائياً عند الدخول؟"
+
+#: kpowersave.cpp:1224
+msgid "Question"
+msgstr "سؤال"
+
+#: kpowersave.cpp:1225
+msgid "Start Automatically"
+msgstr "إبدأ تلقائياً"
+
+#: kpowersave.cpp:1225
+msgid "Do Not Start"
+msgstr "لا تبدأ"
+
+#: kpowersave.cpp:1242
+msgid "CPU Freq Policy %1 could not be set."
+msgstr "سياسة تردد المعالج %1 لايمكن أن توضع."
+
+#: kpowersave.cpp:1271
+msgid "Scheme %1 could not be activated."
+msgstr "نظام %1 لايمكن أن ينشط."
+
+#: kpowersave.cpp:1600
+msgid ""
+"The D-Bus daemon is not running.\n"
+"Starting it will provide full functionality: /etc/init.d/dbus start"
+msgstr ""
+"The D-Bus daemon is not running.\n"
+"Starting it will provide full functionality: /etc/init.d/dbus start"
+
+#: kpowersave.cpp:1611
+msgid "Don't show this message again."
+msgstr "لاتظهر هذه الرسالة مجدداً."
+
+#: kpowersave.cpp:1637
+msgid "ERROR"
+msgstr "خطأ"
+
+#: kpowersave.cpp:1638
+msgid "Could not get information from HAL. The haldaemon is maybe not running."
+msgstr "لايمكن الحصول على معلومات من HAL. The haldaemon ربما يكون لايعمل."
+
+#: kpowersave.cpp:1641
+msgid "Error"
+msgstr "خطأ"
+
+#: kpowersave.cpp:1912
+msgid ""
+"Battery state changed to WARNING -- remaining time: %1 hours and %2 minutes."
+msgstr "حالة البطارية تتغير إلى الإنذار -- الوقت المتبقي: %1 ساعات و %2 دقائق."
+
+#: kpowersave.cpp:1921
+msgid ""
+"Battery state changed to LOW -- remaining time: %1 hours and %2 minutes."
+msgstr "حالة البطارية تتغير إلى منخفض -- الوقت المتبقي: %1 ساعات و %2 دقائق."
+
+#: kpowersave.cpp:1932
+msgid ""
+"Battery state changed to CRITICAL -- remaining time: %1 hours and %2 "
+"minutes.\n"
+"Shut down your system or plug in the power cable immediately. Otherwise the "
+"machine\n"
+"will go shutdown in 30 seconds"
+msgstr ""
+"حالة البطارية تتغير إلى حرج -- الوقت المتبقي: %1 ساعات و %2 دقائق.\n"
+"إطفئ نظامك أو أوصله بكيبل الطاقة فوراً . والإ جهازك\n"
+"سيتم إطفائه خلال 30 ثانية"
+
+#: kpowersave.cpp:1943
+msgid ""
+"Battery state changed to CRITICAL -- remaining time: %1 hours and %2 "
+"minutes.\n"
+"Shut down your system or plug in the power cable immediately."
+msgstr ""
+"حالة البطارية تتغير إلى حرج -- الوقت المتبقي: %1 ساعات و %2 دقائق.\n"
+"إطفئ نظامك أو أوصله بكيبل الطاقة فوراً."
+
+#: kpowersave.cpp:2041
+msgid "AC adapter plugged in"
+msgstr "محول التيار المتردد موصول"
+
+#: kpowersave.cpp:2043
+msgid "AC adapter unplugged"
+msgstr "محول التيار المتردد غير موصول"
+
+#: kpowersave.cpp:2078
+#, fuzzy
+msgid "Switched to scheme: %1"
+msgstr "موفر الطاقة يتبدل إلى نظام:%1"
+
+#: kpowersave.cpp:2095 kpowersave.cpp:2100 kpowersave.cpp:2105
+msgid "System is going into %1 now."
+msgstr "النظام يتجه إلى %1 الآن."
+
+#: kpowersave.cpp:2155 kpowersave.cpp:2160 kpowersave.cpp:2165
+msgid "System is resumed from %1."
+msgstr "النظام يستعاد من %1."
+
+#: kpowersave.cpp:2184
+msgid "Could not remount (all) external storage media."
+msgstr "Could not remount (all) external storage media."
+
+#: kpowersave.cpp:2192
+msgid "An unknown error occurred while %1. The errorcode is: '%2'"
+msgstr ""
+
+#: kpowersave.cpp:2197
+#, fuzzy
+msgid "Do you want to have a look at the log file?"
+msgstr "هل تريد حذف %1 نظام?"
+
+#: kpowersave.cpp:2198 kpowersave.cpp:2224
+#, fuzzy
+msgid "Error while %1"
+msgstr "خطأ بينما يهيئ %1"
+
+#: configure_Dialog.cpp:831
+msgid "KPowersave Settings"
+msgstr "KPowersave خصائص"
+
+#: configure_Dialog.cpp:832
+msgid "Apply"
+msgstr "تطبيق"
+
+#: configure_Dialog.cpp:834
+msgid "Help"
+msgstr "مساعدة"
+
+#: configure_Dialog.cpp:840
+msgid "Enable specific display power management"
+msgstr "تمكين إدارة طاقة العرض المخصصة"
+
+#: configure_Dialog.cpp:841
+msgid "Standby after:"
+msgstr "وضع الاستعداد بعد:"
+
+#: configure_Dialog.cpp:842
+msgid "Only blank the screen"
+msgstr "فقط شاشة فارغة"
+
+#: configure_Dialog.cpp:843
+msgid "Disable screen saver"
+msgstr "تعطيل موفر الطاقة"
+
+#: configure_Dialog.cpp:844
+msgid "Enable specific screensaver settings"
+msgstr "تمكين خصائص موفر الشاشة المخصصة"
+
+#: configure_Dialog.cpp:845
+msgid "Suspend after:"
+msgstr "التعليق بعد:"
+
+#: configure_Dialog.cpp:846
+msgid "Power off after:"
+msgstr "الطاقة معطلة بعد:"
+
+#: configure_Dialog.cpp:847
+msgid "Disable display power management"
+msgstr "تعطيل إدارة طاقة الشاشة"
+
+#: configure_Dialog.cpp:848 configure_Dialog.cpp:849 configure_Dialog.cpp:850
+#: configure_Dialog.cpp:862 configure_Dialog.cpp:873
+msgid " min"
+msgstr "min"
+
+#: configure_Dialog.cpp:851
+msgid "Screen Saver and DPMS"
+msgstr "موفر الشاشة و DPMS"
+
+#: configure_Dialog.cpp:852
+msgid "Settings"
+msgstr "خصائص"
+
+#: configure_Dialog.cpp:853
+msgid "Reset"
+msgstr "إعادة"
+
+#: configure_Dialog.cpp:855
+msgid "Enable scheme specific Brightness settings"
+msgstr "تمكين خصائص السطوع للنظام المختار"
+
+#: configure_Dialog.cpp:858
+msgid "Brightness"
+msgstr "السطوع"
+
+#: configure_Dialog.cpp:859
+msgid "Enable autosuspend"
+msgstr "تمكين التعليق التلقائي"
+
+#: configure_Dialog.cpp:860 configure_Dialog.cpp:867
+msgid "Enable scheme-specific blacklist"
+msgstr "تمكين القائمة السوداء للنظام المختار"
+
+#: configure_Dialog.cpp:861 configure_Dialog.cpp:870
+msgid "after:"
+msgstr "بعد:"
+
+#: configure_Dialog.cpp:863 configure_Dialog.cpp:868
+msgid "Edit Blacklist..."
+msgstr "تحرير القائمة السوداء..."
+
+#: configure_Dialog.cpp:864 configure_Dialog.cpp:869
+msgid "If the current desktop user is inactive the computer will:"
+msgstr "اذا كان سطح المكتب للمستخدم غير نشط الحاسوب سيقوم:"
+
+#: configure_Dialog.cpp:865
+msgid "Autosuspend"
+msgstr "التعليق التلقائي"
+
+#: configure_Dialog.cpp:866
+#, fuzzy
+msgid "Enable autodimm the display"
+msgstr "تمكين العرض المعتم  أثناء الخمول"
+
+#: configure_Dialog.cpp:871 configure_Dialog.cpp:893 configure_Dialog.cpp:894
+#: configure_Dialog.cpp:895 configure_Dialog.cpp:896 configure_Dialog.cpp:897
+#: configure_Dialog.cpp:898
+msgid " %"
+msgstr "%"
+
+#: configure_Dialog.cpp:872
+msgid "dimm to:"
+msgstr ""
+
+#: configure_Dialog.cpp:874
+msgid "Autodimm"
+msgstr ""
+
+#: configure_Dialog.cpp:879
+msgid "Set CPU Frequency Policy:"
+msgstr "ضبط سياسة تردد المعالج:"
+
+#: configure_Dialog.cpp:880
+msgid "CPU Frequency Policy"
+msgstr "سياسة تردد المعالج"
+
+#: configure_Dialog.cpp:881
+msgid "Disable Notifications"
+msgstr "تعطيل التنبيهات"
+
+#: configure_Dialog.cpp:884
+msgid "New"
+msgstr "جديد"
+
+#: configure_Dialog.cpp:885
+msgid "Scheme Settings"
+msgstr "خصائص النظام"
+
+#: configure_Dialog.cpp:886
+msgid ""
+"Define the battery warning levels (in percentage) and the releated action if "
+"the level get reached:"
+msgstr ""
+"عرف مستويات التحذير للبطارية (في النسبة المئوية) والإجراء المتبع اذا وصل "
+"المستوى لـ::"
+
+#: configure_Dialog.cpp:887
+msgid "Warning level:"
+msgstr "مستوى التحذير:"
+
+#: configure_Dialog.cpp:888
+msgid "Low level:"
+msgstr "المستوى المنخفض:"
+
+#: configure_Dialog.cpp:889
+msgid "Critical level:"
+msgstr "المستوى التحذيري:"
+
+#: configure_Dialog.cpp:890 configure_Dialog.cpp:891 configure_Dialog.cpp:892
+msgid "if reached call:"
+msgstr "if reached call:"
+
+#: configure_Dialog.cpp:899
+msgid "Battery"
+msgstr "بطارية"
+
+#: configure_Dialog.cpp:900
+msgid ""
+"Define the action which should be executed if the related button get pressed:"
+msgstr "حدد الإجراء الذي يجب أن ينفذ اذا تم ضغط زر العلاقة:"
+
+#: configure_Dialog.cpp:901
+msgid "Suspend-to-disk Button:"
+msgstr "زر التعليق إلى القرص:"
+
+#: configure_Dialog.cpp:902
+msgid "Sleep button:"
+msgstr "زر السبات:"
+
+#: configure_Dialog.cpp:903
+msgid "Lid close Button:"
+msgstr "زر إغلاق الغطاء:"
+
+#: configure_Dialog.cpp:904
+msgid "Power Button:"
+msgstr "زر الطاقة:"
+
+#: configure_Dialog.cpp:905
+msgid "Button Events"
+msgstr "زر الأحداث"
+
+#: configure_Dialog.cpp:906
+msgid ""
+"Select the following schemes as default if the system is running on AC or on "
+"batteries."
+msgstr ""
+"اختر من الأنظمة التالية كأفتراضي اذا كان النظام يعمل على التيار المتردد أو "
+"على البطاريات."
+
+#: configure_Dialog.cpp:907
+msgid "Battery scheme:"
+msgstr "نظام البطارية:"
+
+#: configure_Dialog.cpp:908
+msgid "AC scheme:"
+msgstr "نظام التيار المتردد:"
+
+#: configure_Dialog.cpp:909
+msgid "Default Schemes"
+msgstr "الأنظمة الأفتراضية"
+
+#: configure_Dialog.cpp:910
+msgid "Lock screen before suspend or standby"
+msgstr "أقفل الشاشة قبل التعليق أو الاسبات"
+
+#: configure_Dialog.cpp:911
+msgid "Lock screen with:"
+msgstr "قفل الشاشة مع:"
+
+#: configure_Dialog.cpp:912
+msgid "Lock screen on lid close"
+msgstr "قفل الشاشة عند إغلاق الغطاء"
+
+#: configure_Dialog.cpp:913
+msgid "Lock Screen"
+msgstr "قفل الشاشة"
+
+#: configure_Dialog.cpp:914
+msgid "Notifications"
+msgstr "التنبيهات"
+
+#: configure_Dialog.cpp:916
+msgid "Autostart"
+msgstr "تشغيل تلقائي"
+
+#: configure_Dialog.cpp:917
+msgid "Never ask me again on exit"
+msgstr "لاتسألني مجدداً عند الخروج"
+
+#: configure_Dialog.cpp:918
+msgid "KPowersave starts automatically on login"
+msgstr "KPowersave يبدأ تلقائياً مع تسجيل الدخول"
+
+#: configure_Dialog.cpp:919
+#, fuzzy
+msgid "General Blacklists"
+msgstr "القائمة السوداء العامة"
+
+#: configure_Dialog.cpp:920
+#, fuzzy
+msgid "Edit Autosuspend Blacklist..."
+msgstr "تحرير القائمة السوداء للتعليق التلقائي"
+
+#: configure_Dialog.cpp:921
+#, fuzzy
+msgid "Edit Autodimm Blacklist..."
+msgstr "تحرير القائمة السوداء..."
+
+#: configure_Dialog.cpp:923
+msgid "General Settings"
+msgstr "خصائص عامة"
+
+#~ msgid ""
+#~ "Inactivity detected.\n"
+#~ " Machine autosuspend in %1 seconds."
+#~ msgstr ""
+#~ "اكتشاف غير نشط.\n"
+#~ " التعليق التلقائي للجهاز في %1 ثوان."
+
+#~ msgid ""
+#~ "Inactivity detected.\n"
+#~ " Dim display in %1 seconds to %2%."
+#~ msgstr ""
+#~ "اكتشاف غير نشط.\n"
+#~ "عتم العرض إلى %1 ثوان إلى %2%."
+
+#~ msgid ""
+#~ "If you know that it should work, you might override this detection with "
+#~ "setting SUSPEND2RAM_FORCE=\"yes\" in /etc/powersave/sleep."
+#~ msgstr ""
+#~ "اذا كنت تعرف مايجب عمله, يجب أن تجتاز هذا الفحص مع وضع SUSPEND2RAM_FORCE="
+#~ "\"yes\" in /etc/powersave/sleep."
+
+#~ msgid "Modules unloaded:"
+#~ msgstr "وحدات لم تحمل:"
+
+#~ msgid "checking resume kernel"
+#~ msgstr "تأكد من إستعادة النواة"
+
+#~ msgid "checking for swap partition"
+#~ msgstr "فحص لقسم swap"
+
+#~ msgid "unmounting FAT/NTFS partitions"
+#~ msgstr "unmounting FAT/NTFS partitions"
+
+#~ msgid "stopping services"
+#~ msgstr "إيقاف الخدمات"
+
+#~ msgid "stopping service:"
+#~ msgstr "إيقاف الخدمة:"
+
+#~ msgid "unloading modules"
+#~ msgstr "وحدات غير محملة"
+
+#~ msgid "unloading module:"
+#~ msgstr "وحدة غير محملة:"
+
+#~ msgid "syncing file systems"
+#~ msgstr "أنظمة تزامن الملف"
+
+#~ msgid "preparing bootloader"
+#~ msgstr "استعداد محمل الإقلاع"
+
+#~ msgid "Edit General Blacklist..."
+#~ msgstr "تحرير القائمة السوداء العامة..."

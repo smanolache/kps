@@ -1,0 +1,48 @@
+Currently we porting KPowersave to use HAL instead of the powersave daemon.
+
+********************************************************************************
+
+For more information read this:
+http://dkukawka.blogspot.com/2006/10/kpowersave-development-for-next-stable.html
+
+or in general about the current state of development:
+http://dkukawka.blogspot.com/
+
+
+or the powersave-devel mailinglist archive:
+http://forge.novell.com/pipermail/powersave-devel/ 		
+
+or at gmane.org:
+http://news.gmane.org/gmane.linux.power-management.powersave
+
+********************************************************************************
+
+Currently TODOs: (except as TODO marked issues in the code)
+
+IMPORTANT:
+
+ * related to new PolicyKit/ConsoleKit/HAL combination and 'Session'-handling:
+   - fix scheme handling (don't set scheme if inactive, force correct scheme if
+     active session again)
+   - the running KPowersave instance can may not react as configured on empty/
+     low battery if the session is inactive. May only a shutdown via KDE is
+     possible. 
+     Think about this possible solutions: 
+     - fall back to shutdown via KDE on lowest battery level 
+     - drop org.freedesktop.Policy.Power interface and let powersaved to the
+       job
+
+NORMAL:
+
+ * fix suspend workflow, including:
+   - handle errors (50 % done)
+
+ * add code to react if KPowersave could not claim the 
+   org.freedesktop.Policy.Power interface from D-Bus
+
+ * update doxygen files, remove/update tasks etc.
+
+ * testing and bugfixing (always!)
+ 
+ * check if there is room of improvment for:
+   - reduce calls and set/force settings (partly done)

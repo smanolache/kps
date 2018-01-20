@@ -1,0 +1,75 @@
+/*! 
+\mainpage KPowersave - a KDE Kickerapplet/fontend for Powermanagement
+\section intro_sec Introduction
+	KPowersave provides battery monitoring and suspend/standby triggers.
+	It is based on HAL and D-Bus and therefore supports APM, ACPI and PMU.
+
+	Together with the powersave package (to provide powermanagement if KPowersave 
+	is not running) and the YaST Powermanagement module it is the preferred package 
+	that should be used for battery monitoring and control of power management 
+	related tasks.
+
+	KPowersave is currently, as we know, available/running for/on these distributions:
+	\li SUSE Linux: defaultly on distribution
+	- openSUSE 10.2: from the available releases and via sourceforge
+	- SUSE 10.1/SLED10: from the available releases and updates (for KPowersave 0.6.x)
+	- SUSE 10.0: from  
+	  <a href="http://sourceforge.net/project/showfiles.php?group_id=124576&package_id=162439">sourceforge.net</a>
+	- SUSE 9.3 and 9.2: last available version 0.4.5 from:
+	  <a href="http://sourceforge.net/project/showfiles.php?group_id=124576&package_id=141008">sourceforge.net</a>
+	\li Debian: available in unstable and testing tree via 'apt-get install kpowersave'
+	\li Ubuntu/Kubuntu: 
+	- for Dapper Drake from universe repository
+	- for 'Breezy Badger' from 	
+	   <a href="http://www.teco.edu/~biebl/ubuntu">http://www.teco.edu/~biebl/ubuntu</a> (Thanks to Michael Biebl)
+	\li Fedora Core 4 and 5: from
+	 <a href="http://sourceforge.net/project/showfiles.php?group_id=124576&package_id=162439">sourceforge.net</a>
+	\li Mandriva 2006.1: from
+	 <a href="http://sourceforge.net/project/showfiles.php?group_id=124576&package_id=162439">sourceforge.net</a>
+	\li ALT Linux: KPowersave v0.4.5 defaultly on distribution
+	\li Pardus: KPowersave default on the distribution
+	\li Gentoo, Slackware and other: <a href="http://www.kde-apps.org/content/show.php?content=29295">www.kde-apps.org</a>
+	
+		
+\section using_sec Using kpowersave
+	This Applet work under <a href="http://www.kde.org">KDE</a> (and also <a href="http://www.gnome.org">GNOME</a>).
+
+	To use kpowersave, you need the following programms/packages:
+	- linux kernel 2.6.x (<a href="http://www.kernel.org">Homepage</a>)
+	- HAL (Hardware Abstraction Layer) >= 0.5.8.1 (<a href="http://www.freedesktop.org/Software/hal">Homepage</a>)
+	- D-Bus >= >= 0.6.x (recommended >= 0.9.x) (<a href="http://www.freedesktop.org/Software/dbus">Homepage</a>)
+
+	Dependig on some features you maybe need also: 
+	- PolicyKit (<a href="http://gitweb.freedesktop.org/?p=PolicyKit.git;a=summary">git repository</a>)
+
+	You can maybe find more information in the README file in the base dir of the project.
+
+\section contact_sec Contact
+	You can contact us via the project website(s), Mailinglists and for bugs also via several bugzilla
+	systems:
+
+\subsection contact_web_sec Websites
+	\li <a href="http://freshmeat.net/projects/kpowersave">KPowersave@freshmeat.net</a>
+	\li <a href="http://www.kde-apps.org/content/show.php?content=29295">KPowersave@kde-apps.org</a>
+	\li <a href="http://sourceforge.net/projects/powersave">Powersave@sourceforge.net</a>
+	\li <a href="http://developer.novell.com/wiki/index.php/Powersave">Powersave@forge.novell.com</a>
+
+\subsection contact_ML_sec Mailing Lists
+	\li <a href="http://forge.novell.com/mailman/listinfo/powersave-users">powersave-users@forge.novell.com</a>
+	\li <a href="http://forge.novell.com/mailman/listinfo/powersave-devel">powersave-devel@forge.novell.com</a>
+
+\subsection contact_Bugzilla_sec Report Bugs
+	Websites:
+	\li <a href="http://en.opensuse.org/Report_a_Bug">SUSE Linux / openSUSE</a>
+	\li <a href="https://bugzilla.novell.com/">SLED/SLES</a>
+	\li <a href="http://www.debian.org/Bugs/">Debian</a>
+	\li <a href="https://launchpad.net/distros/ubuntu/+bugs">(K)Ubuntu</a>
+	\li <a href="http://sourceforge.net/tracker/?group_id=124576&atid=700009">Mandriva</a>
+	\li <a href="http://sourceforge.net/tracker/?group_id=124576&atid=700009">RedHat/Fedora</a>
+	\li <a href="http://bugzilla.altlinux.org/">ALT Linux</a>
+	\li <a href="http://bugs.pardus.org.tr/">Pardus</a>
+
+	You can also report Bugs to the powersave-users mailing list:
+	\li <a href="http://forge.novell.com/mailman/listinfo/powersave-users">powersave-users@forge.novell.com</a>
+
+*/

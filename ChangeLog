@@ -1,0 +1,5127 @@
+2007-09-17  Danny Kukawka  <danny.kukawka@web.de>
+
+	Tagged new release v0.7.3
+
+2007-09-17  Danny Kukawka  <danny.kukawka@web.de>
+
+	* ChangeLog.package: updated for 0.7.3
+
+2007-09-17  Danny Kukawka  <danny.kukawka@web.de>
+
+	* packaging/openSUSE10.3.kpowersave.spec: added new SPEC
+	file for openSUSE 10.3
+
+2007-09-17  Danny Kukawka  <danny.kukawka@web.de>
+
+	* po/de.po: Added missing space between text and ellipsis 
+	(...) (see b.n.c #293707)
+	* NEWS: Updated news file. 
+
+2007-09-17  Danny Kukawka  <danny.kukawka@web.de>
+
+	Updated language files with min 75% from
+	forgesvn1.novell.com/svn/suse-i18n/trunk/lcn :
+
+	* po/fi.po:
+	* po/pt.po:
+
+2007-09-17  Danny Kukawka  <danny.kukawka@web.de>
+
+	* po/sl_SI.po: added now complete Slovenian po-file from 
+	Jure Repinc <jlp@holodeck1.com>.
+
+2007-09-17  Danny Kukawka  <danny.kukawka@web.de>
+
+	Prepared v0.7.3 release:
+
+	* ChangeLog.package: Updated package changelog with the
+	Changelog from the SUSE package
+	* NEWS: Added news for 0.7.3 release
+	* README: updated recommended dependencies, updated bugzilla
+	links.
+
+2007-09-17  Danny Kukawka  <danny.kukawka@web.de>
+
+	* po/sl_SI.po: added new (not complete) Slovenian po-file
+	from Jure Repinc <jlp@holodeck1.com>.
+
+2007-09-12  Danny Kukawka  <danny.kukawka@web.de>
+
+	When use DBUS_TYPE_BOOLEAN use as variable type dbus_bool_t
+	to avoid possible trouble on big endian machines:
+
+	* src/dbusHAL.cpp: Replaced int variables with dbus_bool_t.
+	* src/dbusHAL.h: included dbus/dbus.h
+	* src/hardware.cpp: Replaced int variables with dbus_bool_t.
+
+2007-09-11  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/screen.cpp: Fixed b.n.c #309491. Fixed code to free
+	KProcess object if gnome-screensaver is running (which 
+	mean unfortunately GNOME is running).
+
+2007-09-11  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/kpowersave.cpp: Fixed handleACStatusChange(), notify
+	only if notifyEvent == true. Print notifyEvent on debug.
+
+2007-09-05  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/kpowersave.[cpp,h]: Fixed b.n.c #307431: prevent
+	send events about AC status change on changes of the 
+	session state.
+
+2007-09-05  Danny Kukawka  <danny.kukawka@web.de>
+
+	Prepared KPowersave to work with HAL >= 0.5.10 and the 
+	changed policy/privileges names which KPowersave use to
+	lookup what is allowed for a user:
+
+	* configure.in.in: Added detection of HAL >= 0.5.10
+	* src/Makefile.am: added privileges.h
+	* src/hardware.cpp: use now privileges.h defines
+	* src/privileges.h: New file with defines for the policy
+	names depending on the HAL version.
+
+2007-09-03  Danny Kukawka  <danny.kukawka@web.de>
+
+	Updated language files with min 75% from
+	forgesvn1.novell.com/svn/suse-i18n/trunk/lcn :
+	
+	* po/cs.po:
+	* po/zh_CN.po:
+
+2007-09-03  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/kpowersave.cpp: Changed function to set the 
+	brightness up/down on vertical wheel events over the applet
+	icon to use also do_brightnessUp/Down with 5-percentage 
+	steps to avoid problems with machines with a high number
+	of brightness levels.
+
+2007-09-03  Danny Kukawka  <danny.kukawka@web.de>
+
+	Changed return value types due to changes in HAL 
+	(s/DBUS_TYPE_UINT32/DBUS_TYPE_INT32):
+
+	* src/dbusHAL.cpp: Changed for suspend calls.
+	* src/hardware.cpp: Changed for GetBrightness and for
+	SetPowerSave() calls.
+
+2007-08-30  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/hardware.cpp: Fix an other case of use bool to get
+	DBUS_TYPE_BOOLEAN variables in currently unused code.
+	* src/kpowersave.cpp: Don't use kdFatal() before exit 
+	in kpowersave::kpowersave() otherwise DrKonqi get called.
+
+2007-08-27  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/detaileddialog.cpp: Call setInfos() on AC events 
+	to force update of e.g. scheme and CPU Freq information.
+
+2007-08-27  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/hardware.cpp: Fixed checkConsoleKitSession() again.
+	Don't use boolean to get DBUS_TYPE_BOOLEAN variables from
+	D-Bus. This lead to strange results on ix86 (the stange
+	is: it fails only on free local variables if leave the
+	function, but only on ix86 and not on x96_64).
+
+2007-08-26  Danny Kukawka  <danny.kukawka@web.de>
+
+	* configure.in.in: Cleaned up configure to undefine
+	ENABLE_YAST_ENTRY if the Yast entry in the applet should
+	not added as e.g. at openSUSE >= v10.3. 
+
+2007-08-25  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/hardware.cpp: Fixed b.n.c #301692 again, but with an
+	other source of the problem: fixed parameter for D-Bus
+	call to ConsoleKit to get info if the session is active.
+
+2007-08-25  Danny Kukawka  <danny.kukawka@web.de>
+
+	Merged unmerged files with kpowersave.pot:
+	* po/[ar,bgi,el,es,fr,ja,pt_BR,tr].po:
+	
+	Removed largely untranslated files from SVN:
+	* po/[sk,sl_SI].po:
+
+2007-08-25  Danny Kukawka  <danny.kukawka@web.de>
+
+	Updated language files with min 80% from
+	forgesvn1.novell.com/svn/suse-i18n/trunk/lcn :
+
+	* po/[cs,nl,pa].po:
+	
+	New translations from the same repo:	
+
+	* po/hi.po: Hindi (220/69/27) 
+	* po/lt.po: Lithuanian (243/23/50)
+
+2007-08-24  Danny Kukawka  <danny.kukawka@web.de>
+
+	* configure.in.in: Don't check any longer for PolicyKit
+	>= v0.4, simply check if libhal provide the following
+	function: libhal_device_is_caller_privileged() to check 
+	if KPowersave should use libhal or the old PolicyKit 
+	D-Bus interface.
+
+2007-08-23  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/hardware.cpp: Fixed possible segfault if the 
+	XDG_SESSION_COOKIE isn't set. Set sessionIsActive to true
+	in this case and skip the rest of the checks.
+
+2007-08-20  Danny Kukawka  <danny.kukawka@web.de>
+
+	Updated language files from 
+	forgesvn1.novell.com/svn/suse-i18n/trunk/lcn :
+
+	* po/[da,el,fi,hu,it,km,nb,pa,pl,pt,ru,sv,uk].po:
+
+2007-08-20  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/dbusHAL.[cpp,h]: Added function to check if the
+	org.freedesktop.Policy.Power has an owner (new function
+	is isPolicyPowerIfaceOwned()).
+	* src/hardware.[cpp,h]:  Added helper to call 
+	dbusHAL::isPolicyPowerIfaceOwned().
+	* src/kpowersave.[cpp,h]: Added active session handling
+	for schemes (don't react on AC state changes if the 
+	session get inactive and apply default schemes based on
+	AC state if the session get active again).
+	Changed handleActionCall() to check if the current session
+	is active and deny request if not. If there is no owner of
+	org.freedesktop.Policy.Power allow shutdown on battery
+	critical events.
+
+	TODO: Think about the situation if the session get inactive
+	      and there is no owner of org.freedesktop.Policy.Power
+
+2007-08-20  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/hardware.cpp: If the desktop session (if detected 
+	via ConsoleKit) get inactive call releasePolicyPowerIface()
+	and if the session is active again try to aquire the 
+	org.freedesktop.Policy.Power interface again.
+
+	This should happen:
+	- the session get inactive:
+	  - release org.freedesktop.Policy.Power:
+	    powersaved or if there is an other desktop session
+	    an other KPowersave instance can aquire the name and 
+	    handle powermanagement.
+	- the session get active again:
+	  - the current active KPowersave instance aquire the
+	    interface/name from powersaved (if there is an other
+	    KPowersave instance holding the name it should release
+	    the name ...) and handle powermanagement again.
+
+2007-08-20  Danny Kukawka  <danny.kukawka@web.de>
+
+	Added code to detect if we get a NameOwnerChanged signal
+	from DBus for org.freedesktop.Policy.Power and check if
+	this KPowersave instance caused the signal.
+
+	* src/dbusHAL.[cpp,h]:
+	* src/hardware.cpp:
+
+2007-08-20  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/dbusHAL.[cpp,h]: Split up the code to aquire the
+	org.freedesktop.Policy.Power name service to a new own
+	function. Added new function to release the service 
+	name again. Call now dbus_bus_release_name() if close()
+	get called.
+
+2007-08-19  Danny Kukawka  <danny.kukawka@web.de>
+
+	Updated svn:ignore for src/ to ignore new files.
+
+2007-08-19  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/kpowersave.cpp: Fix b.n.c #301692, switch schemes
+	correctly on AC plug in/out events.
+
+2007-08-17  Danny Kukawka  <danny.kukawka@web.de>
+
+	Update TODOs (about tasks for new ConsoleKit session 
+	management)
+
+	* TODO:
+	* src/kpowersave.cpp:
+
+2007-08-17  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/hardware.cpp: Don't emit events for: power, sleep
+	and s2disk button if the session is inactive.
+
+2007-08-17  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/hardware.cpp: Fixed commit r3046: really ignore
+	the brightness up/down key event if session inactive.
+
+2007-08-17  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/kpowersave.[cpp,h]: Handle desktopSessionIsActive()
+	signal from class HardwareInfo:
+	- stop/start autosuspend and autodimm depending on the
+	  session state
+	- don't call may configured actions for the lidclose event
+	  if the session is inactive.
+
+2007-08-17  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/hardware.[cpp,h]: Added new function to get the 
+	private sessionIsActive. 
+	Ignore brightness up/down key events from HAL if the 
+	session is marked as inactive.
+
+2007-08-17  Danny Kukawka  <danny.kukawka@web.de>
+
+	Implemented code to check on ConsoleKit vi D-Bus if the
+	current desktop session is active and monitor if the 
+	state change.
+
+	* src/dbusHAL.[cpp,h]: Listen to D-Bus if the state of the
+	session change and inform class HardwareInfo about the 
+	change.
+	* src/hardware.[cpp,h]: Added new function to get the name
+	and the state of the current Session from ConsoleKit.
+	Added code into the DBus event filter function to detect
+	if the state change and send a new  signal if this happen.
+
+	TODO: Integrate this into class kpowersave to stop e.g.
+	      autosuspend and autodimm if the session get 
+	      inactive.
+
+2007-08-17  Danny Kukawka  <danny.kukawka@web.de>
+
+	Comment out variable names of unused function parameters
+	and remove no longer needed checks to prevent compiler
+	warnings:
+	
+	* src/dbusHAL.cpp:
+	* src/inactivity.cpp:
+	* src/kpowersave.cpp:
+
+2007-08-17  Danny Kukawka  <danny.kukawka@web.de>
+
+	* po/de.po: Updated german language file.
+
+2007-08-17  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/countdown_Dialog.ui: removed include hints 
+
+2007-08-16  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/hardware.cpp: Fix parameter types for call
+	SetPowerSave() on HAL.
+
+2007-08-16  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/hardware.cpp: Comment out calls of 
+	getSchedPowerSavings(), the needed HAL interface didn't
+	make it into HAL yet.
+
+2007-08-16  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/dbusHAL.cpp: Show some debug messages only if 
+	kpowersave started with --dbg-trace.
+
+2007-08-16  Danny Kukawka  <danny.kukawka@web.de>
+
+	Finished work on new Autosuspend warn/countdown dialog
+	to fix bug/feature request from b.n.c #182609:
+
+	* src/config/kpowersaverc_default: Added new config 
+	variables to enable/disable the dialog and to set the
+	time how long the countdown should be.
+	* src/settings.[cpp,h]: integrate them into general
+	settings.
+
+	* src/countdown_Dialog.ui: Fixed dialog to resize 
+	correctly.
+	* src/countdowndialog.cpp: Init Progressbar before show
+	up the dialog, set dialog caption, adjust the size and
+	call show(). 
+	* src/dummy.cpp: removed no longer in this file needed
+	strings.
+	* src/kpowersave.[cpp,h]: Integrate the dialog in the 
+	logic for start/setup and handle autosuspend.
+
+2007-08-15  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/hardware.cpp: Fix code to set brightness up/down
+	and add some debug code. This should fix b.n.c #282640.
+
+2007-08-14  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/configuredialog.cpp: Fix pB_resetBrightness_clicked()
+	to use hwinfo->setBrightness() correctly (set level and 
+	not percentage with level).
+
+2007-08-14  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/hardware.cpp: Change type of parameter of 
+	SetPowerSave() on HAL to from DBUS_TYPE_BOOLEAN to
+	DBUS_TYPE_INT32.  
+
+2007-08-14  Danny Kukawka  <danny.kukawka@web.de>
+
+	Extended and added new debug message for CPU code in the 
+	detailed dialog to trace problems within Virtualbox.
+
+	* src/detaileddialog.cpp:
+	* src/hardware_cpu.cpp:
+
+2007-08-13  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/hardware.[cpp,h]: Maked isCpuFreqAllowed() not 
+	const to be able to check the Policy on each call directly
+	from libhal.
+	* src/kpowersave.cpp: Don't enable 'CPU Freq Policy' entry 
+	in the applet menu if we know KPowersave isn't allowed to
+	call the interface on HAL. 
+
+2007-08-13  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/dbusHAL.[cpp,h]: Extended isUserPrivileged() 
+	depending on USE_LIBHAL_POLICYCHECK to ask HAL if the
+	user is privileged to call a interface.
+	* src/hardware.[cpp,h]: Ported existing calls of 
+	dbusHAL::isUserPrivileged() to changed function param.
+	Added new checks for Brightness/SetPowersave HAL calls
+	if USE_LIBHAL_POLICYCHECK is defined (because they didn't
+	exist in the old HAL < 0.5.10) 
+
+2007-08-13  Danny Kukawka  <danny.kukawka@web.de>
+
+	* configure.in.in: Changed detection if we need to call
+	new PolicyKit/HAL instead of PolicyKit D-Bus daemon to
+	check for libhal_device_is_caller_privileged() in libhal.
+
+2007-08-13  Danny Kukawka  <danny.kukawka@web.de>
+
+	* configure.in.in: Added checks for HAL >= 0.5.10 and 
+	PolicyKit >= 0.4 to check if we have to ask HAL if the 
+	user is privileged instead of the no longer existing 
+	PolicyKit D-Bus daemon.
+
+2007-08-13  Danny Kukawka  <danny.kukawka@web.de>
+
+	Moved code to set brightness a step up/down from class 
+	kpowersave to HardwareInfo.
+
+	* src/hardware.[cpp,h]: Use new function to set brightness
+	up/down on keyevents.
+	* src/kpowersave.cpp: Forward on dcop call to new 
+	functions in class HardwareInfo.
+
+2007-08-12  Danny Kukawka  <danny.kukawka@web.de>
+
+	* configure.in.in: Fix detection of the SUSE distributions
+	to fix value of ENABLE_YAST_ENTRY. Since openSUSE 10.3 there
+	is no longer a powermanagement module in Yast.
+	This should fix b.n.c #299577.
+
+2007-08-12  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/Makefile.am: Added countdown dialog related files.
+	* src/countdown_Dialog.ui: Added Pixmap object and changed
+	Progressbar from QProgressBar to KProgress.
+	* src/countdowndialog.[cpp,h]: Finished code for the 
+	countdown dialog.
+
+2007-08-10  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/eventsrc: Added new events (autodimm down/up, brigtness
+	key up/down) for translation we may use in the future.
+
+2007-08-10  Danny Kukawka  <danny.kukawka@web.de>
+
+	* po/kpowersave.pot: Updated pot file from current code.
+
+2007-08-10  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/dummy.cpp: SUSE 'string freeze' for 10.3 is comming. 
+	Added some new strings we may need later for some planed 
+	features.
+
+2007-08-09  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/kpowersave.cpp: Added missing '<< endl' to a kdDebug()
+	call to prevent crash of KPowersave directly before exit(-1).
+	This fix b.n.c #298332
+
+2007-08-09  Danny Kukawka  <danny.kukawka@web.de>
+
+	Added initial files for new dialog shown (30 sec) before the
+	machine go into autosuspend. The code is not running atm.:
+
+	* src/countdown_Dialog.ui:
+	* src/countdowndialog.[cpp,h]:
+	
+	* src/kpowersave.cpp: added missing debug call.
+
+2007-07-30  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/kpowersave.cpp: Fixed show suspend log for SLED/SLES,
+	show the powersave related logs. This go not into the CODE10 
+	branch for now.
+
+2007-07-29  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/kpowersave.cpp: Fixed typo which prevented show up
+	the logviewer dialog if suspend fail and pm-utils return 
+	a value != (0|INT_MAX).
+
+2007-07-29  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/hardware.cpp: Fixed typo to use correct variable.
+	* src/kpowersave.[cpp,h]: Added three new dcop functions to
+	get the current brightness (in percentage) and to set the
+	brightness up and down. For the new brightness up/down 
+	functions the default step is +/- 10%, but you can change
+	this via the function parameter. If the step not change the
+	brightness level the default is +/- one level to have a
+	change. 
+
+2007-07-26  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/kpowersave.cpp: Speed-up dimm brightness up if the user
+	get active again. Try to dimm up within 750 ms instead of
+	1500.
+
+2007-07-26  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/dbusHAL.h: Code docu update.
+
+2007-07-25  Danny Kukawka  <danny.kukawka@web.de>
+
+	* doc/pt/*: removed Portuguese version of the doc to reduce 
+	package size since the doc only contain one translated
+	paragraph.
+
+2007-07-25  Danny Kukawka  <danny.kukawka@web.de>
+
+	Replaced s/char */const char */ of function parameter types to 
+	prevent compiler warnings:
+
+	warning: deprecated conversion from string constant to 'char*'
+
+	* src/dbusHAL.[cpp,h]: in dbusMethodCallSuspend() 
+	* src/hardware.[cpp,h]: in setCPUFreqGovernor()
+
+2007-07-25  Danny Kukawka  <danny.kukawka@web.de>
+
+	Removed <includehints/> tags from UI files (caused warnings).
+	* src/detailed_Dialog.ui:
+	* src/log_viewer.ui:
+	
+	* src/hardware.h: Fixed typo in code docu.
+
+2007-07-24  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/hardware.h: Make checkBrightness() to a private SLOT.
+
+2007-07-24  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/hardware.cpp: Reduce calls of checkBrightness() in the
+	setBrightness() function. Only call the check if brightness
+	is currently not supported (as fallback check). 
+	Added code to monitor if a laptop_panel* property get changed, 
+	e.g.  if key get removed. Call checkBrightness() in this case 
+	to prevent problems with state of brightness support.
+
+2007-07-24  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/hardware.cpp: Cleanup setBrightness() to check always
+	the current brightness before return.
+
+2007-07-24  Danny Kukawka  <danny.kukawka@web.de>
+
+	Fixed brightness handling. HardwareInfo::brightness is now
+	only true if laptop_panel.num_levels >= 2. This should fix 
+	some reported problems with DELL machines which have only one
+	brightness level available.
+
+	* src/configuredialog.cpp:
+	* src/configuredialog.h:
+	* src/detaileddialog.cpp:
+	* src/hardware.cpp:
+
+2007-07-24  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/config/kpowersaverc_default: set autoDimmTo=50 as
+	default value for: default-scheme, Performance and Acoustic
+	scheme
+	* src/hardware_battery.cpp: Cast to float for internal 
+	calculation to avoid false values.
+
+2007-07-24  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/autodimm.cpp: Added missing code documentation.
+
+2007-07-24  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/autodimm.cpp: Fixed QTimer start parameter and moved 
+	some code around.
+	* src/autodimm.h: make startCheckForActivity() public to 
+	handle this from outside the class.
+	* src/configuredialog.cpp: Activate autodimm feature in the 
+	configure dialog.
+	* src/kpowersave.cpp: Fixed dimm level handling (use float for
+	calculation to avoid invalid values). Reset autodimm if the 
+	user is active again.
+
+2007-07-23  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/kpowersave.[cpp,h]: added new function setAutoDimm() and
+	integrated autoDimm feature into the workflow.
+
+	NOTE: This feature is complete untested at the moment.
+
+2007-07-23  Danny Kukawka  <danny.kukawka@web.de>
+
+	Make stop autosuspend before suspend/after resume more robust:
+	
+	* src/inactivity.cpp: Be sure that timeToInactivity has a 
+	usefull value (> 0) before check for inactivity. This should
+	force to stop every running check if stop() was called, where
+	timeToInactivity was set to 0 after stop the running QTimer.
+	* src/kpowersave.cpp: Added additional call of stop() if
+	resumed.
+
+2007-07-23  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/kpowersave.cpp: Fixed autodimm related signacl connect
+	and added new connect for the case if the user get active
+	again.
+	* src/kpowersave.h: Added code documentation.
+
+2007-07-23  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/kpowersave.[cpp,h]: Added new functions do dimm up
+	and down the brightness, needed for autodimm.
+
+2007-07-03  Danny Kukawka  <danny.kukawka@web.de>
+
+	Added autodimm settings to the configure dialog and the
+	settings class.
+
+	* src/config/kpowersaverc_default: added default settings
+	* src/configure_Dialog.ui: 
+	* src/configuredialog.[cpp,h]:
+	* src/settings.[cpp,h]:
+	* src/pics/cr22-action-autodimm.png: added new icon.
+
+	NOTE: This is currently disabled in the configure dialog
+	      until the real autodimm functions are integrated.
+
+	TODO: Add functions to autodimm the display brightness down.
+
+2007-07-02  Danny Kukawka  <danny.kukawka@web.de>
+
+	* kpowersave.kdevelop: Changed settings to abort on errors.
+	* src/Makefile.am: Fixed typo to compile autodimm class. 
+	* src/autodimm.[cpp,h]: Added new code to autodimm to check
+	if the user is active again. Currently the code poll each 
+	second the XScreenSaverInfo extension to detect if the user
+	start again to use the mouse/keyboard. 
+	
+	TODO: Check if 1 second is the correct/useful intervall.
+
+2007-07-02  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/inactivity.cpp: SILENT: moved code within the file.
+
+2007-07-01  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/hardware.cpp:Changed get-/setSchedPowerSavings() to use
+	bool instead of int for parameter and return values.
+
+2007-07-01  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/Makefile.am: Added new files to make.
+	* src/autodimm.[cpp,h]: Added new empty files for new planed
+	autodimm feature.
+
+2007-07-01  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/hardware.cpp: removed TODOs and replaces with info about
+	possible values for the new get-/setSchedPowerSavings()
+	functions. The kernel only allow 0/1 as parameter.
+
+	TODO: Discuss with <caglar@pardus.org.tr> about change the 
+	      type of param/retval of the HAL methodes to boolean 
+
+2007-06-30  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/hardware.[cpp,h]: Added basic functions to support 
+	'mc/smt power savings sched policy' via hopefully upcomming new
+	HAL functions GetSchedPowerSavings()/SetSchedPowerSavings()
+
+	TODO: check the allowed parameter and return values of the 
+	      kernel (in sysfs) and may change the existing HAL patch to 
+	      work with boolean instead of integer 
+
+2007-06-26  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/kpowersave.cpp: comment out some code
+
+2007-06-18  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/config/kpowersaverc_default: Added callSetPowerSaveOnAC
+	with default value true.
+	* src/kpowersave.cpp: Call setPowerSave() in setSchemeSettings()
+	to be sure it get set on startup correctly.
+	* src/settings.[cpp,h]: Added new config variable to enable/
+	disable call SetPowerSave() on HAL depending on the AC state
+	(callSetPowerSaveOnAC for [General] section)
+
+2007-06-18  Danny Kukawka  <danny.kukawka@web.de>
+
+	Fixed debug messages:
+
+	* src/dbusHAL.cpp:
+	* src/hardware.cpp:
+
+2007-06-17  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/inactivity.cpp: Fix Segmentation Fault from b.n.c bug
+	#284622.
+
+2007-06-13  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/kpowersave.cpp: removed one more useless *.latin() from
+	debug messages.
+
+2007-06-13  Danny Kukawka  <danny.kukawka@web.de>
+
+	* po/ar.po: Added new Arabic language file from Youssef Chahibi 
+	<chahibi@gmail.com>
+
+2007-06-13  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/hardware.cpp: Remove laptop_panel entry from the 
+	QDict<QString> udis if no device with laptop_panel found. This 
+	should prevent problems if the laptop panel device get removed
+	from HAL. 
+
+2007-06-13  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/hardware.cpp: Added code to react if a latop panel device 
+	get added/remove. Added also all device_type values to the 
+	switch of the HAL_DEVICE case. 
+	Removed several *.latin1() calls due to new usage of kdDebug().
+	* src/hardware.h: Added new value to enum device_type for laptop
+	panels (for brightness).
+
+2007-06-13  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/dbusHAL.cpp: Make the code easier by group initial checks 
+	for HAL/D-Bus connection and parameter checks, add goto's to 
+	reduce kdDebugFuncOut() codelines before each return.
+	This include also some whitespace/tab replacements.
+
+2007-06-12  Danny Kukawka  <danny.kukawka@web.de>
+
+	* kpowersave.kdevelop: Magic change with new version ...
+
+	Moved kpowersave to use functions from kdebug.h instead of own
+	myDebug() macro. Added some smaller marcos to: trace function
+	entry and leave points and to add time infos to output of
+	e.g. kdDebug() (funcinfo). Via kpowersave option --dbg-trace
+	the user can enable (additional ) function tracing. This should
+	fix sf.net feature request #1721072.
+
+	* src/autosuspend.cpp:
+	* src/configuredialog.cpp:
+	* src/dbusHAL.cpp:
+	* src/detaileddialog.cpp:
+	* src/hardware.cpp:
+	* src/hardware_battery.cpp:
+	* src/hardware_batteryCollection.cpp:
+	* src/hardware_cpu.cpp:
+	* src/inactivity.cpp:
+	* src/kpowersave.[cpp,h]:
+	* src/kpowersave_debug.h:
+	* src/main.cpp:
+	* src/screen.cpp:
+
+2007-05-10  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/hardware.[cpp,h]: Added code to stop the elapsed time 
+	between suspend call and the resume event. Emit in this case
+	resumed(INT_MAX) from HardwareInfo::handleResumeSignal() to
+	allow us to guess better if this was really the much-loved
+	6 hour D-Bus timeout.
+	* src/kpowersave.cpp: Changed debug message from myDebug()
+	to qdebug() and extended the message text if we assume the
+	resume error is a D-Bus timeout.
+
+2007-05-10  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/dbusHAL.cpp: Added code to check if the returned 
+	message is really DBUS_MESSAGE_TYPE_METHOD_RETURN as 
+	expected.
+	* src/hardware.cpp: Changed debug message due to a bug in
+	HAL or the spec: SetPowerSave() doesn't return a INT32 but
+	BOOLEAN.
+
+2007-05-10  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/dbusHAL.cpp: added TODO
+	* src/hardware.[cpp,h]: Fixed call for SetPowerSave to get
+	also the returnvalue from the HAL method.
+
+2007-05-10  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/hardware.[cpp,h]: Make also AC Adapter events 
+	intependent from QT3/DBus event loop.
+
+2007-05-09  Danny Kukawka  <danny.kukawka@web.de>
+
+	* TODO: updated/cleaned up TODOs
+
+2007-05-09  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/hardware.[cpp,h]: Added support to handle brightness
+	key events if the machine not already handle this in the
+	hardware directly (as e.g. IBM/Lenovo Thinkpads).
+	There is no configuration for this feature. The events get
+	directly translated to change the level +-1 level per
+	key event.
+
+2007-05-03  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/screen.cpp: Add debug message and code comment.
+
+2007-05-02  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/config/kpowersaverc_default: Change default timeout
+	to fake keyevent for locked screen to 2.5 seconds
+	* src/kpowersave.cpp: Changed behavior and timeouts to 
+	fake keyevents if screen is locked and if resume/open Lid
+	to use activateLoginScreen() function and to check first
+	if timeToFakeKeyAfterLock >= 0. This allow the user to 
+	deactivate the faked key events by set value for configkey
+	timeToFakeKeyAfterLock to -1 in the [General] section.
+
+2007-05-02  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/hardware.h: set checkLidcloseState() as private slot.
+
+2007-05-02  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/configuredialog.cpp: Fix detection if brightness 
+	changes are really supported. If max. level of brightness
+	-1 is <= 0 brightness changes are now unsupported. If the 
+	result is > 0 it is supported. Thanks to Dawid Wróbel 
+	<cromo@klej.net> for report and help to find the problem.
+
+2007-05-02  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/configuredialog.cpp: Add debug messages to trace the
+	function calls.
+
+2007-04-24  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/hardware.cpp: Fixed b.n.c bug #266243. Check if 
+	info.capability contains laptop_panel instead of check for
+	info.category=laptop_panel because not all machines which
+	provide capability to change brightness have info.category
+	correct set in HAL atm.
+
+2007-04-22  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/hardware.[cpp,h]: Added new function to set a CPUFreq
+	governor via DBus call to avoid code duplication. Added
+	new QStringList for dynamic CPUFreq and iter about the 
+	list to set a governor.
+	Ported patch from Andreas Schwab <schwab@suse.de> for 
+	b.n.c #229234, get return value from call for set CPUFreq
+	governor (Could not reproduce the problem!).
+
+2007-04-16  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/inactivity.[cpp,h]: Added new function and moved code
+	from checkXInactivity() to getXInactivity() to be able to
+	reuse the code in derived classes.
+
+2007-04-13  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/kpowersave.cpp: Only go to suspend on a button event 
+	if we already resumed successful. This should solve problems 
+	if we get may e.g. a event for the powerbutton if there 
+	machine was waked up via power button which could lead to 
+	a second suspend.
+
+2007-04-12  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/kpowersave.cpp: Fixed resume behavior. If KPowersave 
+	assume that a timeout for the suspend call happend do the 
+	same as on succesful resume including remount, but print a
+	debug message. 
+
+2007-04-12  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/hardware.[cpp,h]: Fixed usage of enum cpufreq_type. 
+	Pointed out by Doug Goldstein <cardoe@gentoo.org>. Enum isn't
+	int - it's (8bit) char, enum = int would lead to a segmentation 
+	fault. It's not allowed/possible in C++. Added new 
+	'UNKNOWN_CPUFREQ = -1' to the enum and use this instead of -1.
+
+	Changed also the type of currentCPUFreqPolicy and the 
+	return type of checkCurrentCPUFreqPolicy() to cpufreq_type.
+
+	This should fix problems where we can't access the CPUFreq
+	interface on HAL e.g. because of the new ConsoleKit.
+
+2007-04-11  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/kpowersave.h: update Copyright header to the same as 
+	the cpp file. Removed not needed include.
+
+2007-04-11  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/kpowersave.[cpp,h]: Removed no longer used code for the 
+	suspend dialog we used to show the progress while suspend with 
+	powersaved.
+
+2007-04-11  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/kpowersave.cpp: cleanup doubled code, use existing
+	function showDetailedDialog() to show detailed dialog on 
+	mousePressEvent()
+
+2007-04-10  Danny Kukawka  <danny.kukawka@web.de>
+
+	Cleanup class kpowersave - moved code to reset XScreensaver 
+	to class screen where already also all the screensaver stuff
+	is located:
+
+	* src/kpowersave.[cpp,h]:
+	* src/screen.[cpp,h]:
+
+2007-04-10  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/kpowersave.cpp: Removed notifyAutosuspend() and moved 
+	code to do_autosuspend() this should prevent two connects to
+	the same event - can do this all better in one function.
+	Call delete() also for autosuspend on destructor.
+
+2007-04-10  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/logviewer.cpp: Include moc file. Fixed possible file 
+	descriptor leak.
+
+2007-04-10  Laurent Montel <lmontel@mandriva.com>
+
+	Fixed several memory leaks and removed checks for pointer which 
+	are NULL before call delete(), because this is waht delete()
+	also do internly:
+
+	* src/inactivity.cpp:
+	* src/kpowersave.cpp:
+	* src/screen.cpp:
+	* src/screen.h:
+	* src/settings.cpp:
+
+2007-04-10  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/configuredialog.cpp: Applied slightly adopted patch from 
+	Laurent Montel <lmontel@mandriva.com> to avoid problems with 
+	html tags in KMessageBox dialog text.
+
+2007-04-10  Danny Kukawka  <danny.kukawka@web.de>
+
+	Moved all moc includes to end of cpp-files, added some code
+	comments and smaller code formatting changes:
+
+	* src/autosuspend.[cpp,h]:
+	* src/blacklisteditdialog.cpp:
+	* src/configuredialog.cpp:
+	* src/dbusHAL.cpp:
+	* src/hardware.cpp:
+	* src/hardware_battery.cpp:
+	* src/hardware_batteryCollection.cpp:
+	* src/inactivity.cpp:
+	* src/infodialog.cpp:
+	* src/screen.cpp:
+
+2007-04-10  Laurent Montel <lmontel@mandriva.com>
+
+	Make moc files being included to speed up build and to fix some 
+	parallel build issues:
+
+	* src/autosuspend.cpp:
+	* src/dbusHAL.cpp:
+	* src/hardware.cpp:
+	* src/hardware_battery.cpp:
+	* src/hardware_batteryCollection.cpp:
+	* src/hardware_cpu.cpp:
+	* src/inactivity.cpp:
+	* src/screen.cpp:
+
+2007-04-10  Danny Kukawka  <danny.kukawka@web.de>
+
+	Moved unused string to dummy class for later reuse.
+
+	* src/configuredialog.cpp:
+	* src/dummy.cpp:
+
+2007-04-10  Danny Kukawka  <danny.kukawka@web.de>
+
+	Updated file templates:
+
+	* templates/cpp:
+	* templates/h:
+
+2007-04-09  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/hardware.cpp: Slightly changed checkCurrentCPUFreqPolicy()
+	to avoid problems if the DBus call return something wrong or
+	nothing (as e.g. NULL).
+
+2007-04-09  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/dbusHAL.cpp: make isUserPrivileged() more robust to
+	avoid possible segmentation faults.
+
+2007-04-03  Danny Kukawka  <danny.kukawka@web.de>
+
+	Fixed problems with current battery warning level if the 
+	values for the level get changed via the config dialog:
+
+	* src/hardware.cpp: Call refreshInfo() for the primary 
+	battery collection if the warning levels get set/changed and
+	force the recheck of the current level.
+	* src/hardware_batteryCollection.[cpp,h]: Added new parameter
+	to refreshInfo to force recheck the battery warning levels also
+	if the percentage of the battery not changed. This would help
+	to get the actual warning level due to changes in the settings
+	for the level immediately after the change.
+
+2007-04-03  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/hardware.[cpp,h]: Add new helper functions/SLOTS to 
+	forward the events for Power, Sleep and s2disk buttons and the 
+	lidclose event. Changed current code to emit the signals not 
+	directly but to call a QTimer:singleShot() with the new SLOTS 
+	instead. This should make the eventhandling from QT3 D-Bus 
+	bindings independent from the event loop (including may 
+	blocking dialogs in KPowersave).
+	This fix hopefully fix b.n.c #256372.
+
+2007-03-26  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/kpowersave.cpp: Applied patch from Laurent Montel
+	<lmontel@mandriva.com> to avoid double translation.
+
+2007-03-26  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/kpowersave.cpp: Applied patch from Laurent Montel 
+	<lmontel@mandriva.com> to fix problems with error messages 
+	from the KDE Media Manager, which can be formated with html-
+	tags. 
+
+	Added comment to code about the change.
+
+2007-03-26  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/kpowersave.cpp: Fixed b.n.c bug #257326. Ignore battery
+	warnings if the machine is on AC. This case can happen if e.g
+	the battery charging state is not up-to-date if we get the low
+	level warnings.
+
+2007-03-22  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/kpowersave.cpp: Applied slightly adopted patch from 
+	caglar@pardus.org.tr to show log of pm-utils on Pardus.
+
+2007-03-22  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/config/kpowersaverc_default: Added wodim to autosuspend
+	blacklist.
+
+2007-03-22  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/kpowersave.cpp: Stop autosuspend before call suspend and
+	also if autosuspend get disabled (this worked also before and
+	produced no unintentional suspend because this was checked before
+	the suspend get called). I could not reproduce this bug reported
+	for (K)Ubuntu: https://launchpad.net/bugs/94396, but it maybe help.
+
+2007-03-16  Danny Kukawka  <danny.kukawka@web.de>
+
+	Fixed Debian bug #413811 and display message to the user if the
+	suspend/resume fail:
+
+	* src/kpowersave.[cpp,h]: Added new function forwardResumeSignal()
+	to independent handleResumeSignal() from the event loop to avoid
+	problems with QT3 D-Bus bindings. Emit KNotify before handle the 
+	error codes. If a error occurs display a KMessageBox::error() to 
+	the user. If the system is a SUSE product offer the user to show
+	the /var/log/pm-suspend.log file and save the file.
+
+	NOTE: - if other distributions want to show the log to the user 
+		they have to provide code. 
+	      - pm-utils currently always return 0, also on failure,
+		need a fixe in pm-utils to get a error code 
+
+2007-03-16  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/logviewer.cpp: fixed check if we can use the filename 
+	given by to user to save the logfile. Continue if the filname is
+	available.
+
+2007-03-16  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/kpowersave.cpp: ident changes
+
+2007-03-16  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/kpowersave.[cpp,h]: s/KPOWERSAVE_CONFIGURE_/CONFIGURE_/
+
+2007-03-16  Danny Kukawka  <danny.kukawka@web.de>
+
+	Added new dialog to show log files:
+
+	* src/Makefile.am: added new files
+	* src/kpowersave.[cpp,h]: small cleanups and added pointer to new
+	class.
+	* src/log_viewer.ui: UI file of the new dialog
+	* src/logviewer.[cpp,h]: Implementation of new logviewer dialog
+	with option to save the logfile to a user-selectable file.
+
+2007-03-15  Danny Kukawka  <danny.kukawka@web.de>
+
+	* kpowersave.kdevelop: again a minor kdevelop change 
+	* src/kpowersave.cpp: Fixed Debian bug #413638: if config dialog
+	is minimized and the user try to start config dialog via applet
+	reactivate the dialog.
+
+2007-03-12  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/kpowersave.[cpp,h]: Added helper funtion to translate the 
+	type of a suspend to a usefull i18n()-string. Replace existing
+	code. Added a debug msg if suspend/resume fail.
+
+2007-03-12  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/kpowersave.cpp: Applied patch from Andreas Schwab 
+	<schwab@suse.de> to avoid possible segmentation fault. 
+
+2007-03-09  Danny Kukawka  <danny.kukawka@web.de>
+
+	Fixed event message for scheme switching.
+
+	* src/eventsrc: Removed 'Powersave' from generic and german 
+	message (need new translations for the rest). Removed complete
+	message event handling for no longer existing "Advanced Powersave"
+	scheme.
+	* src/kpowersave.cpp: removed 'Powersave' from message
+
+2007-03-09  Danny Kukawka  <danny.kukawka@web.de>
+
+	Updated dates in copyright headers:
+
+	* src/dbusHAL.[cpp,h]:
+	* src/detaileddialog.cpp:
+	* src/hardware*.[cpp,h]:
+	* src/inactivity.cpp:
+	* src/kpowersave.cpp:
+	* src/main.cpp:
+	* src/screen.[cpp,h]:
+
+2007-03-09  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/dbusHAL.cpp: emit signal about resume first if the 
+	pending call and the messages get unrefed.
+
+2007-02-28  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/detaileddialog.cpp: Fixed by Jozef Sakáloš
+	<jsakalos@aariadne.com> reported bug about wrong unit for
+	power consumption. Since HAL not provide info about the unit
+	of battery.*.rate keys, I removed simply the 'h' from the
+	unit string reported by HAL for the battery level keys.
+
+2007-02-22  Danny Kukawka  <danny.kukawka@web.de>
+
+	* packaging/mandriva.2007.1.kpowersave.spec: Due to f***ing 
+	package name conventions for 64bit on Mandriva added more 
+	%ifarch calls for required packages to spec file.
+
+2007-02-22  Danny Kukawka  <danny.kukawka@web.de>
+
+	Renamed mdk.cooker.*.spec to mandriva.2006.1.*.spec and added 
+	new spec file for Mandriva Cooker 2007.1
+
+	* packaging/mandriva.2006.1.kpowersave.spec:
+	* packaging/mandriva.2007.1.kpowersave.spec:
+	* packaging/mdk.cooker.kpowersave.spec:
+
+2007-02-22  Danny Kukawka  <danny.kukawka@web.de>
+
+	* packaging/FC6.kpowersave.spec: Added new spec file for Fedora
+	Core 6.
+
+2007-02-14  Danny Kukawka  <danny.kukawka@web.de>
+
+	Tagged new release version 0.7.2
+
+2007-02-14  Danny Kukawka  <danny.kukawka@web.de>
+
+	Updated Changelogs for the release v0.7.2:
+
+	* ChangeLog.package:
+	* doc/doxy/changelog.dox:
+
+2007-02-14  Danny Kukawka  <danny.kukawka@web.de>
+
+	* NEWS: added news for v0.7.2 release
+	* src/hardware_battery.cpp: fixed code docu
+
+2007-02-14  Danny Kukawka  <danny.kukawka@web.de>
+
+	* doc/doxy/fixed_bugs.dox: Updated list of fixed bugs for docu.
+
+2007-02-14  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/hardware.[cpp,h]: Added new private member to hold the 
+	current governor from checkCurrentCPUFreqPolicy() call. Added a 
+	check for the DYNAMIC CPU Freq policy case if the current 
+	governor is ondemand or not. If not, try to set always ondemand.
+	This should fix b.n.c bug #245081 (Kpowersave does not set 
+	ondemand governor on startup if e.g. current is userspace).
+
+2007-02-13  Danny Kukawka  <danny.kukawka@web.de>
+
+	* README: Applied patch from S.Çağlar Onur to fix typo 
+	s/Padrus/Pardus/
+	* doc/doxy/main.dox: Fixed the same typo
+
+2007-02-13  Danny Kukawka  <danny.kukawka@web.de>
+
+	* doc/doxy/README: fixed typo
+	* doc/doxy/fixed_bugs.dox: Removed no longer available reference.
+	* doc/doxy/main.dox: Updated with actual data and added contact
+	section.
+
+2007-02-13  Danny Kukawka  <danny.kukawka@web.de>
+
+	* doc/doxy/enhance.dox: Removed already implemented and outdated
+	enhancements.
+
+2007-02-13  Danny Kukawka  <danny.kukawka@web.de>
+
+	* doc/doxy/process.dox: Update/cleanup
+
+2007-02-13  Danny Kukawka  <danny.kukawka@web.de>
+
+	Removed no longer needed doxygen site about implemented features.
+	This file is useless and cost to much time to be always 
+	up-to-date, all the info can also be found in the Changelogs and
+	the SVN:
+
+	* doc/doxy/README:
+	* doc/doxy/implemented.dox:
+
+2007-02-13  Danny Kukawka  <danny.kukawka@web.de>
+
+	* README: updated websites and help information, added Link to
+	Pardus Bugzilla to the list.
+
+2007-02-12  Danny Kukawka  <danny.kukawka@web.de>
+
+	* TODO: Cleanup
+
+2007-02-12  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/kpowersave.cpp: Changed KMessageBox notify option for 
+	handleMount() error dialog to get a notify sound (especially if 
+	the lid get closed).
+
+2007-02-12  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/kpowersave.cpp: Fixed b.n.c #244052. On button events which
+	call suspend2* and the system get problems with umount partitions
+	which at least cause open a blocking KMessageBox result in 100% 
+	CPU usage. This happen because the QT D-Bus bindings wait for a
+	result from the related KPowersave filter function (return a 
+	DBUS_HANDLER_RESULT_* to the bus). This happen also because the
+	signals in QT are only function calls which not are really emitted
+	to the QT event loop as assumed (the KMessageBox block the filter-
+	function). 
+	Fixed this by use QTimer::SingleShot() to call the suspend, in the
+	handleActionCall() function, because QTimer shots uncouple the 
+	suspend call from the filter function workflow.
+
+2007-02-12  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/kpowersave.cpp: Only lock the screen and force DPMS if there
+	is no action for lidclose event/button defined. Otherwise the 
+	related action as e.g. suspend2disk (should) handle the lock and
+	in this case there is no need to force DPMS off.
+
+2007-02-12  Danny Kukawka  <danny.kukawka@web.de>
+
+	Added new translation files send by Zhengpeng Hou 
+	<zhengpeng-hou@ubuntu.com>:
+
+	* po/zh_CN.po: (295/0/1)
+	* po/zh_TW.po: (296/0/0)
+
+2007-02-12  Danny Kukawka  <danny.kukawka@web.de>
+
+	Don't allow action LOGOUT_DIALOG for lidclose button. It make 
+	absolute no sense to show the logout dialog with closed lid ;-) : 
+
+	* src/configuredialog.cpp:
+	* src/settings.cpp:
+
+2007-02-09  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/kpowersave.cpp: Applied patch from S.Çağlar Onur 
+	<caglar@pardus.org.tr> to fix typo in a hwinfo->setCPUFreq() call. 
+
+2007-02-07  Danny Kukawka  <danny.kukawka@web.de>
+
+	Move CPU information related functions from HardwareInfo class to
+	a new class CPUInfo since they are only used by the detailed 
+	dialog and don't depend on the other code of HardwareInfo:
+
+	* kpowersave.kdevelop: call external qtdesigner from now
+	* src/Makefile.am: Added new files.
+	* src/detaileddialog.[cpp,h]: adopted changes 
+	* src/hardware.[cpp,h]: Removed cpu information related code.
+	* src/hardware_cpu.[cpp,h]: Added new files/class to handle all 
+	CPU information related functionality which was former in the 
+	HardwareInfo class/file.
+
+2007-02-05  Danny Kukawka  <danny.kukawka@web.de>
+
+	* po/da.po: Added new (296/0/0) danish translation from Stefan 
+	Skotte <sfs@enhance-it.dk>
+
+2007-02-05  Danny Kukawka  <danny.kukawka@web.de>
+
+	Fixed b.n.c #229960 and added support for SetCPUFreqPerformance 
+	to the HAL CPU freq interface to set the limit for the dynamic CPU 
+	freq policy:	
+
+	* src/config/kpowersaverc_default: Added new config value for the
+	to set the performance limit on dynamic CPU freq policy for each
+	scheme and added useful default values.
+	* src/hardware.[cpp]: Added code to call SetCPUFreqPerformance on 
+	dynamic CPU freq. Removed no longer needed enum and case for 
+	DYNAMIC_SET.
+	* src/kpowersave.cpp: Changed function calls to give the needed
+	config value to hwinfo->setCPUFreq() as param.
+	* src/settings.[cpp,h]: Added code to read the new config key and
+	value for the schemes from the config file.
+
+2007-02-02  Danny Kukawka  <danny.kukawka@web.de>
+
+	* po/tr.po: Applied new updated turkish translation file (296/0/0)
+	from S.Çağlar Onur <caglar@pardus.org.tr>
+
+2007-02-01  Danny Kukawka  <danny.kukawka@web.de>
+
+	Fixed b.n.c #239771: added support for SetPowerSave HAL method.
+
+	* src/hardware.[cpp,h]: Added new function to call the related 
+	D-Bus call for HAL.
+	* src/kpowersave.cpp: Call HardwareInfo::setPowerSave() with true 
+	if on battery and with false otherwise. 
+
+2007-02-01  Danny Kukawka  <danny.kukawka@web.de>
+
+	* po/da.po: Merged and slightly updated translation from 
+	Stefan Skotte <sfs@enhance-it.dk> (stat: 254/41/1)
+
+2007-02-01  Danny Kukawka  <danny.kukawka@web.de>
+
+	* po/de.po: completed translation due to last change.
+
+2007-02-01  Danny Kukawka  <danny.kukawka@web.de>
+
+	Updated translation strings and merged back to po files.	
+
+	* po/*.po:
+	* po/kpowersave.pot:
+
+2007-02-01  Danny Kukawka  <danny.kukawka@web.de>
+
+	Added new typ of action to call the KDE logout dialog on events:
+
+	* src/config/kpowersaverc_default: Added LOGOUT_DIALOG to allowed
+	button events. This action make no sence on battery events.
+	* src/configuredialog.cpp: Updated mapping and translate string.
+	* src/kpowersave.cpp: Added code to call the KDE lougout dialog.
+	* src/settings.[cpp,h]: Added code to read the setting and map 
+	the config value to the actions.
+
+2007-02-01  Danny Kukawka  <danny.kukawka@web.de>
+
+	Removed '&' from translation due to last changes. German and 
+	Turkisch translation are now complete again.
+
+	* po/de.po:
+	* po/tr.po:
+
+2007-02-01  Danny Kukawka  <danny.kukawka@web.de>
+
+	* po/*.po: Merged with actual pot file.
+
+2007-02-01  Danny Kukawka  <danny.kukawka@web.de>
+
+	* po/kpowersave.pot: Updated pot file due to last changes.
+
+2007-02-01  Danny Kukawka  <danny.kukawka@web.de>
+
+	Removed Accelerator tag ('&') from text of several widgets. 
+	This should fix problems with change translations if a GUI get
+	changed. Actual KDE versions should handle this automatically.
+
+	* src/blacklistedit_Dialog.ui:
+	* src/configure_Dialog.ui:
+	* src/configuredialog.cpp: Need to call 
+	KAcceleratorManager::manage() manually because it did not work.
+	* src/detailed_Dialog.ui:
+	* src/info_Dialog.ui:
+
+2007-01-31  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/configure_Dialog.ui: Fixed tab order for all widgets.
+
+2007-01-31  Danny Kukawka  <danny.kukawka@web.de>
+
+	* kpowersave.kdevelop: updated to new KDevelop 3.4.0/KDE 3.5.6
+
+2007-01-31  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/configure_Dialog.ui: set buddy to QLabel widgets for 
+	easier access to e.g. QSpinBox or QComboBox widgets.
+
+2007-01-30  Danny Kukawka  <danny.kukawka@web.de>
+
+	Applied new updated turkish translation file and two small 
+	fixes from S.Çağlar Onur <caglar@pardus.org.tr> :
+
+	* po/sl_SI.po: removed left over line from cleanup
+	* po/tr.po: full translated
+	* po/zh_TW.po: removed left over line from cleanup
+
+2007-01-26  Danny Kukawka  <danny.kukawka@web.de>
+
+	* po/*.po: cleanup translation, removed no longer needed and
+	already unused strings/translations and removed wrong/
+	useless header comments
+
+2007-01-26  Danny Kukawka  <danny.kukawka@web.de>
+
+	* po/de.po: updated/completed german translation
+
+2007-01-26  Danny Kukawka  <danny.kukawka@web.de>
+
+	* po/*.po: Merged new pot file with existing po files.
+
+2007-01-26  Danny Kukawka  <danny.kukawka@web.de>
+
+	* po/kpowersave.pot: updated pot file due to last changes
+
+2007-01-26  Danny Kukawka  <danny.kukawka@web.de>
+
+	Fixed usage of D-Bus in strings and code comments 
+	(s/DBUS/D-Bus/ and s/D-BUS/D-Bus/).
+
+	* src/dbusHAL.[cpp,h]:
+	* src/dummy.cpp:
+	* src/hardware.[cpp,h]:
+	* src/kpowersave.cpp:
+	* src/main.cpp:
+
+2007-01-26  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/main.cpp: Fixed description of KPowersave.
+
+2007-01-26  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/configure_Dialog.ui: Fixed widgets to avoid resize the
+	config dialog in some tabs of the scheme settings.
+
+2007-01-26  Danny Kukawka  <danny.kukawka@web.de>
+
+	* po/de.po: update german translation file, now complete.
+
+2007-01-26  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/kpowersave.cpp: Fixed b.n.c #230686. Load the settings
+	for the current scheme if the config GUI get closed to force
+	changes on a scheme to the system. Also set the battery 
+	warning levels to the primary battery object to get the
+	correct warnings if they maybe changed.
+
+2007-01-25  Danny Kukawka  <danny.kukawka@web.de>
+
+	* po/de.po: removed no longer needed strings from file
+
+2007-01-25  Danny Kukawka  <danny.kukawka@web.de>
+
+	* po/*.po: Merged new pot file with existing po files.
+
+2007-01-25  Danny Kukawka  <danny.kukawka@web.de>
+
+	* po/kpowersave.pot: updated pot file for new translation
+	round, removed useless strings from 'make messages'
+
+2007-01-25  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/configure_Dialog.ui: fixed string to match existing
+	translation strings
+	* src/settings.cpp: removed empty lines
+
+2007-01-25  Danny Kukawka  <danny.kukawka@web.de>
+
+	Added feature: show power consumtion of battery in the 
+	detailed information dialog:
+
+	* src/detailed_Dialog.ui: Added new widgets to show the new
+	information about power consumtion as QLabels, added spacer
+	to the AC related info in the battery area for a better look.
+	* src/detaileddialog.[cpp,h]: Added code to fill and update 
+	the new widgets related on battery state and events. This 
+	mean: the current rate/power consumtion get only updated if
+	we get the info from HAL - KPowersave do not poll for this 
+	info. The widget get hide if there is no info.
+	* src/hardware_battery.cpp: Emit signal to monitor current
+	rate of battery.
+	* src/hardware_batteryCollection.[cpp,h]: Added some code to 
+	hold the current rate and the rate unit. Emit signals if the
+	current rate change (don't emit general change signal, since
+	this maybe produce useless calls in other parts of KPowersave
+	than only in the detailed dialog).
+	Added some function to get the new private class members.
+
+2007-01-24  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/detaileddialog.cpp: Fixed b.n.c #230965. Always reset
+	the QProgressBar before update the infos in the bar, otherwise
+	the first bar get randomly updated!
+
+2007-01-24  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/configure_Dialog.ui: Changed some descriptive strings.
+
+2007-01-24  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/configuredialog.cpp: Changed icon name because char.png
+	is not defaultly in the system.
+	* src/pics/cr22-action-button.png: added new icon for the
+	buttons tab in the 'General Settings' part of the config dialog. 
+
+2007-01-23  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/configure_Dialog.ui: Added new slots to catch changes.
+	* src/configuredialog.[cpp,h]: Implemented new slots to
+	hide/show the QSpinboxes for the brightness settings in the
+	battery tab of the general settings, depending of the selected
+	action.
+
+2007-01-23  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/configure_Dialog.ui: fixed one more string to match
+	existing translations.
+
+2007-01-23  Danny Kukawka  <danny.kukawka@web.de>
+
+	Added code to support also switch to CPU Freq policy 
+	performance via actions on events:
+
+	* src/config/kpowersaverc_default:
+	* src/configuredialog.cpp:
+	* src/kpowersave.cpp:
+	* src/settings.[cpp,h]:
+
+2007-01-23  Danny Kukawka  <danny.kukawka@web.de>
+
+	* po/cs.po: fixed spelling bug from b.n.c #232058
+
+2007-01-23  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/kpowersave.cpp: removed unused variable
+
+2007-01-23  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/configure_Dialog.ui: removed not needed sizePolicy 
+
+2007-01-23  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/configure_Dialog.ui: Fixed strings to fit to already
+	existing translations. Fixed some spacer to avoid resize.
+
+2007-01-23  Danny Kukawka  <danny.kukawka@web.de>
+
+	Changed Licence text in source files to only accept GPLv2 
+	from now on:
+
+	* src/*.[cpp,h]:
+	* templates/[cpp,h]:
+
+2007-01-23  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/configure_Dialog.ui: fixed slot name for edit general
+	autosuspend blacklist.
+	* src/configuredialog.cpp: fixed call to open the edit
+	autosuspend blacklists to get displayed over the config 
+	dialog.
+
+2007-01-23  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/configuredialog.cpp: Added code to store the values
+	from the new 'General Settings' widgets to the config file.
+
+2007-01-23  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/configure_Dialog.ui: changed param of battery level
+	QSpinBox slots (no param instead of int)
+	* src/configuredialog.[cpp,h]: Added slots to set the battery
+	level QSpinBoxes to correct values: warning > low > critical.
+
+2007-01-22  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/configure_Dialog.ui: fixed tab label
+	* src/configuredialog.cpp: Fill QComboBoxes for ac/battery 
+	default schemes now within setSchemeList(). Changed position
+	of call setGeneralSettings() on init the dialog and added
+	code to fill the 'Default Schemes' tab of the general 
+	settings. Set now a icon for this tab.
+
+2007-01-22  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/config/kpowersaverc_default: added new config key
+	for allowed actions on button events and change the name of
+	the key for allowed battery actions. 
+	* src/configuredialog.cpp: related changes to above and added
+	code to fill the buttons tab with related values.
+
+2007-01-22  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/configuredialog.cpp: Added code to fill the battery
+	tab of the general settings with the values from the config
+	file.
+
+2007-01-22  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/configuredialog.[cpp,h]: Changed strings for 'set 
+	brightness' action and added a new helper function to fill
+	a QComboBox with a list of actions (mapped to descriptive
+	and translated strings) and select a given action.
+
+2007-01-22  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/configure_Dialog.ui: removed some spacer and changed
+	some widget names.
+
+2007-01-22  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/configuredialog.cpp: Added checks if CPUFreq, 
+	suspend and brightness is really supported by the machine
+	to the map action helper functions. Otherwise return a
+	empty QString.
+
+2007-01-22  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/configure_Dialog.ui: added suffixes to QSpinBox
+	widgets.
+
+2007-01-22  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/configure_Dialog.ui: added widgets for set value of
+	brightness on battery warning levels. Fixed max level for
+	several QSpinbox widgets.
+
+2007-01-22  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/configuredialog.[cpp,h]: Added two helper functions
+	to map the keys for actions in the config to a usefull 
+	string for the GUI and back.
+
+2007-01-22  Danny Kukawka  <danny.kukawka@web.de>
+
+	Move some more dummy strings:
+
+	* src/detaileddialog.cpp:
+	* src/dummy.cpp:
+
+2007-01-21  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/configuredialog.cpp: set icons for general settings
+	Toolbox tabs.
+
+2007-01-21  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/configure_Dialog.ui: Fixed layout and (re)added
+	slots for signals and actions.
+
+2007-01-21  Danny Kukawka  <danny.kukawka@web.de>
+
+	Added new class/file to collect translation dummy strings
+	from other classes. This cleanupt the code of the files
+	and make it easier to maintain translation strings:
+
+	* src/dummy.cpp: new file
+	* src/Makefile.am:
+	Removed dummy strings from:
+	* src/configuredialog.cpp:
+	* src/kpowersave.cpp:
+	* src/screen.cpp:
+	* src/settings.cpp:
+
+2007-01-19  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/configure_Dialog.ui: Added first new version of the 
+	configure dialog to be able to set the new non-scheme 
+	specific settings. 
+
+	NOTE: It build currently, but the new widget have no
+	      functions.
+
+2007-01-16  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/settings.cpp: Applied patch from Olivier Blin 
+	<blino@mandriva.com> to fix handling of sleep and s2disk
+	button actions.
+
+2007-01-15  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/configuredialog.cpp: Change the brightness in the 
+	config dialog only if really activated.
+
+2007-01-15  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/configuredialog.cpp: Added support to delete a user
+	specific scheme. The user can't delete on of the currently
+	4 default schemes or if the selected scheme is the AC or
+	battery default scheme.
+
+2007-01-08  Danny Kukawka  <danny.kukawka@web.de>
+
+	Added support for sleep/suspend and s2disk/hibernate buttons
+	and related action calls:
+
+	* src/config/kpowersaverc_default: added new config keys to 
+	define the default action for the two keys
+	* src/hardware.[cpp,h]: Added new signal and filter all the 
+	related keys from HAL interface.
+	* src/kpowersave.[cpp,h]: Addes functions to catch the events
+	of the button get pressed and call the allowed actions (for 
+	the moment only s2ram and s2disk is allowed to these events)
+	* src/settings.[cpp,h]: Added support to read the new config
+	keys and to store them in member variables. For now added a 
+	check to be sure that only s2ram and s2disk are allowed actions
+	for these key events.
+
+2007-01-08  Danny Kukawka  <danny.kukawka@web.de>
+
+	Commited unsaved change, updated Changelog:
+
+	* src/kpowersave.cpp: Changed lockScreen() DCOP function to 
+	lock simply the screen unrelated to the setting for suspend 
+	on suspend.
+
+2007-01-08  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/kpowersave.[cpp,h]: Fixed lock screen on suspend and
+	removed no longer needed code/functions. Thanks to Andrey 
+	Borzenkov <arvidjaar@mail.ru> for the report.
+	* src/settings.cpp: Changed fallback values for lock on 
+	suspend and lidclose from false to true due to security 
+	and privacy reasons.
+
+2007-01-04  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/kpowersave.cpp: fixed b.n.c #231709 by fixing minor 
+	compiler warning about "comparison with string literal"
+	by using strcmp().
+
+2006-12-27  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/configuredialog.cpp: Removed done TODO's and debug code.
+
+2006-12-27  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/configuredialog.[cpp,h]: Seperated code to set the
+	current scheme (based on the scheme name) to a own function.
+	Added code to add a new scheme. For now the new scheme get
+	initialized with the values from the default-scheme.
+
+2006-12-26  Danny Kukawka  <danny.kukawka@web.de>
+
+	Extendended configure GUI to config the CPU Freqency policy 
+	for each scheme. The related page in the dialog is deactivated 
+	if the machine doesn't support CPU Freq.
+	Added buttons to add new and delete existing schemes (TODO: 
+	add related code).
+	Renamed some widgets.
+
+	* src/configure_Dialog.ui:
+	* src/configuredialog.cpp:
+
+2006-12-25  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/hardware.cpp: Added support for conservative governor
+	as a DYNAMIC CPU frequency policy fallback and some debug
+	messages.
+
+2006-12-17  Danny Kukawka  <danny.kukawka@web.de>
+
+	Fixed b.n.c bug #229234:
+
+	* src/hardware.[cpp,h]: Changed checkCurrentCPUFreqPolicy()
+	from void to int to return the current CPU Freq policy to
+	the caller.
+	Added check to setCPUFreq() for the DYNAMIC case to check 
+	if the 'ondemand' governor was really set and try then
+	the 'userspace' governor.
+
+2006-12-15  Danny Kukawka  <danny.kukawka@web.de>
+
+	s/kde_settings/kde/
+
+	* src/kpowersave.cpp:
+	* src/settings.[cpp,h]:
+
+2006-12-15  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/kpowersave.cpp: Little fix for disable s2ram and
+	standby menu entry if not allowed while call action.
+
+2006-12-08  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/dbusHAL.cpp: fixed compiler warning from b.n.c bug
+	#226875 with proposed change from David Binderman 
+	<dcb314@hotmail.com>
+
+2006-12-04  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/kpowersave.[cpp,h]: Added code to handle the power
+	button event and to call the related action.
+
+2006-12-01  Danny Kukawka  <danny.kukawka@web.de>
+
+	Added new config key to be able to config actions if the 
+	power button get pressed.
+
+	* src/config/kpowersaverc_default:
+	* src/settings.[cpp,h]:
+
+2006-12-01  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/hardware.cpp: removed no longer needed init for some
+	class memebers.
+
+2006-11-27  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/kpowersave.cpp: Fix to set the type of suspend before
+	call handleMounts() and reset in the error case to show the
+	correct caption for the error dialog if the umount fail.
+	Added i18n() call to translate the caption correct.
+
+2006-11-27  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/kpowersave.cpp: Added "Don't ask again" checkbox to
+	error message box if KPowersave get a error from kded for 
+	umount partitions before suspend. 
+	Fixed dialog caption to display the correct type of suspend.
+
+2006-11-27  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/kpowersave.[cpp,h]: Fixed battery critical action if
+	the actiontype is SHUTDOWN. We can't call a slot from a QT
+	single shot with parameter as it looks.
+
+2006-11-27  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/hardware.cpp: Added code to call SetCPUFreqConsiderNice
+	depending on DYNAMIC CPU Freq Policy and the state of the 
+	AC adapter. The code should set ConsiderNice with true
+	if the AC adapter is online and false if the machine is on
+	battery.
+
+2006-11-27  Danny Kukawka  <danny.kukawka@web.de>
+
+	Make KPowersave more stable (hopefully), added some checks
+	and (re)set some variables in error cases. 
+
+	* src/dbusHAL.cpp:
+	* src/hardware.cpp:
+
+2006-11-22  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/hardware.cpp: typo and whitespace fix
+	* src/kpowersave.cpp: reset the cPU Freq Policy after resume,
+	after resume (IMO to workaround a bug in the kernel, because
+	the kernel should resume with the same CPU Freq settings as
+	on suspend)
+
+2006-11-22  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/kpowersave.cpp: Added some code to display error msg
+	to the user on suspend and display a dialog to choose between
+	stop and continue the suspend. Default should be stop suspend
+	as also ESC is.
+
+2006-11-22  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/kpowersave.cpp: Added code to remount the before 
+	suspend/standby unmounted external storage volumes.
+	Show the user a passive popup if there is a error while try
+	to remount.
+
+2006-11-22  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/kpowersave.cpp: Added initial code to umount before 
+	suspend.
+
+	TODO: add code to inform the user about the error and offer
+	      a way to suspend also if KPowersave can't umount.  
+
+2006-11-22  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/kpowersave.[cpp,h]: Added function to handle umounts/
+	remounts on suspend/resume via kded mediamanager DCOP calls.
+
+2006-11-22  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/config/kpowersaverc_default: added new config variable
+	for umount/remount on suspend
+	* src/settings.[cpp,h]: added code to read the new variable
+	from the config file and store the value to a class member.
+
+2006-11-21  Danny Kukawka  <danny.kukawka@web.de>
+
+	* admin: removed property svn:mime-type from files
+
+2006-11-21  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/kpowersave.cpp: Fixed applet tooltip to show correct
+	information if the battery is in state CHARGING.
+
+2006-11-21  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/kpowersave.cpp: Fix battery warning level handling and
+	show warning messages to the user only if battery state is
+	not CHARGING.
+
+2006-11-20  Danny Kukawka  <danny.kukawka@web.de>
+
+	* admin/cvs.sh: added support for automake 1.10
+
+2006-11-20  Danny Kukawka  <danny.kukawka@web.de>
+
+	Tagged new offical release 0.7.1
+
+2006-11-20  Danny Kukawka  <danny.kukawka@web.de>
+
+	* TODO: updated
+
+2006-11-20  Danny Kukawka  <danny.kukawka@web.de>
+
+	* NEWS: added new for new release 0.7.1
+
+2006-11-20  Danny Kukawka  <danny.kukawka@web.de>
+
+	Updated required D-Bus version numnber:
+
+	* README:
+	* doc/doxy/main.dox:
+	
+	Fixed code comments, added missing function parameter docu, 
+	removed file-version tags, update date of some files:
+
+	* src/dbusHAL.[cpp,h]:
+	* src/hardware.[cpp,h]:
+	* src/hardware_battery.[cpp,h]:
+	* src/hardware_batteryCollection.[cpp,h]:
+	* src/screen.[cpp,h]:
+
+2006-11-20  Danny Kukawka  <danny.kukawka@web.de>
+
+	* doc/doxy/implemented.dox: removed not existing reference
+
+	Fixed code comments and documentation (e.g. undocumented
+	function parameter):
+
+	* src/dbusHAL.cpp:
+	* src/hardware.cpp:
+	* src/hardware.h:
+	* src/kpowersave.cpp:
+	* src/settings.h:
+
+2006-11-20  Danny Kukawka  <danny.kukawka@web.de>
+
+	* doc/doxy/powersave_msgs.dox: removed no longer needed 
+	code documentation file
+
+2006-11-20  Danny Kukawka  <danny.kukawka@web.de>
+
+	* doc/doxy/main.dox: update to current KPowersave version
+
+2006-11-20  Danny Kukawka  <danny.kukawka@web.de>
+
+	* TODO: removed done tasks
+	* src/kpowersave.[cpp,h]: fixed code comments and removed
+	references to the powersave daemon
+	* src/main.cpp: changed version string
+
+2006-11-20  Danny Kukawka  <danny.kukawka@web.de>
+
+	* NEWS: added news from already released stable versions
+	0.6.1 and 0.6.2
+	* TODO: removed done tasks and updated status of some
+
+2006-11-20  Danny Kukawka  <danny.kukawka@web.de>
+
+	* packaging/openSUSE10.2.kpowersave.spec: added specfile
+	for openSUSE 10.2
+
+2006-11-20  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/kpowersave.cpp: Adapted new function to reset the
+	KDE screensaver (and DPMS) settings.
+	* src/screen.[cpp,h]: Added new function to call the 
+	configure() at the KScreensaverIface to reset the current
+	settings to the correct KDE settings from the config files.
+	This happen currently only if the screensaver is not 
+	active (but enabled).
+	* src/settings.cpp: Fixed code. 
+
+2006-11-20  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/settings.[cpp,h]: Added code to check if KDE use 
+	currently the blank screensaver.
+
+2006-11-19  Danny Kukawka  <danny.kukawka@web.de>
+
+	* TODO: removed done issues
+	* src/dbusHAL.[cpp,h]: Added code to claim/aquire the 
+	org.freedesktop.Policy.Power interface from D-Bus to stop
+	the powersave daemon/client and to be allowed to handle
+	the powermanagement policy.
+
+2006-11-19  Danny Kukawka  <danny.kukawka@web.de>
+
+	* README: Update dependencies/requirements.
+
+2006-11-19  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/kpowersave.cpp: Added some linebreaks to warning
+	messages for battery states.
+
+2006-11-19  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/hardware_batteryCollection.cpp: fixed handling 
+	for battery collections if there are no batteries present.
+	This should abvoid false alarm for battery warning levels.
+
+2006-11-18  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/hardware_battery.cpp: fixed handling if battery
+	get removed from the system. Don't forget to check the
+	battery type if reset the battery.
+	Also fixed emit signals. Emit them first if have read
+	the values from Hardware and filled the related variables.
+
+2006-11-18  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/settings.cpp: Added some usefull default values
+	for the KDE settings if we can't read the related values.
+
+2006-11-17  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/kpowersave.[cpp,h]: applied slightly adopted patch
+	from Dirk Mueller <dmueller@suse.de> to add a DCOP 
+	function to check if KPowersave already handle DPMS 
+	settings in KDE. This should, togehter with a patch for
+	KDE, avoid interfere between KDE and KPowersave.
+
+2006-11-17  Danny Kukawka  <danny.kukawka@web.de>
+
+	Added new turkish translations from S.Çağlar Onur 
+	<caglar@pardus.org.tr>:
+
+	* po/tr.po:
+	* src/kpowersave-autostart.desktop:
+	* src/kpowersave.desktop:
+
+2006-11-17  Danny Kukawka  <danny.kukawka@web.de>
+
+	Added patch from S.Çağlar Onur <caglar@pardus.org.tr>
+	to add support for Pardus Linux.
+
+	* configure.in.in: added detect Pardus Linux
+	* src/kpowersave.cpp: added bugreport address
+
+2006-11-17  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/kpowersave.cpp: fixed bugreport address for 
+	openSUSE 
+
+2006-11-17  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/kpowersave.cpp: Reduced function calls to 
+	dbusHAL with updateTooltip().
+
+2006-11-16  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/kpowersave.cpp: fixed set CPUFreq via the applet
+	menu and reduced calls if a scheme switched.
+
+2006-11-16  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/dbusHAL.cpp: Fixed free() error, if D-Bus is not
+	running on startup.
+
+2006-11-16  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/kpowersave.[cpp,h]: s/new_screen/display/
+
+2006-11-16  Danny Kukawka  <danny.kukawka@web.de>
+
+	* ChangeLog.package: updated with info about already
+	released version 0.7.0
+
+2006-11-16  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/kpowersave.[cpp,h]: fixed notifySuspend() and
+	call the function before call suspend/standby via HAL.
+
+2006-11-16  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/kpowersave.[cpp,h]: fixed handling of AC plug
+	in/out event. Now switch, based on the state of the
+	AC plug, the AC/Battery scheme. 
+	Also merged other AC state releaded functions to the 
+	new and renamed handleACStatusChange() for a better
+	control of the workflow.
+
+2006-11-16  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/kpowersave.cpp: changed position of call 
+	setPrimaryBatteriesWarningLevel() to do this first
+	if the scheme was set.
+
+2006-11-16  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/hardware.[cpp,h]: Added support to check for
+	PMU support and renamed checkACPI_APM() to more 
+	general name checkPowermanagement()
+	* src/kpowersave.cpp: extended startup check to 
+	exit only if not ACPI/APM/PMU/CPUFreq/s2disk/2sram.
+
+2006-11-16  Danny Kukawka  <danny.kukawka@web.de>
+
+	* TODO: updated TODO to current state of development
+
+2006-11-14  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/kpowersave.[cpp,h]: added code to fetch and 
+	handle the resume signal. Trigger fake key event after
+	resume if the scree was locked and emit the correct
+	KNotify signal.
+
+2006-11-14  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/screen.cpp: changed left send() for lock the
+	screen for KScreenSaver with usage of call().
+
+2006-11-14  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/hardware.[cpp,h]: Adopted suspend function to 
+	use the new pending calls instead of the old, normal
+	methodCalls. 
+	Added code to fetch, forward and handle the resume 
+	signal from the dbusHAL class.
+
+2006-11-14  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/dbusHAL.[cpp,h]: added new functions to be able
+	to handle suspend as pending D-Bus calls. This should
+	allow us to get a resume signal etc.
+	Added a new signal to be emitted if we resumed and 
+	to return the result of the resume as a integer value.
+
+2006-11-13  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/screen.cpp: Changed DCOP screen lock call from 
+	send() to call() and try now, if the lock fail, to 
+	use XScreensaver for lock instead.
+
+2006-11-13  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/kpowersave.[cpp,h]: handle lid close/open events
+	now in one function. If the screen was locked on the
+	lidclose signal, fake keyevent on open lid.
+
+2006-11-13  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/kpowersave.cpp: display error message on scheme
+	switch only if the scheme is not known and not if the 
+	current scheme get selected.
+
+2006-11-13  Danny Kukawka  <danny.kukawka@web.de>
+
+	* TODO: updated/remove done issues
+	* src/config/kpowersaverc_default: Added new variables
+	to call a action of the lid was closed.
+	* src/kpowersave.[cpp,h]: handle now actions on lidclose
+	and renamed function to reuse code from battery actions.
+	s/lockscreenOnLidcloseEvent/handleLidcloseEvent
+	* src/settings.[cpp,h]: Read new config values to member
+	variables for general settings. Renamed some members 
+	and definitions to reuse the action stuff.
+	Sorted code in settings.h to differ between general and
+	scheme setttings.
+
+2006-11-13  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/kpowersave.cpp: Added fix from Michael Biebl 
+	<biebl@teco.edu> for debian bug #398201 to avoid crash
+	of KPowersave if showDetailedDialog() called via DCOP.
+
+2006-11-13  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/kpowersave.[cpp,h]: s/current_settings/settings/
+
+2006-11-13  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/kpowersave.cpp: fixed event handling for battery
+	warning states to call related actions also if notify
+	is disabled.
+
+2006-11-12  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/kpowersave.[cpp,h]: Added some code to call a
+	defined battery action if a battery warning state
+	reached. Added special handling for BAT_CRITICAL and
+	shutdown. 
+	* src/settings.[cpp,h]: changed some types and return
+	types: s/int/battery_action/
+
+	TODO: test and handle brightess/cpufreq changes if 
+	      the warning state get reduced to set back to
+	      normal values. Maybe simply switch back to the
+	      current scheme settings.
+
+2006-11-12  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/Makefile.am: removed schemes.* from make
+	* src/schemes.[cpp,h]: removed no longer needed class
+	and related files
+
+2006-11-12  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/kpowersave.cpp: Added some code comments and 
+	code to set the CPU Freq Policy for each scheme.
+	* src/settings.[cpp,h]: changed type of CPU Freq
+	Policy from int to cpufreq_type.
+
+2006-11-12  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/config/kpowersaverc_default: added new entries
+	to store the CPU Freq Policy for a scheme. Use as 
+	default for all schemes DYNAMIC for now.
+	* src/settings.[cpp,h]: added code to read the new
+	entries for the CPU Freqency policy. 
+
+2006-11-11  Danny Kukawka  <danny.kukawka@web.de>
+
+	* kpowersave.kdevelop: some changes from KDevelop
+	* src/config/kpowersaverc_default: added some new 
+	configure variables to allow to set a action if a 
+	battery warning level reached.
+	* src/settings.[cpp,h]: added code to read the values
+	of the new config values and set them to new member 
+	variables.
+
+2006-11-10  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/hardware.cpp: fixed lock screen if lid closed
+	(s/button.typ/button.type/)
+
+2006-11-10  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/detaileddialog.cpp: added connect to new signal 
+	for CPUFreq Policy changes to show allways correct 
+	information in the dialog.
+	* src/hardware.[cpp,h]: added signal emitted if the 
+	CPU Frequency policy was successful (or from other
+	side) changed/switched.
+	Reduced code in setCPUFreq() and added a check if the
+	Policy was really check and emit new signal.
+	* src/kpowersave.[cpp,h]: added connect for new signal
+	to set the CPUFreq menu correct if something changed
+
+2006-11-09  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/hardware.[cpp,h]: Added new function to reinit
+	all hardware information after a HAL or D-Bus restart.
+	This should reduce the code and ensure that we do
+	always the same.
+	Fixed handling of signals if D-Bus restart related to
+	HAL and D-Bus itself status.
+	* src/kpowersave.cpp: added a comment
+
+2006-11-08  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/kpowersave.cpp: fixed slot do_setActiveScheme()
+	to check if the requested scheme is available, load
+	the scheme settings, call setSchemeSettings() to 
+	set the related changes and inform KNotify. 
+
+	TODO next: (1) add support to read the missing config
+		   keys and (2) fix setSchemeSettings() to
+		   set the changes to the kpowersave class
+
+2006-11-08  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/kpowersave.[cpp,h]: renamed some functions
+
+2006-11-08  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/kpowersave.cpp: fixed connect to not existing
+	slot/function to show error message from autosuspend
+
+2006-11-08  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/hardware.cpp: Fixed detection of suspend/standy
+	support. HAL also provide the related methodes if
+	there is no support in the kernel. 
+
+	TODO: take a look at this in HAL and if we can fix
+
+2006-11-07  Danny Kukawka  <danny.kukawka@web.de>
+
+	* TODO: added some information and currently TODOs
+
+2006-11-07  Danny Kukawka  <danny.kukawka@web.de>
+
+	Fixed battery warning state handling and events for
+	the primary batteries:
+
+	* src/hardware.[cpp,h]: added some private variables 
+	to store the current warning state level which are set
+	with new function setPrimaryBatteriesWarningLevel().
+	We use this function also to reset the warning level
+	to the current one directly her e.g. after D-Bus or
+	HAL restart.
+	Changed signal for reached warning state to emit also
+	the type and the state of the battery. This should 
+	be more generic and can be reused later for other
+	battery types.
+	* src/hardware_batteryCollection.[cpp,h]: changed 
+	signals to emit also battery type. 
+	* src/kpowersave.cpp: changed debug msg and set the 
+	battery warning level temporary in the constructor
+	to HardwareInfo object.
+
+2006-11-07  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/configuredialog.cpp: fixed brightness related
+	code to handle new HAL level mapping to percent.
+	* src/hardware.[cpp,h]: changed setBrightness() to 
+	work with level and percent (added mapping from 
+	percentage to level) and fixed min and max values. 
+	* src/kpowersave.cpp: related changes.
+
+2006-11-06  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/hardware.cpp: Fixed setBrightness (fixed wrong
+	usage of dbusSystemMethodCall and int as param)
+
+2006-11-06  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/dbusHAL.cpp: Fixed dbusHAL::isUserPrivileged()
+	to use 'const char *' instead of QString.
+
+2006-11-06  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/hardware.cpp: Fixed case if HAL wasn't present
+	at startup. Now if hal reconnect recheck all hardware
+	information.
+	* src/kpowersave.cpp: Fixed creation of the applet 
+	menu if HAL or D-Bus disappear or/and reconnect.
+	Fixed applet Icon if HAL/D-Bus is not available.
+
+2006-11-06  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/kpowersave.[cpp,h]: Added new function to show
+	messages from other classes as e.g. autosuspend to the
+	user.
+	Moved some functions within the code.
+
+2006-11-06  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/dbusHAL.cpp: set dbus_is_connected to false if 
+	D-Bus is gone
+	* src/kpowersave.cpp: fixed display D-Bus error message
+	and avoid display HAL related error msg if D-Bus is
+	terminated.
+
+2006-11-06  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/hardware.cpp: fixed detection of terminated D-Bus
+	and reconnect to the service and HAL
+
+2006-11-06  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/kpowersave.[cpp,h]: fixed display message if HAL
+	is gone.
+
+2006-11-06  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/kpowersave.[cpp,h]: removed no longer needed code
+
+2006-11-06  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/hardware.cpp: Fixed init the class (set a default
+	value for currentCPUFreqPolicy otherwise we can't detect
+	the initial changes).
+	Fixed setCPUFreq(), use char* instead instead of direct
+	usage of e.g. "performance".
+	* src/hardware.h: make checkCurrentCPUFreqPolicy() public
+	* src/kpowersave.cpp: force a check of current CPUFreq
+	policy after set the policy to be sure the CPUFreq
+	Policy is correct displayed in the applet.
+
+2006-11-06  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/hardware.cpp: fixed detection of the current CPU
+	Freq policy. Use char* instead of QString for return 
+	values.
+
+2006-11-06  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/hardware.cpp: fixed detection of changes in current
+	CPU Freq Policy (_use_ temp variable correct )
+	* src/kpowersave.cpp: removed debug 
+
+2006-11-05  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/hardware.cpp: fixed connect to signals from the
+	primary battery collection. This should fix the applet
+	icon to show the correct battery fill level.
+
+2006-11-05  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/hardware.[cpp,h]: added and emit new signal if the 
+	primary battery collection changed a value
+	* src/kpowersave.cpp: Fixed change applet icon if the AC
+	plug added/removed
+
+2006-11-05  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/detailed_Dialog.ui: removed <includehint>
+	* src/detaileddialog.cpp: connect to signal for changes
+	of the primary batteries.
+	* src/hardware.cpp: fixed connect to changes of batteries
+
+2006-11-05  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/detaileddialog.cpp: fixed typo in function call and
+	removed already comment out include of kpowersave.h 
+
+2006-11-05  Danny Kukawka  <danny.kukawka@web.de>
+
+	Removed no longer needed sourcecode files from repository:
+
+	* src/dbusPowersave.cpp:
+	* src/dbusPowersave.h:
+	* src/pdaemon.cpp:
+	* src/pdaemon.h:
+
+2006-11-05  Danny Kukawka  <danny.kukawka@web.de>
+
+	Replaced complete (active) pdaemon and powersave related 
+	code from KPowersave class:
+
+	* src/Makefile.am: removed pdaemon.* and dbusPowersave.* ,
+	reformated the list of source files
+	* src/kpowersave.[cpp,h]:
+
+	TODO: test and remove/fix open TODO's
+
+2006-11-05  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/hardware.[cpp,h]: Added code to handle reconnect to
+	the D-Bus daemon. Added some variables to show if something
+	in class HardwareInfo changed. This new variables should
+	allow finder grained and easier refresh/handle of battery
+	information.
+	Fixed code to update battery information and connect to
+	related signals. 
+
+2006-11-05  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/hardware_battery.[cpp,h]: added also a signal to
+	the battery object, wich we emit if a value of the 
+	battery changed.
+
+2006-11-05  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/hardware_batteryCollection.[cpp,h]: added new signal
+	if _something_ changed in the collection.
+
+2006-11-05  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/dbusHAL.cpp: Removed include of powersave_dbus.h.
+	Replaced usage of dbusGetMessageString() from old powersave
+	library with dbus_message_get_args() and fixed code to 
+	fetch event if HAL go down.
+
+2006-11-03  Danny Kukawka  <danny.kukawka@web.de>
+	
+	Replaced complete pdaemon and powersave related code from
+	the configuration dialog.
+
+	* src/configuredialog.[cpp,h]: 
+	* src/kpowersave.cpp: related changes to open/create the
+	configdialog.
+
+2006-11-03  Danny Kukawka  <danny.kukawka@web.de>
+
+	Renamed class s/settings/Settings and related changes
+
+	* src/detaileddialog.h:
+	* src/kpowersave.[cpp,h]:
+	* src/settings.[cpp,h]:
+
+2006-11-02  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/hardware_battery.cpp: read battery serial only if the
+	battery is present.
+
+2006-11-02  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/pdaemon.[cpp,h]: Removed no longer needed code to get
+	CPU information directly from sysfs
+
+2006-11-02  Danny Kukawka  <danny.kukawka@web.de>
+
+	Replaced usage of pdaemon class in the detailed dialog with
+	class HardwareInfo:
+
+	* src/dbusHAL.cpp: fixed debug message
+	* src/dbusPowersave.cpp: comment out some code to get the 
+	applet run temporary, before remove the class complete.
+	* src/detaileddialog.[cpp,h]: replaced complete pdaemon code
+	* src/kpowersave.cpp: related changes to call the constructor
+	of class detaileddialog.
+
+2006-11-02  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/hardware.[cpp,h]: fixed CPU Freq stuff, added new member
+	to check if the hardware/kernel support cpufreq in general, 
+	also without HAL. We need this to show CPU information in
+	the detailed dialog also if there is no support vi HAL.
+	Added fix to get the battery information. Need to update the
+	primary battery collection on init.
+
+2006-11-02  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/hardware_battery.cpp: fixed detection of battery type,
+	don't check if the battery present for the battery type. The
+	information about the type is always present, also for empty
+	battery bay.
+
+2006-11-02  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/hardware.[cpp,h]: Added some new functions to get access
+	to battery list and the primary battery collection.
+	Fixed bug in checkBrightness(), check always if the list of
+	devices is not empty before use them. 
+	Fixed some minor bugs in debug messages
+
+2006-11-02  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/config/kpowersaverc_default: added new config entries to
+	save the default ac and battery scheme
+	* src/dbusPowersave.[cpp,h]: renamed some enums to avoid
+	conflicts while remove this class.
+	* src/detaileddialog.[cpp,h]: replaced scheme information from
+	powersave with new from class settings. Added pointer to current
+	settings to constructor. 
+	* src/hardware_battery.[cpp,h]: renamed some enum to avoid 
+	conflicts
+	* src/kpowersave.cpp: replaced scheme handling parts where we
+	tried to get scheme information from the pdaemon class. commented
+	out some code which we should replace later.
+	* src/kpowersave.h: added new member to hold HardwareInfo class
+	* src/pdaemon.[cpp,h]: renamed enum, removed scheme handling 
+	from code of the class. We use now the new structure. Use some
+	enums from hardware_battery.h temporary.
+	* src/settings.[cpp,h]: added new members to handle the default
+	ac and battery scheme
+
+2006-10-30  Danny Kukawka  <danny.kukawka@web.de>
+
+	* configure.in.in: removed no longer needed dependencies and 
+	updated HAL and D-Bus version dependencies.
+
+2006-10-29  Danny Kukawka  <danny.kukawka@web.de>
+
+	Added some new configure variables to the default settings.
+
+	* src/config/kpowersaverc_default: added new battery state level
+	related variables and a new variable for the available schemes.
+	Removed no longer needed sound related variables.
+	* src/settings.[cpp,h]: Added new enum level_action to define
+	actions if a battery level state reached. Added code to read the
+	available schemes and the battery warning states from the config
+	file. 
+
+2006-10-28  Danny Kukawka  <danny.kukawka@web.de>
+
+	Fixed creation of D-Bus connection. Don't use private connection
+	anymore. Simply call dbus_bus_get() instead. This should fix
+	b.n.c #214881.
+
+	* src/dbusHAL.cpp:
+	* src/dbusPowersave.cpp:
+
+2006-10-25  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/hardware.cpp: Fixed updateBatteryValues() to call the new
+	member function of the battery to update the values.
+	* src/hardware_battery.cpp: Fixed checkBatteryPresent() to call
+	depending on the new state of the battery all depending updates. 
+
+2006-10-25  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/hardware.cpp: Fixed function to trigger a update of the 
+	primary battery collection and added some intial code to handle
+	DeviceAdded/DeviceRemoved events from HAL.
+	* src/hardware.hi: added battery collection for primary
+	batteries and renamed related update function.
+	* src/hardware_batteryCollection.[cpp,h]: added new function
+	isBatteryHandled() to check if this Collection already handle
+	this udi/battery
+
+2006-10-25  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/hardware.[cpp,h]: Added new function to check if we should 
+	handle a special device (e.g. on a HAL_DEVICE::DeviceAdded 
+	event) and to get the type of the device (added a new enum 
+	device_type).
+	Added some new signals for: HAL error handling, data changes and
+	if the sleep button was pressed.
+
+2006-10-24  Danny Kukawka  <danny.kukawka@web.de>
+
+	Cleanup: removed not handled msg_type NAME_AQUIRED.
+
+	* src/dbusHAL.[cpp,h]:
+	* src/hardware.cpp:
+
+2006-10-24  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/hardware.[cpp,h]: Added check for privileges for CPUFreq
+	interface via PolicyKit and check before try to use the 
+	interface. Added function to get this info from outside.
+
+2006-10-24  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/hardware.[cpp,h]: Added PolicyKit check for suspend/
+	standby interface.
+
+2006-10-24  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/dbusHAL.[cpp,h]: changed return type of new function
+	isUserPrivileged() from bool to int to get a info if we can't
+	connect to the PolicyKit interface on DBUS.
+
+2006-10-24  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/dbusHAL.[cpp,h]: Added function to check PolicyKit
+	for a privilege for a given user.
+
+2006-10-23  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/hardware_battery.[cpp,h]: make get* functions const
+
+2006-10-23  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/hardware_battery.cpp: added some code to check if the 
+	battery is really present. If not, we don't need to run all
+	updates or the calls to HAL.
+
+2006-10-23  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/hardware_battery.cpp: removed calls of minRecheck() in 
+	the get* methodes. The data should always be up to date because
+	of the HAL events. If not, we have a problem and should fix
+	this instead of call minRecheck() on each get methodes. If
+	this is really needed, we can call this function also from 
+	outside (isn't a private function). 
+
+2006-10-23  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/hardware.cpp: removed todo, code comment update
+	* src/hardware_battery.[cpp,h]: Added variable to check if the 
+	battery is inialised and added event handling including emit
+	related signals if something changed. 
+	Set crit_level as default to 2 as in old powersave config.
+	* src/hardware_batteryCollection.cpp: set crit_level as default
+	to 2 as in old powersave config
+
+2006-10-23  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/hardware_battery.cpp: if battery was removed, set the
+	battery members back to default.
+
+2006-10-23  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/hardware_battery.cpp: fixed typo for a HAL property
+
+2006-10-23  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/hardware_battery.cpp: added code to filter events and 
+	call the related function to update the key.
+
+	TODO: add code to check if really something was changed and
+	      emit some signals.
+
+2006-10-23  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/hardware_battery.[cpp,h]: separated code from recheck() 
+	and minRecheck() to query information from HAL to new small
+	functions for each property.  
+
+2006-10-23  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/hardware_battery.[cpp,h]: Small update in code docu and 
+	added inital code for a new function to update a battery 
+	property on a HAL event.
+
+	TODO: fill with code to filter the events and seperate current
+	      code to get a value from HAL into smaller functions to 
+	      reuse them.
+
+2006-10-22  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/hardware_battery.[cpp,h]: first remove of no longer 
+	needed code for some kind of battery collection in this class.
+	This is now done by class BatteryCollection.
+
+	TODO: check left code and get methodes. Seperate and split of
+	      the code to get info from HAL.
+
+2006-10-22  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/hardware_batteryCollection.cpp: clean up list of udis 
+	before start the update process.
+
+2006-10-22  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/hardware_batteryCollection.[cpp,h]: emit now also all
+	the other signals for percentage, minutes, present batteries
+	and the charging state.
+
+2006-10-22  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/hardware_batteryCollection.[cpp,h]: emit signals for
+	reached battery warning states.
+
+2006-10-22  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/hardware_batteryCollection.[cpp,h]: return a bool for
+	the set functions to detect incorrect values.
+
+2006-10-22  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/hardware_batteryCollection.[cpp,h]: Completed code to 
+	collect the values from the batteries. 
+	Added new members to get the number of present batteries and
+	to get the battery state. 
+
+	TODO: add signals and emit them.
+
+2006-10-20  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/hardware_batteryCollection.[cpp,h]: added needed 
+	functions to set/get access to privat members.
+
+	TODO: add code to read the batteries into the class.
+
+2006-10-20  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/Makefile.am: added new files to Makefile
+	* src/hardware_battery.h: minor changes
+	* src/hardware_batteryCollection.[cpp,h]: added new class to 
+	handle battery collections. This class should allow us to get
+	e.g. only the needed information from all primary batteries.
+
+2006-10-20  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/hardware.[cpp.h]: Added new initial function to collect
+	battery information from all primary batteries.
+
+2006-10-20  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/hardware.[cpp,h]: replaced QValueList as datatype for 
+	BatteryList with QPtrList. QValueList can't contain objects
+	which are derived from QObject.
+	
+	NOTE: For QPtrList as for QDict we need always deep copies
+
+2006-10-19  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/hardware.[cpp,h]: Added initial code to filter battery
+	events from HAL and update the battery objects.
+	
+	TODO: check if the construct with the QValueList for batteries
+	      is correct and add code to update the objects.
+
+2006-10-19  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/hardware.[cpp,h]: Filter powerbutton event and emit a
+	signal.
+
+2006-10-19  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/hardware.[cpp,h]: Filter lidclose event and emit a signal.
+	Fixed emit signal: first set new value to variable and emit then
+	the signal.
+
+2006-10-19  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/hardware.[cpp,h]: filter ac adapter in/out event and emit 
+	a signal.
+
+2006-10-19  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/dbusHAL.h: removed unused event type HAL_EVENT
+	* src/hardware.cpp: Added initial code to filter the DBUS and
+	HAL events we need in KPowersave. 
+
+	TODO: add code to do what we need if a event happen and 
+	      evaluate if we need all the events.
+
+2006-10-19  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/hardware.cpp: check if the new udi is already in the 
+	list of all udis. QStringList add strings without check if
+	they are already in.
+
+2006-10-19  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/hardware.[cpp,h]: fixed intialiseHWInfo() to use only
+	one QStringList for the devices. Added new code to the func
+	to collect the battery UDIs. 
+	Added code to store the UDIs of all devices we handle and
+	want to monitor. This should allow us a finer grained filter
+	functions for HAL events.
+	* src/hardware_battery.[cpp,h]: Changed one constructor to
+	give always as first the reference to dbus_HAL. 
+
+2006-10-19  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/hardware_battery.h: removed no longer needed define 
+	_BATTPRESETS
+
+2006-10-19  Danny Kukawka  <danny.kukawka@web.de>
+
+	* kpowersave.kdevelop: updated some KDevelop project settings
+	* src/settings.h: removed unneeded empty class
+
+2006-10-16  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/hardware_battery.[cpp,h]:	More cleanups, changes in code 
+	style and code documentation. Removed not needed hasHalError().
+
+2006-10-16  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/hardware_battery.[cpp,h]: Sorted private members of the
+	class by type and added function to init private members with
+	default values instead to use a define. This should avoid 
+	compiler warnings.
+	Added some code comments for doxygen.
+
+2006-10-15  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/hardware.[cpp,h]: Added function to get the current
+	CPU Frequency policy from HAL and a function to get this
+	value from the privat class member. 
+
+	TODO: check if we also can get info for DYNAMIC_SET.
+
+2006-10-15  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/hardware.[cpp,h]: added function to get the current 
+	brightness level from HAL. This should allow get current
+	brightness without recheck the interface.
+
+2006-10-15  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/hardware.[cpp,h]: s/PMStates/SuspendStates/ and 
+	s/pm_states/suspend_states/ to be more clear
+
+2006-10-15  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/hardware.[cpp,h]: replaced QDict for powermanagement states
+	with a struct which should be easier to handle. Added new members
+	to the struct to represent information if call the related 
+	interface is allowed
+
+2006-10-11  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/hardware.[cpp,h]: Added function to set CPU frequency 
+	policy via the HAL interface (support the currently) available
+	tree policies. 
+
+2006-10-10  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/hardware.[cpp,h]: added function to check if the machine 
+	support change the CPU frequency via HAL.
+
+	TODO: add check for PolicyKit policy
+
+2006-10-10  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/hardware.cpp: cleanup QDict<bool> pm in checkSuspend() if
+	not empty before reuse.
+
+2006-10-10  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/hardware.[cpp,h]: added get functions for suspend/standby
+	support info and if DBUS/HAL are running.
+
+2006-10-10  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/hardware.[cpp,h]: Added some functions to read private
+	class members from outside. Changed existing get functions to 
+	const.
+	* src/hardware_battery.cpp: code style changes
+
+2006-10-10  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/hardware.h: Changed function params to show also the
+	variable names in code completion of KDevelop.
+
+2006-10-10  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/hardware.[cpp,h]: Added function to change the brightness
+	of the laptop display (if supported by the hardware).
+	Added code comments and fixed some debug messages.
+
+2006-10-10  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/hardware.cpp: added missing debug messages
+
+2006-10-09  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/dbusHAL.[cpp,h]: changed DBus method call functions for
+	easier usage than the old one and removed one no longer needed
+	function. 
+	* src/dbusHAL.h: Changed function params to show also the 
+	variable names in code completion of KDevelop.
+	* src/hardware.cpp: Adapted exsting code the new functions.
+
+2006-10-06  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/dbusHAL.h: s/HAL_DEVICE_UDI/HAL_COMPUTER_UDI/
+	* src/hardware.[cpp,h]: Replaced strings with defines 
+	HAL_COMPUTER_UDI and HAL_PM_IFACE. 
+	Added new initial function to trigger a suspend and added new 
+	enum (suspend_type) to select the suspend/standby method for 
+	the call.
+
+	TODO: add check for PolicyKit policy for the suspend and 
+	      rework the dbus method call functions. We can maybe
+	      merge some functions. 
+
+2006-10-05  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/hardware.[cpp,h]: added new boolean member to hold info
+	if the machine is a laptop. Changed existing function to check
+	the formfactor and set laptop value, added new function to get
+	laptop value.
+	Added some code do constructor to init members and to get some
+	initial hardware information.
+
+2006-10-05  Danny Kukawka  <danny.kukawka@web.de>
+
+	Fixed some code comments (line breaks etc.).
+
+	* src/hardware.cpp:
+	* src/hardware_battery.h:
+
+2006-10-03  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/dbusHAL.[cpp,h]: removed HAL specific function to call
+	a powermanagement related function and added three generic 
+	functions to call a method on a DBUS interface (taked and 
+	adapted code from current powersave code base).
+	* src/hardware.[cpp,h]:  added a new function to get init 
+	brightness information as e.g. if change brightness is 
+	supported, how many brightness level are available and the 
+	current level.
+
+2006-10-01  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/dbusHAL.[cpp,h]: added function to check the supported
+	powermanagement/suspend functions and store the information
+	if e.g. suspend2disk is available as HAL interface and if not
+	if the machine support this via the kernel in general.
+	* src/hardware.[cpp,h]: added function to get a stringlist 
+	property from HAL for a given device.
+
+2006-09-29  Frank Seidel  <frank.seidel@web.de>
+
+	* src/hardware_battery.[cpp,h]: Very very first implementation
+	of class Battery. Probably full of many ugly bugs, but its
+	a start.
+
+2006-09-28  Frank Seidel  <frank.seidel@web.de>
+
+	* src/dbusHAL.cpp: Fixed typo in halQueryCapability (libhal
+	function call).
+
+2006-09-28  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/hardware.[cpp,h]: Added some more code comments and new
+	functions to init hardware information about AC adapter and the 
+	lidclose button.
+
+2006-09-26  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/dbusHAL.[cpp,h]: code comments
+	* src/hardware.[cpp,h]: addes some empty functions and a QDicr
+	for udis of devices except batteries (e.g. AC, Lid, buttons ...)
+	* src/pdaemon.cpp: added comments about the state of port code
+	and functions to class dbusHAL
+
+2006-09-25  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/hardware.cpp: Fixed typo in debug msg. Filled destructor.
+
+2006-09-25  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/hardware.[cpp,h]: added functions to check if the machine 
+	is a laptop and if the machine support ACPI/APM.
+
+	TODO: add some line of code to check for ACPI/APM if HAL is not 
+	      present.
+
+2006-09-25  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/hardware.[cpp,h]: Added more to constructor and init. Copied 
+	code to get CPU Freq information for the detailed dialog from
+	pdaemon.[*] to this file. Updated some code docu. 
+
+2006-09-25  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/dbusHAL.cpp: init HAL context in constructor
+	* src/hardware.[cpp/h]: conntect to DBUS/HAL in constructor and 
+	added initial function to filter and handle events from DBUS/HAL
+	via signal from dbusHAL class. 
+
+2006-09-23  Danny Kukawka  <danny.kukawka@web.de>
+
+	Added new basic classes to handle hardware information, as e.g.
+	battery, lid state or AC adapter state, and the powermanagement
+	related functions as e.g. suspend2*/standby or CPU freq.
+
+	NOTE: this are only initial files and classes, we maybe replace or
+	      rename them while development.
+
+	* src/Makefile.am:
+	* src/hardware.cpp:
+	* src/hardware.h:
+	* src/hardware_battery.cpp:
+	* src/hardware_battery.h:
+
+2006-09-23  Danny Kukawka  <danny.kukawka@web.de>
+
+	* Doxyfile: changed version string
+	* src/Makefile.am: added dbusHAL class to make
+	* src/dbusHAL.[cpp,h]: Changed name of the class to dbusHAL and 
+	added connection to HAL and code to hold LibHalContext. The class 
+	contains now mew functions to search for devices and to get device 
+	information from HAL. Also added: new function to call 
+	org.freedesktop.Hal.Device.SystemPowerManagement methodes on HAL 
+	via DBUS. 
+
+2006-09-04  Danny Kukawka  <danny.kukawka@web.de>
+
+	Added new class to monitor HAL signals (DeviceAdded, DeviceRemoved, 
+	PropertyModified, Condition) and Connect/Disconnect events via DBUS. 
+
+	This class is not used atm in the code, but should replace the class
+	dbusPowersave in the future.
+	
+	TODO: add code to init and hold hal_context for libhal.
+
+	* src/dbusHAL.cpp:
+	* src/dbusHAL.h:
+
+2006-09-04  Danny Kukawka  <danny.kukawka@web.de>
+
+	* kpowersave.kdevelop: fixed kdevelop file to get code completion
+	running.
+
+2006-08-15  Frank Seidel  <frank.seidel@web.de>
+	
+	Trivial fix for SUSE bug #198237 (when powersaved wasn't
+	running and kpowersave starts, a wrong error about dbus
+	was shown).
+
+	* src/pdaemon.cpp:
+
+2006-08-11  Danny Kukawka  <danny.kukawka@web.de>
+
+	updated files to current admin dir from KDE 3.5.4 and added 
+	two missing files from the KDE SVN directory.
+
+	* admin/*:
+
+2006-08-11  Danny Kukawka  <danny.kukawka@web.de>
+
+	* doc/doxy/fixed_bugs.dox: updated list
+	* src/infodialog.cpp: added string "KPowersave" to window 
+	caption (SUSE bug #198237) of warning messages via infodialog 
+
+2006-08-11  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/pdaemon.cpp: cleanup: removed unused code and replaced
+	code comment with debug message.
+
+2006-08-11  Danny Kukawka  <danny.kukawka@web.de>
+
+	Prepared for QT4 where FALSE is depricated. Replaced with false.	
+
+	* src/blacklisteditdialog.cpp:
+	* src/detaileddialog.cpp:
+	* src/kpowersave.cpp:
+	* src/pdaemon.cpp:
+	* src/pdaemon.h:
+
+2006-08-11  Danny Kukawka  <danny.kukawka@web.de>
+
+	Changed returnvalue of checkDaemon() and type of daemon_running
+	(in class pDaemon) from int to bool:
+
+	* src/detaileddialog.cpp:
+	* src/kpowersave.cpp:
+	* src/pdaemon.cpp:
+	* src/pdaemon.h:
+
+2006-07-17  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/detaileddialog.cpp: undo kpowersave part of commit r2374 
+	which not solve SUSE bug #186197
+
+2006-06-12  Danny Kukawka  <danny.kukawka@web.de>
+
+	again (re)tagged and released official update release v0.6.2
+
+2006-06-12  Danny Kukawka  <danny.kukawka@web.de>
+
+	Fixed SUSE bug #184076:
+
+	* ChangeLog.package, doc/doxy/changelog.dox: updated changelogs
+	* doc/doxy/fixed_bugs.dox: added fixed bug to list
+	* po/*.po, po/kpowersave.pot: removed "(messagebus)" and 
+	s/messagebus/dbus/ in all translations 
+	* src/infodialog.cpp: added command to adjust the size of the 
+	dialog before open.
+	* src/kpowersave.cpp: fixed message if dbus daemon is not 
+	running. Use correct script name and not the name from Fedora.
+
+2006-06-12  Danny Kukawka  <danny.kukawka@web.de>
+
+	(re)tagged and released official update release, version 0.6.2
+
+2006-06-12  Danny Kukawka  <danny.kukawka@web.de>
+
+	Fixed SLED bug ##183745:
+
+	* configure.in.in: added configure check to differ between
+	SUSE Linux and SLES/SLED as enterprise products
+	* README: changed link to bugzilla for SUSE Linux and SLED/SLES
+	* doc/doxy/fixed_bugs.dox: added fixed bug to list
+	* src/kpowersave.cpp: added new link for SLES/SLED bugzilla
+
+	* ChangeLog.package, doc/doxy/changelog.dox: updated changelogs
+	* packaging/*.spec: updated specs to current version
+	* packaging/FC5.kpowersave.spec: added new Fedora Core 5 spec
+
+2006-06-11  Danny Kukawka  <danny.kukawka@web.de>
+
+	tagged and released official update release, version 0.6.2
+
+2006-06-11  Danny Kukawka  <danny.kukawka@web.de>
+
+	* ChangeLog.package, doc/doxy/changelog.dox: updated 
+	changelogs from stable tree
+
+2006-06-11  Danny Kukawka  <danny.kukawka@web.de>
+
+	* configure.in.in: added configure check to detect K/Ubuntu
+	* README: changed link to Ubuntu bugzilla to launchpad.net
+	* src/kpowersave.cpp: added address for ALT Linux and Ubuntu
+	bugzilla for "Report a bug ..."
+
+2006-06-11  Danny Kukawka  <danny.kukawka@web.de>
+
+	* kpowersave.kdevelop: added KDE and QT3 libs to code completion
+	* src/inactivity.cpp: fixed compiler warning
+	* src/kpowersave.[cpp/h]: added DCOP function to open/close 
+	the detailed information dialog
+
+2006-06-07  Danny Kukawka  <danny.kukawka@web.de>
+
+	Updated translations back from SUSE/Novell translation team,
+	reworked and merged the files with existing translations:
+	
+	* po/es.po:
+	* po/fr.po:
+	* po/it.po:
+	* po/pt_BR.po:
+	* po/zh_CN.po:
+	* po/zh_TW.po:
+
+2006-06-07  Danny Kukawka  <danny.kukawka@web.de>
+
+	* doc/doxy/fixed_bugs.dox: updated list of fixed bugs in doc.
+
+2006-06-07  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/kpowersave.[cpp/h]: Added slightly adopted patch from 
+	Timo Hönig <thoenig@suse.de> to fix SUSE bug #176782 and 
+	enable change display brightness (if supported and enabled in
+	the current scheme) via the mousewheel over the applet icon.
+
+2006-06-07  Danny Kukawka  <danny.kukawka@web.de>
+
+	Updated dependencies to powersave version 0.12.18 in docs:
+
+	* README:
+	* doc/doxy/main.dox:
+
+2006-06-07  Danny Kukawka  <danny.kukawka@web.de>
+
+	Fixed SUSE bug #182515: Changed configure dialog to respect the 
+	rules for DPMS timouts from www.xfree86.org/current/DPMSLib.pdf.
+
+	* src/configure_Dialog.ui: Added new signal handlers to QSpinBoxes
+	for the DPMS timeouts
+	* src/configuredialog.[cpp/h]: added code to correct values for
+	the timouts to guaranty correct DPMS settings 
+
+2006-06-05  Danny Kukawka  <danny.kukawka@web.de>
+
+	* po/de.po: updated translation, added missing string
+
+2006-06-05  Danny Kukawka  <danny.kukawka@web.de>
+
+	Fixed errorhandling for DBUS,HAL and powersave connections (this
+	fix partly SUSE bug #168619) to display correct state:
+
+	* src/dbusPowersave.[cpp/h]: added new checks to detect: if HAL 
+	detached from the system message bus and if the user has the rights
+	to connect to powersaved dbus interface. Added function to access
+	information if user has the needed rights (check with a "Ping"). 
+	Also fixed some typos, removed withespaces, and replaced printf()
+	with myDebug().
+	* src/kpowersave.[cpp/h]: Added new function to show errormessages
+	related to problems with dbus (showDBusErrorMsg()), extended/
+	reorganised showHalErrorMsg(). Removed no longer needed code
+	since we now are directly informed if HAL gone. Changed 
+	updateTooltip() to get correct tooltip if HAL not running. 
+	* src/pdaemon.[cpp/h]: reworked handling regarding to the changes
+	above and to handle new information about the tree central services
+	for KPOwersave (DBUS,powersave,HAL). Updated code doc.
+	* configure.in.in: changed dependencies to powersave 0.12.18 
+	because of needed changes related to REPLY_NO_RIGHTS.
+
+2006-06-05  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/inactivity.cpp: added a check to catch the case, where (unknow
+	if this ever the case) the idletime is correct get from the X-Server.
+
+2006-06-02  Danny Kukawka  <danny.kukawka@web.de>
+
+	* po/fi.po: updated translations back from SUSE/Novell translation
+	team
+
+2006-06-02  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/config/kpowersaverc_default: added more programs to the 
+	autosuspend default blacklist: gmplayer,kaffeine,xine,mencoder
+
+2006-06-02  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/kpowersave.cpp: added check before autosuspend, if autosuspend
+	was disabled via the applet menu
+
+2006-06-02  Danny Kukawka  <danny.kukawka@web.de>
+
+	Code documentation fixes and updates to current code:
+
+	* doc/doxy/fixed_bugs.dox: Added fixed bug to list, back from 
+	kpowersave-CODE10 branch.
+	* doc/doxy/implemented.dox:
+	* doc/doxy/process.dox:
+	* src/inactivity.cpp:
+	* src/infodialog.cpp:
+	* src/kpowersave.cpp:
+	* src/kpowersave.h:
+	* src/screen.cpp:
+
+2006-06-02  Danny Kukawka  <danny.kukawka@web.de>
+
+	* doc/doxy/fixed_bugs.dox: added fixed buginfo
+	* src/inactivity.[cpp,h]: Added new function to workaround XServer bug
+	regarding to idleTime (dpms timeouts are abstracted, but should not) 
+	and DPMS timeouts (are currently additive - bug #180000). New function 
+	correct the idleTime if needed (related SUSE bug: #177788 / sf.net 
+	#1483392). For more info see comment in fixed_bugs.dox 
+	Todo: evaluate if there is a way to identify the versions of X where
+	      this was changed or get fixed. 
+
+2006-06-01  Danny Kukawka  <danny.kukawka@web.de>
+
+	* po/de.po: fixed german translation
+
+2006-05-29  Danny Kukawka  <danny.kukawka@web.de>
+
+	* po/hu.po: updated translations back from SUSE/Novell translation 
+	team
+
+2006-05-27  Danny Kukawka  <danny.kukawka@web.de>
+
+	* po/{bg,da,el,es,fi,fr,it,ja,km,nb,nl,pa,pl,pt,pt_BR,ru,sk,sl_SI,sv,
+	  tr,uk,zh_CN,zh_TW.}.po: merged two new dummy strings from pot file
+
+2006-05-27  Danny Kukawka  <danny.kukawka@web.de>
+
+	* po/de.po: updated german translation
+
+2006-05-27  Danny Kukawka  <danny.kukawka@web.de>
+
+	* po/{cs,hu}.po: updated translations back from SUSE/Novell
+	translation team
+
+2006-05-27  Danny Kukawka  <danny.kukawka@web.de>
+
+	* po/{fi,km,pl}.po: fixed strings (from last typo fixes)
+	* po/kpowersave.pot: added dummy strings for better error messages if
+	powersaved or the DBUS daemon is not running or accessable.
+
+2006-05-22  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/kpowersave.cpp/h: (list_CPUFreqPolicys): Added dcop function to 
+	list the supported CPU Frequency policies.
+	(do_setCPUFreqPolicy): Added dcop function to set the current CPUFreq 
+	policy.
+
+2006-05-22  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/kpowersave.cpp/h: (do_setScheme): added new dcop function to 
+	allow set the current scheme via kpowersave (see sf.net bug #1483392)
+	(disableAutosuspend): litte change, set first applet item to avoid
+	possible double action
+
+2006-05-22  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/eventsrc: updated missing translations back from SUSE/Novell 
+	translation team.
+
+2006-05-22  Danny Kukawka  <danny.kukawka@web.de>
+
+	* po/de.po: fixed typo in german translation
+
+2006-05-22  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/kpowersave.cpp: (disableAutosuspend): fixed sf.net bug #1483392
+	and set changes on autosuspend state via dcop interface back to the 
+	applet.
+
+2006-04-25  Danny Kukawka <danny.kukawka@web.de>
+
+	* src/eventsrc: added czech translations from SUSE/Novell translation
+	team, removed wrong translations of resume_from_suspend2ram_event
+	(ja,zh_CN,zh_TW)
+
+2006-04-24  Danny Kukawka  <danny.kukawka@web.de>
+
+	Added russian translations from Anton Farygin <rider@altlinux.com>
+	* src/eventsrc:
+	* src/kpowersave.desktop:
+	* src/kpowersave-autostart.desktop:
+
+2006-04-24  Danny Kukawka  <danny.kukawka@web.de>
+
+	* README: updated translation with file from Anton Farygin 
+	<rider@altlinux.com>
+	* po/ru.po: Changed link to ALT Linux bugzilla
+
+2006-04-24  Danny Kukawka <danny.kukawka@web.de>
+
+	* src/eventsrc: fixed a description and translation in eventsrc
+
+2006-04-18  Danny Kukawka  <danny.kukawka@web.de>
+
+	* kpowersave.kdevelop: updated version string for project to
+	"0.7.x - TRUNK"
+
+2006-04-18  Danny Kukawka  <danny.kukawka@web.de>
+
+	updated svn:ignore properties
+
+2006-04-18  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/*.cpp, src/*.h: removed doxygen \version tag from source files
+	to avoid annoying change of version with each new release.
+
+2006-04-18  Danny Kukawka  <danny.kukawka@web.de>
+
+	* doc/doxy/fixed_bugs.dox: added fixed bug to list.
+
+2006-04-18  Danny Kukawka  <danny.kukawka@web.de>
+
+	* configure.in.in: added check for headers from dbus-qt3-devel
+	package (copied from KNetworkMananger source). 
+
+2006-04-18  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/detaileddialog.cpp: fixed processorbar for multiprocessor/
+	-core machines without CPUFreq or Throttling support, if a CPU/
+	Core was deactivated (thanks to Daniel fot the hint). 
+
+2006-04-18  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/pdaemon.cpp: fixed problems with remaining time until full
+	charged with APM. Also cleaned up the code and removed no longer
+	needed/useless checks. (see SUSE bug #167296)
+
+2006-04-13  Danny Kukawka  <danny.kukawka@web.de>
+
+	Updated translations, back from SUSE/Novell translation team:
+	* po/fi.po:
+	* po/km.po:
+	* po/pl.po:
+
+2006-04-12  Danny Kukawka  <danny.kukawka@web.de>
+
+	* doc/doxy/fixed_bugs.dox: added fixed bug to doc
+	* src/eventsrc: removed bad formated UTF8 
+
+2006-04-09  Danny Kukawka  <danny.kukawka@web.de>
+
+	Retagged v0.6.0 and released new version.
+
+2006-04-09  Danny Kukawka  <danny.kukawka@web.de>
+
+	* ChangeLog.package, doc/doxy/changelog.dox: updated Changelogs
+	* NEWS: updated release news for v0.6.0
+
+2006-04-09  Danny Kukawka  <danny.kukawka@web.de>
+
+	* doc/doxy/fixed_bugs.dox: added SUSE/Novell bug #164683
+	* src/detaileddialog.cpp: Added call setProcessorThrottling() 
+	every 2 secs if throttling is supported or if there is more than
+	one CPU/core in the system. Added call checkCPUSpeedThrottling()
+	in setProcessorThrottling() to get always actual data. Fixed
+	connects to use local pointer to pdaemon object.
+	This all (including changes since 2006-04-07) should fix 
+	SUSE/Novell bug #164683 
+	* src/inactivity.cpp: fixed compiler warning
+
+2006-04-09  Danny Kukawka  <danny.kukawka@web.de>
+
+	Added slightly adopted patch from Daniel Gollub to fake the CPU
+	system information in proc and sys for development and tests:
+	* configure.in.in: added configure option --enable-fake-cpu 
+	* src/pdaemon.cpp: added ifdef and related changes to fake
+	the path to the CPU informations under /tmp/foo
+
+	* src/pdaemon.cpp: fixed warning for compare unsigned and signed
+
+2006-04-09  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/detaileddialog.cpp: set processorbar to deactivated if the
+	cpuspeed < 0 (cpu is offline) and the machine only support 
+	throttling
+	* src/pdaemon.cpp: fixed throttling-case if cpu is offline
+
+2006-04-08  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/detaileddialog.cpp: reduced usage of getCPUNum(), fixed
+	display processor freq, if the cPU is back from offline. Added
+	check to reduce unneded changes in processorbars if nothing changed.
+	* src/detaileddialog.h: added private variable to store the numbers 
+	in the system
+	* src/pdaemon.cpp: reduced usage of getCPUNum() by replace with
+	a variable (numOfCPUs)
+	* src/pdaemon.h: added private variable to store the numbers in 
+	the system
+
+2006-04-07  Danny Kukawka  <danny.kukawka@web.de>
+
+	Tagged release v0.6.0
+
+2006-04-07  Danny Kukawka  <danny.kukawka@web.de>
+
+	Released new version v0.6.0
+
+2006-04-07  Danny Kukawka  <danny.kukawka@web.de>
+
+	* ChangeLog.package, doc/doxy/changelog.dox: updated changelogs
+	for release 0.6.0
+	* NEWS: updated release news for release 0.6.0
+
+2006-04-07  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/pdaemon.cpp: changed waiting intervall for powersave on
+	startup from 10 sec to 20 to avoid problems on slow machines and
+	with autologin (again).
+
+2006-04-05  Danny Kukawka  <danny.kukawka@web.de>
+
+	fixed date strings to last changes and reemoved the date from 
+	the future: 
+
+	* doc/cs/index.docbook:
+	* doc/de/index.docbook:
+	* doc/en/index.docbook:
+	* doc/fi/index.docbook:
+	* doc/hu/index.docbook:
+	* doc/nb/index.docbook:
+	* doc/pt/index.docbook:
+
+2006-04-05  Danny Kukawka  <danny.kukawka@web.de>
+
+	Branch official stable release 0.6.0.  Add two new Branches:	
+
+	- kpowersave-CODE10 (for SUSE 10.1, SLES 10 and SLED 10)
+	- kpowersave-0.6 (general stable branch)
+
+2006-04-05  Danny Kukawka  <danny.kukawka@web.de>
+
+	* po/de.po, src/eventsrc: fixed typos in german translations
+	* src/kpowersave-autostart.desktop, src/kpowersave.desktop:
+	copied missing translations from SUSE desktop files and 
+	removed not translated strings
+
+2006-04-04  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/kpowersave.cpp: changed address for bug reports if this 
+	is a SUSE package to opensuse wiki page for bug reports
+	* src/main.cpp: fixed address for bugreports in the about
+	dialog. This should be a mail adress, use now powersave-users ML.
+	* ChangeLog.package, doc/doxy/changelog.dox: updated Changelogs
+	* NEWS: updated release news.
+
+2006-04-04  Danny Kukawka  <danny.kukawka@web.de>
+
+	Prepared offical stable release v0.6.0:
+
+	* ChangeLog.package, doc/doxy/changelog.dox: updated Changelogs
+	* NEWS: update release news
+
+2006-04-04  Danny Kukawka  <danny.kukawka@web.de>
+
+	Prepare offical stable release 0.6 and remove kpowersave-CODE10
+	and kpowersave-0.6 branches to add new offical release 0.6. 
+
+	Reason: kpowersave is now featurecomplete for CODE10 and STABLE
+		and 0.6 was not released outside SUSE.
+
+	* ChangeLog.package, doc/doxy/changelog.dox: backported Changes
+	from deleted branches
+
+2006-04-04  Danny Kukawka  <danny.kukawka@web.de>
+
+	* doc/de/Makefile.am, doc/de/index.docbook, doc/de/*.png: Added new
+	german version of the handbook
+
+2006-04-03  Danny Kukawka  <danny.kukawka@web.de>
+
+	* doc/doxy/enhance.dox, doc/doxy/process.dox: Updated gnome-screensaver
+	related enhancement request.
+
+2006-04-03  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/screen.cpp: fixed fake shift keyevent, use correct keycode
+	and set delay to 0
+
+2006-04-03  Danny Kukawka  <danny.kukawka@web.de>
+
+	Added support for GNOME Screensaver for lock in a GNOME desktop
+	session:
+
+	* po/de.po, po/kpowersave.pot: added string for GNOME screensaver
+	* src/configuredialog.cpp, src/configuredialog.h: added GNOME
+	screensaver to configure dialog (only if a GNOME session is running)
+	* src/kpowersave.cpp: Fixed detection of GNOME session 
+	* src/screen.cpp, src/screen.h: Added support for detection of and 
+	lock with GNOME screensaver
+
+2006-04-02  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/config/kpowersaverc_default: added new configure variable
+	for emit faked keyevent after resume from suspend
+	* src/kpowersave.cpp, src/kpowersave.h: added function to call
+	screen:fakeShiftKeyEvent() after resume
+	* src/screen.h: changed fakeShiftKeyEvent to public SLOT
+	* src/settings.cpp, src/settings.h: added read new variable
+	timeToFakeKeyAfterLock from config file
+
+2006-04-01  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/Makefile.am: added -lXtst
+	* src/screen.cpp, src/screen.h: added new function so fake press
+	shift key to show the login screen on resume if the machine was 
+	locked on supend.
+
+2006-03-29  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/kpowersave.cpp: fixed errorhandling for YaST power-management
+	module. Added returncode 16 (user clicked on Cancel) as successful 
+	case to avoid error message. 
+
+2006-03-28  Danny Kukawka  <danny.kukawka@web.de>
+
+	Fixed UTF-8 in desktop files:
+	* src/kpowersave-autostart.desktop:
+	* src/kpowersave.desktop:
+
+2006-03-27  Danny Kukawka  <danny.kukawka@web.de>
+
+	Branch stable release 0.6.0 for SUSE.
+
+2006-03-27  Danny Kukawka  <danny.kukawka@web.de>
+
+	* ChangeLog.package, doc/doxy/changelog.dox: updated changelogs
+
+2006-03-27  Danny Kukawka  <danny.kukawka@web.de>
+
+	* NEWS: added last changes
+	* doc/doxy/enhance.dox: added gnome-screen-saver related
+	feature request for 0.6.x code tree (at least for SLES/SLED).
+
+2006-03-27  Danny Kukawka  <danny.kukawka@web.de>
+
+	Added older spec files for SUSE 9.3 and 9.2:
+	* packaging/SUSE9.2.kpowersave.spec:
+	* packaging/SUSE9.3.kpowersave.spec:
+
+2006-03-27  Danny Kukawka  <danny.kukawka@web.de>
+
+	Updated spec files for upcomming stable version:
+	* packaging/FC4.kpowersave.spec:
+	* packaging/SUSE10.0.kpowersave.spec:
+	* packaging/SUSE10.1.kpowersave.spec:
+	* packaging/mdk.cooker.kpowersave.spec:
+
+2006-03-27  Danny Kukawka  <danny.kukawka@web.de>
+
+	* NEWS: added release news
+	* README: Updated install section and added section with
+	dependency information and help/bugreport info
+	* configure.in.in: updated powersave dependency to current 
+	stable version 0.12.7
+
+2006-03-27  Danny Kukawka  <danny.kukawka@web.de>
+
+	* doc/doxy/enhance.dox, doc/doxy/process.dox: Added new planed 
+	features/enhancements for 0.7.x (devel)/0.8.x (stable) to the 
+	documentation.
+
+2006-03-27  Danny Kukawka  <danny.kukawka@web.de>
+
+	Prepare new release (v0.6.0-stable):
+
+	* Doxyfile: updated version string for code doc
+	* src/*.{cpp,h}: updated version strings
+
+2006-03-27  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/kpowersave.cpp: fixed tooltip to avoid adding string for 
+	charging battery (" -- battery is charging") if the battery is 
+	full (100%) and the machine is on AC, but the battery is reporting
+	charging (broken ACPI case).
+
+2006-03-27  Danny Kukawka  <danny.kukawka@web.de>
+
+	* po/*.po, po/kpowersave.pot: merged changes to po and pot file(s)
+	* src/configuredialog.cpp: fixed strings as proposed by Stefan
+	Seyfried
+
+2006-03-27  Danny Kukawka  <danny.kukawka@web.de>
+
+	* po/bg.poi, po/da.po, po/el.po, po/km.po, po/nl.po, po/pa.po, 
+	  po/ru.po, po/sk.po, po/sl_SI.po, po/sv.po, po/tr.po, po/uk.po:
+	Added merged versions of translation files 
+
+2006-03-27  Danny Kukawka  <danny.kukawka@web.de>
+
+	Added patch from Michael Biebl:
+	* configure.in.in: removed no longer needed check
+	* src/kpowersave.cpp: fixed connect for autosusend notify on resume
+
+2006-03-25  Danny Kukawka  <danny.kukawka@web.de>
+
+	* doc/fi/index.docbook: merged changes/fixes from the SUSE/Novell
+	translation team to the handbook
+
+2006-03-25  Danny Kukawka  <danny.kukawka@web.de>
+
+	* po/es.po, po/fi.po, po/fr.po, po/it.po, po/ja.po, po/pl.po, 
+	  po/pt.po, po/pt_BR.po, po/zh_CN.po, po/zh_TW.po: Updated language 
+	files with new translations from the SUSE/Novell translation team
+
+2006-03-24  Danny Kukawka  <danny.kukawka@web.de>
+
+	Updated and merged translations of comment and GenericName strings
+	from the SUSE/Novell translation team:
+	* src/eventsrc:
+	* src/kpowersave-autostart.desktop:
+	* src/kpowersave.desktop:
+
+2006-03-24  Danny Kukawka  <danny.kukawka@web.de>
+
+	* po/cs.po, po/de.po, po/hu.po, po/nb.po, po/pt.po: Updated 
+	translations, back from SUSE/Novell translation team
+	* po/kpowersave.pot: added current pot file
+
+2006-03-19  Danny Kukawka  <danny.kukawka@web.de>
+
+	* NEWS: added some infos for the next release
+
+2006-03-19  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/*.png, src/pics/*.png: optimized the size of the applet icons 
+	also with optipng and advdef
+
+2006-03-19  Danny Kukawka  <danny.kukawka@web.de>
+
+	* doc/$LANG/*.png: optimized the size of the png files 
+	additional with advdef -z -4. This reduce the file minus
+	~ 3%
+
+2006-03-19  Danny Kukawka  <danny.kukawka@web.de>
+
+	* doc/$LANG/*.png: optimized the size of the png files with
+	optipng -i0 -o5. This reduced the size of the files between
+	minus ~18% and ~28%
+
+2006-03-19  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/pics/cr22-action-laptoppower.png: fixed some pixel 
+
+2006-03-19  Danny Kukawka  <danny.kukawka@web.de>
+
+	* kpowersave.kdevelop: some automatic changes from kdevelop
+	* src/Makefile.am: Added new files (inactivity.*)
+	* src/autosuspend.cpp, src/autosuspend.h: moved basic code to 
+	a new class inactivity for reuse on dimm brightness on incativity
+	* src/inactivity.cpp, src/inactivity.h: new files/class with 
+	basic functions to detect inactivity and check blacklist
+	* src/kpowersave.cpp: changed name of signal for autosuspend
+
+2006-03-19  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/pdaemon.cpp: changed adding scheme to schemelist. First add
+	the scheme to list and then set specific schemes.
+	* src/schemes.cpp: Removed some todos and added checks to the
+	adding of specific schemes as e.g. ac_scheme. Set the specific
+	scheme only if the scheme is in the scheme list. Added check to
+	append() to avoid add scheme multiple times.
+
+2006-03-19  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/detaileddialog.cpp: fixed set processor bar for the first
+	open of the dialog. 
+
+2006-03-16  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/pdaemon.h: changed possition of include for Slackware to
+	be sure that config.h is loaded befor the check.
+
+2006-03-13  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/configuredialog.cpp: added string dummys for scheme specfic
+	CPU hotplugging support in the next development tree and planed 
+	feature for CODE 10 SP1.
+	Added some additional strings for 'Dimm dispaly on inactivity'.
+	All this strings added for new translation round.
+	* src/kpowersave.cpp: Added some string dummys for translate 
+	s2ram message 
+
+2006-03-13  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/main.cpp: updated code documentation and copyright header
+
+2006-03-13  Danny Kukawka  <danny.kukawka@web.de>
+
+	tagged release v0.5.11 (rc5)
+
+2006-03-13  Danny Kukawka  <danny.kukawka@web.de>
+
+	Prepared new release 0.5.11 (rc5):
+
+	* ChangeLog.package, doc/doxy/changelog.dox: udapted changelogs
+	* NEWS: added release news for 0.5.11
+	* src/*.cpp, src/*.h: updated version in code doc
+
+2006-03-13  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/detaileddialog.cpp: added slightly adopted patch from Timo 
+	Hoenig <thoenig@suse.de> to replace 'Mhz' with correct 'MHz'
+	* po/*.po, po/kpowersave.pot: updated translation files for this
+	changes.
+
+2006-03-13  Danny Kukawka  <danny.kukawka@web.de>
+
+	* doc/fi/index.docbook: fixed names of screenshots
+	* po/fi.po: updated from SUSE/Novell translation team
+	* po/pt.po: updated version from Hugo Costelha 
+	<hugo.costelha@gmail.com>
+	* src/eventsrc: added translation for Portuguese from Hugo Costelha
+
+2006-03-12  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/configuredialog.cpp: hide 'lock in lidclose' checkbox if the
+	machine is not a laptop 
+
+2006-03-12  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/pdaemon.cpp, src/pdaemon.h: fixed double include and moved
+	one include to cpp-file instead of header to avoid unneeded includes
+
+2006-03-12  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/pdaemon.cpp, src/pdaemon.h: added function to check if the 
+	machine is a Lpatop or not.
+
+2006-03-12  Danny Kukawka  <danny.kukawka@web.de>
+
+	Prepared for QT4 where TRUE is depricated. Replaced with true.
+	
+	* src/blacklisteditdialog.cpp:
+	* src/detaileddialog.cpp:
+	* src/kpowersave.cpp:
+	* src/pdaemon.cpp:
+	* src/pdaemon.h:
+	* src/settings.cpp:
+
+2006-03-11  Danny Kukawka  <danny.kukawka@web.de>
+
+	Code documentation related cleanups, added new todo
+
+	* src/configuredialog.cpp:
+	* src/dbusPowersave.h:
+	* src/detaileddialog.cpp:
+
+2006-03-11  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/pdaemon.cpp: added a check to setBrightness() which should
+	prevent set the lowest brightness level if this is not the same as
+	level from BrightnessMin. This should avoid set off the display
+	via scheme specific brightness settings (e.g. on ppc/pmu where 
+	lowest level 0 mean display off). (I don't like this fuzzy work-
+	around, but the powersave brightness interface does not work as
+	I would prefer ... atm)
+	* src/pdaemon.h: added new private variable for the number of 
+	available brightness level to avoid unneeded dbus calls, extended 
+	setBrightness() with a force_min option to force the given value.
+
+2006-03-11  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/configuredialog.cpp, src/configuredialog.h, 
+	  src/detaileddialog.cpp, src/detaileddialog.cpp:
+	renamed: s/maxBrightnessLevels/brightnessLevels/
+	* src/pdaemon.cpp, src/pdaemon.h: renamed variable and function
+	related to get the number of availabale brightness level, added new
+	helper function to simply get a integer value from powersave via DBUS
+	- this should reduce the code in this class, replaced code with call
+	the new helper function simpleGetIntegerValue(...)
+
+2006-03-10  Danny Kukawka  <danny.kukawka@web.de>
+
+	* removed SVN property executable from several files
+
+2006-03-09  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/detaileddialog.cpp: applied patch from Daniel Gollub to set the
+	processor icon correct if no battery is available and the battery
+	groupbox is hide.
+
+2006-03-09  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/schemes.cpp, src/schemes.h: added missing code documentation
+
+2006-03-09  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/kpowersave.h: whitespace fix
+	* src/kpowersave_debug.h: added copyright header and a doxygen comment
+
+2006-03-09  Danny Kukawka  <danny.kukawka@web.de>
+
+	* Doxyfile: updated EXCLUDE filelist related to the last name changes
+	of sourcefiles 
+
+2006-03-08  Danny Kukawka  <danny.kukawka@web.de>
+
+	Added patch from Holger Macht <hmacht@suse.de> to allow root always
+	to suspend/standby machine.
+
+	* src/kpowersave.cpp: Added check if current user is root and use
+	ADMIN_MESSAGE instead of ACTION_MESSAGE if uid==0
+	* src/pdaemon.cpp: If user is root set suspend/standby always to 
+	allowed
+
+2006-03-08  Danny Kukawka  <danny.kukawka@web.de>
+
+	* Doxyfile: Changed version from CVS-HEAD to SVN-trunk
+	* doc/doxy/enhance.dox: reorganized items and added new enhancement
+	for dimm display on inactivity
+	* doc/doxy/main.dox: updated infos and dependencies, added list
+	of distributions for which KPowersave is available and the releated
+	links 
+	* kpowersave.kdevelop: automatical changes from kdevelop
+
+2006-03-07  Danny Kukawka  <danny.kukawka@web.de>
+
+	tagged release v0.5.10 (rc4)
+
+2006-03-07  Danny Kukawka  <danny.kukawka@web.de>
+
+	* po/pl.po, src/eventsrc: added pl translations from Dawid Wróbel 
+	<cromo@klej.net>
+	* src/kpowersave-autostart.desktop, src/kpowersave.desktop: added
+	pl translations from Dawid Wróbel <cromo@klej.net> and cs translation
+	from the SUSE/Novell translation team
+
+2006-03-06  Danny Kukawka  <danny.kukawka@web.de>
+
+	* ChangeLog.package, doc/doxy/changelog.dox: added last change to 
+	the changelogs for the release
+	* NEWS: added info for new dependeny
+	* configure.in.in: added check for powersave >= 0.12.2
+
+2006-03-06  Danny Kukawka  <danny.kukawka@web.de>
+
+	Prepared new release 0.5.10 (rc4):
+
+	* ChangeLog.package, doc/doxy/changelog.dox: updated changelogs
+	* NEWS: added release news
+	* src/*.cpp, src/*.h: updated release version strings
+
+2006-03-06  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/config/kpowersaverc_default: added new config key to disable
+	force dpms of on lidclose
+	* src/kpowersave.cpp, src/kpowersave.h: Added new function to handle
+	lidopen event (now reset screen settings to avoid problems after call
+	xset on lidclose). Added call screen::forceDPMSOff() on lidclose to set
+	light on LCD off. Removed notification functions for lidclose and 
+	lidopen signals and merged them to existing functions/slots.
+	* src/screen.cpp, src/screen.h: added new function forceDPMSOff() to
+	shutdown the display via DPMS (call xset dpms force off).
+	* src/settings.cpp, src/settings.h: adde new variable and related 
+	read from config file to enable/disable force dpms off on lidclose.
+
+2006-03-06  Danny Kukawka  <danny.kukawka@web.de>
+
+	updated svn:ignore properties
+
+2006-03-06  Danny Kukawka  <danny.kukawka@web.de>
+
+	* po/pl.po: added updated translation by Dawid Wróbel <cromo@klej.net>
+
+2006-03-06  Danny Kukawka  <danny.kukawka@web.de>
+
+	* doc/*/*.png: added and updated icons for the handbook in the 
+	available language versions
+	* doc/cs/index.docbook, doc/en/index.docbook, doc/nb/index.docbook,
+	  doc/pt/index.docbook: Updated handbook (icon names and updated
+	renamed and removed icons)
+
+2006-03-06  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/pics/cr16-action-display.png, src/pics/cr22-action-display.png:
+	Added new icon generated from hicolor scalable svg icons to avoid
+	empty icon on distributions wich not ship this iconset.
+
+2006-03-06  Danny Kukawka  <danny.kukawka@web.de>
+
+	* doc/en/*.png: updated handbook-screenshots
+
+2006-03-06  Danny Kukawka  <danny.kukawka@web.de>
+
+	Updated language files, back from the SUSE/Novell translation team:
+
+	* po/es.po, po/fr.po, po/it.po, po/ja.po, po/km.po, po/pt_BR.po,
+	  po/zh_CN.po, po/zh_TW.po:
+
+2006-03-04  Danny Kukawka  <danny.kukawka@web.de>
+
+	Added slightly adopted patch from Daniel Gollub <dgollub@suse.de>
+	to check throttling state for each CPU. This should maybe effect
+	multiprocessor machines with throttling (but no CPUfreq) support 
+	
+	* src/detaileddialog.cpp: Changed to read correct throttling state
+	for each CPU
+	* src/pdaemon.cpp, src/pdaemon.h: extended getCPUThrottlingState()
+	to check each CPU and add the values to a QValueList
+
+2006-03-04  Danny Kukawka  <danny.kukawka@web.de>
+
+	* packaging/mdk.cooker.kpowersave.spec: added specfile for Mandriva
+	cooker
+
+2006-03-04  Danny Kukawka  <danny.kukawka@web.de>
+
+	* configure.in.in: added pkgconfig check for powersave libs (from 
+	Michael Biebl), added check to get the path to the dbus-socket. 
+	This should fix build on Mandriva, which use a different socket 
+	name/location.
+	* src/Makefile.am: fixed linking libs to use pkgconfig (from Michael
+	Biebl)
+	* src/dbusPowersave.cpp: replaced path to dbus socket with define
+	from configure
+
+2006-03-01  Danny Kukawka  <danny.kukawka@web.de>
+
+	* configure.in.in: fixed detection of distribution. Changed position
+	of Mandrake/Mandriva because they also ship redhat-release. Added
+	two more releasefile checks for Mandriva
+
+2006-03-01  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/detaileddialog.cpp: Changed constructor to only display
+	batterygroupbox only if the machine has min. one batterybay. This 
+	should hide the groupbox on workstations.
+	Fixed processor progressbars for multiprocessor/-core machines
+	without CPUfreq. Now display all progressbars with values, not only
+	the first. TODO: read throttling states for all CPUs/cores.
+	On machines without CPUfreq or throttling support changed text in
+	processor progressbars to only display the frequency and not also
+	percentages.
+
+2006-02-27  Danny Kukawka  <danny.kukawka@web.de>
+
+	tagged release v0.5.9 (rc3)
+
+2006-02-27  Danny Kukawka  <danny.kukawka@web.de>
+
+	* doc/fi/index.docbook: added updated Finish handbook version from
+	the SUSE/Novell translation team 
+	* po/cs.po, po/fi.po: added updated and complete translated po files
+	from the SUSE/Novell translation team
+
+2006-02-27  Danny Kukawka  <danny.kukawka@web.de>
+
+	Prepared new release 0.5.9 (rc3):
+
+	* ChangeLog.package, doc/doxy/changelog.dox: updated changelogs
+	* NEWS: added release news
+	* src/*.cpp, src/*.h: updated release version strings
+
+2006-02-27  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/detaileddialog.cpp: Added battery support for APM. 
+	NOTE: Currently HAL poll AC and battery every 2 sec. This produce
+	many events. This maybe result in more CPU usage and many rechecks
+	in KPowersave. --> fix HAL only to poll AC every 2 seconds and
+	battery maybe every 60 or 30 secs.
+	* src/kpowersave.cpp: added APM case to updateTooltip(): 
+	if charging and APM: only display percentage because we currently
+	get no remaining time values from HAL
+
+2006-02-27  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/detaileddialog.cpp: changed default if machine doesn't 
+	support throttling and cpufreq. In this case display only
+	CPU freq from /proc/cpuinfo 
+	* src/pdaemon.cpp, src/pdaemon.h: Added check if throttling is not
+	supported by machine, changed returnvalue for this from void to
+	boolean. This should fix e.g. machines with APM 
+	* src/kpowersave_debug.h: fixed myDebug to make function usable
+	within on-line if-else commands
+
+2006-02-23  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/detaileddialog.cpp: fixed display battery state in the
+	misc group, now remove the line if no battery present. 
+	TODO: fix powersave to not answer for powersave -s NORMAL if no 
+	battery is present in the machine, better print unknown
+
+2006-02-21  Danny Kukawka  <danny.kukawka@web.de>
+
+	* po/de.po: replaced "Stromstecker" with "Stromversorgung"
+
+2006-02-21  Danny Kukawka  <danny.kukawka@web.de>
+
+	* po/de.po: fixed translation for "unplugged"
+
+2006-02-21  Danny Kukawka  <danny.kukawka@web.de>
+
+	* po/hu.po: added updated and complete translated po file from 
+	the SUSE/Novell translation team 
+
+2006-02-21  Danny Kukawka  <danny.kukawka@web.de>
+
+	tagged release v0.5.8 (rc2)
+
+2006-02-20  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/autosuspend.cpp: removed the path to pidof. On Fedora 
+	Core 4 is no link from /sbin/pidof to /bin/pidof. Remove the 
+	absolute path because pidof should be in the PATH of user env.
+	* ChangeLog.package, doc/doxy/changelog.dox, NEWS: updated for
+	this fix 
+	* po/kpowersave.pot, po/*.po: fixed translation
+
+2006-02-20  Danny Kukawka  <danny.kukawka@web.de>
+
+	Prepared new release 0.5.8 (rc2):
+
+	* ChangeLog.package, doc/doxy/changelog.dox: Updated changelogs
+	* NEWS: added releasenotes
+	* src/*.h, src/*.cpp: updated version strings
+
+2006-02-20  Danny Kukawka  <danny.kukawka@web.de>
+
+	* po/*.po: merged new string 
+
+2006-02-20  Danny Kukawka  <danny.kukawka@web.de>
+
+	* po/kpowersave.pot: added string for charging battery
+	* src/detaileddialog.cpp: remove whitespaces in code doc 
+	* src/kpowersave.cpp: added extra string if machine is charging
+
+2006-02-19  Danny Kukawka  <danny.kukawka@web.de>
+
+	* po/*.po: updated/merged translation files
+
+2006-02-19  Danny Kukawka  <danny.kukawka@web.de>
+
+	* po/Makefile.am: added some help make commands for translations 
+	* po/kpowersave.pot: updated
+	* src/configuredialog.cpp: removed outcommented tooltip string 
+
+2006-02-19  Danny Kukawka  <danny.kukawka@web.de>
+
+	* po/kpowersave.pot: update pot file for the translation round
+	* src/detaileddialog.cpp: removed blank the string for AC state 
+	because we get a translation round.
+
+2006-02-19  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/detaileddialog.cpp, src/detaileddialog.h: replaced layout for
+	battery and processor bars with QGridLayout to be sure all widgets
+	have the same size. Replaced picture for total battery fuel state 
+	with a string. Cleaned up the code.
+	* src/pics/cr22-action-summary.png: Removed no longer needed pic.
+
+2006-02-19  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/configuredialog.cpp: added icon to the 'Configure Notifications'
+	button
+
+2006-02-18  Danny Kukawka  <danny.kukawka@web.de>
+
+	Renamed the *.ui files to the same name syntax/style:
+
+	* src/Makefile.am: related fixed
+	* src/blacklist_edit.ui: renamed to blacklistedit_Dialog.ui
+	* src/blacklisteditdialog.cpp/h: related code changes
+	* src/kpowersave_configure.ui: renamed to configure_Dialog.ui
+	* src/configureDialog.cpp/h: renamed to configuredialog.cpp/h and 
+	related code changes
+	* src/detailed_dialog.ui:renamed to detailed_Dialog.ui
+	* src/detaileddialog.cpp/h: related code changes
+	* src/info_dialog.ui: renamed to info_Dialog.ui
+	* src/infodialog.cpp/h: related code changes
+	* src/kpowersave.h: related code changes
+
+2006-02-17  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/configureDialog.cpp: fixed string
+	* src/eventsrc: Added new events and default settings. including the
+	german translation of the comments.
+	* src/kpowersave.cppn src/kpowersave.h: Added new KNotify events for:
+	suspend (3), resume (3), scheme switched (5), lidclosed, lidopened. 
+	Fixed code comments and cleanups.
+	* src/pdaemon.cpp, src/pdaemon.h: Added new signals for: lidopened,
+	each resume type ( resumedFrom(QString) ) 
+
+2006-02-17  Danny Kukawka  <danny.kukawka@web.de>
+
+	Removed no longer needed parts (sound notify) from handbook.
+	Also removed 2 screenshots from the effected dirs.
+	TODO:  need to make new screenshots and add missing pics. 
+	
+	* doc/cs/index.docbook:
+	* doc/en/index.docbook:
+	* doc/fi/index.docbook:
+	* doc/hu/index.docbook:
+	* doc/nb/index.docbook:
+	* doc/pt/index.docbook:
+
+2006-02-17  Danny Kukawka  <danny.kukawka@web.de>
+
+	* po/Makefile.am: added messages_merge and messages_stat
+	* po/*.po, po/kpowersave.pot: updated to current code. We need new
+	review for the translations. Cleaned up no longer needed strings 
+	and useless default strings.
+
+	Fixed i18n strings: 
+	* src/autosuspend.cpp:
+	* src/detaileddialog.cpp:
+	* src/kpowersave.cpp:
+	* src/kpowersave_configure.ui:
+
+2006-02-17  Danny Kukawka  <danny.kukawka@web.de>
+
+	Added slightly adopted and extended patch from Michael Biebl 
+	<biebl@teco.edu> to replace sound event settings with KNotify:
+
+	* src/Makefile.am: Added new eventsrc for KNotify to make
+	* src/configureDialog.cpp, src/configureDialog.h, 
+	  src/kpowersave_configure.ui: Removed sound settings from scheme 
+	section and the general sound settings. Added a checkbox to disable 
+	notifications per scheme in the scheme section->misc.
+	Changed: Added a new button to general settings to start the KNotify 
+	config dialog also from the configure dialog, fixed ui files for KDE 
+	user interface style guide, cleanups
+	* src/eventsrc: Added define and defaults for events.
+	Changed: Added events for different battery states and added german
+	translation for the comments. NOTE: need to be translated!
+	* src/kpowersave.cpp, src/kpowersave.h: Added menu entry to start 
+	the KNotify config dialog to configure the notifications. Changed
+	handling for events, removed not needed sound events and replaced 
+	with KNotify events (AC adapter, Battery states, Autosuspend started)
+	Changed: Fixed messagetexts, fixed menu entry icon, KDE style guide
+	changes, i18n fixes, cleanups
+	* src/settings.cpp, src/settings.h: Removed no longer needed code
+	regarding to settings for sound events
+
+2006-02-16  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/Makefile.am: comment out rule for kpowersaveui.rc
+	* src/kpowersaveui.rc: removed not needed file from SVN tree
+
+2006-02-16  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/kpowersave.cpp, src/kpowersave.h: Added dcop function to
+	open configure dialog.
+
+2006-02-16  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/COPYING, src/NEWS: cleanup: removed doubled files which 
+	are also available in topdir
+
+2006-02-16  Danny Kukawka  <danny.kukawka@web.de>
+
+	* Makefile.am: added new Makefile.am from KDevelop
+	* Makefile.am.in: removed/replaced with Makefile.am
+
+2006-02-16  Danny Kukawka  <danny.kukawka@web.de>
+
+	* kpowersave.kdevelop: updated KDevelop project file, removed 
+	svn as source verserion system because of crashes of KDevelop.
+
+2006-02-14  Danny Kukawka  <danny.kukawka@web.de>
+
+	* po/pa.po: fixed path to powersaved with patch from Michael Biebl
+
+2006-02-13  Danny Kukawka  <danny.kukawka@web.de>
+
+	Added slightly adopted patch from Daniel Gollub <dgollub@suse.de>
+	to display cpu bar if machine only support throttling:
+
+	* src/detaileddialog.cpp, src/detaileddialog.h: Added throttling
+	switch if machine not support cpufreq. 
+	Changes: Removed usage of pdaemon pointer and replaced with pd. 
+	Moved setTextEnabled() to constructor to reduce unneeded calls.
+	* src/pdaemon.cpp, src/pdaemon.h: Added new functions to read 
+	throttling information and cpu freq from proc. 
+	Changes: Closed filepointer in new functions and added check if 
+	stream reaches the end of file. Added some checks and set default 
+	value for cpu_throttling.
+
+2006-02-13  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/pdaemon.cpp, src/pdaemon.h: added new signal for throttling
+	events
+
+2006-02-13  Danny Kukawka  <danny.kukawka@web.de>
+
+	* po/bg.po, po/fr.po, po/pa.po: Fixed path to powersaved in 
+	translation files (I hate this!)
+
+2006-02-13  Danny Kukawka  <danny.kukawka@web.de>
+
+	Prepared new release 0.5.7 (rc1):
+
+	* ChangeLog.package, doc/doxy/changelog.dox: updated changelogs
+	* NEWS: added release news 
+	* src/*.cpp src/*.h: updated version string
+
+2006-02-13  Danny Kukawka  <danny.kukawka@web.de>
+
+	* packaging/FC4.kpowersave.spec: updates spec files
+	* packaging/SUSE10.0.kpowersave.spec,
+	  packaging/SUSE10.1.kpowersave.spec: added spec files for SUSE 10.0
+	and SUSE 10.1 build system
+
+2006-02-13  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/detaileddialog.cpp: Added brightness support and
+	battery state infos to detailed dialog
+
+2006-02-13  Danny Kukawka  <danny.kukawka@web.de>
+
+	* po/es.po, po/fr.po, po/it.po, po/ja.po, po/pt_BR.po
+	  po/zh_CN.po po/zh_TW.po: added updated and remerged 
+	translation files from the SUSE/Novell translation team
+
+2006-02-13  Danny Kukawka  <danny.kukawka@web.de>
+
+	Removed not translated Polish help/handbook from SVN:
+
+	* doc/pl/Makefile.am:
+	* doc/pl/index.docbook:
+
+2006-02-13  Danny Kukawka  <danny.kukawka@web.de>
+
+	Added new Finnish and Polish help/handbook from SUSE/Novell 
+	translation team:
+
+	* doc/fi/Makefile.am, doc/fi/index.docbook:
+	* doc/pl/Makefile.am, doc/pl/index.docbook:
+
+2006-02-13  Danny Kukawka  <danny.kukawka@web.de>
+
+	* po/bg.po, po/fi.po, po/km.po (new): added updated and 
+	remerged translation files from the SUSE/Novell translation team
+
+2006-02-13  Danny Kukawka  <danny.kukawka@web.de>
+
+	* po/pt.po: added updated and remerged translation files from 
+	the SUSE/Novell translation team
+
+2006-02-10  Danny Kukawka  <danny.kukawka@web.de>
+
+	* po/hu.po, po/nl.po: added updated and remerged translation 
+	files from the SUSE/Novell translation team
+
+2006-02-08  Danny Kukawka  <danny.kukawka@web.de>
+
+	* po/cs.po, po/nb.po: added updated and remerged translations
+	from the SUSE/Novell translation team
+	* po/zh_CN.po: merged strings from Dawei Pang with new 
+	language file from SUSE/Novell translation team
+
+2006-02-07  Danny Kukawka  <danny.kukawka@web.de>
+
+	* po/pt.po: added updated language file from
+	Flávio Moringa <flavio.moringa@caixamagica.pt>
+	* src/*.desktop: updated pt comment from Flávio Moringa
+	* po/es.po, po/fr.po, po/it.po, po/ja.po, po/pt_BR.po,
+	  po/zh_TW.po: added updated and remerged translation files
+	from the SUSE/Novell translation team
+
+2006-02-07  Danny Kukawka  <danny.kukawka@web.de>
+
+	Applyed patch from Michael Biebl <biebl@teco.edu>:
+
+	* configure.in.in: removed unneeded checks for pkgconfig this 
+	should be done automatically m4-macros 
+	* po/*.po, po/kpowersave.pot, src/kpowersave.cpp: replaced 
+	path to start powersave with /etc/init.d/powersaved
+
+2006-02-07  Danny Kukawka  <danny.kukawka@web.de>
+
+	* po/zh_CN.po: updated from Dawei Pang <pangdae@gmail.com>
+
+2006-02-06  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/kpowersave-autostart.desktop, src/kpowersave.desktop:
+	updated translations in file and remove wrong, old 
+	translations
+
+2006-02-06  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/detaileddialog.cpp: fixed display CPU Freq Policy on
+	machines without cpufreq support. Should be carefull with
+	usage of enums and checks like 'enum<=0'.
+
+2006-02-06  Danny Kukawka  <danny.kukawka@web.de>
+
+	Prepared new release 0.5.6:
+
+	* NEWS: added release news
+
+2006-02-06  Danny Kukawka  <danny.kukawka@web.de>
+
+	Prepared new release 0.5.6:
+
+	* configure.in.in: removed not working header checks,
+	changed package version to SVN_TRUNK to replace with
+	mk_powersave_package
+	* ChangeLog.package, doc/doxy/changelog.dox: 
+	update Changelog and NEWS
+	* src/main.cpp: changed package version to SVN_TRUNK to 
+	replace with mk_powersave_package
+	* po/de.po: fixed strings 
+
+2006-02-06  Danny Kukawka  <danny.kukawka@web.de>
+
+	Added patch from Daniel Gollub <dgollub@suse,de>:
+
+	* configure.in.in: added check for powerlib.h and dbus
+	header to configure and stop if missing
+	* src/Makefile.am: changed position and variable for 
+	xgettext to enable make messages.
+
+2006-02-06  Danny Kukawka  <danny.kukawka@web.de>
+
+	* doc/pt/Makefile.am, doc/pt/index.docbook: added new
+	Portuguese handbook from SUSE/Novell translation team
+	* po/pt.po: added updated and remerged translation file
+	from the SUSE/Novell translation team
+	* po/zh_CN.po: added updated language file from 
+	Dawei Pang <pangdae@gmail.com>
+
+2006-02-06  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/detaileddialog.cpp: fixed by Daniel Gollub catched
+	bug in detailed dialog which increase the nubmers of 
+	function calls of setProcessor() with each new event from
+	powersave. Removed connect setProcessor to signal 
+	generalDataChanged() from pdaemon.
+
+2006-02-06  Danny Kukawka  <danny.kukawka@web.de>
+
+	* po/nb.po: added updated and remerged translation file
+	from the SUSE/Novell translation team, fixed one string
+
+2006-02-05  Danny Kukawka  <danny.kukawka@web.de>
+
+	* doc/hu/index.docbook, doc/hu/*.png: removed and
+	changed some pics to reduce package size
+	* doc/nb/index.docbook, doc/nb/*.png: removed and
+	changed some pics to reduce package size
+	* po/*.po, po/kpowersave.pot: fixed pot files (removed
+	translated strings) and releated fixes in the po files
+
+2006-02-05  Danny Kukawka  <danny.kukawka@web.de>
+
+	* doc/en/index.docbook: removed and replaced some
+	of the pics in the docu 
+	* doc/en/en_configdialog_general_autosuspend.png,
+	  doc/en/en_configdialog_schemes_dpms.png,
+	  doc/en/en_configdialog_yast.png,
+	  doc/en/en_configdialog_general_lock.png: removed
+	this pictures to reduce the size of the package
+	* doc/en/en_configdialog_schemes_screen.png,
+	  doc/en/en_configdialog_schemes.png: changed this
+	pictures to reuse them in different places in the
+	handbook to reduce the size of the package
+
+2006-02-05  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/detaileddialog.cpp: added new summary battery
+	progress bar if there are more than one battery bays.
+	* src/pics/cr22-action-summary.png: new icon for
+	the detailed dialog
+
+2006-02-05  Danny Kukawka  <danny.kukawka@web.de>
+
+	* doc/cs/Makefile.am: added Makefile.am for cs help
+	* src/pdaemon.h: added header for Slackware 10.2 within
+	a ifdef, because this is not needed on other distros
+
+2006-02-03  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/autosuspend.cpp: changed /sbin/pidof to /bin/pidof
+	(thanks to Michael Biebl for the bug tracking). Emit
+	a errormessage if the call of pidof fails and added
+	debug informations to the class
+	* src/autosuspend.h: added new signal to forward
+	error messages to class kpowersave
+	* src/kpowersave.cpp: Connect new autosuspend signal
+	to display the error msg.
+
+2006-02-03  Danny Kukawka  <danny.kukawka@web.de>
+
+	* po/pl.po: added new version from Dawid Wróbel 
+	<cromo@klej.net>
+
+2006-02-03  Danny Kukawka  <danny.kukawka@web.de>
+
+	* doc/cs/index.docbook: fixed language mark to Czech
+
+2006-02-03  Danny Kukawka <danny.kukawka@web.de>
+
+	* doc/cs/index.docbook: added Czech version of the 
+	handbook (from SUSE/Novell translation team)
+
+2006-02-03  Danny Kukawka  <danny.kukawka@web.de>
+
+	* po/bg.po: added updated and remerged translation file
+	from the SUSE/Novell translation team, removed some 
+	fuzzy marks
+
+2006-02-02  Danny Kukawka  <danny.kukawka@web.de>
+
+	* po/fi.po: added updated and remerged translation file 
+	from the SUSE/Novell translation team
+
+2006-02-02  Danny Kukawka  <danny.kukawka@web.de>
+
+	* po/pl.po: added slightly fixed new polish language file 
+	from Dawid Wróbel <cromo@klej.net>
+
+2006-02-01  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/kpowersave.cpp, src/pdaemon.cpp, src/pdaemon.h:
+	removed enum BAT_CHARG and replaced with define from 
+	libpower
+
+2006-02-01  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/detaileddialog.cpp: fixed problem with display current
+	CPU freq if the machine doesn't support CPU Freq Policy
+
+2006-01-30  Danny  <danny.kukawka@web.de>
+
+	* po/nl.po: updated nl language file
+
+2006-01-30  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/detaileddialog.cpp: disable battery progress bar
+	if the batterybay is empty (bettery is not present) and
+	reset to enabled if battery is added
+
+2006-01-30  Danny Kukawka  <danny.kukawka@web.de>
+
+	Prepared new release 0.5.5:
+	
+	* ChangeLog.package, NEWS, doc/doxy/changelog.dox: Updated 
+	Changelogs and NEWS for the release
+	* configure.in.in, src/*.cpp, src/*.h: updated version 
+	strings in the source
+
+2006-01-30  Danny Kukawka  <danny.kukawka@web.de>
+
+	* po/de.po: fixed/formated string
+	* src/configureDialog.cpp: changed translation string
+	* src/kpowersave_configure.ui: moved 'Edit Blacklist ...' 
+	button for schemes to avoid resize dialog while switch 
+	pages.
+
+2006-01-30  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/detailed_dialog.ui: reworked detailed dialog after
+	discussion and welcome criticism from Timo Hönig based on a 
+	mocup from Timo. Thanks!
+	* src/detaileddialog.cpp, src/detaileddialog.h: added patch 
+	from Daniel Gollub <dgollub@suse.de> to fix problems if a 
+	CPU is set offline. 
+	Added changes releated to the new designed dialog. Added 
+	icons to show the current battery state as in the applet 
+	and added icon for the current scheme. Fixed some strings
+	from the patch above to get translation in this translation
+	round (need to fix them for the next round)
+	* src/kpowersave.cpp, src/kpowersave.h: Added new pixmap 
+	with the current applet icon and give a reference to the
+	detailed dialog to have there a actuall icon.
+	* src/pdaemon.cpp, src/pdaemon.h: added patch from Daniel 
+	Gollub <dgollub@suse.de> to fix problems with offline 
+	CPUs on multiprocessor machines.
+	* src/pics/cr22-action-processor.png: added new icon for
+	the processor group in detailed dialog 
+	* src/pics/README: cleaned up and added comment about the
+	new icon (came from kids-icon-package).
+
+2006-01-27  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/kpowersave.cpp: use now invokeBrowser() for
+	open bugreport website and cleaned up includes.
+
+2006-01-27  Danny Kukawka  <danny.kukawka@web.de>
+
+	* po/de.po: removed translator string --> if not 
+	translated the page about translator is not shown in
+	the 'About KPowersave' dialog.
+	* po/kpowersave.pot: removed translator string
+
+2006-01-27  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/pics/cr16-action-scheme_advanced_powersave.png,
+	  src/pics/cr22-action-scheme_advanced_powersave.png:
+	Added icons for the new 'Advanced Powersave' scheme
+	* src/configureDialog.cpp, src/kpowersave.cpp: integrated
+	the new icon.
+	* src/pics/cr32-action-laptoppower.png: removed old, not
+	needed really ugly icon
+
+2006-01-27  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/detailed_dialog.ui: changed default size to 400x120
+	* src/detaileddialog.cpp: changed handling if remaining
+	minutes return -1 (set only percentage)
+
+2006-01-27  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/detaileddialog.cpp: fixed problem with update
+	battery progress bar if battery is removed from slot.
+	Changed interval for check processor from 500 to 333 ms
+	to use the same default value as powersave.
+
+2006-01-27  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/detaileddialog.cpp, src/detaileddialog.h:
+	connect to new signal from pdaemon batteryInfoEvent() and 
+	refresh battery infos. Added refresh processor info every
+	500 ms, cleanded up included headers.
+	* src/pdaemon.cpp, src/pdaemon.h: Added new signal 
+	batteryInfoEvent() to refresh detailed dialog and prevent
+	oversee remove battery. 
+
+2006-01-26  Danny Kukawka  <danny.kukawka@web.de>
+
+	* po/de.po: added translator
+	* po/kpowersave.pot: added translator strings
+	* src/main.cpp: Added new strings for translator name and
+	email adress. This should prevent display KDE defaults.
+
+2006-01-26  Danny Kukawka  <danny.kukawka@web.de>
+
+	* po/*.po: merged po files with updated pot file
+
+2006-01-26  Danny Kukawka  <danny.kukawka@web.de>
+
+	* po/de.po: Fixed string
+	* po/kpowersave.pot: fixed 'Dimm' with 'Dim'
+	* src/kpowersave.cpp: fixed 'Dimm' with 'Dim'
+
+2006-01-26  Danny Kukawka  <danny.kukawka@web.de>
+
+	* po/de.po: Added new strings and translated them.
+	* po/kpowersave.pot: added new strings from I18N_NOOP and
+	from the help menu
+	* src/Makefile.am: Added new tag I18N_NOOP to make messages 
+
+2006-01-26  Danny Kukawka  <danny.kukawka@web.de>
+
+	* NEWS: fixed version string
+	* src/configureDialog.cpp: fixed spell from 'dimm' to 'dim'
+	* po/*.po, po/kpowersave.pot: fixed spell from 'dimm' to 'dim'
+	* po/de.po: updated and translated german language file
+
+2006-01-25  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/kpowersave.cpp, src/kpowersave.h: Added new help menu
+	to the applet. This menu provide: open KPowersave handbook,
+	show About dialog (About, Authors, Thanks To, Licence 
+	Agreement) and a 'Report a bug' entry which open a browser
+	window and open sf.net bug section.
+	* src/main.cpp: reformated the code and added new infos
+	for the About dialog.
+
+2006-01-24  Danny Kukawka  <danny.kukawka@web.de>
+
+	* po/kpowersave.pot: removed double definitions
+	* po/*.po: merged with new pot file
+
+2006-01-24  Danny Kukawka  <danny.kukawka@web.de>
+
+	* po/kpowersave.pot: updated to current source
+
+2006-01-24  Danny Kukawka  <danny.kukawka@web.de>
+
+	Added dummy strings for the next translation round:
+	* src/configureDialog.cpp: for dimm brightness on inactivity 
+	and runtime powermanagement
+	* src/detaileddialog.cpp: for additional information
+	* src/kpowersave.cpp: for runtime powermanagement and 
+	dimm brightness
+
+2006-01-24  Danny Kukawka  <danny.kukawka@web.de>
+
+	* packaging/FC4.kpowersave.spec: Added new dir for build files
+	and the current spec for Fedora Core 4
+
+2006-01-23  Danny Kukawka  <danny.kukawka@web.de>
+
+	Prepared new release 0.5.4:
+
+	* ChangeLog.package, doc/doxy/changelog.dox, NEWS: updated 
+	Changelogs and news
+	* doc/doxy/enhance.dox, doc/doxy/implemented.dox: updated 
+	current status of feature implemenation/process
+	* src/detaileddialog.cpp/h: update copyright header
+	* src/*.cpp, src/*.h: updated version string to 0.5.4
+
+2006-01-23  Danny Kukawka  <danny.kukawka@web.de>
+
+	* doc/doxy/powersave_msgs.dox: updated processor related events
+	in the code dokumentation
+	* src/detaileddialog.cpp: added additional check for current
+	cpu frequency to get current data 
+	* src/pdaemon.cpp: added new processor related events (.busy and
+	.idle) and changed sysfs path for max. cpu freqency to prevent
+	problems with machines as e.g. DELL D600
+
+2006-01-23  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/detailed_dialog.ui: added new QLabel to display the 
+	information values with right aligned text and bold. Added
+	new line to separate for better view.
+	* src/detaileddialog.cpp, src/detaileddialog.h: added current 
+	scheme, current cpufreq policy and if powersave daemon is running
+	to the dialog.
+
+2006-01-23  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/detailed_dialog.ui: fixed ui-file with fixuifiles 
+	* src/detaileddialog.cpp: Changed CHARG_STATE_CHARG_DISCHARG case
+	and display only the current percentage. Added i18n() for some
+	strings, set caption correct for dialog.
+
+2006-01-23  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/detaileddialog.cpp: added code comments, (re)moved some
+	variables.
+	* src/detaileddialog.h: added code comments, added copyright
+	header. changed SLOTs, pdaemon pointer and QValueLists from 
+	public to private.
+
+2006-01-23  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/kpowersave.cpp, src/kpowersave.h: Added code comments,
+	fixed code format.
+
+2006-01-23  Danny Kukawka  <danny.kukawka@web.de>
+
+	Added slightly adopted patch from Daniel Gollub <dgollub@suse.de>
+	for a new dialog with information about current battery, cpu and
+	AC states. This dialog is currently connected to left mouse button 
+	on the applet icon.
+
+	* src/Makefile.am: added new files to make
+	* src/detailed_dialog.ui, src/detaileddialog.cpp,
+	   src/detaileddialog.h: new file for the dialog
+	* src/kpowersave.cpp, src/kpowersave.h: added new functions to
+	prevent open the detailed dialog twice. Added dialog to left
+	mouse button and comment out cpuspeed from the tooltip (TODO: 
+	search for a good solution to readd this info).
+	* src/pdaemon.cpp, src/pdaemon.h: Added new functions to read
+	current and maximum speed of all CPUs in the system. Changed 
+	variables for CPUSpeed to QValueList.
+
+2006-01-17  Danny  <danny.kukawka@web.de>
+
+	* ChangeLog.package, NEWS, doc/doxy/changelog.dox: updated
+	* src/config/kpowersaverc_default: added default settings for 
+	'Advanced Powersave' scheme
+	* src/kpowersave.cpp: changed 'Aggressive' to 'Advanced' Powersave
+	scheme as in actual powersaved defined.
+
+2006-01-17  Danny Kukawka  <danny.kukawka@web.de>
+
+	* ChangeLog.package, doc/doxy/changelog.dox: updated Changelogs
+	* doc/doxy/process.dox: updated process (capability brightness)
+	* NEWS: updated release notes
+	* src/dbusPowersave.cpp: added patch from Holger Macht 
+	<hmacht@suse.de> to add capability brightness for connect to powersave
+	to tell daemon to stop set brightness
+
+2006-01-17  Danny Kukawka  <danny.kukawka@web.de>
+
+	Prepared new release 0.5.3:
+	* ChangeLog.package, doc/doxy/changelog.dox: update changelogs
+	* doc/doxy/process.dox: update current state of brightness feature
+	* other src/*: updated version strings
+	* src/kpowersave.cpp: Added warning dialog if 'Aggressive Powersave'
+	scheme is selected.
+	* NEWS: added releaseinfo and changes
+
+2006-01-17  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/config/kpowersaverc_default: added new default keys
+	for brightness settings
+	* src/configureDialog.cpp, src/configureDialog.h: implemented 
+	set/read brithness related settings for chemes
+	* src/kpowersave.cpp, src/kpowersave.h: implemented set
+	brightness if scheme switched and brightness is supported by machine
+	* src/kpowersave_configure.ui: Added new page in scheme settings to
+	set and test scheme specific brightness settings.
+	* src/settings.cpp, src/settings.h: added brigthness settings
+
+2006-01-16  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/screen.cpp: added gcc patch from Daniel Gollub <dgollub@suse.de>
+
+2006-01-15  Danny Kukawka  <danny.kukawka@web.de>
+
+	* doc/doxy/enhance.dox, doc/doxy/implemented.dox,
+	  doc/doxy/process.dox: updated enhancements and current process
+	* src/infodialog.h: fixed doxygen problem
+
+2006-01-14  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/configureDialog.cpp, src/configureDialog.h, src/kpowersave.cpp:
+	Added pointer to pDaemon object from class kpowersave to be able
+	to read and set Brightness releated values via dbus.
+	* src/pdaemon.cpp, src/pdaemon.h: Added new functions: getBrightness(),
+	getMaxBrightnessLevels() and setBrightness() to control brightness 
+	settings of the display.
+
+2006-01-13  Danny Kukawka  <danny.kukawka@web.de>
+
+	* po/nl.po: forgot to merge with current pot file
+
+2006-01-13  Danny Kukawka  <danny.kukawka@web.de>
+
+	* po/nl.po: updated translation file
+
+2006-01-11  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/configureDialog.cpp, src/configureDialog.h: replaced 
+	QString::null with QString() (prepare for QT4)
+
+2006-01-10  Danny Kukawka  <danny.kukawka@web.de>
+
+	Prepared new release 0.5.2: 
+	* ChangeLog.package, doc/doxy/changelog.dox: updated to current 
+	release changelog
+
+2006-01-10  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/infodialog.cpp, src/infodialog.h: added new bool and related
+	get function to prevent popup dialog if disabled
+	* src/kpowersave.cpp: depending changes: added check if dialog
+	disabled by user.
+
+2006-01-10  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/info_dialog.ui: grouped widgets to resize the dialog
+
+2006-01-10  Danny Kukawka  <danny.kukawka@web.de>
+
+	Prepared new release 0.5.2: 
+	* doc/doxy/fixed_bugs.dox: updated fixed bugs
+	* configure.in.in, src/autosuspend.cpp, src/autosuspend.h,
+	  src/blacklisteditdialog.cpp, src/blacklisteditdialog.h,
+	  src/configureDialog.cpp, src/configureDialog.h, 
+	  src/dbusPowersave.cpp, src/dbusPowersave.h, src/infodialog.cpp,
+	  src/infodialog.h, src/kpowersave.h, src/main.cpp, src/pdaemon.h,
+	  src/schemes.h, src/screen.cpp, src/screen.h, src/settings.cpp,
+	  src/settings.h, src/suspenddialog.cpp, src/suspenddialog.hi:
+	updated version string to current release version
+	* NEWS: added releaseinfo and changes
+
+2006-01-10  Danny Kukawka  <danny.kukawka@web.de>
+
+	* po/*.po, po/kpowersave.pot: removed path from 'powersave is not 
+	running' error message and fixed some wrong translations (powersavedd).
+
+2006-01-10  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/Makefile.am: added new files for make
+	* src/info_dialog.ui, src/infodialog.cpp, src/infodialog.h:
+	Added new class for a non-blocking dialog with only one button and
+	a optional "Don't display again." checkbox 
+	* src/kpowersave.cpp, src/kpowersave.h: Added new function to display
+	the 'powersave is not running' error message. Removed path from
+	errormessage. 
+	Added some comment to signal connects and grouped them.
+	* src/pdaemon.cppi, src/pdaemon.h: added new signal to display the 
+	'powersave is not running' dialog.
+
+2005-12-22  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/kpowersave.cpp, src/kpowersave.h: Added new function to diplay
+	the HAL warning passive popup and delay the message 15 sec to
+	prevent message on HAL or powersave restart. Changed handling of
+	display the errormessage.
+	* src/pdaemon.cpp: Fixed some problems with HAL_ERROR handling. Fixed 
+	problem with set update_info_ac_changed _before_ emit related signals.
+
+2005-12-21  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/pdaemon.cpp: cleaned up and make code shorter
+
+2005-12-21  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/pdaemon.cpp: removed no longer needed dbus_message_unref(). 
+
+2005-12-21  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/pdaemon.cpp: implemented new function fot errorhandling.
+	Added errorhandling to readDaemonData() and replaced code in 
+	checkBatteryProcInfo with call new errorhandling function.
+	* src/pdaemon.h: added seperate private function to handle errors
+	from getBatteriesInfo(). 
+
+2005-12-21  Holger Macht  <hmacht@suse.de> 
+
+	* src/pdaemon.cpp: fixed from powersave removed DBUS methodes for 
+	battery infos.
+
+2005-12-21  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/kpowersave.cpp: fixed icon handling on (HAL) error. If there
+	is no information about battery and AC state we 'disable' the icon
+	(not the icon menu)
+
+2005-12-19  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/pdaemon.cpp, src/pdaemon.h: added check for new errorcode
+	from powerlib if connection to HAL fails (HAL_ERROR). Added new
+	battery state to check this in class kpowersave (BAT_HAL_ERROR).
+	Removed todo-lines.
+	* src/kpowersave.cpp, src/kpowersave.h: Added better errorhandling
+	if the connection to HAL fails if powersave is not running. Fixed 
+	in this case the tooltip and added a KPassivePopup to inform the 
+	user about this error.
+	Changed pixmap size for the applet icon to 22 instead of 20.
+
+2005-12-19  Danny Kukawka  <danny.kukawka@web.de>
+
+	* Makefile.am.in: removed install rule for default configfile
+	* src/Makefile.am: added fixed rule for defaulte configfile
+	to this Makefile
+
+2005-12-13  Danny Kukawka  <danny.kukawka@web.de>
+
+	* kpowersave.kdevelop: updated to use svn instead of cvs
+	* src/pdaemon.cpp: removed unused/ifdef'd code
+
+2005-12-12  Holger Macht  <hmacht@suse.de> 
+
+	* src/pdaemon.cpp: adjust to new powerlib
+
+2005-12-10  Danny Kukawka  <danny.kukawka@web.de>
+
+	* .cvsignore, doc/.cvsignore, doc/en/.cvsignore,
+	  doc/hu/.cvsignore, doc/nb/.cvsignore, po/.cvsignore,
+	  src/.cvsignore, src/pics/.cvsignore: removed no CVS related
+	files from the SVN repository.
+	* src/kpowersave.cpp: corrected check AC status by check for 
+	correct enum AC_ONLINE.
+	* src/pdaemon.cpp: Added correct defines/enums for the AC status.
+	Also added part for better errorhandling if powersaved and HAL are 
+	not running --> TODO.
+	Added activation of system timer in non daemon mode. This should
+	prevent problems if powersaved stopped and restarted more than
+	one time.
+
+2005-12-07  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/pdaemon.cpp: fixed set applet icon for AC status if no 
+	powersave daemon is running, emit now needed signals. Also 
+	fixed signal for AC sound.
+
+2005-12-03  Danny Kukawka  <danny.kukawka@web.de>
+
+	* po/de.po: fixed typo
+
+2005-12-02  Danny Kukawka  <danny.kukawka@web.de>
+
+	* Makefile.am.in: fixed build path with patch from
+	Michael Biebl <biebl@teco.edu>
+
+2005-12-02  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/Makefile.am: added PACKAGE_KDE_SOUND_DIR to get path 
+	to the KDE sound dir (usual: $prefix/share/sounds)
+
+	* src/configureDialog.cpp, src/configureDialog.h: Added check 
+	for KDE sound dir. If exist, use to fill the file dialog for
+	the sound files. If not exist, use the home dir of the user.
+	If the user select a file via the dialog, we set the dir for
+	the next file dialog to this path. If the current filepath
+	in the editbox not exist we use KDE sound dir/user home.
+
+2005-12-02  Danny Kukawka  <danny.kukawka@web.de>
+
+	* doc/nb/nb_*.png: replaced english dummy screenshots with
+	norsk version.
+
+2005-11-30  Danny Kukawka  <danny.kukawka@web.de>
+
+	* doc/hu/hu_*.png: replaced english dummy screenshots with
+	hungarian version.
+
+2005-11-15  Danny Kukawka  <danny.kukawka@web.de>
+
+	* doc/hu/.cvsignore: added .cvsignore
+
+2005-11-15  Danny Kukawka  <danny.kukawka@web.de>
+
+	* doc/hu/index.docbook, doc/nb/index.docbook: fixed language
+	settings to have correct named and localized files. All
+	should now work.
+
+2005-11-15  Danny Kukawka  <danny.kukawka@web.de>
+
+	* doc/nb/index.docbook: replaced XML character entities with
+	UTF-8 characters. Thanks Karl Eichwalder <ke@suse.de> for the 
+	help to fix the file.
+
+2005-11-15  Danny Kukawka  <danny.kukawka@web.de>
+
+	* doc/nb/index.docbook: reformated and replaced wrong file
+	content. Note: this file is maybe any longer broken.
+
+2005-11-15  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/screen.h: removed not needed include of qvector.h.
+
+2005-11-14  Danny Kukawka  <danny.kukawka@web.de>
+
+	* doc/hu/*: added Hungarian version of the online help. 
+	NOTE: screenshots are currently only dummy files from the
+	english version. Need to update them later.
+
+2005-11-07  Danny Kukawka  <danny.kukawka@web.de>
+
+	* doc/doxy/enhance.dox: added new enhancement to discuss 
+
+2005-11-07  Danny Kukawka  <danny.kukawka@web.de>
+
+	* INSTALL: updated to current KDE file 
+
+	* configure.in.in: readded file to solve problems with KDE 
+	autotools/update_admin. --> undo last changes. Also changed the
+	logic between check distro and check configure option to be
+	sure that configure otions overwrite automatically detection. 
+	Added some messages displayed while run configure.
+
+	* doc/Makefile.am: updated to KDE package style.
+
+2005-11-07  Danny Kukawka  <danny.kukawka@web.de>
+
+	* configure.in.in: replaced with configure.in to get summary
+	on the right place while execute ./configure
+
+	* configure.in: added summary at the end of oputput from
+	configure
+
+2005-11-01  Danny Kukawka  <danny.kukawka@web.de>
+
+	* src/pdaemon.cpp: Removed errormessage from constructor of 
+	pdaemon if connect to powersave failed. Increased timeout for 
+	recheck to 10 seconds to prevent races from parallel booting
+	and autologin to KDE.
+
+2005-10-19  Danny Kukawka <danny.kukawka@web.de>
+
+	* doc/nb/*: initial import of Norsk help file 
+
+2005-10-12  Danny Kukawka <danny.kukawka@web.de>
+
+	* doc/en/index.docbook: added updated help file (updated from
+	  <ke@suse.de>: removed DOS line endings)
+
+2005-10-12  Danny Kukawka <danny.kukawka@web.de>
+
+	* po/bg.po, po/cs.po, po/da.po, po/de.po, po/el.po, po/es.po,
+	  po/fi.po, po/fr.po, po/hu.po, po/it.po, po/ja.po, 
+	  po/kpowersave.pot, po/nb.po, po/nl.po, po/pa.po, po/pl.po, 
+	  po/pt.po, po/pt_BR.po, po/ru.po, po/sk.po, po/sl_SI.po, 
+	  po/sv.po, po/tr.po, po/uk.po, po/zh_CN.po, po/zh_TW.po: 
+	  merged changes related to last patches (from Stephan Binner) 
+	  to translation files and updated german po file.
+	  
+	* src/blacklisteditdialog.cpp: Changed the caption of the 
+	  groupbox if the dialog is for a scheme specific blacklist to
+	  "'Scheme: ' + schemename". 
+
+	* src/configureDialog.cpp, src/kpowersave_configure.ui: changed 
+	  some strings related to the last fixes for KDE user interface 
+	  style guide
+
+2005-10-12  Danny Kukawka <danny.kukawka@web.de>
+
+	Patch from Stephan Binner <stbinner@suse.de>:
+	* src/configureDialog.cpp: 
+	  - fix to respect KDE user interface style guide
+	  - changed Yes/No buttons to "Import"/"Do Not Import"
+	* src/kpowersave.cpp, src/kpowersave_configure.ui,
+	  src/suspenddialog.cpp: 
+	  - fixes to respect KDE user interface style guide
+	  - replaced usage of SmallIcon with SmallIconSet
+	* src/kpowersave.desktop: Added GenericName and fixed
+	  Comment entry
+
+2005-10-12  Danny Kukawka <danny.kukawka@web.de>
+
+	* src/blacklist_edit.ui, src/kpowersave_configure.ui,
+	  src/suspend_Dialog.ui: fixes from fixuifiles script and
+	  fix for 'OK' string in the ui-files. (Patch from Stefan
+	  Binner <stbinner@suse.de> )
+
+2005-10-12  Danny Kukawka <danny.kukawka@web.de>
+
+	* src/AUTHORS, src/ChangeLog, src/INSTALL, src/README:
+	  removed duplicated files from src dir, same files could
+	  be found in the base dir
+
+2005-10-12  Danny Kukawka <danny.kukawka@web.de>
+
+	* po/fi.po: added Finnish translation from Ilkka Pirskanen 
+	  <ilkka.pirskanen@kolumbus.fi>
+
+2005-10-10  Danny Kukawka <danny.kukawka@web.de>
+
+	* kpowersave.kdevelop: changed version string
+
+	* src/kpowersave.cpp, src/kpowersave.h: 
+	  - removed variables with icon names which used one time only 
+	    and replaced directly where needed with name of the icons 
+	    to reduce global variables
+	  - fixed typo in code documentation and removed some 
+	    whitespaces/empty lines
+
+2005-09-27  Danny Kukawka <danny.kukawka@web.de>
+
+	* po/de.po: fixed typo, see bugreport:
+	  http://bugs.kde.org/show_bug.cgi?id=112882
+
+2005-09-20  Danny Kukawka <danny.kukawka@web.de>
+
+	* po/ru.po: updated file from Anton Farygin <rider@altlinux.ru> 
+
+2005-09-19  Danny Kukawka <danny.kukawka@web.de>
+
+	* ChangeLog.package: moved Changelog of the package to new
+	  file. This file now contains the CVS changelog
+
+	* README: Updated compile instruction for non-SUSE 
+	  distributions. Now the package contains a admin dir.
+
+*******************************************************************
+*  NOTE: This Changelog contains starting from version 0.5.0 the  *
+*        CVS Changelog. The package changelog could be found in   *
+*        Changelog.package                                        *
+*******************************************************************
+

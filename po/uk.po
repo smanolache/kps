@@ -1,0 +1,1389 @@
+# Translation of kpowersave.uk.po to Ukrainian
+# This file is distributed under the same license as the PACKAGE package.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER.
+#
+# Ivan Petrouchtchak <iip@telus.net>, 2005.
+# Ivan Petrouchtchak <ivanpetrouchtchak@yahoo.com>, 2006, 2007.
+msgid ""
+msgstr ""
+"Project-Id-Version: kpowersave.uk\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2007-08-10 03:16+0200\n"
+"PO-Revision-Date: 2007-08-14 23:15-0700\n"
+"Last-Translator: Ivan Petrouchtchak <ivanpetrouchtchak@yahoo.com>\n"
+"Language-Team: Ukrainian <translation@linux.org.ua>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.11.4\n"
+"Plural-Forms:  nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#: detailed_Dialog.cpp:228
+msgid "kpowersave"
+msgstr "kpowersave"
+
+#: detailed_Dialog.cpp:229
+msgid "General Information"
+msgstr "Загальна інформація"
+
+#: detailed_Dialog.cpp:232
+msgid "Battery Status"
+msgstr "Стан батареї"
+
+#: detailed_Dialog.cpp:233
+msgid "AC Adapter"
+msgstr "Адаптер живлення"
+
+#: detailed_Dialog.cpp:234 detaileddialog.cpp:391
+msgid "plugged in"
+msgstr "з'єднаний"
+
+#: detailed_Dialog.cpp:235
+msgid "Power Consumtion: "
+msgstr "Споживання електроенергії: "
+
+#: detailed_Dialog.cpp:237
+msgid "Processor Status"
+msgstr "Стан процесора"
+
+# ok button label
+#: detailed_Dialog.cpp:238 blacklistedit_Dialog.cpp:130 info_Dialog.cpp:198
+#: configure_Dialog.cpp:838
+msgid "OK"
+msgstr "Гаразд"
+
+#: blacklisteditdialog.cpp:60
+msgid "General Blacklist"
+msgstr "Загальний чорний список"
+
+#: blacklisteditdialog.cpp:63
+msgid "Scheme: "
+msgstr "Схема: "
+
+#: blacklisteditdialog.cpp:114
+msgid "Selected entry removed."
+msgstr "Вибраний запис вилучено."
+
+#: blacklisteditdialog.cpp:117
+msgid "Could not remove the selected entry."
+msgstr "Не вдалось вилучити вибраний запис."
+
+#: blacklisteditdialog.cpp:137
+msgid "Inserted new entry."
+msgstr "Вставлено новий запис."
+
+#: blacklisteditdialog.cpp:141
+msgid "Entry exists already. Did not insert new entry."
+msgstr "Запис вже існує. Новий запис не був вставлений."
+
+#: blacklisteditdialog.cpp:144
+msgid "Empty entry was not inserted."
+msgstr "Порожній запис не був вставлений."
+
+#: inactivity.cpp:298
+msgid ""
+"Could not start 'pidof'. Could not autosuspend the machine.\n"
+"Please check your installation."
+msgstr ""
+"Не вдалося запустити \"pidof\". Не вдалося автоматично перемкнути комп'ютер в режим сну.\n"
+"Будь ласка, перевірте ваше встановлення."
+
+#: blacklistedit_Dialog.cpp:129
+msgid "Autosuspend Blacklist Edit"
+msgstr "Змінити чорний список режиму автосну"
+
+# cancel button label
+#: blacklistedit_Dialog.cpp:132 configuredialog.cpp:1079
+#: configure_Dialog.cpp:836
+msgid "Cancel"
+msgstr "Скасувати"
+
+#: blacklistedit_Dialog.cpp:135
+msgid "Add"
+msgstr "Додати"
+
+#: blacklistedit_Dialog.cpp:136
+msgid "Remove"
+msgstr "Вилучити"
+
+#: infodialog.cpp:76 infodialog.cpp:78 main.cpp:55
+msgid "KPowersave"
+msgstr "KPowersave"
+
+#: configuredialog.cpp:116 configuredialog.cpp:121 configuredialog.cpp:721
+msgid " - not supported"
+msgstr " - не підтримується"
+
+#: configuredialog.cpp:150 configuredialog.cpp:317 detaileddialog.cpp:432
+#: kpowersave.cpp:192 settings.cpp:66 configure_Dialog.cpp:876
+msgid "Performance"
+msgstr "Швидкодія"
+
+#: configuredialog.cpp:154 configuredialog.cpp:319 detaileddialog.cpp:438
+#: kpowersave.cpp:194 settings.cpp:68 configure_Dialog.cpp:878
+msgid "Powersave"
+msgstr "Заощадження"
+
+#: configuredialog.cpp:159 configuredialog.cpp:321 kpowersave.cpp:1478
+#: settings.cpp:70
+msgid "Presentation"
+msgstr "Презентація"
+
+#: configuredialog.cpp:164 configuredialog.cpp:323 kpowersave.cpp:1473
+#: settings.cpp:72
+msgid "Acoustic"
+msgstr "Акустичний"
+
+#: configuredialog.cpp:169 configuredialog.cpp:171 configuredialog.cpp:172
+#: configuredialog.cpp:173 kpowersave.cpp:1484
+msgid "Advanced Powersave"
+msgstr "Розширене керування живленням"
+
+#: configuredialog.cpp:271
+msgid ""
+"This enables specific screen saver settings. \n"
+"Note: If selected, the global screen saver settings are \n"
+"overwritten while kpowersave runs."
+msgstr ""
+"Вмикає специфічні параметри зберігача екрана. \n"
+"Примітка: Якщо увімкнено, глобальні параметри зберігача екрана перезаписуються, коли запущено kpowersave."
+
+#: configuredialog.cpp:274
+msgid ""
+"This disables the screen saver. \n"
+"Note: If selected, the global screen saver settings are \n"
+"overwritten while kpowersave runs."
+msgstr ""
+"Вимикає зберігач екрана. \n"
+"Примітка: Якщо увімкнено, глобальні параметри зберігача екрана перезаписуються, коли запущено kpowersave."
+
+#: configuredialog.cpp:277
+msgid ""
+"This blanks the screen instead of using a specific screen saver. \n"
+"Note: This may work only with KScreensaver."
+msgstr ""
+"Вимикає екран замість використання певного зберігача екрана. \n"
+"Примітка: Можливо, це працюватиме тільки з KScreensaver."
+
+#: configuredialog.cpp:279
+msgid ""
+"This enables specific DPMS settings. \n"
+"Note: If selected, the global DPMS settings are \n"
+"overwritten while kpowersave runs."
+msgstr ""
+"Вмикає специфічні параметри DPMS. \n"
+"Примітка: Якщо увімкнено, глобальні параметри DPMS перезаписуються, коли запущено kpowersave."
+
+#: configuredialog.cpp:282
+msgid "This disables DPMS support."
+msgstr "Вимикає підтримку DPMS."
+
+#: configuredialog.cpp:283
+msgid "If selected, the screen is locked on suspend or standby."
+msgstr "Якщо увімкнено, екран замикається в режимі сну або чергування."
+
+#: configuredialog.cpp:284
+msgid "If selected, the screen is locked if the lid close event is triggered."
+msgstr "Якщо увімкнено, екран замикається, коли спрацювала подія \"кришку закрито\"."
+
+#: configuredialog.cpp:286
+msgid "Check this box to enable or disable automatic suspension of the computer."
+msgstr "Увімкнути / вимкнути автоматичний перехід комп'ютера в режим сну."
+
+#: configuredialog.cpp:288
+msgid ""
+"Activate this action if the user was inactive for the defined time \n"
+"(greater than 0 minutes). If empty, nothing happens."
+msgstr ""
+"Ввімкнути цю дію, якщо користувач був неактивним певний час \n"
+"(> 0 хв.). Якщо порожньо, то нічого не станеться."
+
+#: configuredialog.cpp:291
+msgid "All scheme-related screen saver and DPMS settings."
+msgstr "Всі параметри схеми зберігача екрана і DPMS."
+
+#: configuredialog.cpp:292
+msgid "All scheme-related display brightness settings."
+msgstr "Всі параметри схеми яскравості дисплею."
+
+#: configuredialog.cpp:293
+msgid "All scheme-related automatic suspend settings."
+msgstr "Всі параметри схеми автоматичного переходу в режим сну."
+
+#: configuredialog.cpp:295
+msgid ""
+"Here you can change the brightness of your display. \n"
+"Use the slider to change the brightness directly for \n"
+"testing. To reset back to previous level, please press \n"
+"the 'Reset' button. "
+msgstr ""
+"Тут можна змінити яскравість вашого дисплея. \n"
+"Вживайте повзунок для зміни яскравості для перевірки.\n"
+"Щоб повернутись назад до попереднього рівня, будь \n"
+"ласка, натисніть кнопку \"Скинути\". "
+
+#: configuredialog.cpp:299
+msgid "Use this button to set back the slider and the display brightness."
+msgstr "Вживайте цю кнопку для відновлення попередньої яскравості екрана."
+
+#: configuredialog.cpp:352
+msgid "Press this button to delete the selected scheme."
+msgstr "Натисніть цю кнопку, щоб вилучити вибрану схему."
+
+#: configuredialog.cpp:357
+msgid "You can't delete the current AC or battery scheme."
+msgstr "Неможливо вилучити поточну схему живлення від ел. мережі або батареї."
+
+#: configuredialog.cpp:363
+msgid "You can't delete this default scheme."
+msgstr "Неможливо вилучити цю типову схему."
+
+#: configuredialog.cpp:546
+msgid "Your hardware supports to change the brightness. The values of the slider are in percent and mapped to the available brightness levels of your hardware."
+msgstr "Ваше обладнання підтримує зміну яскравості. Значення повзунка в процентах відповідають наявним рівням яскравості обладнання."
+
+#: configuredialog.cpp:553
+msgid "Your Hardware currently not support changing the brightness of your display."
+msgstr "Ваше обладнання в даний час не підтримує зміну яскравості дисплея."
+
+#: configuredialog.cpp:664
+msgid "Select Automatically"
+msgstr "Вибрати автоматично"
+
+#: configuredialog.cpp:665
+msgid "KScreensaver"
+msgstr "KScreensaver"
+
+#: configuredialog.cpp:666
+msgid "XScreensaver"
+msgstr "XScreensaver"
+
+#: configuredialog.cpp:667
+msgid "xlock"
+msgstr "xlock"
+
+#: configuredialog.cpp:668
+msgid "GNOME Screensaver"
+msgstr "Зберігач екрана GNOME"
+
+#: configuredialog.cpp:930
+msgid ""
+"There are unsaved changes in the active scheme.\n"
+"Apply the changes before jumping to the next scheme or discard the changes?"
+msgstr ""
+"В активній схемі є не збережені зміни.\n"
+"Застосувати зроблені зміни перед переходом до нової схеми чи відкинути їх?"
+
+#: configuredialog.cpp:933 configuredialog.cpp:983
+msgid "Unsaved Changes"
+msgstr "Не збережені зміни"
+
+#: configuredialog.cpp:981
+msgid ""
+"There are unsaved changes.\n"
+"Apply the changes before cancel or discard the changes?"
+msgstr ""
+"Існують не збережені зміни.\n"
+"Хочете застосувати зміни перед скасуванням чи відкинути зміни?"
+
+#: configuredialog.cpp:1032
+msgid "Please insert a name for the new scheme:"
+msgstr "Будь ласка, введіть назву нової схеми:"
+
+#: configuredialog.cpp:1038
+msgid "KPowersave Configuration"
+msgstr "Налаштування KPowersave"
+
+#: configuredialog.cpp:1046
+msgid "Error: A scheme with this name already exist.\n"
+msgstr "Помилка: вже існує схема з цією назвою.\n"
+
+#: configuredialog.cpp:1076
+msgid "Do you really want to delete the %1 scheme?"
+msgstr "Ви дійсно хочете вилучити схему %1?"
+
+#: configuredialog.cpp:1078
+msgid "Confirm delete scheme"
+msgstr "Підтвердити вилучення схеми"
+
+#: configuredialog.cpp:1079 configure_Dialog.cpp:883
+msgid "Delete"
+msgstr "Вилучити"
+
+#: configuredialog.cpp:1095
+msgid "Could not delete the selected scheme."
+msgstr "Не вдалось вилучити вибрану схему."
+
+#: configuredialog.cpp:1324
+msgid "<b>Note:</b> If you select this option, the computer will suspend or standby if the current user is inactive for the defined time even if somebody is logged in remotely to the X server.<br><br> This feature can also produce problems with some programs, such as video players or cd burner. These programs can be blacklisted by checking <b>Enable scheme-specific blacklist</b> and click <b>Edit Blacklist...</b>. If this does not help, report the problem or deactivate autosuspend.<br><br> Really use this option?"
+msgstr "<b>Примітка:</b> Якщо ви виберете цей параметр, комп'ютер перейде в режим сну або чергування, якщо поточний користувач бездіяльний протягом певного часу, навіть, якщо хтось віддалено з'єднаний з X-сервером. <br><br> Ця функціональність може призвести до проблем в деяких програмах, таких як відеопрогравачах або програмах запису компакт-дисків. Ці програми можна внести до чорного списку, увімкнувши параметр <b>Увімкнути специфічний для схеми чорний список</b> і клацнувши <b>Змінити чорний список...</b>. Якщо це не допоможе, повідомте про проблему або вимкніть режим автосну.<br><br> Дійсно вживати цей параметр?"
+
+#: configuredialog.cpp:1402 configuredialog.cpp:1532
+msgid "The blacklist of the selected scheme is empty. Import the general blacklist?"
+msgstr "Чорний список цієї схеми -- порожній. Імпортувати загальний чорний список?"
+
+#: configuredialog.cpp:1404 configuredialog.cpp:1534
+msgid "Import"
+msgstr "Імпортувати"
+
+#: configuredialog.cpp:1404 configuredialog.cpp:1534
+msgid "Do Not Import"
+msgstr "Не імпортувати"
+
+#: configuredialog.cpp:1416
+msgid "General Autosuspend Blacklist"
+msgstr "Чорний список режиму автосну"
+
+#: configuredialog.cpp:1546
+msgid "General Autodimm Blacklist"
+msgstr "Чорний список автозатемнення"
+
+#: configuredialog.cpp:1779 configuredialog.cpp:1816
+msgid "Shutdown"
+msgstr "Вимкнути"
+
+#: configuredialog.cpp:1781 configuredialog.cpp:1819
+msgid "Logout Dialog"
+msgstr "Вікно виходу"
+
+#: configuredialog.cpp:1784 configuredialog.cpp:1822 kpowersave.cpp:182
+#: kpowersave.cpp:2096 kpowersave.cpp:2156 kpowersave.cpp:2247
+msgid "Suspend to Disk"
+msgstr "Сон зі збереженням на диск"
+
+#: configuredialog.cpp:1787 configuredialog.cpp:1825 kpowersave.cpp:186
+#: kpowersave.cpp:2101 kpowersave.cpp:2161 kpowersave.cpp:2250
+msgid "Suspend to RAM"
+msgstr "Сон із збереженням у RAM"
+
+#: configuredialog.cpp:1790 configuredialog.cpp:1828
+msgid "CPU Powersave policy"
+msgstr "Правила енергозбереження для ЦП"
+
+#: configuredialog.cpp:1793 configuredialog.cpp:1831
+msgid "CPU Dynamic policy"
+msgstr "Динамічні правила для ЦП"
+
+#: configuredialog.cpp:1796 configuredialog.cpp:1834
+msgid "CPU Performance policy"
+msgstr "Правила для швидкодії ЦП"
+
+#: configuredialog.cpp:1799 configuredialog.cpp:1837
+msgid "Set Brightness to"
+msgstr "Встановити яскравість до"
+
+#: main.cpp:43
+msgid "KDE Frontend for Power Management, Battery Monitoring and Suspend"
+msgstr "Інтерфейс KDE для пакунка енергозбереження, монітора батареї і режиму сну"
+
+#: main.cpp:45
+msgid "Force a new check for ACPI support"
+msgstr "Примусово наново перевірити підтримку ACPI"
+
+#: main.cpp:46
+msgid "Trace function entry and leave points for debug\n"
+msgstr "Стежити за входом функції й залишити точки для зневадження\n"
+
+#: main.cpp:59
+msgid "Current maintainer"
+msgstr "Поточний супровід"
+
+#: main.cpp:62
+msgid "Powersave developer and for D-Bus integration"
+msgstr "Розробка Powersave і інтеграція з DBUS"
+
+#: main.cpp:64
+msgid "Powersave developer and tester"
+msgstr "Розробник і випробовувач Powersave"
+
+#: main.cpp:66
+msgid "Added basic detailed dialog"
+msgstr "Додав просте вікно подробиць"
+
+#: main.cpp:67
+msgid "Packaging Debian and Ubuntu"
+msgstr "Пакунки для Debian і Ubuntu"
+
+#: detaileddialog.cpp:61
+msgid "KPowersave Information Dialog"
+msgstr "Вікно інформації KPowersave"
+
+#: detaileddialog.cpp:65 configure_Dialog.cpp:882 configure_Dialog.cpp:922
+msgid "Miscellaneous"
+msgstr "Різне"
+
+#: detaileddialog.cpp:66
+msgid "CPUs"
+msgstr "Процесори"
+
+#: detaileddialog.cpp:73 detaileddialog.cpp:453
+msgid "Battery state:"
+msgstr "Стан батареї:"
+
+#: detaileddialog.cpp:79
+msgid "Total:"
+msgstr "Всього:"
+
+#: detaileddialog.cpp:81 detaileddialog.cpp:83
+msgid "Battery %1"
+msgstr "Батарея %1"
+
+#: detaileddialog.cpp:114
+msgid "Processor %1"
+msgstr "Процесор %1"
+
+#: detaileddialog.cpp:230
+msgid "not present"
+msgstr "відсутня"
+
+#: detaileddialog.cpp:243
+msgid "charged"
+msgstr "заряджена"
+
+#: detaileddialog.cpp:245
+msgid "%1:%2 h until charged"
+msgstr "%1:%2 г. до закінчення зарядки"
+
+#: detaileddialog.cpp:248
+msgid "%1:%2 h remaining"
+msgstr "%1:%2 г. залишилось"
+
+#: detaileddialog.cpp:253 detaileddialog.cpp:441 detaileddialog.cpp:468
+msgid "unknown"
+msgstr "невідомий"
+
+#: detaileddialog.cpp:325 detaileddialog.cpp:368
+msgid "%v MHz"
+msgstr "%v МГц"
+
+#: detaileddialog.cpp:330 detaileddialog.cpp:363 dummy.cpp:58
+msgid "deactivated"
+msgstr "вимкнено"
+
+#: detaileddialog.cpp:395
+msgid "unplugged"
+msgstr "виключено"
+
+#: detaileddialog.cpp:412
+msgid "Current Scheme: "
+msgstr "Поточна схема: "
+
+#: detaileddialog.cpp:429
+msgid "Current CPU Frequency Policy:"
+msgstr "Поточне правило керування частотою ЦП:"
+
+#: detaileddialog.cpp:435 kpowersave.cpp:193 configure_Dialog.cpp:877
+msgid "Dynamic"
+msgstr "Динамічно"
+
+#: detaileddialog.cpp:456
+msgid "Critical"
+msgstr "Критичний"
+
+#: detaileddialog.cpp:459
+msgid "Low"
+msgstr "Низький"
+
+#: detaileddialog.cpp:462 kpowersave.cpp:277 kpowersave.cpp:652
+#: kpowersave.cpp:659 kpowersave.cpp:705 kpowersave.cpp:713 kpowersave.cpp:761
+#: kpowersave.cpp:769 kpowersave.cpp:817 kpowersave.cpp:824
+#: kpowersave.cpp:1131 kpowersave.cpp:1243 kpowersave.cpp:1272
+#: kpowersave.cpp:1610 kpowersave.cpp:1670 kpowersave.cpp:2186
+msgid "Warning"
+msgstr "Попередження"
+
+#: detaileddialog.cpp:465
+msgid "ok"
+msgstr "гаразд"
+
+#: detaileddialog.cpp:474 detaileddialog.cpp:477
+msgid "Set brightness supported:"
+msgstr "Підтримка керування яскравістю:"
+
+#: detaileddialog.cpp:475
+msgid "yes"
+msgstr "так"
+
+#: detaileddialog.cpp:478
+msgid "no"
+msgstr "ні"
+
+#: detaileddialog.cpp:481 detaileddialog.cpp:485
+msgid "HAL Daemon:"
+msgstr "Даемон HAL:"
+
+#: detaileddialog.cpp:482
+msgid "running"
+msgstr "запущено"
+
+#: detaileddialog.cpp:486
+msgid "not running"
+msgstr "не запущено"
+
+#: info_Dialog.cpp:197
+msgid "Information"
+msgstr "Інформація"
+
+#: dummy.cpp:36
+msgid "If the current desktop user is inactive, dim the display to:"
+msgstr "Якщо поточний користувач стільниці не активний, зменшити яскравість екрана до:"
+
+#: dummy.cpp:37
+msgid "Enable dim display on inactivity"
+msgstr "Зменшити яскравість екрана при бездіяльності"
+
+#: dummy.cpp:38
+msgid "Blacklist"
+msgstr "Чорний список"
+
+#: dummy.cpp:39
+msgid "Here you can add programs which should, if running, prevent the dimming of the display."
+msgstr "Сюди додайте програми, при виконанні яких, яскравість екрана не повинна зменшуватись."
+
+#: dummy.cpp:41
+msgid "Would you like to import a predefined blacklist?"
+msgstr "Хочете імпортувати готовий чорний список?"
+
+#: dummy.cpp:42
+msgid "Disable CPUs/Cores"
+msgstr "Вимкнути процесори/їх ядра"
+
+#: dummy.cpp:43
+msgid "Max. running CPUs:"
+msgstr "Макс. робочих процесорів:"
+
+#: dummy.cpp:44
+msgid "Max. running CPUs/Cores:"
+msgstr "Макс. робочих процесорів/їх ядер:"
+
+#: dummy.cpp:45
+msgid "Min. running CPUs:"
+msgstr "Мін. робочих процесорів:"
+
+#: dummy.cpp:46
+msgid "Min. running CPUs/Cores:"
+msgstr "Мін. робочих процесорів/їх ядер:"
+
+#: dummy.cpp:47
+msgid "Enable to switch off CPUs/cores"
+msgstr "Уможливити вимикання процесорів/їх ядер"
+
+#: dummy.cpp:48
+msgid "You have a multiprocessor/multicore machine."
+msgstr "Ви маєте багатопроцесорний/багатоядровий комп'ютер."
+
+#: dummy.cpp:49
+msgid "You can disable CPUs/cores to reduce power consumption and save battery power."
+msgstr "Ви можете вимкнути процесори/ядра, щоб зменшити енерговитрати і заощадити заряд батареї."
+
+#: dummy.cpp:50
+msgid "Device"
+msgstr "Пристрій"
+
+#: dummy.cpp:51
+msgid "Devices"
+msgstr "Пристрої"
+
+#: dummy.cpp:52
+msgid "Device class"
+msgstr "Клас пристрою"
+
+#: dummy.cpp:53
+msgid "activate"
+msgstr "увімкнути"
+
+#: dummy.cpp:54
+msgid "Activate"
+msgstr "Увімкнути"
+
+#: dummy.cpp:55
+msgid "deactivate"
+msgstr "вимкнути"
+
+#: dummy.cpp:56
+msgid "Deactivate"
+msgstr "Вимкнути"
+
+#: dummy.cpp:57
+msgid "activated"
+msgstr "увімкнено"
+
+#: dummy.cpp:59
+msgid "do nothing"
+msgstr "нічого не робити"
+
+#: dummy.cpp:60
+msgid "Deactivate following devices:"
+msgstr "Вимкнути наступні пристрої:"
+
+#: dummy.cpp:61
+msgid "Activate following devices"
+msgstr "Увімкнути наступні пристрої"
+
+#: dummy.cpp:62
+msgid "Reactivate following devices"
+msgstr "Заново увімкнути наступні пристрої"
+
+#: dummy.cpp:63
+msgid "Deactivate following device classes:"
+msgstr "Вимкнути наступні класи пристроїв:"
+
+#: dummy.cpp:64
+msgid "Activate following devices classes"
+msgstr "Увімкнути наступні класи пристроїв"
+
+#: dummy.cpp:65
+msgid "Reactivate following device classes"
+msgstr "Заново увімкнути наступні класи пристроїв"
+
+#: dummy.cpp:66
+msgid "If the scheme switched all devices are again activated."
+msgstr "Якщо змінено схему, то всі пристрої знов було увімкнено."
+
+#: dummy.cpp:67
+msgid "This is a experimental feature."
+msgstr "Це експериментальна функціональність."
+
+#: dummy.cpp:68
+msgid "If you have problems with this feature, please report them."
+msgstr "Якщо з цією функцією виникнуть проблеми, будь ласка, повідомте."
+
+#: dummy.cpp:69
+msgid "Select one of the available devices and click on "
+msgstr "Виберіть один з наявних пристроїв і клацніть на "
+
+#: dummy.cpp:70
+msgid "Select one of the available device classes and click on "
+msgstr "Виберіть один з наявних класів пристроїв і клацніть на "
+
+#: dummy.cpp:71
+msgid "Select one or more of the available devices and click on "
+msgstr "Виберіть один або більше з наявних пристроїв і клацніть на "
+
+#: dummy.cpp:72
+msgid "Select one or more of the available device classes and click on "
+msgstr "Виберіть один або більше з наявних класів пристроїв і клацніть на "
+
+#: dummy.cpp:73
+msgid "Please note: If you e.g. deactivate a network device you may lose your internet connection."
+msgstr "Примітка: Якщо ви, напр., вимкнете мережний пристрій, то можете втрати з'єднання з Інтернетом."
+
+#: dummy.cpp:75
+msgid "<b>Note:</b> If you select this option, the computer will suspend or standby if the current user is inactive for the defined time. <br><br> This feature can also produce problems with some programs, such as video players or cd burner. These programs can be blacklisted by checking <b>Enable scheme-specific blacklist</b> and click <b>Edit Blacklist...</b>. If this does not help, report the problem or deactivate autosuspend.<br><br> Really use this option?"
+msgstr "<b>Примітка:</b> Якщо ви виберете цей параметр, комп'ютер перейде в режим сну або чергування, якщо поточний користувач бездіяльний протягом певного часу. <br><br> Ця функціональність може призвести до проблем в деяких програмах, таких як відеопрогравачах або програмах запису компакт-дисків. Ці програми можна внести до чорного списку, увімкнувши параметр <b>Увімкнути специфічний для схеми чорний список</b> і клацнувши <b>Змінити чорний список...</b>. Якщо це не допоможе, повідомте про проблему або вимкніть режим автосну.<br><br> Дійсно вживати цей параметр?"
+
+#: dummy.cpp:82
+msgid "Try to use only one CPU/Core."
+msgstr "Намагатися вживати тільки один ЦП/ядро."
+
+#: dummy.cpp:83
+msgid "Reduce power consumption by try to use only one CPU/Core instead of spreading the work over all/multiple CPUs."
+msgstr "Зменшити енергоспоживання за допомогою вживання одного процесора/ядра, замість розподілу роботи для виконання на всіх/декількох ЦП."
+
+#: dummy.cpp:87
+msgid "Could not load the global configuration."
+msgstr "Не вдалось завантажити глобальну конфігурацію."
+
+#: dummy.cpp:88
+msgid "Could not load the requested scheme configuration."
+msgstr "Не вдалось завантажити конфігурацію необхідної схеми."
+
+#: dummy.cpp:89
+msgid "Configure the current scheme."
+msgstr "Налаштувати поточну схему."
+
+#: dummy.cpp:90
+msgid "Try loading the default configuration."
+msgstr "Спробуйте завантажити типову конфігурацію."
+
+#: dummy.cpp:91
+msgid "Maybe the global configuration file is empty or missing."
+msgstr "Можливо, файл глобальної конфігурації порожній або відсутній."
+
+#: dummy.cpp:94
+msgid "Cannot connect to D-Bus. The D-Bus daemon may not be running."
+msgstr "Неможливо приєднатись до D-BUS. Можливо, не запущено даемон D-BUS."
+
+#: dummy.cpp:95
+msgid ""
+"Scheme switched to %1. \n"
+" Deactivate following devices: %2"
+msgstr ""
+"Схему перемкнено на %1. \n"
+"Вимкнути наступні пристрої: %2"
+
+#: dummy.cpp:96
+msgid ""
+"Scheme switched to %1. \n"
+" Activate following devices: %2"
+msgstr ""
+"Схему перемкнено на %1. \n"
+"Увімкнути наступні пристрої: %2"
+
+#: dummy.cpp:97
+msgid "Report ..."
+msgstr "Звіт..."
+
+#: dummy.cpp:98
+msgid "Suspend to RAM is not supported on your machine."
+msgstr "Режим сну зі збереженням в RAM цим комп'ютером не підтримується."
+
+#: dummy.cpp:99
+msgid "Additionally, please mail the output of %1 to %2 . Thanks!"
+msgstr "Крім того, будь ласка, надішліть вивід з %1 до %2. Дякуємо!"
+
+#: dummy.cpp:100
+msgid "Power consumption"
+msgstr "Споживання електроенергії"
+
+#: dummy.cpp:103
+msgid "KScreensaver not found."
+msgstr "KScreensaver не знайдено."
+
+#: dummy.cpp:104
+msgid "Try locking with XScreensaver or xlock."
+msgstr "Спробуйте заблокувати за допомогою XScreensaver або xlock."
+
+#: dummy.cpp:105
+msgid "XScreensaver not found."
+msgstr "XScreensaver не знайдено."
+
+#: dummy.cpp:106
+msgid "Try locking the screen with xlock."
+msgstr "Спробуйте заблокувати екран за допомогою xlock."
+
+#: dummy.cpp:107
+msgid "XScreensaver and xlock not found. It is not possible to lock the screen. Check your installation."
+msgstr "Не знайдено ні XScreensaver, ні xlock. Неможливо заблокувати екран. Перевірте вашу інсталяцію."
+
+#: dummy.cpp:111
+msgid "HAL daemon:"
+msgstr "Даемон HAL:"
+
+#: dummy.cpp:112
+msgid "D-Bus daemon:"
+msgstr "Даемон D-BUS:"
+
+#: dummy.cpp:113
+msgid "ConsoleKit daemon:"
+msgstr "Даемон ConsoleKit:"
+
+#: dummy.cpp:114
+msgid "Autosuspend activated:"
+msgstr "Автоперехід в режим сну активовано:"
+
+#: dummy.cpp:115
+msgid "Autodimm activated:"
+msgstr "Автозатемнення активовано:"
+
+#: dummy.cpp:116
+msgid "enabled"
+msgstr "увімкнено"
+
+#: dummy.cpp:117
+msgid "Session active:"
+msgstr "Активний сеанс:"
+
+#: dummy.cpp:120
+msgid "Inactivity detected."
+msgstr "Виявлено бездіяльність."
+
+#: dummy.cpp:121
+msgid "To stop the %1 press the 'Cancel' button before the countdown expire."
+msgstr "Щоб зупинити %1, натисніть кнопку \"Скасувати\", перш ніж закінчиться відлік."
+
+#: dummy.cpp:122
+msgid "The computer autosuspend in: "
+msgstr "Комп'ютер перейде в режим сну через: "
+
+#: dummy.cpp:123
+#, c-format
+msgid "The display get dimmed down to %1% in: "
+msgstr "Дисплей буде затемнено до %1% через: "
+
+#: dummy.cpp:124
+msgid "%1 seconds"
+msgstr "%1 сек."
+
+#: dummy.cpp:127
+msgid "Could not call %1. The current desktop session is not active."
+msgstr "Не вдалося викликати %1. Поточний стільничний сеанс - неактивний."
+
+#: dummy.cpp:128
+msgid "Could not set %1. The current desktop session is not active."
+msgstr "Не вдалося встановити %1. Поточний стільничний сеанс - неактивний."
+
+#: dummy.cpp:129
+msgid "Stopped %1. The current desktop session is now inactive."
+msgstr "Зупинено %1. Поточний стільничний сеанс тепер активний."
+
+#: dummy.cpp:130
+msgid "Restarted %1. The current desktop session is now active again."
+msgstr "Перезапущено %1. Поточний стільничний сеанс тепер знову активний."
+
+#: log_viewer.cpp:78
+msgid "Form1"
+msgstr "Form1"
+
+#: log_viewer.cpp:79
+msgid "Save As ..."
+msgstr "Зберегти як..."
+
+#: log_viewer.cpp:80
+msgid "Close"
+msgstr "Закрити"
+
+#: logviewer.cpp:44
+msgid "KPowersave Logfile Viewer: %1"
+msgstr "Переглядач файлів журналу KPowersave: %1"
+
+#: logviewer.cpp:89
+msgid "File already exist. Overwrite the file?"
+msgstr "Файл вже існує. Перезаписати його?"
+
+#: logviewer.cpp:90 logviewer.cpp:97
+msgid "Error while save logfile"
+msgstr "Помилка під час збереження файла журналу"
+
+#: logviewer.cpp:95
+msgid "File already exist."
+msgstr "Файл вже існує."
+
+#: logviewer.cpp:98
+msgid "Try other filename ..."
+msgstr "Спробуйте іншу назву файла ..."
+
+#: suspenddialog.cpp:70
+msgid "Preparing Suspend..."
+msgstr "Підготовка до режиму сну..."
+
+#: kpowersave.cpp:168
+msgid "Configure KPowersave..."
+msgstr "Налаштувати KPowersave..."
+
+#: kpowersave.cpp:171 configure_Dialog.cpp:915
+msgid "Configure Notifications..."
+msgstr "Налаштувати сповіщення..."
+
+#: kpowersave.cpp:175
+msgid "Start YaST2 Power Management Module..."
+msgstr "Запуск модуля керування живленням - YaST2..."
+
+#: kpowersave.cpp:189 kpowersave.cpp:2106 kpowersave.cpp:2166
+#: kpowersave.cpp:2253
+msgid "Standby"
+msgstr "Режим чергування"
+
+#: kpowersave.cpp:191 kpowersave.cpp:198
+msgid "Set CPU Frequency Policy"
+msgstr "Вказати правило керування частотою процесора"
+
+#: kpowersave.cpp:205 kpowersave.cpp:206
+msgid "Set Active Scheme"
+msgstr "Наставити активну схему"
+
+#: kpowersave.cpp:212
+msgid "Disable Actions on Inactivity"
+msgstr "Вимкнути дії при бездіяльності"
+
+#: kpowersave.cpp:219 kpowersave.cpp:229
+msgid "&Help"
+msgstr "&Довідка"
+
+#: kpowersave.cpp:221
+msgid "&KPowersave Handbook"
+msgstr "Підручник &KPowersave"
+
+#: kpowersave.cpp:224
+msgid "&Report a bug ..."
+msgstr "&Надіслати звіт про помилку..."
+
+#: kpowersave.cpp:226
+msgid "&About KPowersave"
+msgstr "&Про KPowersave"
+
+#: kpowersave.cpp:275 kpowersave.cpp:648 kpowersave.cpp:656 kpowersave.cpp:703
+#: kpowersave.cpp:710 kpowersave.cpp:759 kpowersave.cpp:766 kpowersave.cpp:815
+#: kpowersave.cpp:822 kpowersave.cpp:1126 kpowersave.cpp:1241
+#: kpowersave.cpp:1270 kpowersave.cpp:2183
+msgid "WARNING"
+msgstr "ПОПЕРЕДЖЕННЯ"
+
+#: kpowersave.cpp:275
+msgid "Cannot find any schemes."
+msgstr "Не вдається знайти якусь схему."
+
+#: kpowersave.cpp:453
+msgid "No information about battery and AC status available"
+msgstr "Нема інформації про стан батареї і адаптера живлення"
+
+#: kpowersave.cpp:456
+msgid "Plugged in -- fully charged"
+msgstr "Увімкнений в електромережу - повний заряд"
+
+#: kpowersave.cpp:460
+msgid "Plugged in"
+msgstr "Увімкнений в електромережу"
+
+#: kpowersave.cpp:464
+msgid "Plugged in -- %1% charged (%2:%3 h until full charged)"
+msgstr "Увімкнено - %1% заряджено (%2: %3 год. до повного заряду)"
+
+#: kpowersave.cpp:467
+msgid "Plugged in -- %1% charged (%2:%3 remaining hours)"
+msgstr "Увімкнений в електромережу -- %1% заряду (залишилось %2:%3 год)"
+
+#: kpowersave.cpp:471 kpowersave.cpp:475
+#, c-format
+msgid "Plugged in -- %1% charged"
+msgstr "Увімкнений в електромережу -- %1% заряду"
+
+#: kpowersave.cpp:474
+msgid "Plugged in -- no battery"
+msgstr "Увімкнений в електромережу -- немає батареї"
+
+#: kpowersave.cpp:480
+msgid "Running on batteries -- %1% charged (%2:%3 hours remaining)"
+msgstr "Працює на батареї -- %1% заряду (залишилось %2:%3 год)"
+
+#: kpowersave.cpp:484
+#, c-format
+msgid "Running on batteries -- %1% charged"
+msgstr "Працює на батареї -- %1% заряду"
+
+#: kpowersave.cpp:491
+msgid " -- battery is charging"
+msgstr " -- батарея заряджається"
+
+#: kpowersave.cpp:649 kpowersave.cpp:657
+msgid "Could not start YaST Power Management Module. Check if it is installed."
+msgstr "Не вдалось запустити модуль керування живленням YaST. Перевірте чи його встановлено."
+
+#: kpowersave.cpp:703
+msgid "Suspend to disk failed"
+msgstr "Режим сну зі збереженням на диск зазнав невдачі"
+
+#: kpowersave.cpp:711
+msgid "Suspend to disk disabled by administrator."
+msgstr "Режим сну із збереженням на диск заблоковано адміністратором."
+
+#: kpowersave.cpp:759
+msgid "Suspend to RAM failed"
+msgstr "Сон із збереженням у RAM зазнав невдачі"
+
+#: kpowersave.cpp:767
+msgid "Suspend to RAM disabled by administrator."
+msgstr "Режим сну із збереженням в RAM заблоковано адміністратором."
+
+#: kpowersave.cpp:815
+msgid "Standby failed"
+msgstr "Режим чергування зазнав невдачі"
+
+#: kpowersave.cpp:822
+msgid "Standby disabled by administrator."
+msgstr "Режим чергування заблоковано адміністратором."
+
+#: kpowersave.cpp:853
+msgid "System is going into suspend mode now"
+msgstr "Система тепер переходить в режим сну"
+
+#: kpowersave.cpp:1039
+msgid "Could not call DCOP interface to umount external media."
+msgstr "Не вдалося викликати інтерфейс DCOP для демонтування зовнішнього носія."
+
+#: kpowersave.cpp:1044
+msgid ""
+"Could not umount external media before suspend/standby. \n"
+" (Reason: %1)\n"
+" \n"
+" Would you like to continue suspend/standby anyway? \n"
+"(Warning: Continue suspend can cause data loss!)"
+msgstr ""
+"Не вдалося демонтувати зовнішній носій перед режимом сну/чергування. \n"
+" (Причина: %1)\n"
+" \n"
+" Хочете продовжити сон/чергування, попри все? \n"
+"(Увага:продовження сну може спричинити втрату даних!)"
+
+#: kpowersave.cpp:1052
+msgid "Error while prepare %1"
+msgstr "Помилка під час приготування %1"
+
+#: kpowersave.cpp:1053
+msgid "Suspend anyway"
+msgstr "В режим сну, попри все"
+
+#: kpowersave.cpp:1053
+msgid "Cancel suspend"
+msgstr "Скасувати перехід в режим сну"
+
+#: kpowersave.cpp:1127
+msgid ""
+"Could not lock the screen. There may be a problem with the selected \n"
+"lock method or something else."
+msgstr ""
+"Не вдалося заблокувати екран. Можливо, існує проблема з \n"
+"вибраним методом блокування або якась інша."
+
+#: kpowersave.cpp:1144
+msgid "The Lid was closed."
+msgstr "Лептоп закрито."
+
+#: kpowersave.cpp:1156
+msgid "The Lid was opened."
+msgstr "Лептоп відкрито."
+
+#: kpowersave.cpp:1223
+msgid "Start KPowersave automatically when you log in?"
+msgstr "Автоматично запускати KPowersave при вході в систему?"
+
+#: kpowersave.cpp:1224
+msgid "Question"
+msgstr "Питання"
+
+#: kpowersave.cpp:1225
+msgid "Start Automatically"
+msgstr "Запускати автоматично"
+
+#: kpowersave.cpp:1225
+msgid "Do Not Start"
+msgstr "Не запускати"
+
+#: kpowersave.cpp:1242
+msgid "CPU Freq Policy %1 could not be set."
+msgstr "Не вдається вказати правило частоти ЦП %1."
+
+#: kpowersave.cpp:1271
+msgid "Scheme %1 could not be activated."
+msgstr "Не вдалось активувати схему %1."
+
+#: kpowersave.cpp:1600
+msgid ""
+"The D-Bus daemon is not running.\n"
+"Starting it will provide full functionality: /etc/init.d/dbus start"
+msgstr ""
+"Не запущено даемон DBUS. Його запуск надасть\n"
+"повну функціональність: /etc/init.d/messagebus start"
+
+#: kpowersave.cpp:1611
+msgid "Don't show this message again."
+msgstr "Не показувати це повідомлення знов."
+
+#: kpowersave.cpp:1637
+msgid "ERROR"
+msgstr "ПОМИЛКА"
+
+#: kpowersave.cpp:1638
+msgid "Could not get information from HAL. The haldaemon is maybe not running."
+msgstr "Не вдалося отримати інформацію з HAL. Можливо, не запущено haldaemon."
+
+#: kpowersave.cpp:1641
+msgid "Error"
+msgstr "Помилка"
+
+#: kpowersave.cpp:1912
+msgid "Battery state changed to WARNING -- remaining time: %1 hours and %2 minutes."
+msgstr "Заряд батареї змінився на ПОПЕРЕДЖЕННЯ -- залишилось часу:%1 год. і %2 хв."
+
+#: kpowersave.cpp:1921
+msgid "Battery state changed to LOW -- remaining time: %1 hours and %2 minutes."
+msgstr "Заряд батареї змінився на НИЗЬКИЙ -- залишилось часу:%1 год. і %2 хв."
+
+#: kpowersave.cpp:1932
+msgid ""
+"Battery state changed to CRITICAL -- remaining time: %1 hours and %2 minutes.\n"
+"Shut down your system or plug in the power cable immediately. Otherwise the machine\n"
+"will go shutdown in 30 seconds"
+msgstr ""
+"Заряд батареї змінився на КРИТИЧНИЙ -- залишилось часу:%1 год. і %2 хв.\n"
+"Вимкніть вашу систему або негайно увімкніть живлення з електромережі. Інакше,\n"
+"машина почне вимкнення через 30 секунд"
+
+#: kpowersave.cpp:1943
+msgid ""
+"Battery state changed to CRITICAL -- remaining time: %1 hours and %2 minutes.\n"
+"Shut down your system or plug in the power cable immediately."
+msgstr ""
+"Заряд батареї змінився на КРИТИЧНИЙ -- залишилось часу:%1 год. і %2 хв.\n"
+"Вимкніть вашу систему або негайно увімкніть живлення з електромережі."
+
+#: kpowersave.cpp:2041
+msgid "AC adapter plugged in"
+msgstr "Адаптер AC увімкнено в електромережу"
+
+#: kpowersave.cpp:2043
+msgid "AC adapter unplugged"
+msgstr "Адаптер AC вимкнено з електромережі"
+
+#: kpowersave.cpp:2078
+msgid "Switched to scheme: %1"
+msgstr "Перемкнено на схему: %1"
+
+#: kpowersave.cpp:2095 kpowersave.cpp:2100 kpowersave.cpp:2105
+msgid "System is going into %1 now."
+msgstr "Система тепер переходить в %1."
+
+#: kpowersave.cpp:2155 kpowersave.cpp:2160 kpowersave.cpp:2165
+msgid "System is resumed from %1."
+msgstr "Систему відновлено з %1."
+
+#: kpowersave.cpp:2184
+msgid "Could not remount (all) external storage media."
+msgstr "НЕ вдалося перемонтувати (всі) зовнішні носії."
+
+#: kpowersave.cpp:2192
+msgid "An unknown error occurred while %1. The errorcode is: '%2'"
+msgstr "Трапилась невідома помилка під час %1. Помилка коду: \"%2\""
+
+# power-off message
+#: kpowersave.cpp:2197
+msgid "Do you want to have a look at the log file?"
+msgstr "Хочете переглянути файл журналу?"
+
+#: kpowersave.cpp:2198 kpowersave.cpp:2224
+msgid "Error while %1"
+msgstr "Помилка під час %1"
+
+#: configure_Dialog.cpp:831
+msgid "KPowersave Settings"
+msgstr "Параметри KPowersave"
+
+#: configure_Dialog.cpp:832
+msgid "Apply"
+msgstr "Застосувати"
+
+#: configure_Dialog.cpp:834
+msgid "Help"
+msgstr "Довідка"
+
+#: configure_Dialog.cpp:840
+msgid "Enable specific display power management"
+msgstr "Ввімкнути певне керування живленням дисплея"
+
+#: configure_Dialog.cpp:841
+msgid "Standby after:"
+msgstr "Режим чергування після:"
+
+#: configure_Dialog.cpp:842
+msgid "Only blank the screen"
+msgstr "Тільки затемнити екран"
+
+#: configure_Dialog.cpp:843
+msgid "Disable screen saver"
+msgstr "Ввімкнути зберігач екрану"
+
+#: configure_Dialog.cpp:844
+msgid "Enable specific screensaver settings"
+msgstr "Увімкнути певні параметри зберігача екрана"
+
+#: configure_Dialog.cpp:845
+msgid "Suspend after:"
+msgstr "Режим сну після:"
+
+#: configure_Dialog.cpp:846
+msgid "Power off after:"
+msgstr "Вимкнути живлення після:"
+
+#: configure_Dialog.cpp:847
+msgid "Disable display power management"
+msgstr "Ввімкнути керування живленням дисплея"
+
+#: configure_Dialog.cpp:848 configure_Dialog.cpp:849 configure_Dialog.cpp:850
+#: configure_Dialog.cpp:862 configure_Dialog.cpp:873
+msgid " min"
+msgstr " хв"
+
+#: configure_Dialog.cpp:851
+msgid "Screen Saver and DPMS"
+msgstr "Зберігач екрана і DPMS"
+
+#: configure_Dialog.cpp:852
+msgid "Settings"
+msgstr "Параметри"
+
+#: configure_Dialog.cpp:853
+msgid "Reset"
+msgstr "Скинути"
+
+#: configure_Dialog.cpp:855
+msgid "Enable scheme specific Brightness settings"
+msgstr "Увімкнути параметри яскравості для схем"
+
+#: configure_Dialog.cpp:858
+msgid "Brightness"
+msgstr "Яскравість"
+
+#: configure_Dialog.cpp:859
+msgid "Enable autosuspend"
+msgstr "Увімкнути автоперехід в режим сну"
+
+#: configure_Dialog.cpp:860 configure_Dialog.cpp:867
+msgid "Enable scheme-specific blacklist"
+msgstr "Увімкнути специфічний для схеми чорний список"
+
+#: configure_Dialog.cpp:861 configure_Dialog.cpp:870
+msgid "after:"
+msgstr "після:"
+
+#: configure_Dialog.cpp:863 configure_Dialog.cpp:868
+msgid "Edit Blacklist..."
+msgstr "Змінити чорний список..."
+
+#: configure_Dialog.cpp:864 configure_Dialog.cpp:869
+msgid "If the current desktop user is inactive the computer will:"
+msgstr "Якщо користувач стільниці бездіяльний, то:"
+
+#: configure_Dialog.cpp:865
+msgid "Autosuspend"
+msgstr "Автоматично в режим сну"
+
+#: configure_Dialog.cpp:866
+msgid "Enable autodimm the display"
+msgstr "Увімкнути автозатемнення дисплея"
+
+#: configure_Dialog.cpp:871 configure_Dialog.cpp:893 configure_Dialog.cpp:894
+#: configure_Dialog.cpp:895 configure_Dialog.cpp:896 configure_Dialog.cpp:897
+#: configure_Dialog.cpp:898
+msgid " %"
+msgstr " %"
+
+#: configure_Dialog.cpp:872
+msgid "dimm to:"
+msgstr "затемнити до:"
+
+#: configure_Dialog.cpp:874
+msgid "Autodimm"
+msgstr "Автозатемнення"
+
+#: configure_Dialog.cpp:879
+msgid "Set CPU Frequency Policy:"
+msgstr "Вкажіть правило для частоти ЦП:"
+
+#: configure_Dialog.cpp:880
+msgid "CPU Frequency Policy"
+msgstr "Правило для частоти ЦП"
+
+#: configure_Dialog.cpp:881
+msgid "Disable Notifications"
+msgstr "Вимкнути сповіщення"
+
+#: configure_Dialog.cpp:884
+msgid "New"
+msgstr "Новий"
+
+#: configure_Dialog.cpp:885
+msgid "Scheme Settings"
+msgstr "Параметри схеми"
+
+#: configure_Dialog.cpp:886
+msgid "Define the battery warning levels (in percentage) and the releated action if the level get reached:"
+msgstr "Вкажіть рівні попередження про розрядження батареї (у відсотках) і відповідну дію, якщо досягнуто певного рівня:"
+
+#: configure_Dialog.cpp:887
+msgid "Warning level:"
+msgstr "Рівень попередження:"
+
+#: configure_Dialog.cpp:888
+msgid "Low level:"
+msgstr "Низький рівень:"
+
+#: configure_Dialog.cpp:889
+msgid "Critical level:"
+msgstr "Критичний рівень:"
+
+#: configure_Dialog.cpp:890 configure_Dialog.cpp:891 configure_Dialog.cpp:892
+msgid "if reached call:"
+msgstr "якщо досягнуто, викликати:"
+
+#: configure_Dialog.cpp:899
+msgid "Battery"
+msgstr "Батарея"
+
+#: configure_Dialog.cpp:900
+msgid "Define the action which should be executed if the related button get pressed:"
+msgstr "Вкажіть дію, яку треба виконати при натисканні відповідної кнопки:"
+
+#: configure_Dialog.cpp:901
+msgid "Suspend-to-disk Button:"
+msgstr "Кнопка сну із збереженням на диск:"
+
+#: configure_Dialog.cpp:902
+msgid "Sleep button:"
+msgstr "Кнопка сну:"
+
+#: configure_Dialog.cpp:903
+msgid "Lid close Button:"
+msgstr "Кнопка закриття кришки:"
+
+#: configure_Dialog.cpp:904
+msgid "Power Button:"
+msgstr "Кнопки живлення:"
+
+#: configure_Dialog.cpp:905
+msgid "Button Events"
+msgstr "Події кнопок"
+
+#: configure_Dialog.cpp:906
+msgid "Select the following schemes as default if the system is running on AC or on batteries."
+msgstr "Виберіть наступні схеми як типові, якщо система живиться від електромережі або від батареї."
+
+#: configure_Dialog.cpp:907
+msgid "Battery scheme:"
+msgstr "Схема батареї:"
+
+#: configure_Dialog.cpp:908
+msgid "AC scheme:"
+msgstr "Схема ел. мережі:"
+
+#: configure_Dialog.cpp:909
+msgid "Default Schemes"
+msgstr "Типові схеми"
+
+#: configure_Dialog.cpp:910
+msgid "Lock screen before suspend or standby"
+msgstr "Блокувати екран перед режимом сну або чергування"
+
+#: configure_Dialog.cpp:911
+msgid "Lock screen with:"
+msgstr "Заблокувати екран за допомогою:"
+
+#: configure_Dialog.cpp:912
+msgid "Lock screen on lid close"
+msgstr "Блокувати екран при закритті кришки"
+
+#: configure_Dialog.cpp:913
+msgid "Lock Screen"
+msgstr "Заблокувати екран"
+
+#: configure_Dialog.cpp:914
+msgid "Notifications"
+msgstr "Сповіщення"
+
+#: configure_Dialog.cpp:916
+msgid "Autostart"
+msgstr "Автозапуск"
+
+#: configure_Dialog.cpp:917
+msgid "Never ask me again on exit"
+msgstr "Ніколи знов не запитувати при виході"
+
+#: configure_Dialog.cpp:918
+msgid "KPowersave starts automatically on login"
+msgstr "KPowersave запускається автоматично при вході в систему"
+
+#: configure_Dialog.cpp:919
+msgid "General Blacklists"
+msgstr "Загальні чорні списки"
+
+#: configure_Dialog.cpp:920
+msgid "Edit Autosuspend Blacklist..."
+msgstr "Змінити чорний список режиму автосну..."
+
+#: configure_Dialog.cpp:921
+msgid "Edit Autodimm Blacklist..."
+msgstr "Змінити чорний список автозатемнення..."
+
+#: configure_Dialog.cpp:923
+msgid "General Settings"
+msgstr "Загальні параметри"
+

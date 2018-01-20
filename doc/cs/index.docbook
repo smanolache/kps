@@ -1,0 +1,533 @@
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC
+   "-//KDE//DTD DocBook XML V4.1.2-Based Variant V1.1//EN"
+   "dtd/kdex.dtd"
+[
+  <!ENTITY app "<application>KPowersave</application>">
+  <!ENTITY apprelease " ">
+  <!-- chapters in separate docbook files -->
+
+  <!-- book related entities -->
+  <!ENTITY kappname "KPowersave">
+  <!ENTITY % addindex "INCLUDE">
+  <!ENTITY % Czech "INCLUDE" > <!-- change language only here -->
+]>
+
+<!--
+NOTE:
+Entries which require special treatment are marked with comments starting with '###'. They should be visited on a regular basis.
+-->
+
+<book lang="&language;">
+
+<bookinfo>
+  <title>Nápověda &app;</title>
+
+  <date>2006-03-06</date>
+  <releaseinfo>&apprelease;</releaseinfo>
+
+  <authorgroup>
+    <author>
+      <firstname>Danny</firstname>
+      <surname>Kukawka</surname>
+      <affiliation>
+        <address><email>Danny.Kukawka@web.de</email></address>
+      </affiliation>
+    </author>
+    <author>
+      <firstname>Thomas</firstname>
+      <surname>Renninger</surname>
+      <affiliation>
+        <address><email>trenn@suse.de</email></address>
+      </affiliation>
+    </author>
+  </authorgroup>
+ 
+  <copyright>
+    <year>2005</year>
+    <holder>Scott Rhoades</holder>
+  </copyright>
+  
+
+  <!--ROLES_OF_TRANSLATORS-->
+
+  <!--<legalnotice>&FDLNotice;</legalnotice>-->
+
+  <abstract>
+    <para>&app; je nástroj pro nastavení správy napájení a šetření energií.</para> 
+  </abstract>
+
+  <keywordset>
+    <keyword>KDE</keyword>
+    <keyword>KPowersave</keyword>
+    <keyword>energie</keyword>
+    <keyword>baterie</keyword>
+    <keyword>šetření</keyword>
+  </keywordset>
+
+</bookinfo>
+
+<!-- ====================================================================== -->
+
+<chapter id="introduction">
+  <chapterinfo>
+   <keywordset>
+    <keyword>KPowersave</keyword>
+   </keywordset>
+  </chapterinfo>
+<title>Úvod</title>
+  <mediaobject>
+  <imageobject>
+  <imagedata fileref="hi48-app-kpowersave.png" format="PNG"/>
+  </imageobject>
+  </mediaobject>
+  <para>KPowersave, KDE uživatelské rozhraní pro powersave, používejte k
+   řízení správy napájení a sledování stavu baterie vašeho notebooku. Například
+   můžete nastavit, aby se obrazovka vašeho počítače po určité době nečinnosti
+   vypnula, čímž prodloužíte běh na baterie.
+  </para>
+
+ <sect1 id="starting">
+ <title>Spouštění KPowersave</title>
+   <para>Chcete-li spustit KPowersave, zadejte na příkazové řádce příkaz
+     <command>kpowersave &amp;</command> nebo zvolte <menuchoice>
+       <guimenu>Systém</guimenu>
+       <guimenu>Applety</guimenu>
+       <guimenu>KPowersave</guimenu>
+      </menuchoice> z hlavní nabídky GNOME nebo KDE.
+      KPowersave se otevře v systémové části panelu.</para>
+   <para>Chcete-li nastavit, zda se má KPowersave spouštět při vašem
+   přihlášení automaticky, klikněte na <guimenu>Obecná nastavení</guimenu>
+   a aktivujte či deaktivujte volbu <guimenu>KPowersave se po přihlášení
+   automaticky spouští</guimenu>. Také nastavte, zda chcete aby se vás
+   KPowersave ptal na automatické spouštění, pokud ho ručně ukončíte.
+   </para>
+ </sect1>
+
+ <sect1 id="understandingicon">
+ <title>Význam ikony KPowersave</title>
+   <para>
+    Ikona KPowersave vypadá jako elektrická zástrčka vedle indikátoru stavu
+    baterie. Ikona informuje o aktuálním stavu baterie a o tom, zda je počítač
+    právě napájen z baterie nebo ze sítě. Je-li baterie téměř vybitá, pozadí
+    ikony bliká - oranžově jako upozornění a červeně při nízkém či kritickém
+    stavu. Pokud nad ikonou chvíli zastavíte ukazatel myši, objeví se
+    informace o aktuálním typu napájení, stavu nabití baterie a, pokud počítač
+    běží na baterie, doby do vybití baterií.
+   </para>
+ </sect1>
+</chapter>
+
+<chapter id="applet">
+ <title>Nabídka apletu</title>
+
+  <sect1 id="selectschemes">
+   <title>Přepnutí aktivního schématu</title>
+   <para>
+    Chcete-li přepnout aktivní schéma, klikněte pravým tlačítkem myši na ikonu
+    apletu a zvolte <guimenu>Nastavit aktivní schéma</guimenu> a jméno
+    požadovaného schématu. Pokud schéma takto změníte, týká se změna všech
+    komponent vašeho počítače. Správa napájení ovlivňuje změny frekvence
+    procesoru (pokud to váš hardware podporuje), pevný disk, chlazení atd.
+   </para>
+
+   <mediaobject>
+    <imageobject>
+      <imagedata fileref="cs_applet_schemes.png" format="PNG" align="center"/>
+    </imageobject>
+    <textobject>
+       <phrase>Nabídka KPowersave s položkami pro přepínání schémat</phrase>
+    </textobject>
+   </mediaobject>
+  </sect1>
+
+  <sect1 id="yast">
+   <title>Spouštění YaST modulu pro správu napájeni</title>
+   <para>
+    Modul správy napájení programu YaST2 poskytuje řadu možností nastavení pro
+    šetření energií. Chcete-li modul spustit, klikněte pravým tlačítkem myši
+    na ikonu KPowersave a zvolte <guimenu>Spustit modul správy napájení programu
+    YaST2</guimenu>. Podrobné instrukce pro každé nastavení jsou dostupné
+    přímo v YaSTu.
+    <mediaobject>
+     <imageobject>
+      <imagedata fileref="cs_applet_yast.png" format="PNG" align="center"/>
+     </imageobject>
+     <textobject>
+       <phrase>Nabídka KPowersave s položkou pro spuštění YaSTu</phrase>
+      </textobject>
+    </mediaobject>
+
+   </para>
+    <note>
+     <para>
+      Spuštění YaST modulu pro správu napájeni vyžaduje heslo uživatele root.
+     </para>
+   </note>
+
+  </sect1>
+
+  <sect1 id="suspend"> 
+  <title>Uspání systému</title>
+   <para>
+    Systém můžete kdykoliv uspat kliknutím pravým tlačítkem myši na ikonu
+    KPowersave a volbou <guimenu>Uspání na disk</guimenu>,
+    <guimenu>Uspání do RAM</guimenu> nebo <guimenu>Pohotovostní
+    režim</guimenu> (pokud je pohotovostní režim počítačem podporován).
+   </para>
+
+   <itemizedlist>
+    <listitem>
+      <para>
+        Uspání na disk uloží před uspáním všechna otevřená data na disk. Jsou
+        tak ochráněna pro případ odpojení napájení nebo vybití baterie.
+      </para>
+    </listitem> 
+    <listitem>
+      <para>
+        Uspání do RAM uloží data do paměti RAM, což urychluje pozdější
+        probuzení počítače.
+      </para>
+    </listitem>
+    <listitem>
+      <para>
+        Pohotovostní režim vypne monitor, ale systém jinak ponechá napájený
+        a data zůstanou v RAM.
+      </para>
+    </listitem>
+    </itemizedlist>
+    <para>
+     Dostupné volby závisí na metodách aktivovaných administrátorem v YaSTu
+     a podporovaných vaším hardware. Vhodnou volbu byste měli volit podle
+     pravděpodobnosti úplné ztráty napájení počítače.
+    </para> 
+
+   <mediaobject>
+     <imageobject>
+      <imagedata fileref="cs_applet_suspend.png" format="PNG" align="center"/>
+     </imageobject>
+     <textobject>
+       <phrase>Nabídka KPowersave s položkami pro uspání a pohotovostní režim</phrase>
+      </textobject>
+   </mediaobject>
+  </sect1>
+
+  <sect1 id="deactivateautossuspend">
+  <title>Vypnutí automatického uspání</title>
+   <para>
+    Pokud je pro právě používané schéma zapnuto automatické uspávání, objeví
+    se v nabídce KPowersave položka <guimenu>Zakázat akce při
+    neaktivitě</guimenu>. Její volbou zakážete jakékoliv akce, které se mají
+    při neaktivitě vykonat, čímž se vypne automatické uspání.
+   </para>
+   <mediaobject>
+     <imageobject>
+      <imagedata fileref="cs_applet_autosuspend.png" format="PNG" align="center"/>
+     </imageobject>
+     <textobject>
+       <phrase>Nabídka KPowersave s volbou "Zakázat akce při neaktivitě"</phrase>
+      </textobject>
+   </mediaobject>
+  </sect1> 
+  <sect1 id="setCPUFreq">
+  <title>Nastavení politiky frekvence procesoru</title>
+   <para>
+    Množství energie spotřebovávané procesorem lze ovládat změnou politiky
+    frekvence procesoru. Učiníte tak kliknutím pravým tlačítkem myši na ikonu
+    KPowersave, volbou <guimenu>Nastavit politiku frekvence CPU</guimenu> a
+    výběrem jedné z dostupných možností:
+   </para> 
+   <itemizedlist>
+    <listitem>
+     <para>
+      Výkon: stále udržuje vysokou frekvenci procesoru pro maximální výkon.
+     </para>
+    </listitem> 
+    <listitem>
+      <para>
+       Dynamické: snižuje frekvenci procesoru, pokud není počítač zatížen,
+       a zvyšuje ji, pokud je potřeba více výkonu.
+      </para>
+    </listitem> 
+    <listitem>
+      <para>
+       Powersave: udržuje sníženou frekvenci procesoru kvůli
+       šetření energií.
+      </para>
+    </listitem>
+   </itemizedlist>
+
+   <para>
+    Nastavení politiky frekvence procesoru je v nabídce dostupné, pouze pokud
+    ho počítač podporuje. Pokud položka v nabídce není, váš počítač nastavení
+    politiky neumožňuje.
+   </para> 
+
+   <mediaobject>
+     <imageobject>
+      <imagedata fileref="cs_applet_cpufreq.png" format="PNG" align="center"/>
+     </imageobject>
+     <textobject>
+       <phrase>Nabídka KPowersave s podnabídkou nastavení politiky
+       frekvence procesoru</phrase>
+      </textobject>
+    </mediaobject>
+  </sect1>
+ </chapter>
+
+ <chapter id="conf_powerscheme"> 
+ <title>Nastavení schémat správy napájení</title>
+   <sect1 id="understand_scheme">
+   <title>Schémata správy napájení</title>
+   <para>
+    Schéma obsahuje základní konfiguraci správy napájení používanou při běhu
+    KPowersave. Množství dostupných schémat závisí na konfiguraci powersave.
+    Schémata můžete přidávat nebo mazat pomocí modulu správy napájení nástroje
+    YaST. Mezi běžně používaná schémata patří:
+   </para>
+
+   <itemizedlist>
+    <listitem>
+      <para>Výkon: optimalizováno pro maximální výkon během delší práce</para>
+    </listitem> 
+    <listitem>
+      <para>Tichý: optimalizováno pro tichý běh počítače</para>
+    </listitem> 
+    <listitem>
+      <para>Prezentace: optimalizováno pro hladký průběh prezentací</para>
+    </listitem> 
+    <listitem>
+      <para>Powersave: optimalizováno pro šetření energií baterie</para>
+    </listitem> 
+   </itemizedlist>
+
+   <para>Schémata můžete měnit na kartě <guimenu>Nastavení schémat</guimenu>.
+   Po provedení patřičných úprav klikněte na <guimenu>OK</guimenu>.</para> 
+
+   <mediaobject>
+     <imageobject>
+      <imagedata fileref="cs_configdialog_schemes.png" format="PNG" align="center"/>
+     </imageobject>
+     <textobject>
+       <phrase>Dialog KPowersave pro nastavení schémat</phrase>
+      </textobject>
+   </mediaobject>
+
+   <para>
+     Schéma určuje:
+   </para>
+   <itemizedlist>
+    <listitem>
+      <para>
+        Zda je povolen běh šetřiče obrazovky, není-li počítač používán
+      </para>
+    </listitem> 
+    <listitem>
+      <para>
+        Kolik času uplyne před uspáním obrazovky, jejím vypnutím
+        nebo přechodem do pohotovostního režimu
+      </para>
+    </listitem>  
+    <listitem>
+      <para>
+        Zda je počítač po určité době nečinnosti automaticky uspán
+      </para>
+    </listitem> 
+    <listitem>
+      <para>
+        Zda počítač při událostech spojených s napájením přehrává zvuky
+      </para>
+    </listitem> 
+   </itemizedlist>
+  </sect1>
+
+  <sect1 id="procedure">
+  <title>Postup nastavení schématu</title>
+
+   <para>
+    Všechny tyto volby šetří energií zákazem běhu energeticky náročných
+    procesů. Schéma nastavíte následujícím způsobem:
+   </para> 
+  <sect2 id="procedure_ss">
+  <title>Šetřič obrazovky</title>
+   <procedure>
+    <step>
+     <para>
+      Klikněte pravým tlačítkem myši na ikonu KPowersave
+      v systémové části panelu.
+     </para>
+    </step>
+    <step>
+     <para>
+      Zvolte <guimenu>Nastavit KPowersave</guimenu>.
+     </para>
+    </step>
+    <step>
+     <para>
+      Pokud není aktivní karta <guimenu>Nastavení schémat</guimenu>,
+      klikněte na ni.
+     </para>
+    </step>
+    <step>
+     <para>
+      Můžete zapnout volbu <guimenu>Povolit zvláštní nastavení šetřiče
+      obrazovky</guimenu>.
+     </para>
+     <substeps>
+      <step>
+       <para>
+        Pokud nechcete, aby šetřič obrazovky spotřebovával energii během doby,
+        kdy počítač není používán, aktivujte <guimenu>Zakázat šetřič
+        obrazovky</guimenu>.
+       </para>
+      </step>
+      <step>
+       <para>
+        Pokud chcete místo grafického šetřiče pouze smazat obrazovku, aktivujte
+        <guimenu>Pouze smazat obrazovku</guimenu>. Tato volba není dostupná,
+        je-li šetřič zakázán.
+       </para>
+      </step> 
+     </substeps>
+    </step>
+   </procedure>
+   <mediaobject>
+      <imageobject>
+        <imagedata fileref="cs_configdialog_schemes_screen.png" format="PNG" align="center"/>
+      </imageobject>
+      <textobject>
+        <phrase>Dialog KPowersave pro nastavení šetřiče obrazovky</phrase>
+      </textobject>
+   </mediaobject>
+   </sect2>
+   <sect2 id="procedure_spms">
+    <title>Správa napájení obrazovky</title>
+    <procedure>
+    <step>
+     <para>Chcete-li spravovat spotřebu energie obrazovkou, zaškrtněte
+       <guimenu>Povolit zvláštní správu napájení obrazovky</guimenu>.</para> 
+     <para>Zvláštní správu napájení obrazovky (DPMS) lze rovněž zakázat
+      zaškrtnutím <guimenu>Zakázat správu napájení obrazovky</guimenu>.
+      Tato volba přepisuje nastavení grafického prostředí.</para>
+     <substeps>
+      <step><para>Zvolte dobu, která musí uplynout před přechodem obrazovky do
+      pohotovostního režimu. V pohotovostním režimu je obrazovka prázdná, ale
+      stále je elektricky napájena. Dosáhne se tak mírné úspory elektrické
+      energie.</para></step> 
+      <step><para>Zvolte dobu, která musí uplynout před uspáním obrazovky.
+      Uspaná obrazovka je vypnuta, ale je stále napájena určitým množstvím
+      energie pro udržení aktuálních informací a nastavení.</para></step> 
+      <step><para>Zvolte dobu, která musí uplynout před úplným přerušením
+      napájení obrazovky.</para></step> 
+     </substeps></step>
+    </procedure>
+    <mediaobject>
+       <imageobject>
+        <imagedata fileref="en_configdialog_schemes.png" format="PNG" align="center"/>
+       </imageobject>
+       <textobject>
+        <phrase>Dialog KPowersave pro nastavení šetřiče/DPMS obrazovky</phrase>
+       </textobject>
+    </mediaobject>
+   </sect2>
+
+   <sect2 id="procedure_autosuspend">
+    <title>Nastavení automatického uspání</title>
+    <procedure>
+    <step><para>Pokud chcete, aby KPowersave automaticky uspal počítač,
+    není-li aktuální uživatel grafického prostředí po určitou dobu aktivní,
+    klikněte na <guimenu>Automatické uspání</guimenu> a proveďte potřebná
+    nastavení.</para> 
+    <para>Pokud například chcete, aby se po 30 minutách nečinnosti počítač
+    uspal na disk, proveďte příslušná nastavení. Po půlhodině nečinnosti se
+    všechny soubory a data uloží na disk a počítač se uspí.</para> 
+    </step>
+    </procedure>
+    <mediaobject>
+      <imageobject>
+        <imagedata fileref="cs_configdialog_schemes_autosuspend.png" format="PNG" align="center"/>
+      </imageobject>
+      <textobject>
+        <phrase>Dialog KPowersave pro nastavení automatického uspání</phrase>
+      </textobject>
+     </mediaobject>
+   </sect2>
+  </sect1>
+ </chapter>
+
+ <chapter id="generalsettings">
+ <title>Obecná nastavení</title>
+  <sect1 id="lockscreen">
+   <title>Uzamčení obrazovky</title>
+   <para>
+    Kvůli zvýšení bezpečnosti můžete nastavit uzamykání obrazovky před
+    přechodem do spánku, pohotovostního režimu nebo před uzavřením víka
+    notebooku. Obrazovku lze uzamknout pomocí šetřiče obrazovky nebo pomocí
+    xlock.
+   </para> 
+   <para>
+    Pro nastavení uzamykání obrazovky klikněte na kartu
+    <guimenu>Obecná nastavení</guimenu>.
+   </para>
+
+   <mediaobject>
+     <imageobject>
+      <imagedata fileref="en_configdialog_general.png" format="PNG" align="center"/>
+     </imageobject>
+     <textobject>
+       <phrase>Dialog KPowersave pro obecná nastavení.</phrase>
+      </textobject>
+   </mediaobject>
+ 
+  </sect1>
+
+  <sect1 id="autosuspendblacklist">
+   <title>Vytvoření černé listiny automatického uspání</title>
+   <para>
+    KPowersave obsahuje černou listinu automatického uspání. Pokud běží
+    některá z aplikací na tomto seznamu, je automatické uspání zakázáno.
+    Například byste si asi nepřáli, aby váš notebook usnul během přehrávání
+    DVD, jen proto, že jste dlouho nestiskli žádnou klávesu. Listinu můžete
+    upravit na kartě <guimenu>Obecná nastavení</guimenu> kliknutím na
+    <guimenu>Upravit obecnou černou listinu</guimenu>. V otevřeném dialogu
+    přidejte nebo odeberte požadované aplikace.
+   </para> 
+
+   <mediaobject>
+     <imageobject>
+      <imagedata fileref="en_configdialog_general.png" format="PNG" align="center"/>
+     </imageobject>
+     <textobject>
+       <phrase>Dialog KPowersave pro nastavení
+       černé listiny automatického uspání</phrase>
+      </textobject>
+   </mediaobject>
+
+   <para>
+    Můžete také vytvořit černou listinu specifickou pro určité schéma.
+    Při vytváření takové listiny můžete importovat obecnou černou listinu
+    nebo vytvořit listinu zcela novou. Černá listina schématu má přednost před
+    obecnou černou listinou, pokud je dané téma aktivní.
+   </para>
+
+   <mediaobject>
+     <imageobject>
+      <imagedata fileref="cs_configdialog_blacklist.png" format="PNG" align="center"/>
+     </imageobject>
+     <textobject>
+       <phrase>Dialog KPowersave pro úpravy
+       černé listiny automatického uspání</phrase>
+      </textobject>
+   </mediaobject>
+  </sect1>
+ </chapter>
+
+</book>
+
+<!-- Keep this comment at the end of the file
+Local variables:
+mode: xml
+coding: utf-8
+sgml-indent-step: 1
+End:
+-->

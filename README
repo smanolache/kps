@@ -1,0 +1,99 @@
+****************************************************************************
+*	                      DEPENDENCIES                                 *
+****************************************************************************
+
+You need the following packages (the package names maybe differ for each
+distribution) to compile KPowersave: 
+
+   - dbus (dbus-devel, dbus-qt3-devel) >= 0.6.x recommended: >= 0.9.x
+   - hal (hal-devel) recommended: >= 0.5.9.1
+   - kdelibs3-devel recommended: >= 3.4.3/3.5.x
+   - pkgconfig
+   - xorg-x11-devel (for detect inactivity and set DPMS)
+
+ and maybe also these packages:
+   - doxygen (for code documentation)
+   - docbook, kde3sdk (handbook) 
+
+ other (may) needed packages for run all KPowersave features:
+   - PolicyKit, recommended >= 0.2 
+   - ConsoleKit
+
+
+****************************************************************************
+*	                      INSTALLATION                                 *
+****************************************************************************
+
+* For SUSE users how to generate configure:
+
+   . /etc/opt/kde3/common_options
+   update_admin
+
+* For other distributions try this to generate configure:
+
+   make -f admin/Makefile.common cvs
+
+
+* Execute the following commands to compile, make and install  kpowersave:
+
+   ./configure --prefix=/opt/kde3 [--enable-debug=full]
+   make
+   make install
+
+
+ For the rest (or more general information) read the INSTALL file.
+
+
+
+****************************************************************************
+*	                     HELP/SUPPORT                                  *
+****************************************************************************
+
+ Project Websites:
+ ===================
+
+ KPowersave@freshmeat.net: 
+	* http://freshmeat.net/projects/kpowersave
+
+ KPowersave@kde-apps.org:
+	* http://www.kde-apps.org/content/show.php?content=29295
+
+ (K)Powersave@sourceforge.net:
+	* http://sourceforge.net/projects/powersave
+
+ (K)Powersave@forge.novell.com:
+	* http://developer.novell.com/wiki/index.php/Powersave
+
+ Mailinglists:
+ ===============
+
+ powersave-users with enduser support:
+	* http://forge.novell.com/mailman/listinfo/powersave-users
+
+ powersave-devel for developer and port to distributions:
+	* http://forge.novell.com/mailman/listinfo/powersave-devel
+
+
+ Forums:
+ =========
+
+ * http://sourceforge.net/forum/?group_id=124576
+
+
+ Bugreports:
+ =============
+
+ Please report distribution or packaging related bugs to the bugreport 
+ system of your distribution e.g.:
+	* SUSE Linux:	http://en.opensuse.org/Report_a_Bug
+	* SLES/SLED:    https://bugzilla.novell.com/
+	* Debian:       http://www.debian.org/Bugs/
+	* K/Ubuntu:	https://launchpad.net/distros/ubuntu/+bugs
+	* RedHat:       https://bugzilla.redhat.com/
+	* Mandriva:     http://qa.mandriva.com/
+	* ALT Linux:	http://bugzilla.altlinux.org/ 
+	* Pardus:       http://bugs.pardus.org.tr/
+
+ For general Bugs use:
+	* http://sourceforge.net/tracker/?group_id=124576&atid=700009
+	* powersave-users mailinglist

@@ -1,0 +1,5 @@
+kpowersave: no-shlibs-control-file usr/lib/libkdeinit_kpowersave.so
+kpowersave: package-name-doesnt-match-sonames libkdeinit-kpowersave
+kpowersave: postinst-must-call-ldconfig usr/lib/libkdeinit_kpowersave.so
+kpowersave: postrm-should-call-ldconfig usr/lib/libkdeinit_kpowersave.so
+

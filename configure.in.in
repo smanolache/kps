@@ -1,0 +1,173 @@
+#MIN_CONFIG(3.2.0)
+
+AM_INIT_AUTOMAKE(kpowersave, 0.7.3, danny.kukawka@web.de)
+AC_C_BIGENDIAN
+AC_CHECK_KDEMAXPATHLEN
+
+AC_ARG_ENABLE(debug-msg,  [  --enable-debug-msg       build with debug messages],enable_debug_msg=$enableval,enable_debug_msg=auto)
+AC_ARG_ENABLE(yast-entry, [  --enable-yast-entry      build with a YaST entry in the applet menu],enable_yast_entry=$enableval,enable_yast_entry=auto)
+AC_ARG_ENABLE(fake-cpu,   [  --enable-fake-cpu        use fake cpu environment],enable_fake_cpu=$enableval,enable_fake_cpu=auto)
+AC_ARG_ENABLE(suse-sles,  [  --enable-suse-sles       set SLES/SLED as distribution],enable_suse_sles=$enableval,enable_suse_sles=auto)
+
+YAST_ENTRY="no"
+PKG_PROG_PKG_CONFIG
+
+if test x$enable_suse_sles = xyes; then
+  AC_DEFINE([DISTRO_IS_SUSE],1,[define if the distro is SUSE])
+  AC_DEFINE([DISTRO_IS_SLES_SLED],1,[define if the distro is a SUSE Linux Enterprise product])
+  YAST_ENTRY="yes"
+  echo "detected distribution: SUSE Linux / a SUSE Linux Enterprise product"
+elif test -f /etc/SuSE-release ; then
+  AC_DEFINE([DISTRO_IS_SUSE],1,[define if the distro is SUSE])
+  echo -n "detected distribution: SUSE Linux "
+  YAST_ENTRY="yes"
+  if test -x /usr/bin/lsb_release ; then
+    /usr/bin/lsb_release -d -s > lsb_id.tmp
+    if test -f lsb_id.tmp; then
+      read LSB_ID < lsb_id.tmp
+      case "$LSB_ID" in
+        *SUSE*Linux*Enterprise*)
+           AC_DEFINE([DISTRO_IS_SLES_SLED],1,[define if the distro is a SUSE Linux Enterprise product])
+           echo "/ a SUSE Linux Enterprise product"
+           ;;
+        *)
+           /usr/bin/lsb_release -r -s > lsb_release.tmp
+	   if test -f lsb_release.tmp; then
+	       read LSB_RELEASE < lsb_release.tmp
+               case "$LSB_RELEASE" in
+		 *10)
+		    ;;
+		 *10.1)
+                    ;;
+		 *10.2)
+		    ;;
+                 *)
+  		    YAST_ENTRY="no"
+		    ;;
+		esac
+		rm -f lsb_release.tmp;
+             fi
+	   echo ""
+           ;;
+      esac
+      rm -f lsb_id.tmp;
+    else
+      echo ""
+    fi
+  fi
+elif test -f /etc/altlinux-release ; then
+  AC_DEFINE([DISTRO_IS_ALTLINUX],1,[define if the distro is AltLinux])
+  echo "detected distribution: ALT Linux"
+elif test -f /etc/fedora-release ; then
+  AC_DEFINE([DISTRO_IS_FEDORA],1,[define if the distro is RedHat/Fedora])
+  echo "detected distribution: RedHat/Fedora"
+elif test -f /etc/mandrake-release -o -f /etc/mandriva-release -o -f /etc/mandrakelinux-release; then
+  AC_DEFINE([DISTRO_IS_MANDRAKE],1,[define if the distro is Mandrake])
+  echo "detected distribution: Mandrake/Mandriva"
+elif test -f /etc/pardus-release ; then
+  AC_DEFINE([DISTRO_IS_PARDUS],1,[define if the distro is Pardus])
+  echo "detected distribution: Pardus"
+elif test -f /etc/redhat-release ; then
+  AC_DEFINE([DISTRO_IS_REDHAT],1,[define if the distro is RedHat])
+  echo "detected distribution: RedHat"
+elif test -f /etc/gentoo-release ; then
+  AC_DEFINE([DISTRO_IS_GENTOO],1,[define if the distro is Gentoo])
+  echo "detected distribution: Gentoo"
+elif test -f /etc/slackware-version ; then
+  AC_DEFINE([DISTRO_IS_SLACKWARE],1,[define if the distro is Slackware])
+  echo "detected distribution: Slackware"
+elif test -f /etc/debian_version ; then
+  if test -x /bin/lsb_release ; then
+    /bin/lsb_release -id -s > lsb_id.tmp
+    if test -f lsb_id.tmp; then
+      read LSB_ID < lsb_id.tmp
+      case "$LSB_ID" in
+         Ubuntu*)
+            AC_DEFINE([DISTRO_IS_UBUNTU],1,[define if the distro is Ubuntu/Kubuntu])
+	    echo "detected distribution: Ubuntu/Kubuntu"
+            ;;
+         *)
+	    # couldn't detect special derivat, set to Debian
+            AC_DEFINE([DISTRO_IS_DEBIAN],1,[define if the distro is Debian])
+            echo "detected distribution: Debian"
+            ;;
+      esac
+      rm -f lsb_id.tmp;
+    else
+      # paranoid Fallback
+      AC_DEFINE([DISTRO_IS_DEBIAN],1,[define if the distro is Debian])
+      echo "detected distribution: Debian"
+    fi
+  else
+    # Fallback if /bin/lsb_release is not available
+    AC_DEFINE([DISTRO_IS_DEBIAN],1,[define if the distro is Debian])
+    echo "detected distribution: Debian"
+  fi
+else
+  AC_DEFINE([DISTRO_IS_UNKNOW],1,[define if the distro is unknown])
+  echo "detected distribution: unknown"
+fi
+
+if test x$enable_debug_msg = xyes; then
+    AC_DEFINE([ENABLE_DEBUG_MSG_MODE],1,[Support a verbose mode with debug messages])
+    echo "enabled debug messages: yes"
+else
+    echo "enabled debug messages: no"
+fi
+if test x$enable_yast_entry = xyes; then
+    AC_DEFINE([ENABLE_YAST_ENTRY],1,[Add YaST entry in the applet menu])
+    echo "enabled YaST menu entry: yes" 
+else
+  echo "enabled YaST menu entry: $YAST_ENTRY" 
+  if test x$YAST_ENTRY = xyes; then
+    	AC_DEFINE([ENABLE_YAST_ENTRY],1,[Add YaST entry in the applet menu])
+  fi
+fi
+
+if test x$enable_fake_cpu = xyes; then
+    AC_DEFINE([FAKE_CPU],1,[Fake /sys and /proc - for developing])
+    echo "enabled faked sysfs - proc environment: yes"
+else
+    echo "enabled faked sysfs - proc environment: no"
+fi
+
+pkg_modules="dbus-1 >= 0.6, hal >= 0.5.6"
+PKG_CHECK_MODULES(PACKAGE, [$pkg_modules])
+
+# get dbus system bus socket
+DBUS_SYSTEM_BUS_SOCKET="`pkg-config --variable=system_bus_default_address dbus-1`"
+if test -z "$DBUS_SYSTEM_BUS_SOCKET"; then
+   # use default
+   DBUS_SYSTEM_BUS_SOCKET="unix:path=/var/run/dbus/system_bus_socket"
+fi
+
+AC_DEFINE_UNQUOTED(DBUS_SYSTEM_BUS_SOCKET, ["$DBUS_SYSTEM_BUS_SOCKET"],
+                                           [dbus system bus socket path])
+
+
+#check for PolicyKit version
+LIBHAL_POLICYCHECK=no
+AC_CHECK_LIB([hal], [libhal_device_is_caller_privileged], [LIBHAL_POLICYCHECK=yes], [LIBHAL_POLICYCHECK=no])
+if test "x$LIBHAL_POLICYCHECK" = "xyes"; then
+   AC_DEFINE([USE_LIBHAL_POLICYCHECK],1,[Set if should use libhal to check policy.])
+fi
+
+#check for HAL version >= 0.5.10
+if $PKG_CONFIG --atleast-version 0.5.10 hal; then
+   AC_DEFINE([HAVE_HAL_0_5_10],1,[Set if we use HAL >= 0.5.10])
+fi
+
+# check for dbus qt bindings --> copied from KNetworkmanager
+safe_CPPFLAGS=$CPPFLAGS
+CPPFLAGS="$CPPFLAGS $PACKAGE_CFLAGS $all_includes"
+AC_LANG_SAVE
+AC_LANG_CPLUSPLUS
+AC_CHECK_HEADER([dbus/connection.h],,[AC_MSG_ERROR([You need D-BUS/Qt3 bindings])])
+AC_CHECK_HEADER([dbus/message.h],,[AC_MSG_ERROR([You need D-BUS/Qt3 bindings])])
+CPPFLAGS=$safe_CPPFLAGS
+AC_LANG_RESTORE
+
+# call needed substitutions
+AC_SUBST(PACKAGE_CFLAGS)
+AC_SUBST(PACKAGE_LIBS)
+AC_SUBST(XGETTEXT)

@@ -1,0 +1,708 @@
+/*!
+* \page changelog Changelog
+* \section changelist_sec All changes in the package since init
+*
+*	Wed Feb 14 18:26:34 CET 2007 - dkukawka@suse.de
+*	- released new version 0.7.2:
+*	  - changes (for more see NEWS/Changelog file in the source):
+*	    - extended configure dialog to provide this functionality
+*	      - schemes settings (add new and delete existing (no default) schemes, define a CPU Frequency
+*	        policy for each scheme)
+*	      - general settings (define battery warning levels and actions if a level reached as e.g. 
+*	        Suspend to disk/Shutdown or change the display brightness, configure actions for button
+		events (Power/Lid/Suspend/Sleep buttons), define the default AC and battery schemes)
+*	    - show the power consumtion of the battery in the detailed info dialog
+*	    - umount external media before suspend (need a patch of the KDE media manager) to avoid data
+*	      loss and remount on resume
+*	    - reset the CPU Freq settings on resume to avoid different settings for the CPU governor on
+*	      multicore machines
+*	    - call now SetCPUFreqConsiderNice(), SetCPUFreqPerformance() on dynamic CPU Freq policy (as
+*	      poweruser setting only changeable via config file), and also SetPowerSave() with true on 
+*	      battery and false otherwise.
+*	    - support also conservative governor as DYNAMIC fallback
+*	    - fixed brightness handling in the configure dialog if not activated
+*	    - removed accelerator tags from i18n() strings. KDE handle this by itself. Improved config 
+*	      GUI to be better accessible via keyboard.
+*	    - code and code documentation cleanups and updates
+*	  - fixed bugs (from bugzilla.novell.com if no other comment):
+*	    - #245081: KPowersave does not set (ondemand) governor on startup
+*	    - #244052: Close lid of a laptop and suspend to ram cause 100% CPU usage
+*	    - #229960: CPUFREQ_DYNAMIC_PERFORMANCE seems to be ignored during boot and scheme change
+*	    - #230686: KPowersave need to be restarted to apply changed DPMS settings
+*	    - #230965: puzzling battery state info
+*	    - #231709: kpowersave-0.7.1-12: comparison with string literal
+*	    - #231184: KPowersave crashes due to uninitalized LibHalContext
+*	    - #229234: KPowersave does not fall back to userspace governor
+*	    - #215262: Suspend to disk with attached usb storage not working
+*	    - #223164: After suspend, second core has performance governor set
+*	    - #223517: Powersave: CPU scheme "dynamic" reduces speed if only nice -19 processes run
+*	    - #223637: kpowersave crashes in first login
+*	    - #225212: KPowersave crash on ThinkPad X60s
+*	    - #221715: Functionality for configuring lid close event etc. missing in KPowersave
+*	    - #223922: System not shuting down on pressing power button
+*	  - updated translations:
+*	    - german:  Danny Kukawka
+*	    - danish:  Stefan Skotte
+*	    - turkish: S.Çağlar Onur
+*	    - chinese: Zhengpeng Hou
+*
+*	Mon Nov 20 19:17:11 CET 2006 - dkukawka@suse.de
+*	- released new version 0.7.1:
+*	  - closed bugs: #220271, #220222, #220212, #220553, #167919
+*	  - KPowersave should now basicly provide the same major functions as last stable version of
+*	    KPowersave. For more read NEWS and Changelog.
+*
+*	Mon Nov  6 21:03:53 CET 2006 - dkukawka@suse.de
+*	- release new version 0.7.0:
+*	  - changes:
+*	    - depends no longer on powersave, use now only DBUS/HAL
+*	  - known issues/bugs:
+*	    - scheme switching does not work (also not on AC events)
+*	    - currently no reaction if battery reach a warning state or is emptry !!!
+*	    - complete brightness support untested
+*	    - lock screen (on lidclose/suspend) untested
+*
+*	Sun Jun 11 17:00:30 CEST 2006 - dkukawka@suse.de
+*	- released offical update version 0.6.2 with following changes:
+*	  - KPowersave depends now on powersave >= 0.12.18
+*	  - fixed bugs:
+*	    - sf.net #1483392/ SUSE #177792: set changes for autosuspend state via DCOP back to the applet menu,
+*	      added DCOP functions to set the current scheme, the current CPUFreq policy and to open/close the
+*	      detailed dialog.
+*	    - sf.net #1483392/ SUSE #177788,180000: added workaround to fix two bugs in the DPMS- and Screensaver
+*	      extension of X, related to autosuspend and detect user inactivity, which prevent autosuspend within 
+*	      the timeout escpecially if the autosuspend timeout is longer than a DPMS timout. 
+* 	      Problems: DPMS timeouts are abstracted from current idle time, but shouldn't and DPMS timeouts are
+*	      currently additive, but the spec say they should all start together at zero.
+*	    - SUSE #168619: changed errorhandling if HAL, DBUS or the powersave daemon is not running or if the 
+*	      user has not the needed rights to access the powersave daemon via DBUS. Added new errormessages 
+*	      and translations.
+*	    - SUSE #182515: Changed configure dialog to respect rules for DPMS timeouts (a timeout must be larger
+*	      than the prior state)
+*	    - SUSE #176782: patch from Timo Hoenig <thoenig@suse.de> to allow (if hardware supported and enabled in
+*	      the scheme) change brighness via mousewheel over the applet icon.
+*	    - SUSE (SLED) #183745: fixed detection of SUSE Linux/SLES/SLED and added configure option to force 
+*	      SLES/SLED as distro with --enable-suse-sles. Fixed bugzilla link for SLED/SLES.
+*	    - SUSE #184076: fixed wrong command to start dbus daemon in errormessage.
+*	    - added additional check before autosuspend if this was disabled via applet to avoid autosuspend if it
+*	      was temporary disabled by the user
+*	  - added new configure check to detect Ubuntu/Kubuntu
+*	  - changed link to Ubuntu bugzilla to launchpad.net and use now the same link for applet menu entry 
+*	    "Report a bug ..." if compiled for Ubuntu/Kubuntu
+*	  - updated default blacklist for autosuspend with gmplayer, kaffeine, xine, mencoder
+*	  - updated translation: cs, de, es, fi, fr, hu, it, km, pl, pt_BR, zh_CN, zh_TW
+*	  - updated (cs) and fixed translation of eventsrc for KNotify
+*	  - fixed and updated code documentation
+*
+*	Mon Apr 24 17:50:44 CEST 2006 - dkukawka@suse.de
+*	- released official update version 0.6.1 with following changes:
+*	  - fixed bug #168838; event for resumeFromSuspendToDisk displayed twice in knotify dialog (typo and 
+*	    translation issue in eventsrc)
+*	  - updated russian translations including desktop files and eventsrc from Anton Farygin <rider@altlinux.com>
+*
+*	Tue Apr 18 15:27:12 CEST 2006 - dkukawka@suse.de
+*	- released SUSE update version 0.6.1 with following changes:
+*	  - fixed SUSE bug #167296: fixed tooltip and removed unneeded checks for battery related infos. Should fix 
+*	    display wrong remaining time on charging with APM
+*	  - fixed SUSE bug #165462: removed utf8 tag from eventsrc which results in "unknown source ..." message in 
+*	    knotify dialog
+*	  - fixed detailed dialog for multiprocessor/-core machines without CPUFreq or throttling support and offline 
+*	    CPUs/Cores
+*	  - updated transaltions (fi,km,pl)
+*	  - added configure check for dbus-1-qt3-devel headers
+*
+*	Sun Apr  9 20:23:26 CEST 2006 - dkukawka@suse.de
+*	- rereleased official stable version 0.6 with this changes:
+* 	  - fixed bug #164683 (fixed detailed dialog for machines without CPUFreq support and more than one CPU/Core
+*	    and/or throttling)
+*	  - reduced unneeded calls of getCPUNum()
+*	  - added fix from Daniel Gollub to be able to fake CPU info from /proc and /sys for development and QA tests
+*	  - fixed compiler warnings
+*
+*	Tue Apr  4 21:12:37 CEST 2006 - dkukawka@suse.de
+*	- released official stable version 0.6 with this changes:
+*	  - added german version of the handbook
+*	  - added support for lock screen via gnome-screensaver (only under GNOME)
+*	  - added fake keyevent (shift) after resume if machine was locked before suspend, to show the login dialog 
+*	    automatically
+*	  - fixed errorhandling for YaST power management module
+*	  - fixed bug report address in the about dialog (to powersave-users@forge.novell.com)
+*	  - changed timeout for recheck powersave on startup from 10 secs to 20 to avoid annoying messages on 
+*	    slow machines or autologin
+* 	  - changed address to report bugs if distro is SUSE, which is used via the applet menu, to opensuse.org 
+*	    wiki page.
+*
+*       Tue Mar 28 16:44:03 CEST 2006 - dkukawka@suse.de
+*       - fixed UTF-8 in desktop files
+*
+*	Mon Mar 27 23:19:38 CEST 2006 - dkukawka@suse.de
+*	- updated to new stable release 0.6.0:
+*	  - changed powersave dependency to stable version >= 0.12.7
+*	  - reduced the size of the package by optimize the size of included png files. The size off all png files
+*	    is now reduced by ~709KByte.
+*	  - fixed processor bar in detailed dialog to set correct for the first call.
+*	  - fixed tooltip for machines which always report charging also if 100% charged and on AC
+*	  - fix notify about autosuspend after resume and a remove no longer needed check from configure
+*	  - translation updates
+*	  - updated README with install/compile and help/bugreport information
+*	  - updated code docu (added planed features/enhancements for 0.7/0.8 tree)
+*	  - updated spec files for packaging
+*
+*	Mon Mar 13 19:45:41 CET 2006 - dkukawka@suse.de
+*	- updated to new release 0.5.11-rc5:
+*	  - added function to check if the machine is a laptop to allow hide laptop specific widget items if the 
+*	    machine is a workstation (in this case: 'Lock screen on Lidclose'-checkbox)
+* 	  - changed brightness settings to allow only to change to min defined brightness level. This should avoid
+*	    off the display on schemeswitch e.g. on new pmu brightness interface 
+*	  - reworked some parts of the code, cleanup
+*	  - added patch from Holger Macht to allow root always s2ram
+*	  - translation updates
+*	  - replaced TRUE, which is deprecated with QT4, with true
+*	  - code documentation adds, updates and fixes
+*	  - fixed file attributes for several files from SVN
+*
+*	Mon Mar  6 21:46:37 CET 2006 - dkukawka@suse.de
+*	- updated to new release 0.5.10-rc4:
+*	  - KPowersave depends now on: powersave >= 0.12.2
+*	  - fixed lidclose handling: added call xset to off the backlight of LCD displays and reset DPMS
+*	    settings on lidopen
+*	  - fixed read throttling state for multiprocessor machines (patch from Daniel Gollub <dgollub@suse.de>)
+*	  - fixed display processor infos on multiprocessor/-core machines dislay now values for each 
+*	    CPU/core also on non CPUfreq and non-throttling machines
+*	  - fix to display battery infos only if at least min. one battery slot is available
+*	  - translation updates (po files and handbook) from SUSE/Novell translation team and 
+*	    Dawid Wróbel <cromo@klej.net>
+*	  - added and updated screenshots for handbook
+*	  - added possible missing icon on non-SUSE distributions
+*	  - autotools releated fixes: better detection of Mandriva, use now pkgconfig from powersave 
+*	    for checks and linking, read name/location of dbus system socket from pkgconfig.
+*	  - added rpm-spec file for Mandriva 2006.1
+*	  - pics cleanups (removed no longer files)
+*
+*	Tue Feb 28 11:26:32 CET 2006 - dkukawka@suse.de
+*	- removed patch from schwab@suse.de on ix86 and x86_64. Note: this patch is not correct/complete and 
+*	  unsupported
+*
+*	Mon Feb 27 23:12:59 CET 2006 - dkukawka@suse.de
+*	- updated to new release 0.5.9-rc3:
+*	  - fixed APM battery and processor info support in the information dialog and the applet tooltip 
+*	    (need a fix in powersave)
+*	  - fixed battery state in the info dialog if no battery is available (need a fix in powersave)
+*	  - translation and handbook fixes/updates
+*
+*	Mon Feb 20 21:47:12 CET 2006 - dkukawka@suse.de
+*	- fixed problem with pidof on Fedora Core 4. Removed path to pidof from call because pidof should be 
+*	  in PATH of user env.
+*
+*	Mon Feb 20 18:14:47 CET 2006 - dkukawka@suse.de
+*	- updated to new release 0.5.8-rc2:
+*	  - removed sound settings from configure dialog and added KNotify support and more events, 
+*	    KNotify config dialog is available via applet menu and in the configure dialog
+*	  - added dcop function to open configure dialog
+*	  - fixed path to powersaved in code and translations to be more portable (Michael Biebl)
+*	  - fixed cpu info in the info dialog to display also for machines which only support 
+*	    throttling (Daniel Gollub/Danny Kukawka)
+*	  - fixed battery part in the info dialog to have same sized progressbars
+*	  - fixed strings in the code, fixed sting in tooltip if charging (see #146492)
+*	  - removed no longer needed parts from handbook
+*	  - updated translations related to the changes
+*	  - cleanups (code and files)
+*
+*	Mon Feb 13 18:42:45 CET 2006 - dkukawka@suse.de
+*	- updated to new release 0.5.7-rc1:
+*	  - fixed bugs:
+*	    - fixed again problems write text if CPU Freq Policy not supported
+*	    - autotools releated fixes (Michael Biebl)
+*	  - added brightness support and battery state info to detailed dialog overview
+*	  - updated translations: bg,cs,es,fr,it,ja,pt,nb,pt_BR,zh_CN,zh_TW
+*	  - added translation: km
+*	  - added new handbook: Finnish
+*
+*	Mon Feb  6 18:54:20 CET 2006 - dkukawka@suse.de
+*	- updated to new release 0.5.6:
+*	  - fixed bugs:
+*	    - detailed dialog:
+*	      - removed connect setProcessor() to signals from powersave because of excessive CPU usage
+*	      - fixed problems write text if CPU Freq Policy not supported
+*	    - cleanups (removed unneeded enum defines and replaced with defines from powersave)
+* 	    - fixed autosuspend (replace path to pidof and added error msg if call of pidof fails to be more portable)
+* 	    - fixed auto-tools related issues
+* 	  - added ifdef'd header for Slackware 10.2
+*	  - added summary battery progress bar if more than one batterybay is available
+* 	  - updated translation files (nb,nl,pl,pt,zh_CN) thanks to Dawei Pang (zh_CN) and Dawid Wróbel (pl)
+* 	  - added new helpfiles for Czech and Portuguese (not complete translated), removed some pics to reduce 
+*	    package size
+*
+*	Mon Jan 30 12:44:43 CET 2006 - dkukawka@suse.de
+*	- updated to new release 0.5.5:
+*	  - complete reworked detailed dialog, plus:
+*	  - fixed problems with offline CPUs (Daniel Gollub)
+*	  - changed interval for refresh CPU infos to powersave default
+*	  - fixed battery handling
+*	- added new help menu to the applet with a about dialog and a link to report bugs back to developers
+*	- Updated language files, finished german translation
+*	- added new icon for 'Advanced Powersave' scheme
+*	- fixed scheme related autosuspend page in configure dialog to prevent unneeded resize of the dialog
+*	- added new dir with spec/build files (currently for SUSE and FC)
+*	- some cleanups
+*
+*	Sun Jan 29 16:32:22 CET 2006 - aj@suse.de
+*	- Require dbus-1-qt3-devel for build.
+*
+*	Wed Jan 25 21:44:25 CET 2006 - mls@suse.de
+*	- converted neededforbuild to BuildRequires
+*
+*	Mon Jan 23 18:11:12 CET 2006 - dkukawka@suse.de
+*	- updated to new release 0.5.4:
+*	  - added new information dialog to left mouse button with:
+*	    - CPU, Batttery, AC status info (by Daniel Gollub)
+*	    - additional powersave related infos (Danny Kukawka)
+*	  - removed currently CPU Freqency from the applet tooltip (maybe add later CPU releated infos)
+*
+*	Wed Jan 18 21:09:47 CET 2006 - dkukawka@suse.de
+*	- readded help files to spec file
+*
+*	Tue Jan 17 16:12:21 CET 2006 - dkukawka@suse.de
+*	- release 0.5.3-3 for sf.net:
+*	  - added capability for brightness to tell powersave daemon that KPowersave do this, patch 
+*	    from <hmacht@suse.de>
+*	  - changed scheme 'Aggressive' to 'Advanced' Powersave
+*	  - added default config/settings for 'Advanced Powersave' scheme
+*
+*	Tue Jan 17 00:51:07 CET 2006 - dkukawka@suse.de
+*	- updated to new release 0.5.3:
+*	  - added set scheme specific brigthness settings to kpowersave and the configuration dialog
+*	  - added patch to fix compiler warning from Daniel Gollub <dgollub@suse.de>
+*	  - updated translation (nl) and code documentation
+*	  - replaced usage of QString::null with QString()
+*	  - added warning if 'Aggressive Powersave' scheme is selected
+*	  - updated version strings
+*
+*	Tue Jan 10 16:40:11 CET 2006 - dkukawka@suse.de
+*	- updated to new release 0.5.2:
+*	- updated to new powersave (>= v0.11.2)
+*	- fixed bug #121965: added new dialog/error message if powersaveis not running, with 
+*	  'Don't show again' checkbox
+*	- changed handling with not available connection to powersave on startup of KDE (special for autologin)
+*	- added popup if HAL is not running (and also powersave not available) and kpowersave get no 
+*	  battery/AC information
+*	- changed settings of sounds filedialog to be more portable
+*	- removed old and not needed qt1/qt2 includes
+*	- updated help files and added new Norsk and Hungarian help files, added language specific screenshots
+*	- updated translation files and code documentation
+*	- code and file cleanups
+*
+*	Wed Dec 21 00:34:53 CET 2005 - ro@suse.de
+*	- fix build with current powersave
+*
+*	Mon Dec 19 12:00:40 CET 2005 - dmueller@suse.de
+*	- use dbus-1-qt3
+*
+*	Thu Oct 13 14:59:23 CEST 2005 - dkukawka@suse.de
+*	- updated to current CVS version:
+*	  - added admin dir to src for easier port to other distributions
+*	  - added ru and fi translation files
+*	  - updated doc, help, readme and changelogs
+*	  - removed unneeded variables for icon names
+*	  - fixes from KDE fixuifiles script
+*	  - several fixes to respect KDE user interface style guide
+*	  - several typo fixes in i18n stings and related fixes in translation files
+*	  - added powersave-libs and powersave-devel to needforbuild and powersave-libs to Requirements
+*
+*	Mon Sep 12 10:34:47 CEST 2005 - dkukawka@suse.de
+*	- fixed bug #116079: added function to parse for translation in the suspend progress dialog
+*	- fixed bug #116353: wrong translation in hu.po
+*	- fixed bug #116438: added missing Polish translation file
+*	- fixed bug #116439: added updated translations [sv,tr,uk,sk,ru]
+*	- fixed bug #116440: added missing space [de,fr,it,pt_BR]
+*	- updated code documentation
+*
+*	Fri Sep  9 14:12:51 CEST 2005 - dkukawka@suse.de
+*	- fixed and merged german translation
+*	- fixed ui file for configure dialog: removed direct keyboard accelerators from strings, 
+*	  which break all translation files
+*
+*	Fri Sep  9 10:43:28 CEST 2005 - dkukawka@suse.de
+*	- fixed bug #116079: fixed translation of suspend progress dialog 
+*	- fixed bug #115903: hide scheme menu if not connected to daemon
+*	- fixed bug #115914: prevent overlay of widgets in the blacklist edit dialog and fix resizeing
+*	- fixed bug #115584: added new signal to differ between service terminated from powersave 
+*	  and dbus. Display error message now only for signa dbus.terminate
+*	- fixed applet menu: added a new seperator above help menu entry
+*	- fixed/updated code documentation
+*	- added new configure option --enable-yast-entry to remove need for build dependency on 
+*	  suse-release
+*	- removed no longer needed need for build dependency on resmgr
+*
+*	Tue Sep  6 22:23:48 CEST 2005 - dkukawka@suse.de
+*	- fixed bug #78953: added option --force-acpi-check to dektop file and added a new file 
+*	  for autostart
+*	- fixed command line options and information
+*	- changed version from 0.5.0-RC1 to 0.5.0
+*
+*	Mon Sep  5 22:06:56 CEST 2005 - dkukawka@suse.de
+*	- fixed makefile fro build
+*	- changed Requires to new powersave version
+*
+*	Mon Sep  5 15:55:27 CEST 2005 - dkukawka@suse.de
+*	- fixed bug #95250: added help entry to the applet menu and a help button to the configure dialog
+*	- removed bo longer needed include
+*	- updated tranlations
+*	- tweaked debug messages and removed some debug messages
+*	- several cleanups
+*
+*	Sat Sep  3 10:49:31 CEST 2005 - aj@suse.de
+*	- Fix to build with changed powersave interface.
+*
+*	Thu Sep  1 10:54:59 CEST 2005 - dkukawka@suse.de
+*	- merged DBUS_INTEGRATION branch back to cvs-head and use now for this package
+*	- fixed and updated code documentation
+*	- fixed bug #95250, now KPowersave have a online help
+*	- removed several debug messages
+*	- fixed redefinition of DBUS_API_SUBJECT_TO_CHANGE
+*
+*	Mon Aug 29 17:36:24 CEST 2005 - dkukawka@suse.de
+*	- fixed bug #106177: use now scaling_cur_freq
+*	- fixed activaton of widgets in configure dialog
+*	- added and changed english helpfile (from srhoades@novell.com)
+*	- fixes to prevent crash of kpowersave if connection to D-BUS lost
+*	- fixed bug #113559 for autosuspend after a resume
+*	- fixed store changes of time for autosuspend in the configure dialog
+*	- changed configure: detection of distributions and changed to pkg-config to find the 
+*	  includes and libs for dbus
+*	- translation updates
+*
+*	Mon Aug 22 18:55:11 CEST 2005 - dkukawka@suse.de
+*
+*	- fixed bug #105555
+*	- updated translations
+*
+*	Mon Aug 15 13:27:56 CEST 2005 - dkukawka@suse.de
+*	- fixed bug #104382 and some memory leaks
+*	- fixed bugs #104603, #104445 and #104338
+*	- merged 64bit fix to CVS
+*	- updated translations: cs, hu, nb, pa, de
+*	- added new translations: pt
+*
+*	Thu Aug 11 22:06:31 CEST 2005 - seife@suse.de
+*	- ported to the new DBUS interface, removed old socket code
+*	- removed dependency on obsolete powersave_daemonlib
+*
+*	Sun Aug  7 10:50:39 CEST 2005 - seife@suse.de
+*	- fix 64bit build
+*
+*	Sun Aug  7 07:59:53 CEST 2005 - aj@suse.de
+*	- Add hal libraries to neededforbuild.
+*
+*	Fri Aug  5 13:12:52 CEST 2005 - dkukawa@suse.de
+*	- ported KPowersave to new powersave dbus structure (hmacht and dkukawka)
+*	- updated version to 0.4.100, final will be 0.5.0
+*
+*	Wed Jul 20 09:15:10 CEST 2005 - dkukawka@suse.de
+*	- added dbus and dbus-devel to neededforbuild
+*	- enhanced the configure dialog to preselect the current scheme within the list of schemes
+*	- added fix to blacklistedit dialog to display the name of the current scheme or to display 
+*	  "General Blacklist" in the dialog.
+*	- corrected typo of i18n-strings and merged en_US.po changes to the source code
+*	- updated de.po
+*	- fixed bug #95279, now the suspend/progress dialog is Qt::WDestructiveClose and kpowersave connect 
+*	  to the destroyed() signal of the dialog
+*	- changed workflow for schemes to enable/disable autosuspend. (added new checkbox and new config key)
+*	- added misc-icon to configure dialog (scheme part)
+*	- some documentation updates and code cleanups
+*
+*	Tue Jul  5 11:40:36 CEST 2005 - dkukawka@suse.de
+*	- added ppc to buildarch
+*
+*	Fri Jun 24 17:34:19 CEST 2005 - dkukawka@suse.de
+*	- implemented new feature:
+*	  - configurable sound for battery warning states, ac events and autosuspend
+*	- fixed bug within parsing messages for progress dialog.
+*	- updated (code-)documentation
+*	- updated README for compile kpowersave on other distributions
+*
+*	Thu May 26 21:45:58 CEST 2005 - dkukawka@suse.de
+*	- added new menu entry to disable autosuspend trough applet-menu if autosuspend activated on the current 
+*	  scheme, if not the menu-item is not visible
+*	- fixed bug with initalise import of global blacklist to scheme blacklist. Now the imported blacklist is 
+*	  maked as changed.
+*	- cleaned up and changed size policy related values in the configure dialog
+*
+*	Wed May 25 10:30:12 CEST 2005 - dkukawka@suse.de
+*	- added suse-release to neededforbuild to detect the correct distribution in autobuild system
+*
+*	Tue May 24 14:40:37 CEST 2005 - dkukawka@suse.de
+*	- added scheme specific autosuspend blacklist
+*	- changed and improved config dialog:
+*	  - added autosuspend blacklist edit dialog and button to general settings
+*	  - added enable scheme specific autosuspend blacklist and edit dialog
+*	  - redesigned scheme settings page
+*	  - added icons to schemes in scheme settings page
+*	- added fix/workaround for bug #85611
+*	- changed params of autosuspend->start() to QStringList
+*
+*	Fri May 13 03:34:47 CEST 2005 - dkukawka@suse.de
+*	- implemented blacklist for autosuspend (if a program in the blacklist is detected as running autosuspend 
+*	  is stopped)
+*	- added dcop interface function to stop/start autosuspend
+*	- updated documentation
+*
+*	Tue May 10 21:38:36 CEST 2005 - dkukawka@suse.de
+*	- implemented autosuspend (detect userinactivity from X-Server)
+*
+*	Tue May 10 10:36:08 CEST 2005 - dkukawka@suse.de
+*	- fixed bug #82880
+*
+*	Sun May  8 22:04:13 CEST 2005 - dkukawka@suse.de
+*	- additional fix for bug #81681
+*
+*	Fri May  6 19:23:47 CEST 2005 - dkukawka@suse.de
+*	- fixed bug #81681:
+*	  - added a new suspend dialog which is now toplevel
+*	  - added icons to dialog for the related suspend/standby
+*	- updated documentation
+*
+*	Wed Apr 13 14:18:18 CEST 2005 - dkukawka@suse.de
+*	- fixed for gcc 4.0 (tested with i386 and ia64)
+*
+*	Mon Mar 21 14:02:59 CET 2005 - dkukawka@suse.de
+*	- added updated translation file
+*	- fixed string in en_US
+*
+*	Fri Mar 18 12:31:03 CET 2005 - dkukawka@suse.de
+*	- fixed bug #73810, now we restart XScreensaver to be shure that the user default settings are set
+*	- fixed bug #73805 (closed file descriptor leak)
+*	- updated Changelog and code doc
+*
+*	Thu Mar 17 17:33:06 CET 2005 - dkukawka@suse.de
+*	- implemented progressbar for powersave suspend
+*	- removed 'Disable Screensaver' from menu (and also all related functions and variables) because 
+*	this is not needed anymore since the user can change scheme related screensaver settings
+*	- updated documentation
+*
+*	Wed Mar 16 17:35:17 CET 2005 - dkukawka@suse.de
+*	- fixed bug #72939, now on quit reset KDE settings
+*	- fixed setSchemesettings(), now we check for KDE befor reset to KDE settings
+*	- updated documentation, Changelogs and version strings
+*	
+*	Tue Mar 15 19:13:45 CET 2005 - dkukawka@suse.de
+*	- added new [zh_CN, zh_TW] and updated translation files
+*	- fixed blocker bug #72846
+*	- fixed bug within the activation of widgets in the configure dialog
+*	- fixed text on labels in configure dialog
+*	- fixed bug in load KDE settings from configfile, to prevent wrong settings if user changed KDE 
+*	settings in KDE Control Center while KPowersave is running
+*
+*	Mon Mar 14 17:13:31 CET 2005 - dkukawka@suse.de
+*	- updated icon for kmenu (now 16x16 and 32x32 the same)
+*	- added new [en_US, pa, uk] and updated translation files 
+*	- fixed lable width in configure dialog
+*	- fixed bug, now kcmdisplayrc is loaded for KDE DPMS settings
+*
+*	Fri Mar 11 11:55:10 CET 2005 - dkukawka@suse.de
+*	- undo change in QPowersaveClientSocket::connect() depends on undo in last powersave fixes  
+*
+*	Thu Mar 10 18:40:37 CET 2005 - dkukawka@suse.de
+*	- fixed bugs #71955 and #71875 (kpowersave related part and needed adaptations to changed powersave)
+*	- removed unneeded functions and declarations
+*	- added errormessages to do_setSpeedPolicy() and lockscreen_on_lidcloseEvent()
+*
+*	Wed Mar  9 18:57:34 CET 2005 - dkukawka@suse.de
+*	- Fixed bug #71192, changed sequence of enable/disable the widget/items for DPMS settings.
+*	- added new functions to dcop interface: allowed_sleepingStates() 
+*	  and list_schemes()
+*
+*	Mon Mar  7 17:47:33 CET 2005 - dkukawka@suse.de
+*	- fixed bug #71016
+*	- added dcop interfaces for lock screen, suspend/standby and to get information about current scheme and CPUFreqPolicy
+*	- fixed bug: now the configure entry in kpowersave isn't displayed if the powersavedaemon is not running
+*	- fixed message strings
+*	- updated documentation
+*
+*	Fri Mar  4 20:33:03 CET 2005 - dkukawka@suse.de
+*	- Added enterEvent( QEvent * ) eventhandler to reduce polling. Now the tooltip updated only if this event is 
+*	triggered for the kpowersace systray/kicker icon.
+*
+*	Fri Mar  4 14:16:05 CET 2005 - dkukawka@suse.de
+*	- implemented 'AutostartNeverAsk' to quell the dialog on exit
+*	- added and implemented configure entry for 'lock screen method'. Now the user can configure which method 
+*	(KScreensaver, XScreensaver, Xlock, or autoselected) used for lock on suspend/standby and lid closed
+*	- full implementation of powersave client notification, we now need only poll active for information if powersave died
+*	- different cleanups
+*	- updated code documentation and additional doc files
+*
+*	Sun Feb 27 23:16:23 CET 2005 - dkukawka@suse.de
+*	- removed unneeded config values from kpowersaverc
+*	- implemented all functions to read the general, scheme and KDE settings from the kpowersave/KDE configuration file(s)
+*	- added functions for 'lock screen' and 'blank only screen'
+*	- integrated screensaver and lock settings to kpowersave.cpp
+*
+*	Fri Feb 25 14:00:46 CET 2005 - dkukawka@suse.de
+*	- fixed configure dialog for better look with bigger fonts
+*	- fix/workaround for the kpowersave related part of bug #66502 on Workstations
+*	- fixed dialog bug, now the user can open only one configure dialog at the same time
+*	- changed displayed application name from kpowersave to KPowersave
+*	- added function to load the general settings in the dialog
+*	- added 'user-inactivity-actions' to dialog, configfiles and menu. This is atm only 'dummy' and not visible for the user.
+*	- added autostart options to dialog and a new option to prevent the dialog on exit kpowersave
+*	- updated the default config file
+*	- updated strings for translation
+*
+* 	Tue Feb 22 10:45:45 CET 2005 - dkukawka@suse.de
+*	- updated configure dialog
+*	- changed configure dialog, renamed widgets, integrated schemes and general config section
+*	- changed call of the configure dialog, now kpowersave not blocked while dialog is open
+*	- added different slots and logic to disable/enable widgets
+*	- added load and store the configuration
+*	- added configoptions and funtions to make 'lock screen' configureable by user
+*	- added default configfile
+*	- updated documentation
+*
+*	Mon Feb 21 21:48:09 CET 2005 - trenn@suse.de
+*	- enable notification popup through daemon
+*	
+*	Tue Feb 15 00:34:42 CET 2005 - dkukawka@suse.de
+*	- update to 0.3.10: added configure dialog to make user specific configuration possible
+*	
+*	Sat Jan 22 01:23:15 CET 2005 - ro@suse.de
+*	- added resmgr to neededforbuild
+*
+*	Mon Jan 17 14:09:08 CET 2005 - dkukawka@suse.de
+*	- remove some xscreensaver related (unneeded) code in screen.cpp
+*	- remove some unused variables and function declaration in pdaemon.cpp
+*	- added full code documentation for doxygen and changed the settings in the Doxyfile
+*	- fixed bug #49844 user selected 'disable screensaver' prefered if the AC adapter is plugged out
+*	- fixed bug #49845 now XScreensaver also detected under KDE
+*	- fixed bug #49632 in po-files (correct a wrong path in translation files)
+*
+*	Tue Dec 21 11:59:15 CET 2004 - dkukawka@suse.de
+*	- added new cs-translation. File was empty (since SUSE 9.2final) in the cvs-tree (unknown why) Bug #49445
+*	
+*	Wed Dec 15 12:45:09 CET 2004 - dkukawka@suse.de
+*	- added new icons to the applet for stand-by, suspend* and the different schemes
+*	- modified kpowersave desktop icon
+*	- changed some code in kpowersave, fixed some little bugs (not reported), removed some unneeded or unreachable code
+*	
+*	Mon Dec 13 12:06:08 CET 2004 - dkukawka@suse.de
+*	- implemented new icons/iconfunctions for better user interaction if the battery is in the different states  
+*	WARNING, LOW, CRITICAL. Now the icon background flashes every second orange [WARNING,LOW] or red [CRITICAL]
+*	- changed Icons (removed some white pixel)
+*	
+*	Sat Dec 11 17:15:19 CET 2004 - dkukawka@suse.de
+*	- fixed Bug #48202
+*	
+*	Tue Oct 12 20:14:54 CEST 2004 - dkukawka@suse.de
+*	- fix Bugzilla #47113 (hopefully), remove some debug messages, change version 
+*	- fix problem from Bugzilla #46685, now kpowersave check really if scheme is successfully set by powersaved
+*	
+*	Mon Oct  4 12:58:04 CEST 2004 - dkukawka@suse.de
+*	- fixed bug in screensaver menuentry, now only checked on start if screensaver and dpms off or if screensaver off 
+*	and no dpms support by machine -> see: Bugzilla #46728
+*	
+*	Sat Oct  2 20:12:40 CEST 2004 - dkukawka@suse.de
+*	- fixed bug (Bugzilla #46685): now the real scheme names (not i18n 
+*	version) are sent to powersaved
+*	
+*	Fri Oct  1 15:42:43 CEST 2004 - dkukawka@suse.de
+*	- added new an revised translationfiles
+*	- make a workaround to reduce systemload if powersaved not present and kpowersave need to get systeminformations from /proc/ 
+*	
+*	Wed Sep 29 15:54:35 CEST 2004 - dkukawka@suse.de
+*	- correct redrawPixmap so that now kpowersave correctly func under GNOME
+*	- added new translations (jp, sk), added revised translations (bg,cs,es,nb)
+*	
+*	Mon Sep 27 23:01:39 CEST 2004 - dkukawka@suse.de
+*	- added 2 lines in update() were falsely removed by last changes
+*	
+*	Mon Sep 27 21:10:45 CEST 2004 - trenn@suse.de
+*	- correct charging state, when requesting daemon
+*	- initialise has_DPMS
+*	- xscreensaver enable/disable support
+*	- update translations
+*	
+*	Wed Sep 22 12:59:10 CEST 2004 - dkukawka@suse.de
+*	- added screensaver options (disable screensaver and DPMS) to menu 
+*	- do not poll for scheme changes -> only update on right mouse click
+*
+*	Mon Sep 20 19:55:37 CEST 2004 - trenn@suse.de
+*	- changes from l.lunak@suse.cz to faster start kpowersave through kdeinit
+*	
+*	Tue Aug 31 14:11:02 CEST 2004 - trenn@suse.de
+*	- disk<->ram typo which prevented suspend2ram to be enabled correctly
+*	
+*	Mon Aug 23 17:35:54 CEST 2004 - trenn@suse.de
+*	- renamed suspend/standby to suspend2disk and suspend2ram
+*	- introduced new sleep state standby
+*	
+*	Tue Jun 29 17:55:37 CEST 2004 - trenn@suse.de
+*	- switch schemes, enable/disable screensaver and dpms proper update functions
+*	
+*	Mon May 17 21:22:14 CEST 2004 - trenn@suse.de
+*	- color of remaining capacity always green when on ac power 
+*	- (Version 0.2.2)
+*	
+*	Fri May 14 16:22:03 CEST 2004 - trenn@suse.de
+*	- modified message: system group is not mentioned in popup any more (#40473) 
+*	- introduced sub-version nr. (Version 0.2.1)
+*	
+*	Thu May  6 17:27:46 CEST 2004 - trenn@suse.de
+*	- added battery charge information to Tooltip fixed fd leak
+*	
+*	Thu Apr 29 17:48:40 CEST 2004 - trenn@suse.de
+*	- added cpufreq speed to Tooltip
+*	- corrected color when on low level and recharged (was red, should be green)
+*	- merged diffs after 9.1
+*	
+*	Wed Apr  7 15:48:15 CEST 2004 - trenn@suse.de
+*	- changed Autostart to AutoStart (#38075)
+*	
+*	Mon Apr  5 17:12:34 CEST 2004 - seife@suse.de
+*	- increase AC adapter polling interval to 2.5 seconds
+*	
+*	Sat Apr  3 16:39:51 CEST 2004 - coolo@suse.de
+*	- do not rely on daemon but read AC infos right away
+*	- cleanly fixing double start
+*	- disabling suspend/standby menu entries if not available
+*	
+*	Fri Apr  2 16:02:49 CEST 2004 - trenn@suse.de
+*	- avoid double start of kpowersave added italian and russian translation
+*	
+*	Wed Mar 31 17:51:14 CEST 2004 - trenn@suse.de
+*	- delay window that daemon is not running (possible restart of daemon)
+*	no battery capacity on workstations
+*	
+*	Mon Mar 29 18:09:14 CEST 2004 - trenn@suse.de
+*	- rcpowersave to rcpowersaved
+*	- open notification window when on low battery and when requesting info from daemon
+*	- fixed 0:02 mins remaining bug
+*	- ask user to restart on next login when exiting
+*	
+*	Mon Mar 15 17:32:03 CET 2004 - trenn@suse.de
+*	- added several languages
+*	
+*	Thu Mar 11 17:22:09 CET 2004 - trenn@suse.de
+*	- a lot of little fixes for usability
+*	- corrections of translators and some translations
+*
+*	Thu Mar 11 17:22:09 CET 2004 - adrian@suse.de
+*	- fix linking (no non-mt qt needed anymore)
+*	- fix multiple packaging of files
+*	
+*	Tue Mar  9 18:07:00 CET 2004 - ro@suse.de
+*	- do not use non-mt
+*	
+*	Wed Mar  3 17:01:24 CET 2004 - ro@suse.de
+*	- call correct yast2 module
+*	
+*	Wed Feb 25 12:20:07 CET 2004 - trenn@suse.de
+*	- use bz2 instead of gz archive
+*	
+*	Mon Feb 23 18:14:33 CET 2004 - trenn@suse.de
+*	- corrected .spec -> file inconsistence
+*	
+*	Mon Feb 23 17:59:51 CET 2004 - trenn@suse.de
+*	- cleaned up 
+*	
+*	Mon Feb 16 14:56:57 CET 2004 - trenn@suse.de
+*	- initial build
+*/

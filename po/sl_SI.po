@@ -1,0 +1,1478 @@
+# translation of sl_SI.po to Slovenian
+# This file is distributed under the same license as the PACKAGE package.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER.
+#
+# Antje Faber <afaber@suse.de>, 2004.
+# Janez Krek <janez.krek@euroteh.si>, 2004, 2005.
+# Jure Repinc <jlp@holodeck1.com>, 2007.
+msgid ""
+msgstr ""
+"Project-Id-Version: sl_SI\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2007-08-10 03:16+0200\n"
+"PO-Revision-Date: 2007-09-17 17:18+0200\n"
+"Last-Translator: Jure Repinc <jlp@holodeck1.com>\n"
+"Language-Team: Slovenian <lugos-slo@lugos.si>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.11.4\n"
+"Plural-Forms:  nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3);\n"
+"n%100==4 ? 2 : 3);\n"
+
+#: detailed_Dialog.cpp:228
+msgid "kpowersave"
+msgstr "kpowersave"
+
+#: detailed_Dialog.cpp:229
+msgid "General Information"
+msgstr "Splošni podatki"
+
+#: detailed_Dialog.cpp:232
+msgid "Battery Status"
+msgstr "Stanje baterije"
+
+#: detailed_Dialog.cpp:233
+msgid "AC Adapter"
+msgstr "električno omrežje"
+
+#: detailed_Dialog.cpp:234 detaileddialog.cpp:391
+msgid "plugged in"
+msgstr "priključen"
+
+#: detailed_Dialog.cpp:235
+msgid "Power Consumtion: "
+msgstr "Poraba energije: "
+
+#: detailed_Dialog.cpp:237
+msgid "Processor Status"
+msgstr "Stanje procesorja"
+
+#: detailed_Dialog.cpp:238 blacklistedit_Dialog.cpp:130 info_Dialog.cpp:198
+#: configure_Dialog.cpp:838
+msgid "OK"
+msgstr "V redu"
+
+#: blacklisteditdialog.cpp:60
+msgid "General Blacklist"
+msgstr "Splošna črna lista"
+
+#: blacklisteditdialog.cpp:63
+msgid "Scheme: "
+msgstr "Shema: "
+
+#: blacklisteditdialog.cpp:114
+msgid "Selected entry removed."
+msgstr "Izbran vnos je odstranjen."
+
+#: blacklisteditdialog.cpp:117
+msgid "Could not remove the selected entry."
+msgstr "Izbranega vnosa ni možno odstraniti."
+
+#: blacklisteditdialog.cpp:137
+msgid "Inserted new entry."
+msgstr "Nov vnos je bil dodan."
+
+#: blacklisteditdialog.cpp:141
+msgid "Entry exists already. Did not insert new entry."
+msgstr "Vnos že obstaja. Nov vnos ni bil dodan."
+
+#: blacklisteditdialog.cpp:144
+msgid "Empty entry was not inserted."
+msgstr "Prazen vnos ni bil dodan."
+
+#: inactivity.cpp:298
+msgid ""
+"Could not start 'pidof'. Could not autosuspend the machine.\n"
+"Please check your installation."
+msgstr ""
+"Ni moč zagnati »pidof«. Ni moč samodejno zaustaviti računalnika.\n"
+"Preverite namestitev."
+
+#: blacklistedit_Dialog.cpp:129
+msgid "Autosuspend Blacklist Edit"
+msgstr "Urejanje črne liste za samodejno zaustavitev"
+
+#: blacklistedit_Dialog.cpp:132 configuredialog.cpp:1079
+#: configure_Dialog.cpp:836
+msgid "Cancel"
+msgstr "Prekliči"
+
+#: blacklistedit_Dialog.cpp:135
+msgid "Add"
+msgstr "Dodaj"
+
+#: blacklistedit_Dialog.cpp:136
+msgid "Remove"
+msgstr "Odstrani"
+
+#: infodialog.cpp:76 infodialog.cpp:78 main.cpp:55
+msgid "KPowersave"
+msgstr "KPowersave"
+
+#: configuredialog.cpp:116 configuredialog.cpp:121 configuredialog.cpp:721
+msgid " - not supported"
+msgstr "- ni podprto"
+
+#: configuredialog.cpp:150 configuredialog.cpp:317 detaileddialog.cpp:432
+#: kpowersave.cpp:192 settings.cpp:66 configure_Dialog.cpp:876
+msgid "Performance"
+msgstr "Zmogljivost"
+
+#: configuredialog.cpp:154 configuredialog.cpp:319 detaileddialog.cpp:438
+#: kpowersave.cpp:194 settings.cpp:68 configure_Dialog.cpp:878
+msgid "Powersave"
+msgstr "Varčevanje z energijo"
+
+#: configuredialog.cpp:159 configuredialog.cpp:321 kpowersave.cpp:1478
+#: settings.cpp:70
+msgid "Presentation"
+msgstr "Predstavitve"
+
+#: configuredialog.cpp:164 configuredialog.cpp:323 kpowersave.cpp:1473
+#: settings.cpp:72
+msgid "Acoustic"
+msgstr "Tihi način"
+
+#: configuredialog.cpp:169 configuredialog.cpp:171 configuredialog.cpp:172
+#: configuredialog.cpp:173 kpowersave.cpp:1484
+msgid "Advanced Powersave"
+msgstr "Napredno varčevanje"
+
+#: configuredialog.cpp:271
+msgid ""
+"This enables specific screen saver settings. \n"
+"Note: If selected, the global screen saver settings are \n"
+"overwritten while kpowersave runs."
+msgstr ""
+"Možnost omogoči (vključi) specifične nastavitve ohranjevalnika zaslona. \n"
+"Opomba: če so izbrane specifične nastavitve, le-te med delovanjem kpowersave "
+"prepišejo globalne nastavitve. "
+
+#: configuredialog.cpp:274
+msgid ""
+"This disables the screen saver. \n"
+"Note: If selected, the global screen saver settings are \n"
+"overwritten while kpowersave runs."
+msgstr ""
+"Onemogoči (izključi) ohranjevalnik zaslona. \n"
+"Opomba: če so izbrane specifične nastavitve, le-te med delovanjem kpowersave "
+"prepišejo globalne nastavitve. "
+
+#: configuredialog.cpp:277
+msgid ""
+"This blanks the screen instead of using a specific screen saver. \n"
+"Note: This may work only with KScreensaver."
+msgstr ""
+"Uporabi se prazen ohranjevalnik zaslona namesto posameznega ohranjevalnika.\n"
+"Opomba: možno je, da ohranjevalnik zaslona deluje le s KScreensaver."
+
+#: configuredialog.cpp:279
+msgid ""
+"This enables specific DPMS settings. \n"
+"Note: If selected, the global DPMS settings are \n"
+"overwritten while kpowersave runs."
+msgstr ""
+"Omogoči specifične nastavitve za DPMS. \n"
+"Opomba: če so izbrane specifične nastavitve, le-te med delovanjem kpowersave "
+"prepišejo globalne nastavitve DPMS. "
+
+#: configuredialog.cpp:282
+msgid "This disables DPMS support."
+msgstr "Onemogoči (izključi) podporo DPMS."
+
+#: configuredialog.cpp:283
+msgid "If selected, the screen is locked on suspend or standby."
+msgstr ""
+"Če je možnost izbrana, je ekran zaklenjen med 'Zaustavitvijo' (Suspend) in "
+"'Stanju pripravljenosti' (Standby)"
+
+#: configuredialog.cpp:284
+msgid "If selected, the screen is locked if the lid close event is triggered."
+msgstr ""
+"Če je možnost izbrana, je ekran zaklenjen ob prejemu dogodka 'zaprtje "
+"prenosnika' (Lid close)."
+
+#: configuredialog.cpp:286
+msgid "Check this box to enable or disable automatic suspension of the computer."
+msgstr ""
+"Izberite kvadratek za vključitev ali izključitev samodejne zaustavitve "
+"(Suspend) računalnika."
+
+#: configuredialog.cpp:288
+msgid ""
+"Activate this action if the user was inactive for the defined time \n"
+"(greater than 0 minutes). If empty, nothing happens."
+msgstr ""
+"Aktiviraj podprto akcijo, če je uporabnik določen čas \n"
+"(> 0 minut) neaktiven. Če pustite vnos prazen, se ne bo zgodilo nič."
+
+#: configuredialog.cpp:291
+msgid "All scheme-related screen saver and DPMS settings."
+msgstr "Vse nastavitve sheme v povezavi z ohranjevalnikom zaslona in DPMS."
+
+#: configuredialog.cpp:292
+msgid "All scheme-related display brightness settings."
+msgstr "Vse nastavitve sheme v povezavi s svetlostjo zaslona."
+
+#: configuredialog.cpp:293
+msgid "All scheme-related automatic suspend settings."
+msgstr "Vse nastavitve sheme v povezavi s samodejno zaustavitvijo."
+
+#: configuredialog.cpp:295
+msgid ""
+"Here you can change the brightness of your display. \n"
+"Use the slider to change the brightness directly for \n"
+"testing. To reset back to previous level, please press \n"
+"the 'Reset' button. "
+msgstr ""
+"Tu lahko spremenite svetlost zaslona.\n"
+"\n"
+"Za preizkus spreminjanja svetlosti uporabite drsnik.\n"
+"Za nastavitev svetlosti na prejšnjo vrednost kliknite gumb »Ponastavi«."
+
+#: configuredialog.cpp:299
+msgid "Use this button to set back the slider and the display brightness."
+msgstr "Uporabite ta gumb za vrnitev svetlosti na prejšnjo vrednost."
+
+#: configuredialog.cpp:352
+msgid "Press this button to delete the selected scheme."
+msgstr "Kliknite ta gumb za izbris izbrane sheme,"
+
+#: configuredialog.cpp:357
+msgid "You can't delete the current AC or battery scheme."
+msgstr "Trenutne sheme za električno omrežje ali baterijo ni mogoče izbrisati."
+
+#: configuredialog.cpp:363
+msgid "You can't delete this default scheme."
+msgstr "Te privzete sheme ni mogoče izbrisati."
+
+#: configuredialog.cpp:546
+msgid ""
+"Your hardware supports to change the brightness. The values of the slider "
+"are in percent and mapped to the available brightness levels of your "
+"hardware."
+msgstr ""
+"Vaša strojna oprema omogoča spreminjanje svetlosti. Vrednosti za drsnik so v "
+"odstotkih in se pretvorijo v nivoje svetlosti, ki jih podpira strojna oprema."
+
+#: configuredialog.cpp:553
+msgid "Your Hardware currently not support changing the brightness of your display."
+msgstr "Strojna oprema ne podpira spreminjanja svetlosti zaslona."
+
+#: configuredialog.cpp:664
+msgid "Select Automatically"
+msgstr "izberi samodejno"
+
+#: configuredialog.cpp:665
+msgid "KScreensaver"
+msgstr "KScreensaver"
+
+#: configuredialog.cpp:666
+msgid "XScreensaver"
+msgstr "XScreensaver"
+
+#: configuredialog.cpp:667
+msgid "xlock"
+msgstr "xlock"
+
+#: configuredialog.cpp:668
+msgid "GNOME Screensaver"
+msgstr "GNOME-ov ohranjevalnik zaslona"
+
+#: configuredialog.cpp:930
+msgid ""
+"There are unsaved changes in the active scheme.\n"
+"Apply the changes before jumping to the next scheme or discard the changes?"
+msgstr ""
+"V trenutno aktivni shemi obstajajo ne-shranjene spremembe.\n"
+"Želite uveljaviti te spremembe pred skokom na naslednjo shemo ali želite "
+"spremembe pozabiti? "
+
+#: configuredialog.cpp:933 configuredialog.cpp:983
+msgid "Unsaved Changes"
+msgstr "Ne-shranjene spremembe"
+
+#: configuredialog.cpp:981
+msgid ""
+"There are unsaved changes.\n"
+"Apply the changes before cancel or discard the changes?"
+msgstr ""
+"Obstajajo spremembe, ki niso shranjene,.\n"
+"Želite uveljaviti te spremembe pred izhodom ali želite spremembe pozabiti?"
+
+#: configuredialog.cpp:1032
+msgid "Please insert a name for the new scheme:"
+msgstr "Vnesite ime nove sheme:"
+
+#: configuredialog.cpp:1038
+msgid "KPowersave Configuration"
+msgstr "Nastavitve KPowersave"
+
+#: configuredialog.cpp:1046
+msgid "Error: A scheme with this name already exist.\n"
+msgstr "Napaka: Shema s tem imenom že obstaja.\n"
+
+#: configuredialog.cpp:1076
+msgid "Do you really want to delete the %1 scheme?"
+msgstr "Ali zares želite izbrisati shemo »%1«?"
+
+#: configuredialog.cpp:1078
+msgid "Confirm delete scheme"
+msgstr "Potrditev izbrisa sheme"
+
+#: configuredialog.cpp:1079 configure_Dialog.cpp:883
+msgid "Delete"
+msgstr "Izbriši"
+
+#: configuredialog.cpp:1095
+msgid "Could not delete the selected scheme."
+msgstr "Ni moč izbrisati izbrane sheme."
+
+#: configuredialog.cpp:1324
+msgid ""
+"<b>Note:</b> If you select this option, the computer will suspend or standby "
+"if the current user is inactive for the defined time even if somebody is "
+"logged in remotely to the X server.<br><br> This feature can also produce "
+"problems with some programs, such as video players or cd burner. These "
+"programs can be blacklisted by checking <b>Enable scheme-specific blacklist</"
+"b> and click <b>Edit Blacklist...</b>. If this does not help, report the "
+"problem or deactivate autosuspend.<br><br> Really use this option?"
+msgstr ""
+"<b>Opomba:</b> Z izbiro te možnosti se bo računalnik samodejno zaustavil ali "
+"prešel v stanje pripravljenosti, ko uporabnik določen čas ne bo aktiven "
+"(tudi v primeru, da je kdo na računalnik prijavljen z oddaljenega "
+"računalnika).<br><br> Izbira te možnosti lahko povzroči težave nekaterim "
+"programom, kot so npr. video igre ali program za peko CDjev. Te programe je "
+"možno dodati na t.i. \"črno listo\" z izbiro možnosti<b>Omogoči uporabo črne "
+"liste za posamezno shemo</b> in izbiro <b>Urejanje črne liste...</b>. Če to "
+"ne pomaga, sporočite težavo ali odstranite samodejno zaustavitev računalnika."
+"<br><br> Resnično želite uporabiti to možnost?"
+
+#: configuredialog.cpp:1402 configuredialog.cpp:1532
+msgid "The blacklist of the selected scheme is empty. Import the general blacklist?"
+msgstr "Črna lista izbrane sheme je prazna. Želite narediti uvoz splošne črne liste?"
+
+#: configuredialog.cpp:1404 configuredialog.cpp:1534
+msgid "Import"
+msgstr "Uvozi"
+
+#: configuredialog.cpp:1404 configuredialog.cpp:1534
+msgid "Do Not Import"
+msgstr "Ne uvažaj"
+
+#: configuredialog.cpp:1416
+msgid "General Autosuspend Blacklist"
+msgstr "Splošna črna lista za samodejno zaustavitev"
+
+#: configuredialog.cpp:1546
+msgid "General Autodimm Blacklist"
+msgstr "Splošna črna lista za samodejno potemnitev"
+
+#: configuredialog.cpp:1779 configuredialog.cpp:1816
+msgid "Shutdown"
+msgstr "Ugasni"
+
+#: configuredialog.cpp:1781 configuredialog.cpp:1819
+msgid "Logout Dialog"
+msgstr "Pogovorno okno za odjavo"
+
+#: configuredialog.cpp:1784 configuredialog.cpp:1822 kpowersave.cpp:182
+#: kpowersave.cpp:2096 kpowersave.cpp:2156 kpowersave.cpp:2247
+msgid "Suspend to Disk"
+msgstr "Zaustavitev s shranjevanjem na disk"
+
+#: configuredialog.cpp:1787 configuredialog.cpp:1825 kpowersave.cpp:186
+#: kpowersave.cpp:2101 kpowersave.cpp:2161 kpowersave.cpp:2250
+msgid "Suspend to RAM"
+msgstr "Zaustavitev s shranjevanjem v spomin"
+
+#: configuredialog.cpp:1790 configuredialog.cpp:1828
+msgid "CPU Powersave policy"
+msgstr "Varčevalna politika za procesor"
+
+#: configuredialog.cpp:1793 configuredialog.cpp:1831
+msgid "CPU Dynamic policy"
+msgstr "Dinamična politika za procesor"
+
+#: configuredialog.cpp:1796 configuredialog.cpp:1834
+msgid "CPU Performance policy"
+msgstr "Zmogljivostna politika za procesor"
+
+#: configuredialog.cpp:1799 configuredialog.cpp:1837
+msgid "Set Brightness to"
+msgstr "Nastavi svetlost na"
+
+#: main.cpp:43
+msgid "KDE Frontend for Power Management, Battery Monitoring and Suspend"
+msgstr ""
+"Uporabniški vmesnik za upravljanje s porabo energije, nadzor baterij in "
+"zaustavitev sistema"
+
+#: main.cpp:45
+msgid "Force a new check for ACPI support"
+msgstr "Vsili novo preverjanje podpore za ACPI"
+
+#: main.cpp:46
+msgid "Trace function entry and leave points for debug\n"
+msgstr "Sledi vstopnim in izstopnim točkam funkcij, za razhroščevanje\n"
+
+#: main.cpp:59
+msgid "Current maintainer"
+msgstr "Trenutni vzdrževalec"
+
+#: main.cpp:62
+msgid "Powersave developer and for D-Bus integration"
+msgstr "Razvijalec Powersave in integracija z D-Bus"
+
+#: main.cpp:64
+msgid "Powersave developer and tester"
+msgstr "Razvijalec Powersave in preizkuševalec"
+
+#: main.cpp:66
+msgid "Added basic detailed dialog"
+msgstr "Dodal osnovno pogovorno okno s podrobnostmi"
+
+#: main.cpp:67
+msgid "Packaging Debian and Ubuntu"
+msgstr "Priprava paketkov za Debian in Ubuntu"
+
+#: detaileddialog.cpp:61
+msgid "KPowersave Information Dialog"
+msgstr "KPowersave podatki"
+
+#: detaileddialog.cpp:65 configure_Dialog.cpp:882 configure_Dialog.cpp:922
+msgid "Miscellaneous"
+msgstr "Razno"
+
+#: detaileddialog.cpp:66
+msgid "CPUs"
+msgstr "Procesor"
+
+#: detaileddialog.cpp:73 detaileddialog.cpp:453
+msgid "Battery state:"
+msgstr "Stanje baterije:"
+
+#: detaileddialog.cpp:79
+msgid "Total:"
+msgstr "Skupno:"
+
+#: detaileddialog.cpp:81 detaileddialog.cpp:83
+msgid "Battery %1"
+msgstr "Baterija %1"
+
+#: detaileddialog.cpp:114
+msgid "Processor %1"
+msgstr "Procesor %1"
+
+#: detaileddialog.cpp:230
+msgid "not present"
+msgstr "ni prisotna"
+
+#: detaileddialog.cpp:243
+msgid "charged"
+msgstr "napolnjena"
+
+#: detaileddialog.cpp:245
+msgid "%1:%2 h until charged"
+msgstr "%1:%2 do konca polnjenja"
+
+#: detaileddialog.cpp:248
+msgid "%1:%2 h remaining"
+msgstr "%1:%2 do izpraznitve"
+
+#: detaileddialog.cpp:253 detaileddialog.cpp:441 detaileddialog.cpp:468
+msgid "unknown"
+msgstr "neznano"
+
+#: detaileddialog.cpp:325 detaileddialog.cpp:368
+msgid "%v MHz"
+msgstr "%v MHz"
+
+#: detaileddialog.cpp:330 detaileddialog.cpp:363 dummy.cpp:58
+msgid "deactivated"
+msgstr "deaktivirano"
+
+#: detaileddialog.cpp:395
+msgid "unplugged"
+msgstr "izklopljeno"
+
+#: detaileddialog.cpp:412
+msgid "Current Scheme: "
+msgstr "Trenutna shema: "
+
+#: detaileddialog.cpp:429
+msgid "Current CPU Frequency Policy:"
+msgstr "Trenutna politika hitrosti procesorja:"
+
+#: detaileddialog.cpp:435 kpowersave.cpp:193 configure_Dialog.cpp:877
+msgid "Dynamic"
+msgstr "Dinamično"
+
+#: detaileddialog.cpp:456
+msgid "Critical"
+msgstr "Kritično"
+
+#: detaileddialog.cpp:459
+msgid "Low"
+msgstr "Nizko"
+
+#: detaileddialog.cpp:462 kpowersave.cpp:277 kpowersave.cpp:652
+#: kpowersave.cpp:659 kpowersave.cpp:705 kpowersave.cpp:713 kpowersave.cpp:761
+#: kpowersave.cpp:769 kpowersave.cpp:817 kpowersave.cpp:824
+#: kpowersave.cpp:1131 kpowersave.cpp:1243 kpowersave.cpp:1272
+#: kpowersave.cpp:1610 kpowersave.cpp:1670 kpowersave.cpp:2186
+msgid "Warning"
+msgstr "Opozorilo"
+
+#: detaileddialog.cpp:465
+msgid "ok"
+msgstr "v redu"
+
+#: detaileddialog.cpp:474 detaileddialog.cpp:477
+msgid "Set brightness supported:"
+msgstr "Nastavljanje svetlosti podprto:"
+
+#: detaileddialog.cpp:475
+msgid "yes"
+msgstr "da"
+
+#: detaileddialog.cpp:478
+msgid "no"
+msgstr "ne"
+
+#: detaileddialog.cpp:481 detaileddialog.cpp:485
+msgid "HAL Daemon:"
+msgstr "Pritajeni program HAL:"
+
+#: detaileddialog.cpp:482
+msgid "running"
+msgstr "teče"
+
+#: detaileddialog.cpp:486
+msgid "not running"
+msgstr "ne teče"
+
+#: info_Dialog.cpp:197
+msgid "Information"
+msgstr "Podatki"
+
+#: dummy.cpp:36
+msgid "If the current desktop user is inactive, dim the display to:"
+msgstr "Če je trenutno prijavljen uporabnik neaktiven, potemni zaslon na:"
+
+#: dummy.cpp:37
+msgid "Enable dim display on inactivity"
+msgstr "Onemogoči potemnitev zaslona ob neaktivnosti"
+
+#: dummy.cpp:38
+msgid "Blacklist"
+msgstr "Črni seznam"
+
+#: dummy.cpp:39
+msgid ""
+"Here you can add programs which should, if running, prevent the dimming of "
+"the display."
+msgstr ""
+"Sem lahko dodate programe, ki med tem, ko so zagnani, preprečujejo "
+"potemnitev zaslona."
+
+#: dummy.cpp:41
+msgid "Would you like to import a predefined blacklist?"
+msgstr "Ali želite uvoziti v naprej določen seznam?"
+
+#: dummy.cpp:42
+msgid "Disable CPUs/Cores"
+msgstr "Onemogoči procesorje/jedra"
+
+#: dummy.cpp:43
+msgid "Max. running CPUs:"
+msgstr "Največ delujočih procesorjev:"
+
+#: dummy.cpp:44
+msgid "Max. running CPUs/Cores:"
+msgstr "Največ delujočih procesorjev/jeder:"
+
+#: dummy.cpp:45
+msgid "Min. running CPUs:"
+msgstr "Najmanj delujočih procesorjev:"
+
+#: dummy.cpp:46
+msgid "Min. running CPUs/Cores:"
+msgstr "Najmanj delujočih procesorjev/jeder:"
+
+#: dummy.cpp:47
+msgid "Enable to switch off CPUs/cores"
+msgstr "Omogoči izklapljanje procesorjev/jeder"
+
+#: dummy.cpp:48
+msgid "You have a multiprocessor/multicore machine."
+msgstr "Imate računalnik z več procesorji/jedri."
+
+#: dummy.cpp:49
+msgid ""
+"You can disable CPUs/cores to reduce power consumption and save battery "
+"power."
+msgstr ""
+"Procesorje in jedra lahko izključite, da zmanjšate porabo energije in "
+"podaljšate trajanje baterije."
+
+#: dummy.cpp:50
+msgid "Device"
+msgstr "Naprava"
+
+#: dummy.cpp:51
+msgid "Devices"
+msgstr "Naprave"
+
+#: dummy.cpp:52
+msgid "Device class"
+msgstr "Razred naprave"
+
+#: dummy.cpp:53
+msgid "activate"
+msgstr "aktiviraj"
+
+#: dummy.cpp:54
+msgid "Activate"
+msgstr "Aktiviraj"
+
+#: dummy.cpp:55
+msgid "deactivate"
+msgstr "deaktiviraj"
+
+#: dummy.cpp:56
+msgid "Deactivate"
+msgstr "Deaktiviraj"
+
+#: dummy.cpp:57
+msgid "activated"
+msgstr "aktivirano"
+
+#: dummy.cpp:59
+msgid "do nothing"
+msgstr "ne napravi ničesar"
+
+#: dummy.cpp:60
+msgid "Deactivate following devices:"
+msgstr "Deaktiviraj sledeče naprave:"
+
+#: dummy.cpp:61
+msgid "Activate following devices"
+msgstr "Aktiviraj sledeče naprave:"
+
+#: dummy.cpp:62
+msgid "Reactivate following devices"
+msgstr "Ponovno aktiviraj sledeče naprave:"
+
+#: dummy.cpp:63
+msgid "Deactivate following device classes:"
+msgstr "Deaktiviraj sledeče razrede naprav:"
+
+#: dummy.cpp:64
+msgid "Activate following devices classes"
+msgstr "Aktiviraj sledeče razrede naprav:"
+
+#: dummy.cpp:65
+msgid "Reactivate following device classes"
+msgstr "Ponovno aktiviraj sledeče razrede naprav:"
+
+#: dummy.cpp:66
+msgid "If the scheme switched all devices are again activated."
+msgstr "Če se shema spremeni, se vse naprave ponovno aktivirajo."
+
+#: dummy.cpp:67
+msgid "This is a experimental feature."
+msgstr "To je poskusna zmožnost."
+
+#: dummy.cpp:68
+msgid "If you have problems with this feature, please report them."
+msgstr "Če vam ta zmožnost povzroča težave, nam to sporočite."
+
+#: dummy.cpp:69
+msgid "Select one of the available devices and click on "
+msgstr "Izberite eno izmed razpoložljivih naprav in kliknite na "
+
+#: dummy.cpp:70
+msgid "Select one of the available device classes and click on "
+msgstr "Izberite enega izmed razpoložljivih razredov naprav in kliknite na "
+
+#: dummy.cpp:71
+msgid "Select one or more of the available devices and click on "
+msgstr "Izberite eno ali več razpoložljivih naprav in kliknite na "
+
+#: dummy.cpp:72
+msgid "Select one or more of the available device classes and click on "
+msgstr "Izberite enega ali več razpoložljivih razredov naprav in kliknite na "
+
+#: dummy.cpp:73
+msgid ""
+"Please note: If you e.g. deactivate a network device you may lose your "
+"internet connection."
+msgstr ""
+"Pomnite: Če deaktivirate omrežno napravo, lahko izgubite povezavo z "
+"internetom."
+
+#: dummy.cpp:75
+msgid ""
+"<b>Note:</b> If you select this option, the computer will suspend or standby "
+"if the current user is inactive for the defined time. <br><br> This feature "
+"can also produce problems with some programs, such as video players or cd "
+"burner. These programs can be blacklisted by checking <b>Enable scheme-"
+"specific blacklist</b> and click <b>Edit Blacklist...</b>. If this does not "
+"help, report the problem or deactivate autosuspend.<br><br> Really use this "
+"option?"
+msgstr ""
+"<b>Opomba:</b> Z izbiro te možnosti se bo računalnik samodejno zaustavil ali "
+"prešel v stanje pripravljenosti, ko uporabnik določen čas ne bo aktiven."
+"<br><br> Izbira te možnosti lahko povzroči težave nekaterim programom, kot "
+"so npr. video igre ali program za peko CDjev. Te programe je možno dodati na "
+"t.i. \"črno listo\" z izbiro možnosti<b>Omogoči uporabo črne liste za "
+"posamezno shemo</b> in izbiro <b>Urejanje črne liste...</b>. Če to ne "
+"pomaga, sporočite težavo ali odstranite samodejno zaustavitev računalnika."
+"<br><br> Resnično želite uporabiti to možnost?"
+
+#: dummy.cpp:82
+msgid "Try to use only one CPU/Core."
+msgstr "Poskusi uporabiti samo en procesor/jedro."
+
+#: dummy.cpp:83
+msgid ""
+"Reduce power consumption by try to use only one CPU/Core instead of "
+"spreading the work over all/multiple CPUs."
+msgstr ""
+"Zmanjša porabo energije, tako da se poskuša uporabiti samo en "
+"procesor/jedro, namesto da bi se delo porazdelilo na vse procesorje."
+
+#: dummy.cpp:87
+msgid "Could not load the global configuration."
+msgstr "Globalnih nastavitev ni možno naložiti."
+
+#: dummy.cpp:88
+msgid "Could not load the requested scheme configuration."
+msgstr "Zahtevane nastavitvene sheme ni možno naložiti."
+
+#: dummy.cpp:89
+msgid "Configure the current scheme."
+msgstr "Nastavi trenutno shemo."
+
+#: dummy.cpp:90
+msgid "Try loading the default configuration."
+msgstr "Poizkus naložiti privzeto nastavitev."
+
+#: dummy.cpp:91
+msgid "Maybe the global configuration file is empty or missing."
+msgstr "Mogoče je globalna nastavitvena datoteka prazna ali se je izgubila."
+
+#: dummy.cpp:94
+msgid "Cannot connect to D-Bus. The D-Bus daemon may not be running."
+msgstr "Priključitev na D-Bus ni možna. Mogoče pritajeni program D-Bus ni zagnan."
+
+#: dummy.cpp:95
+msgid ""
+"Scheme switched to %1. \n"
+" Deactivate following devices: %2"
+msgstr ""
+"Sprememba sheme na »%1«.\n"
+"Deaktivacija sledečih naprav: %2"
+
+#: dummy.cpp:96
+msgid ""
+"Scheme switched to %1. \n"
+" Activate following devices: %2"
+msgstr ""
+"Sprememba sheme na »%1«.\n"
+"Aktivacija sledečih naprav: %2"
+
+#: dummy.cpp:97
+msgid "Report ..."
+msgstr "Poročilo ..."
+
+#: dummy.cpp:98
+msgid "Suspend to RAM is not supported on your machine."
+msgstr "Računalnik ne podpira zaustavitve s shranjevanjem v spomin."
+
+#: dummy.cpp:99
+msgid "Additionally, please mail the output of %1 to %2 . Thanks!"
+msgstr "Poleg tega vas prosimo, da pošljete izhod ukaza »%1« na naslov %2. Hvala!"
+
+#: dummy.cpp:100
+msgid "Power consumption"
+msgstr "Poraba energije"
+
+#: dummy.cpp:103
+msgid "KScreensaver not found."
+msgstr "KScreensaver-ja ni možno najti."
+
+#: dummy.cpp:104
+msgid "Try locking with XScreensaver or xlock."
+msgstr "Poizkus zaklepanja z XScreensaver ali xlock."
+
+#: dummy.cpp:105
+msgid "XScreensaver not found."
+msgstr "XScreensaver-ja ni možno najti."
+
+#: dummy.cpp:106
+msgid "Try locking the screen with xlock."
+msgstr "Poizkus zaklepanja zaslona z xlock."
+
+#: dummy.cpp:107
+msgid ""
+"XScreensaver and xlock not found. It is not possible to lock the screen. "
+"Check your installation."
+msgstr ""
+"Programov XScreensaver ali xlock ni možno najti zato zaslona ni možno "
+"zakleniti. Prosim, preverite namestitev (če je eden od programov nameščen)."
+
+#: dummy.cpp:111
+msgid "HAL daemon:"
+msgstr "Pritajeni program HAL:"
+
+#: dummy.cpp:112
+msgid "D-Bus daemon:"
+msgstr "Pritajeni program D-Bus:"
+
+#: dummy.cpp:113
+msgid "ConsoleKit daemon:"
+msgstr "Pritajeni program ConsoleKit:"
+
+#: dummy.cpp:114
+msgid "Autosuspend activated:"
+msgstr "Samo-zaustavitev aktivirana:"
+
+#: dummy.cpp:115
+msgid "Autodimm activated:"
+msgstr "Samo-potemnitev aktivirana:"
+
+#: dummy.cpp:116
+msgid "enabled"
+msgstr "omogočeno"
+
+#: dummy.cpp:117
+msgid "Session active:"
+msgstr "Seja aktivna:"
+
+#: dummy.cpp:120
+msgid "Inactivity detected."
+msgstr "Zaznana neaktivnost."
+
+#: dummy.cpp:121
+msgid "To stop the %1 press the 'Cancel' button before the countdown expire."
+msgstr "Za ustavitev %1 kliknite gumb »Prekliči« še preden poteče čas."
+
+#: dummy.cpp:122
+msgid "The computer autosuspend in: "
+msgstr "Samo-zaustavitev računalnika v: "
+
+#: dummy.cpp:123
+#, c-format
+msgid "The display get dimmed down to %1% in: "
+msgstr "Potemnitev zaslona na %1% v: "
+
+#: dummy.cpp:124
+msgid "%1 seconds"
+msgstr "%1 s"
+
+#: dummy.cpp:127
+msgid "Could not call %1. The current desktop session is not active."
+msgstr "Ni bilo moč klicati %1. Trenutna seja namizja ni aktivna."
+
+#: dummy.cpp:128
+msgid "Could not set %1. The current desktop session is not active."
+msgstr "Ni bilo moč nastaviti %1. Trenutna seja namizja ni aktivna."
+
+#: dummy.cpp:129
+msgid "Stopped %1. The current desktop session is now inactive."
+msgstr "Zaustavil %1. Trenutna seja namizja je sedaj ne-aktivna."
+
+#: dummy.cpp:130
+msgid "Restarted %1. The current desktop session is now active again."
+msgstr "Znova zagnal %1. Trenutna seja namizja je sedaj spet aktivna."
+
+#: log_viewer.cpp:78
+msgid "Form1"
+msgstr "Obrazec1"
+
+#: log_viewer.cpp:79
+msgid "Save As ..."
+msgstr "Shrani kot ..."
+
+#: log_viewer.cpp:80
+msgid "Close"
+msgstr "Zapri"
+
+#: logviewer.cpp:44
+msgid "KPowersave Logfile Viewer: %1"
+msgstr "Pregledovalnik dnevnika KPowersave: %1"
+
+#: logviewer.cpp:89
+msgid "File already exist. Overwrite the file?"
+msgstr "Datoteka že obstaja. Ali nadomestim datoteko?"
+
+#: logviewer.cpp:90 logviewer.cpp:97
+msgid "Error while save logfile"
+msgstr "Napaka med shranjevanjem dnevnika"
+
+#: logviewer.cpp:95
+msgid "File already exist."
+msgstr "Datoteka že obstaja."
+
+#: logviewer.cpp:98
+msgid "Try other filename ..."
+msgstr "Poskusi drugo ime ..."
+
+#: suspenddialog.cpp:70
+msgid "Preparing Suspend..."
+msgstr "Priprava na zaustavitev..."
+
+#: kpowersave.cpp:168
+msgid "Configure KPowersave..."
+msgstr "Nastavi KPowersave..."
+
+#: kpowersave.cpp:171 configure_Dialog.cpp:915
+msgid "Configure Notifications..."
+msgstr "Nastavi obvestila ..."
+
+#: kpowersave.cpp:175
+msgid "Start YaST2 Power Management Module..."
+msgstr "Zaženi YaST2 modul za upravljanje z energijo..."
+
+#: kpowersave.cpp:189 kpowersave.cpp:2106 kpowersave.cpp:2166
+#: kpowersave.cpp:2253
+msgid "Standby"
+msgstr "Stanje pripravljenosti"
+
+#: kpowersave.cpp:191 kpowersave.cpp:198
+msgid "Set CPU Frequency Policy"
+msgstr "Nastavi politiko hitrosti procesorja"
+
+#: kpowersave.cpp:205 kpowersave.cpp:206
+msgid "Set Active Scheme"
+msgstr "Nastavi aktivno shemo"
+
+#: kpowersave.cpp:212
+msgid "Disable Actions on Inactivity"
+msgstr "Onemogoči akcije pri neaktivnosti"
+
+#: kpowersave.cpp:219 kpowersave.cpp:229
+msgid "&Help"
+msgstr "&Pomoč"
+
+#: kpowersave.cpp:221
+msgid "&KPowersave Handbook"
+msgstr "P&riročnik za KPowersave"
+
+#: kpowersave.cpp:224
+msgid "&Report a bug ..."
+msgstr "Poročaj o &hrošču ..."
+
+#: kpowersave.cpp:226
+msgid "&About KPowersave"
+msgstr "&O KPowersave"
+
+#: kpowersave.cpp:275 kpowersave.cpp:648 kpowersave.cpp:656 kpowersave.cpp:703
+#: kpowersave.cpp:710 kpowersave.cpp:759 kpowersave.cpp:766 kpowersave.cpp:815
+#: kpowersave.cpp:822 kpowersave.cpp:1126 kpowersave.cpp:1241
+#: kpowersave.cpp:1270 kpowersave.cpp:2183
+msgid "WARNING"
+msgstr "OPOZORILO"
+
+#: kpowersave.cpp:275
+msgid "Cannot find any schemes."
+msgstr "Ni moč najti nobene sheme."
+
+#: kpowersave.cpp:453
+msgid "No information about battery and AC status available"
+msgstr "Ni podatkov o stanju baterije ali električnega omrežja."
+
+#: kpowersave.cpp:456
+msgid "Plugged in -- fully charged"
+msgstr "Priključen na električno omrežje -- baterija v celoti napolnjena"
+
+#: kpowersave.cpp:460
+msgid "Plugged in"
+msgstr "Priključen na električno omrežje"
+
+#: kpowersave.cpp:464
+msgid "Plugged in -- %1% charged (%2:%3 h until full charged)"
+msgstr ""
+"Priključen na električno omrežje -- baterija napolnjena %1% (do konca "
+"polnjenja še %2:%3)"
+
+#: kpowersave.cpp:467
+msgid "Plugged in -- %1% charged (%2:%3 remaining hours)"
+msgstr ""
+"Priključen na električno omrežje -- baterija napolnjena %1% (do izpraznitve "
+"še %2:%3)"
+
+#: kpowersave.cpp:471 kpowersave.cpp:475
+#, c-format
+msgid "Plugged in -- %1% charged"
+msgstr "Priključen na električno omrežje -- baterija napolnjena %1%"
+
+#: kpowersave.cpp:474
+msgid "Plugged in -- no battery"
+msgstr "Priključen na električno omrežje -- brez baterije"
+
+#: kpowersave.cpp:480
+msgid "Running on batteries -- %1% charged (%2:%3 hours remaining)"
+msgstr "Delovanje na baterijah -- baterija napolnjena %1% (do izpraznitve še %2:%3)"
+
+#: kpowersave.cpp:484
+#, c-format
+msgid "Running on batteries -- %1% charged"
+msgstr "Delovanje na baterijah -- baterija napolnjena %1%"
+
+#: kpowersave.cpp:491
+msgid " -- battery is charging"
+msgstr " -- baterije se polnijo"
+
+#: kpowersave.cpp:649 kpowersave.cpp:657
+msgid "Could not start YaST Power Management Module. Check if it is installed."
+msgstr ""
+"YaST2 modula za upravljanje z energijo ni možno zagnati. Preverite, če je "
+"modul nameščen?"
+
+#: kpowersave.cpp:703
+msgid "Suspend to disk failed"
+msgstr "Zaustavitev s shranjevanjem na disk ni uspela"
+
+#: kpowersave.cpp:711
+msgid "Suspend to disk disabled by administrator."
+msgstr "Administrator je onemogočil zaustavitev s shranjevanjem na disk"
+
+#: kpowersave.cpp:759
+msgid "Suspend to RAM failed"
+msgstr "Zaustavitev s shranjevanjem v spomin je spodletela"
+
+#: kpowersave.cpp:767
+msgid "Suspend to RAM disabled by administrator."
+msgstr "Administrator je onemogočil zaustavitev s shranjevanjem v spomin."
+
+#: kpowersave.cpp:815
+msgid "Standby failed"
+msgstr "Prehod v stanje pripravljenosti je spodletel"
+
+#: kpowersave.cpp:822
+msgid "Standby disabled by administrator."
+msgstr "Administrator je onemogočil uporabo stanja pripravljenosti."
+
+#: kpowersave.cpp:853
+msgid "System is going into suspend mode now"
+msgstr "Sistem bo sedaj prešel v stanje zaustavljenosti"
+
+#: kpowersave.cpp:1039
+msgid "Could not call DCOP interface to umount external media."
+msgstr "Ni moč klicati prek vmesnika DCOP in odklopiti zunanjih nosilcev."
+
+#: kpowersave.cpp:1044
+msgid ""
+"Could not umount external media before suspend/standby. \n"
+" (Reason: %1)\n"
+" \n"
+" Would you like to continue suspend/standby anyway? \n"
+"(Warning: Continue suspend can cause data loss!)"
+msgstr ""
+"Pred prehodom v pripravljenost/zaustavitev ni bilo moč odklopiti zunanjih "
+"nosilcev.\n"
+"Razlog: %1\n"
+"\n"
+"Ali kljub temu želite nadaljevati?\n"
+"POZOR: Nadaljevanje lahko privede do izgube podatkov!"
+
+#: kpowersave.cpp:1052
+msgid "Error while prepare %1"
+msgstr "Napaka med pripravo %1"
+
+#: kpowersave.cpp:1053
+msgid "Suspend anyway"
+msgstr "Vseeno zaustavi"
+
+#: kpowersave.cpp:1053
+msgid "Cancel suspend"
+msgstr "Prekliči zaustavitev"
+
+#: kpowersave.cpp:1127
+msgid ""
+"Could not lock the screen. There may be a problem with the selected \n"
+"lock method or something else."
+msgstr ""
+"Ekrana ni možno zakleniti. Mogoče je težava v izbrani metodi za zaklepanje\n"
+" ali pa kaj drugega."
+
+#: kpowersave.cpp:1144
+msgid "The Lid was closed."
+msgstr "Prenosnik je zaprt."
+
+#: kpowersave.cpp:1156
+msgid "The Lid was opened."
+msgstr "Prenosnik je odprt."
+
+#: kpowersave.cpp:1223
+msgid "Start KPowersave automatically when you log in?"
+msgstr "Naj se KPowersave samodejno zažene ob prijavi v sistem?"
+
+#: kpowersave.cpp:1224
+msgid "Question"
+msgstr "Vprašanje"
+
+#: kpowersave.cpp:1225
+msgid "Start Automatically"
+msgstr "Zaženi samodejno"
+
+#: kpowersave.cpp:1225
+msgid "Do Not Start"
+msgstr "Ne zaženi"
+
+#: kpowersave.cpp:1242
+msgid "CPU Freq Policy %1 could not be set."
+msgstr "Politike »%1« za hitrost procesorja ni bilo moč nastaviti."
+
+#: kpowersave.cpp:1271
+msgid "Scheme %1 could not be activated."
+msgstr "Sheme %1 ni možno aktivirati."
+
+#: kpowersave.cpp:1600
+msgid ""
+"The D-Bus daemon is not running.\n"
+"Starting it will provide full functionality: /etc/init.d/dbus start"
+msgstr ""
+"Pritajeni program za D-Bus ne teče.\n"
+"Z njegovim zagonom se povečajo zmogljivosti: /etc/init.d/dbus start"
+
+#: kpowersave.cpp:1611
+msgid "Don't show this message again."
+msgstr "Tega sporočila ne prikaži več."
+
+#: kpowersave.cpp:1637
+msgid "ERROR"
+msgstr "NAPAKA"
+
+#: kpowersave.cpp:1638
+msgid "Could not get information from HAL. The haldaemon is maybe not running."
+msgstr ""
+"Ni moč dobiti podatkov od HAL-a. Mogoče pritajeni program haldaemon ni "
+"zagnan."
+
+#: kpowersave.cpp:1641
+msgid "Error"
+msgstr "Napaka"
+
+#: kpowersave.cpp:1912
+msgid "Battery state changed to WARNING -- remaining time: %1 hours and %2 minutes."
+msgstr "Status baterije spremenjen v OPOZORILO -- preostali čas: %1 ur in %2 minut."
+
+#: kpowersave.cpp:1921
+msgid "Battery state changed to LOW -- remaining time: %1 hours and %2 minutes."
+msgstr "Status baterije spremenjen v NIZKO -- preostali čas: %1 ur in %2 minut."
+
+#: kpowersave.cpp:1932
+msgid ""
+"Battery state changed to CRITICAL -- remaining time: %1 hours and %2 "
+"minutes.\n"
+"Shut down your system or plug in the power cable immediately. Otherwise the "
+"machine\n"
+"will go shutdown in 30 seconds"
+msgstr ""
+"Stanje baterije spremenjeno v KRITIČNO -- preostali čas: %1 ur in %2 minut.\n"
+"Takoj ugasnite sistem ali priključite napajalni kabel! V nasprotnem\n"
+"se bo sistem ugasnil čez 30 sekund."
+
+#: kpowersave.cpp:1943
+msgid ""
+"Battery state changed to CRITICAL -- remaining time: %1 hours and %2 "
+"minutes.\n"
+"Shut down your system or plug in the power cable immediately."
+msgstr ""
+"Stanje baterije spremenjeno v KRITIČNO -- preostali čas: %1 ur in %2 minut.\n"
+"Takoj ugasnite sistem ali priključite napajalni kabel!"
+
+#: kpowersave.cpp:2041
+msgid "AC adapter plugged in"
+msgstr "Napajalni kabel je priključen"
+
+#: kpowersave.cpp:2043
+msgid "AC adapter unplugged"
+msgstr "Napajalni kabel ni priključen"
+
+#: kpowersave.cpp:2078
+msgid "Switched to scheme: %1"
+msgstr "Preklopljeno v shemo: %1"
+
+#: kpowersave.cpp:2095 kpowersave.cpp:2100 kpowersave.cpp:2105
+msgid "System is going into %1 now."
+msgstr "Sistem sedaj prehaja v %1."
+
+#: kpowersave.cpp:2155 kpowersave.cpp:2160 kpowersave.cpp:2165
+msgid "System is resumed from %1."
+msgstr "Sistem se je vrnil v normalno stanje iz %1."
+
+#: kpowersave.cpp:2184
+msgid "Could not remount (all) external storage media."
+msgstr ""
+"Ni bilo moč ponovno priklopiti (vseh) zunanjih nosilcev za shranjevanje "
+"podatkov."
+
+#: kpowersave.cpp:2192
+msgid "An unknown error occurred while %1. The errorcode is: '%2'"
+msgstr "Prišlo je do neznane napake med %1. Koda napake je: »%2«"
+
+#: kpowersave.cpp:2197
+msgid "Do you want to have a look at the log file?"
+msgstr "Ali želite pregledati dnevnik?"
+
+#: kpowersave.cpp:2198 kpowersave.cpp:2224
+msgid "Error while %1"
+msgstr "Napaka med %1"
+
+#: configure_Dialog.cpp:831
+msgid "KPowersave Settings"
+msgstr "KPowersave nastavitve"
+
+#: configure_Dialog.cpp:832
+msgid "Apply"
+msgstr "Uveljavi"
+
+#: configure_Dialog.cpp:834
+msgid "Help"
+msgstr "Pomoč"
+
+#: configure_Dialog.cpp:840
+msgid "Enable specific display power management"
+msgstr "Omogoči posebno upravljanje z energijo za zaslon"
+
+#: configure_Dialog.cpp:841
+msgid "Standby after:"
+msgstr "Preidi v stanje pripravljenosti po:"
+
+#: configure_Dialog.cpp:842
+msgid "Only blank the screen"
+msgstr "Samo prazen ekran"
+
+#: configure_Dialog.cpp:843
+msgid "Disable screen saver"
+msgstr "Onemogočili ohranjevalnik zaslona"
+
+#: configure_Dialog.cpp:844
+msgid "Enable specific screensaver settings"
+msgstr "Omogoči posebne nastavitve ohranjevalnika zaslona"
+
+#: configure_Dialog.cpp:845
+msgid "Suspend after:"
+msgstr "Zaustavitev po:"
+
+#: configure_Dialog.cpp:846
+msgid "Power off after:"
+msgstr "Ugasni računalnik po:"
+
+#: configure_Dialog.cpp:847
+msgid "Disable display power management"
+msgstr "Onemogoči upravljanje z energijo zaslona"
+
+#: configure_Dialog.cpp:848 configure_Dialog.cpp:849 configure_Dialog.cpp:850
+#: configure_Dialog.cpp:862 configure_Dialog.cpp:873
+msgid " min"
+msgstr " min"
+
+#: configure_Dialog.cpp:851
+msgid "Screen Saver and DPMS"
+msgstr "Ohranjevalnik zaslona in DPMS"
+
+#: configure_Dialog.cpp:852
+msgid "Settings"
+msgstr "Nastavitve"
+
+#: configure_Dialog.cpp:853
+msgid "Reset"
+msgstr "Ponastavi"
+
+#: configure_Dialog.cpp:855
+msgid "Enable scheme specific Brightness settings"
+msgstr "Omogoči posebne nastavitve svetlosti"
+
+#: configure_Dialog.cpp:858
+msgid "Brightness"
+msgstr "Svetlost"
+
+#: configure_Dialog.cpp:859
+msgid "Enable autosuspend"
+msgstr "Omogoči samodejno zaustavitev"
+
+#: configure_Dialog.cpp:860 configure_Dialog.cpp:867
+msgid "Enable scheme-specific blacklist"
+msgstr "Omogoči uporabo Črne liste za posamezno shemo"
+
+#: configure_Dialog.cpp:861 configure_Dialog.cpp:870
+msgid "after:"
+msgstr "po:"
+
+#: configure_Dialog.cpp:863 configure_Dialog.cpp:868
+msgid "Edit Blacklist..."
+msgstr "Urejanje črne liste..."
+
+#: configure_Dialog.cpp:864 configure_Dialog.cpp:869
+msgid "If the current desktop user is inactive the computer will:"
+msgstr "Če je trenutno prijavljen uporabnik neaktiven, bo računalnik:"
+
+#: configure_Dialog.cpp:865
+msgid "Autosuspend"
+msgstr "Samodejna zaustavitev"
+
+#: configure_Dialog.cpp:866
+msgid "Enable autodimm the display"
+msgstr "Omogoči samo-potemnitev zaslona"
+
+#: configure_Dialog.cpp:871 configure_Dialog.cpp:893 configure_Dialog.cpp:894
+#: configure_Dialog.cpp:895 configure_Dialog.cpp:896 configure_Dialog.cpp:897
+#: configure_Dialog.cpp:898
+msgid " %"
+msgstr " %"
+
+#: configure_Dialog.cpp:872
+msgid "dimm to:"
+msgstr "potemni na:"
+
+#: configure_Dialog.cpp:874
+msgid "Autodimm"
+msgstr "Samo-potemnitev"
+
+#: configure_Dialog.cpp:879
+msgid "Set CPU Frequency Policy:"
+msgstr "Nastavi politiko hitrosti procesorja:"
+
+#: configure_Dialog.cpp:880
+msgid "CPU Frequency Policy"
+msgstr "Politika hitrosti procesorja"
+
+#: configure_Dialog.cpp:881
+msgid "Disable Notifications"
+msgstr "Onemogoči obvestila"
+
+#: configure_Dialog.cpp:884
+msgid "New"
+msgstr "Nova"
+
+#: configure_Dialog.cpp:885
+msgid "Scheme Settings"
+msgstr "Nastavitve sheme"
+
+#: configure_Dialog.cpp:886
+msgid ""
+"Define the battery warning levels (in percentage) and the releated action if "
+"the level get reached:"
+msgstr ""
+"Določite opozorilne nivoje baterije (v odstotkih) in ustrezna dejanja, ob "
+"dosegu posameznega nivoja."
+
+#: configure_Dialog.cpp:887
+msgid "Warning level:"
+msgstr "Opozorilni nivo:"
+
+#: configure_Dialog.cpp:888
+msgid "Low level:"
+msgstr "Nizek nivo:"
+
+#: configure_Dialog.cpp:889
+msgid "Critical level:"
+msgstr "Kritičen nivo:"
+
+#: configure_Dialog.cpp:890 configure_Dialog.cpp:891 configure_Dialog.cpp:892
+msgid "if reached call:"
+msgstr "Ob dosegu kliči:"
+
+#: configure_Dialog.cpp:899
+msgid "Battery"
+msgstr "Baterija"
+
+#: configure_Dialog.cpp:900
+msgid "Define the action which should be executed if the related button get pressed:"
+msgstr "Določite dejanje, ki naj se sproži ob pritisku na določen gumb:"
+
+#: configure_Dialog.cpp:901
+msgid "Suspend-to-disk Button:"
+msgstr "Gumb za zaustavitev:"
+
+#: configure_Dialog.cpp:902
+msgid "Sleep button:"
+msgstr "Gumb za pripravljenost:"
+
+#: configure_Dialog.cpp:903
+msgid "Lid close Button:"
+msgstr "Zaprtje prenosnika:"
+
+#: configure_Dialog.cpp:904
+msgid "Power Button:"
+msgstr "Gumb za ugašanje:"
+
+#: configure_Dialog.cpp:905
+msgid "Button Events"
+msgstr "Gumbi"
+
+#: configure_Dialog.cpp:906
+msgid ""
+"Select the following schemes as default if the system is running on AC or on "
+"batteries."
+msgstr ""
+"Izberite privzeto shemo za primer, da je sistem priključen na električno "
+"omrežje, ali pa teče na baterijah."
+
+#: configure_Dialog.cpp:907
+msgid "Battery scheme:"
+msgstr "Baterije:"
+
+#: configure_Dialog.cpp:908
+msgid "AC scheme:"
+msgstr "Električno omrežje:"
+
+#: configure_Dialog.cpp:909
+msgid "Default Schemes"
+msgstr "Privzete sheme"
+
+#: configure_Dialog.cpp:910
+msgid "Lock screen before suspend or standby"
+msgstr "Zakleni zaslon pred zaustavitvijo ali prehodom v stanje pripravljenosti."
+
+#: configure_Dialog.cpp:911
+msgid "Lock screen with:"
+msgstr "Zakleni zaslon z/s:"
+
+#: configure_Dialog.cpp:912
+msgid "Lock screen on lid close"
+msgstr "Zakleni zaslon ob zaprtju prenosnika."
+
+#: configure_Dialog.cpp:913
+msgid "Lock Screen"
+msgstr "Zakleni zaslon"
+
+#: configure_Dialog.cpp:914
+msgid "Notifications"
+msgstr "Obvestila"
+
+#: configure_Dialog.cpp:916
+msgid "Autostart"
+msgstr "Samodejni zagon"
+
+#: configure_Dialog.cpp:917
+msgid "Never ask me again on exit"
+msgstr "Ob izhodu me nikoli ne vprašaj."
+
+#: configure_Dialog.cpp:918
+msgid "KPowersave starts automatically on login"
+msgstr "KPowersave se samodejno zažene ob prijavi v sistem."
+
+#: configure_Dialog.cpp:919
+msgid "General Blacklists"
+msgstr "Splošne črne liste"
+
+#: configure_Dialog.cpp:920
+msgid "Edit Autosuspend Blacklist..."
+msgstr "Uredi črno listo za samo-zaustavitev ..."
+
+#: configure_Dialog.cpp:921
+msgid "Edit Autodimm Blacklist..."
+msgstr "Uredi črno listo za samo-potemnitev ..."
+
+#: configure_Dialog.cpp:923
+msgid "General Settings"
+msgstr "Splošne nastavitve"
+

@@ -1,0 +1,610 @@
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC
+   "-//KDE//DTD DocBook XML V4.1.2-Based Variant V1.1//EN"
+   "dtd/kdex.dtd"
+[
+  <!ENTITY app "<application>KPowersave</application>">
+  <!ENTITY apprelease " ">
+  <!-- chapters in separate docbook files -->
+
+  <!-- book related entities -->
+  <!ENTITY kappname "KPowersave">
+  <!ENTITY % addindex "INCLUDE">
+  <!ENTITY % German "INCLUDE" > <!-- change language only here -->
+]>
+
+<!--
+NOTE:
+Entries which require special treatment are marked with comments starting with '###'. They should be visited on a regular basis.
+-->
+
+<book lang="&language;">
+
+<bookinfo>
+  <title>&app; Hilfe</title>
+
+  <date>2006-04-04</date>
+  <releaseinfo>&apprelease;</releaseinfo>
+
+  <authorgroup>
+    <author>
+      <firstname>Danny</firstname>
+      <surname>Kukawka</surname>
+      <affiliation>
+        <address><email>Danny.Kukawka@web.de</email></address>
+      </affiliation>
+    </author>
+    <author>
+      <firstname>Thomas</firstname>
+      <surname>Renninger</surname>
+      <affiliation>
+        <address><email>trenn@suse.de</email></address>
+      </affiliation>
+    </author>
+  </authorgroup>
+ 
+  <copyright>
+    <year>2006</year>
+    <holder>Danny Kukawka</holder>
+  </copyright>
+  
+
+  <!--ROLES_OF_TRANSLATORS-->
+
+  <!--<legalnotice>&FDLNotice;</legalnotice>-->
+
+  <abstract>
+    <para>&app; ist ein Program um Energieverbrauchs- und Energiesparoptionen einzustellen.</para> 
+  </abstract>
+
+  <keywordset>
+    <keyword>KDE</keyword>
+    <keyword>KPowersave</keyword>
+    <keyword>Energie</keyword>
+    <keyword>Batterie</keyword>
+    <keyword>sparen</keyword>
+    <keyword>ACPI</keyword>
+    <keyword>Suspend</keyword>
+</keywordset>
+
+</bookinfo>
+
+<!-- ====================================================================== -->
+
+<chapter id="introduction">
+  <chapterinfo>
+   <keywordset>
+    <keyword>KPowersave</keyword>
+   </keywordset>
+  </chapterinfo>
+<title>Einführung</title>
+  <mediaobject>
+  <imageobject>
+  <imagedata fileref="hi48-app-kpowersave.png" format="PNG"/>
+  </imageobject>
+  </mediaobject>
+  <para>
+	Verwenden Sie KPowersave, das KDE Front-End für powersave, um das Energiemangement
+	zu verwalten und den Batteriestand Ihres Gerätes anzuzeigen. Sie können 
+	beispielsweise konfigurieren, das der Bildschirm Ihres Laptops abgeschaltet 
+	wird, wenn Sie Ihre Laptop eine bestimmte Zeit nicht benutzen um die 
+	Batterielaufzeit zu verlängern.
+  </para> 
+
+ <sect1 id="starting">
+ <title>KPowersave starten</title>
+   
+   <para>Um KPowersave zu starten, öffnen Sie eine Shell und geben das Kommando
+	<command>kpowersave &amp;</command> ein oder wählen <menuchoice><guimenu>
+	System</guimenu><guimenu>Desktop Applet</guimenu>
+     <guimenu>KPowersave</guimenu></menuchoice> aus dem KDE oder GNOME Menü aus.
+	KPowersave wird dann in der Kontrollleiste bzw. im System Tray geöffnet.
+   </para> 
+   
+   <para>Um einzustellen ob KPowersave beim Anmelden an den Desktop automatisch 	
+	gestartet wird klicken Sie im KPowersave Konfigurations Dialog auf 
+    <guimenu>Allgemeine Einstellungen</guimenu> und wählen/abwählen dort die
+	Ankreuzfeld <guimenu>KPowersave automatisch beim Anmelden starten</guimenu>. 
+	Sie können dort auch einstellen, ob Sie beim Beenden gefragt werden ob 
+	KPowersave das nächste mal automatisch gestartet werden soll.
+   </para>
+ </sect1>
+
+ <sect1 id="understandingicon">
+ <title>Das KPowersave Icon/Symbol verstehen</title>
+   <para>
+	Das KPowersave Icon sieht aus wie ein Netzstecker neben einer Batterie
+	Füllstandsanzeige. Das Symbol zeigt den aktuellen Batteriefüllstand an und
+	ob der Computer sich am Stromnetz oder auf Batterie befindet.
+	Wenn der Batteriestand niedrig ist beginnt der Hintergrund des Icons zu 
+	blinken - mit organgen Hintergrund für Warnung und rot für Niedrig und 
+	Kritischen Ladezustand. Wenn Sie mit dem Mauszeiger über das Sysmbol fahren,
+	erscheint ein Tooltip mit Informationen über den Status des AC Adapters,
+	den Stand der Batterie und wenn der Computer sich nicht am Netzstrom befindet
+	die verbleibende geschätzte Zeit mit der aktuellen Batterieladung. Wenn die
+	Batterie geladen wird, finden Sie im Tooltip zudem Informationen wie lange 
+	vorraussichtlich der Ladevorgang bis zum vollständig geladenen Akku andauern
+	wird.
+   </para> 
+ </sect1>
+</chapter>   
+
+<chapter id="applet">
+ <title>Das Applet Menü</title>
+
+  <sect1 id="selectschemes">
+   <title>Das aktive Schema wechseln</title>
+   <para>
+	Um das aktive Schema zu setzen, klicken Sie mit der rechten Maustaste auf 
+	das KPowersave Symbol in der Kontrollleiste und wählen 
+	<guimenu>Setze aktives Schema</guimenu>. Dort wählen Sie dann das gewünschte
+	Schema aus. Wenn Sie das aktive Schema wechseln werden die Konfigurationen der
+	verschiedenen Systemkomponenten verändert. Ein Energieschema beinhaltet 
+	Einstellungen für CPU Freqenzverhalten (wenn dies von Ihrem Gerät unterstützt
+	wird), Throttling, Festplatten, Lüftereinstellungen und beispielsweise 
+	Bildschirmschoner- und Monitoreinstellungen.
+   </para> 
+
+   <mediaobject>
+    <imageobject>
+      <imagedata fileref="de_applet_schemes.png" format="PNG" align="center"/>
+    </imageobject>
+    <textobject>
+       <phrase>KPowersave Applet mit dem Menü zum Schema wechseln.</phrase>
+    </textobject>
+   </mediaobject>
+  </sect1>
+
+  <sect1 id="yast">
+   <title>Das YaST Power-Management-Modul starten</title>
+   <para>
+	Das YaST Power-Management-Modul (zur Zeit nur für SUSE verfügbar) bietet
+	verschiedene Einstellungsmöglichkeiten um Energie zu sparen. Mit diesem
+	Modul können Sie Einstellungen ändern, auf die Sie als Bentzer über KPowersave
+	keinen Einfluss haben. Um das Modul zu starten klicken Sie mit der rechten
+	Maustaste auf das KPowersave Symbol und wählen <guimenu> YaST2 
+	Power-Management-Modul starten ...</guimenu> 
+	Detailierte Anweisungen für die verschiedenen Einstellungsmöglichkeiten finden
+	Sie in YaST.
+    <mediaobject>
+     <imageobject>
+      <imagedata fileref="de_applet_yast.png" format="PNG" align="center"/>
+     </imageobject>
+     <textobject>
+       <phrase>KPowersave Applet Menü mit dem YaST Eintrag.</phrase>
+      </textobject>
+    </mediaobject>
+
+   </para> 
+   <note>
+    <para>
+        Zum Starten des YaST Power-Management-Modules benötigen Sie das root Passwort.
+    </para>
+   </note> 
+  </sect1>
+ 
+  <sect1 id="suspend"> 
+  <title>Suspendieren des Systems</title>
+   <para>
+	Sie können das System jederzeit mit Rechtsklick auf das KPowersave
+	Symbol und das Auswählen von <guimenu>Suspend to Disk</guimenu>,
+	<guimenu>Suspend to RAM</guimenu>, oder <guimenu>Stand-by</guimenu>
+	(wenn dies von Ihrem Gerät unterstützt wird) suspendieren bzw. in 
+	den Stand-by Zustand versetzen.
+   </para>
+
+   <itemizedlist>
+    <listitem>
+      <para>
+		Suspend to Disk sichert alle offenen Daten und Prozesse auf die Festplatte
+		bevor der Computer suspendiert wird. Dadurch werden Ihre Daten geschützt,
+		wenn Sie den Netzstecker enfernen und die Batterie leer bzw. entfernt wird.
+      </para>
+    </listitem> 
+    <listitem>
+      <para>
+		Suspend to RAM sichert die Daten in den Hauptspeicher. Dadurch wird das 
+		Aufwecken des Computers schneller als bei Suspend to Disk.
+      </para>
+    </listitem>
+    <listitem>
+      <para>
+		Das Verhalten von Stand-by hängt von Ihrem Gerät ab. Üblicherweise wird 
+		der Monitor/ das Display des Gerätes abgeschalten. Die restlichen Geräte
+		bleiben dabei aktiviert und alle Daten verbleiben im Hauptspeicher (RAM).
+      </para>
+    </listitem> 
+    </itemizedlist>
+
+    <para>
+		Die verfügbaren Methoden hängen von den aktivierten Einstellungen in YaST
+		ab, die der Administrator des Systems vorgenommen hat und von Ihrer 
+		Hardware ab (bsplw. Stand-by). Ihre Wahl der Methode sollte dabei auf dem
+		aktuellen Batteriestand abgestimmt sein.
+    </para> 
+
+   <mediaobject>
+     <imageobject>
+      <imagedata fileref="de_applet_suspend.png" format="PNG" align="center"/>
+     </imageobject>
+     <textobject>
+       <phrase>KPowersave Applet mit dem Meüeinträgen für Suspend/Stand-by</phrase>
+      </textobject>
+   </mediaobject>
+  </sect1>
+
+  <sect1 id="deactivateautossuspend">
+  <title>Autosuspend deaktivieren</title>
+   <para>
+	Wenn Autosuspend - das automatische Suspendieren, wenn der Benutzer eine 
+	definierte Zeit inaktiv war - für das aktuelle Schema aktiviert ist, erscheint
+	im KPowersave Applet Menü der Eintrag 
+	<guimenu>Aktionen bei Inaktivität deaktivieren</guimenu>. Wenn Sie diesen
+	Menüeintrag auswählen, werden alle konfigurierten Aktionen, wie bsplw. 
+	Suspend to Disk, bei Inaktivität des Benutzers verhindert. Dies bedeutet
+	das Autosuspend abgeschalten wird.
+   </para> 
+
+   <mediaobject>
+     <imageobject>
+      <imagedata fileref="de_applet_autosuspend.png" format="PNG" align="center"/>
+     </imageobject>
+     <textobject>
+       <phrase>KPowersave Applet Menü mit dem Eintrag "Aktionen bei Inaktivität deaktivieren"</phrase>
+      </textobject>
+   </mediaobject>
+  </sect1> 
+  
+  <sect1 id="setCPUFreq">
+  <title>CPU Frequenzverhalten einstellen</title>
+   <para>
+	Um den Energieverbrauch der CPU zu steuern kann - wenn dies die CPU
+	Ihres Gerätes unterstützt - das CPU Frequenzverhalten verändert werden. Dazu
+	öffnen Sie mit einem Rechtsklick auf das KPowersave Symbol das Menü und 
+	wählen den Menüpunkt <guimenu>Setze CPU-Frequenzverhalten</guimenu> und wählen 
+	eine der angebotenen Optionen.
+   </para> 
+   <itemizedlist>
+    <listitem>
+     <para>
+      Leistung: Setzt die CPU dauerhaft auf die maximale CPU Frequenz
+     </para>
+    </listitem> 
+    <listitem>
+      <para>
+		Dynamisch: Reduziert die CPU Frequenz wenn das System im Leerlauf ist und 
+		erhöht die CPU Frequenz dynamisch wenn mehr Leistung benötigt wird. 
+      </para>
+    </listitem> 
+    <listitem>
+      <para>
+       Energiesparen: Setzt die CPU dauerhaft auf die niedrigste verfügbare Frequenz.
+      </para>
+    </listitem>
+   </itemizedlist>
+   
+   <para>
+	Die Optionen für das CPU-Frequenzverhalten ist im Menü nur verfügbar,
+	wenn dies von Ihrem Computer unterstützt wird. Wenn diese Optionen nicht 
+	im Menü zu finden sind, wird das Ändern der CPU Frequenz von Ihrem Gerät
+	nicht unterstützt.
+   </para> 
+
+   <mediaobject>
+     <imageobject>
+      <imagedata fileref="de_applet_cpufreq.png" format="PNG" align="center"/>
+     </imageobject>
+     <textobject>
+       <phrase>KPowersave Menü mit dem Untermenü'CPU-Frequenzverhalten'</phrase>
+      </textobject>
+    </mediaobject>
+  </sect1>
+ </chapter>
+
+ <chapter id="conf_powerscheme"> 
+ <title>Ein Energieverwaltungs Schema konfigurieren</title>
+   <sect1 id="understand_scheme">
+   <title>KPowersave Schema verstehen</title>
+   <para>
+	Ein Schema beinhaltet die grundlegenenden Energieverwaltungseinstellungen
+	die von KPowersave auf Ihrem Computer benutzt werden. Die Anzahl der 
+	verfügbaren Schema hängt von Ihrer Powersave Konfiguration ab. Um zusätzliche 
+	Schema hinzuzufügen oder bestehenden Schemes zu löschen - können Sie
+	das YaST Power-Management-Modul oder den Editor ihrer Wahl benutzen.
+	Einige der allgemein vorhandenen Schema:
+   </para>  
+
+   <itemizedlist>
+    <listitem>
+      <para>Leistung: Optimiert auf maximale Leistung</para>
+    </listitem> 
+    <listitem>
+      <para>Akustik: Optimiert um den Computer so leise wie möglich laufen zu lassen.</para>
+    </listitem> 
+    <listitem>
+      <para>
+		Präsentation: Für die beste Performance während Präsentationen optimiert. Dies 
+		beinhaltet bsplw. das der Bildschirmschoner und DPMS abgeschalten werden.
+	  </para>
+    </listitem> 
+    <listitem>
+      <para>Enegiesparen: Optimiert um die Laufzeit auf Batterie zu verlängern.</para>
+    </listitem> 
+   </itemizedlist>
+   
+   <para>Um ein Schem zum konfigurieren auszuwäheln, öffnen Sie den 
+	<guimenu>Schema Einstellungen</guimenu> Reiter, klicken auf das 
+	gewünschte Schema, ändern es nach Ihren Wünschen und klicken auf
+    <guimenu>OK</guimenu>.
+   </para> 
+
+   <mediaobject>
+     <imageobject>
+      <imagedata fileref="de_configdialog_schemes.png" format="PNG" align="center"/>
+     </imageobject>
+     <textobject>
+       <phrase>KPowersave Konfigurations Dialog (Schema wählen).</phrase>
+      </textobject>
+   </mediaobject>
+
+   <para>
+     Ein Schema verwaltet/kontrolliert:
+   </para>
+   
+   <itemizedlist>
+    <listitem>
+      <para>
+		Wann der Bildschirmschoner aktiviert wird, wenn der Computer nicht in
+		Benutzung ist.
+      </para>
+    </listitem> 
+    <listitem>
+      <para>
+		Wieviel Zeit vergeht bis der Bildschirm über DPMS Ausgesetzt, in Bereitschaft
+		versetzt oder Abgeschaltet wird.
+      </para>
+    </listitem>  
+    <listitem>
+      <para>
+		Wann und ob der Computer automatisch in einen Suspend oder Stand-by versetzt
+		wird, wenn er eine vorgegebene Zeit nicht benutzt wurde.
+      </para>
+    </listitem> 
+    <listitem>
+      <para>
+		Ob KPowersave Benachrichtigungen senden soll.
+      </para>
+    </listitem> 
+   </itemizedlist>
+  </sect1>
+
+  <sect1 id="procedure">
+  <title>Schritte um ein Schema zu konfigurieren</title>
+
+   <para>
+	Alle diese Optionen haben das Ziel den Energieverbrauch zu senken, indem
+	unter anderem versucht wird, Prozesse die viel Energie verbrachen 
+	abzuschalten. Um ein Schema zu konfigurieren tuen Sie das Folgende:
+   </para> 
+   
+  <sect2 id="procedure_ss">
+  <title>Bildschirmschoner</title>
+   <procedure>
+    <step><para>
+		Machen Sie einen Rechtsklick auf das KPowersave Applet Symbol in 
+		der Kontrollleiste.
+	</para></step>
+    <step><para>
+		Wählen Sie <guimenu>KPowersave konfigurieren ...</guimenu>.
+	</para></step>
+    <step><para>
+		Wenn der <guimenu>Schema Einstellungen</guimenu> Reiter nicht bereits 
+		ausgewählt ist, klicken Sie auf <guimenu>Schema Einstellungen</guimenu>.
+	</para></step> 
+    <step><para>
+		Optional klicken Sie auf <guimenu>Aktiviere spezielle Bildschirmschoner 
+		Einstellungen</guimenu>.
+	</para>
+
+     <substeps>
+      <step><para>
+		Wenn Sie den Bildschirmschoner generell deaktivieren wollen um 
+		Energie zu sparen, dann klicken Sie auf <guimenu>Bildschirmschoner
+	    deaktivieren</guimenu>.
+	 </para></step> 
+     <step><para>
+		Wenn Sie statt einen speziellen Bildschirmschoner zu verwenden nur auf
+		einen schwarzen Bildschirm schalten wollen dann klicken Sie auf
+		<guimenu>Nur auf leeren Bildschirm schalten</guimenu>. Damit kann 
+		verhindert werden das beispielsweise CPU belastenden 3D-Bildschirmschoner
+		gestartet werden. Diese Option ist nicht verfügbar, wenn der 
+		Bildschirmschoner abgeschaltet wurde.
+	 </para></step> 
+    </substeps></step>
+    </procedure>
+   </sect2>
+    
+   <sect2 id="procedure_spms">
+    <title>Bildschirmenergieverwaltung (DPMS)</title>
+    <procedure>
+    <step><para>Um den Energieverbrauch des Bildschirms zu handhaben, klicken Sie
+	 auf <guimenu>Aktiviere spezielle DPMS-Einstellungen</guimenu>.</para> 
+     <para>Die Energieverwaltund des Monitors/LCD (Display Power Management Settings 
+	 (DPMS)) können über <guimenu>Deaktiviere Energiesparfunktion des Bildschirms
+      </guimenu> deaktiviert werden. Diese Einstellung überschreibt die Dektop 
+	  Einstellungen wie sie beispielsweise über das KDE Kontrollzentrum vorgenommen
+	  werden können.</para>  
+     <substeps>
+      <step><para>
+		Wählen Sie die Zeit, die vergehen soll bis der Bildschirm Ausgesetzt wird.
+		In diesem Modus wird der Bildschirm auf leer geschaltet, verbraucht aber
+		weiterhin Energie. Dies stellt die kleinste Stuffe der Energiesparoptionen
+		für den Bildschirm dar. Nutzen Sie dazu die Einstellungsoptionen unter
+		<guimenu>Aussetzen nach:</guimenu>.
+	  </para></step> 
+      <step><para>
+		Wählen Sie die Zeit, die vergehen soll bevor der Bildschirm in Bereitschaft 
+		versetzt werden soll. Im Bereitschaftsmodus wird der Bildschirm abgeschaltet 
+		aber es wird noch Energie verbraucht um die aktuellen Bilddaten vorzuhalten.
+		Nutzen Sie dazu die Einstellungsoptionen unter 
+		<guimenu>Auf Bereitschaft gehen nach:</guimenu>.
+	  </para></step> 
+      <step><para>
+		Wählen Sie die gewünschte Zeit, die vergehen soll bis der Bildschirm 
+		vollständig abgeschaltet wird. Dies stellt die maximale Energiesparoption für 
+		Ihren Bildschirm dar. Nutzen Sie dazu die Einstellungsoptionen unter 
+		<guimenu>Ausschalten nach:</guimenu>.
+	  </para></step> 
+     </substeps></step>
+    </procedure>
+    <mediaobject>
+       <imageobject>
+        <imagedata fileref="de_configdialog_schemes_screen.png" format="PNG" align="center"/>
+       </imageobject>
+       <textobject>
+        <phrase>KPowersave Konfigurationsdialog für Bildschirmschoner und DPMS Einstellungen.</phrase>
+       </textobject>
+    </mediaobject>
+   </sect2>
+
+   <sect2 id="procedure_autosuspend">
+    <title>Autosuspend Einstellungen</title>
+    <procedure>
+    <step><para> Klicken Sie auf <guimenu>Autosuspend</guimenu>, wenn Sie
+	  wollen das KPowersave Ihr System automatisch suspendiert, wenn der aktuelle
+	  Desktopbenutzer für eine bestimmte Zeit inaktiv war und benutzen Sie
+	  den folgenden Dialog um die speziellen Einstellungen zu konfigurieren.
+	  Diese Option ist in der Regel nicht vorausgewählt und muss von Ihnen
+	  erst aktiviert und konfiguriert werden.</para> 
+     <para> Wenn Sie beispielsweise wollen, das Ihr System nach 30 Minuten
+	  in den Suspend to Disk versetzt wird, dann wählen Sie die betreffenden 
+	  Optionen. Hat der Benutzer 30 Minuten lang keine Eingaben vongenommen - 
+	  also die Maus bewegt oder Eingaben über die Tastatur vorgenommen, so wird
+	  automatisch der Computer suspendiert und alle Daten auf die Festplatte
+	  gespeichtert.</para> 
+    </step>
+    </procedure>
+    <mediaobject>
+      <imageobject>
+        <imagedata fileref="de_configdialog_schemes_autosuspend.png" format="PNG" align="center"/>
+      </imageobject>
+      <textobject>
+        <phrase>KPowersave Konfigurationsdialog für die Autosuspend Einstellungen.</phrase>
+      </textobject>
+     </mediaobject>
+   </sect2>
+
+   <sect2 id="procedure_notification">
+    <title>Benachrichtigungen aktivieren</title>
+    <procedure>
+     <step><para>KPowersave blendet verschiedene Benachrichtigungen bei definierten
+	  Ereignissen auf den Desktop. Dies können Nachrichten in Pop-Up Dialogen oder aber auch 
+	  das abspielen von Sounddateien sein. Um alle Nachrichten für ein Schema zu deaktivieren
+	  oder aber auch wieder zu aktivieren klicken Sie auf <guimenu>Verschiedenens</guimenu>. 
+	  Dort anderen Sie den Status von <guimenu>Benachrichtigungen abschalten</guimenu>
+	  nach Ihren Wünschen.</para> 
+	  <para>Sie können verschiedenen definierten Benachrichtigungen über
+	  das KPowersave Applet Menü konfigurieren indem Sie auf 
+      <guimenu>Benachrichtigungen konfigurieren ...</guimenu> klicken. Dort können Sie 
+	  beispielsweise festlegen in welcher Form die Nachricht auf dem Desktop angezeigt wird,
+	  ob und welche Sounddatei abgespielt wird und ob beim Eintreffen der Nachricht ein 
+	  beliebiger Befehl ausgeführt werden soll.
+     </para>
+	  <mediaobject>
+		<imageobject>
+			<imagedata fileref="de_notification_settings.png" format="PNG" align="center"/>
+		</imageobject>
+		<textobject>
+			<phrase>KPowersave Konfigurationdialog für die Benachrichtigungen.</phrase>
+		</textobject>
+	  </mediaobject>
+	 </step> 
+    </procedure>
+   </sect2>
+  </sect1>
+ </chapter>
+
+ <chapter id="generalsettings">
+ <title>Allgemeine Einstellungen</title>
+  <sect1 id="lockscreen">
+   <title>Bildschirm sperren</title>
+   <para>
+	Zur besseren Sicherheit Ihrer Daten, kann KPowersave für Sie den 
+	Bildschirm sperren bevor der Computer supendiert wird oder wenn Sie 
+	den Deckel des Bildschirms schließen. Sie können wählen, ob der 
+	Bildschirm mit der automatisch verfügbaren Methode, mit einem 
+	speziellen Bildschirmschoner (dieser muss aktiv sein) oder mit xlock
+	gesperrt werden soll. Die angebotenen Optionen können sich dabei von 
+	Desktopumgebung zu Desktopumgebung unterscheiden.
+   </para> 
+   <para>
+	Um die gewünschten Einstellungen vorzunehmen klicken Sie auf den Reiter 
+    <guimenu>Allgemeine Einstellungen</guimenu> und wählen dann die entsprechenden 
+	Optionen.
+   </para> 
+   
+   <mediaobject>
+     <imageobject>
+      <imagedata fileref="de_configdialog_general.png" format="PNG" align="center"/>
+     </imageobject>
+     <textobject>
+       <phrase>KPowersave Konfigurationsdialog für Allgemeinen Einstellungen.</phrase>
+      </textobject>
+   </mediaobject>
+
+  </sect1>
+  
+  <sect1 id="autosuspendblacklist">
+   <title>Eine Blacklist für Autosuspend erstellen</title>
+   <para>
+	KPowersave bietet eine Blacklist für Autosuspend. Diese Liste verhindert 
+	das automatische suspendieren bei Inaktivität des Benutzers. Ist eines der 
+	in der Liste enhaltenen Programme aktiv, so wird kein Autosuspend 
+	ausgelöst. Sie wollen beispielsweise sicherlich nicht, das während 
+	Sie sich eine DVD anschauen oder eine CD/DVD brennen, das der Computer 
+	nach 10 Minuten suspendiert wird, nur weil Sie in dieser Zeit nicht die 
+	Maus bewegt oder ein Taste gedrückt haben. Um die Blacklist zu bearbeiten 
+	klicken Sie auf den <guimenu>Allgemeine Einstellungen</guimenu> Reiter und
+	dann auf <guimenu>Allgemeine Blacklist bearbeiten</guimenu>. 
+	Benutzen Sie den <guimenu>Autosuspend Blacklist Editieren</guimenu> Dialog
+	um ein Programm zur Blacklist zufügen oder zu entfernen. 
+   </para> 
+
+   <mediaobject>
+     <imageobject>
+      <imagedata fileref="de_configdialog_general.png" format="PNG" align="center"/>
+     </imageobject>
+     <textobject>
+       <phrase>KPowersave Konfiguratinsdialog für die Autosuspend Blacklist</phrase>
+      </textobject>
+   </mediaobject>
+
+   <para>
+	Sie können auch für jedes Schema eine eigene Blacklist erstellen, die dann
+	die Allgemeine Liste für dieses Schema überschreibt. Wenn Sie für ein 
+	Schema eine Blacklist erstellen, haben Sie die Möglichkeit die allgeimeine
+	Liste zu importieren oder mit einer leeren Liste zu beginnen.
+    use.
+   </para>
+
+   <mediaobject>
+     <imageobject>
+      <imagedata fileref="de_configdialog_blacklist.png" format="PNG" align="center"/>
+     </imageobject>
+     <textobject>
+       <phrase>KPowersave Dialog zum bearbeiten einer Blacklist</phrase>
+      </textobject>
+   </mediaobject>
+
+  </sect1> 
+ </chapter>
+ 
+</book>
+
+<!-- Keep this comment at the end of the file
+Local variables:
+mode: xml
+coding: utf-8
+sgml-indent-step: 1
+End:
+-->

@@ -1,0 +1,455 @@
+New: KPowersave 0.7.3 
+=================================================
+
+Note: The last release is now 4 months ago, so the NEWS are longer than
+      normal. For all changes read the Changelog.
+
+Major changes since the last version/release:
+ - added new dialog to show logfiles if a suspend/resume fail and allow 
+   the user to save the log (need to get enabled per distro)
+ - added support to handle brightness key events if the machine not already 
+   handle this in the hardware directly
+ - added new feature named autodimm to reduce the brightness of the display 
+   if the user is inactive and dimm up if the user get active again
+ - new dialog shown up 30 seconds before autosuspend call the suspend to 
+   warn the user and allow chancel the suspend 
+ - added code to work with new PolicyKit/ConsoleKit/HAL combi to check if 
+   the user is privileged (for HAL >= 0.5.10 and related PolicyKit versions)
+ - added code to check if the current desktop session is avtive and handle
+   if the session get inactive (via ConsoleKit)
+ - added code to release/aquire org.freedesktop.Policy.Power if the session 
+   get inactive/active to allow powersaved or other active KPowersave 
+   instances to handle powermanagement
+ - prepared KPowersave to work also with HAL >= 0.5.10 (handle renamed 
+   policy names in HAL)
+ - use now kdebug functions instead of own macros, added --dbg-trace option 
+   to allow trace function entry and leave points.
+
+Minor changes:
+ - added wodim to autosuspend blacklist
+ - changed logic for resume if a timeout happen
+ - change default timeout to fake keyevent for locked screen to 2.5 sec
+ - don't fake key event after locked screen and lidopen if config variable 
+   timeToFakeKeyAfterLock < 0
+ - added new config variable (callSetPowerSaveOnAC in [General] section) 
+   to disable call SetPowerSave() on HAL.
+ - fix code to guess if a 6-hour-timeout occours while suspend/resume or 
+   if there was really a error 
+ - removed Portuguese version of the help, since only one paragraph was 
+   translated
+ - fixed configure script to detect if we should use HAL to get information 
+   about policies instead of PolicyKit
+ - force update detailed dialog on AC events to get always e.g. the 
+   correct scheme info in the dialog
+ - reworked code for mouse wheel events to reuse code for brightness keys
+ - several HAL/D-Bus/PolicyKit/ConsoleKit related fixes/updates
+ - cleanup code, fixed compiler warnings, added new functions to removed 
+   doubled code
+
+Bugfixes:
+ - fixed problems with usage of enum cpufreq_type: don't assign integer 
+   values to a enum (lead to segfault since enum is a 8bit char object)
+ - fixed wrong unit for power consumption (removed 'h' from unit)
+ - only suspend on button events if we resumed to avoid double suspends
+ - several fixes to make signals from HAL/DBus idependent from the QT 
+   eventloop due to problems with the QT3 DBus bindings
+ - several patches from Mandriva (lmontel@mandriva.com) to fix problems
+   with translations, format messages, speedup build and memory leaks
+ - fixed detection if brightness is really supported by the system
+ - call setPowerSave() always depending on AC state if a scheme get set. 
+ - use float for internal calculation of battery values
+ - When use DBUS_TYPE_BOOLEAN use as variable type dbus_bool_t to avoid 
+   possible trouble on big endian machines
+
+Fixed bugs (from bugzilla.novell.com if no other comment):
+ - #182609: autosuspend warn dialog, feature request
+ - #229234: kpowersave does not fall back to userspace governor
+ - #256372: make HAL events independent from QT eventloop
+ - #257326: ignore battery warnings if on AC
+ - #266243: check info.capability and not info.category for laptop_panel
+ - #274705: feature request autodimm
+ - #282640: fixed brightness up/down handling
+ - #284622: fixed segfault 
+ - #293707: de.po: missing space between text and ellipsis (...) 
+ - #298332: crash, fixed typo
+ - #299577: disable Yast module on >= openSUSE 10.3
+ - #301692: fix switch schemes on AC events, fixed detection session 
+            state, fixed possible segfault on ix86
+ - #302493: don't use kdFatal() befor exit(), it would look like a crash
+ - #303963: fix segfault if XDG_SESSION_COOKIE is not set
+ - #307431: prevent AC notifications if session state get changed 
+ - #309491: fixed code to free KProcess object if gnome-screensaver runs 
+ - Debian #413638: if config dialog is minimized and the user try to 
+                   start config dialog via applet reactivate the dialog.
+ - Debian #413811: fails to notify if suspend-to-ram fails
+ - (K)Ubuntu #94396: stop autosuspend before suspend
+
+Tranlation updates:
+ - german:    Danny Kukawka
+ - arabic:    Youssef Chahibi
+ - slovenian: Jure Repinc
+ - several other from forgesvn1.novell.com/svn/suse-i18n/trunk/lcn
+
+
+New: KPowersave 0.7.2 (development tree/unstable)
+=================================================
+
+ This version is a major step to the next KPowersave stable version.
+ At first: you don't need to change the KPowersave config file manually 
+ any longer - this version provide now all options for powermanagement
+ in KPowersave via the updated and extended configure dialog. 
+
+ You can find all changes since the last release in this file or in the 
+ Changelog. Please test KPowersave and feel free to report bugs to the 
+ powersave-devel mailinglist or for SUSE products via the Novell bugzilla.
+
+ Because of the changes in the GUI the most translations are not 
+ up-to-date. Feel free to checkout the source, update your translations
+ file and send it to us.
+
+Major changes since the last version:
+ - extended configure dialog to provide this functionality:
+   * schemes settings:
+     - add new and delete existing (no default) schemes
+     - define a CPU Frequency policy for each scheme
+   * general settings:
+     - define battery warning levels and actions if a level reached
+       as e.g. Suspend to disk, Shutdown or change the brightness
+     - configure actions for button events (Power/Lid/Suspend/Sleep)
+     - define the default AC and battery schemes
+ - show the power consumtion of the battery in the detailed info dialog
+ - umount external media before suspend (need a patch of the KDE media 
+   manager) to avoid data loss and remount on resume
+ - reset the CPU Freq settings on resume to avoid different settings for
+   the CPU governor on multicore machines
+ - call now SetCPUFreqConsiderNice(), SetCPUFreqPerformance() on dynamic
+   CPU Freq policy (as poweruser setting only changeable via config file),
+   and also SetPowerSave() with true on battery and false otherwise.
+ - support also conservative governor as DYNAMIC fallback
+ - fixed brightness handling in the configure dialog if not activated
+ - removed accelerator tags from i18n() strings. KDE handle this by itself.
+   Improved config GUI to be better accessible via keyboard.
+ - code and code documentation cleanups and updates
+
+Fixed bugs (from bugzilla.novell.com if no other comment):
+ - #245081: KPowersave does not set (ondemand) governor on startup
+ - #244052: Close lid of a laptop and suspend to ram cause 100% CPU
+ - #229960: CPUFREQ_DYNAMIC_PERFORMANCE seems to be ignored during
+	    boot and scheme change
+ - #230686: KPowersave need to be restarted to apply DPMS settings
+ - #230965: puzzling battery state info
+ - #231709: kpowersave-0.7.1-12: comparison with string literal
+ - #231184: KPowersave crashes due to uninitalized LibHalContext
+ - #229234: KPowersave does not fall back to userspace governor
+ - #215262: Suspend to disk with attached usb storage not working
+ - #223164: After suspend, second core has performance governor set
+ - #223517: Powersave: CPU scheme "dynamic" reduces speed if only
+	    nice -19 processes run
+ - #223637: kpowersave crashes in first login
+ - #225212: KPowersave crash on ThinkPad X60s
+ - #221715: Functionality for configuring lid close event etc.
+	    missing in KPowersave
+ - #223922: System not shuting down on pressing power button
+
+Tranlation updates:
+ - german:  Danny Kukawka
+ - danish:  Stefan Skotte
+ - turkish: S.Çağlar Onur
+ - chinese: Zhengpeng Hou
+
+
+
+KPowersave 0.7.1 (development tree/unstable)
+=================================================
+
+ I'm glad to announce the first new offical release from the KPowersave
+ development version 0.7.1. This is the first version of KPowersave without
+ dependency to the powersave daemon. From now KPowersave use directly the
+ HAL daemon to get Hardware information and set e.g. brightness or trigger
+ Suspend.
+
+ Also if KPowersave depend no longer on powersave, I would recommend to use
+ the new/current powersave version furthermore. You can use the powersave 
+ daemon if there is no client as e.g. KPowersave to handle system power-
+ management. If KPowersave (there is also a patch for g-p-m available) start 
+ up the daemon stop automatically to handle powermanagement policy and 
+ the KPowersave applet force (if allowed) the user specific policy.
+
+ You can find all changes since the last stable release in this file or in
+ the Changelog. Please test KPowersave and feel free to report bugs to 
+ the powersave-devel mailinglist or for SUSE products via the Novell bugzilla. 
+
+Major changes since the last version:
+- Initial port from powersave to HAL/D-Bus/PolicyKit:
+  - replaced most features from the last stable version base on powersave
+    with new code. (Only missing atm eyecandy stuff as suspend progress dialog)
+  - replaced code to get hardware information from powersave with get info
+    from the HAL daemon
+  - changed resume from suspend/standby detection and handling of the event
+  - KPowersave claim now org.freedesktop.Policy.Power interface from D-Bus
+    to stop powersave from handle powermanagement policy and to prevent 
+    handle other clients to start powermanagement. 
+  - Extended existing schemes to be complete handled in KPowersave instead
+    of the powersave daemon. Added new (scheme) settings for:
+    * battery warning levels
+    * actions for battery warning levels and for lidclose events (as e.g. 
+      SHUTDOWN, SUSPEND2DISK, SUSPEND2RAM, CPUFREQ_POWERSAVE, CPUFREQ_DYNAMIC, 
+      or BRIGHTNESS)
+    * AC and Battery default schemes
+    * CPU Frequency Policies per scheme
+      --> NOTE: you can change this settings currently only via the config file 
+      		and not via the GUI configure dialog. This is the next step, we
+ 	      	concentrated on get KPowersave running for this release.
+  - Fixed KDE screensaver and DPMS handling to reduce/avoid interfer with the
+    KDE user settings. There is a KDE patch available to check if KPowersave 
+    handle DPMS settings already and call the KPowersave config dialog.
+
+
+
+KPowersave 0.6.2 (stable update)
+================================
+
+Changes/fixes since last stable release:
+- KPowersave depends now on powersave >= 0.12.18
+- fixed bugs:
+  - sf.net #1483392/ SUSE #177792: set changes for autosuspend state via DCOP
+    back to the applet menu, added DCOP functions to set the current scheme,
+    the current CPUFreq policy and to open/close the detailed dialog
+  - sf.net #1483392/ SUSE #177788,180000: added workaround to fix two bugs in
+    the DPMS- and Screensaver extension of X, related to autosuspend and detect
+    user inactivity (DPMS timeouts are abstracted from current idle time, but
+    shouldn't / DPMS timeouts are currently additive but shouldn*'t).  This fix
+    problems with autosuspend if the timeout is longer than the DPMS timeouts.
+  - SUSE #168619: changed errorhandling if HAL, DBUS or the powersave daemon
+    is not running or if the user has not the needed rights to access the
+    powersave daemon via DBUS. Added new errormessages and translations.
+  - SUSE #182515: Changed configure dialog to respect rules for DPMS timeouts
+  - SUSE #176782: patch from Timo Hönig <thoenig@suse.de> to allow (if
+    supported and enabled in the scheme) change brighness via mousewheel over
+    the applet icon.
+  - SUSE (SLED) #183745: fixed detection of SUSE Linux/SLES/SLED and added
+    configure option to force SLES/SLED as distro with --enable-suse-sles.
+    Fixed bugzilla link for SLED/SLES
+  - SUSE #184076: fixed wrong command to start dbus daemon in errormessage.
+  - added additional check before autosuspend if this was disabled via applet
+- added new configure check to detect Ubuntu/Kubuntu
+- changed link to Ubuntu bugzilla to launchpad.net and use now the same link
+  for applet menu entry "Report a bug ..." if compiled for Ubuntu/Kubuntu
+- updated default blacklist for autosuspend with gmplayer,kaffeine,xine,mencoder
+- updated translation: cs,de,es,fi,fr,hu,it,km,pl,pt_BR,zh_CN,zh_TW
+- updated (cs) and fixed translation of eventsrc for KNotify
+- fixed and updated code documentation
+
+KPowersave 0.6.1 (stable update)
+================================
+
+Changes/fixes since last stable release:
+- fixed SUSE bug #167296: fixed tooltip and removed unneeded checks for battery
+  related infos. Should fix display wrong remaining time on charging with APM
+- fixed SUSE bug #165462: removed utf8 tag from eventsrc which results in
+  "unknown source ..." message in knotify dialog
+- fixed SUSE bug #168838; event for resumeFromSuspendToDisk displayed twice in
+  knotify dialog (typo and translation issue in eventsrc)
+- fixed detailed dialog for multiprocessor/-core machines without CPUFreq or
+  throttling support and offline CPUs/Cores
+- updated translations (fi,km,pl,ru) including desktop files and eventsrc (ru,
+  from Anton Farygin <rider@altlinux.com>)
+- added configure check for dbus-1-qt3-devel headers
+- updated README (ALT Linux bugzilla link)
+
+KPowersave 0.6.0 (stable)
+================================
+
+ I'm glad to announce the new official stable release of KPowersave (v0.6.0).
+ You can find all changes since the last stable release in this file or in
+ the Changelog.
+
+ Thanks to all persons which helped to develop KPowersave with patches, 
+ testing new unstable versions and report bugs back to us. A special thanks
+ to:
+ 	Holger Macht, Stefan Seyfried, Michael Biebl, Daniel Gollub 
+	and last but not least SUSE/Novell.
+
+ Danny Kukawka
+
+
+Changes since last release:
+- changed powersave dependency to current stable version >= 0.12.7
+- reduced the size of the package by optimize the size of included png files.
+  The size off all png files is now reduced by ~709KByte.
+- added german version of the handbook
+- fixed processor bar in detailed dialog to set correct for the first call.
+- fixed tooltip for machines which always report charging also if 100% 
+  charged and on AC
+- fix from Michael Biebl for notify about autosuspend after resume and a
+  remove no longer needed check from configure
+- added support for lock screen via gnome-screensaver (only under GNOME)
+- added fake keyevent (shift) after resume if machine was locked before
+  suspend to show the login dialog automatically
+- fixed detailed dialog for machines without CPUFreq and more than one CPU/
+  Core or with throttling support (see SUSE bug #164683).
+- added patch from Daniel Gollub to be able to fake CPU infos for develop 
+- fixed errorhandling for YaST power management module (SUSE specific)
+- changed link for report bug opened via the applet menu if this is a  
+  SUSE package. Open now the related opensuse.org wiki page.
+- fixed bug report address in the about dialog (to powersave-users ML) 
+- translation updates
+- changed timeout for recheck powersave on startup from 10 secs to 20 to 
+  avoid annoying messages on slow machines or autologin
+- updated README with install/compile and help/bugreport information
+- updated code docu (added planed features/enhancements for 0.7/0.8 tree)
+- updated spec files for packaging
+
+
+KPowersave 0.5.11 (rc5)
+================================
+
+Changes since last release:
+- added function to check if the machine is a laptop and to allow hide
+  laptop specific widgets/code e.g. on workstations 
+- hide 'Lock screen on lid close' checkbox in config dialog on non-Laptop
+- changed brightness settings to be sure that we use the lowest 'usable'
+  min level of brightness and to avoid off the display on e.g. pmu
+- allow root user always all kind of suspend/standby
+- little fix to prepare for QT4 (s/TRUE/true/)
+- translation, handbook and code documenatation updates and fixes
+- code cleanups, SVN file attributes fixed
+
+KPowersave 0.5.10 (rc4)
+================================
+
+Changes since last release:
+- KPowersave depends now on: powersave >= 0.12.2
+- fixed lidclose handling: added call xset to off the backlight of LCD 
+  displays and reset DPMS settings on lidopen
+- fixed read throttling state for multiprocessor machines (patch from 
+  Daniel Gollub <dgollub@suse.de>)
+- fixed display processor infos on multiprocessor/-core machines dislay now 
+  values for each CPU/core also on non CPUfreq and non-throttling machines
+- fix to display battery infos only if at least min. 1 batteryslot available
+- translation updates (po files and handbook) from SUSE/Novell translation 
+  team and Dawid Wróbel <cromo@klej.net>
+- added and updated screenshots for handbook
+- added missing icon on non-SUSE distributions
+- autotools releated fixes: better detection of Mandriva, use now pkgconfig 
+  from powersave for checks and linking, read name/location of dbus system 
+  socket from pkgconfig.
+
+KPowersave 0.5.9 (rc3)
+================================
+
+Changes since last release:
+- fixed battery and processor information for APM and machines without
+  CPU freq or throttling support
+- fixed battery state in the detailed dialog if no battery is available
+- translation and handbook updates and fixes
+
+KPowersave 0.5.8 (rc2)
+================================
+
+Changes since last release:
+- removed sound settings from configure dialog and added KNotify support
+  and more events, KNotify config dialog is available via applet menu and
+  in the configure dialog (Michael Biebl/Danny Kukawka)
+- added dcop function to open configure dialog
+- fixed path to powersaved in code and translations to be more portable
+  (Michael Biebl)
+- fixed cpu info in the info dialog to display also for machines which
+  only support throttling (Daniel Gollub/Danny Kukawka)
+- fixed battery part in the info dialog to have same sized progressbars
+- fixed strings in the code, fixed sting in tooltip if charging
+- fixed problems with pidof on Fedora: pidof should be in PATH of user.
+- removed no longer needed parts from handbook
+- updated translations related to the changes
+- cleanups (code and files)
+
+
+KPowersave 0.5.7 (rc1)
+================================
+
+Changes since last release:
+- added brightness support and battery state info to the detailed dialog
+- updated translations: bg,cs,es,fr,it,ja,pt,nb,pt_BR,zh_CN,zh_TW
+- added new language: km
+- added new help file (currently without pics): Finnish
+- fixed bugs:
+  - fixed again display CPU Freq Policy on machines without cpufreq support
+  - autotools related fixes (Michael Biebl <biebl@teco.edu>)
+
+KPowersave 0.5.6 (unstable)
+================================
+
+Changes since last release:
+- added new summary battery progress bar if more than one battery bay is 
+  available in the system
+- updated translation files (nb,nl,pl,pt,zh_CN) thanks to Dawei Pang 
+  (zh_CN) and Dawid Wróbel (pl)
+- added new helpfiles for Czech and Portuguese (not complete translated), 
+  removed some pics to reduce package size
+- fixed bugs:
+  - wrong path to pidof prevented autosuspend (fixed path to /bin )
+  - fixed autotools releated issues 
+  - included header for Slackware 10.2
+  - fixed excessive CPU usage of detailed dialog
+  - fixed problems if CPU Freq Policy not supported
+
+KPowersave 0.5.5 (unstable)
+================================
+
+Changes since last release:
+- reworked the detailed dialog to a new design
+  - fixed problems with offline CPUs
+  - fixed battery handling
+- updated pot/po files and completed german translation
+- added new help menu to the applet, added new about dialog and a link
+  to the sourceforge bugzilla for easy report bugs
+- added new icon for the 'Advanced Powersave' scheme
+- several cleanups and little fixes
+
+KPowersave 0.5.4 (unstable)
+================================
+
+Changes since last release:
+- added new detailed information dialog to the left button on the applet
+  which provide currently following information:
+  - battery info for multiple batteries
+  - CPU Frequency info also for multiprozessor machines
+  - current scheme, current CPU Frequency policy, AC status, powersave
+    status 
+- updated code dokumentation and enhancement/implementation doc
+
+KPowersave 0.5.3 (unstable)
+================================
+
+Changes since last release:
+- implemented scheme specific brightness settings in KPowersave
+  and in the configure dialog and added capability for brightness to disable
+  set brightness in powersave if KPowersave is running.
+- added warning dialog is 'Advanced Powersave' scheme is selected to avoid
+  problems with this EXPERIMENTAL feature
+- updated: translation (nl), code documentation
+- fixed compiler warning, patch by Daniel Gollub <dgollub@suse.de> 
+
+KPowersave 0.5.2 (unstable)
+================================
+
+Changes since last release (KPowersave 0.5.0):
+- updated to new powersave (>= v0.11.2)
+- added new dialog/error message if powersave is not running, from now 
+  'Don't show again' checkbox is available to disable the message
+- added popup if HAL is not running (special if also powersave is not available)
+  and kpowersave get no information about battery/AC status
+- changed settings of sounds filedialog to be more portable
+- removed old and not needed qt1/qt2 includes
+- changed handling with not available connection to powersave on
+  startup of KDE (special for autologin)
+- updated help files and added new Norsk and Hungarian help files, added 
+  language specific screenshots
+- fixed dialogs to be respect KDE user interface style guide, fixed
+  icon handling and desktop file (thanks to Stephan Binner <stbinner@suse.de>) 
+- added admin dir and updated README for compile on non-SUSE distributions
+- updated translation files
+- updated code documentation
+- code and file cleanups
+- several little bugfixes
+- switched from CVS to SVN

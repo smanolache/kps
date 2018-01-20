@@ -1,0 +1,2602 @@
+<!DOCTYPE UI><UI version="3.3" stdsetdef="1">
+<class>configure_Dialog</class>
+<widget class="QDialog">
+    <property name="name">
+        <cstring>configure_Dialog</cstring>
+    </property>
+    <property name="geometry">
+        <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>534</width>
+            <height>476</height>
+        </rect>
+    </property>
+    <property name="sizePolicy">
+        <sizepolicy>
+            <hsizetype>3</hsizetype>
+            <vsizetype>3</vsizetype>
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+        </sizepolicy>
+    </property>
+    <property name="caption">
+        <string>KPowersave Settings</string>
+    </property>
+    <property name="sizeGripEnabled">
+        <bool>true</bool>
+    </property>
+    <grid>
+        <property name="name">
+            <cstring>unnamed</cstring>
+        </property>
+        <widget class="QLayoutWidget" row="1" column="0">
+            <property name="name">
+                <cstring>layout5</cstring>
+            </property>
+            <grid>
+                <property name="name">
+                    <cstring>unnamed</cstring>
+                </property>
+                <widget class="QPushButton" row="0" column="3">
+                    <property name="name">
+                        <cstring>buttonApply</cstring>
+                    </property>
+                    <property name="enabled">
+                        <bool>false</bool>
+                    </property>
+                    <property name="text">
+                        <string>Apply</string>
+                    </property>
+                    <property name="accel">
+                        <string></string>
+                    </property>
+                </widget>
+                <widget class="QPushButton" row="0" column="0">
+                    <property name="name">
+                        <cstring>buttonHelp</cstring>
+                    </property>
+                    <property name="text">
+                        <string>Help</string>
+                    </property>
+                    <property name="accel">
+                        <string></string>
+                    </property>
+                    <property name="autoDefault">
+                        <bool>true</bool>
+                    </property>
+                    <property name="default">
+                        <bool>true</bool>
+                    </property>
+                </widget>
+                <widget class="QPushButton" row="0" column="4">
+                    <property name="name">
+                        <cstring>buttonCancel</cstring>
+                    </property>
+                    <property name="sizePolicy">
+                        <sizepolicy>
+                            <hsizetype>1</hsizetype>
+                            <vsizetype>0</vsizetype>
+                            <horstretch>0</horstretch>
+                            <verstretch>0</verstretch>
+                        </sizepolicy>
+                    </property>
+                    <property name="text">
+                        <string>Cancel</string>
+                    </property>
+                    <property name="accel">
+                        <string></string>
+                    </property>
+                    <property name="autoDefault">
+                        <bool>true</bool>
+                    </property>
+                </widget>
+                <spacer row="0" column="1">
+                    <property name="name">
+                        <cstring>Horizontal Spacing2</cstring>
+                    </property>
+                    <property name="orientation">
+                        <enum>Horizontal</enum>
+                    </property>
+                    <property name="sizeType">
+                        <enum>Expanding</enum>
+                    </property>
+                    <property name="sizeHint">
+                        <size>
+                            <width>250</width>
+                            <height>20</height>
+                        </size>
+                    </property>
+                </spacer>
+                <widget class="QPushButton" row="0" column="2">
+                    <property name="name">
+                        <cstring>buttonOk</cstring>
+                    </property>
+                    <property name="text">
+                        <string>OK</string>
+                    </property>
+                    <property name="accel">
+                        <string></string>
+                    </property>
+                    <property name="autoDefault">
+                        <bool>true</bool>
+                    </property>
+                    <property name="default">
+                        <bool>true</bool>
+                    </property>
+                </widget>
+            </grid>
+        </widget>
+        <widget class="QTabWidget" row="0" column="0">
+            <property name="name">
+                <cstring>tabWidget</cstring>
+            </property>
+            <property name="sizePolicy">
+                <sizepolicy>
+                    <hsizetype>3</hsizetype>
+                    <vsizetype>3</vsizetype>
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                </sizepolicy>
+            </property>
+            <widget class="QWidget">
+                <property name="name">
+                    <cstring>screen_settings</cstring>
+                </property>
+                <attribute name="title">
+                    <string>Scheme Settings</string>
+                </attribute>
+                <grid>
+                    <property name="name">
+                        <cstring>unnamed</cstring>
+                    </property>
+                    <widget class="QToolBox" row="0" column="1">
+                        <property name="name">
+                            <cstring>tB_scheme</cstring>
+                        </property>
+                        <property name="sizePolicy">
+                            <sizepolicy>
+                                <hsizetype>3</hsizetype>
+                                <vsizetype>3</vsizetype>
+                                <horstretch>0</horstretch>
+                                <verstretch>0</verstretch>
+                            </sizepolicy>
+                        </property>
+                        <property name="frameShape">
+                            <enum>NoFrame</enum>
+                        </property>
+                        <property name="frameShadow">
+                            <enum>Plain</enum>
+                        </property>
+                        <property name="midLineWidth">
+                            <number>0</number>
+                        </property>
+                        <property name="currentIndex">
+                            <number>3</number>
+                        </property>
+                        <widget class="QWidget">
+                            <property name="name">
+                                <cstring>screensaver</cstring>
+                            </property>
+                            <property name="backgroundMode">
+                                <enum>PaletteBackground</enum>
+                            </property>
+                            <attribute name="label">
+                                <string>Screen Saver and DPMS</string>
+                            </attribute>
+                            <grid>
+                                <property name="name">
+                                    <cstring>unnamed</cstring>
+                                </property>
+                                <widget class="QCheckBox" row="3" column="0" rowspan="1" colspan="4">
+                                    <property name="name">
+                                        <cstring>cB_SpecificPM</cstring>
+                                    </property>
+                                    <property name="enabled">
+                                        <bool>true</bool>
+                                    </property>
+                                    <property name="text">
+                                        <string>Enable specific display power management</string>
+                                    </property>
+                                </widget>
+                                <widget class="QLabel" row="4" column="1">
+                                    <property name="name">
+                                        <cstring>tL_standbyAfter</cstring>
+                                    </property>
+                                    <property name="enabled">
+                                        <bool>false</bool>
+                                    </property>
+                                    <property name="text">
+                                        <string>Standby after:</string>
+                                    </property>
+                                    <property name="buddy" stdset="0">
+                                        <cstring>sB_standby</cstring>
+                                    </property>
+                                </widget>
+                                <spacer row="1" column="0">
+                                    <property name="name">
+                                        <cstring>spacer4</cstring>
+                                    </property>
+                                    <property name="orientation">
+                                        <enum>Horizontal</enum>
+                                    </property>
+                                    <property name="sizeType">
+                                        <enum>Fixed</enum>
+                                    </property>
+                                    <property name="sizeHint">
+                                        <size>
+                                            <width>20</width>
+                                            <height>20</height>
+                                        </size>
+                                    </property>
+                                </spacer>
+                                <widget class="QCheckBox" row="2" column="1" rowspan="1" colspan="3">
+                                    <property name="name">
+                                        <cstring>cB_blankScreen</cstring>
+                                    </property>
+                                    <property name="enabled">
+                                        <bool>false</bool>
+                                    </property>
+                                    <property name="text">
+                                        <string>Only blank the screen</string>
+                                    </property>
+                                </widget>
+                                <widget class="QCheckBox" row="1" column="1" rowspan="1" colspan="3">
+                                    <property name="name">
+                                        <cstring>cB_disable_Ss</cstring>
+                                    </property>
+                                    <property name="enabled">
+                                        <bool>false</bool>
+                                    </property>
+                                    <property name="text">
+                                        <string>Disable screen saver</string>
+                                    </property>
+                                </widget>
+                                <widget class="QCheckBox" row="0" column="0" rowspan="1" colspan="4">
+                                    <property name="name">
+                                        <cstring>cB_specificSettings</cstring>
+                                    </property>
+                                    <property name="text">
+                                        <string>Enable specific screensaver settings</string>
+                                    </property>
+                                </widget>
+                                <widget class="QLabel" row="5" column="1" rowspan="1" colspan="2">
+                                    <property name="name">
+                                        <cstring>tL_suspendAfter</cstring>
+                                    </property>
+                                    <property name="enabled">
+                                        <bool>false</bool>
+                                    </property>
+                                    <property name="text">
+                                        <string>Suspend after:</string>
+                                    </property>
+                                    <property name="buddy" stdset="0">
+                                        <cstring>sB_suspend</cstring>
+                                    </property>
+                                </widget>
+                                <spacer row="4" column="2">
+                                    <property name="name">
+                                        <cstring>spacer7_2</cstring>
+                                    </property>
+                                    <property name="orientation">
+                                        <enum>Horizontal</enum>
+                                    </property>
+                                    <property name="sizeType">
+                                        <enum>MinimumExpanding</enum>
+                                    </property>
+                                    <property name="sizeHint">
+                                        <size>
+                                            <width>160</width>
+                                            <height>20</height>
+                                        </size>
+                                    </property>
+                                </spacer>
+                                <widget class="QLabel" row="6" column="1" rowspan="1" colspan="2">
+                                    <property name="name">
+                                        <cstring>tL_powerOffAfter</cstring>
+                                    </property>
+                                    <property name="enabled">
+                                        <bool>false</bool>
+                                    </property>
+                                    <property name="text">
+                                        <string>Power off after:</string>
+                                    </property>
+                                    <property name="buddy" stdset="0">
+                                        <cstring>sB_powerOff</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QCheckBox" row="7" column="1" rowspan="1" colspan="3">
+                                    <property name="name">
+                                        <cstring>cB_disablePM</cstring>
+                                    </property>
+                                    <property name="enabled">
+                                        <bool>false</bool>
+                                    </property>
+                                    <property name="text">
+                                        <string>Disable display power management</string>
+                                    </property>
+                                </widget>
+                                <widget class="QSpinBox" row="6" column="3">
+                                    <property name="name">
+                                        <cstring>sB_powerOff</cstring>
+                                    </property>
+                                    <property name="enabled">
+                                        <bool>false</bool>
+                                    </property>
+                                    <property name="suffix">
+                                        <string> min</string>
+                                    </property>
+                                    <property name="maxValue">
+                                        <number>120</number>
+                                    </property>
+                                </widget>
+                                <widget class="QSpinBox" row="5" column="3">
+                                    <property name="name">
+                                        <cstring>sB_suspend</cstring>
+                                    </property>
+                                    <property name="enabled">
+                                        <bool>false</bool>
+                                    </property>
+                                    <property name="suffix">
+                                        <string> min</string>
+                                    </property>
+                                    <property name="maxValue">
+                                        <number>120</number>
+                                    </property>
+                                </widget>
+                                <widget class="QSpinBox" row="4" column="3">
+                                    <property name="name">
+                                        <cstring>sB_standby</cstring>
+                                    </property>
+                                    <property name="enabled">
+                                        <bool>false</bool>
+                                    </property>
+                                    <property name="suffix">
+                                        <string> min</string>
+                                    </property>
+                                    <property name="maxValue">
+                                        <number>120</number>
+                                    </property>
+                                </widget>
+                            </grid>
+                        </widget>
+                        <widget class="QWidget">
+                            <property name="name">
+                                <cstring>brightness</cstring>
+                            </property>
+                            <property name="backgroundMode">
+                                <enum>PaletteBackground</enum>
+                            </property>
+                            <attribute name="label">
+                                <string>Brightness</string>
+                            </attribute>
+                            <grid>
+                                <property name="name">
+                                    <cstring>unnamed</cstring>
+                                </property>
+                                <widget class="QGroupBox" row="2" column="0">
+                                    <property name="name">
+                                        <cstring>gB_Brightness</cstring>
+                                    </property>
+                                    <property name="enabled">
+                                        <bool>true</bool>
+                                    </property>
+                                    <property name="title">
+                                        <string>Settings</string>
+                                    </property>
+                                    <grid>
+                                        <property name="name">
+                                            <cstring>unnamed</cstring>
+                                        </property>
+                                        <spacer row="0" column="1">
+                                            <property name="name">
+                                                <cstring>spacer47_2</cstring>
+                                            </property>
+                                            <property name="orientation">
+                                                <enum>Horizontal</enum>
+                                            </property>
+                                            <property name="sizeType">
+                                                <enum>Fixed</enum>
+                                            </property>
+                                            <property name="sizeHint">
+                                                <size>
+                                                    <width>16</width>
+                                                    <height>20</height>
+                                                </size>
+                                            </property>
+                                        </spacer>
+                                        <widget class="QPushButton" row="1" column="1" rowspan="1" colspan="2">
+                                            <property name="name">
+                                                <cstring>pB_resetBrightness</cstring>
+                                            </property>
+                                            <property name="enabled">
+                                                <bool>false</bool>
+                                            </property>
+                                            <property name="text">
+                                                <string>Reset</string>
+                                            </property>
+                                        </widget>
+                                        <widget class="QLabel" row="0" column="2">
+                                            <property name="name">
+                                                <cstring>tL_valueBrightness</cstring>
+                                            </property>
+                                            <property name="sizePolicy">
+                                                <sizepolicy>
+                                                    <hsizetype>5</hsizetype>
+                                                    <vsizetype>5</vsizetype>
+                                                    <horstretch>0</horstretch>
+                                                    <verstretch>0</verstretch>
+                                                </sizepolicy>
+                                            </property>
+                                            <property name="minimumSize">
+                                                <size>
+                                                    <width>40</width>
+                                                    <height>30</height>
+                                                </size>
+                                            </property>
+                                            <property name="text">
+                                                <string></string>
+                                            </property>
+                                        </widget>
+                                        <spacer row="1" column="0">
+                                            <property name="name">
+                                                <cstring>spacer51</cstring>
+                                            </property>
+                                            <property name="orientation">
+                                                <enum>Horizontal</enum>
+                                            </property>
+                                            <property name="sizeType">
+                                                <enum>Expanding</enum>
+                                            </property>
+                                            <property name="sizeHint">
+                                                <size>
+                                                    <width>231</width>
+                                                    <height>31</height>
+                                                </size>
+                                            </property>
+                                        </spacer>
+                                        <spacer row="2" column="2">
+                                            <property name="name">
+                                                <cstring>spacer44</cstring>
+                                            </property>
+                                            <property name="orientation">
+                                                <enum>Vertical</enum>
+                                            </property>
+                                            <property name="sizeType">
+                                                <enum>MinimumExpanding</enum>
+                                            </property>
+                                            <property name="sizeHint">
+                                                <size>
+                                                    <width>21</width>
+                                                    <height>20</height>
+                                                </size>
+                                            </property>
+                                        </spacer>
+                                        <widget class="QSlider" row="0" column="0">
+                                            <property name="name">
+                                                <cstring>brightnessSlider</cstring>
+                                            </property>
+                                            <property name="mouseTracking">
+                                                <bool>false</bool>
+                                            </property>
+                                            <property name="focusPolicy">
+                                                <enum>StrongFocus</enum>
+                                            </property>
+                                            <property name="minValue">
+                                                <number>1</number>
+                                            </property>
+                                            <property name="maxValue">
+                                                <number>100</number>
+                                            </property>
+                                            <property name="lineStep">
+                                                <number>3</number>
+                                            </property>
+                                            <property name="pageStep">
+                                                <number>10</number>
+                                            </property>
+                                            <property name="orientation">
+                                                <enum>Horizontal</enum>
+                                            </property>
+                                            <property name="tickmarks">
+                                                <enum>Below</enum>
+                                            </property>
+                                            <property name="tickInterval">
+                                                <number>0</number>
+                                            </property>
+                                        </widget>
+                                    </grid>
+                                </widget>
+                                <widget class="QCheckBox" row="1" column="0">
+                                    <property name="name">
+                                        <cstring>cB_Brightness</cstring>
+                                    </property>
+                                    <property name="text">
+                                        <string>Enable scheme specific Brightness settings</string>
+                                    </property>
+                                    <property name="accel">
+                                        <string></string>
+                                    </property>
+                                </widget>
+                                <widget class="QLabel" row="0" column="0">
+                                    <property name="name">
+                                        <cstring>tL_brightness</cstring>
+                                    </property>
+                                    <property name="minimumSize">
+                                        <size>
+                                            <width>0</width>
+                                            <height>50</height>
+                                        </size>
+                                    </property>
+                                    <property name="text">
+                                        <string></string>
+                                    </property>
+                                    <property name="alignment">
+                                        <set>WordBreak|AlignTop</set>
+                                    </property>
+                                </widget>
+                            </grid>
+                        </widget>
+                        <widget class="QWidget">
+                            <property name="name">
+                                <cstring>autosuspend</cstring>
+                            </property>
+                            <property name="backgroundMode">
+                                <enum>PaletteBackground</enum>
+                            </property>
+                            <attribute name="label">
+                                <string>Autosuspend</string>
+                            </attribute>
+                            <grid>
+                                <property name="name">
+                                    <cstring>unnamed</cstring>
+                                </property>
+                                <widget class="QCheckBox" row="0" column="0" rowspan="1" colspan="2">
+                                    <property name="name">
+                                        <cstring>cB_autoSuspend</cstring>
+                                    </property>
+                                    <property name="text">
+                                        <string>Enable autosuspend</string>
+                                    </property>
+                                </widget>
+                                <widget class="QComboBox" row="2" column="1">
+                                    <property name="name">
+                                        <cstring>cB_autoInactivity</cstring>
+                                    </property>
+                                    <property name="enabled">
+                                        <bool>false</bool>
+                                    </property>
+                                    <property name="sizePolicy">
+                                        <sizepolicy>
+                                            <hsizetype>1</hsizetype>
+                                            <vsizetype>5</vsizetype>
+                                            <horstretch>0</horstretch>
+                                            <verstretch>0</verstretch>
+                                        </sizepolicy>
+                                    </property>
+                                    <property name="minimumSize">
+                                        <size>
+                                            <width>100</width>
+                                            <height>20</height>
+                                        </size>
+                                    </property>
+                                    <property name="maximumSize">
+                                        <size>
+                                            <width>32767</width>
+                                            <height>20</height>
+                                        </size>
+                                    </property>
+                                </widget>
+                                <widget class="Line" row="3" column="1" rowspan="1" colspan="3">
+                                    <property name="name">
+                                        <cstring>line2</cstring>
+                                    </property>
+                                    <property name="sizePolicy">
+                                        <sizepolicy>
+                                            <hsizetype>5</hsizetype>
+                                            <vsizetype>0</vsizetype>
+                                            <horstretch>0</horstretch>
+                                            <verstretch>0</verstretch>
+                                        </sizepolicy>
+                                    </property>
+                                    <property name="frameShape">
+                                        <enum>HLine</enum>
+                                    </property>
+                                    <property name="frameShadow">
+                                        <enum>Sunken</enum>
+                                    </property>
+                                    <property name="orientation">
+                                        <enum>Horizontal</enum>
+                                    </property>
+                                </widget>
+                                <widget class="QCheckBox" row="4" column="1" rowspan="1" colspan="3">
+                                    <property name="name">
+                                        <cstring>cB_Blacklist</cstring>
+                                    </property>
+                                    <property name="enabled">
+                                        <bool>false</bool>
+                                    </property>
+                                    <property name="text">
+                                        <string>Enable scheme-specific blacklist</string>
+                                    </property>
+                                </widget>
+                                <widget class="QLabel" row="2" column="2">
+                                    <property name="name">
+                                        <cstring>tL_autoInactivity_After</cstring>
+                                    </property>
+                                    <property name="enabled">
+                                        <bool>false</bool>
+                                    </property>
+                                    <property name="sizePolicy">
+                                        <sizepolicy>
+                                            <hsizetype>1</hsizetype>
+                                            <vsizetype>5</vsizetype>
+                                            <horstretch>0</horstretch>
+                                            <verstretch>0</verstretch>
+                                        </sizepolicy>
+                                    </property>
+                                    <property name="text">
+                                        <string>after:</string>
+                                    </property>
+                                    <property name="alignment">
+                                        <set>AlignCenter</set>
+                                    </property>
+                                    <property name="buddy" stdset="0">
+                                        <cstring>sB_autoInactivity</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QSpinBox" row="2" column="3">
+                                    <property name="name">
+                                        <cstring>sB_autoInactivity</cstring>
+                                    </property>
+                                    <property name="enabled">
+                                        <bool>false</bool>
+                                    </property>
+                                    <property name="sizePolicy">
+                                        <sizepolicy>
+                                            <hsizetype>1</hsizetype>
+                                            <vsizetype>5</vsizetype>
+                                            <horstretch>0</horstretch>
+                                            <verstretch>0</verstretch>
+                                        </sizepolicy>
+                                    </property>
+                                    <property name="suffix">
+                                        <string> min</string>
+                                    </property>
+                                </widget>
+                                <widget class="QPushButton" row="5" column="2" rowspan="1" colspan="2">
+                                    <property name="name">
+                                        <cstring>pB_editBlacklist</cstring>
+                                    </property>
+                                    <property name="enabled">
+                                        <bool>false</bool>
+                                    </property>
+                                    <property name="text">
+                                        <string>Edit Blacklist...</string>
+                                    </property>
+                                </widget>
+                                <spacer row="6" column="2">
+                                    <property name="name">
+                                        <cstring>spacer17_2</cstring>
+                                    </property>
+                                    <property name="orientation">
+                                        <enum>Vertical</enum>
+                                    </property>
+                                    <property name="sizeType">
+                                        <enum>Preferred</enum>
+                                    </property>
+                                    <property name="sizeHint">
+                                        <size>
+                                            <width>21</width>
+                                            <height>50</height>
+                                        </size>
+                                    </property>
+                                </spacer>
+                                <spacer row="2" column="0">
+                                    <property name="name">
+                                        <cstring>spacer16</cstring>
+                                    </property>
+                                    <property name="orientation">
+                                        <enum>Horizontal</enum>
+                                    </property>
+                                    <property name="sizeType">
+                                        <enum>Fixed</enum>
+                                    </property>
+                                    <property name="sizeHint">
+                                        <size>
+                                            <width>30</width>
+                                            <height>21</height>
+                                        </size>
+                                    </property>
+                                </spacer>
+                                <widget class="QLabel" row="1" column="0" rowspan="1" colspan="4">
+                                    <property name="name">
+                                        <cstring>tL_autoInactivity_explain</cstring>
+                                    </property>
+                                    <property name="enabled">
+                                        <bool>false</bool>
+                                    </property>
+                                    <property name="sizePolicy">
+                                        <sizepolicy>
+                                            <hsizetype>1</hsizetype>
+                                            <vsizetype>5</vsizetype>
+                                            <horstretch>0</horstretch>
+                                            <verstretch>0</verstretch>
+                                        </sizepolicy>
+                                    </property>
+                                    <property name="text">
+                                        <string>If the current desktop user is inactive the computer will:</string>
+                                    </property>
+                                    <property name="buddy" stdset="0">
+                                        <cstring>cB_autoInactivity</cstring>
+                                    </property>
+                                </widget>
+                            </grid>
+                        </widget>
+                        <widget class="QWidget">
+                            <property name="name">
+                                <cstring>page</cstring>
+                            </property>
+                            <property name="backgroundMode">
+                                <enum>PaletteBackground</enum>
+                            </property>
+                            <attribute name="label">
+                                <string>Autodimm</string>
+                            </attribute>
+                            <grid>
+                                <property name="name">
+                                    <cstring>unnamed</cstring>
+                                </property>
+                                <widget class="QCheckBox" row="0" column="0" rowspan="1" colspan="4">
+                                    <property name="name">
+                                        <cstring>cB_autoDimm</cstring>
+                                    </property>
+                                    <property name="text">
+                                        <string>Enable autodimm the display</string>
+                                    </property>
+                                </widget>
+                                <widget class="Line" row="3" column="1" rowspan="1" colspan="5">
+                                    <property name="name">
+                                        <cstring>line2_2</cstring>
+                                    </property>
+                                    <property name="sizePolicy">
+                                        <sizepolicy>
+                                            <hsizetype>5</hsizetype>
+                                            <vsizetype>0</vsizetype>
+                                            <horstretch>0</horstretch>
+                                            <verstretch>0</verstretch>
+                                        </sizepolicy>
+                                    </property>
+                                    <property name="frameShape">
+                                        <enum>HLine</enum>
+                                    </property>
+                                    <property name="frameShadow">
+                                        <enum>Sunken</enum>
+                                    </property>
+                                    <property name="orientation">
+                                        <enum>Horizontal</enum>
+                                    </property>
+                                </widget>
+                                <widget class="QCheckBox" row="4" column="1" rowspan="1" colspan="5">
+                                    <property name="name">
+                                        <cstring>cB_BlacklistDimm</cstring>
+                                    </property>
+                                    <property name="enabled">
+                                        <bool>false</bool>
+                                    </property>
+                                    <property name="text">
+                                        <string>Enable scheme-specific blacklist</string>
+                                    </property>
+                                </widget>
+                                <widget class="QPushButton" row="5" column="3" rowspan="1" colspan="3">
+                                    <property name="name">
+                                        <cstring>pB_editBlacklistDimm</cstring>
+                                    </property>
+                                    <property name="enabled">
+                                        <bool>false</bool>
+                                    </property>
+                                    <property name="text">
+                                        <string>Edit Blacklist...</string>
+                                    </property>
+                                </widget>
+                                <widget class="QLabel" row="1" column="0" rowspan="1" colspan="6">
+                                    <property name="name">
+                                        <cstring>tL_autoDimmExplain</cstring>
+                                    </property>
+                                    <property name="enabled">
+                                        <bool>false</bool>
+                                    </property>
+                                    <property name="sizePolicy">
+                                        <sizepolicy>
+                                            <hsizetype>1</hsizetype>
+                                            <vsizetype>5</vsizetype>
+                                            <horstretch>0</horstretch>
+                                            <verstretch>0</verstretch>
+                                        </sizepolicy>
+                                    </property>
+                                    <property name="minimumSize">
+                                        <size>
+                                            <width>0</width>
+                                            <height>0</height>
+                                        </size>
+                                    </property>
+                                    <property name="text">
+                                        <string>If the current desktop user is inactive the computer will:</string>
+                                    </property>
+                                    <property name="buddy" stdset="0">
+                                        <cstring>cB_autoInactivity</cstring>
+                                    </property>
+                                </widget>
+                                <spacer row="6" column="4">
+                                    <property name="name">
+                                        <cstring>spacer83</cstring>
+                                    </property>
+                                    <property name="orientation">
+                                        <enum>Vertical</enum>
+                                    </property>
+                                    <property name="sizeType">
+                                        <enum>Preferred</enum>
+                                    </property>
+                                    <property name="sizeHint">
+                                        <size>
+                                            <width>20</width>
+                                            <height>40</height>
+                                        </size>
+                                    </property>
+                                </spacer>
+                                <widget class="QLabel" row="2" column="1">
+                                    <property name="name">
+                                        <cstring>tL_autoDimmAfter</cstring>
+                                    </property>
+                                    <property name="enabled">
+                                        <bool>false</bool>
+                                    </property>
+                                    <property name="sizePolicy">
+                                        <sizepolicy>
+                                            <hsizetype>1</hsizetype>
+                                            <vsizetype>5</vsizetype>
+                                            <horstretch>0</horstretch>
+                                            <verstretch>0</verstretch>
+                                        </sizepolicy>
+                                    </property>
+                                    <property name="text">
+                                        <string>after:</string>
+                                    </property>
+                                    <property name="alignment">
+                                        <set>AlignCenter</set>
+                                    </property>
+                                    <property name="buddy" stdset="0">
+                                        <cstring>sB_autoInactivity</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QSpinBox" row="2" column="5">
+                                    <property name="name">
+                                        <cstring>sB_autoDimmTo</cstring>
+                                    </property>
+                                    <property name="enabled">
+                                        <bool>false</bool>
+                                    </property>
+                                    <property name="sizePolicy">
+                                        <sizepolicy>
+                                            <hsizetype>1</hsizetype>
+                                            <vsizetype>5</vsizetype>
+                                            <horstretch>0</horstretch>
+                                            <verstretch>0</verstretch>
+                                        </sizepolicy>
+                                    </property>
+                                    <property name="suffix">
+                                        <string> %</string>
+                                    </property>
+                                    <property name="maxValue">
+                                        <number>100</number>
+                                    </property>
+                                </widget>
+                                <widget class="QLabel" row="2" column="3" rowspan="1" colspan="2">
+                                    <property name="name">
+                                        <cstring>tL_autoDimmTo</cstring>
+                                    </property>
+                                    <property name="enabled">
+                                        <bool>false</bool>
+                                    </property>
+                                    <property name="sizePolicy">
+                                        <sizepolicy>
+                                            <hsizetype>1</hsizetype>
+                                            <vsizetype>5</vsizetype>
+                                            <horstretch>0</horstretch>
+                                            <verstretch>0</verstretch>
+                                        </sizepolicy>
+                                    </property>
+                                    <property name="text">
+                                        <string>dimm to:</string>
+                                    </property>
+                                </widget>
+                                <spacer row="2" column="0">
+                                    <property name="name">
+                                        <cstring>spacer16_2</cstring>
+                                    </property>
+                                    <property name="orientation">
+                                        <enum>Horizontal</enum>
+                                    </property>
+                                    <property name="sizeType">
+                                        <enum>Fixed</enum>
+                                    </property>
+                                    <property name="sizeHint">
+                                        <size>
+                                            <width>20</width>
+                                            <height>21</height>
+                                        </size>
+                                    </property>
+                                </spacer>
+                                <widget class="QSpinBox" row="2" column="2">
+                                    <property name="name">
+                                        <cstring>sB_autoDimmTime</cstring>
+                                    </property>
+                                    <property name="enabled">
+                                        <bool>false</bool>
+                                    </property>
+                                    <property name="sizePolicy">
+                                        <sizepolicy>
+                                            <hsizetype>1</hsizetype>
+                                            <vsizetype>5</vsizetype>
+                                            <horstretch>0</horstretch>
+                                            <verstretch>0</verstretch>
+                                        </sizepolicy>
+                                    </property>
+                                    <property name="maximumSize">
+                                        <size>
+                                            <width>32767</width>
+                                            <height>20</height>
+                                        </size>
+                                    </property>
+                                    <property name="suffix">
+                                        <string> min</string>
+                                    </property>
+                                </widget>
+                            </grid>
+                        </widget>
+                        <widget class="QWidget">
+                            <property name="name">
+                                <cstring>cpufreq</cstring>
+                            </property>
+                            <property name="backgroundMode">
+                                <enum>PaletteBackground</enum>
+                            </property>
+                            <attribute name="label">
+                                <string>CPU Frequency Policy</string>
+                            </attribute>
+                            <grid>
+                                <property name="name">
+                                    <cstring>unnamed</cstring>
+                                </property>
+                                <widget class="QComboBox" row="0" column="2">
+                                    <item>
+                                        <property name="text">
+                                            <string>Performance</string>
+                                        </property>
+                                    </item>
+                                    <item>
+                                        <property name="text">
+                                            <string>Dynamic</string>
+                                        </property>
+                                    </item>
+                                    <item>
+                                        <property name="text">
+                                            <string>Powersave</string>
+                                        </property>
+                                    </item>
+                                    <property name="name">
+                                        <cstring>comboB_cpuFreq</cstring>
+                                    </property>
+                                </widget>
+                                <spacer row="1" column="0">
+                                    <property name="name">
+                                        <cstring>spacer19</cstring>
+                                    </property>
+                                    <property name="orientation">
+                                        <enum>Vertical</enum>
+                                    </property>
+                                    <property name="sizeType">
+                                        <enum>Expanding</enum>
+                                    </property>
+                                    <property name="sizeHint">
+                                        <size>
+                                            <width>20</width>
+                                            <height>170</height>
+                                        </size>
+                                    </property>
+                                </spacer>
+                                <widget class="QLabel" row="0" column="0">
+                                    <property name="name">
+                                        <cstring>textLabel1</cstring>
+                                    </property>
+                                    <property name="text">
+                                        <string>Set CPU Frequency Policy:</string>
+                                    </property>
+                                    <property name="buddy" stdset="0">
+                                        <cstring>comboB_cpuFreq</cstring>
+                                    </property>
+                                </widget>
+                                <spacer row="0" column="1">
+                                    <property name="name">
+                                        <cstring>spacer18</cstring>
+                                    </property>
+                                    <property name="orientation">
+                                        <enum>Horizontal</enum>
+                                    </property>
+                                    <property name="sizeType">
+                                        <enum>MinimumExpanding</enum>
+                                    </property>
+                                    <property name="sizeHint">
+                                        <size>
+                                            <width>20</width>
+                                            <height>20</height>
+                                        </size>
+                                    </property>
+                                </spacer>
+                            </grid>
+                        </widget>
+                        <widget class="QWidget">
+                            <property name="name">
+                                <cstring>misc</cstring>
+                            </property>
+                            <property name="backgroundMode">
+                                <enum>PaletteBackground</enum>
+                            </property>
+                            <attribute name="label">
+                                <string>Miscellaneous</string>
+                            </attribute>
+                            <grid>
+                                <property name="name">
+                                    <cstring>unnamed</cstring>
+                                </property>
+                                <widget class="QCheckBox" row="0" column="0">
+                                    <property name="name">
+                                        <cstring>cB_disableNotifications</cstring>
+                                    </property>
+                                    <property name="text">
+                                        <string>Disable Notifications</string>
+                                    </property>
+                                </widget>
+                                <spacer row="1" column="0">
+                                    <property name="name">
+                                        <cstring>spacer34</cstring>
+                                    </property>
+                                    <property name="orientation">
+                                        <enum>Vertical</enum>
+                                    </property>
+                                    <property name="sizeType">
+                                        <enum>Expanding</enum>
+                                    </property>
+                                    <property name="sizeHint">
+                                        <size>
+                                            <width>20</width>
+                                            <height>170</height>
+                                        </size>
+                                    </property>
+                                </spacer>
+                            </grid>
+                        </widget>
+                    </widget>
+                    <widget class="QLayoutWidget" row="0" column="0">
+                        <property name="name">
+                            <cstring>layout3</cstring>
+                        </property>
+                        <grid>
+                            <property name="name">
+                                <cstring>unnamed</cstring>
+                            </property>
+                            <widget class="QPushButton" row="1" column="1">
+                                <property name="name">
+                                    <cstring>pB_deleteScheme</cstring>
+                                </property>
+                                <property name="text">
+                                    <string>Delete</string>
+                                </property>
+                            </widget>
+                            <widget class="QPushButton" row="1" column="0">
+                                <property name="name">
+                                    <cstring>pB_newScheme</cstring>
+                                </property>
+                                <property name="text">
+                                    <string>New</string>
+                                </property>
+                            </widget>
+                            <widget class="QListBox" row="0" column="0" rowspan="1" colspan="2">
+                                <property name="name">
+                                    <cstring>listBox_schemes</cstring>
+                                </property>
+                                <property name="sizePolicy">
+                                    <sizepolicy>
+                                        <hsizetype>5</hsizetype>
+                                        <vsizetype>7</vsizetype>
+                                        <horstretch>0</horstretch>
+                                        <verstretch>0</verstretch>
+                                    </sizepolicy>
+                                </property>
+                                <property name="minimumSize">
+                                    <size>
+                                        <width>110</width>
+                                        <height>0</height>
+                                    </size>
+                                </property>
+                            </widget>
+                        </grid>
+                    </widget>
+                </grid>
+            </widget>
+            <widget class="QWidget">
+                <property name="name">
+                    <cstring>TabPage</cstring>
+                </property>
+                <attribute name="title">
+                    <string>General Settings</string>
+                </attribute>
+                <grid>
+                    <property name="name">
+                        <cstring>unnamed</cstring>
+                    </property>
+                    <widget class="QToolBox" row="0" column="0">
+                        <property name="name">
+                            <cstring>tB_general</cstring>
+                        </property>
+                        <property name="currentIndex">
+                            <number>4</number>
+                        </property>
+                        <widget class="QWidget">
+                            <property name="name">
+                                <cstring>g_bat</cstring>
+                            </property>
+                            <property name="backgroundMode">
+                                <enum>PaletteBackground</enum>
+                            </property>
+                            <attribute name="label">
+                                <string>Battery</string>
+                            </attribute>
+                            <grid>
+                                <property name="name">
+                                    <cstring>unnamed</cstring>
+                                </property>
+                                <widget class="QLabel" row="0" column="0" rowspan="1" colspan="7">
+                                    <property name="name">
+                                        <cstring>textLabel2</cstring>
+                                    </property>
+                                    <property name="sizePolicy">
+                                        <sizepolicy>
+                                            <hsizetype>5</hsizetype>
+                                            <vsizetype>3</vsizetype>
+                                            <horstretch>0</horstretch>
+                                            <verstretch>0</verstretch>
+                                        </sizepolicy>
+                                    </property>
+                                    <property name="minimumSize">
+                                        <size>
+                                            <width>75</width>
+                                            <height>0</height>
+                                        </size>
+                                    </property>
+                                    <property name="text">
+                                        <string>Define the battery warning levels (in percentage) and the releated action if the level get reached:</string>
+                                    </property>
+                                    <property name="textFormat">
+                                        <enum>RichText</enum>
+                                    </property>
+                                    <property name="alignment">
+                                        <set>WordBreak|AlignTop</set>
+                                    </property>
+                                </widget>
+                                <widget class="QLabel" row="1" column="0">
+                                    <property name="name">
+                                        <cstring>textLabel1_2</cstring>
+                                    </property>
+                                    <property name="minimumSize">
+                                        <size>
+                                            <width>90</width>
+                                            <height>0</height>
+                                        </size>
+                                    </property>
+                                    <property name="text">
+                                        <string>Warning level:</string>
+                                    </property>
+                                    <property name="buddy" stdset="0">
+                                        <cstring>sB_batWarning</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLabel" row="2" column="0">
+                                    <property name="name">
+                                        <cstring>textLabel1_2_2</cstring>
+                                    </property>
+                                    <property name="minimumSize">
+                                        <size>
+                                            <width>90</width>
+                                            <height>0</height>
+                                        </size>
+                                    </property>
+                                    <property name="text">
+                                        <string>Low level:</string>
+                                    </property>
+                                    <property name="buddy" stdset="0">
+                                        <cstring>sB_batLow</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLabel" row="3" column="0">
+                                    <property name="name">
+                                        <cstring>textLabel1_2_3</cstring>
+                                    </property>
+                                    <property name="minimumSize">
+                                        <size>
+                                            <width>90</width>
+                                            <height>0</height>
+                                        </size>
+                                    </property>
+                                    <property name="text">
+                                        <string>Critical level:</string>
+                                    </property>
+                                    <property name="buddy" stdset="0">
+                                        <cstring>sB_batCritical</cstring>
+                                    </property>
+                                </widget>
+                                <spacer row="4" column="2">
+                                    <property name="name">
+                                        <cstring>spacer78</cstring>
+                                    </property>
+                                    <property name="orientation">
+                                        <enum>Vertical</enum>
+                                    </property>
+                                    <property name="sizeType">
+                                        <enum>Expanding</enum>
+                                    </property>
+                                    <property name="sizeHint">
+                                        <size>
+                                            <width>20</width>
+                                            <height>50</height>
+                                        </size>
+                                    </property>
+                                </spacer>
+                                <widget class="QLabel" row="1" column="4">
+                                    <property name="name">
+                                        <cstring>textLabel3</cstring>
+                                    </property>
+                                    <property name="text">
+                                        <string>if reached call:</string>
+                                    </property>
+                                    <property name="buddy" stdset="0">
+                                        <cstring>cB_batWarning</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLabel" row="2" column="4">
+                                    <property name="name">
+                                        <cstring>textLabel3_2</cstring>
+                                    </property>
+                                    <property name="text">
+                                        <string>if reached call:</string>
+                                    </property>
+                                    <property name="buddy" stdset="0">
+                                        <cstring>cB_batLow</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLabel" row="3" column="4">
+                                    <property name="name">
+                                        <cstring>textLabel3_3</cstring>
+                                    </property>
+                                    <property name="text">
+                                        <string>if reached call:</string>
+                                    </property>
+                                    <property name="buddy" stdset="0">
+                                        <cstring>cB_batCritical</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QComboBox" row="1" column="5">
+                                    <property name="name">
+                                        <cstring>cB_batWarning</cstring>
+                                    </property>
+                                    <property name="minimumSize">
+                                        <size>
+                                            <width>150</width>
+                                            <height>0</height>
+                                        </size>
+                                    </property>
+                                </widget>
+                                <widget class="QComboBox" row="2" column="5">
+                                    <property name="name">
+                                        <cstring>cB_batLow</cstring>
+                                    </property>
+                                    <property name="minimumSize">
+                                        <size>
+                                            <width>150</width>
+                                            <height>0</height>
+                                        </size>
+                                    </property>
+                                </widget>
+                                <widget class="QComboBox" row="3" column="5">
+                                    <property name="name">
+                                        <cstring>cB_batCritical</cstring>
+                                    </property>
+                                    <property name="minimumSize">
+                                        <size>
+                                            <width>150</width>
+                                            <height>0</height>
+                                        </size>
+                                    </property>
+                                </widget>
+                                <widget class="QSpinBox" row="2" column="6">
+                                    <property name="name">
+                                        <cstring>sB_batLowAction_value</cstring>
+                                    </property>
+                                    <property name="sizePolicy">
+                                        <sizepolicy>
+                                            <hsizetype>5</hsizetype>
+                                            <vsizetype>0</vsizetype>
+                                            <horstretch>0</horstretch>
+                                            <verstretch>0</verstretch>
+                                        </sizepolicy>
+                                    </property>
+                                    <property name="suffix">
+                                        <string> %</string>
+                                    </property>
+                                    <property name="maxValue">
+                                        <number>100</number>
+                                    </property>
+                                </widget>
+                                <widget class="QSpinBox" row="3" column="6">
+                                    <property name="name">
+                                        <cstring>sB_batCritAction_value</cstring>
+                                    </property>
+                                    <property name="sizePolicy">
+                                        <sizepolicy>
+                                            <hsizetype>5</hsizetype>
+                                            <vsizetype>0</vsizetype>
+                                            <horstretch>0</horstretch>
+                                            <verstretch>0</verstretch>
+                                        </sizepolicy>
+                                    </property>
+                                    <property name="suffix">
+                                        <string> %</string>
+                                    </property>
+                                    <property name="maxValue">
+                                        <number>100</number>
+                                    </property>
+                                </widget>
+                                <widget class="QSpinBox" row="1" column="2">
+                                    <property name="name">
+                                        <cstring>sB_batWarning</cstring>
+                                    </property>
+                                    <property name="sizePolicy">
+                                        <sizepolicy>
+                                            <hsizetype>5</hsizetype>
+                                            <vsizetype>0</vsizetype>
+                                            <horstretch>0</horstretch>
+                                            <verstretch>0</verstretch>
+                                        </sizepolicy>
+                                    </property>
+                                    <property name="suffix">
+                                        <string> %</string>
+                                    </property>
+                                    <property name="maxValue">
+                                        <number>100</number>
+                                    </property>
+                                </widget>
+                                <widget class="QSpinBox" row="2" column="2">
+                                    <property name="name">
+                                        <cstring>sB_batLow</cstring>
+                                    </property>
+                                    <property name="sizePolicy">
+                                        <sizepolicy>
+                                            <hsizetype>5</hsizetype>
+                                            <vsizetype>0</vsizetype>
+                                            <horstretch>0</horstretch>
+                                            <verstretch>0</verstretch>
+                                        </sizepolicy>
+                                    </property>
+                                    <property name="suffix">
+                                        <string> %</string>
+                                    </property>
+                                    <property name="maxValue">
+                                        <number>100</number>
+                                    </property>
+                                </widget>
+                                <widget class="QSpinBox" row="3" column="2">
+                                    <property name="name">
+                                        <cstring>sB_batCritical</cstring>
+                                    </property>
+                                    <property name="sizePolicy">
+                                        <sizepolicy>
+                                            <hsizetype>5</hsizetype>
+                                            <vsizetype>0</vsizetype>
+                                            <horstretch>0</horstretch>
+                                            <verstretch>0</verstretch>
+                                        </sizepolicy>
+                                    </property>
+                                    <property name="suffix">
+                                        <string> %</string>
+                                    </property>
+                                    <property name="maxValue">
+                                        <number>100</number>
+                                    </property>
+                                </widget>
+                                <widget class="QSpinBox" row="1" column="6">
+                                    <property name="name">
+                                        <cstring>sB_batWarnAction_value</cstring>
+                                    </property>
+                                    <property name="sizePolicy">
+                                        <sizepolicy>
+                                            <hsizetype>5</hsizetype>
+                                            <vsizetype>0</vsizetype>
+                                            <horstretch>0</horstretch>
+                                            <verstretch>0</verstretch>
+                                        </sizepolicy>
+                                    </property>
+                                    <property name="suffix">
+                                        <string> %</string>
+                                    </property>
+                                    <property name="maxValue">
+                                        <number>100</number>
+                                    </property>
+                                </widget>
+                            </grid>
+                        </widget>
+                        <widget class="QWidget">
+                            <property name="name">
+                                <cstring>g_button</cstring>
+                            </property>
+                            <property name="backgroundMode">
+                                <enum>PaletteBackground</enum>
+                            </property>
+                            <attribute name="label">
+                                <string>Button Events</string>
+                            </attribute>
+                            <grid>
+                                <property name="name">
+                                    <cstring>unnamed</cstring>
+                                </property>
+                                <widget class="QLabel" row="0" column="0" rowspan="1" colspan="3">
+                                    <property name="name">
+                                        <cstring>textLabel1_3_2</cstring>
+                                    </property>
+                                    <property name="sizePolicy">
+                                        <sizepolicy>
+                                            <hsizetype>5</hsizetype>
+                                            <vsizetype>1</vsizetype>
+                                            <horstretch>0</horstretch>
+                                            <verstretch>0</verstretch>
+                                        </sizepolicy>
+                                    </property>
+                                    <property name="minimumSize">
+                                        <size>
+                                            <width>0</width>
+                                            <height>30</height>
+                                        </size>
+                                    </property>
+                                    <property name="text">
+                                        <string>Define the action which should be executed if the related button get pressed:</string>
+                                    </property>
+                                    <property name="textFormat">
+                                        <enum>RichText</enum>
+                                    </property>
+                                    <property name="alignment">
+                                        <set>WordBreak|AlignTop</set>
+                                    </property>
+                                </widget>
+                                <widget class="QLabel" row="4" column="0">
+                                    <property name="name">
+                                        <cstring>textLabel3_4_4</cstring>
+                                    </property>
+                                    <property name="text">
+                                        <string>Suspend-to-disk Button:</string>
+                                    </property>
+                                    <property name="buddy" stdset="0">
+                                        <cstring>cB_S2DiskButton</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLabel" row="3" column="0">
+                                    <property name="name">
+                                        <cstring>textLabel3_4_3</cstring>
+                                    </property>
+                                    <property name="text">
+                                        <string>Sleep button:</string>
+                                    </property>
+                                    <property name="buddy" stdset="0">
+                                        <cstring>cB_SleepButton</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLabel" row="2" column="0">
+                                    <property name="name">
+                                        <cstring>textLabel3_4_2</cstring>
+                                    </property>
+                                    <property name="text">
+                                        <string>Lid close Button:</string>
+                                    </property>
+                                    <property name="buddy" stdset="0">
+                                        <cstring>cB_LidcloseButton</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QLabel" row="1" column="0">
+                                    <property name="name">
+                                        <cstring>textLabel3_4</cstring>
+                                    </property>
+                                    <property name="text">
+                                        <string>Power Button:</string>
+                                    </property>
+                                    <property name="buddy" stdset="0">
+                                        <cstring>cB_PowerButton</cstring>
+                                    </property>
+                                </widget>
+                                <spacer row="1" column="1">
+                                    <property name="name">
+                                        <cstring>spacer85</cstring>
+                                    </property>
+                                    <property name="orientation">
+                                        <enum>Horizontal</enum>
+                                    </property>
+                                    <property name="sizeType">
+                                        <enum>Expanding</enum>
+                                    </property>
+                                    <property name="sizeHint">
+                                        <size>
+                                            <width>130</width>
+                                            <height>20</height>
+                                        </size>
+                                    </property>
+                                </spacer>
+                                <spacer row="2" column="1">
+                                    <property name="name">
+                                        <cstring>spacer85_2</cstring>
+                                    </property>
+                                    <property name="orientation">
+                                        <enum>Horizontal</enum>
+                                    </property>
+                                    <property name="sizeType">
+                                        <enum>Expanding</enum>
+                                    </property>
+                                    <property name="sizeHint">
+                                        <size>
+                                            <width>130</width>
+                                            <height>20</height>
+                                        </size>
+                                    </property>
+                                </spacer>
+                                <spacer row="3" column="1">
+                                    <property name="name">
+                                        <cstring>spacer85_3</cstring>
+                                    </property>
+                                    <property name="orientation">
+                                        <enum>Horizontal</enum>
+                                    </property>
+                                    <property name="sizeType">
+                                        <enum>Expanding</enum>
+                                    </property>
+                                    <property name="sizeHint">
+                                        <size>
+                                            <width>130</width>
+                                            <height>20</height>
+                                        </size>
+                                    </property>
+                                </spacer>
+                                <spacer row="4" column="1">
+                                    <property name="name">
+                                        <cstring>spacer85_4</cstring>
+                                    </property>
+                                    <property name="orientation">
+                                        <enum>Horizontal</enum>
+                                    </property>
+                                    <property name="sizeType">
+                                        <enum>Expanding</enum>
+                                    </property>
+                                    <property name="sizeHint">
+                                        <size>
+                                            <width>130</width>
+                                            <height>20</height>
+                                        </size>
+                                    </property>
+                                </spacer>
+                                <widget class="QComboBox" row="3" column="2">
+                                    <property name="name">
+                                        <cstring>cB_SleepButton</cstring>
+                                    </property>
+                                    <property name="minimumSize">
+                                        <size>
+                                            <width>160</width>
+                                            <height>0</height>
+                                        </size>
+                                    </property>
+                                </widget>
+                                <widget class="QComboBox" row="2" column="2">
+                                    <property name="name">
+                                        <cstring>cB_LidcloseButton</cstring>
+                                    </property>
+                                    <property name="minimumSize">
+                                        <size>
+                                            <width>160</width>
+                                            <height>0</height>
+                                        </size>
+                                    </property>
+                                </widget>
+                                <widget class="QComboBox" row="1" column="2">
+                                    <property name="name">
+                                        <cstring>cB_PowerButton</cstring>
+                                    </property>
+                                    <property name="minimumSize">
+                                        <size>
+                                            <width>160</width>
+                                            <height>0</height>
+                                        </size>
+                                    </property>
+                                </widget>
+                                <widget class="QComboBox" row="4" column="2">
+                                    <property name="name">
+                                        <cstring>cB_S2DiskButton</cstring>
+                                    </property>
+                                    <property name="minimumSize">
+                                        <size>
+                                            <width>160</width>
+                                            <height>0</height>
+                                        </size>
+                                    </property>
+                                </widget>
+                                <spacer row="5" column="2">
+                                    <property name="name">
+                                        <cstring>spacer89</cstring>
+                                    </property>
+                                    <property name="orientation">
+                                        <enum>Vertical</enum>
+                                    </property>
+                                    <property name="sizeType">
+                                        <enum>Expanding</enum>
+                                    </property>
+                                    <property name="sizeHint">
+                                        <size>
+                                            <width>20</width>
+                                            <height>20</height>
+                                        </size>
+                                    </property>
+                                </spacer>
+                            </grid>
+                        </widget>
+                        <widget class="QWidget">
+                            <property name="name">
+                                <cstring>g_schemes</cstring>
+                            </property>
+                            <property name="backgroundMode">
+                                <enum>PaletteBackground</enum>
+                            </property>
+                            <attribute name="label">
+                                <string>Default Schemes</string>
+                            </attribute>
+                            <grid>
+                                <property name="name">
+                                    <cstring>unnamed</cstring>
+                                </property>
+                                <widget class="QLabel" row="0" column="0" rowspan="1" colspan="4">
+                                    <property name="name">
+                                        <cstring>textLabel1_3</cstring>
+                                    </property>
+                                    <property name="sizePolicy">
+                                        <sizepolicy>
+                                            <hsizetype>5</hsizetype>
+                                            <vsizetype>1</vsizetype>
+                                            <horstretch>0</horstretch>
+                                            <verstretch>0</verstretch>
+                                        </sizepolicy>
+                                    </property>
+                                    <property name="minimumSize">
+                                        <size>
+                                            <width>0</width>
+                                            <height>0</height>
+                                        </size>
+                                    </property>
+                                    <property name="text">
+                                        <string>Select the following schemes as default if the system is running on AC or on batteries.</string>
+                                    </property>
+                                    <property name="textFormat">
+                                        <enum>RichText</enum>
+                                    </property>
+                                    <property name="alignment">
+                                        <set>WordBreak|AlignTop</set>
+                                    </property>
+                                </widget>
+                                <widget class="QLabel" row="2" column="0">
+                                    <property name="name">
+                                        <cstring>textLabel2_2_2</cstring>
+                                    </property>
+                                    <property name="text">
+                                        <string>Battery scheme:</string>
+                                    </property>
+                                    <property name="buddy" stdset="0">
+                                        <cstring>cB_batteryScheme</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QComboBox" row="1" column="2">
+                                    <property name="name">
+                                        <cstring>cB_acScheme</cstring>
+                                    </property>
+                                    <property name="minimumSize">
+                                        <size>
+                                            <width>175</width>
+                                            <height>0</height>
+                                        </size>
+                                    </property>
+                                </widget>
+                                <spacer row="1" column="1">
+                                    <property name="name">
+                                        <cstring>spacer80</cstring>
+                                    </property>
+                                    <property name="orientation">
+                                        <enum>Horizontal</enum>
+                                    </property>
+                                    <property name="sizeType">
+                                        <enum>Expanding</enum>
+                                    </property>
+                                    <property name="sizeHint">
+                                        <size>
+                                            <width>110</width>
+                                            <height>20</height>
+                                        </size>
+                                    </property>
+                                </spacer>
+                                <spacer row="2" column="1">
+                                    <property name="name">
+                                        <cstring>spacer80_2</cstring>
+                                    </property>
+                                    <property name="orientation">
+                                        <enum>Horizontal</enum>
+                                    </property>
+                                    <property name="sizeType">
+                                        <enum>Expanding</enum>
+                                    </property>
+                                    <property name="sizeHint">
+                                        <size>
+                                            <width>110</width>
+                                            <height>20</height>
+                                        </size>
+                                    </property>
+                                </spacer>
+                                <widget class="QComboBox" row="2" column="2">
+                                    <property name="name">
+                                        <cstring>cB_batteryScheme</cstring>
+                                    </property>
+                                    <property name="minimumSize">
+                                        <size>
+                                            <width>175</width>
+                                            <height>0</height>
+                                        </size>
+                                    </property>
+                                </widget>
+                                <widget class="QLabel" row="1" column="0">
+                                    <property name="name">
+                                        <cstring>textLabel2_2</cstring>
+                                    </property>
+                                    <property name="text">
+                                        <string>AC scheme:</string>
+                                    </property>
+                                    <property name="buddy" stdset="0">
+                                        <cstring>cB_acScheme</cstring>
+                                    </property>
+                                </widget>
+                                <spacer row="3" column="2">
+                                    <property name="name">
+                                        <cstring>spacer82</cstring>
+                                    </property>
+                                    <property name="orientation">
+                                        <enum>Vertical</enum>
+                                    </property>
+                                    <property name="sizeType">
+                                        <enum>Expanding</enum>
+                                    </property>
+                                    <property name="sizeHint">
+                                        <size>
+                                            <width>20</width>
+                                            <height>75</height>
+                                        </size>
+                                    </property>
+                                </spacer>
+                            </grid>
+                        </widget>
+                        <widget class="QWidget">
+                            <property name="name">
+                                <cstring>g_lock</cstring>
+                            </property>
+                            <property name="backgroundMode">
+                                <enum>PaletteBackground</enum>
+                            </property>
+                            <attribute name="label">
+                                <string>Lock Screen</string>
+                            </attribute>
+                            <grid>
+                                <property name="name">
+                                    <cstring>unnamed</cstring>
+                                </property>
+                                <widget class="QCheckBox" row="0" column="0" rowspan="1" colspan="3">
+                                    <property name="name">
+                                        <cstring>cB_lockSuspend</cstring>
+                                    </property>
+                                    <property name="text">
+                                        <string>Lock screen before suspend or standby</string>
+                                    </property>
+                                </widget>
+                                <widget class="QComboBox" row="2" column="1">
+                                    <property name="name">
+                                        <cstring>comboB_lock</cstring>
+                                    </property>
+                                    <property name="enabled">
+                                        <bool>false</bool>
+                                    </property>
+                                </widget>
+                                <spacer row="2" column="2">
+                                    <property name="name">
+                                        <cstring>spacer5_2</cstring>
+                                    </property>
+                                    <property name="orientation">
+                                        <enum>Horizontal</enum>
+                                    </property>
+                                    <property name="sizeType">
+                                        <enum>Preferred</enum>
+                                    </property>
+                                    <property name="sizeHint">
+                                        <size>
+                                            <width>163</width>
+                                            <height>20</height>
+                                        </size>
+                                    </property>
+                                </spacer>
+                                <widget class="QLabel" row="2" column="0">
+                                    <property name="name">
+                                        <cstring>tL_lockWith</cstring>
+                                    </property>
+                                    <property name="text">
+                                        <string>Lock screen with:</string>
+                                    </property>
+                                    <property name="buddy" stdset="0">
+                                        <cstring>comboB_lock</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QCheckBox" row="1" column="0" rowspan="1" colspan="3">
+                                    <property name="name">
+                                        <cstring>cB_lockLid</cstring>
+                                    </property>
+                                    <property name="text">
+                                        <string>Lock screen on lid close</string>
+                                    </property>
+                                </widget>
+                                <spacer row="3" column="1">
+                                    <property name="name">
+                                        <cstring>spacer79</cstring>
+                                    </property>
+                                    <property name="orientation">
+                                        <enum>Vertical</enum>
+                                    </property>
+                                    <property name="sizeType">
+                                        <enum>Expanding</enum>
+                                    </property>
+                                    <property name="sizeHint">
+                                        <size>
+                                            <width>20</width>
+                                            <height>110</height>
+                                        </size>
+                                    </property>
+                                </spacer>
+                            </grid>
+                        </widget>
+                        <widget class="QWidget">
+                            <property name="name">
+                                <cstring>g_misc</cstring>
+                            </property>
+                            <property name="backgroundMode">
+                                <enum>PaletteBackground</enum>
+                            </property>
+                            <attribute name="label">
+                                <string>Miscellaneous</string>
+                            </attribute>
+                            <grid>
+                                <property name="name">
+                                    <cstring>unnamed</cstring>
+                                </property>
+                                <widget class="QGroupBox" row="1" column="0">
+                                    <property name="name">
+                                        <cstring>groupBox_notify</cstring>
+                                    </property>
+                                    <property name="sizePolicy">
+                                        <sizepolicy>
+                                            <hsizetype>5</hsizetype>
+                                            <vsizetype>0</vsizetype>
+                                            <horstretch>0</horstretch>
+                                            <verstretch>0</verstretch>
+                                        </sizepolicy>
+                                    </property>
+                                    <property name="title">
+                                        <string>Notifications</string>
+                                    </property>
+                                    <grid>
+                                        <property name="name">
+                                            <cstring>unnamed</cstring>
+                                        </property>
+                                        <widget class="QPushButton" row="0" column="1">
+                                            <property name="name">
+                                                <cstring>pB_configNotify</cstring>
+                                            </property>
+                                            <property name="text">
+                                                <string>Configure Notifications...</string>
+                                            </property>
+                                        </widget>
+                                        <spacer row="0" column="0">
+                                            <property name="name">
+                                                <cstring>spacer47_3</cstring>
+                                            </property>
+                                            <property name="orientation">
+                                                <enum>Horizontal</enum>
+                                            </property>
+                                            <property name="sizeType">
+                                                <enum>Expanding</enum>
+                                            </property>
+                                            <property name="sizeHint">
+                                                <size>
+                                                    <width>100</width>
+                                                    <height>21</height>
+                                                </size>
+                                            </property>
+                                        </spacer>
+                                        <spacer row="0" column="2">
+                                            <property name="name">
+                                                <cstring>spacer48_2</cstring>
+                                            </property>
+                                            <property name="orientation">
+                                                <enum>Horizontal</enum>
+                                            </property>
+                                            <property name="sizeType">
+                                                <enum>Expanding</enum>
+                                            </property>
+                                            <property name="sizeHint">
+                                                <size>
+                                                    <width>100</width>
+                                                    <height>21</height>
+                                                </size>
+                                            </property>
+                                        </spacer>
+                                    </grid>
+                                </widget>
+                                <widget class="QGroupBox" row="2" column="0">
+                                    <property name="name">
+                                        <cstring>groupBox7</cstring>
+                                    </property>
+                                    <property name="title">
+                                        <string>Autostart</string>
+                                    </property>
+                                    <grid>
+                                        <property name="name">
+                                            <cstring>unnamed</cstring>
+                                        </property>
+                                        <widget class="QCheckBox" row="1" column="1">
+                                            <property name="name">
+                                                <cstring>cB_autostart_neverAsk</cstring>
+                                            </property>
+                                            <property name="text">
+                                                <string>Never ask me again on exit</string>
+                                            </property>
+                                        </widget>
+                                        <widget class="QCheckBox" row="0" column="0" rowspan="1" colspan="2">
+                                            <property name="name">
+                                                <cstring>cB_autostart</cstring>
+                                            </property>
+                                            <property name="text">
+                                                <string>KPowersave starts automatically on login</string>
+                                            </property>
+                                        </widget>
+                                        <spacer row="1" column="0">
+                                            <property name="name">
+                                                <cstring>spacer11</cstring>
+                                            </property>
+                                            <property name="orientation">
+                                                <enum>Horizontal</enum>
+                                            </property>
+                                            <property name="sizeType">
+                                                <enum>Fixed</enum>
+                                            </property>
+                                            <property name="sizeHint">
+                                                <size>
+                                                    <width>16</width>
+                                                    <height>20</height>
+                                                </size>
+                                            </property>
+                                        </spacer>
+                                    </grid>
+                                </widget>
+                                <widget class="QGroupBox" row="0" column="0">
+                                    <property name="name">
+                                        <cstring>groupBox7_2</cstring>
+                                    </property>
+                                    <property name="sizePolicy">
+                                        <sizepolicy>
+                                            <hsizetype>5</hsizetype>
+                                            <vsizetype>0</vsizetype>
+                                            <horstretch>0</horstretch>
+                                            <verstretch>0</verstretch>
+                                        </sizepolicy>
+                                    </property>
+                                    <property name="title">
+                                        <string>General Blacklists</string>
+                                    </property>
+                                    <grid>
+                                        <property name="name">
+                                            <cstring>unnamed</cstring>
+                                        </property>
+                                        <widget class="QPushButton" row="0" column="1">
+                                            <property name="name">
+                                                <cstring>pB_editAutosuspendGBlacklist</cstring>
+                                            </property>
+                                            <property name="text">
+                                                <string>Edit Autosuspend Blacklist...</string>
+                                            </property>
+                                        </widget>
+                                        <spacer row="0" column="0">
+                                            <property name="name">
+                                                <cstring>spacer47</cstring>
+                                            </property>
+                                            <property name="orientation">
+                                                <enum>Horizontal</enum>
+                                            </property>
+                                            <property name="sizeType">
+                                                <enum>Expanding</enum>
+                                            </property>
+                                            <property name="sizeHint">
+                                                <size>
+                                                    <width>100</width>
+                                                    <height>21</height>
+                                                </size>
+                                            </property>
+                                        </spacer>
+                                        <spacer row="0" column="2">
+                                            <property name="name">
+                                                <cstring>spacer48</cstring>
+                                            </property>
+                                            <property name="orientation">
+                                                <enum>Horizontal</enum>
+                                            </property>
+                                            <property name="sizeType">
+                                                <enum>Expanding</enum>
+                                            </property>
+                                            <property name="sizeHint">
+                                                <size>
+                                                    <width>100</width>
+                                                    <height>21</height>
+                                                </size>
+                                            </property>
+                                        </spacer>
+                                        <widget class="QPushButton" row="1" column="1">
+                                            <property name="name">
+                                                <cstring>pB_editAutodimmGBlacklist</cstring>
+                                            </property>
+                                            <property name="text">
+                                                <string>Edit Autodimm Blacklist...</string>
+                                            </property>
+                                        </widget>
+                                    </grid>
+                                </widget>
+                            </grid>
+                        </widget>
+                    </widget>
+                </grid>
+            </widget>
+        </widget>
+    </grid>
+</widget>
+<connections>
+    <connection>
+        <sender>buttonApply</sender>
+        <signal>clicked()</signal>
+        <receiver>configure_Dialog</receiver>
+        <slot>buttonApply_clicked()</slot>
+    </connection>
+    <connection>
+        <sender>cB_specificSettings</sender>
+        <signal>toggled(bool)</signal>
+        <receiver>configure_Dialog</receiver>
+        <slot>cB_specificSettings_toggled(bool)</slot>
+    </connection>
+    <connection>
+        <sender>cB_SpecificPM</sender>
+        <signal>toggled(bool)</signal>
+        <receiver>configure_Dialog</receiver>
+        <slot>cB_SpecificPM_toggled(bool)</slot>
+    </connection>
+    <connection>
+        <sender>cB_disablePM</sender>
+        <signal>toggled(bool)</signal>
+        <receiver>configure_Dialog</receiver>
+        <slot>cB_disablePM_toggled(bool)</slot>
+    </connection>
+    <connection>
+        <sender>cB_disable_Ss</sender>
+        <signal>toggled(bool)</signal>
+        <receiver>configure_Dialog</receiver>
+        <slot>cB_disable_Ss_toggled(bool)</slot>
+    </connection>
+    <connection>
+        <sender>cB_specificSettings</sender>
+        <signal>toggled(bool)</signal>
+        <receiver>configure_Dialog</receiver>
+        <slot>scheme_valueChanged()</slot>
+    </connection>
+    <connection>
+        <sender>cB_disable_Ss</sender>
+        <signal>toggled(bool)</signal>
+        <receiver>configure_Dialog</receiver>
+        <slot>scheme_valueChanged()</slot>
+    </connection>
+    <connection>
+        <sender>cB_blankScreen</sender>
+        <signal>toggled(bool)</signal>
+        <receiver>configure_Dialog</receiver>
+        <slot>scheme_valueChanged()</slot>
+    </connection>
+    <connection>
+        <sender>cB_SpecificPM</sender>
+        <signal>toggled(bool)</signal>
+        <receiver>configure_Dialog</receiver>
+        <slot>scheme_valueChanged()</slot>
+    </connection>
+    <connection>
+        <sender>sB_standby</sender>
+        <signal>valueChanged(int)</signal>
+        <receiver>configure_Dialog</receiver>
+        <slot>scheme_valueChanged()</slot>
+    </connection>
+    <connection>
+        <sender>sB_suspend</sender>
+        <signal>valueChanged(int)</signal>
+        <receiver>configure_Dialog</receiver>
+        <slot>scheme_valueChanged()</slot>
+    </connection>
+    <connection>
+        <sender>sB_powerOff</sender>
+        <signal>valueChanged(int)</signal>
+        <receiver>configure_Dialog</receiver>
+        <slot>scheme_valueChanged()</slot>
+    </connection>
+    <connection>
+        <sender>cB_disablePM</sender>
+        <signal>toggled(bool)</signal>
+        <receiver>configure_Dialog</receiver>
+        <slot>scheme_valueChanged()</slot>
+    </connection>
+    <connection>
+        <sender>buttonOk</sender>
+        <signal>clicked()</signal>
+        <receiver>configure_Dialog</receiver>
+        <slot>buttonOk_clicked()</slot>
+    </connection>
+    <connection>
+        <sender>listBox_schemes</sender>
+        <signal>currentChanged(QListBoxItem*)</signal>
+        <receiver>configure_Dialog</receiver>
+        <slot>listBox_schemes_currentChanged()</slot>
+    </connection>
+    <connection>
+        <sender>buttonCancel</sender>
+        <signal>clicked()</signal>
+        <receiver>configure_Dialog</receiver>
+        <slot>buttonCancel_clicked()</slot>
+    </connection>
+    <connection>
+        <sender>cB_Blacklist</sender>
+        <signal>toggled(bool)</signal>
+        <receiver>configure_Dialog</receiver>
+        <slot>cB_Blacklist_toggled(bool)</slot>
+    </connection>
+    <connection>
+        <sender>cB_autoInactivity</sender>
+        <signal>activated(int)</signal>
+        <receiver>configure_Dialog</receiver>
+        <slot>cB_autoInactivity_activated(int)</slot>
+    </connection>
+    <connection>
+        <sender>cB_autoSuspend</sender>
+        <signal>toggled(bool)</signal>
+        <receiver>configure_Dialog</receiver>
+        <slot>cB_autoSuspend_toggled(bool)</slot>
+    </connection>
+    <connection>
+        <sender>sB_autoInactivity</sender>
+        <signal>valueChanged(int)</signal>
+        <receiver>configure_Dialog</receiver>
+        <slot>scheme_valueChanged()</slot>
+    </connection>
+    <connection>
+        <sender>cB_Brightness</sender>
+        <signal>toggled(bool)</signal>
+        <receiver>configure_Dialog</receiver>
+        <slot>scheme_valueChanged()</slot>
+    </connection>
+    <connection>
+        <sender>cB_Brightness</sender>
+        <signal>toggled(bool)</signal>
+        <receiver>configure_Dialog</receiver>
+        <slot>cB_Brightness_toggled(bool)</slot>
+    </connection>
+    <connection>
+        <sender>pB_resetBrightness</sender>
+        <signal>clicked()</signal>
+        <receiver>configure_Dialog</receiver>
+        <slot>pB_resetBrightness_clicked()</slot>
+    </connection>
+    <connection>
+        <sender>brightnessSlider</sender>
+        <signal>sliderMoved(int)</signal>
+        <receiver>configure_Dialog</receiver>
+        <slot>brightnessSlider_sliderMoved(int)</slot>
+    </connection>
+    <connection>
+        <sender>cB_disableNotifications</sender>
+        <signal>toggled(bool)</signal>
+        <receiver>configure_Dialog</receiver>
+        <slot>scheme_valueChanged()</slot>
+    </connection>
+    <connection>
+        <sender>sB_standby</sender>
+        <signal>valueChanged(int)</signal>
+        <receiver>configure_Dialog</receiver>
+        <slot>sB_standby_valueChanged()</slot>
+    </connection>
+    <connection>
+        <sender>sB_suspend</sender>
+        <signal>valueChanged(int)</signal>
+        <receiver>configure_Dialog</receiver>
+        <slot>sB_suspend_valueChanged()</slot>
+    </connection>
+    <connection>
+        <sender>sB_powerOff</sender>
+        <signal>valueChanged(int)</signal>
+        <receiver>configure_Dialog</receiver>
+        <slot>sB_powerOff_valueChanged()</slot>
+    </connection>
+    <connection>
+        <sender>pB_newScheme</sender>
+        <signal>clicked()</signal>
+        <receiver>configure_Dialog</receiver>
+        <slot>pB_newScheme_clicked()</slot>
+    </connection>
+    <connection>
+        <sender>pB_deleteScheme</sender>
+        <signal>clicked()</signal>
+        <receiver>configure_Dialog</receiver>
+        <slot>pB_deleteScheme_clicked()</slot>
+    </connection>
+    <connection>
+        <sender>comboB_cpuFreq</sender>
+        <signal>activated(int)</signal>
+        <receiver>configure_Dialog</receiver>
+        <slot>scheme_valueChanged()</slot>
+    </connection>
+    <connection>
+        <sender>cB_PowerButton</sender>
+        <signal>activated(int)</signal>
+        <receiver>configure_Dialog</receiver>
+        <slot>general_valueChanged()</slot>
+    </connection>
+    <connection>
+        <sender>cB_LidcloseButton</sender>
+        <signal>activated(int)</signal>
+        <receiver>configure_Dialog</receiver>
+        <slot>general_valueChanged()</slot>
+    </connection>
+    <connection>
+        <sender>cB_SleepButton</sender>
+        <signal>activated(int)</signal>
+        <receiver>configure_Dialog</receiver>
+        <slot>general_valueChanged()</slot>
+    </connection>
+    <connection>
+        <sender>cB_S2DiskButton</sender>
+        <signal>activated(int)</signal>
+        <receiver>configure_Dialog</receiver>
+        <slot>general_valueChanged()</slot>
+    </connection>
+    <connection>
+        <sender>cB_batWarning</sender>
+        <signal>activated(int)</signal>
+        <receiver>configure_Dialog</receiver>
+        <slot>general_valueChanged()</slot>
+    </connection>
+    <connection>
+        <sender>cB_batLow</sender>
+        <signal>activated(int)</signal>
+        <receiver>configure_Dialog</receiver>
+        <slot>general_valueChanged()</slot>
+    </connection>
+    <connection>
+        <sender>cB_batCritical</sender>
+        <signal>activated(int)</signal>
+        <receiver>configure_Dialog</receiver>
+        <slot>general_valueChanged()</slot>
+    </connection>
+    <connection>
+        <sender>sB_batWarning</sender>
+        <signal>valueChanged(int)</signal>
+        <receiver>configure_Dialog</receiver>
+        <slot>general_valueChanged()</slot>
+    </connection>
+    <connection>
+        <sender>sB_batLow</sender>
+        <signal>valueChanged(int)</signal>
+        <receiver>configure_Dialog</receiver>
+        <slot>general_valueChanged()</slot>
+    </connection>
+    <connection>
+        <sender>sB_batCritical</sender>
+        <signal>valueChanged(int)</signal>
+        <receiver>configure_Dialog</receiver>
+        <slot>general_valueChanged()</slot>
+    </connection>
+    <connection>
+        <sender>cB_acScheme</sender>
+        <signal>activated(int)</signal>
+        <receiver>configure_Dialog</receiver>
+        <slot>general_valueChanged()</slot>
+    </connection>
+    <connection>
+        <sender>cB_batteryScheme</sender>
+        <signal>activated(int)</signal>
+        <receiver>configure_Dialog</receiver>
+        <slot>general_valueChanged()</slot>
+    </connection>
+    <connection>
+        <sender>comboB_lock</sender>
+        <signal>activated(int)</signal>
+        <receiver>configure_Dialog</receiver>
+        <slot>general_valueChanged()</slot>
+    </connection>
+    <connection>
+        <sender>cB_lockSuspend</sender>
+        <signal>toggled(bool)</signal>
+        <receiver>configure_Dialog</receiver>
+        <slot>general_valueChanged()</slot>
+    </connection>
+    <connection>
+        <sender>cB_lockLid</sender>
+        <signal>toggled(bool)</signal>
+        <receiver>configure_Dialog</receiver>
+        <slot>general_valueChanged()</slot>
+    </connection>
+    <connection>
+        <sender>pB_configNotify</sender>
+        <signal>released()</signal>
+        <receiver>configure_Dialog</receiver>
+        <slot>pB_configNotify_released()</slot>
+    </connection>
+    <connection>
+        <sender>cB_autostart</sender>
+        <signal>toggled(bool)</signal>
+        <receiver>configure_Dialog</receiver>
+        <slot>general_valueChanged()</slot>
+    </connection>
+    <connection>
+        <sender>cB_autostart_neverAsk</sender>
+        <signal>toggled(bool)</signal>
+        <receiver>configure_Dialog</receiver>
+        <slot>general_valueChanged()</slot>
+    </connection>
+    <connection>
+        <sender>sB_batWarning</sender>
+        <signal>valueChanged(int)</signal>
+        <receiver>configure_Dialog</receiver>
+        <slot>sB_batWarning_valueChanged()</slot>
+    </connection>
+    <connection>
+        <sender>sB_batLow</sender>
+        <signal>valueChanged(int)</signal>
+        <receiver>configure_Dialog</receiver>
+        <slot>sB_batLow_valueChanged()</slot>
+    </connection>
+    <connection>
+        <sender>sB_batCritical</sender>
+        <signal>valueChanged(int)</signal>
+        <receiver>configure_Dialog</receiver>
+        <slot>sB_batCritical_valueChanged()</slot>
+    </connection>
+    <connection>
+        <sender>sB_batWarnAction_value</sender>
+        <signal>valueChanged(int)</signal>
+        <receiver>configure_Dialog</receiver>
+        <slot>general_valueChanged()</slot>
+    </connection>
+    <connection>
+        <sender>sB_batLowAction_value</sender>
+        <signal>valueChanged(int)</signal>
+        <receiver>configure_Dialog</receiver>
+        <slot>general_valueChanged()</slot>
+    </connection>
+    <connection>
+        <sender>sB_batCritAction_value</sender>
+        <signal>valueChanged(int)</signal>
+        <receiver>configure_Dialog</receiver>
+        <slot>general_valueChanged()</slot>
+    </connection>
+    <connection>
+        <sender>cB_batWarning</sender>
+        <signal>activated(int)</signal>
+        <receiver>configure_Dialog</receiver>
+        <slot>cB_batWarning_activated()</slot>
+    </connection>
+    <connection>
+        <sender>cB_batLow</sender>
+        <signal>activated(int)</signal>
+        <receiver>configure_Dialog</receiver>
+        <slot>cB_batLow_activated()</slot>
+    </connection>
+    <connection>
+        <sender>cB_batCritical</sender>
+        <signal>activated(int)</signal>
+        <receiver>configure_Dialog</receiver>
+        <slot>cB_batCritical_activated()</slot>
+    </connection>
+    <connection>
+        <sender>cB_autoDimm</sender>
+        <signal>toggled(bool)</signal>
+        <receiver>configure_Dialog</receiver>
+        <slot>cB_autoDimm_toggled(bool)</slot>
+    </connection>
+    <connection>
+        <sender>sB_autoDimmTime</sender>
+        <signal>valueChanged(int)</signal>
+        <receiver>configure_Dialog</receiver>
+        <slot>scheme_valueChanged()</slot>
+    </connection>
+    <connection>
+        <sender>sB_autoDimmTo</sender>
+        <signal>valueChanged(int)</signal>
+        <receiver>configure_Dialog</receiver>
+        <slot>scheme_valueChanged()</slot>
+    </connection>
+    <connection>
+        <sender>cB_BlacklistDimm</sender>
+        <signal>toggled(bool)</signal>
+        <receiver>configure_Dialog</receiver>
+        <slot>cB_BlacklistDimm_toggled(bool)</slot>
+    </connection>
+    <connection>
+        <sender>pB_editBlacklistDimm</sender>
+        <signal>clicked()</signal>
+        <receiver>configure_Dialog</receiver>
+        <slot>pB_editBlacklistDimm_clicked()</slot>
+    </connection>
+    <connection>
+        <sender>pB_editBlacklist</sender>
+        <signal>clicked()</signal>
+        <receiver>configure_Dialog</receiver>
+        <slot>pB_editBlacklistSuspend_clicked()</slot>
+    </connection>
+    <connection>
+        <sender>pB_editAutosuspendGBlacklist</sender>
+        <signal>clicked()</signal>
+        <receiver>configure_Dialog</receiver>
+        <slot>pB_editBlacklistSuspend_clicked()</slot>
+    </connection>
+    <connection>
+        <sender>pB_editAutodimmGBlacklist</sender>
+        <signal>clicked()</signal>
+        <receiver>configure_Dialog</receiver>
+        <slot>pB_editBlacklistDimm_clicked()</slot>
+    </connection>
+    <connection>
+        <sender>sB_autoDimmTime</sender>
+        <signal>valueChanged(int)</signal>
+        <receiver>configure_Dialog</receiver>
+        <slot>sB_autoDimmTime_valueChanged(int)</slot>
+    </connection>
+</connections>
+<tabstops>
+    <tabstop>tabWidget</tabstop>
+    <tabstop>buttonOk</tabstop>
+    <tabstop>buttonApply</tabstop>
+    <tabstop>buttonCancel</tabstop>
+    <tabstop>listBox_schemes</tabstop>
+    <tabstop>pB_newScheme</tabstop>
+    <tabstop>pB_deleteScheme</tabstop>
+    <tabstop>cB_specificSettings</tabstop>
+    <tabstop>cB_disable_Ss</tabstop>
+    <tabstop>cB_blankScreen</tabstop>
+    <tabstop>cB_SpecificPM</tabstop>
+    <tabstop>sB_standby</tabstop>
+    <tabstop>sB_suspend</tabstop>
+    <tabstop>sB_powerOff</tabstop>
+    <tabstop>cB_disablePM</tabstop>
+    <tabstop>cB_Brightness</tabstop>
+    <tabstop>brightnessSlider</tabstop>
+    <tabstop>pB_resetBrightness</tabstop>
+    <tabstop>cB_autoSuspend</tabstop>
+    <tabstop>cB_autoInactivity</tabstop>
+    <tabstop>sB_autoInactivity</tabstop>
+    <tabstop>cB_Blacklist</tabstop>
+    <tabstop>pB_editBlacklist</tabstop>
+    <tabstop>comboB_cpuFreq</tabstop>
+    <tabstop>cB_disableNotifications</tabstop>
+    <tabstop>sB_batWarning</tabstop>
+    <tabstop>sB_batLow</tabstop>
+    <tabstop>sB_batCritical</tabstop>
+    <tabstop>cB_batWarning</tabstop>
+    <tabstop>cB_batLow</tabstop>
+    <tabstop>cB_batCritical</tabstop>
+    <tabstop>sB_batWarnAction_value</tabstop>
+    <tabstop>sB_batLowAction_value</tabstop>
+    <tabstop>sB_batCritAction_value</tabstop>
+    <tabstop>cB_PowerButton</tabstop>
+    <tabstop>cB_LidcloseButton</tabstop>
+    <tabstop>cB_SleepButton</tabstop>
+    <tabstop>cB_S2DiskButton</tabstop>
+    <tabstop>cB_acScheme</tabstop>
+    <tabstop>cB_batteryScheme</tabstop>
+    <tabstop>cB_lockSuspend</tabstop>
+    <tabstop>cB_lockLid</tabstop>
+    <tabstop>comboB_lock</tabstop>
+    <tabstop>pB_editAutosuspendGBlacklist</tabstop>
+    <tabstop>pB_configNotify</tabstop>
+    <tabstop>cB_autostart</tabstop>
+    <tabstop>cB_autostart_neverAsk</tabstop>
+    <tabstop>buttonHelp</tabstop>
+</tabstops>
+<slots>
+    <slot>buttonApply_clicked()</slot>
+    <slot>cB_specificSettings_toggled( bool )</slot>
+    <slot>cB_SpecificPM_toggled( bool )</slot>
+    <slot>cB_disablePM_toggled( bool )</slot>
+    <slot>cB_disable_Ss_toggled( bool )</slot>
+    <slot>buttonOk_clicked()</slot>
+    <slot>listBox_schemes_currentChanged()</slot>
+    <slot>buttonCancel_clicked()</slot>
+    <slot>comboB_autoInactivity_activated( int )</slot>
+    <slot>cB_Blacklist_toggled( bool )</slot>
+    <slot>cB_autoInactivity_activated( int )</slot>
+    <slot>pB_editBlacklist_clicked()</slot>
+    <slot>cB_disableAutosuspendSound_toggled( bool )</slot>
+    <slot>cB_disableBatSound_toggled( bool )</slot>
+    <slot>cB_batWarning_toggled( bool )</slot>
+    <slot>cB_batLow_toggled( bool )</slot>
+    <slot>cB_batCritical_toggled( bool )</slot>
+    <slot>cB_autosuspendSound_toggled( bool )</slot>
+    <slot>pB_playWarning_released()</slot>
+    <slot>pB_playLow_released()</slot>
+    <slot>pB_playCritical_released()</slot>
+    <slot>pB_playAutosuspend_released()</slot>
+    <slot>pB_fileDialogWarning_released()</slot>
+    <slot>pB_fileDialogLow_released()</slot>
+    <slot>pB_fileDialogCritical_released()</slot>
+    <slot>pB_fileDialogAutosuspend_released()</slot>
+    <slot>cB_ACOutSound_toggled( bool )</slot>
+    <slot>cB_ACInSound_toggled( bool )</slot>
+    <slot>pB_playACOut_released()</slot>
+    <slot>pB_playACIn_released()</slot>
+    <slot>pB_fileDialogACOut_released()</slot>
+    <slot>pB_fileDialogACIn_released()</slot>
+    <slot>lE_path_textChanged()</slot>
+    <slot>cB_autoSuspend_toggled( bool )</slot>
+    <slot>buttonHelp_clicked()</slot>
+    <slot>cB_Brightness_toggled( bool )</slot>
+    <slot>brighnessSlider_valueChanged( int )</slot>
+    <slot>pB_testBrightness_clicked()</slot>
+    <slot>pB_resetBrightness_clicked()</slot>
+    <slot>brightnessSlider_valueChanged( int )</slot>
+    <slot>brightnessSlider_sliderMoved( int )</slot>
+    <slot>cB_disableNotifications_toggled( bool )</slot>
+    <slot>sB_standby_valueChanged()</slot>
+    <slot>sB_suspend_valueChanged()</slot>
+    <slot>sB_powerOff_valueChanged()</slot>
+    <slot>pB_newScheme_clicked()</slot>
+    <slot>pB_deleteScheme_clicked()</slot>
+    <slot>comboB_cpuFreq_activated( int )</slot>
+    <slot>scheme_valueChanged()</slot>
+    <slot>pB_configNotify_released()</slot>
+    <slot>sB_batWarning_valueChanged()</slot>
+    <slot>sB_batLow_valueChanged()</slot>
+    <slot>sB_batCritical_valueChanged()</slot>
+    <slot>general_valueChanged()</slot>
+    <slot>cB_batWarning_activated()</slot>
+    <slot>cB_batLow_activated()</slot>
+    <slot>cB_batCritical_activated()</slot>
+    <slot>cB_autoDimm_toggled( bool )</slot>
+    <slot>cB_BlacklistDimm_toggled( bool )</slot>
+    <slot>pB_editBlacklistDimm_clicked()</slot>
+    <slot>pB_editAutosuspendBlacklist_clicked()</slot>
+    <slot>pB_editBlacklistSuspend_clicked()</slot>
+    <slot>pB_editAutosuspendGBlacklist_released()</slot>
+    <slot>pB_editAutosuspendGBlacklist_clicked()</slot>
+    <slot>pB_editAutodimmGBlacklist_clicked()</slot>
+    <slot>sB_autoDimmTime_valueChanged( int )</slot>
+</slots>
+<layoutdefaults spacing="6" margin="11"/>
+</UI>

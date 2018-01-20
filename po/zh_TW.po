@@ -1,0 +1,1339 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# Novell Language <language@novell.com>, 2007
+msgid ""
+msgstr "Project-Id-Version: Kpowersave\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2007-02-01 16:24+0100\n"
+"PO-Revision-Date: 2007-02-10 01:29\n"
+"Last-Translator: Tetralet <tetralet@gmai.com>\n"
+"Language-Team: Debian-user in Chinese [Big5] <debian-chinese-big5@lists.debian.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: detailed_Dialog.cpp:228
+msgid "kpowersave"
+msgstr "kpowersave"
+
+#: detailed_Dialog.cpp:229
+msgid "General Information"
+msgstr "一般資訊"
+
+#: detailed_Dialog.cpp:232
+msgid "Battery Status"
+msgstr "電池狀態"
+
+#: detailed_Dialog.cpp:233
+msgid "AC Adapter"
+msgstr "電源轉接器"
+
+#: detailed_Dialog.cpp:234 detaileddialog.cpp:385
+msgid "plugged in"
+msgstr "已連接電源"
+
+#: detailed_Dialog.cpp:235
+msgid "Power Consumtion: "
+msgstr "電源消耗："
+
+#: detailed_Dialog.cpp:237
+msgid "Processor Status"
+msgstr "處理器狀態"
+
+#: detailed_Dialog.cpp:238 blacklistedit_Dialog.cpp:130 info_Dialog.cpp:198
+#: configure_Dialog.cpp:760
+msgid "OK"
+msgstr "OK"
+
+#: blacklisteditdialog.cpp:59 configuredialog.cpp:1248
+msgid "General Blacklist"
+msgstr "一般黑名單"
+
+#: blacklisteditdialog.cpp:62
+msgid "Scheme: "
+msgstr "方案："
+
+#: blacklisteditdialog.cpp:113
+msgid "Selected entry removed."
+msgstr "選取的項目已移除。"
+
+#: blacklisteditdialog.cpp:116
+msgid "Could not remove the selected entry."
+msgstr "無法移除選取的項目。"
+
+#: blacklisteditdialog.cpp:136
+msgid "Inserted new entry."
+msgstr "插入的新項目。"
+
+#: blacklisteditdialog.cpp:140
+msgid "Entry exists already. Did not insert new entry."
+msgstr "項目已存在。未插入新的項目。"
+
+#: blacklisteditdialog.cpp:143
+msgid "Empty entry was not inserted."
+msgstr "未插入空的項目。"
+
+#: inactivity.cpp:255
+msgid ""
+"Could not start 'pidof'. Could not autosuspend the machine.\n"
+"Please check your installation."
+msgstr "無法開始 'pidof'。無法自動暫停機器。\n"
+"請檢查您的安裝作業。"
+
+#: blacklistedit_Dialog.cpp:129
+msgid "Autosuspend Blacklist Edit"
+msgstr "編輯自動暫停之黑名單"
+
+#: blacklistedit_Dialog.cpp:132 configuredialog.cpp:945
+#: configure_Dialog.cpp:758
+msgid "Cancel"
+msgstr "取消"
+
+#: blacklistedit_Dialog.cpp:135
+msgid "Add"
+msgstr "新增"
+
+#: blacklistedit_Dialog.cpp:136
+msgid "Remove"
+msgstr "移除"
+
+#: infodialog.cpp:75 infodialog.cpp:77 main.cpp:51
+msgid "KPowersave"
+msgstr "KPowersave"
+
+#: configuredialog.cpp:115 configuredialog.cpp:634
+msgid " - not supported"
+msgstr " - 不支援"
+
+#: configuredialog.cpp:141 configuredialog.cpp:289 detaileddialog.cpp:424
+#: kpowersave.cpp:181 settings.cpp:64 configure_Dialog.cpp:789
+msgid "Performance"
+msgstr "效能"
+
+#: configuredialog.cpp:145 configuredialog.cpp:291 detaileddialog.cpp:430
+#: kpowersave.cpp:183 settings.cpp:66 configure_Dialog.cpp:791
+msgid "Powersave"
+msgstr "省電"
+
+#: configuredialog.cpp:150 configuredialog.cpp:293 kpowersave.cpp:1252
+#: settings.cpp:68
+msgid "Presentation"
+msgstr "簡報"
+
+#: configuredialog.cpp:155 configuredialog.cpp:295 kpowersave.cpp:1248
+#: settings.cpp:70
+msgid "Acoustic"
+msgstr "音效"
+
+#: configuredialog.cpp:160 configuredialog.cpp:162 configuredialog.cpp:163
+#: configuredialog.cpp:164 kpowersave.cpp:1257
+msgid "Advanced Powersave"
+msgstr "進階 Powersave"
+
+#: configuredialog.cpp:247
+msgid ""
+"This enables specific screen saver settings. \n"
+"Note: If selected, the global screen saver settings are \n"
+"overwritten while kpowersave runs."
+msgstr "如此可以啟用特定的螢幕保護程式設定。\n"
+"注意事項：若選取，kpowersave 在執行時將覆寫全部的\n"
+"螢幕保護程式設定。"
+
+#: configuredialog.cpp:250
+msgid ""
+"This disables the screen saver. \n"
+"Note: If selected, the global screen saver settings are \n"
+"overwritten while kpowersave runs."
+msgstr "如此會停用螢幕保護程式。\n"
+"注意事項：若選取，kpowersave 在執行時將覆寫全部的\n"
+"螢幕保護程式設定。"
+
+#: configuredialog.cpp:253
+msgid ""
+"This blanks the screen instead of using a specific screen saver. \n"
+"Note: This may work only with KScreensaver."
+msgstr "如此將會使螢幕呈現空白，而非使用特定的螢幕保護程式。\n"
+"注意事項：此功能僅可搭配 KScreensaver 使用。"
+
+#: configuredialog.cpp:255
+msgid ""
+"This enables specific DPMS settings. \n"
+"Note: If selected, the global DPMS settings are \n"
+"overwritten while kpowersave runs."
+msgstr "如此可以啟用特定的 DPMS 設定。\n"
+"注意事項：若選取，kpowersave 執行時將覆寫全部的 \n"
+"DPMS 設定。"
+
+#: configuredialog.cpp:258
+msgid "This disables DPMS support."
+msgstr "這將會停用 DPMS 支援。"
+
+#: configuredialog.cpp:259
+msgid "If selected, the screen is locked on suspend or standby."
+msgstr "若選取，「暫停」或「待機」時將鎖定螢幕。"
+
+#: configuredialog.cpp:260
+msgid "If selected, the screen is locked if the lid close event is triggered."
+msgstr "若選取，在外蓋閉闔事件觸發時，將會鎖定螢幕。"
+
+#: configuredialog.cpp:262
+msgid ""
+"Check this box to enable or disable automatic suspension of the computer."
+msgstr "核取此方塊來啟用或停用電腦的自動暫停。"
+
+#: configuredialog.cpp:264
+msgid ""
+"Activate this action if the user was inactive for the defined time \n"
+"(greater than 0 minutes). If empty, nothing happens."
+msgstr "若使用者在定義的時間 \n"
+"(> 0 分鐘) 內沒有動作，則啟用此動作。如果是空白，則不會發生任何動作。"
+
+#: configuredialog.cpp:267
+msgid "All scheme-related screen saver and DPMS settings."
+msgstr "所有與方案相關的螢幕保護程式及 DPMS 設定。"
+
+#: configuredialog.cpp:268
+msgid "All scheme-related display brightness settings."
+msgstr "所有與方案相關的畫面亮度設定。"
+
+#: configuredialog.cpp:269
+msgid "All scheme-related automatic suspend settings."
+msgstr "所有與方案相關的自動暫停設定。"
+
+#: configuredialog.cpp:271
+msgid ""
+"Here you can change the brightness of your display. \n"
+"Use the slider to change the brightness directly for \n"
+"testing. To reset back to previous level, please press \n"
+"the 'Reset' button. "
+msgstr "您可在此變更畫面亮度。 \n"
+"可使用滑桿來試著直接變更亮度\n"
+"。若要回到原始的設定，請按下【重新設定】按鈕。"
+
+#: configuredialog.cpp:275
+msgid "Use this button to set back the slider and the display brightness."
+msgstr "使用這個按鈕，可以回復滑桿和畫面亮度。"
+
+#: configuredialog.cpp:320
+msgid "Press this button to delete the selected scheme."
+msgstr "按下此按鈕來刪除已選取的方案。"
+
+#: configuredialog.cpp:325
+msgid "You can't delete the current AC or battery scheme."
+msgstr "您無法刪除目前的電源或電池方案。"
+
+#: configuredialog.cpp:331
+msgid "You can't delete this default scheme."
+msgstr "您無法刪除此預設方案。"
+
+#: configuredialog.cpp:511
+msgid ""
+"Your hardware supports to change the brightness. The values of the slider "
+"are in percent and mapped to the available brightness levels of your "
+"hardware."
+msgstr "您的硬體支援亮度變更。滑桿的值為百分比值，並對應至您硬體可用的亮度階層。"
+
+#: configuredialog.cpp:518
+msgid ""
+"Your Hardware currently not support changing the brightness of your display."
+msgstr "目前您的硬體不支援變更畫面亮度。"
+
+#: configuredialog.cpp:577
+msgid "Select Automatically"
+msgstr "自動選取"
+
+#: configuredialog.cpp:578
+msgid "KScreensaver"
+msgstr "KScreensaver"
+
+#: configuredialog.cpp:579
+msgid "XScreensaver"
+msgstr "XScreensaver"
+
+#: configuredialog.cpp:580
+msgid "xlock"
+msgstr "xlock"
+
+#: configuredialog.cpp:581
+msgid "GNOME Screensaver"
+msgstr "GNOME Screensaver"
+
+#: configuredialog.cpp:819
+msgid ""
+"There are unsaved changes in the active scheme.\n"
+"Apply the changes before jumping to the next scheme or discard the changes?"
+msgstr "目前的方案中有尚未儲存的變更。\n"
+"是否在跳至下一個方案前先套用變更，或是放棄變更？"
+
+#: configuredialog.cpp:822 configuredialog.cpp:863
+msgid "Unsaved Changes"
+msgstr "未儲存的變更"
+
+#: configuredialog.cpp:861
+msgid ""
+"There are unsaved changes.\n"
+"Apply the changes before cancel or discard the changes?"
+msgstr "有未儲存的變更。\n"
+"是否在取消前先套用變更，或是放棄變更？"
+
+#: configuredialog.cpp:901
+msgid "Please insert a name for the new scheme:"
+msgstr "請替這個新方案輸入名稱："
+
+#: configuredialog.cpp:907
+msgid "KPowersave Configuration"
+msgstr "KPowersave 設定"
+
+#: configuredialog.cpp:915
+msgid "Error: A scheme with this name already exist.\n"
+msgstr "錯誤：已有方案使用這個名稱。\n"
+
+#: configuredialog.cpp:942
+msgid "Do you really want to delete the %1 scheme?"
+msgstr "您是否確定要刪除 %1 方案？"
+
+#: configuredialog.cpp:944
+msgid "Confirm delete scheme"
+msgstr "確認刪除方案"
+
+#: configuredialog.cpp:945 configure_Dialog.cpp:796
+msgid "Delete"
+msgstr "刪除"
+
+#: configuredialog.cpp:961
+msgid "Could not delete the selected scheme."
+msgstr "無法移除所選取的方案。"
+
+#: configuredialog.cpp:1159
+msgid ""
+"<b>Note:</b> If you select this option, the computer will suspend or standby "
+"if the current user is inactive for the defined time even if somebody is "
+"logged in remotely to the X server.<br><br> This feature can also produce "
+"problems with some programs, such as video players or cd burner. These "
+"programs can be blacklisted by checking <b>Enable scheme-specific blacklist</"
+"b> and click <b>Edit Blacklist...</b>. If this does not help, report the "
+"problem or deactivate autosuspend.<br><br> Really use this option?"
+msgstr "<b>注意事項：</b> 如果您選取此選項，而目前的使用者在定義的時間內沒有活動，即"
+"使有某人從遠端登入至 X 伺服器，電腦仍將會暫停或待機。<br><br> 此功能遇到某些"
+"程式時也會發生問題，例如影片播放程式或 CD 燒錄程式。您可以在<b>「啟用特定方案"
+"黑名單」</b>中設定並按一下<b>「編輯黑名單」...</b>，將這些程式列入黑名單。如"
+"果問題仍未解決，請報告此問題或停用自動暫停功能。<br><br> 確定要使用此選項？"
+
+#: configuredialog.cpp:1166
+msgid ""
+"<b>Note:</b> If you select this option, the computer will suspend or standby "
+"if the current user is inactive for the defined time. <br><br> This feature "
+"can also produce problems with some programs, such as video players or cd "
+"burner. These programs can be blacklisted by checking <b>Enable scheme-"
+"specific blacklist</b> and click <b>Edit Blacklist...</b>. If this does not "
+"help, report the problem or deactivate autosuspend.<br><br> Really use this "
+"option?"
+msgstr "<b>注意事項：</b> 如果您選擇此選項，當目前的使用者在定義的時間內沒有活動，電"
+"腦仍將會暫停或待機。<br><br> 此功能遇到某些程式時也會發生問題，例如影片播放程"
+"式或 CD 燒錄程式。您可以在<b>「啟用特定方案黑名單」</b>中設定並按一下<b>「編"
+"輯黑名單」...</b>，將這些程式列入黑名單。如果問題仍未解決，請報告此問題或停用"
+"自動暫停功能。<br><br> 確定要使用此選項？"
+
+#: configuredialog.cpp:1234
+msgid ""
+"The blacklist of the selected scheme is empty. Import the general blacklist?"
+msgstr "所選取方案的黑名單是空白的。是否要匯入一般黑名單？"
+
+#: configuredialog.cpp:1236
+msgid "Import"
+msgstr "匯入"
+
+#: configuredialog.cpp:1236
+msgid "Do Not Import"
+msgstr "請勿匯入"
+
+#: configuredialog.cpp:1412 configuredialog.cpp:1456
+msgid "Shutdown"
+msgstr "關機"
+
+#: configuredialog.cpp:1414 configuredialog.cpp:1459
+msgid "Logout Dialog"
+msgstr "登出對話盒"
+
+#: configuredialog.cpp:1417 configuredialog.cpp:1462 kpowersave.cpp:171
+#: kpowersave.cpp:853 kpowersave.cpp:1906 kpowersave.cpp:1961
+msgid "Suspend to Disk"
+msgstr "休眠 (Suspend to Disk)"
+
+#: configuredialog.cpp:1422 configuredialog.cpp:1465 kpowersave.cpp:175
+#: kpowersave.cpp:856 kpowersave.cpp:1911 kpowersave.cpp:1966
+msgid "Suspend to RAM"
+msgstr "暫停 (Suspend to RAM)"
+
+#: configuredialog.cpp:1427 configuredialog.cpp:1468
+msgid "CPU Powersave policy"
+msgstr "CPU 省電方針"
+
+#: configuredialog.cpp:1432 configuredialog.cpp:1471
+msgid "CPU Dynamic policy"
+msgstr "CPU 動態調整方針"
+
+#: configuredialog.cpp:1437 configuredialog.cpp:1474
+msgid "CPU Performance policy"
+msgstr "CPU 效能方針"
+
+#: configuredialog.cpp:1442 configuredialog.cpp:1477
+msgid "Set Brightness to"
+msgstr "將亮度設定為"
+
+#: main.cpp:41
+msgid "KDE Frontend for Power Management, Battery Monitoring and Suspend"
+msgstr "KDE 的電源管理、電池監控及待機設定之前端程式"
+
+#: main.cpp:43
+msgid "Force a new check for ACPI support\n"
+msgstr "強制檢查是否支援新的 ACPI\n"
+
+#: main.cpp:55
+msgid "Current maintainer"
+msgstr "目前維護者"
+
+#: main.cpp:58
+msgid "Powersave developer and for D-Bus integration"
+msgstr "Powersave 研發者及整合至 D-Bus"
+
+#: main.cpp:60
+msgid "Powersave developer and tester"
+msgstr "Powersave 研發者與測試者"
+
+#: main.cpp:62
+msgid "Added basic detailed dialog"
+msgstr "新增的基本詳細對話盒"
+
+#: main.cpp:63
+msgid "Packaging Debian and Ubuntu"
+msgstr "製作 Debian 與 Ubuntu 套件"
+
+#: detaileddialog.cpp:60
+msgid "KPowersave Information Dialog"
+msgstr "KPowersave 資訊對話盒"
+
+#: detaileddialog.cpp:64 configure_Dialog.cpp:795 configure_Dialog.cpp:834
+msgid "Miscellaneous"
+msgstr "其他"
+
+#: detaileddialog.cpp:65
+msgid "CPUs"
+msgstr "CPU"
+
+#: detaileddialog.cpp:72 detaileddialog.cpp:445
+msgid "Battery state:"
+msgstr "電池狀態："
+
+#: detaileddialog.cpp:78
+msgid "Total:"
+msgstr "總計："
+
+#: detaileddialog.cpp:80 detaileddialog.cpp:82
+msgid "Battery %1"
+msgstr "電池 %1"
+
+#: detaileddialog.cpp:113
+msgid "Processor %1"
+msgstr "處理器 %1"
+
+#: detaileddialog.cpp:227
+msgid "not present"
+msgstr "不存在"
+
+#: detaileddialog.cpp:240
+msgid "charged"
+msgstr "已充電"
+
+#: detaileddialog.cpp:242
+msgid "%1:%2 h until charged"
+msgstr "%1:%2 小時後充滿"
+
+#: detaileddialog.cpp:245
+msgid "%1:%2 h remaining"
+msgstr "%1:還剩 %2 小時"
+
+#: detaileddialog.cpp:250 detaileddialog.cpp:433 detaileddialog.cpp:460
+msgid "unknown"
+msgstr "不明的"
+
+#: detaileddialog.cpp:321 detaileddialog.cpp:363
+msgid "%v MHz"
+msgstr "%v MHz"
+
+#: detaileddialog.cpp:326 detaileddialog.cpp:358 dummy.cpp:58
+msgid "deactivated"
+msgstr "已停用"
+
+#: detaileddialog.cpp:389
+msgid "unplugged"
+msgstr "未連接電源"
+
+#: detaileddialog.cpp:404
+msgid "Current Scheme: "
+msgstr "目前的方案："
+
+#: detaileddialog.cpp:421
+msgid "Current CPU Frequency Policy:"
+msgstr "目前的 CPU 頻率方針："
+
+#: detaileddialog.cpp:427 kpowersave.cpp:182 configure_Dialog.cpp:790
+msgid "Dynamic"
+msgstr "動態"
+
+#: detaileddialog.cpp:448
+msgid "Critical"
+msgstr "緊急"
+
+#: detaileddialog.cpp:451
+msgid "Low"
+msgstr "低"
+
+#: detaileddialog.cpp:454 kpowersave.cpp:261 kpowersave.cpp:612
+#: kpowersave.cpp:619 kpowersave.cpp:657 kpowersave.cpp:662 kpowersave.cpp:703
+#: kpowersave.cpp:708 kpowersave.cpp:749 kpowersave.cpp:754 kpowersave.cpp:923
+#: kpowersave.cpp:1029 kpowersave.cpp:1056 kpowersave.cpp:1388
+#: kpowersave.cpp:1443 kpowersave.cpp:1942
+msgid "Warning"
+msgstr "警告"
+
+#: detaileddialog.cpp:457
+msgid "ok"
+msgstr "確定"
+
+#: detaileddialog.cpp:466 detaileddialog.cpp:469
+msgid "Set brightness supported:"
+msgstr "可以設定亮度："
+
+#: detaileddialog.cpp:467
+msgid "yes"
+msgstr "是"
+
+#: detaileddialog.cpp:470
+msgid "no"
+msgstr "否"
+
+#: detaileddialog.cpp:473 detaileddialog.cpp:477
+msgid "HAL Daemon:"
+msgstr "HAL 背景程式："
+
+#: detaileddialog.cpp:474
+msgid "running"
+msgstr "執行中"
+
+#: detaileddialog.cpp:478
+msgid "not running"
+msgstr "尚未執行"
+
+#: info_Dialog.cpp:197
+msgid "Information"
+msgstr "資訊"
+
+#: dummy.cpp:36
+msgid "If the current desktop user is inactive, dim the display to:"
+msgstr "如果目前的桌面使用者沒有活動，畫面會變暗為："
+
+#: dummy.cpp:37
+msgid "Enable dim display on inactivity"
+msgstr "在閒置時讓畫面變暗"
+
+#: dummy.cpp:38
+msgid "Blacklist"
+msgstr "黑名單"
+
+#: dummy.cpp:39
+msgid ""
+"Here you can add programs which should, if running, prevent the dimming of "
+"the display."
+msgstr "您可在此新增程式，該程式在執行時可避免顯示器變暗。"
+
+#: dummy.cpp:41
+msgid "Would you like to import a predefined blacklist?"
+msgstr "是否匯入預先準備好的黑名單？"
+
+#: dummy.cpp:42
+msgid "Disable CPUs/Cores"
+msgstr "停用 CPU/核心"
+
+#: dummy.cpp:43
+msgid "Max. running CPUs:"
+msgstr "最多可執行的 CPU："
+
+#: dummy.cpp:44
+msgid "Max. running CPUs/Cores:"
+msgstr "最多可執行的 CPU/核心："
+
+#: dummy.cpp:45
+msgid "Min. running CPUs:"
+msgstr "最少可執行的 CPU："
+
+#: dummy.cpp:46
+msgid "Min. running CPUs/Cores:"
+msgstr "最少可執行的 CPU/核心："
+
+#: dummy.cpp:47
+msgid "Enable to switch off CPUs/cores"
+msgstr "啟用 CPU/核心的關閉功能"
+
+#: dummy.cpp:48
+msgid "You have a multiprocessor/multicore machine."
+msgstr "您有多處理器/多核心機器。"
+
+#: dummy.cpp:49
+msgid ""
+"You can disable CPUs/cores to reduce power consumption and save battery "
+"power."
+msgstr "您可停用 CPU/核心以減少耗電，並節省電池電力。"
+
+#: dummy.cpp:50
+msgid "Device"
+msgstr "裝置"
+
+#: dummy.cpp:51
+msgid "Devices"
+msgstr "裝置"
+
+#: dummy.cpp:52
+msgid "Device class"
+msgstr "裝置類別"
+
+#: dummy.cpp:53
+msgid "activate"
+msgstr "啟用"
+
+#: dummy.cpp:54
+msgid "Activate"
+msgstr "啟用"
+
+#: dummy.cpp:55
+msgid "deactivate"
+msgstr "停用"
+
+#: dummy.cpp:56
+msgid "Deactivate"
+msgstr "停用"
+
+#: dummy.cpp:57
+msgid "activated"
+msgstr "已啟用"
+
+#: dummy.cpp:59
+msgid "do nothing"
+msgstr "不執行任何動作"
+
+#: dummy.cpp:60
+msgid "Deactivate following devices:"
+msgstr "停用下列裝置："
+
+#: dummy.cpp:61
+msgid "Activate following devices"
+msgstr "啟用下列裝置"
+
+#: dummy.cpp:62
+msgid "Reactivate following devices"
+msgstr "重新啟用下列裝置"
+
+#: dummy.cpp:63
+msgid "Deactivate following device classes:"
+msgstr "停用下列裝置類別："
+
+#: dummy.cpp:64
+msgid "Activate following devices classes"
+msgstr "啟用下列裝置類別"
+
+#: dummy.cpp:65
+msgid "Reactivate following device classes"
+msgstr "重新啟用下列裝置類別"
+
+#: dummy.cpp:66
+msgid "If the scheme switched all devices are again activated."
+msgstr "如果切換方案，所有裝置會重新啟用。"
+
+#: dummy.cpp:67
+msgid "This is a experimental feature."
+msgstr "這是實驗功能。"
+
+#: dummy.cpp:68
+msgid "If you have problems with this feature, please report them."
+msgstr "如果您使用這個功能時發生任何問題，請告訴我們。"
+
+#: dummy.cpp:69
+msgid "Select one of the available devices and click on "
+msgstr "請選取任一可用裝置，然後按一下"
+
+#: dummy.cpp:70
+msgid "Select one of the available device classes and click on "
+msgstr "請選取任一可用裝置類別，然後按一下"
+
+#: dummy.cpp:71
+msgid "Select one or more of the available devices and click on "
+msgstr "請選取一或多個可用裝置，然後按一下"
+
+#: dummy.cpp:72
+msgid "Select one or more of the available device classes and click on "
+msgstr "請選取一或多個可用裝置類別，然後按一下"
+
+#: dummy.cpp:73
+msgid ""
+"Please note: If you e.g. deactivate a network device you may lose your "
+"internet connection."
+msgstr "請注意：如果像是網路裝置被停用了，則會失去網際網路連線。"
+
+#: dummy.cpp:77
+msgid "Could not load the global configuration."
+msgstr "無法載入全域設定。"
+
+#: dummy.cpp:78
+msgid "Could not load the requested scheme configuration."
+msgstr "無法載入指定的方案之設定。"
+
+#: dummy.cpp:79
+msgid "Configure the current scheme."
+msgstr "設定目前方案。"
+
+#: dummy.cpp:80
+msgid "Try loading the default configuration."
+msgstr "嘗試載入預設的設定。"
+
+#: dummy.cpp:81
+msgid "Maybe the global configuration file is empty or missing."
+msgstr "全域組態檔案可能是空的或找不到。"
+
+#: dummy.cpp:84
+msgid ""
+"Inactivity detected.\n"
+" Machine autosuspend in %1 seconds."
+msgstr "偵測到閒置。\n"
+" 電腦會在 %1 秒內自動暫停。"
+
+#: dummy.cpp:85
+msgid ""
+"Inactivity detected.\n"
+" Dim display in %1 seconds to %2%."
+msgstr "偵測到閒置。\n"
+" 畫面在 %1 秒內變暗為 %2%。"
+
+#: dummy.cpp:86
+msgid "Cannot connect to D-Bus. The D-Bus daemon may not be running."
+msgstr "無法連線至 D-Bus。D-Bus 背景程式可能並沒有執行。"
+
+#: dummy.cpp:87
+msgid ""
+"Scheme switched to %1. \n"
+" Deactivate following devices: %2"
+msgstr "將方案切換至 %1。\n"
+" 停用下列裝置：%2"
+
+#: dummy.cpp:88
+msgid ""
+"Scheme switched to %1. \n"
+" Activate following devices: %2"
+msgstr "方案切換至 %1。\n"
+" 啟用下列裝置：%2"
+
+#: dummy.cpp:89
+msgid "Report ..."
+msgstr "報告..."
+
+#: dummy.cpp:90
+msgid "Suspend to RAM is not supported on your machine."
+msgstr "您的機器不支援暫停 (Suspend to RAM) 功能。"
+
+#: dummy.cpp:91
+msgid ""
+"If you know that it should work, you might override this detection with "
+"setting SUSPEND2RAM_FORCE=\"yes\" in /etc/powersave/sleep."
+msgstr "若您確定應該有此功能，可以用 /etc/powersave/sleep 中的 SUSPEND2RAM_FORCE=yes "
+"設定，覆蓋這個偵測功能。"
+
+#: dummy.cpp:93
+msgid "Additionally, please mail the output of %1 to %2 . Thanks!"
+msgstr "此外，請將 %1 的輸出郵寄到 %2，謝謝！"
+
+#: dummy.cpp:94
+msgid "Power consumption"
+msgstr "電源消耗"
+
+#: dummy.cpp:97
+msgid "KScreensaver not found."
+msgstr "找不到 Kscreensaver。"
+
+#: dummy.cpp:98
+msgid "Try locking with XScreensaver or xlock."
+msgstr "嘗試以 XScreensaver 或 xlock 來鎖定。"
+
+#: dummy.cpp:99
+msgid "XScreensaver not found."
+msgstr "找不到 Kscreensaver。"
+
+#: dummy.cpp:100
+msgid "Try locking the screen with xlock."
+msgstr "嘗試以 xlock 來鎖定螢幕。"
+
+#: dummy.cpp:101
+msgid ""
+"XScreensaver and xlock not found. It is not possible to lock the screen. "
+"Check your installation."
+msgstr "找不到 Kscreensaver 與 xlock。無法鎖定螢幕。請檢查您的安裝作業。"
+
+#: dummy.cpp:105
+msgid "HAL daemon:"
+msgstr "HAL 背景程式："
+
+#: dummy.cpp:106
+msgid "D-Bus daemon:"
+msgstr "D-Bus 背景程式："
+
+#: dummy.cpp:107
+msgid "Autosuspend activated:"
+msgstr "自動暫停功能已啟用："
+
+#: dummy.cpp:108
+msgid "Modules unloaded:"
+msgstr "已卸載模組："
+
+#: dummy.cpp:109
+msgid "enabled"
+msgstr "已啟用"
+
+#: suspenddialog.cpp:70
+msgid "Preparing Suspend..."
+msgstr "正在準備暫停..."
+
+#: kpowersave.cpp:157
+msgid "Configure KPowersave..."
+msgstr "設定 KPowersave..."
+
+#: kpowersave.cpp:160 configure_Dialog.cpp:830
+msgid "Configure Notifications..."
+msgstr "設定通知..."
+
+#: kpowersave.cpp:164
+msgid "Start YaST2 Power Management Module..."
+msgstr "啟動 YaST2 電源管理模組..."
+
+#: kpowersave.cpp:178 kpowersave.cpp:859 kpowersave.cpp:1915
+#: kpowersave.cpp:1970
+msgid "Standby"
+msgstr "待機"
+
+#: kpowersave.cpp:180 kpowersave.cpp:187
+msgid "Set CPU Frequency Policy"
+msgstr "設定 CPU 頻率方針"
+
+#: kpowersave.cpp:194 kpowersave.cpp:195
+msgid "Set Active Scheme"
+msgstr "設定使用中方案"
+
+#: kpowersave.cpp:201
+msgid "Disable Actions on Inactivity"
+msgstr "閒置時停用的動作"
+
+#: kpowersave.cpp:208 kpowersave.cpp:217
+msgid "&Help"
+msgstr "說明(&H)"
+
+#: kpowersave.cpp:210
+msgid "&KPowersave Handbook"
+msgstr "KPowersave 手冊(&K)"
+
+#: kpowersave.cpp:213
+msgid "&Report a bug ..."
+msgstr "錯誤回報(&R)..."
+
+#: kpowersave.cpp:215
+msgid "&About KPowersave"
+msgstr "關於 Kpowersave(&A)"
+
+#: kpowersave.cpp:259 kpowersave.cpp:609 kpowersave.cpp:616 kpowersave.cpp:656
+#: kpowersave.cpp:661 kpowersave.cpp:702 kpowersave.cpp:707 kpowersave.cpp:748
+#: kpowersave.cpp:753 kpowersave.cpp:918 kpowersave.cpp:1027
+#: kpowersave.cpp:1054 kpowersave.cpp:1940
+msgid "WARNING"
+msgstr "警告"
+
+#: kpowersave.cpp:259
+msgid "Cannot find any schemes."
+msgstr "無法找到任何方案。"
+
+#: kpowersave.cpp:425
+msgid "No information about battery and AC status available"
+msgstr "沒有電池和電源狀態的相關資訊"
+
+#: kpowersave.cpp:428
+msgid "Plugged in -- fully charged"
+msgstr "電源已連接 -- 電量飽和"
+
+#: kpowersave.cpp:432
+msgid "Plugged in"
+msgstr "電源已連接"
+
+#: kpowersave.cpp:438
+msgid "Plugged in -- %1% charged (%2:%3 h until full charged)"
+msgstr "電源已連接 -- %1% 電量 (%2：完全飽和尚需 %3 小時)"
+
+#: kpowersave.cpp:441
+msgid "Plugged in -- %1% charged (%2:%3 remaining hours)"
+msgstr "電源已連接 -- %1% 電量 (%2：剩餘 %3 小時)"
+
+#: kpowersave.cpp:445 kpowersave.cpp:449
+#, c-format
+msgid "Plugged in -- %1% charged"
+msgstr "電源已連接 -- %1% 電量"
+
+#: kpowersave.cpp:448
+msgid "Plugged in -- no battery"
+msgstr "電源已連接 -- 沒有電池"
+
+#: kpowersave.cpp:455
+msgid "Running on batteries -- %1% charged (%2:%3 hours remaining)"
+msgstr "使用電池 -- %1% 電量 (%2：剩餘 %3 小時)"
+
+#: kpowersave.cpp:459
+#, c-format
+msgid "Running on batteries -- %1% charged"
+msgstr "使用電池 -- %1% 電量"
+
+#: kpowersave.cpp:466
+msgid " -- battery is charging"
+msgstr " -- 電池正在充電中"
+
+#: kpowersave.cpp:610 kpowersave.cpp:617
+msgid "Could not start YaST Power Management Module. Check if it is installed."
+msgstr "無法啟動 YaST 電源管理模組，請檢查是否安裝。"
+
+#: kpowersave.cpp:656
+msgid "Suspend to disk failed"
+msgstr "休眠 (Suspend to Disk) 失敗"
+
+#: kpowersave.cpp:661
+msgid "Suspend to disk disabled by administrator."
+msgstr "管理員己停用休眠 (Suspend to Disk) 功能"
+
+#: kpowersave.cpp:702
+msgid "Suspend to RAM failed"
+msgstr "無法暫停 (Suspend to RAM)"
+
+#: kpowersave.cpp:707
+msgid "Suspend to RAM disabled by administrator."
+msgstr "管理員已停用暫停 (Suspend to RAM) 功能。"
+
+#: kpowersave.cpp:748
+msgid "Standby failed"
+msgstr "待機失敗"
+
+#: kpowersave.cpp:753
+msgid "Standby disabled by administrator."
+msgstr "管理員停用待機功能。"
+
+#: kpowersave.cpp:844
+msgid "Could not call DCOP interface to umount external media."
+msgstr "無法呼叫 DCOP 介面來卸載外部媒體。"
+
+#: kpowersave.cpp:847
+msgid ""
+"Could not umount external media before suspend/standby. \n"
+" (Reason: %1)\n"
+" \n"
+" Would you like to continue suspend/standby anyway? \n"
+"(Warning: Continue suspend can cause data loss!)"
+msgstr "無法在 暫停/待機 之前卸載外部媒體。\n"
+" （原因：%1）\n"
+" \n"
+" 您是否要強制進行暫停或待機？\n"
+" （警告：強制暫停可能會導致資料遺失！）"
+
+#: kpowersave.cpp:863
+msgid "Error while prepare %1"
+msgstr "在準備 %1 時發生錯誤"
+
+#: kpowersave.cpp:864
+msgid "Suspend anyway"
+msgstr "強迫暫停"
+
+#: kpowersave.cpp:864
+msgid "Cancel suspend"
+msgstr "取消暫停"
+
+#: kpowersave.cpp:919
+msgid ""
+"Could not lock the screen. There may be a problem with the selected \n"
+"lock method or something else."
+msgstr "無法鎖定螢幕。所選取的鎖定方式可能有問題，\n"
+"或者有其他原因。"
+
+#: kpowersave.cpp:935
+msgid "The Lid was closed."
+msgstr "外蓋已閉闔"
+
+#: kpowersave.cpp:947
+msgid "The Lid was opened."
+msgstr "外蓋已開啟"
+
+#: kpowersave.cpp:1012
+msgid "Start KPowersave automatically when you log in?"
+msgstr "是否要在登入時，讓 KPowersave 自動啟動？"
+
+#: kpowersave.cpp:1013
+msgid "Question"
+msgstr "問題"
+
+#: kpowersave.cpp:1013
+msgid "Start Automatically"
+msgstr "自動啟動"
+
+#: kpowersave.cpp:1013
+msgid "Do Not Start"
+msgstr "不啟動"
+
+#: kpowersave.cpp:1028
+msgid "CPU Freq Policy %1 could not be set."
+msgstr "無法將 CPU 頻率設定為方針 %1。"
+
+#: kpowersave.cpp:1055
+msgid "Scheme %1 could not be activated."
+msgstr "無法啟用 %1 方案。"
+
+#: kpowersave.cpp:1379
+msgid ""
+"The D-Bus daemon is not running.\n"
+"Starting it will provide full functionality: /etc/init.d/dbus start"
+msgstr "D-Bus 背景程式並未在執行中。\n"
+"啟動它以提供完整功能：/etc/init.d/dbus start"
+
+#: kpowersave.cpp:1389
+msgid "Don't show this message again."
+msgstr "以後不再顯示這則訊息。"
+
+#: kpowersave.cpp:1413
+msgid "ERROR"
+msgstr "錯誤"
+
+#: kpowersave.cpp:1414
+msgid "Could not get information from HAL. The haldaemon is maybe not running."
+msgstr "無法取得由 HAL 取得資訊。可能 haldaemon 並未執行。"
+
+#: kpowersave.cpp:1416
+msgid "Error"
+msgstr "錯誤"
+
+#: kpowersave.cpp:1518
+msgid "checking resume kernel"
+msgstr "正在檢查 resume 核心"
+
+#: kpowersave.cpp:1520
+msgid "checking for swap partition"
+msgstr "正在檢查置換分割區"
+
+#: kpowersave.cpp:1522
+msgid "unmounting FAT/NTFS partitions"
+msgstr "正在卸載 FAT/NTFS 分割區"
+
+#: kpowersave.cpp:1524
+msgid "stopping services"
+msgstr "正在停止服務"
+
+#: kpowersave.cpp:1526
+msgid "stopping service:"
+msgstr "正在停止服務："
+
+#: kpowersave.cpp:1528
+msgid "unloading modules"
+msgstr "正在卸載模組"
+
+#: kpowersave.cpp:1530
+msgid "unloading module:"
+msgstr "卸載模組："
+
+#: kpowersave.cpp:1532
+msgid "syncing file systems"
+msgstr "正在同步檔案系統"
+
+#: kpowersave.cpp:1534
+msgid "preparing bootloader"
+msgstr "正在準備開機程式"
+
+#: kpowersave.cpp:1721
+msgid ""
+"Battery state changed to WARNING -- remaining time: %1 hours and %2 minutes."
+msgstr "電池狀態變更為「警告」 -- 剩餘時間： %1 小時 %2 分鐘。"
+
+#: kpowersave.cpp:1730
+msgid ""
+"Battery state changed to LOW -- remaining time: %1 hours and %2 minutes."
+msgstr "電池狀態變更為「低」 -- 剩餘時間：%1 小時 %2 分鐘。"
+
+#: kpowersave.cpp:1741
+msgid ""
+"Battery state changed to CRITICAL -- remaining time: %1 hours and %2 "
+"minutes.\n"
+"Shut down your system or plug in the power cable immediately. Otherwise the "
+"machine\n"
+"will go shutdown in 30 seconds"
+msgstr "電池狀態變更為「緊急」 -- 剩餘時間：%1 小時 %2 分鐘。\n"
+"請立即將您的系統關機，或是插入電源線。否則機器將於 30 秒後進行關機。"
+
+#: kpowersave.cpp:1752
+msgid ""
+"Battery state changed to CRITICAL -- remaining time: %1 hours and %2 "
+"minutes.\n"
+"Shut down your system or plug in the power cable immediately."
+msgstr "電池狀態變更為「緊急」 -- 剩餘時間：%1 小時 %2 分鐘。\n"
+"請立即關機，或是插入電源線。"
+
+#: kpowersave.cpp:1843
+msgid "AC adapter plugged in"
+msgstr "電源轉接器已連接"
+
+#: kpowersave.cpp:1845
+msgid "AC adapter unplugged"
+msgstr "電源轉接器已拔除"
+
+#: kpowersave.cpp:1868
+msgid "System is going into suspend mode now"
+msgstr "系統即將進入暫停模式"
+
+#: kpowersave.cpp:1890
+msgid "Powersave switched to scheme: %1"
+msgstr "Powersave 已切換至方案： %1"
+
+#: kpowersave.cpp:1905 kpowersave.cpp:1910 kpowersave.cpp:1915
+msgid "System is going into %1 now."
+msgstr "系統即將進入 %1。"
+
+#: kpowersave.cpp:1940
+msgid "Could not remount (all) external storage media."
+msgstr "無法重新掛載（所有的）外部儲存媒體。"
+
+#: kpowersave.cpp:1960 kpowersave.cpp:1965 kpowersave.cpp:1970
+msgid "System is resumed from %1."
+msgstr "系統已由 %1 恢復。"
+
+#: configure_Dialog.cpp:753
+msgid "KPowersave Settings"
+msgstr "KPowersave 設定"
+
+#: configure_Dialog.cpp:754
+msgid "Apply"
+msgstr "套用"
+
+#: configure_Dialog.cpp:756
+msgid "Help"
+msgstr "說明"
+
+#: configure_Dialog.cpp:762
+msgid "Enable specific display power management"
+msgstr "啟用指定的顯示器電源管理"
+
+#: configure_Dialog.cpp:763
+msgid "Standby after:"
+msgstr "在下列情況之後待機："
+
+#: configure_Dialog.cpp:764
+msgid "Only blank the screen"
+msgstr "僅讓螢幕變成空白"
+
+#: configure_Dialog.cpp:765
+msgid "Disable screen saver"
+msgstr "停用螢幕保護程式"
+
+#: configure_Dialog.cpp:766
+msgid "Enable specific screensaver settings"
+msgstr "啟用特定的螢幕保護程式設定"
+
+#: configure_Dialog.cpp:767
+msgid "Suspend after:"
+msgstr "在下列情況之後暫停："
+
+#: configure_Dialog.cpp:768
+msgid "Power off after:"
+msgstr "在下列情形之後關閉電源："
+
+#: configure_Dialog.cpp:769
+msgid "Disable display power management"
+msgstr "停用顯示器電源管理"
+
+#: configure_Dialog.cpp:770 configure_Dialog.cpp:771 configure_Dialog.cpp:772
+#: configure_Dialog.cpp:785
+msgid " min"
+msgstr "最小"
+
+#: configure_Dialog.cpp:773
+msgid "Screen Saver and DPMS"
+msgstr "螢幕保護程式與 DPMS"
+
+#: configure_Dialog.cpp:774
+msgid "Settings"
+msgstr "設定"
+
+#: configure_Dialog.cpp:775
+msgid "Reset"
+msgstr "重設"
+
+#: configure_Dialog.cpp:777
+msgid "Enable scheme specific Brightness settings"
+msgstr "啟用特定方案的亮度設定"
+
+#: configure_Dialog.cpp:780
+msgid "Brightness"
+msgstr "亮度"
+
+#: configure_Dialog.cpp:781
+msgid "Enable autosuspend"
+msgstr "啟用自動暫停"
+
+#: configure_Dialog.cpp:782
+msgid "Enable scheme-specific blacklist"
+msgstr "啟用特定方案的黑名單"
+
+#: configure_Dialog.cpp:783
+msgid "If the current desktop user is inactive the computer will:"
+msgstr "如果目前的桌面使用者沒有活動，電腦將會："
+
+#: configure_Dialog.cpp:784
+msgid "after:"
+msgstr "在下列情況之後："
+
+#: configure_Dialog.cpp:786
+msgid "Edit Blacklist..."
+msgstr "編輯黑名單..."
+
+#: configure_Dialog.cpp:787 configure_Dialog.cpp:827
+msgid "Autosuspend"
+msgstr "自動暫停"
+
+#: configure_Dialog.cpp:792
+msgid "Set CPU Frequency Policy:"
+msgstr "設定 CPU 頻率方針："
+
+#: configure_Dialog.cpp:793
+msgid "CPU Frequency Policy"
+msgstr "CPU 頻率方針"
+
+#: configure_Dialog.cpp:794
+msgid "Disable Notifications"
+msgstr "停用通知"
+
+#: configure_Dialog.cpp:797
+msgid "New"
+msgstr "新"
+
+#: configure_Dialog.cpp:798
+msgid "Scheme Settings"
+msgstr "方案設定"
+
+#: configure_Dialog.cpp:799
+msgid ""
+"Define the battery warning levels (in percentage) and the releated action if "
+"the level get reached:"
+msgstr "請指定電池的警告層級（以 % 為單位）及到達該層級時的相關動作："
+
+#: configure_Dialog.cpp:800
+msgid "Warning level:"
+msgstr "「警告」層級："
+
+#: configure_Dialog.cpp:801
+msgid "Low level:"
+msgstr "「低」層級："
+
+#: configure_Dialog.cpp:802
+msgid "Critical level:"
+msgstr "「緊急」層級："
+
+#: configure_Dialog.cpp:803 configure_Dialog.cpp:804 configure_Dialog.cpp:805
+msgid "if reached call:"
+msgstr "到達時呼叫："
+
+#: configure_Dialog.cpp:806 configure_Dialog.cpp:807 configure_Dialog.cpp:808
+#: configure_Dialog.cpp:809 configure_Dialog.cpp:810 configure_Dialog.cpp:811
+msgid " %"
+msgstr " %"
+
+#: configure_Dialog.cpp:812
+msgid "Battery"
+msgstr "電池"
+
+#: configure_Dialog.cpp:813
+msgid ""
+"Define the action which should be executed if the related button get pressed:"
+msgstr "請指定在按下特定按鈕時所要進行的動作："
+
+#: configure_Dialog.cpp:814
+msgid "Suspend-to-disk Button:"
+msgstr "休眠 (Suspend to Disk) 按鈕："
+
+#: configure_Dialog.cpp:815
+msgid "Sleep button:"
+msgstr "睡眠按鈕"
+
+#: configure_Dialog.cpp:816
+msgid "Lid close Button:"
+msgstr "外蓋閉闔按鈕："
+
+#: configure_Dialog.cpp:817
+msgid "Power Button:"
+msgstr "電源按鈕"
+
+#: configure_Dialog.cpp:818
+msgid "Button Events"
+msgstr "按鈕事件"
+
+#: configure_Dialog.cpp:819
+msgid ""
+"Select the following schemes as default if the system is running on AC or on "
+"batteries."
+msgstr "如果系統是藉由電源或電池運作時，請在以下選擇出預設方案。"
+
+#: configure_Dialog.cpp:820
+msgid "Battery scheme:"
+msgstr "電池方案："
+
+#: configure_Dialog.cpp:821
+msgid "AC scheme:"
+msgstr "電源方案："
+
+#: configure_Dialog.cpp:822
+msgid "Default Schemes"
+msgstr "預設方案"
+
+#: configure_Dialog.cpp:823
+msgid "Lock screen before suspend or standby"
+msgstr "在暫停或待機之前鎖定螢幕"
+
+#: configure_Dialog.cpp:824
+msgid "Lock screen with:"
+msgstr "鎖定螢幕，以："
+
+#: configure_Dialog.cpp:825
+msgid "Lock screen on lid close"
+msgstr "在關閉筆記型電腦的外蓋時鎖定螢幕。"
+
+#: configure_Dialog.cpp:826
+msgid "Lock Screen"
+msgstr "鎖定螢幕"
+
+#: configure_Dialog.cpp:828
+msgid "Edit General Blacklist..."
+msgstr "編輯一般黑名單..."
+
+#: configure_Dialog.cpp:829
+msgid "Notifications"
+msgstr "通知"
+
+#: configure_Dialog.cpp:831
+msgid "Autostart"
+msgstr "自動啟動"
+
+#: configure_Dialog.cpp:832
+msgid "Never ask me again on exit"
+msgstr "結束時不要再問我。"
+
+#: configure_Dialog.cpp:833
+msgid "KPowersave starts automatically on login"
+msgstr "KPowersave 會在登入時自動啟動。"
+
+#: configure_Dialog.cpp:835
+msgid "General Settings"
+msgstr "一般設定"

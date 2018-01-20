@@ -1,0 +1,550 @@
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC
+   "-//KDE//DTD DocBook XML V4.1.2-Based Variant V1.1//EN"
+   "dtd/kdex.dtd"
+[
+  <!ENTITY app "<application>KPowersave</application>">
+  <!ENTITY apprelease " ">
+  <!-- chapters in separate docbook files -->
+
+  <!-- book related entities -->
+  <!ENTITY kappname "KPowersave">
+  <!ENTITY % addindex "INCLUDE">
+  <!ENTITY % Hungarian "INCLUDE" > <!-- change language only here -->
+]>
+
+<!--
+NOTE:
+Entries which require special treatment are marked with comments starting with '###'. They should be visited on a regular basis.
+-->
+
+<book lang="&language;">
+
+<bookinfo>
+  <title>&app; Help</title>
+
+  <date>2006-03-06</date>
+  <releaseinfo>&apprelease;</releaseinfo>
+
+  <authorgroup>
+    <author>
+      <firstname>Danny</firstname>
+      <surname>Kukawka</surname>
+      <affiliation>
+        <address><email>Danny.Kukawka@web.de</email></address>
+      </affiliation>
+    </author>
+    <author>
+      <firstname>Thomas</firstname>
+      <surname>Renninger</surname>
+      <affiliation>
+        <address><email>trenn@suse.de</email></address>
+      </affiliation>
+    </author>
+  </authorgroup>
+ 
+  <copyright>
+    <year>2005</year>
+    <holder>Scott Rhoades</holder>
+  </copyright>
+  
+
+  <!--ROLES_OF_TRANSLATORS-->
+
+  <!--<legalnotice>&FDLNotice;</legalnotice>-->
+
+  <abstract>
+    <para>A &app; segédprogram az áramfogyasztás és az energiatakarékosság
+beállítására szolgál.
+</para> 
+  </abstract>
+
+  <keywordset>
+    <keyword>KDE</keyword>
+    <keyword>KPowersave</keyword>
+    <keyword>áramellátás</keyword>
+    <keyword>akkumulátor</keyword>
+    <keyword>energiatakarékosság</keyword>
+  </keywordset>
+
+</bookinfo>
+
+<!-- ====================================================================== -->
+
+<chapter id="introduction">
+  <chapterinfo>
+   <keywordset>
+    <keyword>KPowersave</keyword>
+   </keywordset>
+  </chapterinfo>
+<title>Bevezetés</title>
+  <mediaobject>
+  <imageobject>
+  <imagedata fileref="hi48-app-kpowersave.png" format="PNG"/>
+  </imageobject>
+  </mediaobject>
+  <para>A KPowersave nevű program a KDE része, grafikus felület az
+energiagazdálkodásra és a noteszgép-akkumulátor erősségének mérésére
+szolgáló powersave segédprogramhoz. Használatával beállítható például,
+hogy a noteszgép képernyője kikapcsoljon meghatározott tétlenség
+után, így megnövelhető az akkumulátor hasznos üzemideje.
+</para> 
+
+ <sect1 id="starting">  
+ <title>A KPowersave elindítása</title>
+   
+   <para>A KPowersave elindításához nyisson meg egy parancsértelmezőt
+és írja be, hogy:
+<command>kpowersave &amp;</command> vagy válassza ki a GNOME vagy KDE
+menüjéből a <menuchoice><guimenu>Rendszer</guimenu><guimenu>Asztal
+kisalkalmazás</guimenu> <guimenu>KPowersave</guimenu></menuchoice>
+menüpontot. A KPowersave a rendszertálcán nyílik meg.
+   </para> 
+   
+   <para>Beállítható az is, hogy a KPowersave automatikusan elinduljon,
+amikor bejelentkezik: kattintson az <guimenu>Általános
+beállítások</guimenu> menüpontra, majd jelölje meg <guimenu>A KPowersave
+automatikusan elindul bejelentkezéskor</guimenu> lehetőséget. Ezenfelül
+azt is megadhatja, hogy a KPowersave rákérdezzen-e az automatikus
+indításra az alkalmazásból kilépéskor.
+   </para>
+ </sect1>
+
+ <sect1 id="understandingicon">
+ <title>A KPowersave ikon működése</title>
+   <para>
+    A KPowersave ikon az akkumulátor erősségét jelző ábra melletti
+villásdugóra hasonlít. Az ikon jelzik az akkumulátor aktuális
+töltöttségét, valamint azt, hogy a számítógép éppen akkumulátorról vagy az
+elektromos hálózatról üzemel. Ha az akkumulátor töltöttsége lecsökken,
+akkor az ikon háttere villogni kezd, narancssárgán a figyelmeztetéshez,
+és vörösen az Alacsony vagy Kritikus állapotban. Ha az egérkurzort az ikon
+felett hagyja, akkor az üzenet jelzi, hogy a számítógép a hálózatra
+csatlakozik vagy akkumulátort használ, kiírja az akkumulátor pillanatnyi
+töltöttségét, s végül, ha a számítógép akkumulátorról működik, akkor
+azt, hogy körülbelül mennyi idő van még hátra, mielőtt az
+akkumulátor teljesen lemerül.
+   </para> 
+ </sect1>
+</chapter>   
+
+<chapter id="applet">
+ <title>A tálcán futó kisalkalmazás menüje</title>
+
+  <sect1 id="selectschemes">
+   <title>Aktív séma váltása</title>
+   <para>
+    Az aktív séma beállításához kattintson a jobb egérgombbal a KPowersave
+ikonra, majd válassza az előugró menü <guimenu>Aktív séma
+beállítása</guimenu> menüpontját, majd válassza ki a kívánt sémát.
+Ha megváltoztatja az aktív energiagazdálkodási sémát az <guimenu>Aktív séma
+beállítása</guimenu> menüponttal, akko ra rendszer összes komponense az új
+energiagazdálkodási módra áll át. Az energiagazdálkodási sémák
+tartalmaznak beállításokat a CPU frekvenciájának átállításával
+kapcsolatban (ha támogatja a gép), az elfojtással, a merevlemez
+vezérlésével és a rendszer hűtésével kapcsolatban.
+   </para> 
+
+   <mediaobject>
+    <imageobject>
+      <imagedata fileref="hu_applet_schemes.png" format="PNG" align="center"/>
+    </imageobject>
+    <textobject>
+       <phrase>A KPowersave menüje a sémák váltására szolgáló bejegyzésekkel</phrase>
+    </textobject>
+   </mediaobject>
+  </sect1>
+
+  <sect1 id="yast">
+   <title>A YaST energiagazdálkodási moduljának elindítása</title>
+   <para>
+    A YaST energiagazdálkodási modulja számos beállítást kínál az
+energia takarékosabb felhasználásához. A modul indításához kattintson a
+jobb egérgombbal a KPowersave ikoknra, majd válassza az előugró menü
+<guimenu>YaST2 energiagazdálkodási modul indítása</guimenu> pontját. A
+YaST részletesen magyarázatot tartalmaz az egyes beállításokra vonatkozóan.
+    <mediaobject>
+     <imageobject>
+      <imagedata fileref="hu_applet_yast.png" format="PNG" align="center"/>
+     </imageobject>
+     <textobject>
+       <phrase>A KPowersave menüje a YaST indítására szolgáló bejegyzéssel</phrase>
+      </textobject>
+    </mediaobject>
+
+   </para> 
+   <note>
+    <para>
+        A YaST energiagazdálkodási modul elindításához szükség van a root-jelszóra.
+    </para>
+   </note> 
+  </sect1>
+ 
+  <sect1 id="suspend"> 
+  <title>A rendszer felfüggesztése</title>
+   <para>
+    A rendszer bármikor felfüggeszthető, ha jobb gombbal a KPowersave
+ikonra kattint, és kiválasztja a <guimenu>Felfüggesztés lemezre</guimenu>,
+<guimenu>Felfüggesztés memóriába</guimenu> vagy
+<guimenu>Készenlét</guimenu> lehetőséget (amennyiben a számítógép
+támogatja a készenléti állapotot).
+   </para>
+
+   <itemizedlist>
+    <listitem>
+      <para>
+A Felfüggesztés lemezre minden adatot elment lemezre a számítógép
+felfüggesztése előtt.
+
+Ez véd az adatok elvesztése ellen, még akkor is, ha az akkumulátor
+teljesen lemerülne.
+      </para>
+    </listitem> 
+    <listitem>
+      <para>
+        A Felfüggesztés memóriába funkció az adatokat a memóriába menti,
+így az adatok sokkal gyorsabban visszaolvashatók, amikor a számítógépet
+visszakapcsolja felfüggesztett módból.
+      </para>
+    </listitem>
+    <listitem>
+      <para>
+        A Készenlét funkció kikapcsolja a monitort, de a
+rendszert áram alatt tartja, vagyis minden megnyitott adat
+továbbra is a memóriában található.
+      </para>
+    </listitem> 
+    </itemizedlist>
+
+    <para>
+     A rendelkezésre álló választási lehetőségek attól függenek,
+hogy a rendszergazda melyeket aktiválta a YaST-ban, illetve hogy melyeket
+támogatja egyáltalán maga a számítógép.
+Azt, hogy melyik lehetőséget választja, célszerű attól függővé tenni,
+hogy mennyire valószínű az adatvesztés.
+    </para> 
+
+   <mediaobject>
+     <imageobject>
+      <imagedata fileref="hu_applet_suspend.png" format="PNG" align="center"/>
+     </imageobject>
+     <textobject>
+       <phrase>A KPowersave menüje a felfüggesztésre/készenlétre kapcsolásra szolgáló bejegyzésekkel</phrase>
+      </textobject>
+   </mediaobject>
+  </sect1>
+
+  <sect1 id="deactivateautossuspend">
+  <title>Az automatikus felfüggesztés kikapcsolása</title>
+   <para>
+    Ha az aktuálisan használt sémában be van kapcsolva az automatikus
+felfüggesztés, akkor a KPowersave menüben megjelenik a <guimenu>Tétlenség
+esetén a műveletek kikapcsolása</guimenu> menüpont. Ha kiválasztja ezt a
+lehetőséget, akkor mindazok a műveletek, amelyek be vannak állítva, hogy
+megtörténjenek a számítógép inaktív állapotba kapcsolásakor, nem történnek
+meg, vagyis az automatikus felfüggesztés lényegében nem történik meg.
+   </para> 
+
+   <mediaobject>
+     <imageobject>
+      <imagedata fileref="hu_applet_autosuspend.png" format="PNG" align="center"/>
+     </imageobject>
+     <textobject>
+       <phrase>A KPowersave menüje a "Tétlenség esetén a műveletek kikapcsolása" menüponttal</phrase>
+      </textobject>
+   </mediaobject>
+  </sect1> 
+  
+  <sect1 id="setCPUFreq">
+  <title>A CPU frekvencia irányelv beállítása</title>
+   <para>
+    A CPU által használt energia a CPU frekvencia irányelv módosításával
+szabályozható: kattintson a jobb egérgombbal a KPowersave ikonra, majd
+válassza az előugró menü <guimenu>CPU frekvencia irányelv
+beállítása</guimenu> pontját, majd válassza az alábbi lehetőségek egyikét:
+</para> 
+   <itemizedlist>
+    <listitem>
+     <para>
+      Teljesítmény: Tartósan magasan tartja a CPU frekvenciáját
+a maximális CPU-teljesítmény érdekében.
+     </para>
+    </listitem> 
+    <listitem>
+      <para>
+       Dinamkus: Csökkenti a CPU frekvenciáját, ha a rendszer tétlen, és
+dinamikusan növeli, ha nagyobb CPU-teljesítményre van szükség.
+      </para>
+    </listitem> 
+    <listitem>
+      <para>
+       Energiatakarékosság: Alacsonyan tartja a Maintains a CPU
+frekvenciáját a energiatakarékosság érdekében.
+      </para>
+    </listitem>
+   </itemizedlist>
+   
+   <para>
+    A CPU frekvencia irányelv csak akkor elérhető, ha a frekvencia
+állítását támogatja a számítógép. Ha nem jelenik meg a menüpont, akko r a
+rendszer nem támogatja a funkciót.
+   </para> 
+
+   <mediaobject>
+     <imageobject>
+      <imagedata fileref="hu_applet_cpufreq.png" format="PNG" align="center"/>
+     </imageobject>
+     <textobject>
+       <phrase>A KPowersave menü a "CPU frekvencia irányelv" almenüvel</phrase>
+      </textobject>
+    </mediaobject>
+  </sect1>
+ </chapter>
+
+ <chapter id="conf_powerscheme"> 
+ <title>Energiagazdálkodási séma beállítása</title>
+   <sect1 id="understand_scheme">
+   <title>Néhány szó az energiagazdálkodási sémákról</title>
+   <para>
+    Egy séma az energiagazdálkodással kapcsolatos legfontosabb
+beállításokat tartalmazza, amelyek akkor kerülnek beállításra, ha a
+KPowersave-et használja a számítógépen. A rendelkezésre álló sémák száma
+a Powersave beállításaitól függenek. A sémák a YaST energiagazdálkodási
+moduljával hozhatók létre és törölhetők. Néhány a leggyakoribb sémák
+közül:
+</para>  
+
+   <itemizedlist>
+    <listitem>
+      <para>Teljesítmény: maximális teljesítmény hosszabb időtartamon át is
+</para>
+    </listitem> 
+    <listitem>
+      <para>Zajszint: A gépe lehető legcsendesebb használatára optimalizált
+</para>
+    </listitem> 
+    <listitem>
+      <para>Bemutató: A legjobb teljesítmény a bemutatók során </para>
+    </listitem> 
+    <listitem>
+      <para>Energiatakarékosság: A lehető leghosszabb akkumulátoros üzemidő
+</para>
+    </listitem> 
+   </itemizedlist>
+   
+   <para>Egy séma kiválasztásához kattintson a
+<guimenu>Sémabeállítások</guimenu> lapra, kattintson a használni kívánt
+sémára, majd kattintson az <guimenu>OK</guimenu> gombra.
+   </para> 
+
+   <mediaobject>
+     <imageobject>
+      <imagedata fileref="hu_configdialog_schemes.png" format="PNG" align="center"/>
+     </imageobject>
+     <textobject>
+       <phrase>A KPowersave konfigurációs párbeszédablaka (sémák kiválasztása). </phrase>
+      </textobject>
+   </mediaobject>
+
+   <para>
+     A sémák az alábbiakat vezérlik:
+</para>
+   
+   <itemizedlist>
+    <listitem>
+      <para>
+        Fusson-e a képernyővédő, ha a számítógép nincs használatban
+</para>
+    </listitem> 
+    <listitem>
+      <para>
+        Mennyi idő után álljon át a képernyő készenléti vagy
+felfüggesztett állapotba, vagy kapcsoljon ki
+</para>
+    </listitem>  
+    <listitem>
+      <para>
+        A számítógép automatikusan átálljon-e felfüggesztett módba egy
+megadott idő után
+</para>
+    </listitem> 
+    <listitem>
+      <para>
+        A számítógép lejátsszon-e az energiagazdálkodással kapcsolatos hangokat
+</para>
+    </listitem> 
+   </itemizedlist>
+  </sect1>
+
+  <sect1 id="procedure">
+  <title>Egy séma beállításának lépései</title>
+
+   <para>
+    A fenti lehetőségek mindegyik takarékoskodik az energiával, hiszen nem
+engedi a sok energiát fogyasztó folyamatokat futni. A sémák beállítása:
+</para> 
+   
+  <sect2 id="procedure_ss">
+  <title>Képernyővédő</title>
+   <procedure>
+    <step><para>Kattintson a jobb egérgombbal a tálcán a KPowersave ikonra. </para></step>
+    <step><para>Válassza ki a <guimenu>KPowersave beállítása</guimenu> lehetőséget.</para></step>
+    <step><para>Ha a <guimenu>Sémabeállítások</guimenu> lap még nincs
+kiválasztva, akkor kattintson a <guimenu>Sémabeállítások</guimenu> lapra.
+</para></step> 
+    <step><para>Ha akarja, kattintson az <guimenu>Egyedi képernyővédő-beállítások bekapcsolása</guimenu> lehetőségre. </para>
+
+     <substeps>
+      <step><para>Ha nem akarja, hogy a képernyővédő áramot fogyasszon,
+amikor a rendszer nincs használatban, kattintson a <guimenu>Képernyővédő
+kikapcsolása</guimenu> lehetőségre.</para></step> 
+      <step><para>Ha csak el akarja sötétíteni a képernyőt egy adott
+képernyővédő használata helyett, kattintson a <guimenu>Csak a képernyő
+elsötétítése</guimenu> lehetőségre. Ez a beállítás nem érhető el, ha a
+képernyővédő le van tiltva.
+</para></step> 
+     </substeps></step>
+    </procedure>
+   </sect2>
+    
+   <sect2 id="procedure_spms">
+    <title>Képernyő energiagazdálkodása</title>
+    <procedure>
+    <step><para>Ha kezelni kívánja a képernyő által fogyasztott áram
+mértékét, kattintson a <guimenu>Képernyő egyedi tápellátás-vezérlésének
+bekapcsolása</guimenu> lehetőségre.</para> 
+     <para>Az egyedi képernyő-energiagazdálkodás letiltható a
+<guimenu>Képernyő tápellátás-vezérlésének kikapcsolása</guimenu>
+lehetőségre kattintva. Ez a beállítás felülbírálja az asztali
+beállításokat.
+</para>  
+     <substeps>
+      <step><para>Adja meg az időt, amelynek eltelte után a képernyő
+átáll készenléti módba. Készenléti állapotban a képernyő üres, de
+továbbra is kap áramot. Éppen ezért ez csak kismértékű
+energiatakarékosságot jelent. </para></step> 
+      <step><para>Adja meg, hogy mennyi idő után legyen a képernyő
+felfüggesztve. Felfüggesztett módban a képernyő ki van kapcsolva, de
+elegendő áramot kap a gép ahhoz, hogy megjegyezze a képernyőn éppen
+látható adatokat. </para></step> 
+      <step><para>Adja meg az időt, amelynek eltelte után a képernyő
+teljesen lekapcsolásra kerül. </para></step> 
+     </substeps></step>
+    </procedure>
+    <mediaobject>
+       <imageobject>
+        <imagedata fileref="hu_configdialog_schemes_screen.png" format="PNG" align="center"/>
+       </imageobject>
+       <textobject>
+        <phrase>A KPowersave konfigurációs párbeszédablaka a képernyővédő beállításaival. </phrase>
+       </textobject>
+    </mediaobject>
+   </sect2>
+
+   <sect2 id="procedure_autosuspend">
+    <title>Az automatikus felfüggesztés beállítása</title>
+    <procedure>
+    <step><para> Kattintson az <guimenu>Automatikus
+felfüggesztés</guimenu> gombra, ha azt kívánja, hogy a KPowersave
+automatikusan felfüggessze a rendszert, ha az aktuális asztali
+felhasználó adott ideig tétlen. Ezután a párbeszédablakban adja meg az
+automatikus felfüggesztés kívánt beállításait.</para>
+<para>Ha például 30 perc után kívánja lemezre kívánja felfüggeszteni a
+rendszert, akkor adja meg az erre vonatkozó beállításokat.
+30 perc után az összes nyitott fájl lemezre mentődik és a számítógép
+felfüggesztésre kerül.
+</para> 
+    </step>
+    </procedure>
+    <mediaobject>
+      <imageobject>
+        <imagedata fileref="hu_configdialog_schemes_autosuspend.png" format="PNG" align="center"/>
+      </imageobject>
+      <textobject>
+        <phrase>A KPowersave konfigurációs párbeszédablaka az automatikus felfüggesztés beállításaival. </phrase>
+      </textobject>
+     </mediaobject>
+   </sect2>
+  </sect1>
+ </chapter>
+
+ <chapter id="generalsettings">
+ <title>Általános beállítások</title>
+  <sect1 id="lockscreen">
+   <title>A képernyő lezárása</title>
+   <para>
+    A nagyobb biztonság érdekében lezárható a képernyő, mielőtt a gép
+készenléti vagy felfüggesztett módba kapcsolna, vagy ha lecsukja a
+noteszgép fedelét. A képernyő lezárható egy képernyővédővel, vagy az xlock
+segédprogrammal.
+   </para> 
+   <para>
+    A képernyő lezárásához kattintson az <guimenu>Általános
+beállítások</guimenu> lapra, majd válassza ki a használni kívánt
+beállításokat.
+   </para> 
+   
+   <mediaobject>
+     <imageobject>
+      <imagedata fileref="hu_configdialog_general.png" format="PNG" align="center"/>
+     </imageobject>
+     <textobject>
+       <phrase>A KPowersave konfigurációs párbeszédablaka az általános beállításokkal. </phrase>
+      </textobject>
+   </mediaobject>
+
+  </sect1>
+  
+  <sect1 id="autosuspendblacklist">
+   <title>Automatikus felfüggesztési feketelista létrehozása</title>
+   <para>
+    A KPowersave lehetővé teszi egy automatikus felfüggesztési feketelista
+használatát. A feketelista használatával megakadályozható a rendszer
+felfüggesztése, ha a felsorolt alkalmazások valamelyike fut. Például
+filmnézés közben valószínűleg nem akarja felfüggeszteni a gépet csak
+azért, mert már 10 perce nem nyomott meg egyetlen billentyűt sem.
+A feketelista módosításáshoz kattintson az <guimenu>Általános
+beállítások</guimenu> lapra, majd kattintson az <guimenu>Általános
+feketelista módosítása</guimenu> gombra. Az <guimenu>Automatikus
+felfüggesztési feketelista módosítása</guimenu> párbeszédablakban vehet
+fel alkalmazásokat a feketelistára, illetve törölheti őket onnan.
+   </para> 
+
+   <mediaobject>
+     <imageobject>
+      <imagedata fileref="hu_configdialog_general.png" format="PNG" align="center"/>
+     </imageobject>
+     <textobject>
+       <phrase>A KPowersave konfigurációs párbeszédablaka az automatikus felfüggesztési feketelistával</phrase>
+      </textobject>
+   </mediaobject>
+
+   <para>
+    Szintén ezzel a beállítással lehet készíteni külön feketelistákat az
+egyes sémákhoz. Egy adott séma feketelistájának elkészítésekor
+importálhatja az általános feketelistát, vagy létrehozhat egy teljesen
+egyedi feketelistát az adott sémához. A sémaspecifikus feketelisták
+felülbírálják az általános feketelista beállításait.
+   </para>
+
+   <mediaobject>
+     <imageobject>
+      <imagedata fileref="hu_configdialog_blacklist.png" format="PNG" align="center"/>
+     </imageobject>
+     <textobject>
+       <phrase>KPowersave párbeszédablak a feketelisták módosításához </phrase>
+      </textobject>
+   </mediaobject>
+
+  </sect1> 
+ </chapter>
+ 
+</book>
+
+<!-- Keep this comment at the end of the file
+Local variables:
+mode: xml
+coding: utf-8
+sgml-indent-step: 1
+End:
+-->

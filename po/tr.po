@@ -1,0 +1,1571 @@
+# translation of kpowersave-2.po to
+# Görkem Çetin <gorkem@pardus.org.tr>, 2006.
+msgid ""
+msgstr ""
+"Project-Id-Version: kpowersave-2\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2007-08-10 03:16+0200\n"
+"PO-Revision-Date: 2006-11-06 19:35+0200\n"
+"Last-Translator: Görkem Çetin <gorkem@pardus.org.tr>\n"
+"Language-Team:  <yerellestirme@kde.org.tr>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.11.4\n"
+
+#: detailed_Dialog.cpp:228
+msgid "kpowersave"
+msgstr "Güç Koruma"
+
+#: detailed_Dialog.cpp:229
+msgid "General Information"
+msgstr "Genel Bilgi"
+
+#: detailed_Dialog.cpp:232
+msgid "Battery Status"
+msgstr "Pil Durumu"
+
+#: detailed_Dialog.cpp:233
+msgid "AC Adapter"
+msgstr "AC Adaptör"
+
+#: detailed_Dialog.cpp:234 detaileddialog.cpp:391
+msgid "plugged in"
+msgstr "fişe takılı"
+
+#: detailed_Dialog.cpp:235
+msgid "Power Consumtion: "
+msgstr "Güç tüketimi: "
+
+#: detailed_Dialog.cpp:237
+msgid "Processor Status"
+msgstr "İşlemci Durumu"
+
+#: detailed_Dialog.cpp:238 blacklistedit_Dialog.cpp:130 info_Dialog.cpp:198
+#: configure_Dialog.cpp:838
+msgid "OK"
+msgstr "Tamam"
+
+#: blacklisteditdialog.cpp:60
+msgid "General Blacklist"
+msgstr "Genel Kara Liste"
+
+#: blacklisteditdialog.cpp:63
+msgid "Scheme: "
+msgstr "Şema:"
+
+#: blacklisteditdialog.cpp:114
+msgid "Selected entry removed."
+msgstr "Seçilen girdi silindi."
+
+#: blacklisteditdialog.cpp:117
+msgid "Could not remove the selected entry."
+msgstr "Seçilen girdi silinemedi."
+
+#: blacklisteditdialog.cpp:137
+msgid "Inserted new entry."
+msgstr "Yeni eklenmiş girdi."
+
+#: blacklisteditdialog.cpp:141
+msgid "Entry exists already. Did not insert new entry."
+msgstr "Bu girdi zaten var. Yeni girdi eklenmedi."
+
+#: blacklisteditdialog.cpp:144
+msgid "Empty entry was not inserted."
+msgstr "Boş girdi eklenmedi."
+
+#: inactivity.cpp:298
+msgid ""
+"Could not start 'pidof'. Could not autosuspend the machine.\n"
+"Please check your installation."
+msgstr ""
+"'pidof' başlatılamadı. Sistem otomatik olarak askıya alınamadı.\n"
+"Lütfen kurulumunuzu kontrol edin."
+
+#: blacklistedit_Dialog.cpp:129
+msgid "Autosuspend Blacklist Edit"
+msgstr "Otomatik Askıya Alma Kara Listesi"
+
+#: blacklistedit_Dialog.cpp:132 configuredialog.cpp:1079
+#: configure_Dialog.cpp:836
+msgid "Cancel"
+msgstr "Vazgeç"
+
+#: blacklistedit_Dialog.cpp:135
+msgid "Add"
+msgstr "Ekle"
+
+#: blacklistedit_Dialog.cpp:136
+msgid "Remove"
+msgstr "Kaldır"
+
+#: infodialog.cpp:76 infodialog.cpp:78 main.cpp:55
+msgid "KPowersave"
+msgstr "Güç Koruma"
+
+#: configuredialog.cpp:116 configuredialog.cpp:121 configuredialog.cpp:721
+msgid " - not supported"
+msgstr " - desteklenmiyor"
+
+#: configuredialog.cpp:150 configuredialog.cpp:317 detaileddialog.cpp:432
+#: kpowersave.cpp:192 settings.cpp:66 configure_Dialog.cpp:876
+msgid "Performance"
+msgstr "Performans"
+
+#: configuredialog.cpp:154 configuredialog.cpp:319 detaileddialog.cpp:438
+#: kpowersave.cpp:194 settings.cpp:68 configure_Dialog.cpp:878
+msgid "Powersave"
+msgstr "Güç Koruma"
+
+#: configuredialog.cpp:159 configuredialog.cpp:321 kpowersave.cpp:1478
+#: settings.cpp:70
+msgid "Presentation"
+msgstr "Sunum"
+
+#: configuredialog.cpp:164 configuredialog.cpp:323 kpowersave.cpp:1473
+#: settings.cpp:72
+msgid "Acoustic"
+msgstr "Akustik"
+
+#: configuredialog.cpp:169 configuredialog.cpp:171 configuredialog.cpp:172
+#: configuredialog.cpp:173 kpowersave.cpp:1484
+msgid "Advanced Powersave"
+msgstr "Gelişmiş Güç Koruma"
+
+#: configuredialog.cpp:271
+msgid ""
+"This enables specific screen saver settings. \n"
+"Note: If selected, the global screen saver settings are \n"
+"overwritten while kpowersave runs."
+msgstr ""
+"Ekran koruyucu özel ayarlarını etkinleştirir. \n"
+"Not: Eğer seçilirse kpowersave çalıştığı sürece \n"
+"genel ekrankoruyucu ayarlarınızın üzerine yazılır."
+
+#: configuredialog.cpp:274
+msgid ""
+"This disables the screen saver. \n"
+"Note: If selected, the global screen saver settings are \n"
+"overwritten while kpowersave runs."
+msgstr ""
+"Ekran koruyucuyu kapat. \n"
+"Not: Eğer seçilirse kpowersave çalıştığı sürece \n"
+"genel ekrankoruyucu ayarlarınızın üzerine yazılır."
+
+#: configuredialog.cpp:277
+msgid ""
+"This blanks the screen instead of using a specific screen saver. \n"
+"Note: This may work only with KScreensaver."
+msgstr ""
+"Ekran koruyucu kullanmak yerine ekranı boş bırakır.\n"
+"Not: Sadece KScreensaver ile çalışabilir."
+
+#: configuredialog.cpp:279
+msgid ""
+"This enables specific DPMS settings. \n"
+"Note: If selected, the global DPMS settings are \n"
+"overwritten while kpowersave runs."
+msgstr ""
+"Ekran Güç Yönetimi Sistemini (DPMS) etkinleştirir.\n"
+"Not: Eğer seçilirse, kpowersave çalışırken \n"
+"genel ekran güç yönetimi sistemi ayarlarınızın üzerine yazılır."
+
+#: configuredialog.cpp:282
+msgid "This disables DPMS support."
+msgstr "Ekran Güç Yönetimi Sistemini (DPMS) kapat."
+
+#: configuredialog.cpp:283
+msgid "If selected, the screen is locked on suspend or standby."
+msgstr "Seçilirse, bekleme ya da askıya alma modunda ekran kilitlenir."
+
+#: configuredialog.cpp:284
+msgid "If selected, the screen is locked if the lid close event is triggered."
+msgstr "Eğer seçilirse, lid close olayı tetiklendiğinde ekran kilitlenir."
+
+#: configuredialog.cpp:286
+msgid ""
+"Check this box to enable or disable automatic suspension of the computer."
+msgstr ""
+"Bu kutuyu kullanarak bilgisayarın otomatik olarak askıya alınmasını "
+"etkinleştirin ya da kapatın."
+
+#: configuredialog.cpp:288
+msgid ""
+"Activate this action if the user was inactive for the defined time \n"
+"(greater than 0 minutes). If empty, nothing happens."
+msgstr ""
+"Kullanıcı tanımlanan süre içerisinde hiçbir işlem yapmazsa bu işlemi aktif "
+"et \n"
+" Boş bırakırsanız hiçbir şey olmaz."
+
+#: configuredialog.cpp:291
+msgid "All scheme-related screen saver and DPMS settings."
+msgstr ""
+"Tüm şema tabanlı ekran koruyucu ve ekran güç yönetimi sistemi ayarları."
+
+#: configuredialog.cpp:292
+msgid "All scheme-related display brightness settings."
+msgstr "Tüm şema tabanlı ekran parlaklığı ayarları."
+
+#: configuredialog.cpp:293
+msgid "All scheme-related automatic suspend settings."
+msgstr "Tüm şema tabanlı otomatik askıya alma ayarları."
+
+#: configuredialog.cpp:295
+msgid ""
+"Here you can change the brightness of your display. \n"
+"Use the slider to change the brightness directly for \n"
+"testing. To reset back to previous level, please press \n"
+"the 'Reset' button. "
+msgstr ""
+"Buradan ekranınızın parlaklığını değiştirebilirsiniz. \n"
+" Kaydırıcıyı kullanarak parlaklığı hemen değiştirebilirsiniz.\n"
+" Parlaklığı eski düzeyine getirmek için \n"
+"' Öntanımlı' düğmesine basın."
+
+#: configuredialog.cpp:299
+msgid "Use this button to set back the slider and the display brightness."
+msgstr ""
+"Kaydırıcıyı ve parlaklığı eski konumuna almak için bu düğmeyi kullanın."
+
+#: configuredialog.cpp:352
+msgid "Press this button to delete the selected scheme."
+msgstr "Seçili şemayı silmek için bu düğmeye basın."
+
+#: configuredialog.cpp:357
+msgid "You can't delete the current AC or battery scheme."
+msgstr "Mevcut AC veya pib şemasını silemezsiniz."
+
+#: configuredialog.cpp:363
+msgid "You can't delete this default scheme."
+msgstr "Öntanımlı şemayı silemezsiniz."
+
+#: configuredialog.cpp:546
+msgid ""
+"Your hardware supports to change the brightness. The values of the slider "
+"are in percent and mapped to the available brightness levels of your "
+"hardware."
+msgstr ""
+"Donanımınız parlaklık değiştirmeyi destekliyor. Kaydırıcı değerleri yüzdelik "
+"olarak donanımınızın sağladığı parlaklık düzeylerine göre "
+"aralıklandırılmıştır."
+
+#: configuredialog.cpp:553
+msgid ""
+"Your Hardware currently not support changing the brightness of your display."
+msgstr "Donanımınız ekran parlaklığını değiştirme özelliğini desteklemiyor."
+
+#: configuredialog.cpp:664
+msgid "Select Automatically"
+msgstr "Otomatik Olarak Seç"
+
+#: configuredialog.cpp:665
+msgid "KScreensaver"
+msgstr "KDE Ekran Koruyucu"
+
+#: configuredialog.cpp:666
+msgid "XScreensaver"
+msgstr "XScreensaver"
+
+#: configuredialog.cpp:667
+msgid "xlock"
+msgstr "xlock"
+
+#: configuredialog.cpp:668
+msgid "GNOME Screensaver"
+msgstr "GNOME Ekran Koruyucu"
+
+#: configuredialog.cpp:930
+msgid ""
+"There are unsaved changes in the active scheme.\n"
+"Apply the changes before jumping to the next scheme or discard the changes?"
+msgstr ""
+"Aktif şemada kaydedilmemiş değişiklikler var.\n"
+"Sonraki şemaya geçilmeden ya da değişiklikler iptal edilmeden önce "
+"uygulansın mı?"
+
+#: configuredialog.cpp:933 configuredialog.cpp:983
+msgid "Unsaved Changes"
+msgstr "Kaydedilmemiş Değişiklikler"
+
+#: configuredialog.cpp:981
+msgid ""
+"There are unsaved changes.\n"
+"Apply the changes before cancel or discard the changes?"
+msgstr ""
+"Kaydedilmemiş değişiklikler var.\n"
+"İptal edilmeden önce değişiklikler uygulansın mı?"
+
+#: configuredialog.cpp:1032
+msgid "Please insert a name for the new scheme:"
+msgstr "Lütfen yeni şema için bir isim girin:"
+
+#: configuredialog.cpp:1038
+msgid "KPowersave Configuration"
+msgstr "KPowersave Yapılandırması"
+
+#: configuredialog.cpp:1046
+msgid "Error: A scheme with this name already exist.\n"
+msgstr "Hata: Aynı isme sahip bir şema zaten mevcut.\n"
+
+#: configuredialog.cpp:1076
+msgid "Do you really want to delete the %1 scheme?"
+msgstr "%1 isimli şemayı silmek istediğinizden emin misiniz?"
+
+#: configuredialog.cpp:1078
+msgid "Confirm delete scheme"
+msgstr "Şema silmeyi onaylayınız"
+
+#: configuredialog.cpp:1079 configure_Dialog.cpp:883
+msgid "Delete"
+msgstr "Sil"
+
+#: configuredialog.cpp:1095
+msgid "Could not delete the selected scheme."
+msgstr "Seçilen şema silinemedi."
+
+#: configuredialog.cpp:1324
+msgid ""
+"<b>Note:</b> If you select this option, the computer will suspend or standby "
+"if the current user is inactive for the defined time even if somebody is "
+"logged in remotely to the X server.<br><br> This feature can also produce "
+"problems with some programs, such as video players or cd burner. These "
+"programs can be blacklisted by checking <b>Enable scheme-specific blacklist</"
+"b> and click <b>Edit Blacklist...</b>. If this does not help, report the "
+"problem or deactivate autosuspend.<br><br> Really use this option?"
+msgstr ""
+"<b> Not: </b> Bu seçeneği işaretlerseniz, şimdiki kullanıcı belirlenen süre "
+"hiçbir şey yapmazsa bilgisayar bekleme ya da askıya alma moduna "
+"geçecektir. \n"
+"\n"
+" Bu özellik video oynatıcı ve cd yazıcı programlarla kullanıldığında bazı "
+"problemlere de yol açabilir. Bu programlar  <b> Şema tabanlı kara listeyi "
+"etkinleştir </b> seçeneği işaretlenerek kara listeye alınabilir. Ardından, "
+"<b> Kara listeyi düzenle... </b> seçeneği tıklanarak işlem yapılır. Eğer bu "
+"olmazsa sorunu bildirin ya da otomatik askıya almayı kapatın. \n"
+"\n"
+" Bu seçenek gerçekten kullanılsın mı?"
+
+#: configuredialog.cpp:1402 configuredialog.cpp:1532
+msgid ""
+"The blacklist of the selected scheme is empty. Import the general blacklist?"
+msgstr "Seçilen şema için kara liste boş. Genel kara liste kullanılsın mı?"
+
+#: configuredialog.cpp:1404 configuredialog.cpp:1534
+msgid "Import"
+msgstr "İçeriye Aktar"
+
+#: configuredialog.cpp:1404 configuredialog.cpp:1534
+msgid "Do Not Import"
+msgstr "İçeriye Aktarma"
+
+#: configuredialog.cpp:1416
+#, fuzzy
+msgid "General Autosuspend Blacklist"
+msgstr "Otomatik Askıya Alma Kara Listesi"
+
+#: configuredialog.cpp:1546
+#, fuzzy
+msgid "General Autodimm Blacklist"
+msgstr "Genel Kara Liste"
+
+#: configuredialog.cpp:1779 configuredialog.cpp:1816
+msgid "Shutdown"
+msgstr "Kapat"
+
+#: configuredialog.cpp:1781 configuredialog.cpp:1819
+msgid "Logout Dialog"
+msgstr "Çıkış Penceresi"
+
+#: configuredialog.cpp:1784 configuredialog.cpp:1822 kpowersave.cpp:182
+#: kpowersave.cpp:2096 kpowersave.cpp:2156 kpowersave.cpp:2247
+msgid "Suspend to Disk"
+msgstr "Diski kullanarak askıya al"
+
+#: configuredialog.cpp:1787 configuredialog.cpp:1825 kpowersave.cpp:186
+#: kpowersave.cpp:2101 kpowersave.cpp:2161 kpowersave.cpp:2250
+msgid "Suspend to RAM"
+msgstr "RAM kullanarak askıya al"
+
+#: configuredialog.cpp:1790 configuredialog.cpp:1828
+msgid "CPU Powersave policy"
+msgstr "CPU Güç Koruma politikası"
+
+#: configuredialog.cpp:1793 configuredialog.cpp:1831
+msgid "CPU Dynamic policy"
+msgstr "CPU Dinamik politikası"
+
+#: configuredialog.cpp:1796 configuredialog.cpp:1834
+msgid "CPU Performance policy"
+msgstr "CPU Performans politikası"
+
+#: configuredialog.cpp:1799 configuredialog.cpp:1837
+msgid "Set Brightness to"
+msgstr "Parlaklığı ayarla"
+
+#: main.cpp:43
+msgid "KDE Frontend for Power Management, Battery Monitoring and Suspend"
+msgstr ""
+"KDE için Güç Yönetim arayüzü, Pil Durumu Göstericisi ve Askıya alma "
+"uygulaması"
+
+#: main.cpp:45
+#, fuzzy
+msgid "Force a new check for ACPI support"
+msgstr "ACPI desteği için yeniden kontrol etmeye zorla\n"
+
+#: main.cpp:46
+msgid "Trace function entry and leave points for debug\n"
+msgstr ""
+
+#: main.cpp:59
+msgid "Current maintainer"
+msgstr "Şimdiki Geliştirici"
+
+#: main.cpp:62
+msgid "Powersave developer and for D-Bus integration"
+msgstr "KPowersave geliştiricisi ve DBUS entegrasyonu"
+
+#: main.cpp:64
+msgid "Powersave developer and tester"
+msgstr "KPowersave geliştiricisi ve testçisi"
+
+#: main.cpp:66
+msgid "Added basic detailed dialog"
+msgstr "Ayrıntılı diyalog penceresi"
+
+#: main.cpp:67
+msgid "Packaging Debian and Ubuntu"
+msgstr "Debian ve Ubuntu Paketleri"
+
+#: detaileddialog.cpp:61
+msgid "KPowersave Information Dialog"
+msgstr "KPowersave Bigilendirme Penceresi"
+
+#: detaileddialog.cpp:65 configure_Dialog.cpp:882 configure_Dialog.cpp:922
+msgid "Miscellaneous"
+msgstr "Diğer Ayarlar"
+
+#: detaileddialog.cpp:66
+msgid "CPUs"
+msgstr "İşlemciler"
+
+#: detaileddialog.cpp:73 detaileddialog.cpp:453
+msgid "Battery state:"
+msgstr "Pil Durumu:"
+
+#: detaileddialog.cpp:79
+msgid "Total:"
+msgstr "Toplam:"
+
+#: detaileddialog.cpp:81 detaileddialog.cpp:83
+msgid "Battery %1"
+msgstr "Pil %1"
+
+#: detaileddialog.cpp:114
+msgid "Processor %1"
+msgstr "İşlemci %1"
+
+#: detaileddialog.cpp:230
+msgid "not present"
+msgstr "mevcut değil"
+
+#: detaileddialog.cpp:243
+msgid "charged"
+msgstr "dolu"
+
+#: detaileddialog.cpp:245
+msgid "%1:%2 h until charged"
+msgstr "%1: %2 saat dolana kadar"
+
+#: detaileddialog.cpp:248
+msgid "%1:%2 h remaining"
+msgstr "%1:%2 saat kaldı"
+
+#: detaileddialog.cpp:253 detaileddialog.cpp:441 detaileddialog.cpp:468
+msgid "unknown"
+msgstr "bilinmeyen"
+
+#: detaileddialog.cpp:325 detaileddialog.cpp:368
+msgid "%v MHz"
+msgstr "%v MHz"
+
+#: detaileddialog.cpp:330 detaileddialog.cpp:363 dummy.cpp:58
+msgid "deactivated"
+msgstr "kapatıldı"
+
+#: detaileddialog.cpp:395
+msgid "unplugged"
+msgstr "fiş çekili"
+
+#: detaileddialog.cpp:412
+msgid "Current Scheme: "
+msgstr "Şimdiki Şema: "
+
+#: detaileddialog.cpp:429
+msgid "Current CPU Frequency Policy:"
+msgstr "Şimdiki İşlemci Frekans Davranışı:"
+
+#: detaileddialog.cpp:435 kpowersave.cpp:193 configure_Dialog.cpp:877
+msgid "Dynamic"
+msgstr "Dinamik"
+
+#: detaileddialog.cpp:456
+msgid "Critical"
+msgstr "Kritik"
+
+#: detaileddialog.cpp:459
+msgid "Low"
+msgstr "Düşük"
+
+#: detaileddialog.cpp:462 kpowersave.cpp:277 kpowersave.cpp:652
+#: kpowersave.cpp:659 kpowersave.cpp:705 kpowersave.cpp:713 kpowersave.cpp:761
+#: kpowersave.cpp:769 kpowersave.cpp:817 kpowersave.cpp:824
+#: kpowersave.cpp:1131 kpowersave.cpp:1243 kpowersave.cpp:1272
+#: kpowersave.cpp:1610 kpowersave.cpp:1670 kpowersave.cpp:2186
+msgid "Warning"
+msgstr "Uyarı"
+
+#: detaileddialog.cpp:465
+msgid "ok"
+msgstr "tamam"
+
+#: detaileddialog.cpp:474 detaileddialog.cpp:477
+msgid "Set brightness supported:"
+msgstr "Parlaklık Ayarları Destekleniyor:"
+
+#: detaileddialog.cpp:475
+msgid "yes"
+msgstr "evet"
+
+#: detaileddialog.cpp:478
+msgid "no"
+msgstr "hayır"
+
+#: detaileddialog.cpp:481 detaileddialog.cpp:485
+msgid "HAL Daemon:"
+msgstr "HAL Servisi:"
+
+#: detaileddialog.cpp:482
+msgid "running"
+msgstr "çalışıyor"
+
+#: detaileddialog.cpp:486
+msgid "not running"
+msgstr "çalışmıyor"
+
+#: info_Dialog.cpp:197
+msgid "Information"
+msgstr "Bilgi"
+
+#: dummy.cpp:36
+msgid "If the current desktop user is inactive, dim the display to:"
+msgstr "Oturumu açmış olan kullanıcı aktif değilse, ekranı şöyle karart:"
+
+#: dummy.cpp:37
+msgid "Enable dim display on inactivity"
+msgstr "Hareketsizlik durumunda karartılmış ekranı etkinleştir"
+
+#: dummy.cpp:38
+msgid "Blacklist"
+msgstr "Kara Liste"
+
+#: dummy.cpp:39
+msgid ""
+"Here you can add programs which should, if running, prevent the dimming of "
+"the display."
+msgstr "Ekran görüntüsünün karamasını ekleyen programlar varsa buraya ekleyin."
+
+#: dummy.cpp:41
+msgid "Would you like to import a predefined blacklist?"
+msgstr "Önceden hazırlanmış bir kara listeyi almak istiyor musunuz?"
+
+#: dummy.cpp:42
+msgid "Disable CPUs/Cores"
+msgstr "İşlemciyi Kapat"
+
+#: dummy.cpp:43
+msgid "Max. running CPUs:"
+msgstr "Çalışan En Fazla İşlemci:"
+
+#: dummy.cpp:44
+msgid "Max. running CPUs/Cores:"
+msgstr "Çalışan En Fazla İşlemci/Çekirdek:"
+
+#: dummy.cpp:45
+msgid "Min. running CPUs:"
+msgstr "Çalışan En Az İşlemci:"
+
+#: dummy.cpp:46
+msgid "Min. running CPUs/Cores:"
+msgstr "Çalışan En Az İşlemci/Çekirdek:"
+
+#: dummy.cpp:47
+msgid "Enable to switch off CPUs/cores"
+msgstr "İşlemcileri/Çekirdeği Kapatmaya İzin Ver"
+
+#: dummy.cpp:48
+msgid "You have a multiprocessor/multicore machine."
+msgstr "Çok işlemcili ya da çok çekirdekli bir makineye sahipsiniz."
+
+#: dummy.cpp:49
+msgid ""
+"You can disable CPUs/cores to reduce power consumption and save battery "
+"power."
+msgstr ""
+"İşlemcileri ya da çekirdekleri kapatabilir, bu sayede güç tasarrufu "
+"yapabilirsiniz."
+
+#: dummy.cpp:50
+msgid "Device"
+msgstr "Aygıt"
+
+#: dummy.cpp:51
+msgid "Devices"
+msgstr "Aygıtlar"
+
+#: dummy.cpp:52
+msgid "Device class"
+msgstr "Aygıt sınıfı"
+
+#: dummy.cpp:53
+msgid "activate"
+msgstr "etkinleştir"
+
+#: dummy.cpp:54
+msgid "Activate"
+msgstr "Etkinleştir"
+
+#: dummy.cpp:55
+msgid "deactivate"
+msgstr "kapat"
+
+#: dummy.cpp:56
+msgid "Deactivate"
+msgstr "Kapat"
+
+#: dummy.cpp:57
+msgid "activated"
+msgstr "etkinleştirildi"
+
+#: dummy.cpp:59
+msgid "do nothing"
+msgstr "hiçbir şey yapma"
+
+#: dummy.cpp:60
+msgid "Deactivate following devices:"
+msgstr "Bu aygıtları kapat:"
+
+#: dummy.cpp:61
+msgid "Activate following devices"
+msgstr "Bu aygıtları etkinleştir"
+
+#: dummy.cpp:62
+msgid "Reactivate following devices"
+msgstr "Bu aygıtları yeniden etkinleştir"
+
+#: dummy.cpp:63
+msgid "Deactivate following device classes:"
+msgstr "Bu aygıt sınıflarını kapat:"
+
+#: dummy.cpp:64
+msgid "Activate following devices classes"
+msgstr "Bu aygıt sınıflarını etkinleştir"
+
+#: dummy.cpp:65
+msgid "Reactivate following device classes"
+msgstr "Bu aygıt sınıflarını yeniden etkinleştir"
+
+#: dummy.cpp:66
+msgid "If the scheme switched all devices are again activated."
+msgstr "Eğer bu şema seçildiyse tüm aygıtlar yeniden aktifleştirilmiş olur."
+
+#: dummy.cpp:67
+msgid "This is a experimental feature."
+msgstr "Bu deneysel bir özelliktir."
+
+#: dummy.cpp:68
+msgid "If you have problems with this feature, please report them."
+msgstr "Bu özellikle ilgili bir sorun yaşadıysanız lütfen hatayı bildirin."
+
+#: dummy.cpp:69
+msgid "Select one of the available devices and click on "
+msgstr "Kullanılabilir aygıtlardan birini seçin ve üzerine tıklayın"
+
+#: dummy.cpp:70
+msgid "Select one of the available device classes and click on "
+msgstr "Kullanılabilir aygıt sınıflarından birini seçin ve üzerine tıklayın"
+
+#: dummy.cpp:71
+msgid "Select one or more of the available devices and click on "
+msgstr ""
+"Kullanılabilir aygıtlardan birini ya da daha çoğunu seçin ve üzerine tıklayın"
+
+#: dummy.cpp:72
+msgid "Select one or more of the available device classes and click on "
+msgstr ""
+"Kullanılabilir aygıt sınıflarından birini ya da daha çoğunu seçin ve üzerine "
+"tıklayın"
+
+#: dummy.cpp:73
+msgid ""
+"Please note: If you e.g. deactivate a network device you may lose your "
+"internet connection."
+msgstr ""
+"Dikkat: Eğer ağ aygıtınızı kapatırsanız İntrnet bağlantınız kesilecektir."
+
+#: dummy.cpp:75
+msgid ""
+"<b>Note:</b> If you select this option, the computer will suspend or standby "
+"if the current user is inactive for the defined time. <br><br> This feature "
+"can also produce problems with some programs, such as video players or cd "
+"burner. These programs can be blacklisted by checking <b>Enable scheme-"
+"specific blacklist</b> and click <b>Edit Blacklist...</b>. If this does not "
+"help, report the problem or deactivate autosuspend.<br><br> Really use this "
+"option?"
+msgstr ""
+"<b> Not: </b> Bu seçeneği işaretlerseniz, şimdiki kullanıcı belirlenen süre "
+"hiçbir şey yapmazsa bilgisayar bekleme ya da askıya alma moduna "
+"geçecektir. \n"
+"\n"
+" Bu özellik video oynatıcı ve cd yazıcı programlarla kullanıldığında bazı "
+"problemlere de yol açabilir. Bu programlar  <b> Şema tabanlı kara listeyi "
+"etkinleştir </b> seçeneği işaretlenerek kara listeye alınabilir. Ardından, "
+"<b> Kara listeyi düzenle... </b> seçeneği tıklanarak işlem yapılır. Eğer bu "
+"olmazsa sorunu bildirin ya da otomatik askıya almayı kapatın. \n"
+"\n"
+" Bu seçenek gerçekten kullanılsın mı?"
+
+#: dummy.cpp:82
+msgid "Try to use only one CPU/Core."
+msgstr ""
+
+#: dummy.cpp:83
+msgid ""
+"Reduce power consumption by try to use only one CPU/Core instead of "
+"spreading the work over all/multiple CPUs."
+msgstr ""
+
+#: dummy.cpp:87
+msgid "Could not load the global configuration."
+msgstr "Genel yapılandırma yüklenemedi."
+
+#: dummy.cpp:88
+msgid "Could not load the requested scheme configuration."
+msgstr "İstenilen şema yapılandırması yüklenemedi."
+
+#: dummy.cpp:89
+msgid "Configure the current scheme."
+msgstr "Kullanılan şemayı yapılandır."
+
+#: dummy.cpp:90
+msgid "Try loading the default configuration."
+msgstr "Öntanımlı yapılandırmayı yüklemeyi dene."
+
+#: dummy.cpp:91
+msgid "Maybe the global configuration file is empty or missing."
+msgstr "Genel yapılandırma dosyası boş ya da kayıp."
+
+#: dummy.cpp:94
+msgid "Cannot connect to D-Bus. The D-Bus daemon may not be running."
+msgstr "D-BUS'a bağlanılamıyor.D-BUS servisi çalışmıyor olabilir."
+
+#: dummy.cpp:95
+msgid ""
+"Scheme switched to %1. \n"
+" Deactivate following devices: %2"
+msgstr ""
+"%1 Şeması seçildi.\n"
+"Bu aygıtları kapat: %2"
+
+#: dummy.cpp:96
+msgid ""
+"Scheme switched to %1. \n"
+" Activate following devices: %2"
+msgstr ""
+"%1 Şeması seçildi.\n"
+"Bu aygıtları etkinleştir: %2"
+
+#: dummy.cpp:97
+msgid "Report ..."
+msgstr "Raporla..."
+
+#: dummy.cpp:98
+msgid "Suspend to RAM is not supported on your machine."
+msgstr "Belleğe askıya alma bu bilgisayarda desteklenmiyor."
+
+#: dummy.cpp:99
+msgid "Additionally, please mail the output of %1 to %2 . Thanks!"
+msgstr "Lütfen %1 çıktısını %2 adresine gönderin. Teşekkürler!"
+
+#: dummy.cpp:100
+msgid "Power consumption"
+msgstr "Güç tüketimi"
+
+#: dummy.cpp:103
+msgid "KScreensaver not found."
+msgstr "KScreensaver bulunamadı."
+
+#: dummy.cpp:104
+msgid "Try locking with XScreensaver or xlock."
+msgstr "XScreensaver ya da xlock ile kilitlemeyi dene."
+
+#: dummy.cpp:105
+msgid "XScreensaver not found."
+msgstr "XScreensaver bulunamadı."
+
+#: dummy.cpp:106
+msgid "Try locking the screen with xlock."
+msgstr "Ekranı xlock kullanarak kilitlemeyi dene."
+
+#: dummy.cpp:107
+msgid ""
+"XScreensaver and xlock not found. It is not possible to lock the screen. "
+"Check your installation."
+msgstr ""
+"XScreensaver ve xlock bulunamadı. Ekranın kilitlenmesi mümkün değil. "
+"Kurulumunuzu kontrol edin."
+
+#: dummy.cpp:111
+msgid "HAL daemon:"
+msgstr "HAL başlngıç betiği:"
+
+#: dummy.cpp:112
+msgid "D-Bus daemon:"
+msgstr "D-BUS servisi:"
+
+#: dummy.cpp:113
+msgid "ConsoleKit daemon:"
+msgstr ""
+
+#: dummy.cpp:114
+msgid "Autosuspend activated:"
+msgstr "Otomatik askıya alma etkinleştirildi:"
+
+#: dummy.cpp:115
+#, fuzzy
+msgid "Autodimm activated:"
+msgstr "Otomatik askıya alma etkinleştirildi:"
+
+#: dummy.cpp:116
+msgid "enabled"
+msgstr "etkin"
+
+#: dummy.cpp:117
+msgid "Session active:"
+msgstr ""
+
+#: dummy.cpp:120
+msgid "Inactivity detected."
+msgstr ""
+
+#: dummy.cpp:121
+msgid "To stop the %1 press the 'Cancel' button before the countdown expire."
+msgstr ""
+
+#: dummy.cpp:122
+msgid "The computer autosuspend in: "
+msgstr ""
+
+#: dummy.cpp:123
+#, c-format
+msgid "The display get dimmed down to %1% in: "
+msgstr ""
+
+#: dummy.cpp:124
+msgid "%1 seconds"
+msgstr ""
+
+#: dummy.cpp:127
+msgid "Could not call %1. The current desktop session is not active."
+msgstr ""
+
+#: dummy.cpp:128
+msgid "Could not set %1. The current desktop session is not active."
+msgstr ""
+
+#: dummy.cpp:129
+msgid "Stopped %1. The current desktop session is now inactive."
+msgstr ""
+
+#: dummy.cpp:130
+msgid "Restarted %1. The current desktop session is now active again."
+msgstr ""
+
+#: log_viewer.cpp:78
+msgid "Form1"
+msgstr ""
+
+#: log_viewer.cpp:79
+msgid "Save As ..."
+msgstr ""
+
+#: log_viewer.cpp:80
+msgid "Close"
+msgstr ""
+
+#: logviewer.cpp:44
+#, fuzzy
+msgid "KPowersave Logfile Viewer: %1"
+msgstr "Powesave için seçiln şema: %1"
+
+#: logviewer.cpp:89
+msgid "File already exist. Overwrite the file?"
+msgstr ""
+
+#: logviewer.cpp:90 logviewer.cpp:97
+#, fuzzy
+msgid "Error while save logfile"
+msgstr "%1 hazırlanırken hata oluştu"
+
+#: logviewer.cpp:95
+msgid "File already exist."
+msgstr ""
+
+#: logviewer.cpp:98
+msgid "Try other filename ..."
+msgstr ""
+
+#: suspenddialog.cpp:70
+msgid "Preparing Suspend..."
+msgstr "Askıya Almaya Hazırlanılıyor..."
+
+#: kpowersave.cpp:168
+msgid "Configure KPowersave..."
+msgstr "&KPowersave'i Yapılandır"
+
+#: kpowersave.cpp:171 configure_Dialog.cpp:915
+msgid "Configure Notifications..."
+msgstr "Uyarıları Yapılandır..."
+
+#: kpowersave.cpp:175
+msgid "Start YaST2 Power Management Module..."
+msgstr "YaST2 güç yönetim modülünü başlat..."
+
+#: kpowersave.cpp:189 kpowersave.cpp:2106 kpowersave.cpp:2166
+#: kpowersave.cpp:2253
+msgid "Standby"
+msgstr "Bekleme moduna geç"
+
+#: kpowersave.cpp:191 kpowersave.cpp:198
+msgid "Set CPU Frequency Policy"
+msgstr "İşlemci Frekans Davranışını Ayarla"
+
+#: kpowersave.cpp:205 kpowersave.cpp:206
+msgid "Set Active Scheme"
+msgstr "Aktif Şemayı Seç"
+
+#: kpowersave.cpp:212
+msgid "Disable Actions on Inactivity"
+msgstr "Hareketsizlik durumunda uygulanacak işlemleri kapat"
+
+#: kpowersave.cpp:219 kpowersave.cpp:229
+msgid "&Help"
+msgstr "&Yardım"
+
+#: kpowersave.cpp:221
+msgid "&KPowersave Handbook"
+msgstr "&KPowersave El Kitabı"
+
+#: kpowersave.cpp:224
+msgid "&Report a bug ..."
+msgstr "Hata &bildirin..."
+
+#: kpowersave.cpp:226
+msgid "&About KPowersave"
+msgstr "KPowersave &Hakkında"
+
+#: kpowersave.cpp:275 kpowersave.cpp:648 kpowersave.cpp:656 kpowersave.cpp:703
+#: kpowersave.cpp:710 kpowersave.cpp:759 kpowersave.cpp:766 kpowersave.cpp:815
+#: kpowersave.cpp:822 kpowersave.cpp:1126 kpowersave.cpp:1241
+#: kpowersave.cpp:1270 kpowersave.cpp:2183
+msgid "WARNING"
+msgstr "UYARI"
+
+#: kpowersave.cpp:275
+msgid "Cannot find any schemes."
+msgstr "Herhangi bir şema bulunamadı"
+
+#: kpowersave.cpp:453
+msgid "No information about battery and AC status available"
+msgstr "Pil ya da AC Adaptör durumu ile ilgili bilgi yok"
+
+#: kpowersave.cpp:456
+msgid "Plugged in -- fully charged"
+msgstr "Fişe takılı -- tam dolu"
+
+#: kpowersave.cpp:460
+msgid "Plugged in"
+msgstr "Fişe takılı"
+
+#: kpowersave.cpp:464
+msgid "Plugged in -- %1% charged (%2:%3 h until full charged)"
+msgstr "Fişe takılı -- %%1 şarj edilmiş (pilin dolması için kalan süre %2:%3)"
+
+#: kpowersave.cpp:467
+msgid "Plugged in -- %1% charged (%2:%3 remaining hours)"
+msgstr "Fişe takılı -- %%1 şarj edilmiş (kalan süre %2:%3)"
+
+#: kpowersave.cpp:471 kpowersave.cpp:475
+#, c-format
+msgid "Plugged in -- %1% charged"
+msgstr "Fişe takılı -- %%1 şarj edilmiş"
+
+#: kpowersave.cpp:474
+msgid "Plugged in -- no battery"
+msgstr "Fişe takılı -- pil yok"
+
+#: kpowersave.cpp:480
+msgid "Running on batteries -- %1% charged (%2:%3 hours remaining)"
+msgstr "Pil ile çalışıyor -- %%1 şarj edilmiş (kalan süre %2:%3)"
+
+#: kpowersave.cpp:484
+#, c-format
+msgid "Running on batteries -- %1% charged"
+msgstr "Pil ile çalışıyor -- %%1 şarj edilmiş"
+
+#: kpowersave.cpp:491
+msgid " -- battery is charging"
+msgstr " -- pil şarj ediliyor"
+
+#: kpowersave.cpp:649 kpowersave.cpp:657
+msgid "Could not start YaST Power Management Module. Check if it is installed."
+msgstr ""
+"YaST güç yönetim modülü çalıştırılamıyor. Kurulu olduğunu kontrol edin."
+
+#: kpowersave.cpp:703
+msgid "Suspend to disk failed"
+msgstr "Diski kullanarak askıya alma başarısız"
+
+#: kpowersave.cpp:711
+msgid "Suspend to disk disabled by administrator."
+msgstr ""
+"Diski kullanarak askıya alma özelliği sistem yöneticisi tarafından "
+"kapatılmış."
+
+#: kpowersave.cpp:759
+msgid "Suspend to RAM failed"
+msgstr "RAM kullanarak askıya alma başarısız"
+
+#: kpowersave.cpp:767
+msgid "Suspend to RAM disabled by administrator."
+msgstr ""
+"RAM kullanarak askıya alma özelliği sistem yöneticisi tarafından kapatılmış."
+
+#: kpowersave.cpp:815
+msgid "Standby failed"
+msgstr "Bekleme Moduna geçme başarısız"
+
+#: kpowersave.cpp:822
+msgid "Standby disabled by administrator."
+msgstr "Bekleme modu sistem yöneticisi tarafından kapatılmış."
+
+#: kpowersave.cpp:853
+msgid "System is going into suspend mode now"
+msgstr "Sistem şimdi askıya alınıyor"
+
+#: kpowersave.cpp:1039
+msgid "Could not call DCOP interface to umount external media."
+msgstr "Harici cihazları sistemden ayırmak için DCOP çağrısı yapılamıyor."
+
+#: kpowersave.cpp:1044
+msgid ""
+"Could not umount external media before suspend/standby. \n"
+" (Reason: %1)\n"
+" \n"
+" Would you like to continue suspend/standby anyway? \n"
+"(Warning: Continue suspend can cause data loss!)"
+msgstr ""
+"Askıya almadan önce harici diskler sistemden ayrılamadu. \n"
+" (Sebep: %1)\n"
+" \n"
+" Askıya alma işlemine devam etmek istiyor musunuz? \n"
+" (Uyarı: Devam etmek veri kaybına yol açabilir!)"
+
+#: kpowersave.cpp:1052
+msgid "Error while prepare %1"
+msgstr "%1 hazırlanırken hata oluştu"
+
+#: kpowersave.cpp:1053
+msgid "Suspend anyway"
+msgstr "Her durumda askıya al"
+
+#: kpowersave.cpp:1053
+msgid "Cancel suspend"
+msgstr "Askıya almaktan vazgeç"
+
+#: kpowersave.cpp:1127
+msgid ""
+"Could not lock the screen. There may be a problem with the selected \n"
+"lock method or something else."
+msgstr ""
+"Ekran kilitlenemdi. Seçilen yöntem ile ilgili bir sorun \n"
+" ya da başka bir sorun olmuş olabilir."
+
+#: kpowersave.cpp:1144
+msgid "The Lid was closed."
+msgstr "Kapak kapalı."
+
+#: kpowersave.cpp:1156
+msgid "The Lid was opened."
+msgstr "Kapak açık."
+
+#: kpowersave.cpp:1223
+msgid "Start KPowersave automatically when you log in?"
+msgstr "KPowersave sisteme giriş yaptığınızda otomatik olarak başlatılsın mı?"
+
+#: kpowersave.cpp:1224
+msgid "Question"
+msgstr "Soru"
+
+#: kpowersave.cpp:1225
+msgid "Start Automatically"
+msgstr "Otomatik Olarak Başla"
+
+#: kpowersave.cpp:1225
+msgid "Do Not Start"
+msgstr "Başlama"
+
+#: kpowersave.cpp:1242
+msgid "CPU Freq Policy %1 could not be set."
+msgstr "İşlemci Frekansı Davranışı %1 ayarlanamadı."
+
+#: kpowersave.cpp:1271
+msgid "Scheme %1 could not be activated."
+msgstr "%1 şeması aktifleştirlemedi."
+
+#: kpowersave.cpp:1600
+msgid ""
+"The D-Bus daemon is not running.\n"
+"Starting it will provide full functionality: /etc/init.d/dbus start"
+msgstr ""
+"DBUS servisi çalışmıyor.\n"
+"Bunu çalıştırmanız sistem performansını arttıracaktır: /etc/init.d/dbus start"
+
+#: kpowersave.cpp:1611
+msgid "Don't show this message again."
+msgstr "Bu mesajı bir daha gösterme."
+
+#: kpowersave.cpp:1637
+msgid "ERROR"
+msgstr "HATA"
+
+#: kpowersave.cpp:1638
+msgid "Could not get information from HAL. The haldaemon is maybe not running."
+msgstr "HAL yazılımından bilgi alınamadı. Hal servisi çalışmıyor olabilir."
+
+#: kpowersave.cpp:1641
+msgid "Error"
+msgstr "Hata"
+
+#: kpowersave.cpp:1912
+msgid ""
+"Battery state changed to WARNING -- remaining time: %1 hours and %2 minutes."
+msgstr "Pil seviyesi UYARI durumuna indi -- kalan süre: %1 saat %2 dakika. "
+
+#: kpowersave.cpp:1921
+msgid ""
+"Battery state changed to LOW -- remaining time: %1 hours and %2 minutes."
+msgstr "Pil seviyesi DÜŞÜK durumda -- kalan süre: %1 saat %2 dakika."
+
+#: kpowersave.cpp:1932
+msgid ""
+"Battery state changed to CRITICAL -- remaining time: %1 hours and %2 "
+"minutes.\n"
+"Shut down your system or plug in the power cable immediately. Otherwise the "
+"machine\n"
+"will go shutdown in 30 seconds"
+msgstr ""
+"Pil seviyesi KRİTİK duruma geldi -- kalan süre: %1 saat %2 dakika.\n"
+"Biran önce sistemi kapatın ya da güç kablosunu takın. Aksi halde sistem 30 "
+"saniye sonra kapanacaktır"
+
+#: kpowersave.cpp:1943
+msgid ""
+"Battery state changed to CRITICAL -- remaining time: %1 hours and %2 "
+"minutes.\n"
+"Shut down your system or plug in the power cable immediately."
+msgstr ""
+"Pil seviyesi KRİTİK duruma geldi -- kalan süre: %1 saat %2 dakika.\n"
+"Biran önce sistemi kapatın ya da güç kablosunu takın."
+
+#: kpowersave.cpp:2041
+msgid "AC adapter plugged in"
+msgstr "AC adaptör takıldı"
+
+#: kpowersave.cpp:2043
+msgid "AC adapter unplugged"
+msgstr "AC adaptör çıkarıldı"
+
+#: kpowersave.cpp:2078
+#, fuzzy
+msgid "Switched to scheme: %1"
+msgstr "Powesave için seçiln şema: %1"
+
+#: kpowersave.cpp:2095 kpowersave.cpp:2100 kpowersave.cpp:2105
+msgid "System is going into %1 now."
+msgstr "Sistem şimdi %1 moduna geçiyor."
+
+#: kpowersave.cpp:2155 kpowersave.cpp:2160 kpowersave.cpp:2165
+msgid "System is resumed from %1."
+msgstr "Sistem %1 modundan geri yüklendi."
+
+#: kpowersave.cpp:2184
+msgid "Could not remount (all) external storage media."
+msgstr "Harici cihazlar (tüm) tekrar bağlanamadı."
+
+#: kpowersave.cpp:2192
+msgid "An unknown error occurred while %1. The errorcode is: '%2'"
+msgstr ""
+
+#: kpowersave.cpp:2197
+#, fuzzy
+msgid "Do you want to have a look at the log file?"
+msgstr "%1 isimli şemayı silmek istediğinizden emin misiniz?"
+
+#: kpowersave.cpp:2198 kpowersave.cpp:2224
+#, fuzzy
+msgid "Error while %1"
+msgstr "%1 hazırlanırken hata oluştu"
+
+#: configure_Dialog.cpp:831
+msgid "KPowersave Settings"
+msgstr "KPowersave Ayarları"
+
+#: configure_Dialog.cpp:832
+msgid "Apply"
+msgstr "Uygula"
+
+#: configure_Dialog.cpp:834
+msgid "Help"
+msgstr "Yardım"
+
+#: configure_Dialog.cpp:840
+msgid "Enable specific display power management"
+msgstr "Ekran güç yönetimi için özel ayarları etkinleştir"
+
+#: configure_Dialog.cpp:841
+msgid "Standby after:"
+msgstr "Bekleme Moduna Geç:"
+
+#: configure_Dialog.cpp:842
+msgid "Only blank the screen"
+msgstr "Ekranı sadece boş bırak"
+
+#: configure_Dialog.cpp:843
+msgid "Disable screen saver"
+msgstr "Ekran koruyucuyu kapat"
+
+#: configure_Dialog.cpp:844
+msgid "Enable specific screensaver settings"
+msgstr "Ekran koruyucu için özel ayarları etkinleştir"
+
+#: configure_Dialog.cpp:845
+msgid "Suspend after:"
+msgstr "Askıya Al:"
+
+#: configure_Dialog.cpp:846
+msgid "Power off after:"
+msgstr "Gücü Kapat:"
+
+#: configure_Dialog.cpp:847
+msgid "Disable display power management"
+msgstr "Ekran güç yönetimi sistemini kapat"
+
+#: configure_Dialog.cpp:848 configure_Dialog.cpp:849 configure_Dialog.cpp:850
+#: configure_Dialog.cpp:862 configure_Dialog.cpp:873
+msgid " min"
+msgstr " dakika"
+
+#: configure_Dialog.cpp:851
+msgid "Screen Saver and DPMS"
+msgstr "Ekran Koruyucu ve Ekran Güç Yönetimi Sistemi (DPMS)"
+
+#: configure_Dialog.cpp:852
+msgid "Settings"
+msgstr "Ayarlar"
+
+#: configure_Dialog.cpp:853
+msgid "Reset"
+msgstr "Öntanımlı"
+
+#: configure_Dialog.cpp:855
+msgid "Enable scheme specific Brightness settings"
+msgstr "Şema-tanımlı özel Parlaklık ayarlarını etkinleştir"
+
+#: configure_Dialog.cpp:858
+msgid "Brightness"
+msgstr "Parlaklık"
+
+#: configure_Dialog.cpp:859
+msgid "Enable autosuspend"
+msgstr "Otomatik askıya almayı etkinleştir"
+
+#: configure_Dialog.cpp:860 configure_Dialog.cpp:867
+msgid "Enable scheme-specific blacklist"
+msgstr "Şema-tanımlı kara listeyi etkinleştir"
+
+#: configure_Dialog.cpp:861 configure_Dialog.cpp:870
+msgid "after:"
+msgstr "sonra:"
+
+#: configure_Dialog.cpp:863 configure_Dialog.cpp:868
+msgid "Edit Blacklist..."
+msgstr "Kara Listeyi Düzenle"
+
+#: configure_Dialog.cpp:864 configure_Dialog.cpp:869
+msgid "If the current desktop user is inactive the computer will:"
+msgstr "Şimdiki kullanıcı aktif değilse bilgisayar:"
+
+#: configure_Dialog.cpp:865
+msgid "Autosuspend"
+msgstr "Otomatik Askıya Al"
+
+#: configure_Dialog.cpp:866
+#, fuzzy
+msgid "Enable autodimm the display"
+msgstr "Hareketsizlik durumunda karartılmış ekranı etkinleştir"
+
+#: configure_Dialog.cpp:871 configure_Dialog.cpp:893 configure_Dialog.cpp:894
+#: configure_Dialog.cpp:895 configure_Dialog.cpp:896 configure_Dialog.cpp:897
+#: configure_Dialog.cpp:898
+msgid " %"
+msgstr " %"
+
+#: configure_Dialog.cpp:872
+msgid "dimm to:"
+msgstr ""
+
+#: configure_Dialog.cpp:874
+msgid "Autodimm"
+msgstr ""
+
+#: configure_Dialog.cpp:879
+msgid "Set CPU Frequency Policy:"
+msgstr "İşlemci Frekans Davranışı Politikası:"
+
+#: configure_Dialog.cpp:880
+msgid "CPU Frequency Policy"
+msgstr "İşlemci Frekans Davranışı Politikası"
+
+#: configure_Dialog.cpp:881
+msgid "Disable Notifications"
+msgstr "Uyarıları Kapat"
+
+#: configure_Dialog.cpp:884
+msgid "New"
+msgstr "Yeni"
+
+#: configure_Dialog.cpp:885
+msgid "Scheme Settings"
+msgstr "Şema Ayarları"
+
+#: configure_Dialog.cpp:886
+msgid ""
+"Define the battery warning levels (in percentage) and the releated action if "
+"the level get reached:"
+msgstr ""
+"Pil uyarı seviyelerini (yüzde olarak) ve bu seviyelere ulaşınca uygulanacak "
+"eylemleri tanımlayın:"
+
+#: configure_Dialog.cpp:887
+msgid "Warning level:"
+msgstr "Uyarı seviyesi:"
+
+#: configure_Dialog.cpp:888
+msgid "Low level:"
+msgstr "Düşük seviye:"
+
+#: configure_Dialog.cpp:889
+msgid "Critical level:"
+msgstr "Kritik seviye:"
+
+#: configure_Dialog.cpp:890 configure_Dialog.cpp:891 configure_Dialog.cpp:892
+msgid "if reached call:"
+msgstr "eğer ulaşırsa çağır"
+
+#: configure_Dialog.cpp:899
+msgid "Battery"
+msgstr "Pil"
+
+#: configure_Dialog.cpp:900
+msgid ""
+"Define the action which should be executed if the related button get pressed:"
+msgstr "İlgili düğmeye basılınca uygulanacak eylemi seçin:"
+
+#: configure_Dialog.cpp:901
+msgid "Suspend-to-disk Button:"
+msgstr "Diski kullanarak askıya al Düğmesi:"
+
+#: configure_Dialog.cpp:902
+msgid "Sleep button:"
+msgstr "Uyku düğmesi:"
+
+#: configure_Dialog.cpp:903
+msgid "Lid close Button:"
+msgstr "Kapak kapatma düğmesi:"
+
+#: configure_Dialog.cpp:904
+msgid "Power Button:"
+msgstr "Güç Düğmesi:"
+
+#: configure_Dialog.cpp:905
+msgid "Button Events"
+msgstr "Düğme Eylemleri"
+
+#: configure_Dialog.cpp:906
+msgid ""
+"Select the following schemes as default if the system is running on AC or on "
+"batteries."
+msgstr ""
+"Sistem AC Adaptörü veya pil kullanırken bu şemaları öntanımlı olarak seç."
+
+#: configure_Dialog.cpp:907
+msgid "Battery scheme:"
+msgstr "Pil şeması:"
+
+#: configure_Dialog.cpp:908
+msgid "AC scheme:"
+msgstr "AC şeması:"
+
+#: configure_Dialog.cpp:909
+msgid "Default Schemes"
+msgstr "Öntanımlı Şemalar"
+
+#: configure_Dialog.cpp:910
+msgid "Lock screen before suspend or standby"
+msgstr "Askıya almadan ya da beklemeye geçmeden önce ekranı kilitle"
+
+#: configure_Dialog.cpp:911
+msgid "Lock screen with:"
+msgstr "Ekranı şununla kilitle:"
+
+#: configure_Dialog.cpp:912
+msgid "Lock screen on lid close"
+msgstr "Lid close durumunda ekranı kilitle"
+
+#: configure_Dialog.cpp:913
+msgid "Lock Screen"
+msgstr "Ekranı Kilitle"
+
+#: configure_Dialog.cpp:914
+msgid "Notifications"
+msgstr "Uyarılar"
+
+#: configure_Dialog.cpp:916
+msgid "Autostart"
+msgstr "Otomatik Başla"
+
+#: configure_Dialog.cpp:917
+msgid "Never ask me again on exit"
+msgstr "Çıkış sırasında bir daha asla sorma"
+
+#: configure_Dialog.cpp:918
+msgid "KPowersave starts automatically on login"
+msgstr "KPowersave sisteme giriş yapıldığında otomatik olarak başlatılsın"
+
+#: configure_Dialog.cpp:919
+#, fuzzy
+msgid "General Blacklists"
+msgstr "Genel Kara Liste"
+
+#: configure_Dialog.cpp:920
+#, fuzzy
+msgid "Edit Autosuspend Blacklist..."
+msgstr "Otomatik Askıya Alma Kara Listesi"
+
+#: configure_Dialog.cpp:921
+#, fuzzy
+msgid "Edit Autodimm Blacklist..."
+msgstr "Kara Listeyi Düzenle"
+
+#: configure_Dialog.cpp:923
+msgid "General Settings"
+msgstr "Genel Ayarlar"
+
+#~ msgid ""
+#~ "Inactivity detected.\n"
+#~ " Machine autosuspend in %1 seconds."
+#~ msgstr ""
+#~ "Sisteminizde hiçbir işlem yapılmadığı belirlendi.\n"
+#~ "Sisteminiz %1 saniye sonra otomatik olarak askıya alınacak."
+
+#~ msgid ""
+#~ "Inactivity detected.\n"
+#~ " Dim display in %1 seconds to %2%."
+#~ msgstr ""
+#~ "Sisteminizde hiçbir işlem yapılmadığı belirlendi.\n"
+#~ "%2% için %1 saniye sonra ekranınız karartılacak."
+
+#~ msgid ""
+#~ "If you know that it should work, you might override this detection with "
+#~ "setting SUSPEND2RAM_FORCE=\"yes\" in /etc/powersave/sleep."
+#~ msgstr ""
+#~ "/etc/powersave/sleep dosyasına SUSPEND2RAM_FORCE=\"yes\" satırını "
+#~ "ekleyerek bu tanımın üzerine yazmayı deneyebilirsiniz."
+
+#~ msgid "Modules unloaded:"
+#~ msgstr "Kaldırılan modüller:"
+
+#~ msgid "checking resume kernel"
+#~ msgstr "kernel yeniden yüklemesi kontrol ediliyor"
+
+#~ msgid "checking for swap partition"
+#~ msgstr "takas bölümü kontrol ediliyor"
+
+#~ msgid "unmounting FAT/NTFS partitions"
+#~ msgstr "FAT/NTFS bölümleri ayrılıyor"
+
+#~ msgid "stopping services"
+#~ msgstr "servisler durduruluyor"
+
+#~ msgid "stopping service:"
+#~ msgstr "durdurulan servis:"
+
+#~ msgid "unloading modules"
+#~ msgstr "modüller kaldırılıyor"
+
+#~ msgid "unloading module:"
+#~ msgstr "kaldırılan modül:"
+
+#~ msgid "syncing file systems"
+#~ msgstr "dosya sistemleri eşzamanlanıyor"
+
+#~ msgid "preparing bootloader"
+#~ msgstr "önyükleyici hazırlanıyor"
+
+#~ msgid "Edit General Blacklist..."
+#~ msgstr "Genel Kara Listeyi Düzenle"
+
+#~ msgid ""
+#~ "This scheme support suspend and disable devices. This is a EXPERIMENTAL "
+#~ "feature of powersave to save more power on laptops. If you select this "
+#~ "scheme you can get in trouble (e.g. kernel oops). You can configure this "
+#~ "feature currently in the powersave config files. Please report all "
+#~ "problems via http://www.opensuse.org/Submit_a_bug \n"
+#~ "\n"
+#~ "Would you switch the scheme (on your own risk)?"
+#~ msgstr ""
+#~ "Bu şema askıya almayı ve aygıtları kapatmayı destekler. Bu özellik "
+#~ "dizüstü bilgisayarlar için daha uzun süre pil kullanımı sağlamak için "
+#~ "kullanılan DENEYSEL bir özelliktir. Bu şemayı seçerseniz sorunlar "
+#~ "yaşayabilirsiniz (kernel oops gibi). Powesave ayar dosyasından bu "
+#~ "özelliği yapılandırabilirsiniz. Lütfen tüm problemlerinizi şu adrese "
+#~ "bildirin: http://www.opensuse.org/Submit_a_bug \n"
+#~ "\n"
+#~ "Riskleri göze alarak bu şemayı seçmek istediğinizden emin misiniz?"
+
+#~ msgid "Continue"
+#~ msgstr "Devam Et"
+
+#~ msgid " -- %1 MHz"
+#~ msgstr " -- %1 MHz"
+
+#~ msgid "Enabled"
+#~ msgstr "Etkin"
+
+#~ msgid "In"
+#~ msgstr "Giriş"
+
+#~ msgid "Out"
+#~ msgstr "Çıkış"
