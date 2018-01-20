@@ -38,6 +38,7 @@
 
 // system header
 #include <fcntl.h>
+#include <unistd.h>
 
 /*! The default constructor of the class CPUInfo */
 CPUInfo::CPUInfo() {

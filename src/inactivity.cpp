@@ -325,7 +325,7 @@ void inactivity::getPIDs(KProcess */*proc*/, char *buffer, int /*lenght*/) {
 		blacklisted_running = false;
 	} 
 	else {
-		if (pids.contains(QRegExp::QRegExp("[0-9]"))) {
+		if (pids.contains(QRegExp("[0-9]"))) {
 			kdDebug() << "BLACKLISTED IS RUNNING" << endl;
 			blacklisted_running = true;
 			blacklisted_running_last = idleTime;
