@@ -61,8 +61,6 @@ public:
 private slots:
 	//! to close the dialog
 	void closeDetailedDlg();
-	//! to init the battery frame object
-	void initBatteryFrame ();
 	//! to setup the battery progress widgets
 	void setBattery();
 	//! to setup the current power consumtion widgets
@@ -99,13 +97,6 @@ private:
 	 * one battery or batteryslot
 	 */
 	QValueList<KProgress *> BatteryPBar;
-	//! list of qlabels for battery information
-	/*!
-	 * This QValueList with type QLabel contains the list
-	 * of battery progress widgets. Each element represent
-	 * one battery or batteryslot
-	 */
-	QValueList<QLabel *> BatteryLabel;
 	//! list of progressbars for CPU information
 	/*!
 	 * This QValueList with type KProgress contains the list

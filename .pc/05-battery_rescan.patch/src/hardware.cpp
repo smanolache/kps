@@ -234,9 +234,6 @@ void HardwareInfo::processMessage (msg_type type, QString message, QString value
 				if (checkIfHandleDevice(value, &_type)) {
 					switch (_type) {
 						case BATTERY:
-							batteryRemovedAdded = true;
-							QTimer::singleShot(50, this, SLOT(handleDeviceRemoveAdd()));
-							break;
 						case AC_ADAPTER:
 						case BUTTON_SLEEP:
 						case BUTTON_POWER:
@@ -253,14 +250,24 @@ void HardwareInfo::processMessage (msg_type type, QString message, QString value
 					}
 				}
 			} else if (message.startsWith("DeviceRemoved")) {
-				// check if we monitor this device
 				if (allUDIs.contains(value)) {
-					batteryRemovedAdded = false;
-					
-					if (primaryBatteries->isBatteryHandled(value))
-						batteryRemovedAdded = true;
-					
-					QTimer::singleShot(50, this, SLOT(handleDeviceRemoveAdd()));
+					if (checkIfHandleDevice(value, &_type)) {
+						switch (_type) {
+							case BATTERY:
+							case AC_ADAPTER:
+							case BUTTON_SLEEP:
+							case BUTTON_POWER:
+							case LID:
+								// TODO: handle code if needed
+								break;
+							case LAPTOP_PANEL:
+								checkBrightness();
+								break;
+							default:
+								kdDebug() << "Couldn't handle unknown device" << endl;
+								break;
+						}
+					}
 				} else {
 					kdDebug() << "Not monitored device removed: " << value << endl;
 				}
@@ -361,28 +368,6 @@ void HardwareInfo::handleResumeSignal (int result) {
 	}
 	
 	calledSuspend = QTime();
-	kdDebugFuncOut(trace);
-}
-
-/*!
- * This SLOT is used to handle device remove and add events 
- * (incl. decouple the event from the event loop)
- */
-void HardwareInfo::handleDeviceRemoveAdd () {
-	kdDebugFuncIn(trace);
-
-	// do it the hard way for now 
-	// TODO: write a own function to handle batteries
-	reinitHardwareInfos();
-	
-	if(batteryRemovedAdded) {
-		emit primaryBatteryAddedRemoved();
-		batteryRemovedAdded = false;
-		emit primaryBatteryChanged();
-	}
-
-	emit generalDataChanged();
-
 	kdDebugFuncOut(trace);
 }
 

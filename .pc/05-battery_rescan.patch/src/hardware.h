@@ -252,16 +252,6 @@ private:
 	*/
 	bool sessionIsActive;
 
-	//! if a battery was removed/added on the last device event
-	/*! 
-	* This boolean represent information if a battery was added or removed
-	* on the last device event
-	* \li true: 	if removed/added
-	* \li false: 	else
-	*/
-	bool batteryRemovedAdded;
-	
-
 	//! if the current user can use the CPU Freq interface
 	/*! 
 	* This integer tell if the current user is allowed to change the 
@@ -350,9 +340,6 @@ private slots:
 	//! SLOT to handle resume and forward a signal for resume
 	void handleResumeSignal (int result);
 
-	//! SLOT to handle device remove and add events
-	void handleDeviceRemoveAdd ();
-
 	//! to emit signal for power button
 	void emitPowerButtonPressed();
 	//! to emit signal for sleep button
@@ -387,8 +374,6 @@ signals:
 	//  battery related signals
 	//! signal if the primary battery collection changed
 	void primaryBatteryChanged();
-	//! signal that a battery was removed/added (only needed for power_supply case)
-	void primaryBatteryAddedRemoved();
 	//! signal to inform about reaching a warning state
 	void batteryWARNState(int type, int state);
 

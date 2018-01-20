@@ -52,22 +52,61 @@ detaileddialog::detaileddialog( HardwareInfo *_hwinfo, QPixmap *_pixmap, Setting
 	hwinfo = _hwinfo;
 	config = _set;
 	pixmap = _pixmap;
-	
+	primaryBatteries = hwinfo->getPrimaryBatteries();
 	cpuInfo = new CPUInfo();
 
+	int batteries = primaryBatteries->getNumBatteries();
 	numOfCPUs = cpuInfo->getCPUNum();
 
 	this->setCaption(i18n("KPowersave Information Dialog"));
 	
-	initBatteryFrame();
-
 	// use this as compromise with current translation process
 	// TODO: remove them in the next translation round
 	GeneralGroup->setTitle(i18n("Miscellaneous"));
 	ProcessorGroup->setTitle(i18n("CPUs"));
+
 	ProcessorGridLayout = new QGridLayout(ProcessorFrame, numOfCPUs, 2, 0, 5, "ProcessorGridLayout");
 	
+	if (batteries > 0) {
+		if (batteries > 1) batteries++;
+
+		BatteryGroup->setTitle(i18n("Battery state:").remove(":"));
+		BatteryGridLayout = new QGridLayout(BatteryFrame, batteries, 2, 0, 5, "BatteryGridLayout");
+
+		for (int i = 0;  i < batteries; i++) {
+			QLabel *Label = new QLabel(BatteryFrame, "BatteryLabel");
+			if ((primaryBatteries->getNumBatteries() > 1) && (i == 0))
+				Label->setText( i18n( "Total:" ));
+			else if ((primaryBatteries->getNumBatteries() > 1) && (i > 0))
+				Label->setText( i18n( "Battery %1" ).arg(i));
+			else 
+				Label->setText( i18n( "Battery %1" ).arg(i + 1));
+	
+			BatteryGridLayout->addWidget( Label, i , 0);
+	
+			KProgress *PBar = new KProgress(BatteryFrame, "BatteryPBar");
+			PBar->setTextEnabled(true);
+	
+			BatteryPBar.append( PBar );
+			BatteryGridLayout->addWidget( PBar, i , 1);
+		}
+		BatteryFrame->adjustSize();
+		tl_powerConsDesc->hide();
+		tl_powerConsValue->hide();
+		connect(hwinfo, SIGNAL(generalDataChanged()), this, SLOT(setBattery()));
+		connect(primaryBatteries, SIGNAL(batteryChanged()), this, SLOT(setBattery()));
+		connect(primaryBatteries, SIGNAL(batteryChargingStateChanged(int)), this,
+			SLOT(setPowerConsumption()));
+		connect(primaryBatteries, SIGNAL(batteryRateChanged()), this, 
+			SLOT(setPowerConsumption()));
+		setBattery();
+		setPowerConsumption();
+	} else {
+		BatteryGroup->hide();
+	}
+
 	cpuInfo->checkCPUSpeed();
+
 	ProcessorPictogram->setPixmap(SmallIcon("processor", 22));
 
 	for (int i = 0; i < numOfCPUs; i++) {
@@ -84,11 +123,9 @@ detaileddialog::detaileddialog( HardwareInfo *_hwinfo, QPixmap *_pixmap, Setting
 	ProcessorFrame->adjustSize();
 	
 	connect(OkButton, SIGNAL(clicked()), this, SLOT(closeDetailedDlg()));
+	connect(hwinfo, SIGNAL(ACStatus(bool)), this, SLOT(setAC()));
 	// TODO: replace event
 	//connect(pd, SIGNAL(schemeDataChanged()), this, SLOT(setInfos()));
-	connect(hwinfo, SIGNAL(generalDataChanged()), this, SLOT(setBattery()));
-	connect(hwinfo, SIGNAL(primaryBatteryAddedRemoved()), this, SLOT(initBatteryFrame()));
-	connect(hwinfo, SIGNAL(ACStatus(bool)), this, SLOT(setAC()));
 	connect(hwinfo, SIGNAL(generalDataChanged()), this, SLOT(setInfos()));
 
 	if (hwinfo->supportCPUFreq() || cpuInfo->cpuFreqHW) {
@@ -116,89 +153,6 @@ detaileddialog::~detaileddialog() {
 	// no need to delete child widgets, Qt does it all for us
 }
 
-void detaileddialog::initBatteryFrame () {
-	kdDebugFuncIn(trace);
-
-	int batteries = 0;
-	
-	primaryBatteries = hwinfo->getPrimaryBatteries();
-	batteries = primaryBatteries->getNumBatteries();
-
-	if (batteries > 0) {
-		if (batteries > 1) batteries++;
-
-		BatteryGroup->setTitle(i18n("Battery state:").remove(":"));
-
-		// we have to remove the battery labels and progressbar 
-		if (BatteryGridLayout && !BatteryPBar.isEmpty()) {
-			// not sure atm if this is the correct way ... 
-			if (!BatteryPBar.isEmpty()) {
-				int bars = BatteryPBar.count();
-			
-				for (int i = 0; i < bars; i++) {
-					BatteryGridLayout->remove(BatteryPBar[i]);
-					delete BatteryPBar[i];
-				}
-
-				BatteryPBar.clear();
-			}
-			if (!BatteryLabel.isEmpty()) {
-				int labels = BatteryLabel.count();
-			
-				for (int i = 0; i < labels; i++) {
-					BatteryGridLayout->remove(BatteryLabel[i]);
-					delete BatteryLabel[i];
-				}
-
-				BatteryLabel.clear();
-			}
-
-			delete BatteryGridLayout;
-		} 
-		
-		BatteryGridLayout = new QGridLayout(BatteryFrame, batteries, 2, 0, 5, "BatteryGridLayout");
-
-		for (int i = 0;  i < batteries; i++) {
-			QLabel *Label = new QLabel(BatteryFrame, "BatteryLabel");
-			if ((primaryBatteries->getNumBatteries() > 1) && (i == 0))
-				Label->setText( i18n( "Total:" ));
-			else if ((primaryBatteries->getNumBatteries() > 1) && (i > 0))
-				Label->setText( i18n( "Battery %1" ).arg(i));
-			else 
-				Label->setText( i18n( "Battery %1" ).arg(i + 1));
-	
-			BatteryLabel.append(Label);
-			BatteryGridLayout->addWidget( Label, i , 0);
-	
-			KProgress *PBar = new KProgress(BatteryFrame, "BatteryPBar");
-			PBar->setTextEnabled(true);
-	
-			BatteryPBar.append( PBar );
-			BatteryGridLayout->addWidget( PBar, i , 1);
-		}
-
-		if (BatteryGroup->isHidden()) {
-			BatteryGroup->show();
-		}
-		
-		BatteryFrame->adjustSize();
-		tl_powerConsDesc->show();
-		tl_powerConsValue->show();
-		setBattery();
-		setPowerConsumption();
-
-		connect(primaryBatteries, SIGNAL(batteryChanged()), this, SLOT(setBattery()));
-		connect(primaryBatteries, SIGNAL(batteryChargingStateChanged(int)), this,
-			SLOT(setPowerConsumption()));
-		connect(primaryBatteries, SIGNAL(batteryRateChanged()), this, 
-			SLOT(setPowerConsumption()));
-	} else {
-		BatteryGroup->hide();
-	}
-
-	kdDebugFuncIn(trace);
-}
-
 /*!
  * \b SLOT called if the dialog is closed by the user.
  * We do some cleanups here.
@@ -219,6 +173,7 @@ void detaileddialog::setBattery() {
 	QString minutes;
 	int batteries = 0;
 
+	
 	// refresh battery collection
 	primaryBatteries = hwinfo->getPrimaryBatteries();
 	QPtrList<Battery> allBatteries = hwinfo->getAllBatteries();

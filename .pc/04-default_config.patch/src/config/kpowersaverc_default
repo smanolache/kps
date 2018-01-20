@@ -1,9 +1,9 @@
 [General]
 lockOnSuspend=true
 lockOnLidClose=true
-ActionOnLidClose=SUSPEND2RAM
+ActionOnLidClose=
 ActionOnLidCloseValue=
-ActionOnPowerButton=LOGOUT_DIALOG
+ActionOnPowerButton=SHUTDOWN
 ActionOnPowerButtonValue=
 ActionOnSleepButton=SUSPEND2RAM
 ActionOnS2DiskButton=SUSPEND2DISK
@@ -12,7 +12,7 @@ AutoSuspendCountdown=true
 AutoSuspendCountdownTimeOut=30
 Autostart=true
 AutostartNeverAsk=false
-unmountExternalOnSuspend=false
+unmountExternalOnSuspend=true
 callSetPowerSaveOnAC=true
 lockMethod=automatic
 timeToFakeKeyAfterLock=2500
