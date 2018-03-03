@@ -51,7 +51,7 @@ void BatteryCollection::initDefault() {
 
 	udis.clear();
 	
-	present_rate_unit = "mWh";
+	present_rate_unit = "Wh";
 
 	charging_state = UNKNOWN_STATE;
 	state = BAT_NORM;
@@ -85,122 +85,114 @@ bool BatteryCollection::refreshInfo(QPtrList<Battery> BatteryList, bool force_le
 	// for now: clean list before run update process!
 	udis.clear();
 
-	if (!BatteryList.isEmpty()) {
-		Battery *bat;
-		for (bat = BatteryList.first(); bat; bat = BatteryList.next() ) {
-			if (type == bat->getType()) {
-				udis.append(bat->getUdi());
-
-				if (bat->isPresent()) {
-					// count present batteries
-					_present_batteries++;
-				
-					// handle charging state
-					if (bat->getChargingState() != _charging_state) {
-						if (_charging_state == UNKNOWN_STATE) {
-							_charging_state = bat->getChargingState();
-						} else if ( bat->getChargingState() == UNKNOWN_STATE) {
-							kdWarning()  << "found battery with unknown state,"
-								     << " do nothing" << endl;
-						} else {
-							
-							if (_charging_state != bat->getChargingState()) {
-								// This should only happen if one is in 
-								// state CHARGING and the other in DISCHARGING
-								kdWarning() << "Unexpected chargingstates" << endl;
-								_charging_state = UNKNOWN_STATE;
-							}
-						}
-					} 
-
-					// handle remaining percentage
-					if (bat->getPercentage() >= 0) {
-						_percent = (_percent + bat->getPercentage()) / _present_batteries;
-					}
-					
-					if (bat->getRemainingMinutes() >= 0) {
-						_minutes += bat->getRemainingMinutes();
-					}
-					
-					if (bat->getPresentRate() >= 0) {
-						_present_rate += bat->getPresentRate();
-					}
-					
-					if (!bat->getChargelevelUnit().isEmpty()) {
-						present_rate_unit = bat->getChargelevelUnit();
-					}
-				}
-			}
-		}
-
-		bool _changed = false;
-
-		if (_charging_state != charging_state) {
-			charging_state = _charging_state;
-			_changed = true;
-			emit batteryChargingStateChanged (charging_state);
-		}
-		if (_percent != remaining_percent || force_level_recheck) {
-			remaining_percent = _percent;
-
-			if (_present_batteries < 1) {
-				/* there are no batteries present, we don't need to emit
-				   a event, there is nothing ... */
-				state = BAT_NONE;
-			}else if (remaining_percent <= crit_level) {
-				if (state != BAT_CRIT) {
-					state = BAT_CRIT;
-					emit batteryWarnState( type, BAT_CRIT );
-				}
-			} else if (remaining_percent <= low_level) {
-				if (state != BAT_LOW) {
-					state = BAT_LOW;
-					emit batteryWarnState( type, BAT_LOW );
-				}
-			} else if (remaining_percent <= warn_level) {
-				if (state != BAT_WARN) {
-					state = BAT_WARN;
-					emit batteryWarnState( type, BAT_WARN );
-				}
-			} else if (state != BAT_NONE) {
-				if (state != BAT_NORM) {
-					state = BAT_NORM;
-					emit batteryWarnState( type, BAT_NORM );
-				}
-			} else {
-				state = BAT_NONE;
-			}
-
-			_changed = true;
-			emit batteryPercentageChanged (remaining_percent );
-		}
-		if (_minutes != remaining_minutes) {
-			remaining_minutes = _minutes;
-			_changed = true;
-			emit batteryMinutesChanged( remaining_minutes );
-		}
-		if (_present_batteries != present_batteries) {
-			present_batteries = _present_batteries;
-			_changed = true;
-			emit batteryPresentChanged ( present_batteries );
-		}
-		if (_present_rate != present_rate ) {
-			present_rate = _present_rate;
-			// don't set to changed, this avoid useless calls
-			emit batteryRateChanged ();
-		}
-
-		if (_changed) 
-			emit batteryChanged();
-
-		kdDebugFuncOut(trace);
-		return true;
-	} else {
-		kdError() << "Could not refresh battery information, BatteryList was empty" << endl;
+	if (BatteryList.isEmpty()) {
 		initDefault();
 		kdDebugFuncOut(trace);
 		return false;
 	}
+	Battery *bat;
+	for (bat = BatteryList.first(); bat; bat = BatteryList.next() ) {
+		if (type != bat->getType())
+			continue;
+
+		udis.append(bat->getUdi());
+
+		if (!bat->isPresent())
+			continue;
+		// count present batteries
+		_present_batteries++;
+				
+		// handle charging state
+		if (bat->getChargingState() != _charging_state) {
+			if (UNKNOWN_STATE == _charging_state)
+				_charging_state = bat->getChargingState();
+			else if (UNKNOWN_STATE == bat->getChargingState()) {
+				kdWarning()  << "found battery with unknown state,"
+					     << " do nothing" << endl;
+			} else {
+				if (_charging_state != bat->getChargingState()) {
+					// This should only happen if one is in 
+					// state CHARGING and the other in DISCHARGING
+					kdWarning() << "Unexpected chargingstates" << endl;
+					_charging_state = UNKNOWN_STATE;
+				}
+			}
+		} 
+
+		// handle remaining percentage
+		if (bat->getPercentage() >= 0)
+			_percent = (_percent + bat->getPercentage()) / _present_batteries;
+					
+		if (bat->getRemainingMinutes() >= 0)
+			_minutes += bat->getRemainingMinutes();
+					
+		if (bat->getPresentRate() >= 0)
+			_present_rate += bat->getPresentRate();
+					
+		if (!bat->getChargelevelUnit().isEmpty())
+			present_rate_unit = bat->getChargelevelUnit();
+	}
+
+	bool _changed = false;
+
+	if (_charging_state != charging_state) {
+		charging_state = _charging_state;
+		_changed = true;
+		emit batteryChargingStateChanged(charging_state);
+	}
+	if (_percent != remaining_percent || force_level_recheck) {
+		remaining_percent = _percent;
+
+		if (_present_batteries < 1) {
+			/* there are no batteries present, we don't need to emit
+			   a event, there is nothing ... */
+			state = BAT_NONE;
+		} else if (remaining_percent <= crit_level) {
+			if (state != BAT_CRIT) {
+				state = BAT_CRIT;
+				emit batteryWarnState(type, BAT_CRIT);
+			}
+		} else if (remaining_percent <= low_level) {
+			if (state != BAT_LOW) {
+				state = BAT_LOW;
+				emit batteryWarnState(type, BAT_LOW);
+			}
+		} else if (remaining_percent <= warn_level) {
+			if (state != BAT_WARN) {
+				state = BAT_WARN;
+				emit batteryWarnState(type, BAT_WARN);
+			}
+		} else if (state != BAT_NONE) {
+			if (state != BAT_NORM) {
+				state = BAT_NORM;
+				emit batteryWarnState(type, BAT_NORM);
+			}
+		}
+
+		_changed = true;
+		emit batteryPercentageChanged(remaining_percent);
+	}
+	if (_minutes != remaining_minutes) {
+		remaining_minutes = _minutes;
+		_changed = true;
+		emit batteryMinutesChanged(remaining_minutes);
+	}
+	if (_present_batteries != present_batteries) {
+		present_batteries = _present_batteries;
+		_changed = true;
+		emit batteryPresentChanged(present_batteries);
+	}
+	if (_present_rate != present_rate ) {
+		present_rate = _present_rate;
+		// don't set to changed, this avoid useless calls
+		emit batteryRateChanged();
+	}
+
+	if (_changed) 
+		emit batteryChanged();
+
+	kdDebugFuncOut(trace);
+	return true;
 }
 
 //! check if the given udi is already handled by this collection

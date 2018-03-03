@@ -37,6 +37,7 @@
 
 #include "dbus_wrappers.hpp"
 #include "UPowerProperties.hpp"
+#include <unistd.h>
 
 #include <sstream>
 
@@ -915,6 +916,298 @@ dbusHAL::filterFunction(DBusConnection *connection, DBusMessage *message,
 DBusConnection *
 dbusHAL::get_DBUS_connection() const {
 	return dbus_connection;
+}
+
+int
+dbusHAL::check_auth(const char *action) {
+	kdDebugFuncIn(trace);
+
+	DBusMessage *msg = dbus_message_new_method_call(
+		"org.freedesktop.PolicyKit1",
+		"/org/freedesktop/PolicyKit1/Authority",
+		"org.freedesktop.PolicyKit1.Authority", "CheckAuthorization");
+	if (nullptr == msg) {
+		kdDebug() << "Cannot build the org.freedesktop.PolicyKit1."
+			"Authority.CheckAuthorization call." << endl;
+		kdDebugFuncIn(trace);
+		return -1;
+	}
+
+	DBusMessageIter i;
+	dbus_message_iter_init_append(msg, &i);
+
+	// append subject
+	DBusMessageIter j;
+	if (!dbus_message_iter_open_container(
+		    &i, DBUS_TYPE_STRUCT, nullptr, &j)) {
+		kdDebug() << "dbus_message_iter_open_container returns false."
+			  << endl;
+		dbus_message_unref(msg);
+		kdDebugFuncIn(trace);
+		return -1;
+	}
+	const char *kind = "unix-process";
+	if (!dbus_message_iter_append_basic(&j, DBUS_TYPE_STRING, &kind)) {
+		kdDebug() << "dbus_message_iter_append_basic returns false."
+			  << endl;
+		dbus_message_unref(msg);
+		kdDebugFuncIn(trace);
+		return -1;
+	}
+	// open dict
+	DBusMessageIter k;
+	if (!dbus_message_iter_open_container(
+		    &j, DBUS_TYPE_ARRAY, "{sv}", &k)) {
+		kdDebug() << "dbus_message_iter_open_container returns false."
+			  << endl;
+		dbus_message_unref(msg);
+		kdDebugFuncIn(trace);
+		return -1;
+	}
+	// open dict-entry
+	DBusMessageIter l;
+	if (!dbus_message_iter_open_container(
+		    &k, DBUS_TYPE_DICT_ENTRY, nullptr, &l)) {
+		kdDebug() << "dbus_message_iter_open_container returns false."
+			  << endl;
+		dbus_message_unref(msg);
+		kdDebugFuncIn(trace);
+		return -1;
+	}
+	// static const char *session_id_key = "session-id";
+	static const char *pid_key = "pid";
+	if (!dbus_message_iter_append_basic(&l, DBUS_TYPE_STRING,
+					    &pid_key)) {
+		kdDebug() << "dbus_message_iter_append_basic returns false."
+			  << endl;
+		dbus_message_unref(msg);
+		kdDebugFuncIn(trace);
+		return -1;
+	}
+	DBusMessageIter m;
+	if (!dbus_message_iter_open_container(
+		    &l, DBUS_TYPE_VARIANT, "u", &m)) {
+		kdDebug() << "dbus_message_iter_open_container returns false."
+			  << endl;
+		dbus_message_unref(msg);
+		kdDebugFuncIn(trace);
+		return -1;
+	}
+	uint32_t pid = getpid();
+	if (!dbus_message_iter_append_basic(&m, DBUS_TYPE_UINT32,
+					    &pid)) {
+		kdDebug() << "dbus_message_iter_append_basic returns false."
+			  << endl;
+		dbus_message_unref(msg);
+		kdDebugFuncIn(trace);
+		return -1;
+	}
+	// close the variant
+	if (!dbus_message_iter_close_container(&l, &m)) {
+		kdDebug() << "dbus_message_iter_append_basic returns false."
+			  << endl;
+		dbus_message_unref(msg);
+		kdDebugFuncIn(trace);
+		return -1;
+	}
+	// close the dict entry
+	if (!dbus_message_iter_close_container(&k, &l)) {
+		kdDebug() << "dbus_message_iter_append_basic returns false."
+			  << endl;
+		dbus_message_unref(msg);
+		kdDebugFuncIn(trace);
+		return -1;
+	}
+	// open the dict entry
+	if (!dbus_message_iter_open_container(
+		    &k, DBUS_TYPE_DICT_ENTRY, nullptr, &l)) {
+		kdDebug() << "dbus_message_iter_open_container returns false."
+			  << endl;
+		dbus_message_unref(msg);
+		kdDebugFuncIn(trace);
+		return -1;
+	}
+	static const char *start_time_key = "start-time";
+	if (!dbus_message_iter_append_basic(&l, DBUS_TYPE_STRING,
+					    &start_time_key)) {
+		kdDebug() << "dbus_message_iter_append_basic returns false."
+			  << endl;
+		dbus_message_unref(msg);
+		kdDebugFuncIn(trace);
+		return -1;
+	}
+	// open the variant
+	if (!dbus_message_iter_open_container(
+		    &l, DBUS_TYPE_VARIANT, "t", &m)) {
+		kdDebug() << "dbus_message_iter_open_container returns false."
+			  << endl;
+		dbus_message_unref(msg);
+		kdDebugFuncIn(trace);
+		return -1;
+	}
+	uint64_t ts = 0;
+	if (!dbus_message_iter_append_basic(&m, DBUS_TYPE_UINT64, &ts)) {
+		kdDebug() << "dbus_message_iter_append_basic returns false."
+			  << endl;
+		dbus_message_unref(msg);
+		kdDebugFuncIn(trace);
+		return -1;
+	}
+	// close the variant
+	if (!dbus_message_iter_close_container(&l, &m)) {
+		kdDebug() << "dbus_message_iter_append_basic returns false."
+			  << endl;
+		dbus_message_unref(msg);
+		kdDebugFuncIn(trace);
+		return -1;
+	}
+	// close the dict entry
+	if (!dbus_message_iter_close_container(&k, &l)) {
+		kdDebug() << "dbus_message_iter_append_basic returns false."
+			  << endl;
+		dbus_message_unref(msg);
+		kdDebugFuncIn(trace);
+		return -1;
+	}
+	// close the dictionary
+	if (!dbus_message_iter_close_container(&j, &k)) {
+		kdDebug() << "dbus_message_iter_append_basic returns false."
+			  << endl;
+		dbus_message_unref(msg);
+		kdDebugFuncIn(trace);
+		return -1;
+	}
+	// close the subject struct
+	if (!dbus_message_iter_close_container(&i, &j)) {
+		kdDebug() << "dbus_message_iter_append_basic returns false."
+			  << endl;
+		dbus_message_unref(msg);
+		kdDebugFuncIn(trace);
+		return -1;
+	}
+
+	// append action
+	if (!dbus_message_iter_append_basic(&i, DBUS_TYPE_STRING, &action)) {
+		kdDebug() << "dbus_message_iter_append_basic returns false."
+			  << endl;
+		dbus_message_unref(msg);
+		kdDebugFuncIn(trace);
+		return -1;
+	}
+
+	// append details dictionary
+	if (!dbus_message_iter_open_container(
+		    &i, DBUS_TYPE_ARRAY, "{ss}", &j)) {
+		kdDebug() << "dbus_message_iter_open_container returns false."
+			  << endl;
+		dbus_message_unref(msg);
+		kdDebugFuncIn(trace);
+		return -1;
+	}
+	if (!dbus_message_iter_close_container(&i, &j)) {
+		kdDebug() << "dbus_message_iter_append_basic returns false."
+			  << endl;
+		dbus_message_unref(msg);
+		kdDebugFuncIn(trace);
+		return -1;
+	}
+
+	// append flags
+	uint32_t flags = 0;
+	if (!dbus_message_iter_append_basic(&i, DBUS_TYPE_UINT32, &flags)) {
+		kdDebug() << "dbus_message_iter_append_basic returns false."
+			  << endl;
+		dbus_message_unref(msg);
+		kdDebugFuncIn(trace);
+		return -1;
+	}
+	// append cancellation_id
+	static const char *cancellation_id = "";
+	if (!dbus_message_iter_append_basic(&i, DBUS_TYPE_STRING,
+					    &cancellation_id)) {
+		kdDebug() << "dbus_message_iter_append_basic returns false."
+			  << endl;
+		dbus_message_unref(msg);
+		kdDebugFuncIn(trace);
+		return -1;
+	}
+
+	DBusError error;
+	dbus_error_init(&error);
+	DBusMessage *reply = dbus_connection_send_with_reply_and_block(
+		dbus_connection, msg, -1, &error);
+	if (dbus_error_is_set(&error)) {
+		kdDebug() << "Could not send dbus message: " << error.message
+			  << endl;
+		dbus_message_unref(msg);
+		dbus_error_free(&error);
+		kdDebugFuncOut(trace);
+		return -1;
+	}
+
+	int type = dbus_message_get_type(reply);
+	if (type != DBUS_MESSAGE_TYPE_METHOD_RETURN) {
+		kdDebug() << "Revieved invalid DBUS_MESSAGE_TYPE: " << type 
+			  << ". Expected: " << DBUS_MESSAGE_TYPE_METHOD_RETURN
+			  << endl;
+		dbus_message_unref(reply);
+		dbus_message_unref(msg);
+		dbus_error_free(&error);
+		kdDebugFuncOut(trace);
+		return -1;
+	}
+
+	if (!dbus_message_iter_init(reply, &i)) {
+		kdDebug() << "dbus_message_iter_init returns false."
+			  << endl;
+		dbus_message_unref(reply);
+		dbus_message_unref(msg);
+		dbus_error_free(&error);
+		kdDebugFuncOut(trace);
+		return -1;
+	}
+
+	type = dbus_message_iter_get_arg_type(&i);
+	if (DBUS_TYPE_STRUCT != type) {
+		kdDebug() << "org.freedesktop.PolicyKit1.Authority."
+			"CheckAuthorization: expected a struct."
+			  << endl;
+		dbus_message_unref(reply);
+		dbus_message_unref(msg);
+		dbus_error_free(&error);
+		kdDebugFuncOut(trace);
+		return -1;
+	}
+
+	dbus_message_iter_recurse(&i, &j);
+
+	type = dbus_message_iter_get_arg_type(&j);
+	if (DBUS_TYPE_BOOLEAN != type) {
+		kdDebug() << "org.freedesktop.PolicyKit1.Authority."
+			"CheckAuthorization: expected a boolean."
+			  << endl;
+		dbus_message_unref(reply);
+		dbus_message_unref(msg);
+		dbus_error_free(&error);
+		kdDebugFuncOut(trace);
+		return -1;
+	}
+
+	dbus_bool_t is_authorised = false;
+	dbus_message_iter_get_basic(&j, &is_authorised);
+
+	dbus_message_unref(reply);
+	dbus_message_unref(msg);
+	dbus_error_free(&error);
+
+	if (trace)
+		kdDebug() << action << " is "
+			  << (is_authorised ? "authorised" : "not authorised")
+			  << endl;
+
+	kdDebugFuncOut(trace);
+
+	return is_authorised ? 1 : 0;
 }
 
 // bool

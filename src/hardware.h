@@ -48,6 +48,7 @@
 #include "dbusHAL.h"
 #include "hardware_battery.h"
 #include "hardware_batteryCollection.h"
+#include <string>
 
 #include "dbus_properties.hpp"
 
@@ -159,10 +160,10 @@ private:
 	BatteryCollection *primaryBatteries;
 
 	//! hold the name of the CPU Freq governor from the last check
-	QString cpuFreqGovernor;
+	std::string cpuFreqGovernor;
 
 	//! hold the ConsoleKit name/path of the actual session
-	QString consoleKitSession;
+	std::string consoleKitSession;
 
 	//! enum with the currently active CPU Freq policy
 	/*! This enum contains the enum with the currently set CPU Freq Policy. */
@@ -482,7 +483,7 @@ public:
 	//! get currently CPU Frequency Policy
 	int getCurrentCPUFreqPolicy() const;
 	//! if the user is allowed to change CPU Freq PolicyKit
-	int isCpuFreqAllowed();
+	int isCpuFreqAllowed() const;
 
 	//! if org.freedesktop.Policy.Power has a owner
 	bool isPolicyPowerIfaceOwned();

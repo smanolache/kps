@@ -72,3 +72,17 @@ checkLidcloseState
 
 checkIfHandleDevice
 checkACAdapterState
+
+
+kpowersave::update
+   if (redraw_pixmap)
+      redrawPixmap();
+
+kpowersave::redrawPixmap()
+   if !icon_set_colored || icon_set_changed
+      loadIcon()
+      drawIcon()
+
+icon_set_colored is true only if warn|low|crit and set by loadIcon. Then loadIcon resets icon_set_changed and starts a timer. When the timer expires it launches do_setIconBG. If icon_set_colored then it sets icon_set_changed and calls redrawPixmap. Thus, the icon is not redrawn after the execution of loadIcon and before the timer expiration.
+
+But loadIcon itself is called from redrawPixmap.

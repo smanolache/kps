@@ -171,6 +171,7 @@ public:
 	int isUserPrivileged(QString privilege, QString udi,
 			     QString ressource = "", QString user = QString());
 
+	int check_auth(const char *action);
 	/* bool isBattery(const char *udi); */
 
 signals:

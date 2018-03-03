@@ -40,6 +40,9 @@
 #include "dbus_properties.hpp"
 #include "UPowerProperties.hpp"
 #include <fstream>
+#include <unistd.h>
+#include <cstdio>
+#include <sys/wait.h>
 
 using kps::modified_props_type;
 using kps::dict_type;
@@ -70,7 +73,7 @@ HardwareInfo::HardwareInfo() {
 	primaryBatteriesCriticalLevel = 2;
 
 	allUDIs = QStringList();
-	consoleKitSession = QString();
+	consoleKitSession = "";
 	BatteryList.setAutoDelete(true); // the list owns the objects
 	
 	primaryBatteries = new BatteryCollection(BAT_PRIMARY);
@@ -182,7 +185,8 @@ bool HardwareInfo::reinitHardwareInfos() {
 	allUDIs = QStringList();
 
 	BatteryList.clear();
-	primaryBatteries = new BatteryCollection(BAT_PRIMARY);
+	// this resets the primaryBatteries
+	primaryBatteries->refreshInfo(BatteryList);
 
 	// check the current desktop session again
 	checkConsoleKitSession();
@@ -235,7 +239,7 @@ HardwareInfo::processMessage(msg_type type, QString message, QString value) {
 		break;
 	case CONSOLEKIT_SESSION_ACTIVE:
 		if (!message.isEmpty() && !value.isEmpty()) {
-			if (message == consoleKitSession) {
+			if (message.latin1() == consoleKitSession) {
 				sessionIsActive = "1" == value;
 				QTimer::singleShot(
 					50, this,
@@ -471,18 +475,19 @@ bool HardwareInfo::checkConsoleKitSession () {
 		return false;
 	}
 
-	if (trace) 
-		kdDebug() << "GetSessionForCookie returned: " << reply << endl;
-		
 	if (nullptr == reply) {
 		kdDebugFuncOut(trace);
 		return false;
 	}
 
+	if (trace) 
+		kdDebug() << "GetSessionForCookie returned: " << reply << endl;
+		
 	dbus_bool_t i_reply;
 	consoleKitSession = reply;
 	
-	if (!dbus_HAL->dbusSystemMethodCall(CK_SERVICE, consoleKitSession, 
+	if (!dbus_HAL->dbusSystemMethodCall(CK_SERVICE,
+					    consoleKitSession.c_str(), 
 					    CK_SESSION_IFACE, "IsActive", 
 					    &i_reply, DBUS_TYPE_BOOLEAN,
 					    DBUS_TYPE_INVALID)) {
@@ -681,9 +686,9 @@ void HardwareInfo::checkSuspend() {
 void HardwareInfo::checkCPUFreq() {
 	kdDebugFuncIn(trace);
 	
-	// TODO
-	cpuFreq = false;
-	cpuFreqAllowed = false;
+	cpuFreq = 0 == access("/usr/local/bin/cpufreq-governor-helper", X_OK);
+
+	cpuFreqAllowed = dbus_HAL->check_auth("eu.domeniul-m.cpufreq-governor");
 
 	checkCurrentCPUFreqPolicy();
 
@@ -697,51 +702,30 @@ void HardwareInfo::checkCPUFreq() {
 cpufreq_type HardwareInfo::checkCurrentCPUFreqPolicy() {
 	kdDebugFuncIn(trace);
 
-/*	
-	char *gov;
-
-	cpufreq_type _current = UNKNOWN_CPUFREQ;
-
-	if (cpuFreq) {
-
-		if (dbus_HAL->dbusSystemMethodCall( HAL_SERVICE, HAL_COMPUTER_UDI, 
-						    HAL_CPUFREQ_IFACE, "GetCPUFreqGovernor", 
-						    &gov, DBUS_TYPE_STRING, DBUS_TYPE_INVALID)) {
-			if (gov != NULL) {
-				kdDebug() << "got CPU Freq gov: " << gov << endl;
-				if (!strcmp(gov, "ondemand") || !strcmp(gov, "userspace") ||
-				    !strcmp(gov, "conservative")) {
-					_current = DYNAMIC;
-				} else if (!strcmp(gov, "powersave")) {
-					_current = POWERSAVE;
-				} else if (!strcmp(gov, "performance")) {
-					_current = PERFORMANCE;
-				} else {
-					kdError() << "Got unknown CPUFreq Policy back: " << gov << endl;
-				}
-				cpuFreqGovernor = gov;
-			}
-			else {
-				kdWarning() << "Could not get information about current governor" << endl;
-			}
-		} else {
-			kdWarning() << "Could not get information about current governor" << endl;
-		}
-	} else {
-		kdWarning() << "CPU Frequency interface not supported by machine or HAL" << endl;
+	if (!cpuFreq) {
+		kdDebugFuncOut(trace);
+		return currentCPUFreqPolicy;
 	}
-
+	cpufreq_type _current = UNKNOWN_CPUFREQ;
+	try {
+		std::ifstream f;
+		f.exceptions(std::ifstream::badbit | std::ifstream::failbit);
+		f.open("/sys/devices/system/cpu/cpu0/cpufreq/scaling_governor");
+		f >> cpuFreqGovernor;
+		f.close();
+		if ("performance" == cpuFreqGovernor)
+			_current = PERFORMANCE;
+		else if ("powersave" == cpuFreqGovernor)
+			_current = POWERSAVE;
+		if (trace)
+			kdDebug() << "Current governor: "
+				  << cpuFreqGovernor.c_str() << endl;
+	} catch (const std::exception& e) {
+		kdError() << "Error reading current CPU frequency governor"
+			  << endl;
+	}
 	if (_current != currentCPUFreqPolicy) {
 		currentCPUFreqPolicy = _current;
-		update_info_cpufreq_policy_changed = true;
-		emit currentCPUFreqPolicyChanged();
-	} else {
-		update_info_cpufreq_policy_changed = false;
-	}
-*/	
-	cpuFreqGovernor = "performance";
-	if (PERFORMANCE != currentCPUFreqPolicy) {
-		currentCPUFreqPolicy = PERFORMANCE;
 		update_info_cpufreq_policy_changed = true;
 		emit currentCPUFreqPolicyChanged();
 	} else
@@ -758,58 +742,36 @@ cpufreq_type HardwareInfo::checkCurrentCPUFreqPolicy() {
  */
 void HardwareInfo::checkBrightness() {
 	kdDebugFuncIn(trace);
-/*
-	QStringList devices;
 
-	brightness = false;
+	brightness = 0 == access("/usr/lib/xserver-xorg-video-intel/"
+				 "xf86-video-intel-backlight-helper", X_OK);
 	currentBrightnessLevel = -1;
 	availableBrightnessLevels = -1;
-
-	if( dbus_HAL->halFindDeviceByCapability("laptop_panel", &devices)) {
-		if (devices.isEmpty()) {
-			udis.remove("laptop_panel");
-			kdDebug() << "no device with category laptop_panel found" << endl;
-			kdDebugFuncOut(trace);
-			return;
-		} else {
-			int retval;
-			
-	
-			kdDebug() << "laptop_panel device found: " << devices.first() << endl;
-			// we should asume there is only one laptop panel device in the system
-			if (dbus_HAL->halGetPropertyInt(devices.first(), "laptop_panel.num_levels", &retval )) {
-				udis.insert("laptop_panel", new QString( devices.first() ));
-				if (!allUDIs.contains( devices.first() ))
-					allUDIs.append( devices.first() );
-				
-				if (retval > 1) {
-					dbus_HAL->halGetPropertyBool(devices.first(), "laptop_panel.brightness_in_hardware",
-							             &brightness_in_hardware);
-
-					availableBrightnessLevels = retval;
-#ifdef USE_LIBHAL_POLICYCHECK
-					brightnessAllowed = dbus_HAL->isUserPrivileged( PRIV_LAPTOP_PANEL,
-										        devices.first());
-					// TODO: check brightnessAllowed
-#endif
-					brightness = true;
-					// get the current level via GetBrightness
-					checkCurrentBrightness();
-				} else {
-					kdError() << "Found a Panel, but laptop_panel.num_levels < 2, which means "
-						  << "KPowersave can't set usefull values" << endl;
-				}	
-			} 
+	if (brightness) {
+		try {
+			std::ifstream f;
+			f.exceptions(std::ifstream::badbit |
+				     std::ifstream::failbit);
+			f.open("/sys/class/backlight/intel_backlight/"
+			       "max_brightness");
+			f >> availableBrightnessLevels;
+			if (trace)
+				kdDebug() << "Available brightness levels: "
+					  << availableBrightnessLevels << endl;
+		} catch (const std::exception& e) {
+			kdError() << "Could not read /sys/class/backlight/"
+				"max_brightness: " << e.what() << endl;
 		}
 	}
-*/
-	brightness = false;
-	currentBrightnessLevel = -1;
-	availableBrightnessLevels = -1;
-	brightnessAllowed = 0;
+	brightnessAllowed =
+		dbus_HAL->check_auth("org.x.xf86-video-intel.backlight-helper");
 	udis.remove("laptop_panel");
 
 	checkCurrentBrightness();
+
+	if (trace)
+		kdDebug() << "Brightness: " << brightness << ", allowed: "
+			  << brightnessAllowed << endl;
 
 	kdDebugFuncOut(trace);
 }
@@ -821,18 +783,23 @@ void HardwareInfo::checkBrightness() {
 void HardwareInfo::checkCurrentBrightness() {
 	kdDebugFuncIn(trace);
 
-/*
-	if (brightness) {
-		int retval;
-		// get the current level via GetBrightness
-		if (dbus_HAL->dbusSystemMethodCall( HAL_SERVICE, *udis["laptop_panel"], HAL_LPANEL_IFACE, 	
-						    "GetBrightness", &retval, DBUS_TYPE_INT32,
-						    DBUS_TYPE_INVALID ) ) {
-			currentBrightnessLevel = (int) retval;
-		}
+	if (!brightness) {
+		kdDebugFuncOut(trace);
+		return;
 	}
-*/
-	
+
+	try {
+		std::ifstream f;
+		f.exceptions(std::ifstream::badbit | std::ifstream::failbit);
+		f.open("/sys/class/backlight/intel_backlight/brightness");
+		f >> currentBrightnessLevel;
+		if (trace)
+			kdDebug() << "Current brightness: "
+				  << currentBrightnessLevel << endl;
+	} catch (const std::exception& e) {
+		kdError() << "Could not read /sys/class/backlight/brightness: "
+			  << e.what() << endl;
+	}
 	kdDebugFuncOut(trace);
 }
 
@@ -972,21 +939,28 @@ HardwareInfo::updateBatteryValues(const char *udi, const dict_type& props) {
  * This function refresh the information for the primary battery collection.
  */
 void
-HardwareInfo::updatePrimaryBatteries () {
+HardwareInfo::updatePrimaryBatteries() {
 	kdDebugFuncIn(trace);
 
-	if (!BatteryList.isEmpty()) {
-		setPrimaryBatteriesWarningLevel();
+	if (BatteryList.isEmpty()) {
+		// this resets the primaryBatteries
 		primaryBatteries->refreshInfo(BatteryList);
-		if (primaryBatteries->getNumBatteries() < 1) {
-			connect(primaryBatteries, SIGNAL(batteryChanged()),
-				this, SLOT(setPrimaryBatteriesChanges()));
-			connect(primaryBatteries,
-				SIGNAL(batteryWarnState(int,int)), this,
-				SLOT(emitBatteryWARNState(int,int)));
-		}
-	} else
-		primaryBatteries = new BatteryCollection(BAT_PRIMARY);
+		kdDebugFuncOut(trace);
+		return;
+	}
+
+	setPrimaryBatteriesWarningLevel(); // this calls refreshInfo
+
+	if (primaryBatteries->getNumBatteries() < 1) {
+		kdDebugFuncOut(trace);
+		return;
+	}
+
+	connect(primaryBatteries, SIGNAL(batteryChanged()),
+		this, SLOT(setPrimaryBatteriesChanges()));
+	connect(primaryBatteries,
+		SIGNAL(batteryWarnState(int,int)), this,
+		SLOT(emitBatteryWARNState(int,int)));
 
 	kdDebugFuncOut(trace);
 }
@@ -1122,11 +1096,6 @@ HardwareInfo::setBrightness(int level, int percent) {
 		}
 	}
 
-	if (!dbus_HAL->isConnectedToDBUS()) {
-		kdDebugFuncOut(trace);
-		return false;
-	}
-
 	if (!brightness)
 		checkBrightness();
 
@@ -1143,19 +1112,63 @@ HardwareInfo::setBrightness(int level, int percent) {
 		return true;
 	}
 
-/*
-	if (dbus_HAL->dbusSystemMethodCall( HAL_SERVICE, *udis["laptop_panel"], 
-					    HAL_LPANEL_IFACE, "SetBrightness", 
-					    DBUS_TYPE_INT32, &level,
-					    DBUS_TYPE_INVALID )) {
-		retval = true;
-	} 
-*/
+	int fd[2];
+	if (-1 == pipe(fd)) {
+		kdError() << "Error creating pipes" << endl;
+		kdDebugFuncOut(trace);
+		return false;
+	}
+	pid_t p;
+	switch (p = fork()) {
+	case -1:
+		kdError() << "Error forking pkexec" << endl;
+		kdDebugFuncOut(trace);
+		return false;
+	case 0:
+		close(fd[1]);
+		if (-1 == dup2(fd[0], STDIN_FILENO)) {
+			kdError() << "Error redirecting pipe to stdin" << endl;
+			exit(0);
+		}
+		if (-1 == execlp("pkexec", "pkexec", "/usr/lib/"
+				 "xserver-xorg-video-intel/"
+				 "xf86-video-intel-backlight-helper",
+				 "intel_backlight", nullptr)) {
+			kdError() << "Error executing pkexec" << endl;
+			exit(1);
+		}
+		// no return
+	default: {
+		close(fd[0]);
+		char b[22];
+		int n = snprintf(b, sizeof(b), "%d", level);
+		if (n != write(fd[1], b, n))
+			kdError() << "Error writing to the pipe to pkexec"
+				  << endl;
+		close(fd[1]);
+		int s;
+		if (-1 == waitpid(p, &s, 0)) {
+			kdError() << "Waitpid error" << endl;
+			break;
+		}
+		if (!WIFEXITED(s)) {
+			kdError() << "pkexec did not exit normally" << endl;
+			break;
+		}
+		int ec = WEXITSTATUS(s);
+		if (0 != ec) {
+			kdError() << "pkexec exited with code " << ec << endl;
+			break;
+		}
+		break;
+	}
+	}
 
 	// check for actual brightness level to be sure everything was set
 	// correctly
 
 	checkCurrentBrightness();
+
 	kdDebugFuncOut(trace);
 	return true;
 } 
@@ -1170,55 +1183,62 @@ HardwareInfo::setBrightness(int level, int percent) {
  */
 bool
 HardwareInfo::setCPUFreq(cpufreq_type cpufreq, int limit) {
+	kdDebugFuncIn(trace);
 	if (trace)
 		kdDebug() << funcinfo << "IN: " <<  "cpufreq_type: "
 			  << cpufreq << " limit: " << limit << endl;
 
 	if (!cpuFreq) {
-		kdError() << "This machine does not support change the CPU "
+		kdDebug() << "This machine does not support change the CPU "
 			"Freq." << endl;
+		kdDebugFuncOut(trace);
 		return false;
 	}
 	
 	if (0 == cpuFreqAllowed) {
-		kdError() << "Not having the needed privileges to set the CPU "
+		kdDebug() << "Not having the needed privileges to set the CPU "
 			"freq." << endl;
+		kdDebugFuncOut(trace);
 		return false;
 	}
 	
-	if (!dbus_HAL->isConnectedToDBUS())
-		return false;
-
 	if (checkCurrentCPUFreqPolicy() == cpufreq) {
 		kdDebug() << "Didn't change Policy, was already set." << endl;
+		kdDebugFuncOut(trace);
 		return true;
 	}
 
 	switch (cpufreq) {
 	case PERFORMANCE:
 		if (!setCPUFreqGovernor("performance")) {
-			kdError() << "Could not set CPU Freq to performance "
+			kdDebug() << "Could not set CPU Freq to performance "
 				"policy" << endl;
+			kdDebugFuncOut(trace);
 			return false;
 		}
 		break;
 	case POWERSAVE:
 		if (!setCPUFreqGovernor("powersave")) {
-			kdError() << "Could not set CPU Freq to powersave "
+			kdDebug() << "Could not set CPU Freq to powersave "
 				"policy." << endl;
+			kdDebugFuncOut(trace);
 			return false;
 		}
 		break;
 	default:
-		kdWarning() << "Unknown cpufreq_type: " << cpufreq << endl;
+		kdDebug() << "Unknown cpufreq_type: " << cpufreq << endl;
+		kdDebugFuncOut(trace);
 		return false;
 	}
 	
 	// check if the policy was really set (and emit signal)
-	if (checkCurrentCPUFreqPolicy() != cpufreq)
+	if (checkCurrentCPUFreqPolicy() != cpufreq) {
+		kdDebugFuncOut(trace);
 		return false;
+	}
 //	update_info_cpufreq_policy_changed = true;
 //	emit currentCPUFreqPolicyChanged();
+	kdDebugFuncOut(trace);
 	return true;
 }
 
@@ -1235,18 +1255,39 @@ HardwareInfo::setCPUFreqGovernor(const char *governor) {
 
 	kdDebug() << "Try to set CPUFreq to governor: " << governor << endl;
 
-/*
-	int reply;
-	if (!dbus_HAL->dbusSystemMethodCall( HAL_SERVICE, HAL_COMPUTER_UDI, 
-					     HAL_CPUFREQ_IFACE, "SetCPUFreqGovernor",
-					     &reply, DBUS_TYPE_INVALID,
-					     DBUS_TYPE_STRING, &governor, 
-					     DBUS_TYPE_INVALID)) {
-		kdError() << "Could not set CPU Freq to governor: " << governor << endl;
+	pid_t p;
+	switch (p = fork()) {
+	case -1:
+		kdDebug() << "Error forking pkexec" << endl;
 		kdDebugFuncOut(trace);
 		return false;
+	case 0:
+		if (-1 == execlp("pkexec", "pkexec", "/usr/local/bin/"
+				 "cpufreq-governor-helper",
+				 governor, nullptr)) {
+			kdDebug() << "Error executing pkexec" << endl;
+			exit(1);
+		}
+		// no return
+	default: {
+		int s;
+		if (-1 == waitpid(p, &s, 0)) {
+			kdDebug() << "Waitpid error" << endl;
+			break;
+		}
+		if (!WIFEXITED(s)) {
+			kdDebug() << "pkexec did not exit normally" << endl;
+			break;
+		}
+		int ec = WEXITSTATUS(s);
+		if (0 != ec) {
+			kdDebug() << "pkexec exited with code " << ec << endl;
+			break;
+		}
+		break;
 	}
-*/	
+	}
+
 	kdDebugFuncOut(trace);
 	return true;
 }
@@ -1263,37 +1304,45 @@ bool
 HardwareInfo::setPowerSave(bool on) {
 	kdDebugFuncIn(trace);
 
-	if (!dbus_HAL->isConnectedToDBUS()) {
+	if (!dbus_HAL->check_auth("eu.domeniul-m.powersave")) {
+		kdDebug() << "Not having the required privileges to set the"
+			" powersave features." << endl;
 		kdDebugFuncOut(trace);
 		return false;
 	}
 
-	dbus_bool_t _tmp = static_cast<dbus_bool_t>(on);
-	int reply;
+	pid_t p;
+	switch (p = fork()) {
+	case -1:
+		kdDebug() << "Error forking pkexec" << endl;
+		kdDebugFuncOut(trace);
+		return false;
+	case 0:
+		if (-1 == execlp("pkexec", "pkexec", "/usr/sbin/pm-powersave",
+				 on ? "true" : "false", nullptr)) {
+			kdDebug() << "Error executing pkexec" << endl;
+			exit(1);
+		}
+		// no return
+	default: {
+		int s;
+		if (-1 == waitpid(p, &s, 0)) {
+			kdDebug() << "Waitpid error" << endl;
+			break;
+		}
+		if (!WIFEXITED(s)) {
+			kdDebug() << "pkexec did not exit normally" << endl;
+			break;
+		}
+		int ec = WEXITSTATUS(s);
+		if (0 != ec) {
+			kdDebug() << "pkexec exited with code " << ec << endl;
+			break;
+		}
+		break;
+	}
+	}
 
-#ifdef USE_LIBHAL_POLICYCHECK
-/*
-	if (!dbus_HAL->isUserPrivileged(PRIV_SETPOWERSAVE, HAL_COMPUTER_UDI)) {
-		kdError() << "The user isn't allowed to call SetPowerSave() "
-			"on HAL. Maybe KPowersave run not in a active session."
-			  << endl;
-		kdDebugFuncOut(trace);
-		return false;
-	}
-*/
-#endif
-/*
-	if (!dbus_HAL->dbusSystemMethodCall( HAL_SERVICE, HAL_COMPUTER_UDI, 
-					     HAL_PM_IFACE, "SetPowerSave",
-					     &reply, DBUS_TYPE_INT32,
-					     DBUS_TYPE_BOOLEAN, &_tmp,
-					     DBUS_TYPE_INVALID)) {
-		kdError() << "Could not call/set SetPowerSave on HAL, " 
-			  << "could be a bug in HAL spec" << endl;
-		kdDebugFuncOut(trace);
-		return false;
-	}
-*/	
 	kdDebugFuncOut(trace);
 	return true;
 }
@@ -1744,11 +1793,7 @@ bool HardwareInfo::currentSessionIsActive() const {
  * \retval	1 not allowed
  * \retval	-1 unknown
  */
-int HardwareInfo::isCpuFreqAllowed() {
-/*
-	cpuFreqAllowed = dbus_HAL->isUserPrivileged( PRIV_CPUFREQ, HAL_COMPUTER_UDI);
-*/
-	cpuFreqAllowed = false;
+int HardwareInfo::isCpuFreqAllowed() const {
 	return cpuFreqAllowed;
 }
 
