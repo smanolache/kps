@@ -26,7 +26,15 @@
 
 #include "hardware_battery.h"
 
+#include "UPowerProperties.hpp"
+#include "dbus_properties.hpp"
+#include <string>
+#include "kpowersave_debug.h"
+
+using kps::dict_type;
+
 /*! The default constructor of the class Battery. */
+/*
 Battery::Battery(dbusHAL* _dbus_HAL) : dbus_HAL(_dbus_HAL) {
 	kdDebugFuncIn(trace);
 
@@ -38,8 +46,9 @@ Battery::Battery(dbusHAL* _dbus_HAL) : dbus_HAL(_dbus_HAL) {
 
 	kdDebugFuncOut(trace);
 }	
-
+*/
 /*! The default constructor of the class Battery. */ 
+/*
 Battery::Battery( dbusHAL* _dbus_HAL, QString _udi ) : dbus_HAL(_dbus_HAL), udi(_udi) {
 	if (trace) kdDebug() << funcinfo << "IN , udi: " << udi << endl;
 	
@@ -50,8 +59,128 @@ Battery::Battery( dbusHAL* _dbus_HAL, QString _udi ) : dbus_HAL(_dbus_HAL), udi(
 
 	kdDebugFuncOut(trace);
 }
+*/
+Battery::Battery(const std::string& udi__, const dict_type& props)
+	: udi(udi__.c_str())
+	, technology("UNKNOWN")
+	, capacity_state("ok")
+	, charge_level_unit("Wh")
+	, serial("")
+	, type(BAT_UNKNOWN)
+	, state(BAT_NORM)
+	, charging_state(UNKNOWN_STATE)
+	, charge_level_current(0)
+	, charge_level_lastfull(0)
+	, charge_level_percentage(0)
+	, design_capacity(0)
+	, present_rate(0)
+	, remaining_minutes(0)
+	, warn_level(12)
+	, low_level(7)
+	, crit_level(2)
+{
+	if (trace) kdDebug() << funcinfo << "IN , udi: " << udi << endl;
+
+	std::optional<std::string> serial__ = kps::upower_dev_serial(props);
+	if (serial__)
+		serial = *serial__;
+
+	std::optional<uint32_t> type__ = kps::upower_dev_type(props);
+	if (type__)
+		type = get_type(*type__);
+
+	std::optional<std::string> technology__ =
+		kps::upower_dev_technology(props);
+	if (technology__)
+		technology = *technology__;
+
+	std::optional<double> energy_rate__ =
+		kps::upower_dev_energy_rate(props);
+	if (energy_rate__)
+		present_rate = *energy_rate__ < 0 ? 0.0 : *energy_rate__;
+
+	std::optional<double> energy_full_design__ =
+		kps::upower_dev_energy_full_design(props);
+	if (energy_full_design__)
+		design_capacity = *energy_full_design__ < 0 ?
+			0.0 : *energy_full_design__;
+
+	std::optional<double> percentage__ = kps::upower_dev_percentage(props);
+	if (percentage__) {
+		charge_level_percentage = *percentage__ < 0 ?
+			0.0 : (*percentage__ > 100.0 ? 100.0 : *percentage__);
+		state = get_state(charge_level_percentage, crit_level,
+				  low_level, warn_level);
+	}
+
+	std::optional<uint32_t> state__ = kps::upower_dev_state(props);
+	if (state__)
+		charging_state = get_charging_state(*state__);
+
+	std::optional<int64_t> remaining_time__ =
+		kps::upower_dev_remaining_time(
+			props, charging_state == CHARGING ? 
+			"TimeToFull" : "TimeToEmpty");
+	if (remaining_time__)
+		remaining_minutes = *remaining_time__ >= 0 ?
+			*remaining_time__ / 60 : 0ll;
+
+	kdDebugFuncOut(trace);
+}
+
+enum BAT_STATE
+Battery::get_state(double perc, int crit, int low, int warn) {
+	if (perc <= crit)
+		return BAT_CRIT;
+	if (perc <= low)
+		return BAT_LOW;
+	if (perc <= warn)
+		return BAT_WARN;
+	return BAT_NORM;
+}
+
+enum BAT_CHARG_STATE
+Battery::get_charging_state(uint32_t s) {
+	switch (s) {
+	default:
+	case 0: // unknown
+		 return UNKNOWN_STATE;
+	case 1: // charging
+	case 4: // fully charged
+		return CHARGING;
+	case 2: // discharging
+	case 3: // empty
+	case 5: // pending charge
+	case 6: // pending discharge
+		return DISCHARGING;
+	}
+}
+
+enum BAT_TYPE
+Battery::get_type(uint32_t t) {
+	switch (t) {
+	case 2:
+		return BAT_PRIMARY;
+	case 3:
+		return BAT_UPS;
+	case 5:
+		return BAT_MOUSE;
+	case 6:
+		return BAT_KEYBOARD;
+	case 8: // phone
+		return BAT_CAMERA;
+	case 1: // line power, not a battery
+		return LINE_POWER;
+	case 4: // monitor
+	case 7: // pda
+	case 0: // unknown
+	default:
+		return BAT_UNKNOWN;
+	}
+}
 
 /*! The default constructor of the class Battery. */
+/*
 Battery::Battery() {
 	kdDebugFuncIn(trace);
 	initialized = false;
@@ -61,23 +190,25 @@ Battery::Battery() {
 
 	kdDebugFuncOut(trace);
 }
-
+*/
 /*! The default destructor of the class Battery. */
+/*
 Battery::~Battery() {
 	kdDebugFuncIn(trace);
-
+	kdDebugFuncOut(trace);
 }
-
+*/
 //! init a battery with default values
+/*
 void Battery::initDefault() {
 	kdDebugFuncIn(trace);
 
-	present = false;
+	present = true;
 	type = BAT_UNKNOWN;
 	state = BAT_NORM;
 	capacity_state = "ok";
 	charging_state = UNKNOWN_STATE;
-	charge_level_unit = "mWh";
+	charge_level_unit = "Wh";
 	charge_level_current = 0;
 	charge_level_lastfull = 0;
 	charge_level_percentage = 0;
@@ -92,14 +223,14 @@ void Battery::initDefault() {
 	
 	kdDebugFuncOut(trace);
 }
-
+*/
 //! initialize this battery object with values from HAL
-void Battery::init(dbusHAL* _dbus_HAL) {
+/*
+void Battery::init() {
 	kdDebugFuncIn(trace);
 
 	if (_dbus_HAL != NULL)
 		dbus_HAL = _dbus_HAL;
-
 	// read battery information from HAL
 	if (!dbus_HAL->isConnectedToHAL() && !dbus_HAL->reconnect()) {
 		//couldnt connect to HAL
@@ -119,11 +250,12 @@ void Battery::init(dbusHAL* _dbus_HAL) {
 	initialized = true;
 	kdDebugFuncOut(trace);
 }
-
+*/
 //! rechecks only minimalistic set properties
 /*!
 * Will only recheck properties regarding current battery states/levels.
 */
+/*
 void Battery::minRecheck() {
 	kdDebugFuncIn(trace);
 
@@ -151,12 +283,13 @@ void Battery::minRecheck() {
 
 	kdDebugFuncOut(trace);
 }
-
+*/
 //! recheck all properties of the battery
 /*!
  * Check and set the properties of a battery or collect the information for all
  * primary batteries in one object.
  */
+/*
 void Battery::recheck() {
 	kdDebugFuncIn(trace);
 
@@ -170,11 +303,13 @@ void Battery::recheck() {
 
 	checkBatteryPresent();
 	checkBatteryType();
+
 	if (!present) {
 		kdDebug() << "Warning: No need to update properties, battery not present." << endl;
 		kdDebugFuncOut(trace);
 		return;
 	} else {
+
 		checkBatteryTechnology();
 		checkCapacityState();
 		checkChargeLevelCurrent();
@@ -189,6 +324,94 @@ void Battery::recheck() {
 
 	kdDebugFuncOut(trace);
 }
+*/
+
+void
+Battery::update(const dict_type& modified) {
+	bool charging_state_changed =
+		update_charging_state(kps::upower_dev_state(modified));
+	bool percentage_changed =
+		update_percentage(kps::upower_dev_percentage(modified));
+	bool state_changed = percentage_changed && update_state();
+	bool rate_changed =
+		update_present_rate(kps::upower_dev_energy_rate(modified));
+	bool remaining_time_changed = update_remaining_time(
+		kps::upower_dev_remaining_time(modified, CHARGING == state ?
+					       "TimeToFull" : "TimeToEmpty"));
+	if (state_changed)
+		emit changedBatteryWarnState(state);
+	if (remaining_time_changed)
+		emit changedBatteryTime();
+	if (charging_state_changed)
+		emit changedBatteryChargingState();
+	if (percentage_changed)
+		emit changedBatteryPercentage();
+	if (state_changed)
+		emit changedBatteryWarnState(state);
+	if (remaining_time_changed || charging_state_changed ||
+	    percentage_changed || state_changed || rate_changed)
+		emit changedBattery();
+}
+
+bool
+Battery::update_charging_state(const std::optional<uint32_t>& s) {
+	if (!s)
+		return false;
+	enum BAT_CHARG_STATE new_state = get_charging_state(*s);
+	if (new_state == charging_state)
+		return false;
+	charging_state = new_state;
+	return true;
+}
+
+bool
+Battery::update_percentage(const std::optional<double>& p) {
+	if (!p)
+		return false;
+	if (charge_level_percentage == static_cast<int>(*p))
+		return false;
+	charge_level_percentage = static_cast<int>(*p);
+	return true;
+}
+
+bool
+Battery::update_present_rate(const std::optional<double>& r) {
+	if (!r)
+		return false;
+	if (present_rate == static_cast<int>(*r))
+		return false;
+	present_rate = static_cast<int>(*r);
+	return true;
+}
+
+bool
+Battery::update_state() {
+	enum BAT_STATE new_state = BAT_NONE;
+	if (charge_level_percentage <= crit_level)
+		new_state = BAT_CRIT;
+	else if (charge_level_percentage <= low_level)
+		new_state = BAT_LOW;
+	else if (charge_level_percentage <= warn_level)
+		new_state = BAT_WARN;
+	else if (BAT_NONE != state)
+		new_state = BAT_NORM;
+
+	if (state == new_state)
+		return false;
+	state = new_state;
+	return true;
+}
+
+bool
+Battery::update_remaining_time(const std::optional<int64_t>& r) {
+	if (!r)
+		return false;
+	int64_t m = *r >= 0 ? *r / 60 : 0ll;
+	if (remaining_minutes == m)
+		return false;
+	remaining_minutes = m;
+	return true;
+}
 
 // ---> query HAL for properties SECTION : START <----
 
@@ -199,6 +422,7 @@ void Battery::recheck() {
  * \retval true 	if the update was successfull
  * \retval false 	if the update couldn't be applied
  */
+/*
 bool Battery::checkBatteryPresent () {
 	kdDebugFuncIn(trace);
 
@@ -245,6 +469,7 @@ bool Battery::checkBatteryPresent () {
 	kdDebugFuncOut(trace);
 	return true;
 }
+*/
 
 //! to check battery.type
 /*!
@@ -253,6 +478,7 @@ bool Battery::checkBatteryPresent () {
  * \retval true 	if the update was successfull
  * \retval false 	if the update couldn't be applied
  */
+/*
 bool Battery::checkBatteryType () {
 	kdDebugFuncIn(trace);
 	
@@ -291,6 +517,7 @@ bool Battery::checkBatteryType () {
 		return false;
 	}
 }
+*/
 
 //! to check battery.technology
 /*!
@@ -299,6 +526,7 @@ bool Battery::checkBatteryType () {
  * \retval true 	if the update was successfull
  * \retval false 	if the update couldn't be applied
  */
+/*
 bool Battery::checkBatteryTechnology () {
 	kdDebugFuncIn(trace);
 	
@@ -331,6 +559,7 @@ bool Battery::checkBatteryTechnology () {
 		return false;
 	}
 }
+*/
 
 
 //! to check battery.charge_level.capacity_state
@@ -340,6 +569,7 @@ bool Battery::checkBatteryTechnology () {
  * \retval true 	if the update was successfull
  * \retval false 	if the update couldn't be applied
  */
+/*
 bool Battery::checkCapacityState () {
 	kdDebugFuncIn(trace);
 
@@ -368,6 +598,7 @@ bool Battery::checkCapacityState () {
 		return false;
 	}
 }
+*/
 
 
 //! to check battery.charge_level.current
@@ -377,6 +608,7 @@ bool Battery::checkCapacityState () {
  * \retval true 	if the update was successfull
  * \retval false 	if the update couldn't be applied
  */
+/*
 bool Battery::checkChargeLevelCurrent () {
 	kdDebugFuncIn(trace);
 	
@@ -407,6 +639,7 @@ bool Battery::checkChargeLevelCurrent () {
 		return false;
 	}
 }
+*/
 
 
 //! to check battery.charge_level.last_full
@@ -416,6 +649,7 @@ bool Battery::checkChargeLevelCurrent () {
  * \retval true 	if the update was successfull
  * \retval false 	if the update couldn't be applied
  */
+/*
 bool Battery::checkChargeLevelLastfull () {
 	kdDebugFuncIn(trace);
 	
@@ -446,6 +680,7 @@ bool Battery::checkChargeLevelLastfull () {
 		return false;
 	}
 }
+*/
 
 //! to check battery.charge_level.rate
 /*!
@@ -454,6 +689,7 @@ bool Battery::checkChargeLevelLastfull () {
  * \retval true 	if the update was successfull
  * \retval false 	if the update couldn't be applied
  */
+/*
 bool Battery::checkChargeLevelRate () {
 	kdDebugFuncIn(trace);
 	
@@ -488,6 +724,7 @@ bool Battery::checkChargeLevelRate () {
 		return false;
 	}
 }
+*/
 
 
 //! to check battery.charge_level.unit
@@ -497,6 +734,7 @@ bool Battery::checkChargeLevelRate () {
  * \retval true 	if the update was successfull
  * \retval false 	if the update couldn't be applied
  */
+/*
 bool Battery::checkChargeLevelUnit () {
 	kdDebugFuncOut(trace);
 	
@@ -522,6 +760,7 @@ bool Battery::checkChargeLevelUnit () {
 		return true;
 	}
 }
+*/
 
 //! to check battery.charge_level.design
 /*!
@@ -530,6 +769,7 @@ bool Battery::checkChargeLevelUnit () {
  * \retval true 	if the update was successfull
  * \retval false 	if the update couldn't be applied
  */
+/*
 bool Battery::checkChargeLevelDesign () {
 	kdDebugFuncIn(trace);
 	
@@ -558,6 +798,7 @@ bool Battery::checkChargeLevelDesign () {
 		return false;
 	}
 }
+*/
 
 
 //! to check battery.charge_level.percentage
@@ -567,6 +808,7 @@ bool Battery::checkChargeLevelDesign () {
  * \retval true 	if the update was successfull
  * \retval false 	if the update couldn't be applied
  */
+/*
 bool Battery::checkRemainingPercentage () {
 	kdDebugFuncIn(trace);
 	
@@ -646,6 +888,7 @@ bool Battery::checkRemainingPercentage () {
 	kdDebugFuncOut(trace);
 	return ret;
 }
+*/
 
 //! to check battery.remaining_time
 /*!
@@ -654,6 +897,7 @@ bool Battery::checkRemainingPercentage () {
  * \retval true 	if the update was successfull
  * \retval false 	if the update couldn't be applied
  */
+/*
 bool Battery::checkRemainingTime () {
 	kdDebugFuncIn(trace);
 	
@@ -702,6 +946,7 @@ bool Battery::checkRemainingTime () {
 	kdDebugFuncOut(trace);
 	return _ret;
 }
+*/
 
 //! to check battery.rechargeable.is_*
 /*!
@@ -710,6 +955,7 @@ bool Battery::checkRemainingTime () {
  * \retval true 	if the update was successfull
  * \retval false 	if the update couldn't be applied
  */
+/*
 bool Battery::checkChargingState () {
 	kdDebugFuncIn(trace);
 	
@@ -759,6 +1005,7 @@ bool Battery::checkChargingState () {
 	kdDebugFuncOut(trace);
 	return _ret;	
 }
+*/
 
 // ---> query HAL for properties SECTION : END <----
 
@@ -772,6 +1019,7 @@ bool Battery::checkChargingState () {
  * \retval true 	if the update was successfull
  * \retval false 	if the update couldn't be applied
  */
+/*
 bool Battery::updateProperty(QString _udi, QString _property) {
 	kdDebugFuncIn(trace);
 	
@@ -825,7 +1073,7 @@ bool Battery::updateProperty(QString _udi, QString _property) {
 	kdDebugFuncOut(trace);
 	return ret;
 }
-
+*/
 //! Resets the current HAL udi used by the one given
 /*!
 * The given QString will be (checked and) used as new HAL udi for the battery.
@@ -835,6 +1083,7 @@ bool Battery::updateProperty(QString _udi, QString _property) {
 * \retval true 		if reset was successfull
 * \retval false 	if reset couldn't be applied
 */
+/*
 bool Battery::resetUdi(QString _udi) {
 	kdDebugFuncIn(trace);
 
@@ -859,7 +1108,7 @@ bool Battery::resetUdi(QString _udi) {
 	kdDebugFuncOut(trace);
 	return tmp_result;
 }
-
+*/
 // ---> write private members SECTION : START <----
 
 //! sets the chargelevel in percent when battery should go into state warning
@@ -940,7 +1189,7 @@ int Battery::getPresentRate() const {
 
 //! get availability of this battery
 bool Battery::isPresent() {
-	return present;
+	return true;
 }
 
 //! maximum capacity of this battery by design

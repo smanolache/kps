@@ -26,6 +26,7 @@
 
 // own headers
 #include "hardware_batteryCollection.h"
+#include "kpowersave_debug.h"
 
 /*! The default constructor of the class BatteryCollection. */
 BatteryCollection::BatteryCollection( int _type ) {

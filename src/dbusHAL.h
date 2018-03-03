@@ -48,17 +48,14 @@
 #include <dbus/message.h>
 #include <dbus/connection.h>
 
-// HAL Library
-#include <hal/libhal.h>
-
 // kpowersave - Header
 #include "kpowersave_debug.h"
 
-#define HAL_SERVICE		"org.freedesktop.Hal"
-#define HAL_PM_IFACE		"org.freedesktop.Hal.Device.SystemPowerManagement"
-#define HAL_LPANEL_IFACE	"org.freedesktop.Hal.Device.LaptopPanel"
-#define HAL_CPUFREQ_IFACE	"org.freedesktop.Hal.Device.CPUFreq"
-#define HAL_COMPUTER_UDI	"/org/freedesktop/Hal/devices/computer"
+#include <any>
+#include <string>
+#include <map>
+#include "dbus_properties.hpp"
+
 #define CK_SERVICE		"org.freedesktop.ConsoleKit"
 #define CK_MANAGER_IFACE	"org.freedesktop.ConsoleKit.Manager"
 #define CK_MANAGER_OBJECT	"/org/freedesktop/ConsoleKit/Manager"
@@ -67,24 +64,25 @@
 enum msg_type {
 	ACPI_EVENT,
 	DBUS_EVENT,
-	HAL_DEVICE,
-	HAL_PROPERTY_CHANGED,
-	HAL_CONDITION,
 	CONSOLEKIT_SESSION_ACTIVE,
-	POLICY_POWER_OWNER_CHANGED
+	POLICY_POWER_OWNER_CHANGED,
+	UPOWER_DEVICE,
+	UPOWER_PROPERTY_CHANGED
 };
 
 class dbusHAL : public QObject{
 	Q_OBJECT
 
 private: 
+	static DBusHandlerResult filterFunction (DBusConnection *connection, DBusMessage *message, dbusHAL *);
+
+	//! wrapper to emit a signal with a event from HAL
+	void emitMsgReceived( msg_type type, QString message, QString string );
 
 	//! QT connection to D-Bus
 	DBusQt::Connection* m_dBusQtConnection;
 	//! real connection to D-Bus
 	DBusConnection *dbus_connection;
-	//! HAL context
-	LibHalContext *hal_ctx;
 	
 	//! to store information if KPowersave is connected to D-Bus
 	/*!
@@ -93,13 +91,6 @@ private:
 	* \li false: if disconnected
 	*/
 	bool dbus_is_connected;
-	//! to store information if KPowersave is connected to HAL
-	/*!
-	* This boolean represent information about the state of the connection to HAL
-	* \li true:  if connected
-	* \li false: if disconnected
-	*/
-	bool hal_is_connected;
 	
 	//! if we could claim the org.freedesktop.Policy.Power interface
 	/*!
@@ -119,13 +110,17 @@ private:
 			     int first_arg_type, va_list var_args);
 
 	//! function to be called back by DBusPendingCall::dbus_pending_call_set_notify()
-	static void callBackSuspend (DBusPendingCall* pcall, void* /*data*/);
+	static void callBackSuspend (DBusPendingCall* pcall, dbusHAL */*data*/);
 
-	/* HAL helper functions */
-	//! to initialise the connection to HAL 
-	bool initHAL();
-	//! to free the HAL context 
-	void freeHAL();
+	/* typedef std::map<std::string, std::any> Dict; */
+	/* Dict call_dbusP(const char *, const char *, const char *, */
+	/* 		const char *, int, ...); */
+	/* Dict call_dbusP(const char *, const char *, const char *, */
+	/* 		const char *, int, va_list); */
+	/* Dict get_all(DBusMessage *); */
+	/* Dict get_props_array(DBusMessageIter *); */
+	/* Dict::value_type get_dict_entry(DBusMessageIter *); */
+	/* std::any get_variant(DBusMessageIter *, const char *); */
 
 public:
 	
@@ -136,8 +131,6 @@ public:
 
 	//! to reconnect to D-Bus and HAL
 	bool reconnect();
-	//! to reconnect only HAL
-	bool reconnectHAL();
 	//! to close the connection to D-Bus and HAL
 	bool close();
 
@@ -150,65 +143,44 @@ public:
 
 	// --- helper to get private members of the class --- //
 	//! to get information if KPowersave is connected to D-Bus
-	bool isConnectedToDBUS();
-	//! to get information if KPowersave is connected to HAL
-	bool isConnectedToHAL();
+	bool isConnectedToDBUS() const;
 	//! to get info about claim org.freedesktop.Policy.Power interface
-	bool aquiredPolicyPowerInterface();
+	bool aquiredPolicyPowerInterface() const;
 	
-	//! return the current HAL context
-	LibHalContext *get_HAL_context();
 	//! return the current DBus connection
-	DBusConnection *get_DBUS_connection();
-
-	/* HAL device information stuff */
-	//! Query a integer device property from HAL
-	bool halGetPropertyInt(QString udi, QString property, int *returnval);
-	//! Query a bolean device property from HAL
-	bool halGetPropertyBool(QString udi, QString property, bool *returnval);
-	//! Query a string device property from HAL
-	bool halGetPropertyString(QString udi, QString property, QString *returnval);
-	//! Query a string list device property from HAL
-	bool halGetPropertyStringList (QString udi, QString property, QStringList *devices); 
-	//! Query a capability for a HAL device 
-	bool halQueryCapability(QString udi, QString capability, bool *returnval);
-
-	/* functions to find devices and check stuff */
-	//! check if a property exist on a device
-	bool halDevicePropertyExist(QString udi, QString property);
-	//! to find a device by capability
-	bool halFindDeviceByCapability (QString capability, QStringList *devices);
-	//! to find a device by a string property
-	bool halFindDeviceByString (QString property, QString keyval, QStringList *devices);
+	DBusConnection *get_DBUS_connection() const;
 	
 	/* D-Bus helper functions */
 	
 	/* functions to call methodes */
 	//! to call a methode on a dbus system bus method without reply
-	bool dbusSystemMethodCall( QString interface, QString path, QString object, QString method,
-				   int first_arg_type, ... );
+	bool dbusSystemMethodCall(QString interface, QString path,
+				  QString object, QString method,
+				  int first_arg_type, ...);
 	//! to call a methode on a dbus system bus method with reply
-	bool dbusSystemMethodCall( QString interface, QString path, QString object, QString method, 
-				   void *retvalue, int retval_type, int first_arg_type, ... );
+	bool dbusSystemMethodCall(QString interface, QString path,
+				  QString object, QString method, 
+				  void *retvalue, int retval_type,
+				  int first_arg_type, ... );
 
 	//! to call a suspend method on HAL
-	bool dbusMethodCallSuspend ( const char *suspend );
+	bool dbusMethodCallSuspend(const char *suspend);
 
 	/* PolicyKit call helper */
 	//! check if the user has a requested privilege
-	int isUserPrivileged( QString privilege, QString udi, QString ressource = "", QString user = QString());
+	int isUserPrivileged(QString privilege, QString udi,
+			     QString ressource = "", QString user = QString());
 
-	//! wrapper to emit a signal with a event from HAL
-	void emitMsgReceived( msg_type type, QString message, QString string );
-	
+	/* bool isBattery(const char *udi); */
+
 signals:
         //! signal with message to forward from D-Bus to HAL
 	void msgReceived_withStringString( msg_type, QString, QString );
 	//! signal if we resumed!
 	void backFromSuspend( int result );
+	//! signal a property change
+	void property_changed( msg_type, const char *, const kps::modified_props_type& );
 };
 
-//! filter function to filter out needed information from D-Bus messages
-DBusHandlerResult filterFunction (DBusConnection *connection, DBusMessage *message, void *data);
 
 #endif

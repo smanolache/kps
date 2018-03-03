@@ -35,26 +35,32 @@
 // system headers
 #include <iostream>
 
-static void* myInstance = 0;
+#include "dbus_wrappers.hpp"
+#include "UPowerProperties.hpp"
+
+#include <sstream>
+
+using kps::DBusErr;
+using kps::DBusMsg;
+using kps::DBusString;
+using kps::dict_type;
+using kps::devices_type;
+using kps::modified_props_type;
+
+static const char UPOWER_DEVICE_PATH[] = "org.freedesktop.UPower.Device";
 
 /*! The default constructor of the class dbusHAL. */
 dbusHAL::dbusHAL(){
 	kdDebugFuncIn(trace);
 
 	dbus_is_connected = false;
-	hal_is_connected = false;
 	aquiredPolicyPower = false;
-	hal_ctx = NULL;
 
-	// add pointer to this for filter_function()
-	myInstance=this;
 	// init connection to dbus
 	if(!initDBUS()) {
 		kdError() << "Can't connect to D-Bus" << endl;
 		m_dBusQtConnection = NULL;
 	}
-	if(!initHAL()) 
-		kdError() << "Can't connect to HAL" << endl;
 
 	kdDebugFuncOut(trace);
 }
@@ -64,7 +70,6 @@ dbusHAL::~dbusHAL(){
 	kdDebugFuncIn(trace);
 
 	close();
-	myInstance = NULL;
 
 	kdDebugFuncOut(trace);
 }
@@ -75,18 +80,9 @@ dbusHAL::~dbusHAL(){
  * \retval true if connected
  * \retval false if disconnected
  */
-bool dbusHAL::isConnectedToDBUS() {
+bool
+dbusHAL::isConnectedToDBUS() const {
 	return dbus_is_connected;
-}
-
-/*! 
- * This function return information about connection status to the HAL daemon.
- * \return boolean with the state of the connection to HAL
- * \retval true if connected
- * \retval false if disconnected
- */
-bool dbusHAL::isConnectedToHAL() {
-	return hal_is_connected;
 }
 
 /*! 
@@ -96,7 +92,7 @@ bool dbusHAL::isConnectedToHAL() {
  * \retval true if aquired 
  * \retval false if not
  */
-bool dbusHAL::aquiredPolicyPowerInterface() {
+bool dbusHAL::aquiredPolicyPowerInterface() const {
 	return aquiredPolicyPower;
 }
 
@@ -107,12 +103,10 @@ bool dbusHAL::aquiredPolicyPowerInterface() {
  * \retval false if unsuccessful
  */
 bool dbusHAL::reconnect() {
-	// free HAL context
-	freeHAL();
 	// close D-Bus connection
 	close();
 	// init D-Bus conntection and HAL context
-	return (initDBUS() && initHAL());
+	return initDBUS();
 }
 
 /*! 
@@ -122,7 +116,7 @@ bool dbusHAL::reconnect() {
  * \retval false if any problems
  */
 bool dbusHAL::close() {
-	if ( m_dBusQtConnection != NULL ) {
+	if (m_dBusQtConnection) {
 		releasePolicyPowerIface();
 		m_dBusQtConnection->close();
 		m_dBusQtConnection = NULL;
@@ -140,60 +134,67 @@ bool dbusHAL::close() {
  * \retval true if successful initialised D-Bus connection
  * \retval false if unsuccessful
  */
-bool dbusHAL::initDBUS(){
+bool dbusHAL::initDBUS() {
 	kdDebugFuncIn(trace);
 
 	dbus_is_connected = false;
 
         DBusError error;
         dbus_error_init(&error);
-	
-	dbus_connection = dbus_bus_get( DBUS_BUS_SYSTEM, &error );
 
-	if (dbus_connection == NULL){
-		kdError() << "Failed to open connection to system message bus: " << error.message << endl;
-		dbus_error_free (&error);
+	dbus_connection = dbus_bus_get(DBUS_BUS_SYSTEM, &error);
+
+	if (nullptr == dbus_connection) {
+		kdError() << "Failed to open connection to system message "
+			"bus: " << error.message << endl;
+		dbus_error_free(&error);
 		return false;
 	}
 
-	if ( dbus_error_is_set( &error ) ) {
-		kdError() << "Failed to register connection with system message bus: " << error.message << endl;
+	if (dbus_error_is_set(&error)) {
+		kdError() << "Failed to register connection with system "
+			"message bus: " << error.message << endl;
 		return false;
 	}
 
 	aquirePolicyPowerIface();
 
-	dbus_connection_set_exit_on_disconnect( dbus_connection, false );
+	dbus_connection_set_exit_on_disconnect(dbus_connection, false);
 
-        /* add the filter function which should be executed on events on the bus */
-        if ( ! dbus_connection_add_filter( dbus_connection, filterFunction, this, NULL) ) {
-                kdFatal() << "Error: Not enough memory to add filter to dbus connection" << endl;
+        /* add the filter function which should be executed on events on the
+	   bus */
+        if (!dbus_connection_add_filter(
+		    dbus_connection,
+		    reinterpret_cast<DBusHandleMessageFunction>(
+			    &dbusHAL::filterFunction), this, NULL)) {
+                kdFatal() << "Error: Not enough memory to add filter to dbus "
+			"connection" << endl;
                 exit(EXIT_FAILURE);
         }
 
-        /* add a match rule to catch all signals going through the bus with D-Bus interface */
-	dbus_bus_add_match( dbus_connection, "type='signal',"
+        /* add a match rule to catch all signals going through the bus with
+	   D-Bus interface */
+	dbus_bus_add_match(dbus_connection, "type='signal',"
 			    "interface='org.freedesktop.DBus'," 
 			    "member='NameOwnerChanged'", NULL);
 
-	/* add a match rule to catch all signals going through the bus with HAL interface */
-	dbus_bus_add_match( dbus_connection, "type='signal',"
-			    "interface='org.freedesktop.Hal.Manager'," 
-			    "member='DeviceAdded'", NULL);
-	dbus_bus_add_match( dbus_connection, "type='signal',"
-			    "interface='org.freedesktop.Hal.Manager'," 
-			    "member='DeviceRemoved'", NULL);
-	dbus_bus_add_match( dbus_connection, "type='signal',"
-			    "interface='org.freedesktop.Hal.Device'," 
-			    "member='PropertyModified'", NULL);
-	dbus_bus_add_match( dbus_connection, "type='signal',"
-			    "interface='org.freedesktop.Hal.Device'," 
-			    "member='Condition'", NULL);
-
-	/* add a match rule to catch all signals going through the bus with ConsoleKit Interface */
-	dbus_bus_add_match( dbus_connection, "type='signal',"
-			    "interface='org.freedesktop.ConsoleKit.Session'," 
-			    "member='ActiveChanged'", NULL);
+	/* add a match rule to catch all signals going through the bus with
+	   HAL interface */
+	dbus_bus_add_match(dbus_connection, "type='signal',"
+			   "interface='org.freedesktop.UPower',"
+			   "member='DeviceAdded'", NULL);
+	dbus_bus_add_match(dbus_connection, "type='signal',"
+			   "interface='org.freedesktop.UPower',"
+			   "member='DeviceRemoved'", NULL);
+	dbus_bus_add_match(dbus_connection, "type='signal',"
+			   "interface='org.freedesktop.DBus.Properties',"
+			   "member='PropertiesChanged',"
+			   "arg0='org.freedesktop.UPower.Device'", NULL);
+	/* add a match rule to catch all signals going through the bus with
+	   ConsoleKit Interface */
+	dbus_bus_add_match(dbus_connection, "type='signal',"
+			   "interface='org.freedesktop.ConsoleKit.Session'," 
+			   "member='ActiveChanged'", NULL);
 	
 	m_dBusQtConnection = new DBusQt::Connection(this);
         m_dBusQtConnection->dbus_connection_setup_with_qt_main(dbus_connection);
@@ -210,7 +211,7 @@ bool dbusHAL::initDBUS(){
  * \retval true 	if successful aquired the interface
  * \retval false 	if unsuccessful
  */
-bool dbusHAL::aquirePolicyPowerIface(){
+bool dbusHAL::aquirePolicyPowerIface() {
 	kdDebugFuncIn(trace);
 
 	if (dbus_connection == NULL) {
@@ -218,20 +219,31 @@ bool dbusHAL::aquirePolicyPowerIface(){
 		return false;
 	}
 
-	switch (dbus_bus_request_name(dbus_connection, "org.freedesktop.Policy.Power",
-				      DBUS_NAME_FLAG_REPLACE_EXISTING, NULL)) {
-		case DBUS_REQUEST_NAME_REPLY_PRIMARY_OWNER:
-			kdDebug() << "Acquired org.freedesktop.Policy.Power interface" << endl;
-			aquiredPolicyPower = true;
-			break;
-		case DBUS_REQUEST_NAME_REPLY_IN_QUEUE:
-			kdWarning() << "Queued to aquire org.freedesktop.Policy.Power interface" << endl;
-			aquiredPolicyPower = false;
-			break;
-		default:
-			kdWarning() << "Unknown error while aquire org.freedesktop.Policy.Power interface" << endl;
-			aquiredPolicyPower = false;
-			break;
+	DBusError error;
+        dbus_error_init(&error);
+        DBusErr err(&error, &dbus_error_free);
+
+	int rc = dbus_bus_request_name(dbus_connection,
+				       "org.freedesktop.Policy.Power",
+				       DBUS_NAME_FLAG_REPLACE_EXISTING, &error);
+	switch (rc) {
+	case DBUS_REQUEST_NAME_REPLY_PRIMARY_OWNER:
+		kdDebug() << "Acquired org.freedesktop.Policy.Power interface"
+			  << endl;
+		aquiredPolicyPower = true;
+		break;
+	case DBUS_REQUEST_NAME_REPLY_IN_QUEUE:
+		kdDebug() << "Queued to aquire org.freedesktop.Policy.Power "
+			"interface" << endl;
+		kdWarning() << "Queued to aquire org.freedesktop.Policy.Power "
+			"interface" << endl;
+		aquiredPolicyPower = false;
+		break;
+	default:
+		kdWarning() << "Error while aquire org.freedesktop.Policy.Power"
+			" interface: " << rc << ": " << error.message << endl;
+		aquiredPolicyPower = false;
+		break;
 	}
 
 	kdDebugFuncOut(trace);
@@ -244,46 +256,51 @@ bool dbusHAL::aquirePolicyPowerIface(){
  * \retval true 	if successful aquired the interface
  * \retval false 	if unsuccessful
  */
-bool dbusHAL::releasePolicyPowerIface(){
+bool dbusHAL::releasePolicyPowerIface() {
 	kdDebugFuncIn(trace);
 
-	int result;
-	bool retval = false;
-	DBusError error;
-
-	if (dbus_connection == NULL) {
+	if (nullptr == dbus_connection) {
 		kdDebugFuncOut(trace);
 		return false;
 	}
 
+	DBusError error;
         dbus_error_init(&error);
 
-	result = dbus_bus_release_name(dbus_connection, "org.freedesktop.Policy.Power", &error);
+	int result = dbus_bus_release_name(
+		dbus_connection, "org.freedesktop.Policy.Power", &error);
 
-	if ( dbus_error_is_set( &error ) ) {
-		kdError() << "Failed to release org.freedesktop.Policy.Power: " << error.message << endl;
+	if (dbus_error_is_set(&error)) {
+		kdError() << "Failed to release org.freedesktop.Policy.Power: "
+			  << error.message << endl;
 		dbus_error_free(&error);
-	} else {
-		switch (result) {
-			case DBUS_RELEASE_NAME_REPLY_RELEASED:
-				kdDebug() << "Released org.freedesktop.Policy.Power interface" << endl;
-				retval = true;
-				aquiredPolicyPower = false;
-				break;
-			case DBUS_RELEASE_NAME_REPLY_NOT_OWNER:
-				kdWarning() << "Couldn't release org.freedesktop.Policy.Power, not the owner" << endl;
-				break;
-			case DBUS_RELEASE_NAME_REPLY_NON_EXISTENT:
-				kdWarning() << "Couldn't release org.freedesktop.Policy.Power, Iface not existing" << endl;
-				break;
-			default:
-				kdWarning() << "Couldn't release org.freedesktop.Policy.Power, unknown error" << endl;
-				break;
-		}
+		kdDebugFuncOut(trace);
+		return false;
 	}
-		
-	return retval;
-	kdDebugFuncOut(trace);
+
+	switch (result) {
+	case DBUS_RELEASE_NAME_REPLY_RELEASED:
+		kdDebug() << "Released org.freedesktop.Policy.Power interface"
+			  << endl;
+		aquiredPolicyPower = false;
+		kdDebugFuncOut(trace);
+		return true;
+	case DBUS_RELEASE_NAME_REPLY_NOT_OWNER:
+		kdWarning() << "Couldn't release org.freedesktop.Policy.Power,"
+			" not the owner" << endl;
+		kdDebugFuncOut(trace);
+		return false;
+	case DBUS_RELEASE_NAME_REPLY_NON_EXISTENT:
+		kdWarning() << "Couldn't release org.freedesktop.Policy.Power,"
+			" Iface not existing" << endl;
+		kdDebugFuncOut(trace);
+		return false;
+	default:
+		kdWarning() << "Couldn't release org.freedesktop.Policy.Power,"
+			" unknown error" << endl;
+		kdDebugFuncOut(trace);
+		return false;
+	}
 }
 
 /*! 
@@ -296,440 +313,31 @@ bool dbusHAL::releasePolicyPowerIface(){
 bool dbusHAL::isPolicyPowerIfaceOwned(){
 	kdDebugFuncIn(trace);
 
-	bool retval = false;
-	DBusError error;
-
-	if (dbus_connection == NULL) {
+	if (nullptr == dbus_connection) {
 		kdDebugFuncOut(trace);
 		return false;
 	}
 
+	DBusError error;
         dbus_error_init(&error);
 
-	retval = dbus_bus_name_has_owner(dbus_connection, "org.freedesktop.Policy.Power", &error);
+	bool has_owner = dbus_bus_name_has_owner(
+		dbus_connection, "org.freedesktop.Policy.Power", &error);
 
-	if ( dbus_error_is_set( &error ) ) {
-		kdError() << "Failed to check if org.freedesktop.Policy.Power has an owner: " << error.message << endl;
+	if (dbus_error_is_set(&error)) {
+		kdError() << "Failed to check if org.freedesktop.Policy.Power "
+			"has an owner: " << error.message << endl;
 		dbus_error_free(&error);
+		kdDebugFuncOut(trace);
+		return false;
 	}
 
 	kdDebugFuncOut(trace);
-	return retval;
+	return has_owner;
 }
 
 /* ----> DBUS section :: END   <---- */
-/* ----> HAL  section :: START <---- */
 
-/*! 
- * This function initialise the connection to HAL over the D-Bus daemon.
- * \return boolean with the result of the operation
- * \retval true if successful initialised HAL connection and context
- * \retval false if unsuccessful
- */
-bool dbusHAL::initHAL(){
-	kdDebugFuncIn(trace);
-
-	if ( !dbus_is_connected ) {
-		freeHAL();
-		return false;
-	} else if ( hal_is_connected && (hal_ctx != NULL)) { 
-		return true;
-	}
-	
-	// could not connect to HAL, reset all and try again
-	freeHAL();
-
-	DBusError error;
-	dbus_error_init(&error);
-
-	dbus_connection = dbus_bus_get(DBUS_BUS_SYSTEM, &error);
-	if (dbus_connection == NULL || dbus_error_is_set(&error)) {
-		kdError() << "could not open connection to system bus: " << error.message << endl;
-		dbus_error_free(&error);
-		return false;
-	}
-
-	bool hal_is_ready = dbus_bus_name_has_owner(dbus_connection, "org.freedesktop.Hal", &error);
-
-	if (!hal_is_ready) {
-		kdWarning() << "HAL is not ready. We will try later... " << endl;
-
-		if ( dbus_error_is_set( &error ) ) {
-			kdError() << "Error checking if hal service exists: " << error.message << endl;
-			dbus_error_free( &error );
-		}
-
-		freeHAL();
-		return false;
-	}
-
-	if((hal_ctx = libhal_ctx_new()) == NULL) {
-		kdError() << "Could not init HAL context" << endl;
-		return false;
-	}
-
-	/* setup dbus connection for hal */
-	if (!libhal_ctx_set_dbus_connection(hal_ctx, dbus_connection)) {
-		kdError() << "Could not set up connection to dbus for hal" << endl;
-		freeHAL();
-		return false;
-	}
-
-	/* init the hal library */
-	if (!libhal_ctx_init(hal_ctx, &error)) {
-		kdError() << "Could not init hal library: " << error.message << endl;
-		freeHAL();
-		return false;
-	}
-
-	hal_is_connected = true;
-
-	kdDebugFuncOut(trace);
-	return hal_is_connected;
-}
-
-/*! 
- * This function free the hal connection/context.
- */
-void dbusHAL::freeHAL(){
-
-	if ( hal_ctx != NULL ) {
-		libhal_ctx_free( hal_ctx );
-		hal_ctx = NULL;
-	}
-	hal_is_connected = false;
-}
-
-/*! 
- * This function try a reconnect to the HAL daemon only.
- * \return boolean with the result of the operation
- * \retval true if successful reconnected to HAL
- * \retval false if unsuccessful
- */
-bool dbusHAL::reconnectHAL() {
-	// free HAL context
-	freeHAL();
-	// init HAL context
-	return (initHAL());
-}
-
-/*! 
- * This function query a integer property from HAL for a given device
- * \param udi		QString with the UDI of the device
- * \param property 	QString with the property
- * \param returnval 	pointer to the return value
- * \return 		If the query was successful or not
- */
-bool dbusHAL::halGetPropertyInt(QString udi, QString property, int *returnval){
-	kdDebugFuncIn(trace);
-	
-	bool ret = false;
-
-	if (!initHAL() || udi.isEmpty() || property.isEmpty())
-		goto out;
-
-	DBusError error;
-	dbus_error_init(&error);
-
-	if (!libhal_device_property_exists(hal_ctx, udi, property, &error)) {
-		kdWarning() << "Property: " << property << " for: " << udi << " doesn't exist." << endl;
-		goto out;
-	}
-
-	*returnval = libhal_device_get_property_int(hal_ctx, udi, property, &error);
-
-	if (dbus_error_is_set(&error)) {
-		kdError() << "Fetching property: " << property << " for: " << udi
-			  << " failed with: " << error.message << endl;
-		dbus_error_free(&error);
-		goto out;
-	} else {
-		ret = true;
-	}
-
-out:
-	kdDebugFuncOut(trace);
-	return true;
-}
-
-/*! 
- * This function query a boolean property from HAL for a given device
- * \param udi		QString with the UDI of the device
- * \param property 	QString with the property
- * \param returnval 	pointer to the return value
- * \return 		If the query was successful or not
- */
-bool dbusHAL::halGetPropertyBool(QString udi, QString property, bool *returnval){
-	kdDebugFuncIn(trace);
-
-	bool ret = false;
-
-	if (!initHAL() || udi.isEmpty() || property.isEmpty()) 
-		goto out;
-
-	DBusError error;
-	dbus_error_init(&error);
-
-	if (!libhal_device_property_exists(hal_ctx, udi, property, &error)) {
-		kdWarning() << "Property: " << property << " for: " << udi << " doesn't exist." << endl;
-		goto out;
-	}
-
-	*returnval = libhal_device_get_property_bool(hal_ctx, udi, property, &error);
-
-	if (dbus_error_is_set(&error)) {
-		kdError() << "Fetching property: " << property << " for: " << udi 
-			  << " failed with: " << error.message << endl;
-		dbus_error_free(&error);
-		goto out;
-	} else {
-		ret = true;
-	}
-
-out:
-	kdDebugFuncOut(trace);
-	return ret;
-}
-
-
-/*! 
- * This function query a Sting property from HAL for a given device
- * \param udi		QString with the UDI of the device
- * \param property 	QString with the property
- * \param returnval 	pointer to the return value
- * \return 		If the query was successful or not
- */
-bool dbusHAL::halGetPropertyString(QString udi, QString property, QString *returnval){
-	kdDebugFuncIn(trace);
-
-	bool ret = false;
-
-	if (!initHAL() || udi.isEmpty() || property.isEmpty()) 
-		goto out;
-
-	DBusError error;
-	dbus_error_init(&error);
-
-	if (!libhal_device_property_exists(hal_ctx, udi, property, &error)) {
-		kdWarning() << "Property: " << property << " for: " << udi << " doesn't exist." << endl;
-		goto out;
-	}
-
-	*returnval = libhal_device_get_property_string(hal_ctx, udi, property, &error);
-
-	if (dbus_error_is_set(&error)) {
-		kdError() << "Fetching property: " << property << " for: " << udi 
-			  << " failed with: " << error.message << endl;
-		dbus_error_free(&error);
-		goto out;
-	} else {
-		ret = true;
-	}
-
-out:
-	kdDebugFuncOut(trace);
-	return ret;
-}
-
-/*!
- * This function query a String List property from HAL for a given device
- * \param udi		QString with the udi of the device
- * \param property	QString with the property to query 
- * \param devices 	QStringList to return the values
- * \return 		If the query was successful or not
- */
-bool dbusHAL::halGetPropertyStringList (QString udi, QString property, QStringList *devices) {
-	kdDebugFuncIn(trace);
-
-	bool ret = false;
-
-	if (!initHAL() || udi.isEmpty() || property.isEmpty()) 
-		goto out;
-
-	DBusError error;
-	char ** found;
-
-	dbus_error_init(&error);
-	
-	if (!libhal_device_property_exists(hal_ctx, udi, property, &error)) {
-		kdWarning() << "Property: " << property << " for: " << udi << " doesn't exist." << endl;
-		goto out;
-	}
-
-	found = libhal_device_get_property_strlist (hal_ctx, udi, property, &error);
-
-	if (dbus_error_is_set(&error)) {
-		kdWarning() << "Error while query existing strlist Property: " << property 
-			    << " for: " << udi << " error: " << error.message << endl;
-		dbus_error_free(&error);
-		libhal_free_string_array(found);
-		goto out;
-        } else {
-		for (int i = 0; found[i] != NULL ; ++i) {
-			QString _to_add = found[i];
-			if (!_to_add.isEmpty()) *devices += _to_add;
-		}
-		libhal_free_string_array(found);
-		ret = true;
-	}
-
-out:
-	kdDebugFuncOut(trace);
-	return ret;
-}
-
-
-/*! 
- * This function query a capability from HAL for a given device
- * \param udi		QString with the UDI of the device
- * \param capability	QString with the capability to query
- * \param returnval 	pointer to the return value as boolean
- * \return 		If the query was successful or not
- */
-bool dbusHAL::halQueryCapability(QString udi, QString capability, bool *returnval) {
-	kdDebugFuncIn(trace);
-
-	bool ret = false;
-
-	if (!initHAL() || udi.isEmpty() || capability.isEmpty()) 
-		goto out;
-
-	DBusError error;
-	dbus_error_init(&error);
-
-	*returnval = libhal_device_query_capability(hal_ctx, udi, capability, &error);
-
-	if (dbus_error_is_set(&error)) {
-		kdError() << "Fetching capability: " << capability << " for: " << udi
-			  << " failed with: " << error.message << endl;
-		dbus_error_free(&error);
-		goto out;
-	} else {
-		ret = true;
-	}
-
-out:
-	kdDebugFuncOut(trace);
-	return ret;
-}
-
-/*! 
- * Use this function to check if a device has a specia property/key.
- * \param udi		QString with the UDI of the device
- * \param property 	QString with the property
- * \return 		If the query was successful or not
- */
-bool dbusHAL::halDevicePropertyExist(QString udi, QString property ) {
-	kdDebugFuncIn(trace);
-
-	bool ret = false;
-
-	if (!initHAL() || udi.isEmpty() || property.isEmpty()) 
-		goto out;
-
-	DBusError error;
-	dbus_error_init(&error);
-
-	if (! libhal_device_property_exists (hal_ctx, udi, property, &error)) {
-		if (dbus_error_is_set(&error)) {
-			kdError() << "Fetching existing property: " << property << " for: " << udi 
-				  << " failed with: " << error.message << endl;
-			dbus_error_free(&error);
-		}
-		goto out;
-	} else {
-		ret = true;
-	}
-
-out:
-	kdDebugFuncOut(trace);
-	return ret;
-}
-
-/*!
- * Use this function to search find devices with a give capability
- * \param capability	QString with the capability to query
- * \param devices 	QStringList to return the found devices
- * \return 		If the query was successful or not
- */
-bool dbusHAL::halFindDeviceByCapability (QString capability, QStringList *devices) {
-	kdDebugFuncIn(trace);
-
-	DBusError error;
-	char ** found;
-	int num = 0;
-	bool ret = false;
-
-	if (!initHAL() || capability.isEmpty()) 
-		goto out;
-
-	dbus_error_init(&error);
-	
-	found = libhal_find_device_by_capability (hal_ctx, capability, &num, &error);
-
-	if (dbus_error_is_set(&error)) {
-                kdError() << "Could not get list of devices with capability: " << capability	
-			  << " error: " << error.message << endl;
-		dbus_error_free(&error);
-		libhal_free_string_array(found);
-		goto out;
-        } else {
- 		for (int i = 0; i < num; ++i) {
-			QString _to_add = found[i];
-			if (!_to_add.isEmpty()) *devices += _to_add;
-		}
-		libhal_free_string_array(found);
-		ret = true;
-	}
-
-out:
-	kdDebugFuncOut(trace);
-	return ret;
-}
-
-/*!
- * Use this function to search find devices with a special string property
- * \param property      QString with the name of the property 
- * \param keyval	QString with value of the string property
- * \param devices 	QStringList to return the found devices
- * \return 		If the query was successful or not
- */
-bool dbusHAL::halFindDeviceByString (QString property, QString keyval, QStringList *devices) {
-	kdDebugFuncIn(trace);
-
-	DBusError error;
-	char ** found;
-	int num = 0;
-	bool ret = false;
-
-	if (!initHAL() || property.isEmpty() || keyval.isEmpty()) 
-		goto out;
-	
-	dbus_error_init(&error);
-	
-	found = libhal_manager_find_device_string_match (hal_ctx, property, keyval, &num, &error);
-
-	if (dbus_error_is_set(&error)) {
-		kdError() << "Could not get list of devices with key: " << property
-			  << "and string value: " <<  keyval << " error: " << error.message << endl;
-		dbus_error_free(&error);
-		libhal_free_string_array(found);
-		goto out;
-        } else {
- 		for (int i = 0; i < num; ++i) {
-			QString _to_add = found[i];
-			if (!_to_add.isEmpty()) *devices += _to_add;
-		}
-		libhal_free_string_array(found);
-		ret = true;
-	}
-
-out:
-	kdDebugFuncOut(trace);
-	return ret;
-}
-
-/* ----> HAL section :: END <---- */
 /* ----> D-Bus methode calls functions :: START <---- */
 /*! 
  * This function call a D-Bus method
@@ -741,16 +349,16 @@ out:
  * \param ... 		more arguments
  * \return 		If the query was successful or not
  */
-bool dbusHAL::dbusSystemMethodCall( QString interface, QString path, QString object, QString method,
-			   	    int first_arg_type, ... ) {
+bool
+dbusHAL::dbusSystemMethodCall(QString interface, QString path, QString object,
+			      QString method, int first_arg_type, ...) {
 	kdDebugFuncIn(trace);
 	
-	bool _ret = false;
         va_list var_args;
-
         va_start(var_args, first_arg_type);
-	_ret = dbusMethodCall( interface, path, object, method, DBUS_BUS_SYSTEM,
-			       NULL, -1, first_arg_type, var_args);
+	bool _ret = dbusMethodCall(interface, path, object, method,
+				   DBUS_BUS_SYSTEM, NULL, -1, first_arg_type,
+				   var_args);
 	va_end(var_args);
 	
 	kdDebugFuncOut(trace);
@@ -769,16 +377,18 @@ bool dbusHAL::dbusSystemMethodCall( QString interface, QString path, QString obj
  * \param first_arg_type Integer with the dbus type of the first argument followed by the value
  * \return 		 If the query was successful or not
  */
-bool dbusHAL::dbusSystemMethodCall( QString interface, QString path, QString object, QString method,
-				    void *retvalue, int retval_type, int first_arg_type, ... ) {
+bool
+dbusHAL::dbusSystemMethodCall(QString interface, QString path, QString object,
+			      QString method, void *retvalue, int retval_type,
+			      int first_arg_type, ...) {
 	kdDebugFuncIn(trace);
 	
-	bool _ret = false;
         va_list var_args;
 
         va_start(var_args, first_arg_type);
-	_ret = dbusMethodCall( interface, path, object, method, DBUS_BUS_SYSTEM, 
-			       retvalue, retval_type, first_arg_type, var_args);
+	bool _ret = dbusMethodCall(interface, path, object, method,
+				   DBUS_BUS_SYSTEM, retvalue, retval_type,
+				   first_arg_type, var_args);
 	va_end(var_args);
 	
 	kdDebugFuncOut(trace);
@@ -799,73 +409,84 @@ bool dbusHAL::dbusSystemMethodCall( QString interface, QString path, QString obj
  * \param var_args	 va_list with more arguments
  * \return 		 If the query was successful or not
  */
-bool dbusHAL::dbusMethodCall( QString interface, QString path, QString object, QString method,
-			      DBusBusType dbus_type, void *retvalue, int retval_type, int first_arg_type,
-			      va_list var_args ) {
+bool
+dbusHAL::dbusMethodCall(QString interface, QString path, QString object,
+			QString method, DBusBusType dbus_type, void *retvalue,
+			int retval_type, int first_arg_type,
+			va_list var_args ) {
 	kdDebugFuncIn(trace);
 
-	DBusMessage *message;
-	DBusMessage *reply;
-	DBusError    error;
-	bool ret = false;
-	
+	DBusError error;
 	dbus_error_init(&error); 
 
 	dbus_connection = dbus_bus_get(dbus_type, &error);
-	
 	if (dbus_error_is_set(&error)) {
-		kdError() << "Could not get dbus connection: " << error.message << endl;
+		kdError() << "Could not get dbus connection: " << error.message
+			  << endl;
 		dbus_error_free(&error);
-		goto out;
+		kdDebugFuncOut(trace);
+		return false;
 	}
 
-	message = dbus_message_new_method_call( interface, path, object, method );
+	DBusMessage *message;
+	message = dbus_message_new_method_call(interface, path, object, method);
 	dbus_message_append_args_valist(message, first_arg_type, var_args);
 
-	if (retvalue == NULL) {
+	if (nullptr == retvalue) {
 		if (!dbus_connection_send(dbus_connection, message, NULL)) {
 			kdError() << "Could not send method call." << endl;
 			dbus_message_unref( message );
-			goto out;
+			kdDebugFuncOut(trace);
+			return false;
 		}
-	} else {
-		reply = dbus_connection_send_with_reply_and_block(dbus_connection, message, -1, &error);
-
-		if (dbus_error_is_set(&error)) {
-			kdError() << "Could not send dbus message: " << error.message << endl;
-			dbus_message_unref(message);
-			dbus_error_free(&error);
-			goto out;
-		}
-
-		int type = dbus_message_get_type(reply);
-		if (type == DBUS_MESSAGE_TYPE_METHOD_RETURN) {
-			if (!dbus_message_get_args(reply, &error, retval_type, retvalue, DBUS_TYPE_INVALID)){
-				if (dbus_error_is_set(&error)) {
-					kdError() << "Could not get argument from reply: " 
-						  << error.message << endl;
-					dbus_error_free(&error);
-				}
-				dbus_message_unref(reply);
-				dbus_message_unref(message);
-				goto out;
-			}
-		} else {
-			kdError() << "Revieved invalid DBUS_MESSAGE_TYPE: " << type 
-				  << "expected: " << DBUS_MESSAGE_TYPE_METHOD_RETURN << endl;
-			dbus_message_unref(reply);
-			dbus_message_unref(message);
-			goto out;
-		}
+		dbus_message_unref(message);
+		dbus_connection_flush(dbus_connection);
+		kdDebugFuncOut(trace);
+		return true;
 	}
 
-	ret = true;	// if we are here, everything should be okay
+	DBusMessage *reply;
+	reply = dbus_connection_send_with_reply_and_block(
+		dbus_connection, message, -1, &error);
+
+	if (dbus_error_is_set(&error)) {
+		kdError() << "Could not send dbus message: " << error.message
+			  << endl;
+		dbus_message_unref(message);
+		dbus_error_free(&error);
+		kdDebugFuncOut(trace);
+		return false;
+	}
+
+	int type = dbus_message_get_type(reply);
+	if (type != DBUS_MESSAGE_TYPE_METHOD_RETURN) {
+		kdError() << "Revieved invalid DBUS_MESSAGE_TYPE: " << type 
+			  << ". Expected: " << DBUS_MESSAGE_TYPE_METHOD_RETURN
+			  << endl;
+		dbus_message_unref(reply);
+		dbus_message_unref(message);
+		dbus_error_free(&error);
+		kdDebugFuncOut(trace);
+		return false;
+	}
+
+	if (!dbus_message_get_args(reply, &error, retval_type, retvalue,
+				   DBUS_TYPE_INVALID)) {
+		if (dbus_error_is_set(&error)) {
+			kdError() << "Could not get argument from reply: "
+				  << error.message << endl;
+			dbus_error_free(&error);
+		}
+		dbus_message_unref(reply);
+		dbus_message_unref(message);
+		kdDebugFuncOut(trace);
+		return false;
+	}
+
 	dbus_message_unref(message);
 	dbus_connection_flush(dbus_connection);
-
-out:
 	kdDebugFuncOut(trace);
-        return ret;
+	return true;
 }
 
 /*! 
@@ -874,93 +495,94 @@ out:
  * \param suspend 	a char pointer with the name of the suspend interface
  * \return 		If the query was successful or not
  */
-bool dbusHAL::dbusMethodCallSuspend ( const char *suspend ) {
+bool
+dbusHAL::dbusMethodCallSuspend(const char *suspend) {
 	kdDebugFuncIn(trace);
-
-    	DBusMessage *message;
-	DBusError    error;
-	DBusPendingCall* pcall = NULL;
-	bool ret = false;
-
+	DBusError error;
 	dbus_error_init(&error);
+
 	dbus_connection = dbus_bus_get(DBUS_BUS_SYSTEM, &error);
 	
 	if (dbus_error_is_set(&error)) {
-		kdError() << "Could not get dbus connection: " << error.message << endl;
+		kdError() << "Could not get dbus connection: "
+			  << error.message << endl;
 		dbus_error_free(&error);
-		goto out;
-	}
-		
-	message = dbus_message_new_method_call( HAL_SERVICE, HAL_COMPUTER_UDI, HAL_PM_IFACE, suspend);
-	if (strcmp( suspend, "Suspend") == 0) {
-		int wake_up = 0;
-		dbus_message_append_args (message, DBUS_TYPE_INT32, &wake_up, DBUS_TYPE_INVALID);
-	}
-	
-	if (message) {
-		// need to set INT_MAX as default and not -1
-		dbus_connection_send_with_reply (dbus_connection, message, &pcall, INT_MAX);
-		if (pcall) {
-			dbus_pending_call_ref (pcall); // really needed?
-			dbus_pending_call_set_notify (pcall, dbusHAL::callBackSuspend, NULL, NULL);
-		}
-		dbus_message_unref (message);
-		ret = true;
+		kdDebugFuncOut(trace);
+		return false;
 	}
 
-out:
+	kdDebug() << "Calling org.freedesktop.login1.Manager" << suspend
+		  << endl;
+	DBusMessage *message =
+		dbus_message_new_method_call(
+			"org.freedesktop.login1", "/org/freedesktop/login1",
+			"org.freedesktop.login1.Manager", suspend);
+	if (nullptr == message) {
+		kdDebug() << "Error building org.freedesktop.login1."
+			"Manager." << suspend << " call." << endl;
+		kdError() << "Error building org.freedesktop.login1."
+			"Manager." << suspend << " call." << endl;
+		kdDebugFuncOut(trace);
+		return false;
+	}
+	dbus_bool_t interactive = false;
+	if (!dbus_message_append_args(message, DBUS_TYPE_BOOLEAN, &interactive,
+				      DBUS_TYPE_INVALID)) {
+		kdDebug() << "Error appending 'false' to org.freedesktop."
+			"login1.Manager." << suspend << "." << endl;
+		kdError() << "Error appending 'false' to org.freedesktop."
+			"login1.Manager." << suspend << "." << endl;
+		dbus_message_unref(message);
+		kdDebugFuncOut(trace);
+		return false;
+	}
+	// need to set INT_MAX as default and not -1
+	DBusPendingCall *pcall = nullptr;
+	dbus_connection_send_with_reply(
+		dbus_connection, message, &pcall, INT_MAX);
+	if (pcall) {
+		kdDebug() << "org.freedesktop.login1.Manager." << suspend
+			  << ": pcall is not null." << endl;
+		dbus_pending_call_ref(pcall); // really needed?
+		dbus_pending_call_set_notify(
+			pcall,
+			reinterpret_cast<DBusPendingCallNotifyFunction>(
+				&dbusHAL::callBackSuspend),
+			this, NULL);
+	} else
+		kdDebug() << "org.freedesktop.login1.Manager." << suspend
+			  << ": pcall is null." << endl;
+	dbus_message_unref(message);
+
 	kdDebugFuncOut(trace);
-	return ret;
+	return true;
 }
 
 /*!
  * Slot called by D-Bus as set in \ref dbusMethodCallSuspend() 
  * Here we emit the resume signal.
  */
-void dbusHAL::callBackSuspend (DBusPendingCall* pcall, void* /*data*/) {
+void
+dbusHAL::callBackSuspend(DBusPendingCall* pcall, dbusHAL *instance) {
 	kdDebugFuncIn(trace);
 
-	DBusMessage* reply = NULL;
-	DBusError error;
-	int result;
-	bool failed = false;
-
-        if (!pcall) {
-		kdError() << "dbusHAL::callBackSuspend - DBusPendingCall not set, return" << endl;
+        if (nullptr == pcall) {
+		kdError() << "dbusHAL::callBackSuspend - DBusPendingCall not "
+			"set, return" << endl;
 		kdDebugFuncOut(trace);
 		return;
         }
 
-	reply = dbus_pending_call_steal_reply (pcall);
+	DBusMessage *reply = dbus_pending_call_steal_reply(pcall);
 	if (reply == NULL) {
-		kdError() << "dbusHAL::callBackSuspend - Got no reply, return" << endl;
-		goto out;
-	}
+		kdError() << "dbusHAL::callBackSuspend - Got no reply, return"
+			  << endl;
+	} else
+		dbus_message_unref(reply);
 
-	dbus_error_init(&error);
-
-        if (!dbus_message_get_args (reply, &error, DBUS_TYPE_INT32, &result, DBUS_TYPE_INVALID)) {
-		if (dbus_error_is_set(&error)) {
-			kdError() << "Could not get argument from reply: " << error.message << endl;
-			dbus_error_free(&error);
-		}
-
-		kdWarning() << "dbusHAL::callBackSuspend dbus_message_get_args failed, maybe timouted" << endl;
-		failed = true;
-	}
-
-	dbus_message_unref (reply);
-
-out:
-	dbus_pending_call_unref (pcall);
-
-	if (failed)
-		emit ((dbusHAL*) myInstance)->backFromSuspend( -1 );
-	else
-		emit ((dbusHAL*) myInstance)->backFromSuspend( result );
-
+	dbus_pending_call_unref(pcall);
+	emit instance->backFromSuspend(0);
 	kdDebugFuncOut(trace);
-	return;
 }
 
 
@@ -978,83 +600,87 @@ out:
  * \retval 1		if allowed
  * \retval -1		if a error occurs or we could not query the interface
  */
-int dbusHAL::isUserPrivileged(QString privilege, QString udi, QString ressource, QString user) {
+int
+dbusHAL::isUserPrivileged(QString privilege, QString udi, QString ressource,
+			  QString user) {
 	kdDebugFuncIn(trace);
 
-	const char *_unique_name;
-	const char *_user;
-	const char *_privilege;	
+	const char *_user = user.isEmpty() || user.isNull() ?
+		getenv("USER") : user.latin1();
 	
-	int retval = -1;
+	if (nullptr == _user || privilege.isEmpty()) {
+		kdDebugFuncOut(trace);
+		return -1;
+	}
 
-	if (user.isEmpty() || user.isNull()) 
-		_user = getenv("USER"); 
-	else 
-		_user = user.latin1();
-
-	if (_user == NULL || privilege.isEmpty()) 
-		goto out;
-
-	_unique_name = dbus_bus_get_unique_name(dbus_connection);
-	_privilege = privilege.latin1();
+	const char *_unique_name = dbus_bus_get_unique_name(dbus_connection);
+	const char *_privilege = privilege.latin1();
 
 #ifdef USE_LIBHAL_POLICYCHECK
-	DBusError    error;
-	char *result;
-
 	if (udi.isEmpty()) {
-		kdError() << "No UDI given ... could not lookup privileges" << endl;
-		goto out;
+		kdError() << "No UDI given ... could not lookup privileges"
+			  << endl;
+		kdDebugFuncOut(trace);
+		return -1;
 	} 
+
 	if (!hal_is_connected) {
-		kdError() << "HAL not running, could not call libhal for lookup privileges" << endl;
-		goto out;
+		kdError() << "HAL not running, could not call libhal for "
+			"lookup privileges" << endl;
+		kdDebugFuncOut(trace);
+		return -1;
 	}
 
+	DBusError error;
 	dbus_error_init(&error);
-	result = libhal_device_is_caller_privileged ( hal_ctx, udi.latin1(), _privilege, _unique_name, &error);
+	char *result = libhal_device_is_caller_privileged(
+		hal_ctx, udi.latin1(), _privilege, _unique_name, &error);
 	
-	if ( dbus_error_is_set( &error ) ) {
-		kdWarning() << "Error while lookup privileges: " << error.message << endl;
-		dbus_error_free( &error );
-		retval = -1;
-	} else {
-		if (!strcmp(result, "yes")) {
-			retval = 1;
-		} else if (!strcmp(result, "no")) {
-			retval = 0;
-		} else {
-			retval = -1;
-		}
+	if (dbus_error_is_set(&error)) {
+		kdWarning() << "Error while lookup privileges: "
+			    << error.message << endl;
+		dbus_error_free(&error);
+		libhal_free_string(result);
+		kdDebugFuncOut(trace);
+		return -1;
 	}
-
+	if (0 == strcmp(result, "yes")) {
+		libhal_free_string(result);
+		kdDebugFuncOut(trace);
+		return 1;
+	}
+	if (0 == strcmp(result, "no")) {
+		libhal_free_string(result);
+		kdDebugFuncOut(trace);
+		return 0;
+	}
 	libhal_free_string(result);
+	kdDebugFuncOut(trace);
+	return -1;
 #else
 	// not sure if we need this, but to avoid problems
-	dbus_bool_t _retval;
-	const char *_ressource;
-	_ressource = ressource.latin1();
+	const char *_resource = ressource.latin1();
 
-	if (!dbusSystemMethodCall( "org.freedesktop.PolicyKit",
-				   "/org/freedesktop/PolicyKit/Manager",
-				   "org.freedesktop.PolicyKit.Manager",
-				   "IsUserPrivileged",
+	dbus_bool_t _retval;
+	if (!dbusSystemMethodCall("org.freedesktop.PolicyKit",
+				  "/org/freedesktop/PolicyKit/Manager",
+				  "org.freedesktop.PolicyKit.Manager",
+				  "IsUserPrivileged",
 				   &_retval, DBUS_TYPE_BOOLEAN,
 				   DBUS_TYPE_STRING, &_unique_name,
 				   DBUS_TYPE_STRING, &_user,
 				   DBUS_TYPE_STRING, &_privilege,
-				   DBUS_TYPE_STRING, &_ressource,
+				   DBUS_TYPE_STRING, &_resource,
 				   DBUS_TYPE_INVALID)) {
-		retval = -1;	// only to be sure we have no changes trough the call
-	} else {
-		retval = (int) _retval;
+		kdDebugFuncOut(trace);
+		return -1;
 	}
-#endif
 
-out:
 	kdDebugFuncOut(trace);
-	return retval;
+	return static_cast<int>(_retval);
+#endif
 }
+
 /* ---> PolicyKit method call section :: END   <--- */
 
 /*!
@@ -1065,8 +691,8 @@ out:
  * \param  message String with the message
  * \param  string String with additional info
  */
-void dbusHAL::emitMsgReceived( msg_type type, QString message, QString string ) {
-	
+void
+dbusHAL::emitMsgReceived(msg_type type, QString message, QString string) {
 	if (message.startsWith("dbus.terminate"))
 		dbus_is_connected = false;
 
@@ -1077,7 +703,7 @@ void dbusHAL::emitMsgReceived( msg_type type, QString message, QString string ) 
 			aquiredPolicyPower = false;
 	}
 
-	emit msgReceived_withStringString( type, message, string );
+	emit msgReceived_withStringString(type, message, string);
 }
 
 #include "dbusHAL.moc"
@@ -1092,223 +718,378 @@ void dbusHAL::emitMsgReceived( msg_type type, QString message, QString string ) 
  * \return DBusHandlerResult
  */
 DBusHandlerResult 
-filterFunction (DBusConnection *connection, DBusMessage *message, void */*data*/) {
+dbusHAL::filterFunction(DBusConnection *connection, DBusMessage *message,
+			dbusHAL *instance) {
  	kdDebugFuncIn(trace);
 	
-	bool reply_wanted;
-	char *value;
-	QString ifaceType;
-
-	DBusError error;
-        dbus_error_init( &error );
-
-	if (dbus_message_is_signal (message,
-				    DBUS_INTERFACE_LOCAL,
-				    "Disconnected")){
-		((dbusHAL*) myInstance)->emitMsgReceived( DBUS_EVENT, "dbus.terminate", 0 );
+	if (dbus_message_is_signal(message, DBUS_INTERFACE_LOCAL,
+				   "Disconnected")) {
+		instance->emitMsgReceived(DBUS_EVENT, "dbus.terminate", 0);
 		dbus_connection_unref(connection);
 		kdDebugFuncOut(trace);
 		return DBUS_HANDLER_RESULT_NOT_YET_HANDLED;
 	}
 
-        if ( dbus_message_get_type( message ) != DBUS_MESSAGE_TYPE_SIGNAL ) {
-                if (trace) kdDebug() << "recieved message, but wasn't from type DBUS_MESSAGE_TYPE_SIGNAL" << endl;
+        if (dbus_message_get_type(message) != DBUS_MESSAGE_TYPE_SIGNAL) {
+                if (trace)
+			kdDebug() << "recieved message, but wasn't from type "
+				"DBUS_MESSAGE_TYPE_SIGNAL" << endl;
 		kdDebugFuncOut(trace);
 		return DBUS_HANDLER_RESULT_NOT_YET_HANDLED;
         }
 
-	ifaceType = dbus_message_get_interface( message );
-        if (ifaceType == NULL) {
+	QString ifaceType = dbus_message_get_interface(message);
+        if (nullptr == ifaceType) {
                 kdDebug() << "Received message from invalid interface" << endl;
                 kdDebugFuncOut(trace);
 		return DBUS_HANDLER_RESULT_NOT_YET_HANDLED;
         }
 
-	reply_wanted = !dbus_message_get_no_reply( message );
+	bool reply_wanted = !dbus_message_get_no_reply(message);
+
+	if (0 == strcmp("org.freedesktop.DBus.Properties", ifaceType)) {
+		const char *signal = dbus_message_get_member(message);
+		if (0 == strcmp(signal, "PropertiesChanged")) {
+			const char *udi = dbus_message_get_path(message);
+			modified_props_type d;
+			message >> d;
+			emit instance->property_changed(UPOWER_PROPERTY_CHANGED,
+							udi, d);
+			return DBUS_HANDLER_RESULT_HANDLED;
+		}
+		return DBUS_HANDLER_RESULT_NOT_YET_HANDLED;
+	}
 
 	if (ifaceType.startsWith(DBUS_INTERFACE_DBUS)) {
-		if(trace) kdDebug() << "Received from DBUS_INTERFACE_DBUS" << endl;
+		if (trace)
+			kdDebug() << "Received from DBUS_INTERFACE_DBUS"
+				  << endl;
 		/* get the name of the signal */
-		const char *signal = dbus_message_get_member( message );
+		const char *signal = dbus_message_get_member(message);
 		
+		char *value;
+		DBusError error;
+		dbus_error_init(&error);
 		/* get the first argument. This must be a string at the moment */
-		dbus_message_get_args( message, &error, DBUS_TYPE_STRING, &value, DBUS_TYPE_INVALID );
+		dbus_message_get_args(message, &error, DBUS_TYPE_STRING,
+				      &value, DBUS_TYPE_INVALID);
 	
-		if ( dbus_error_is_set( &error ) ) {
-			kdWarning() << "Received signal " << error.message << " but no string argument" << endl;
-			dbus_error_free( &error );
+		if (dbus_error_is_set(&error)) {
+			kdWarning() << "Received signal " << error.message
+				    << " but no string argument" << endl;
+			dbus_error_free(&error);
 			kdDebugFuncOut(trace);
 			return DBUS_HANDLER_RESULT_HANDLED;
 		}
 	
-		if (trace) kdDebug() << "filter_function::SIGNAL=" << signal << " VALUE=" << value << endl;
+		if (trace)
+			kdDebug() << "filter_function::SIGNAL=" << signal
+				  << " VALUE=" << value << endl;
 	
 		/* our name is... */
-		if ( ! strcmp( signal, "NameAcquired" ) ) {
+		if (0 == strcmp(signal, "NameAcquired")) {
 			kdDebugFuncOut(trace);
 			return DBUS_HANDLER_RESULT_HANDLED;
 		}
 		
-		else if ( ! strcmp( signal, "NameOwnerChanged" )) {
+		if (0 == strcmp(signal, "NameOwnerChanged")) {
 			char *service;
 			char *old_owner;
 			char *new_owner;
-			
-                	if (dbus_message_get_args (message, NULL, DBUS_TYPE_STRING, &service,
-                                                   DBUS_TYPE_STRING, &old_owner,
-                                                   DBUS_TYPE_STRING, &new_owner, DBUS_TYPE_INVALID)) {
-				if (!strcmp(service, "org.freedesktop.Hal")) {
-					if (!strcmp(new_owner, "") && strcmp(old_owner, "")) {
-						// Hal service stopped.
-						kdDebug() << "=== org.freedesktop.Hal terminated ===" << endl;
-						((dbusHAL*) myInstance)->emitMsgReceived( DBUS_EVENT,
-											"hal.terminate", 
-											NULL );
-					}
-					else if (!strcmp(old_owner, "") && strcmp(new_owner, "")) {
-						// Hal service started.
-						kdDebug() << "=== org.freedesktop.Hal started ===" << endl;
-						((dbusHAL*) myInstance)->emitMsgReceived( DBUS_EVENT,
-											"hal.started", 
-											NULL );
-					}
-				} else if (!strcmp(service, "org.freedesktop.Policy.Power")) {
-					const char *own_name;
-					
-					own_name = dbus_bus_get_unique_name(((dbusHAL*) myInstance)->get_DBUS_connection());
-
-					if (!strcmp(new_owner, own_name)) {
-						kdDebug() << "=== now owner of org.freedesktop.Policy.Power ===" << endl;
-						// we have now again the ower of the name!
-						((dbusHAL*) myInstance)->emitMsgReceived( POLICY_POWER_OWNER_CHANGED,
-											  "NOW_OWNER", 
-											  NULL );
-					} else {
-						// some other has now the interface
-						kdDebug() << "=== someone owner of org.freedesktop.Policy.Power ===" << endl;
-						((dbusHAL*) myInstance)->emitMsgReceived( POLICY_POWER_OWNER_CHANGED,
-											  "OTHER_OWNER", 
-											  NULL );
-					}
-				}
+                	if (!dbus_message_get_args(
+				    message, NULL, DBUS_TYPE_STRING, &service,
+				    DBUS_TYPE_STRING, &old_owner,
+				    DBUS_TYPE_STRING, &new_owner,
+				    DBUS_TYPE_INVALID)) {
+				kdDebugFuncOut(trace);
+				return DBUS_HANDLER_RESULT_HANDLED;
 			}
+			if (0 != strcmp(service,
+					"org.freedesktop.Policy.Power")) {
+				kdDebugFuncOut(trace);
+				return DBUS_HANDLER_RESULT_HANDLED;
+			}
+
+			const char *own_name = dbus_bus_get_unique_name(
+				instance->get_DBUS_connection());
+			if (0 == strcmp(new_owner, own_name)) {
+				kdDebug() << "=== now owner of "
+					"org.freedesktop.Policy.Power ==="
+					  << endl;
+				// we have now again the ower of the name!
+				instance->emitMsgReceived(
+					POLICY_POWER_OWNER_CHANGED, "NOW_OWNER",
+					NULL);
+			} else {
+				// some other has now the interface
+				kdDebug() << "=== someone else owner of "
+					"org.freedesktop.Policy.Power ==="
+					  << endl;
+				instance->emitMsgReceived(
+					POLICY_POWER_OWNER_CHANGED,
+					"OTHER_OWNER", NULL);
+			}
+			kdDebugFuncOut(trace);
+			return DBUS_HANDLER_RESULT_HANDLED;
 		}
 		kdDebugFuncOut(trace);
-		return DBUS_HANDLER_RESULT_HANDLED;	
-	} else if (ifaceType.startsWith("org.freedesktop.Hal.Manager")) {
-		kdDebug() << "Received from org.freedesktop.Hal.Manager" << endl;
-		char *udi;
+		return DBUS_HANDLER_RESULT_HANDLED;
+	}
 
-		const char *signal = dbus_message_get_member( message );
-		/* get the first argument. This must be a string at the moment */
-		dbus_message_get_args( message, &error, DBUS_TYPE_STRING, &value, DBUS_TYPE_INVALID );
-	
-		if ( dbus_error_is_set( &error ) ) {
-			kdWarning() << "Received signal, but no string argument: " <<  error.message << endl;
-			dbus_error_free( &error );
+	if (0 == strcmp(ifaceType, "org.freedesktop.UPower")) {
+		const char *signal = dbus_message_get_member(message);
+		kdDebug() << "Received from org.freedesktop.UPower: "
+			  << (nullptr == signal ? "null" : signal) << endl;
+		if (0 != strcmp(signal, "DeviceRemoved") &&
+		    0 != strcmp(signal, "DeviceAdded")) {
+			kdDebug() << "Neither DeviceAdded nor DeviceRemoved."
+				  << endl;
+			kdDebugFuncOut(trace);
+			return DBUS_HANDLER_RESULT_HANDLED;
+		}
+		DBusError error;
+		dbus_error_init(&error);
+		char *udi;
+		if (!dbus_message_get_args(
+			    message, &error, DBUS_TYPE_OBJECT_PATH, &udi,
+			    DBUS_TYPE_INVALID)) {
+			kdError() << "No object path argument for " << signal
+				  << ": " <<  error.message << endl;
+			dbus_error_free(&error);
 			kdDebugFuncOut(trace);
 			return DBUS_HANDLER_RESULT_HANDLED;
 		}
 
-                if (dbus_message_get_args( message, &error, DBUS_TYPE_STRING, &udi, DBUS_TYPE_INVALID )) {
-                        if (! strcmp(signal, "DeviceRemoved") || ! strcmp(signal, "DeviceAdded")) {
-				((dbusHAL*) myInstance)->emitMsgReceived( HAL_DEVICE, signal, udi );
-				kdDebug() << "org.freedesktop.Hal.Manager: uid: " << udi
-					  << " signal: " << signal << endl;
-                        } else {
-				kdWarning() << "Received unknown signal from org.freedesktop.Hal.Manager: "
-					    << signal << endl;
-                        }
-                }
+		instance->emitMsgReceived(UPOWER_DEVICE, signal, udi);
+
 		kdDebugFuncOut(trace);
 		return DBUS_HANDLER_RESULT_HANDLED;
+	}
+
+	if (ifaceType.startsWith("org.freedesktop.ConsoleKit.Session")) {
+		kdDebug() << "Received from org.freedesktop.ConsoleKit.Session"
+			  << endl;
+
+		const char *session = dbus_message_get_path(message);
+		const char *signal = dbus_message_get_member(message);
 		
-	} else if (ifaceType.startsWith("org.freedesktop.Hal.Device")) {		
-		const char *udi = dbus_message_get_path (message);
-		const char *signal = dbus_message_get_member( message );
-
-		/* Code taken from libhal */
-		 if (! strcmp(signal, "PropertyModified")) {
-			if (trace) kdDebug() << "-------- PropertyModified ------" << endl;
-			int i, num_modifications;
-			DBusMessageIter iter;
-			DBusMessageIter iter_array;
-
-			dbus_message_iter_init (message, &iter);
-			dbus_message_iter_get_basic (&iter, &num_modifications);
-			dbus_message_iter_next (&iter);
-			
-			dbus_message_iter_recurse (&iter, &iter_array);
-			
-			for (i = 0; i < num_modifications; i++) {
-				dbus_bool_t removed, added;
-				char *key;
-				DBusMessageIter iter_struct;
-			
-				dbus_message_iter_recurse (&iter_array, &iter_struct);
-			
-				dbus_message_iter_get_basic (&iter_struct, &key);
-				dbus_message_iter_next (&iter_struct);
-				dbus_message_iter_get_basic (&iter_struct, &removed);
-				dbus_message_iter_next (&iter_struct);
-				dbus_message_iter_get_basic (&iter_struct, &added);
-			
-				/* don't check if we really need this device, check this in an other class */
-				((dbusHAL*) myInstance)->emitMsgReceived( HAL_PROPERTY_CHANGED, udi, key);
-				kdDebug() << "PropertyModified: uid: " << udi << " key: " << key << endl;
-
-				dbus_message_iter_next (&iter_array);
-			}
-		} else if (! strcmp(signal, "Condition")) {
-			if (trace) kdDebug() << "-------- Condition ------" << endl;
-			char *name, *detail;
-
-			dbus_message_get_args( message, &error, DBUS_TYPE_STRING, &value, DBUS_TYPE_INVALID );	
-
-			if (dbus_message_get_args (message, &error, DBUS_TYPE_STRING, &name,
-						   DBUS_TYPE_STRING, &detail, DBUS_TYPE_INVALID)) {
-				((dbusHAL*) myInstance)->emitMsgReceived( HAL_CONDITION, name, detail );
-			} else {
-				if (dbus_error_is_set( &error )) dbus_error_free( &error );
-			}
-		} else {
-			kdDebug() << "Received unknown signal from org.freedesktop.Hal.Device: "
-				  << signal << endl;
-		}
-		kdDebugFuncOut(trace);
-		return DBUS_HANDLER_RESULT_HANDLED;
-	} else if (ifaceType.startsWith("org.freedesktop.ConsoleKit.Session")) {
-		kdDebug() << "Received from org.freedesktop.ConsoleKit.Session" << endl;
-
-		const char *session = dbus_message_get_path (message);
-		const char *signal = dbus_message_get_member( message );
-		
-		if (! strcmp(signal, "ActiveChanged")) {
-			dbus_bool_t active;
-
-			if (dbus_message_get_args( message, &error, DBUS_TYPE_BOOLEAN, &active, DBUS_TYPE_INVALID )) {
-				((dbusHAL*) myInstance)->emitMsgReceived( CONSOLEKIT_SESSION_ACTIVE, 
-									  session, QString("%1").arg((int)active));
-			} else {
-				if (dbus_error_is_set( &error )) dbus_error_free( &error );
-			}
-		} else {
-			kdDebug() << "Received unknown signal from org.freedesktop.ConsoleKit.Session: "
+		if (0 != strcmp(signal, "ActiveChanged")) {
+			kdDebug() << "Received unknown signal from "
+				"org.freedesktop.ConsoleKit.Session: "
 				  << signal << endl;
 			kdDebugFuncOut(trace);
-			return DBUS_HANDLER_RESULT_NOT_YET_HANDLED;
+			return DBUS_HANDLER_RESULT_HANDLED;
 		}
+
+		DBusError error;
+		dbus_error_init(&error);
+		dbus_bool_t active;
+		if (!dbus_message_get_args(message, &error, DBUS_TYPE_BOOLEAN,
+					  &active, DBUS_TYPE_INVALID)) {
+			if (dbus_error_is_set(&error))
+				dbus_error_free(&error);
+			kdDebugFuncOut(trace);
+			return DBUS_HANDLER_RESULT_HANDLED;
+		}
+		if (dbus_error_is_set(&error)) {
+			dbus_error_free(&error);
+			kdDebugFuncOut(trace);
+			return DBUS_HANDLER_RESULT_HANDLED;
+		}
+
+		instance->emitMsgReceived(CONSOLEKIT_SESSION_ACTIVE, 
+					  session, QString("%1")
+					  .arg(static_cast<int>(active)));
+
 		kdDebugFuncOut(trace);
 		return DBUS_HANDLER_RESULT_HANDLED;
-	} else {
-		kdDebugFuncOut(trace);
-		return DBUS_HANDLER_RESULT_NOT_YET_HANDLED;
 	}
+
+	kdDebugFuncOut(trace);
+	return DBUS_HANDLER_RESULT_NOT_YET_HANDLED;
 }
 
 // --> some functions to get private members
 
 //! to get the current connection to D-Bus
-DBusConnection * dbusHAL::get_DBUS_connection() {
+DBusConnection *
+dbusHAL::get_DBUS_connection() const {
 	return dbus_connection;
 }
+
+// bool
+// dbusHAL::isBattery(const char *name) {
+// 	const char *dev = &UPOWER_DEVICE_PATH[0];
+// 	Dict props = call_dbusP("org.freedesktop.UPower", name,
+// 				"org.freedesktop.DBus.Properties", "GetAll",
+// 				DBUS_TYPE_STRING, &dev, DBUS_TYPE_INVALID);
+// 	Dict::const_iterator i = props.find("Type");
+// 	return props.end() != i && 2 == std::any_cast<uint32_t>(i->second);
+// }
+
+// dbusHAL::Dict
+// dbusHAL::call_dbusP(const char *addr, const char *path, const char *intf,
+// 		const char *fnc, int first_arg_type, ...) {
+// 	va_list args;
+// 	va_start(args, first_arg_type);
+// 	Dict props = call_dbusP(addr, path, intf, fnc, first_arg_type, args);
+// 	va_end(args);
+// 	return props;
+// }
+
+// dbusHAL::Dict
+// dbusHAL::call_dbusP(const char *addr, const char *path, const char *intf,
+// 		const char *fnc, int first_arg_type, va_list args) {
+// 	DBusMessage *msg = dbus_message_new_method_call(addr, path, intf, fnc);
+// 	if (nullptr == msg)
+// 		throw std::runtime_error("new method");
+// 	DBusMsg __msg(msg, &dbus_message_unref);
+// 	if (!dbus_message_append_args_valist(msg, first_arg_type, args))
+// 		throw std::runtime_error("append args");
+
+// 	DBusError err;
+// 	dbus_error_init(&err);
+// 	DBusErr __err(&err, &dbus_error_free);
+
+// 	DBusMessage *reply =
+// 		dbus_connection_send_with_reply_and_block(dbus_connection, msg,
+// 							  -1, &err);
+// 	if (nullptr == reply)
+// 		throw std::runtime_error("call method");
+// 	DBusMsg __reply(reply, &dbus_message_unref);
+// 	if (dbus_error_is_set(&err))
+// 		throw std::runtime_error("method call error");
+// 	int type = dbus_message_get_type(reply);
+// 	switch (type) {
+// 	case DBUS_MESSAGE_TYPE_METHOD_RETURN:
+// 		return get_all(reply);
+// 	default:
+// 		throw std::runtime_error(
+// 			"expected DBUS_MESSAGE_TYPE_METHOD_RETURN");
+// 	}
+// }
+
+// dbusHAL::Dict
+// dbusHAL::get_all(DBusMessage *reply) {
+// 	DBusMessageIter i;
+// 	if (!dbus_message_iter_init(reply, &i))
+// 		return Dict();
+// 	int type;
+// 	do {
+// 		type = dbus_message_iter_get_arg_type(&i);
+// 		switch (type) {
+// 		case DBUS_TYPE_ARRAY:
+// 			return get_props_array(&i);
+// 		case DBUS_TYPE_INVALID:
+// 			throw std::runtime_error("expected array");
+// 		default:
+// 			throw std::runtime_error("expected array");
+// 		}
+// 	} while (dbus_message_iter_next(&i));
+// }
+
+// dbusHAL::Dict
+// dbusHAL::get_props_array(DBusMessageIter *i) {
+// 	DBusMessageIter j;
+// 	dbus_message_iter_recurse(i, &j);
+// 	Dict dict;
+// 	do {
+// 		int type;
+// 		type = dbus_message_iter_get_arg_type(&j);
+// 		switch (type) {
+// 		case DBUS_TYPE_DICT_ENTRY:
+// 			dict.insert(get_dict_entry(&j));
+// 			break;
+// 		case DBUS_TYPE_INVALID:
+// 			break;
+// 		default:
+// 			std::cout << "type: " << type << std::endl;
+// 			break;
+// 		}
+// 	} while (dbus_message_iter_next(&j));
+// 	return dict;
+// }
+
+// dbusHAL::Dict::value_type
+// dbusHAL::get_dict_entry(DBusMessageIter *i) {
+// 	DBusMessageIter j;
+// 	dbus_message_iter_recurse(i, &j);
+// 	const char *key = nullptr;
+// 	std::any value;
+// 	do {
+// 		int type;
+// 		type = dbus_message_iter_get_arg_type(&j);
+// 		switch (type) {
+// 		case DBUS_TYPE_STRING:
+// 			dbus_message_iter_get_basic(&j, &key);
+// 			break;
+// 		case DBUS_TYPE_VARIANT:
+// 			value = get_variant(&j, key);
+// 			break;
+// 		case DBUS_TYPE_INVALID:
+// 			break;
+// 		default:
+// 			std::cout << "type: " << type << std::endl;
+// 			break;
+// 		}
+// 	} while (dbus_message_iter_next(&j));
+// 	if (nullptr == key || !value.has_value())
+// 		throw std::runtime_error("expected valid dict entry");
+// 	return Dict::value_type(key, value);
+// }
+
+// std::any
+// dbusHAL::get_variant(DBusMessageIter *i, const char *key) {
+// 	DBusMessageIter j;
+// 	dbus_message_iter_recurse(i, &j);
+// 	char *sign = dbus_message_iter_get_signature(&j);
+// 	if (nullptr == sign)
+// 		return std::any();
+// 	DBusString __sign(sign, &dbus_free);
+
+// 	char *s;
+// 	bool flag;
+// 	uint64_t u64;
+// 	uint32_t u32;
+// 	int64_t s64;
+// 	double d;
+	
+// 	for (const char *v = sign; '\0' != *v;) {
+// 		switch (static_cast<int>(*v)) {
+// 		case DBUS_TYPE_STRING: // s
+// 			dbus_message_iter_get_basic(&j, &s);
+// 			std::cout << key << ": " << s << std::endl;
+// 			return std::any(std::string(s));
+// 		case DBUS_TYPE_BOOLEAN: // b
+// 			dbus_message_iter_get_basic(&j, &flag);
+// 			std::cout << key << ": " << (flag ? "true": "false")
+// 				  << std::endl;
+// 			return std::any(flag);
+// 		case DBUS_TYPE_UINT64: // t
+// 			dbus_message_iter_get_basic(&j, &u64);
+// 			std::cout << key << ": " << u64 << std::endl;
+// 			return std::any(u64);
+// 		case DBUS_TYPE_UINT32: // u
+// 			dbus_message_iter_get_basic(&j, &u32);
+// 			std::cout << key << ": " << u32 << std::endl;
+// 			return std::any(u32);
+// 		case DBUS_TYPE_INT64: // x
+// 			dbus_message_iter_get_basic(&j, &s64);
+// 			std::cout << key << ": " << s64 << std::endl;
+// 			return std::any(s64);
+// 		case DBUS_TYPE_DOUBLE: // d
+// 			dbus_message_iter_get_basic(&j, &d);
+// 			std::cout << key << ": " << d << std::endl;
+// 			return std::any(d);
+// 		default:
+// 			throw std::runtime_error("unknown type");
+// 		}
+// 		++v;
+// 		if ('\0' == *v)
+// 			break;
+// 		if (!dbus_message_iter_next(&j))
+// 			break;
+// 	}
+// 	return std::any();
+// }
+

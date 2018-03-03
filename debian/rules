@@ -1,8 +1,8 @@
 #!/usr/bin/make -f
-  
-include /usr/share/cdbs/1/class/kde.mk
-include /usr/share/cdbs/1/rules/debhelper.mk
-include /usr/share/cdbs/1/rules/patchsys-quilt.mk
+
+#include /usr/share/cdbs/1/class/kde.mk
+#include /usr/share/cdbs/1/rules/debhelper.mk
+#include /usr/share/cdbs/1/rules/patchsys-quilt.mk
 
 DEB_INSTALL_DOCS_ALL := AUTHORS NEWS
 
@@ -11,7 +11,6 @@ post-patches:: debian/stamp-bootstrap
 debian/stamp-bootstrap:
 	cp -f /usr/share/libtool/ltmain.sh admin/ltmain.sh
 	cp -f /usr/share/libtool/libtool.m4 admin/libtool.m4.in
-		
 	make -f admin/Makefile.common cvs
 	touch debian/stamp-bootstrap
 

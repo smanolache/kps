@@ -36,6 +36,15 @@
 #include "kpowersave_debug.h"
 #include "privileges.h"
 
+#include <memory>
+#include "dbus_properties.hpp"
+#include "UPowerProperties.hpp"
+#include <fstream>
+
+using kps::modified_props_type;
+using kps::dict_type;
+using kps::devices_type;
+
 /*! The default constructor of the class HardwareInfo */
 HardwareInfo::HardwareInfo() {
 	kdDebugFuncIn(trace);
@@ -44,7 +53,6 @@ HardwareInfo::HardwareInfo() {
 	acadapter = true;
 	lidclose = false;
 	dbus_terminated = true;
-	hal_terminated = true;
 	laptop = false;
 	brightness = false;
 	brightness_in_hardware = false;
@@ -63,39 +71,42 @@ HardwareInfo::HardwareInfo() {
 
 	allUDIs = QStringList();
 	consoleKitSession = QString();
-	BatteryList.setAutoDelete( true ); // the list owns the objects
+	BatteryList.setAutoDelete(true); // the list owns the objects
 	
 	primaryBatteries = new BatteryCollection(BAT_PRIMARY);
 	setPrimaryBatteriesWarningLevel(); // force default settings
 
 	// connect to D-Bus and HAL
 	dbus_HAL = new dbusHAL();
-	if (dbus_HAL->isConnectedToDBUS()) {
+	if (dbus_HAL->isConnectedToDBUS())
 		dbus_terminated = false;
-		if (dbus_HAL->isConnectedToHAL()) {
-			hal_terminated = false;
-		} else {
-			kdError() << "Could not connect to HAL" << endl;
-		}
-	} else {
-		kdError() << "Could not connect to D-Bus & HAL" << endl;
-	}
+	else
+		kdError() << "Could not connect to D-Bus." << endl;
 
-	checkConsoleKitSession();
-	checkPowermanagement();
-	checkIsLaptop();
-	checkBrightness();
-	checkCPUFreq();
+	checkConsoleKitSession(); // initialises consoleKitSession, sessionIsActive
+	checkPowermanagement(); // initialises has_ACPI, has_PMU, has_APM => they are not really used
+	checkIsLaptop(); // initialises laptop
+	checkBrightness(); // write to /sys/class/backlight/intel_backlight/brightness
+	checkCPUFreq(); // initialises cpuFreq (bool), cpuFreqAllowed (bool), cpuFreqGovernor (ondemand, userspace, conservative, powersave, performance), and currentCPUFreqPolicy (dynamic, powersave, performance)
+// /sys/devices/system/cpu0/cpufreq/*
 	// getSchedPowerSavings(); 
-	checkSuspend();
-	intialiseHWInfo();
+	checkSuspend(); // initialises the suspend_states object, /sys/power/state, can be done with /org.freedesktop.login1
+	intialiseHWInfo(); // initialises lidclose and adds the lid's device udi
 
 	updatePrimaryBatteries();
 
 	// connect to signals
-	connect(dbus_HAL, SIGNAL(msgReceived_withStringString( msg_type, QString, QString )),
-		this, SLOT(processMessage( msg_type, QString, QString )));
-	connect(dbus_HAL, SIGNAL(backFromSuspend(int)), this, SLOT(handleResumeSignal(int)));
+	connect(dbus_HAL, SIGNAL(msgReceived_withStringString(
+					 msg_type, QString, QString)),
+		this, SLOT(processMessage( msg_type, QString, QString)));
+	connect(dbus_HAL, SIGNAL(property_changed(
+					 msg_type, const char *,
+					 const kps::modified_props_type&)),
+		this, SLOT(process_changed_props(
+				   msg_type, const char *,
+				   const kps::modified_props_type&)));
+	connect(dbus_HAL, SIGNAL(backFromSuspend(int)), this,
+		SLOT(handleResumeSignal(int)));
 
 	kdDebugFuncOut(trace);
 }
@@ -105,7 +116,7 @@ HardwareInfo::~HardwareInfo() {
 	kdDebugFuncIn(trace);
 
 	delete dbus_HAL;
-	dbus_HAL = NULL;
+	dbus_HAL = nullptr;
 
 	kdDebugFuncOut(trace);
 }
@@ -116,27 +127,29 @@ HardwareInfo::~HardwareInfo() {
 void HardwareInfo::reconnectDBUS() {
 	kdDebugFuncIn(trace);
 
-	if (!dbus_HAL->isConnectedToDBUS()) {
-		bool _reconnect = dbus_HAL->reconnect();
+	if (dbus_HAL->isConnectedToDBUS()) {
+		kdDebugFuncOut(trace);
+		return;
+	}
 
-		if (!_reconnect && !dbus_HAL->isConnectedToDBUS()) {
+	if (!dbus_HAL->reconnect()) {
+		if (!dbus_HAL->isConnectedToDBUS()) {
 			//reconnect failed
 			emit dbusRunning(DBUS_NOT_RUNNING);
-			QTimer::singleShot(4000, this, SLOT(reconnectDBUS()));
-		} else if (!_reconnect && dbus_HAL->isConnectedToDBUS()) {
+			QTimer::singleShot(4000, this,
+					   SLOT(reconnectDBUS()));
+		} else {
 			// reset everything, we are reconnected
 			dbus_terminated = false;
-			hal_terminated = true;
 			emit dbusRunning(DBUS_RUNNING);
-		} else if (_reconnect) {
-			// reset everything, we are reconnected
-			dbus_terminated = false;
-			hal_terminated = false;
-			reinitHardwareInfos();
-			emit dbusRunning(hal_terminated);
-			emit halRunning(DBUS_RUNNING);
-		}  
-	} 
+		}
+	} else {
+		// reset everything, we are reconnected
+		dbus_terminated = false;
+		reinitHardwareInfos();
+		// TODO Really 0?
+		emit dbusRunning(0);
+	}  
 
 	kdDebugFuncOut(trace);
 }
@@ -147,46 +160,45 @@ void HardwareInfo::reconnectDBUS() {
  * \retval true		if reinit HW infos correct
  * \retval false	if not
  */
-bool HardwareInfo::reinitHardwareInfos () {
+bool HardwareInfo::reinitHardwareInfos() {
 	kdDebugFuncIn(trace);
 	
-	if (dbus_HAL->isConnectedToDBUS() && dbus_HAL->isConnectedToHAL()) {
-		/* first cleanup */
-		acadapter = true;
-		lidclose = false;
-		laptop = false;
-		brightness = false;
-		has_APM = false;
-		has_ACPI = false;
-	
-		update_info_ac_changed = true;
-		update_info_cpufreq_policy_changed = true;
-		update_info_primBattery_changed = true;
-		
-		allUDIs = QStringList();
-
-		BatteryList.clear();
-		primaryBatteries = new BatteryCollection(BAT_PRIMARY);
-
-		// check the current desktop session again
-		checkConsoleKitSession();
-
-		/* reinit hardware data */
-		checkPowermanagement();
-		checkIsLaptop();
-		checkBrightness();
-		checkCPUFreq();
-		checkSuspend();
-		intialiseHWInfo();
-		// getSchedPowerSavings();
-		updatePrimaryBatteries();
-	
-		kdDebugFuncOut(trace);	
-		return true;
-	} else {
+	if (!dbus_HAL->isConnectedToDBUS()) {
 		kdDebugFuncOut(trace);
 		return false;
 	}
+	/* first cleanup */
+	acadapter = true;
+	lidclose = false;
+	laptop = false;
+	brightness = false;
+	has_APM = false;
+	has_ACPI = false;
+
+	update_info_ac_changed = true;
+	update_info_cpufreq_policy_changed = true;
+	update_info_primBattery_changed = true;
+	
+	allUDIs = QStringList();
+
+	BatteryList.clear();
+	primaryBatteries = new BatteryCollection(BAT_PRIMARY);
+
+	// check the current desktop session again
+	checkConsoleKitSession();
+
+	/* reinit hardware data */
+	checkPowermanagement();
+	checkIsLaptop();
+	checkBrightness();
+	checkCPUFreq();
+	checkSuspend();
+	intialiseHWInfo();
+	// getSchedPowerSavings();
+	updatePrimaryBatteries();
+
+	kdDebugFuncOut(trace);	
+	return true;
 }
 
 /*!
@@ -196,148 +208,142 @@ bool HardwareInfo::reinitHardwareInfos () {
  * \param message 	the message
  * \param value 	an optional message value as e.g. message string
  */
-void HardwareInfo::processMessage (msg_type type, QString message, QString value) {
+void
+HardwareInfo::processMessage(msg_type type, QString message, QString value) {
 	kdDebugFuncIn(trace);
 
 	switch(type) {
-		case ACPI_EVENT:
-			// we don't handle acpi events here atm
-			break;
-		case DBUS_EVENT:
-			kdDebug() << "D-Bus Event: " << value << endl;
-			if ( message.startsWith("dbus.terminate")){
-				// TODO: addapt from pdaemon
-				dbus_terminated = true;
-				QTimer::singleShot(4000, this, SLOT(reconnectDBUS()));
-			}
-			else if ( message.startsWith("hal.")) {
-				if ( message.startsWith("hal.terminate")) {
-					hal_terminated = true;
-					emit halRunning(false);
-					// TODO: update data
-					emit generalDataChanged();
-				} else if ( message.startsWith("hal.started")) {
-					hal_terminated = false;
-					reinitHardwareInfos();
-					emit halRunning( true );
-					// TODO: update data
-					emit generalDataChanged();
-				}
-				// TODO: addapt from pdaemon
-			}
-			break;
-		case HAL_DEVICE:
-			// --> we can maybe ignore these events except for batteries, not shure atm
-			int _type;
-
-			if (message.startsWith("DeviceAdded")) {
-				if (checkIfHandleDevice(value, &_type)) {
-					switch (_type) {
-						case BATTERY:
-							batteryRemovedAdded = true;
-							QTimer::singleShot(50, this, SLOT(handleDeviceRemoveAdd()));
-							break;
-						case AC_ADAPTER:
-						case BUTTON_SLEEP:
-						case BUTTON_POWER:
-						case LID:
-							// TODO: handle code if needed actually not 
-							break;
-						case LAPTOP_PANEL:
-							checkBrightness();
-							break;
-						default:
-							kdDebug() << "New device added Device udi: "
-								  << value << "type: " << _type << endl;
-							break;
-					}
-				}
-			} else if (message.startsWith("DeviceRemoved")) {
-				// check if we monitor this device
-				if (allUDIs.contains(value)) {
-					batteryRemovedAdded = false;
-					
-					if (primaryBatteries->isBatteryHandled(value))
-						batteryRemovedAdded = true;
-					
-					QTimer::singleShot(50, this, SLOT(handleDeviceRemoveAdd()));
-				} else {
-					kdDebug() << "Not monitored device removed: " << value << endl;
-				}
-			} else {
-				kdDebug() << "Unknown HAL_DEVICE message: " << message << endl;
-			}
-			break;
-		case HAL_PROPERTY_CHANGED:
-			if (!message.isEmpty() && allUDIs.contains( message )) {
-				if (value.startsWith( "ac_adapter.present" )) {
-					QTimer::singleShot(50, this, SLOT(checkACAdapterState()));
-				} else if (value.startsWith( "battery." )) {
-					// this is a battery event
-					updateBatteryValues(message, value);
-				} else if (value.startsWith( "button.state.value" )) {
-					if (message.startsWith( *udis["lidclose"] )) {
-						QTimer::singleShot(50, this, SLOT(checkLidcloseState()));
-					}
-				} else if (value.startsWith( "laptop_panel")) {
-					if (message.startsWith( *udis["laptop_panel"] )) {
-						QTimer::singleShot(50, this, SLOT(checkBrightness()));
-					}
-				}
-				// TODO: add needed code
-			} else {
-				kdDebug() << "HAL_PROPERTY_CHANGED for unmonitored device: " << value << endl;
-			}
-			break;
-		case HAL_CONDITION:
-			// TODO: Check if we really need to monitor this events. We get maybe also 
-			//	 HAL_PROPERTY_CHANGED event for the key
-			if (message.startsWith("ButtonPressed")) {
-				kdDebug() << "ButtonPressed event from HAL: " << value << endl;
-				if (value.startsWith("lid")) {
-					QTimer::singleShot(50, this, SLOT(checkLidcloseState()));
-				} else if (value.startsWith("power")) {
-					QTimer::singleShot(50, this, SLOT(emitPowerButtonPressed()));
-				} else if (value.startsWith("sleep") || value.startsWith("suspend")) {
-					QTimer::singleShot(50, this, SLOT(emitSleepButtonPressed()));
-				} else if (value.startsWith("hibernate")) {
-					QTimer::singleShot(50, this, SLOT(emitS2diskButtonPressed()));
-				} else if (value.startsWith("brightness-")) {
-					if (!brightness_in_hardware && value.endsWith("-up"))
-						QTimer::singleShot(50, this, SLOT(brightnessUpPressed()));
-					else if (!brightness_in_hardware && value.endsWith("-down"))
-						QTimer::singleShot(50, this, SLOT(brightnessDownPressed()));
-				}
-			} else {
-				kdDebug() << "Unmonitored HAL_CONDITION: " << message << " : " << value << endl;
-			}
-			break;
-		case CONSOLEKIT_SESSION_ACTIVE:
-			if (!message.isEmpty() && !value.isEmpty()) {
-				if (message == consoleKitSession) {
-					if (value == "1") {
-						sessionIsActive = true;
-					} else {
-						sessionIsActive = false;
-					}
-					QTimer::singleShot(50, this, SLOT(emitSessionActiveState()));
-				} else {
-					if (trace)
-						kdDebug() << "CONSOLEKIT_SESSION_ACTIVE: not our session" << endl;
-				}
-			}
-			break;
-		case POLICY_POWER_OWNER_CHANGED:
-			if (message.startsWith("NOW_OWNER")) {
-				// TODO: add code
-			} else if (message.startsWith("OTHER_OWNER")){
-				// TODO: add code
-			}
-			break;
-		default:
-			kdDebug() << "Recieved unknown package type: " << type << endl;
-			break;
+	case ACPI_EVENT:
+		// we don't handle acpi events here atm
+		break;
+	case DBUS_EVENT:
+		kdDebug() << "D-Bus Event: " << value << endl;
+		if (message.startsWith("dbus.terminate")){
+			dbus_terminated = true;
+			QTimer::singleShot(4000, this, SLOT(reconnectDBUS()));
+		}
+		break;
+	case UPOWER_DEVICE:
+		if (0 == message.compare("DeviceAdded"))
+			add_device(value.ascii());
+		else if (0 == message.compare("DeviceRemoved"))
+			remove_device(value.ascii());
+		else {
+			kdDebug() << "Unknown UPOWER_DEVICE message: "
+				  << message << endl;
+		}
+		break;
+	case CONSOLEKIT_SESSION_ACTIVE:
+		if (!message.isEmpty() && !value.isEmpty()) {
+			if (message == consoleKitSession) {
+				sessionIsActive = "1" == value;
+				QTimer::singleShot(
+					50, this,
+					SLOT(emitSessionActiveState()));
+			} else
+				if (trace)
+					kdDebug() << "CONSOLEKIT_SESSION_"
+						"ACTIVE: not our session"
+						  << endl;
+		}
+		break;
+	case POLICY_POWER_OWNER_CHANGED:
+		if (message.startsWith("NOW_OWNER")) {
+			// TODO: add code
+		} else if (message.startsWith("OTHER_OWNER")){
+			// TODO: add code
+		}
+		break;
+	default:
+		kdDebug() << "Recieved unknown package type: " << type << endl;
+		break;
 	}
+
+	kdDebugFuncOut(trace);
+}
+
+void
+HardwareInfo::process_changed_props(msg_type type, const char *udi,
+				    const modified_props_type& props) {
+	kdDebugFuncIn(trace);
+
+	switch(type) {
+	case UPOWER_PROPERTY_CHANGED:
+		handle_upower_changed_props(udi, props);
+		break;
+	default:
+		kdDebug() << "Recieved unknown package type: " << type << endl;
+		break;
+	}
+
+	kdDebugFuncOut(trace);
+}
+
+void
+HardwareInfo::handle_upower_changed_props(const char *udi,
+					  const modified_props_type& props) {
+	static const char BAT_PFX[] =
+		"/org/freedesktop/UPower/devices/battery_";
+
+	kdDebugFuncIn(trace);
+
+	if (0 == strcmp(udi, "/org/freedesktop/UPower/devices/line_power_AC0"))
+		handle_ac_props_change(props);
+	else if (strlen(udi) >= sizeof(BAT_PFX) &&
+		 0 == strncmp(udi, BAT_PFX, sizeof(BAT_PFX) - 1))
+		handle_battery_props_change(udi, props);
+	else if (0 == strcmp(udi, "/org/freedesktop/UPower/devices/"
+			     "DisplayDevice"))
+		handle_display_device_props_change(props);
+	else
+		kdDebug() << "Unknown UPower device" << endl;
+
+	kdDebugFuncOut(trace);
+}
+
+void
+HardwareInfo::handle_ac_props_change(const modified_props_type& props) {
+	kdDebugFuncIn(trace);
+
+	signal_ac_change(props.modified);
+
+	kdDebugFuncOut(trace);
+}
+
+void
+HardwareInfo::signal_ac_change(const dict_type& props) {
+	kdDebugFuncIn(trace);
+
+	dict_type::const_iterator i = props.find("Online");
+	if (props.end() != i) {
+		bool online = std::any_cast<bool>(i->second);
+		if (online != acadapter) {
+			acadapter = online;
+			update_info_ac_changed = true;
+			emit ACStatus(acadapter);
+		} else {
+			update_info_ac_changed = false;
+		}
+	} else
+		update_info_ac_changed = false;
+
+	kdDebugFuncOut(trace);
+}
+
+void
+HardwareInfo::handle_battery_props_change(const char *udi,
+					  const modified_props_type& props) {
+	kdDebugFuncIn(trace);
+
+	updateBatteryValues(udi, props.modified);
+
+	kdDebugFuncOut(trace);
+}
+
+void
+HardwareInfo::handle_display_device_props_change(
+	const modified_props_type& props) {
+	kdDebugFuncIn(trace);
 
 	kdDebugFuncOut(trace);
 }
@@ -347,10 +353,12 @@ void HardwareInfo::processMessage (msg_type type, QString message, QString value
  * actions after resume, do this here.
  * \param result 	integer with the result of the resume/suspend
  */
-void HardwareInfo::handleResumeSignal (int result) {
-	if (trace) kdDebug() << funcinfo <<  "IN: " << "(int result: " << result << ")"<< endl;
+void HardwareInfo::handleResumeSignal(int result) {
+	if (trace)
+		kdDebug() << funcinfo <<  "IN: " << "(int result: "
+			  << result << ")"<< endl;
 
-	if (result == -1) {
+	if (-1 == result) {
 		// check if time since suspend is higher than 6 hours, 
 		// the magic D-Bus timeout for pending calls
 		if (calledSuspend.elapsed() > 21600000) {
@@ -364,26 +372,66 @@ void HardwareInfo::handleResumeSignal (int result) {
 	kdDebugFuncOut(trace);
 }
 
-/*!
- * This SLOT is used to handle device remove and add events 
- * (incl. decouple the event from the event loop)
- */
-void HardwareInfo::handleDeviceRemoveAdd () {
+bool
+HardwareInfo::add_device(const char *udi) {
 	kdDebugFuncIn(trace);
 
-	// do it the hard way for now 
-	// TODO: write a own function to handle batteries
-	reinitHardwareInfos();
-	
-	if(batteryRemovedAdded) {
-		emit primaryBatteryAddedRemoved();
-		batteryRemovedAdded = false;
-		emit primaryBatteryChanged();
+	DBusConnection *conn = dbus_HAL->get_DBUS_connection();
+	if (!conn) {
+		kdError() << "add_device: null dbus connection" << endl;
+		kdDebugFuncOut(trace);
+		return false;
+	}
+	dict_type props = kps::upower_get_all_props(conn, udi);
+	if (!isBattery(props)) {
+		kdDebug() << "add_device: " << udi << " is not a battery. "
+			"Not adding." << endl;
+		kdDebugFuncOut(trace);
+		return false;
+	}
+	bool primary = isPrimary(props);
+	if (!add_battery(udi, primary, props)) {
+		kdDebug() << "add_device: " << udi << " already managed. "
+			"Not added." << endl;
+		kdDebugFuncOut(trace);
+		return false;
 	}
 
-	emit generalDataChanged();
+	if (primary)
+		updatePrimaryBatteries();
+	emit primaryBatteryAddedRemoved();
+	emit primaryBatteryChanged();
 
 	kdDebugFuncOut(trace);
+	return true;
+}
+
+bool
+HardwareInfo::remove_device(const char *udi) {
+	kdDebugFuncIn(trace);
+
+	QStringList::iterator i = allUDIs.find(udi);
+	if (allUDIs.end() == i) {
+		kdDebug() << udi << " is not managed by us. Not removing."
+			  << endl;
+		kdDebugFuncOut(trace);
+		return false;
+	}
+
+	bool found = false;
+	allUDIs.erase(i);
+	for (Battery *bat = BatteryList.first(); bat; bat = BatteryList.next())
+		if (0 == strcmp(udi, bat->getUdi())) {
+			BatteryList.remove(bat);
+			found = true;
+			break;
+		}
+
+	if (found)
+		primaryBatteries->refreshInfo(BatteryList, true);
+
+	kdDebugFuncOut(trace);
+	return found;
 }
 
 /*! 
@@ -397,100 +445,63 @@ bool HardwareInfo::checkConsoleKitSession () {
 
 	bool retval = false;
 
-	if (dbus_HAL->isConnectedToDBUS()) {
-		char *reply;
-		char *cookie = getenv("XDG_SESSION_COOKIE");
-
-		if (cookie == NULL) {
-			kdDebug() << "Could not get XDG_SESSION_COOKIE from environment" << endl;
-			sessionIsActive = true;
-		} else {
-			if (dbus_HAL->dbusSystemMethodCall( CK_SERVICE, CK_MANAGER_OBJECT, 
-							CK_MANAGER_IFACE, "GetSessionForCookie", 
-							&reply, DBUS_TYPE_OBJECT_PATH,
-							DBUS_TYPE_STRING, &cookie,
-							DBUS_TYPE_INVALID)) {
-				if (trace) 
-					kdDebug() << "GetSessionForCookie returned: " << reply << endl;
-				
-				if (reply != NULL) {
-					dbus_bool_t i_reply;
-					consoleKitSession = reply;
-	
-					if (dbus_HAL->dbusSystemMethodCall( CK_SERVICE, consoleKitSession, 
-									    CK_SESSION_IFACE, "IsActive", 
-									    &i_reply, DBUS_TYPE_BOOLEAN,
-									    DBUS_TYPE_INVALID)) {
-						sessionIsActive = ((i_reply != 0) ? true: false);
-						if (trace) 
-							kdDebug() << "IsActive returned: " << sessionIsActive << endl;
-	
-						retval = true;
-					} else {
-						kdError() << "Could get session cookie and session name, but not "
-							<< "but not the status of the session. Assume for now " 
-							<< "the Session is inactive!" << endl;
-						sessionIsActive = false;
-					}
-				}
-			}
-		}
+	if (!dbus_HAL->isConnectedToDBUS()) {
+		kdDebugFuncOut(trace);
+		return false;
 	}
+
+	char *cookie = getenv("XDG_SESSION_COOKIE");
+
+	if (nullptr == cookie) {
+		kdDebug() << "Could not get XDG_SESSION_COOKIE from "
+			"environment" << endl;
+		sessionIsActive = true;
+		kdDebugFuncOut(trace);
+		return false;
+	}
+
+	char *reply;
+	if (!dbus_HAL->dbusSystemMethodCall(CK_SERVICE, CK_MANAGER_OBJECT, 
+					    CK_MANAGER_IFACE,
+					    "GetSessionForCookie", 
+					    &reply, DBUS_TYPE_OBJECT_PATH,
+					    DBUS_TYPE_STRING, &cookie,
+					    DBUS_TYPE_INVALID)) {
+		kdDebugFuncOut(trace);
+		return false;
+	}
+
+	if (trace) 
+		kdDebug() << "GetSessionForCookie returned: " << reply << endl;
+		
+	if (nullptr == reply) {
+		kdDebugFuncOut(trace);
+		return false;
+	}
+
+	dbus_bool_t i_reply;
+	consoleKitSession = reply;
+	
+	if (!dbus_HAL->dbusSystemMethodCall(CK_SERVICE, consoleKitSession, 
+					    CK_SESSION_IFACE, "IsActive", 
+					    &i_reply, DBUS_TYPE_BOOLEAN,
+					    DBUS_TYPE_INVALID)) {
+		kdError() << "Could get session cookie and session name, "
+			"but not the status of the session. Assume for now " 
+			"the Session is inactive!" << endl;
+		sessionIsActive = false;
+		kdDebugFuncOut(trace);
+		return false;
+	}
+
+	sessionIsActive = 0 != i_reply;
+	if (trace) 
+		kdDebug() << "IsActive returned: " << sessionIsActive << endl;
 
 	kdDebugFuncOut(trace);
 	return retval;
 }
 
-
-/*! 
- * This function check for a given UDI, if we should handle a device
- * \param _udi		QString with the UDI of the device
- * \param *type		pointer to a integer to return the type of the device, see \ref device_type
- * \return 		Boolean with info if we should handle the device.
- * \retval true		if we should handle
- * \retval false	if not
- */
-bool HardwareInfo::checkIfHandleDevice ( QString _udi, int *type) {
-	kdDebugFuncIn(trace);
-	
-	QStringList _cap;
-	bool ret = true;
-	
-	if (dbus_HAL->halGetPropertyStringList( _udi, "info.capabilities", &_cap) && !_cap.isEmpty()) {
-		if (_cap.contains("ac_adapter")) {
-			*type = BATTERY;
-		} else if (_cap.contains("button")) {
-			QString _val;
-			if (dbus_HAL->halGetPropertyString( _udi, "button.type", &_val)) {
-				if (_val.startsWith("lid")) {
-					*type = LID;
-				} else if ( _val.startsWith("power")) {
-					*type = BUTTON_POWER;
-				} else if ( _val.startsWith("sleep")) {
-					*type = BUTTON_SLEEP;
-				} else {
-					ret = false;
-				}
-			} else {
-				ret = false;
-			}
-		} else if (_cap.contains("battery")) {
-			*type = BATTERY;
-		} else if (_cap.contains("laptop_panel")) {
-			*type = LAPTOP_PANEL;
-		} else {
-			ret = false;
-			kdDebug() << "Device with capability " << _cap.join(", ") << " unhandled" << endl;
-		}
-	} else {
-		ret = false;
-	}
-	
-	if (!ret) *type = UNKNOWN_DEVICE;
-	
-	kdDebugFuncOut(trace);
-	return ret;
-}
 
 // --> set some values for devices
 /*!
@@ -501,22 +512,26 @@ bool HardwareInfo::checkIfHandleDevice ( QString _udi, int *type) {
  * \param _low		value for the state BAT_LOW or -1
  * \param _crit		value for the state BAT_CRIT or -1
  */
-void HardwareInfo::setPrimaryBatteriesWarningLevel (int _warn, int _low, int _crit ) {
-	if (trace) kdDebug() << funcinfo << "IN: " << "warn: " << _warn << " low: " << _low << " crit: " << _crit << endl;
+void
+HardwareInfo::setPrimaryBatteriesWarningLevel(int _warn, int _low, int _crit) {
+	kdDebugFuncIn(trace);
 
-	if (_warn > -1 && _low > -1 && _crit > -1 ){
+	if (trace)
+		kdDebug() << funcinfo << "IN: " << "warn: " << _warn
+			  << " low: " << _low << " crit: " << _crit << endl;
+
+	if (_warn > -1 && _low > -1 && _crit > -1) {
 		primaryBatteriesWarnLevel = _warn;
 		primaryBatteriesLowLevel = _low;
 		primaryBatteriesCriticalLevel = _crit;
 	}
 
 	if (primaryBatteries) {
-		primaryBatteries->setWarnLevel( primaryBatteriesWarnLevel );
-		primaryBatteries->setLowLevel( primaryBatteriesLowLevel );
-		primaryBatteries->setCritLevel( primaryBatteriesCriticalLevel );
-		if (!BatteryList.isEmpty()) {
-			primaryBatteries->refreshInfo( BatteryList, true );
-		}
+		primaryBatteries->setWarnLevel(primaryBatteriesWarnLevel);
+		primaryBatteries->setLowLevel(primaryBatteriesLowLevel);
+		primaryBatteries->setCritLevel(primaryBatteriesCriticalLevel);
+		if (!BatteryList.isEmpty())
+			primaryBatteries->refreshInfo(BatteryList, true);
 	}
 
 	kdDebugFuncOut(trace);
@@ -530,16 +545,27 @@ void HardwareInfo::setPrimaryBatteriesWarningLevel (int _warn, int _low, int _cr
 void HardwareInfo::checkIsLaptop () {
 	kdDebugFuncIn(trace);
 
-	QString ret;
-	
-	if (dbus_HAL->halGetPropertyString(HAL_COMPUTER_UDI, "system.formfactor", &ret)) {
-
-		if (!ret.isEmpty() && ret.startsWith("laptop"))
+	std::ifstream f;
+	f.exceptions(std::ifstream::badbit | std::ifstream::failbit);
+	try {
+		f.open("/sys/class/dmi/id/chassis_type");
+		unsigned int n;
+		f >> n;
+		switch (n) {
+		case 8:
+		case 9:
+		case 10:
+		case 11:
+		case 14:
 			laptop = true;
-		else 
+			break;
+		default:
 			laptop = false;
-	} else {
-		// error case
+			break;
+		}
+	} catch (const std::exception& e) {
+		kdError() << "Could not open /sys/class/dmi/id/chassis_type: "
+			  << e.what() << endl;
 		laptop = false;
 	}
 
@@ -552,24 +578,7 @@ void HardwareInfo::checkIsLaptop () {
 void HardwareInfo::checkPowermanagement() {
 	kdDebugFuncIn(trace);
 	
-	QString ret;
-
-	has_APM = false;
-	has_ACPI = false;
-	has_PMU = false;
-	
-	if (dbus_HAL->halGetPropertyString( HAL_COMPUTER_UDI, "power_management.type", &ret)) {
-	
-		if (ret.isEmpty()) {
-			return;
-		} else if (ret.startsWith("acpi")) {
-			has_ACPI = true;
-		} else if (ret.startsWith("apm")) {
-			has_APM = true;
-		} else if (ret.startsWith("pmu")) {
-			has_PMU = true;
-		}
-	}
+	has_ACPI = true;
 
 	kdDebugFuncOut(trace);
 }
@@ -579,76 +588,87 @@ void HardwareInfo::checkPowermanagement() {
  * The function checks wether the machine can suspend/standby.
  */
 void HardwareInfo::checkSuspend() {
-	kdDebugFuncIn(trace);
-	
-	QStringList ret;
-	bool _ret_b = false;
+	kdDebugFuncIn(trace);	
 
-	suspend_states = SuspendStates();
+	suspend_states.standby_can = false;
+	suspend_states.standby = false;
+	suspend_states.standby_allowed = -1;
 
-	if (dbus_HAL->halGetPropertyStringList( HAL_COMPUTER_UDI, HAL_PM_IFACE ".method_names",
-						&ret )) {
-		// check for suspend2ram
-		if (dbus_HAL->halGetPropertyBool( HAL_COMPUTER_UDI, "power_management.can_suspend", &_ret_b ) ||
-		    dbus_HAL->halGetPropertyBool( HAL_COMPUTER_UDI, "power_management.can_suspend_to_ram", 
-						  &_ret_b )) {
-			suspend_states.suspend2ram_can = _ret_b;
-			if (_ret_b) {
-				if (ret.contains( "Suspend" )) {
-					suspend_states.suspend2ram = true;
-					suspend_states.suspend2ram_allowed = dbus_HAL->isUserPrivileged(PRIV_SUSPEND,
-													HAL_COMPUTER_UDI);
-			}
-			} else {
-				suspend_states.suspend2ram = false;
-				suspend_states.suspend2ram_allowed = -1;
-			}
-		} else {
-			suspend_states.suspend2ram_can = false;
+	char *can_suspend = nullptr;
+	if (!dbus_HAL->dbusSystemMethodCall(
+		    "org.freedesktop.login1", "/org/freedesktop/login1",
+		    "org.freedesktop.login1.Manager", "CanSuspend",
+		    &can_suspend, DBUS_TYPE_STRING, DBUS_TYPE_INVALID)) {
+		kdError() << "Error querying org.freedesktop.login1.Manager."
+			"CanSuspend" << endl;
+		suspend_states.suspend2ram = false;
+		suspend_states.suspend2ram_can = false;
+		suspend_states.suspend2ram_allowed = -1;
+	}
+	if (can_suspend) {
+		kdDebug() << "org.freedesktop.login1.Manager.CanSuspend "
+			"returned " << can_suspend << '.' << endl;
+		if (0 == strcmp("yes", can_suspend)) {
+			suspend_states.suspend2ram = true;
+			suspend_states.suspend2ram_can = true;
+			suspend_states.suspend2ram_allowed = 1;
+		} else if (0 == strcmp("no", can_suspend)) {
+			suspend_states.suspend2ram = true;
+			suspend_states.suspend2ram_can = true;
+			suspend_states.suspend2ram_allowed = 0;
+		} else if (0 == strcmp("na", can_suspend)) {
 			suspend_states.suspend2ram = false;
-			suspend_states.suspend2ram_allowed = -1;
+			suspend_states.suspend2ram_can = false;
+			suspend_states.suspend2ram_allowed = 0;
+		} else { // challenge
+			suspend_states.suspend2ram = true;
+			suspend_states.suspend2ram_can = true;
+			suspend_states.suspend2ram_allowed = 0;
 		}
-
-		// check for suspend2disk
-		if (dbus_HAL->halGetPropertyBool( HAL_COMPUTER_UDI, "power_management.can_hibernate", &_ret_b ) ||
-		    dbus_HAL->halGetPropertyBool( HAL_COMPUTER_UDI, "power_management.can_suspend_to_disk", 
-						  &_ret_b )) {
-			suspend_states.suspend2disk_can = _ret_b;
-			if (_ret_b) {
-				if (ret.contains( "Hibernate" )) {
-					suspend_states.suspend2disk = true;
-					suspend_states.suspend2disk_allowed =
-								 dbus_HAL->isUserPrivileged(PRIV_HIBERNATE,
-											    HAL_COMPUTER_UDI);
-			}
-			} else {
-				suspend_states.suspend2disk = false;
-				suspend_states.suspend2disk_allowed = -1;
-			}
-		} else {
-			suspend_states.suspend2disk_can = false;
+	} else {
+		kdError() << "org.freedesktop.login1.Manager.CanSuspend "
+			  "returned null." << endl;
+		suspend_states.suspend2ram = false;
+		suspend_states.suspend2ram_can = false;
+		suspend_states.suspend2ram_allowed = -1;
+	}
+	char *can_hibernate = nullptr;
+	if (!dbus_HAL->dbusSystemMethodCall(
+		    "org.freedesktop.login1", "/org/freedesktop/login1",
+		    "org.freedesktop.login1.Manager", "CanHibernate",
+		    &can_hibernate, DBUS_TYPE_STRING, DBUS_TYPE_INVALID)) {
+		kdError() << "Error querying org.freedesktop.login1.Manager."
+			"CanHibernate" << endl;
+		suspend_states.suspend2disk = false;
+		suspend_states.suspend2disk_can = false;
+		suspend_states.suspend2disk_allowed = -1;
+	}
+	if (can_hibernate) {
+		kdDebug() << "org.freedesktop.login1.Manager.CanHibernate "
+			"returned " << can_hibernate << '.' << endl;
+		if (0 == strcmp("yes", can_hibernate)) {
+			suspend_states.suspend2disk = true;
+			suspend_states.suspend2disk_can = true;
+			suspend_states.suspend2disk_allowed = 1;
+		} else if (0 == strcmp("no", can_hibernate)) {
+			suspend_states.suspend2disk = true;
+			suspend_states.suspend2disk_can = true;
+			suspend_states.suspend2disk_allowed = 0;
+		} else if (0 == strcmp("na", can_hibernate)) {
 			suspend_states.suspend2disk = false;
-			suspend_states.suspend2disk_allowed = -1;
-		}
-
-		// check for StandBy
-		if (dbus_HAL->halGetPropertyBool( HAL_COMPUTER_UDI, "power_management.can_standby", &_ret_b )) {
-			suspend_states.standby_can = _ret_b;
-			if (_ret_b) {
-				if (ret.contains( "Standby" )) {
-					suspend_states.standby = true;
-					suspend_states.standby_allowed = dbus_HAL->isUserPrivileged(PRIV_STANDBY,
-												    HAL_COMPUTER_UDI);
-			}
-			} else {
-				suspend_states.standby = false;
-				suspend_states.standby_allowed = -1;
-			}
+			suspend_states.suspend2disk_can = false;
+			suspend_states.suspend2disk_allowed = 0;
 		} else {
-			suspend_states.standby_can = false;
-			suspend_states.standby = false;
-			suspend_states.standby_allowed = -1;
+			suspend_states.suspend2disk = true;
+			suspend_states.suspend2disk_can = true;
+			suspend_states.suspend2disk_allowed = 0;
 		}
+	} else {
+		kdError() << "org.freedesktop.login1.Manager.CanHibernate "
+			  "returned null." << endl;
+		suspend_states.suspend2disk = false;
+		suspend_states.suspend2disk_can = false;
+		suspend_states.suspend2disk_allowed = -1;
 	}
 
 	kdDebugFuncOut(trace);
@@ -661,16 +681,11 @@ void HardwareInfo::checkSuspend() {
 void HardwareInfo::checkCPUFreq() {
 	kdDebugFuncIn(trace);
 	
-	bool ret = false;
+	// TODO
+	cpuFreq = false;
+	cpuFreqAllowed = false;
 
-	if (dbus_HAL->halQueryCapability( HAL_COMPUTER_UDI, "cpufreq_control", &ret )) {
-		cpuFreq = ret;
-		cpuFreqAllowed = dbus_HAL->isUserPrivileged( PRIV_CPUFREQ, HAL_COMPUTER_UDI);
-
-		checkCurrentCPUFreqPolicy();
-	} else {
-		cpuFreq = false;
-	}
+	checkCurrentCPUFreqPolicy();
 
 	kdDebugFuncOut(trace);
 }
@@ -681,7 +696,8 @@ void HardwareInfo::checkCPUFreq() {
  */
 cpufreq_type HardwareInfo::checkCurrentCPUFreqPolicy() {
 	kdDebugFuncIn(trace);
-	
+
+/*	
 	char *gov;
 
 	cpufreq_type _current = UNKNOWN_CPUFREQ;
@@ -722,7 +738,15 @@ cpufreq_type HardwareInfo::checkCurrentCPUFreqPolicy() {
 	} else {
 		update_info_cpufreq_policy_changed = false;
 	}
-	
+*/	
+	cpuFreqGovernor = "performance";
+	if (PERFORMANCE != currentCPUFreqPolicy) {
+		currentCPUFreqPolicy = PERFORMANCE;
+		update_info_cpufreq_policy_changed = true;
+		emit currentCPUFreqPolicyChanged();
+	} else
+		update_info_cpufreq_policy_changed = false;
+
 	kdDebugFuncOut(trace);
 	return currentCPUFreqPolicy;
 }
@@ -734,7 +758,7 @@ cpufreq_type HardwareInfo::checkCurrentCPUFreqPolicy() {
  */
 void HardwareInfo::checkBrightness() {
 	kdDebugFuncIn(trace);
-
+/*
 	QStringList devices;
 
 	brightness = false;
@@ -778,7 +802,15 @@ void HardwareInfo::checkBrightness() {
 			} 
 		}
 	}
-	
+*/
+	brightness = false;
+	currentBrightnessLevel = -1;
+	availableBrightnessLevels = -1;
+	brightnessAllowed = 0;
+	udis.remove("laptop_panel");
+
+	checkCurrentBrightness();
+
 	kdDebugFuncOut(trace);
 }
 
@@ -789,6 +821,7 @@ void HardwareInfo::checkBrightness() {
 void HardwareInfo::checkCurrentBrightness() {
 	kdDebugFuncIn(trace);
 
+/*
 	if (brightness) {
 		int retval;
 		// get the current level via GetBrightness
@@ -798,10 +831,42 @@ void HardwareInfo::checkCurrentBrightness() {
 			currentBrightnessLevel = (int) retval;
 		}
 	}
+*/
 	
 	kdDebugFuncOut(trace);
 }
 
+bool
+HardwareInfo::add_battery(const std::string& uid, bool primary,
+			  const dict_type& props) {
+	kdDebugFuncIn(trace);
+	if (allUDIs.contains(uid.c_str())) {
+		kdDebugFuncOut(trace);
+		return false;
+	}
+	allUDIs.append(uid.c_str());
+	std::unique_ptr<Battery> bat(new Battery(uid, props));
+	if (primary)
+		connect(bat.get(), SIGNAL(changedBattery()), this,
+			SLOT(updatePrimaryBatteries()));
+	BatteryList.append(bat.release());
+	kdDebugFuncOut(trace);
+	return true;
+}
+
+bool
+HardwareInfo::add_ac(const std::string& uid, const dict_type& props) {
+	kdDebugFuncIn(trace);
+	udis.insert("acadapter", new QString(uid.c_str()));
+	if (allUDIs.contains(uid.c_str())) {
+		kdDebugFuncOut(trace);
+		return false;
+	}
+	allUDIs.append(uid.c_str());
+	signal_ac_change(props);
+	kdDebugFuncOut(trace);
+	return true;
+}
 
 /*!
  * The function initialise the hardware information and collect all
@@ -815,22 +880,36 @@ bool HardwareInfo::intialiseHWInfo() {
 
 	QStringList ret;
 
-	if (!dbus_HAL->isConnectedToDBUS() || !dbus_HAL->isConnectedToHAL()) 
+	if (!dbus_HAL->isConnectedToDBUS()) 
 		return false;
 
-	if( dbus_HAL->halFindDeviceByCapability("ac_adapter", &ret)) {
-		// there should be normaly only one device, but let be sure
-		for ( QStringList::iterator it = ret.begin(); it != ret.end(); ++it ) {
-			// we need a deep copy
-			udis.insert("acadapter", new QString( *it ));
-			if (!allUDIs.contains( *it ))
-				allUDIs.append( *it );
-			checkACAdapterState();
+	DBusConnection *conn = dbus_HAL->get_DBUS_connection();
+	if (conn) {
+		devices_type devs = kps::upower_get_devices(conn);
+		for (const std::string& dev : devs) {
+			dict_type props =
+				kps::upower_get_all_props(conn, dev.c_str());
+			std::optional<uint32_t> t = kps::upower_dev_type(props);
+			if (!t)
+				continue;
+			enum BAT_TYPE type = Battery::get_type(*t);
+			switch (type) {
+			case LINE_POWER: // line power
+				add_ac(dev, props);
+				break;
+			case BAT_PRIMARY: // battery
+				add_battery(dev, true, props);
+				break;
+			case BAT_UPS: // ups
+				add_battery(dev, false, props);
+				break;
+			default:
+				break;
+			}
 		}
 	}
-	
-	ret.clear();
 
+/*
 	if( dbus_HAL->halFindDeviceByString("button.type", "lid", &ret)) {
 		// there should be normaly only one device, but let be sure
 		for ( QStringList::iterator it = ret.begin(); it != ret.end(); ++it ) {
@@ -841,57 +920,9 @@ bool HardwareInfo::intialiseHWInfo() {
 			checkLidcloseState();
 		}
 	}
-
-	ret.clear();
-
-	// find batteries and fill battery information
-	if( dbus_HAL->halFindDeviceByCapability("battery", &ret)) {
-		if (!ret.isEmpty()) {
-			// there should be normaly only one device, but let be sure
-			for ( QStringList::iterator it = ret.begin(); it != ret.end(); ++it ) {
-				if (!allUDIs.contains( *it ))
-					allUDIs.append( *it );
-				BatteryList.append( new Battery(dbus_HAL, *it) );
-			}
-		
-			// connect to signals for primary batteries:
-			Battery *bat;
-			for (bat = BatteryList.first(); bat; bat = BatteryList.next() ) {
-				if (bat->getType() == BAT_PRIMARY) {
-					connect(bat, SIGNAL(changedBattery()),this, SLOT(updatePrimaryBatteries()));
-				}
-			}
-		}
-	}
-
+*/
 	kdDebugFuncOut(trace);
 	return true;
-}
-
-/*!
- * The function/SLOT checks the state of the AC adapter.
- */
-void HardwareInfo::checkACAdapterState() {
-	kdDebugFuncIn(trace);
-
-	if ( udis["acadapter"] ) {
-		bool _state;
-
-		if (dbus_HAL->halGetPropertyBool(*udis["acadapter"] , "ac_adapter.present", &_state )) {
-			if (_state != acadapter) {
-				acadapter = _state;
-				update_info_ac_changed = true;
-				emit ACStatus( acadapter );
-			} else {
-				update_info_ac_changed = false;
-			}
-		} else {
-			// we use true as default e.g. for workstations
-			acadapter = true;
-		}
-	}
-
-	kdDebugFuncOut(trace);
 }
 
 /*!
@@ -900,7 +931,8 @@ void HardwareInfo::checkACAdapterState() {
 void HardwareInfo::checkLidcloseState() {
 	kdDebugFuncIn(trace);
 
-	if ( udis["lidclose"] ) {
+/*
+	if (udis["lidclose"]) {
 		bool _state;
 
 		if (dbus_HAL->halGetPropertyBool(*udis["lidclose"] , "button.state.value", &_state )) {
@@ -912,30 +944,24 @@ void HardwareInfo::checkLidcloseState() {
 			lidclose = false;
 		}
 	}
-
+*/
 	kdDebugFuncOut(trace);
 }
 
-/*!
- * This funtion is used to call a update of a battery value for a given 
- * UDI and the given changed property
- * \param udi 		QString with the UDI of the battery
- * \param property	QString with the changed property
- */
-void HardwareInfo::updateBatteryValues (QString udi, QString property) {
+void
+HardwareInfo::updateBatteryValues(const char *udi, const dict_type& props) {
 	kdDebugFuncIn(trace);
 
-	if (!udi.isEmpty() && allUDIs.contains( udi )) {
+	if (udi && '\0' != *udi && allUDIs.contains(udi)) {
 		// find effected battery object
 		Battery *bat;
-		for (bat = BatteryList.first(); bat; bat = BatteryList.next() ) {
-			if (udi.startsWith( bat->getUdi())) {
+		for (bat = BatteryList.first(); bat; bat = BatteryList.next())
+			if (0 == strncmp(udi, bat->getUdi(), strlen(udi)))
 				// found a battery with udi
-				bat->updateProperty(udi, property);
-			}
-		}
+				bat->update(props);
 	} else {
-		kdDebug() << "UDI is empty or not in the list of monitored devices: " << udi << endl;
+		kdDebug() << "UDI is empty or not in the list of monitored "
+			"devices: " << udi << endl;
 	}
 
 	kdDebugFuncOut(trace);
@@ -945,24 +971,22 @@ void HardwareInfo::updateBatteryValues (QString udi, QString property) {
 /*!
  * This function refresh the information for the primary battery collection.
  */
-void HardwareInfo::updatePrimaryBatteries () {
+void
+HardwareInfo::updatePrimaryBatteries () {
 	kdDebugFuncIn(trace);
 
 	if (!BatteryList.isEmpty()) {
+		setPrimaryBatteriesWarningLevel();
+		primaryBatteries->refreshInfo(BatteryList);
 		if (primaryBatteries->getNumBatteries() < 1) {
-			setPrimaryBatteriesWarningLevel();
-			primaryBatteries->refreshInfo( BatteryList );
-			connect(primaryBatteries, SIGNAL(batteryChanged()), this, 
-				SLOT(setPrimaryBatteriesChanges()));
-			connect(primaryBatteries, SIGNAL(batteryWarnState(int,int)), this,
+			connect(primaryBatteries, SIGNAL(batteryChanged()),
+				this, SLOT(setPrimaryBatteriesChanges()));
+			connect(primaryBatteries,
+				SIGNAL(batteryWarnState(int,int)), this,
 				SLOT(emitBatteryWARNState(int,int)));
-		} else {
-			setPrimaryBatteriesWarningLevel();
-			primaryBatteries->refreshInfo( BatteryList );
 		}
-	} else {
+	} else
 		primaryBatteries = new BatteryCollection(BAT_PRIMARY);
-	}
 
 	kdDebugFuncOut(trace);
 }
@@ -970,7 +994,8 @@ void HardwareInfo::updatePrimaryBatteries () {
 /*!
  * This function set the change status for the primary battery collection
  */
-void HardwareInfo::setPrimaryBatteriesChanges () {
+void
+HardwareInfo::setPrimaryBatteriesChanges() {
 	kdDebugFuncIn(trace);
 
 	update_info_primBattery_changed = true;
@@ -982,7 +1007,8 @@ void HardwareInfo::setPrimaryBatteriesChanges () {
 /*!
  * This slot emit a signal if a warning state of a battery reached
  */
-void HardwareInfo::emitBatteryWARNState (int type, int state) {
+void
+HardwareInfo::emitBatteryWARNState(int type, int state) {
 	kdDebugFuncIn(trace);
 
 	if (type == BAT_PRIMARY) 
@@ -1005,71 +1031,67 @@ void HardwareInfo::emitBatteryWARNState (int type, int state) {
  * \retval true  	if successful
  * \retval false 	else, if a error occurs
  */
-bool HardwareInfo::suspend( suspend_type suspend ) {
+bool HardwareInfo::suspend(suspend_type suspend ) {
 	kdDebugFuncIn(trace);
-
+	
 	calledSuspend = QTime();
 
-	if (dbus_HAL->isConnectedToDBUS() && dbus_HAL->isConnectedToHAL()) {
-		switch (suspend) {
-			case SUSPEND2DISK:
-				if (suspend_states.suspend2disk && (suspend_states.suspend2disk_allowed != 0)) {
-					if (dbus_HAL->dbusMethodCallSuspend("Hibernate")) {
-						calledSuspend.start();
-						return true;
-					} else {
-						return false;
-					}
-				} else {
-					if ( !suspend_states.suspend2disk ) 
-						kdDebug() << "The machine does not support suspend to disk." << endl;
-					else
-						kdWarning() << "Policy forbid user to trigger suspend to disk" << endl;
-
-					return false;
-				}
-				break;
-			case SUSPEND2RAM:
-				if (suspend_states.suspend2ram && (suspend_states.suspend2ram_allowed != 0)) {
-					if (dbus_HAL->dbusMethodCallSuspend("Suspend")) {
-						calledSuspend.start();
-						return true;
-					} else {
-						return false;
-					}
-				} else {
-					if ( !suspend_states.suspend2ram ) 
-						kdDebug() << "The machine does not support suspend to ram." << endl;
-					else
-						kdWarning() << "Policy forbid user to trigger suspend to ram" << endl;
-					
-					return false;
-				}
-				break;
-			case STANDBY:
-				if (suspend_states.standby && (suspend_states.standby_allowed != 0)) {
-					if (dbus_HAL->dbusMethodCallSuspend("Standby")) {
-						calledSuspend.start();
-						return true;
-					} else {
-						return false;
-					}
-				} else {
-					if ( !suspend_states.standby ) 
-						kdDebug() << "The machine does not support standby." << endl;
-					else
-						kdWarning() << "Policy forbid user to trigger standby" << endl;
-
-					return false;
-				}
-				break;
-			default:
-				return false;
-		}
+	if (!dbus_HAL->isConnectedToDBUS()) {
+		kdDebugFuncOut(trace);
+		return false;
 	}
-	
-	kdDebugFuncOut(trace);
-	return false;
+
+	switch (suspend) {
+	case SUSPEND2DISK:
+		if (!suspend_states.suspend2disk) {
+			kdDebug() << "The machine does not support suspend to "
+				"disk." << endl;
+			kdDebugFuncOut(trace);
+			return false;
+		}
+		if (0 == suspend_states.suspend2disk_allowed) {
+			kdWarning() << "Policy forbids user to trigger suspend"
+				" to disk" << endl;
+			kdDebugFuncOut(trace);
+			return false;
+		}
+		if (!dbus_HAL->dbusMethodCallSuspend("Hibernate")) {
+			kdDebugFuncOut(trace);
+			return false;
+		}
+		calledSuspend.start();
+		kdDebugFuncOut(trace);
+		return true;
+	case SUSPEND2RAM:
+		if (!suspend_states.suspend2ram) {
+			kdDebug() << "The machine does not support suspend to "
+				"ram." << endl;
+			kdDebugFuncOut(trace);
+			return false;
+		}
+		if (0 == suspend_states.suspend2ram_allowed) {
+			kdWarning() << "Policy forbids user to trigger suspend"
+				" to ram" << endl;
+			kdDebugFuncOut(trace);
+			return false;
+		}
+		if (!dbus_HAL->dbusMethodCallSuspend("Suspend")) {
+			kdDebugFuncOut(trace);
+			return false;
+		}
+		calledSuspend.start();
+		kdDebugFuncOut(trace);
+		return true;
+	case STANDBY:
+		kdDebug() << "The machine does not support standby." << endl;
+		kdDebugFuncOut(trace);
+		return false;
+	default:
+		kdDebug() << "Unknown suspend method: " << suspend << '.'
+			  << endl;
+		kdDebugFuncOut(trace);
+		return false;
+	}
 }
 
 /*!
@@ -1080,49 +1102,62 @@ bool HardwareInfo::suspend( suspend_type suspend ) {
  * \retval true  	if successful
  * \retval false 	else, if a error occurs
  */
-bool HardwareInfo::setBrightness ( int level, int percent ){
-	if (trace) kdDebug() << funcinfo << "IN: " << "level: " << level << " percent: " << percent << endl;
+bool
+HardwareInfo::setBrightness(int level, int percent) {
+	if (trace)
+		kdDebug() << funcinfo << "IN: " << "level: " << level
+			  << " percent: " << percent << endl;
 
-	bool retval = false;
-
-	if ((level == -1) && (percent >= 0)) {
-		if (percent == 0) {
+	if (-1 == level && percent >= 0) {
+		if (0 == percent)
 			level = 0;
-		} else if (percent >= 98) {
-			level = (availableBrightnessLevels - 1);
-		} else {
-			level = (int)((float)availableBrightnessLevels * ((float)percent/100.0));
-			if (level > (availableBrightnessLevels -1))
+		else if (percent >= 98)
+			level = availableBrightnessLevels - 1;
+		else {
+			level = availableBrightnessLevels * percent / 100.0;
+			if (level > availableBrightnessLevels - 1)
 				level = availableBrightnessLevels -1;
-			kdDebug() << "percentage mapped to new level: " << level << endl;
+			kdDebug() << "percentage mapped to new level: "
+				  << level << endl;
 		}
 	}
 
-	if (dbus_HAL->isConnectedToDBUS() && dbus_HAL->isConnectedToHAL()) {
-		if (!brightness)
-			checkBrightness();
-
-		if (!brightness || (level < 0 ) || (level >= availableBrightnessLevels)) {
-			kdError() << "Change brightness or requested level not supported " << endl;
-		} else {
-			if (currentBrightnessLevel == level) {
-				kdDebug() << "Brightness level not changed, requested level == current level" << endl;
-				retval = true;
-			} else {
-				if (dbus_HAL->dbusSystemMethodCall( HAL_SERVICE, *udis["laptop_panel"], 
-								    HAL_LPANEL_IFACE, "SetBrightness", 
-								    DBUS_TYPE_INT32, &level,
-								    DBUS_TYPE_INVALID )) {
-					retval = true;
-				} 
-			}
-		}
+	if (!dbus_HAL->isConnectedToDBUS()) {
+		kdDebugFuncOut(trace);
+		return false;
 	}
 
-	// check for actual brightness level to be sure everything was set correct
+	if (!brightness)
+		checkBrightness();
+
+	if (!brightness || level < 0 || level >= availableBrightnessLevels) {
+		kdError() << "Change brightness or requested level not "
+			"supported " << endl;
+		kdDebugFuncOut(trace);
+		return false;
+	}
+
+	if (currentBrightnessLevel == level) {
+		kdDebug() << "Brightness level not changed, requested level == current level" << endl;
+		kdDebugFuncOut(trace);
+		return true;
+	}
+
+/*
+	if (dbus_HAL->dbusSystemMethodCall( HAL_SERVICE, *udis["laptop_panel"], 
+					    HAL_LPANEL_IFACE, "SetBrightness", 
+					    DBUS_TYPE_INT32, &level,
+					    DBUS_TYPE_INVALID )) {
+		retval = true;
+	} 
+*/
+
+	// check for actual brightness level to be sure everything was set
+	// correctly
+
 	checkCurrentBrightness();
 	kdDebugFuncOut(trace);
-	return retval;
+	return true;
 } 
 
 /*!
@@ -1133,94 +1168,58 @@ bool HardwareInfo::setBrightness ( int level, int percent ){
  * \retval true  	if successful
  * \retval false 	else, if a error occurs
  */
-bool HardwareInfo::setCPUFreq ( cpufreq_type cpufreq, int limit ) {
-	if (trace) kdDebug() << funcinfo << "IN: " <<  "cpufreq_type: " << cpufreq << " limit: " << limit << endl;
+bool
+HardwareInfo::setCPUFreq(cpufreq_type cpufreq, int limit) {
+	if (trace)
+		kdDebug() << funcinfo << "IN: " <<  "cpufreq_type: "
+			  << cpufreq << " limit: " << limit << endl;
 
 	if (!cpuFreq) {
-		kdError() << "This machine does not support change the CPU Freq via HAL" << endl;
+		kdError() << "This machine does not support change the CPU "
+			"Freq." << endl;
 		return false;
 	}
 	
-	if (cpuFreqAllowed  == 0) {
-		kdError() << "Could not set CPU Freq, this not the needed privileges." << endl;
+	if (0 == cpuFreqAllowed) {
+		kdError() << "Not having the needed privileges to set the CPU "
+			"freq." << endl;
 		return false;
 	}
 	
-	if (dbus_HAL->isConnectedToDBUS() && dbus_HAL->isConnectedToHAL()) {
-		dbus_bool_t consider = (dbus_bool_t) getAcAdapter();
-		QStringList dynamic;
+	if (!dbus_HAL->isConnectedToDBUS())
+		return false;
 
-		if (checkCurrentCPUFreqPolicy() == cpufreq) {
-			if (cpufreq == DYNAMIC && !cpuFreqGovernor.startsWith("ondemand")) {
-				kdDebug() << "CPU Freq Policy is already DYNAMIC, but not governor is currently "
-					  << "not 'ondemand'. Try to set ondemand governor." << endl;
-			} else {
-				kdDebug() << "Didn't change Policy, was already set." << endl;
-				return true;
-			}
-		}
+	if (checkCurrentCPUFreqPolicy() == cpufreq) {
+		kdDebug() << "Didn't change Policy, was already set." << endl;
+		return true;
+	}
 
-		switch (cpufreq) {
-			case PERFORMANCE:
-				if (!setCPUFreqGovernor("performance")) {
-					kdError() << "Could not set CPU Freq to performance policy" << endl;
-					return false;
-				}
-				break;
-			case DYNAMIC:
-				dynamic << "ondemand" << "userspace" << "conservative";
-
-				for (QStringList::Iterator it = dynamic.begin(); it != dynamic.end(); it++){
-					kdDebug() << "Try to set dynamic CPUFreq to: " << *it << endl;
-					
-					if (setCPUFreqGovernor((*it).latin1())) {
-						kdDebug() << "Set dynamic successful to: " << *it << endl;
-						break;
-					}
-				}
-			
-				// set dynamic performance limit
-				if (!dbus_HAL->dbusSystemMethodCall( HAL_SERVICE, HAL_COMPUTER_UDI,
-								     HAL_CPUFREQ_IFACE,
-								     "SetCPUFreqPerformance", 
-								     DBUS_TYPE_INT32, &limit,
-								     DBUS_TYPE_INVALID)) {
-					kdError() << "Could not call/set SetCPUFreqPerformance with value: "
-					          << limit << endl;
-				}
-
-				// correct set ondemand
-				if (!dbus_HAL->dbusSystemMethodCall( HAL_SERVICE, HAL_COMPUTER_UDI,
-								     HAL_CPUFREQ_IFACE,
-								     "SetCPUFreqConsiderNice",
-								     DBUS_TYPE_BOOLEAN, &consider,
-								     DBUS_TYPE_INVALID)) {
-					kdError() << "Couldn't set SetCPUFreqConsiderNice for DYNAMIC" << endl;
-				}
-
-				break;
-			case POWERSAVE:
-				if (!setCPUFreqGovernor("powersave")) {
-					kdError() << "Could not set CPU Freq to powersave policy" << endl;
-					return false;
-				}
-				break;
-			default:
-				kdWarning() << "Unknown cpufreq_type: " << cpufreq << endl;
-				return false;
-		}
-		
-		// check if the policy was really set (and emit signal)
-		if (checkCurrentCPUFreqPolicy() == cpufreq) {
-//			update_info_cpufreq_policy_changed = true;
-//			emit currentCPUFreqPolicyChanged();
-			return true;
-		} else {
+	switch (cpufreq) {
+	case PERFORMANCE:
+		if (!setCPUFreqGovernor("performance")) {
+			kdError() << "Could not set CPU Freq to performance "
+				"policy" << endl;
 			return false;
 		}
-	} else {	
+		break;
+	case POWERSAVE:
+		if (!setCPUFreqGovernor("powersave")) {
+			kdError() << "Could not set CPU Freq to powersave "
+				"policy." << endl;
+			return false;
+		}
+		break;
+	default:
+		kdWarning() << "Unknown cpufreq_type: " << cpufreq << endl;
 		return false;
 	}
+	
+	// check if the policy was really set (and emit signal)
+	if (checkCurrentCPUFreqPolicy() != cpufreq)
+		return false;
+//	update_info_cpufreq_policy_changed = true;
+//	emit currentCPUFreqPolicyChanged();
+	return true;
 }
 
 /*!
@@ -1230,24 +1229,26 @@ bool HardwareInfo::setCPUFreq ( cpufreq_type cpufreq, int limit ) {
  * \retval true  	if successful
  * \retval false 	else, if a error occurs
  */
-bool HardwareInfo::setCPUFreqGovernor( const char *governor ) {
+bool
+HardwareInfo::setCPUFreqGovernor(const char *governor) {
 	kdDebugFuncIn(trace);
 
-	int reply;
-	bool ret = true;
-
 	kdDebug() << "Try to set CPUFreq to governor: " << governor << endl;
+
+/*
+	int reply;
 	if (!dbus_HAL->dbusSystemMethodCall( HAL_SERVICE, HAL_COMPUTER_UDI, 
 					     HAL_CPUFREQ_IFACE, "SetCPUFreqGovernor",
 					     &reply, DBUS_TYPE_INVALID,
 					     DBUS_TYPE_STRING, &governor, 
 					     DBUS_TYPE_INVALID)) {
 		kdError() << "Could not set CPU Freq to governor: " << governor << endl;
-		ret = false;
+		kdDebugFuncOut(trace);
+		return false;
 	}
-	
+*/	
 	kdDebugFuncOut(trace);
-	return ret;
+	return true;
 }
 
 
@@ -1258,38 +1259,43 @@ bool HardwareInfo::setCPUFreqGovernor( const char *governor ) {
  * \retval true  	if successful
  * \retval false 	else, if a error occurs
  */
-bool HardwareInfo::setPowerSave( bool on ) {
+bool
+HardwareInfo::setPowerSave(bool on) {
 	kdDebugFuncIn(trace);
 
-	bool retval = false;
+	if (!dbus_HAL->isConnectedToDBUS()) {
+		kdDebugFuncOut(trace);
+		return false;
+	}
 
-	if (dbus_HAL->isConnectedToDBUS() && dbus_HAL->isConnectedToHAL()) {
-		dbus_bool_t _tmp = (dbus_bool_t) on;
-		int reply;
+	dbus_bool_t _tmp = static_cast<dbus_bool_t>(on);
+	int reply;
 
 #ifdef USE_LIBHAL_POLICYCHECK
-		if (dbus_HAL->isUserPrivileged(PRIV_SETPOWERSAVE, HAL_COMPUTER_UDI) != 0) {
-#else
-		if (true) {
+/*
+	if (!dbus_HAL->isUserPrivileged(PRIV_SETPOWERSAVE, HAL_COMPUTER_UDI)) {
+		kdError() << "The user isn't allowed to call SetPowerSave() "
+			"on HAL. Maybe KPowersave run not in a active session."
+			  << endl;
+		kdDebugFuncOut(trace);
+		return false;
+	}
+*/
 #endif
-			if (!dbus_HAL->dbusSystemMethodCall( HAL_SERVICE, HAL_COMPUTER_UDI, 
-							     HAL_PM_IFACE, "SetPowerSave",
-							     &reply, DBUS_TYPE_INT32,
-							     DBUS_TYPE_BOOLEAN, &_tmp,
-							     DBUS_TYPE_INVALID)) {
-				kdError() << "Could not call/set SetPowerSave on HAL, " 
-					  << "could be a bug in HAL spec" << endl;
-			} else {
-				retval = true;
-			}
-		} else {
-			kdError() << "The user isn't allowed to call SetPowerSave() on HAL. "
-				  << "Maybe KPowersave run not in a active session." << endl;
-		}
-	} 
-	
+/*
+	if (!dbus_HAL->dbusSystemMethodCall( HAL_SERVICE, HAL_COMPUTER_UDI, 
+					     HAL_PM_IFACE, "SetPowerSave",
+					     &reply, DBUS_TYPE_INT32,
+					     DBUS_TYPE_BOOLEAN, &_tmp,
+					     DBUS_TYPE_INVALID)) {
+		kdError() << "Could not call/set SetPowerSave on HAL, " 
+			  << "could be a bug in HAL spec" << endl;
+		kdDebugFuncOut(trace);
+		return false;
+	}
+*/	
 	kdDebugFuncOut(trace);
-	return retval;
+	return true;
 }
 
 /*!
@@ -1298,28 +1304,33 @@ bool HardwareInfo::setPowerSave( bool on ) {
  * \retval true  	if successful
  * \retval false 	else, if a error occurs
  */
-bool HardwareInfo::getSchedPowerSavings() {
+bool
+HardwareInfo::getSchedPowerSavings() {
 	kdDebugFuncIn(trace);
 
-	bool returnval = false;
-
-	if (dbus_HAL->isConnectedToDBUS() && dbus_HAL->isConnectedToHAL()) {
-		dbus_bool_t ret;
-
-		//NOTE: the kernel only allow 1/0 for the related sysfs entry
-		if (dbus_HAL->dbusSystemMethodCall( HAL_SERVICE, HAL_COMPUTER_UDI, 
-						    HAL_CPUFREQ_IFACE, "GetSchedPowerSavings",
-					            &ret, DBUS_TYPE_BOOLEAN, DBUS_TYPE_INVALID)) {
-			schedPowerSavings = ((ret != 0) ? true: false);
-			returnval = true;
-		} else {
-			schedPowerSavings = false;
-			kdWarning() << "Could not call GetSchedPowerSavings() " << endl;
-		}
+	if (!dbus_HAL->isConnectedToDBUS()) {
+		kdDebugFuncOut(trace);
+		return false;
 	}
 
+
+/*
+	dbus_bool_t ret;
+	//NOTE: the kernel only allow 1/0 for the related sysfs entry
+	if (!dbus_HAL->dbusSystemMethodCall( HAL_SERVICE, HAL_COMPUTER_UDI, 
+					     HAL_CPUFREQ_IFACE, "GetSchedPowerSavings",
+					     &ret, DBUS_TYPE_BOOLEAN, DBUS_TYPE_INVALID)) {
+		schedPowerSavings = false;
+		kdWarning() << "Could not call GetSchedPowerSavings() " << endl;
+		kdDebugFuncOut(trace);
+		return false;
+	}
+	schedPowerSavings = 0 != ret;
+*/	
+	schedPowerSavings = false;
+
 	kdDebugFuncOut(trace);
-	return returnval;
+	return true;
 }
 
 /*!
@@ -1329,28 +1340,31 @@ bool HardwareInfo::getSchedPowerSavings() {
  * \retval true  	if successful
  * \retval false 	else, if a error occurs
  */
-bool HardwareInfo::setSchedPowerSavings( bool enable ) {
+bool
+HardwareInfo::setSchedPowerSavings(bool enable) {
 	kdDebugFuncIn(trace);
 
-	bool retval = false;
-
-	if (dbus_HAL->isConnectedToDBUS() && dbus_HAL->isConnectedToHAL()) {
-		dbus_bool_t _tmp = (dbus_bool_t) enable;
-
-		//NOTE: the kernel only allow 1/0 for the related sysfs entry
-		if (dbus_HAL->dbusSystemMethodCall( HAL_SERVICE, HAL_COMPUTER_UDI,
-						    HAL_CPUFREQ_IFACE,
-						    "SetCPUFreqPerformance", 
-						    DBUS_TYPE_BOOLEAN, &_tmp,
-						    DBUS_TYPE_INVALID)) {
-			retval = true;
-		} else {
-			kdWarning() << "Could not call SetSchedPowerSavings() " << endl;
-		}
+	if (!dbus_HAL->isConnectedToDBUS()) {
+		kdDebugFuncOut(trace);
+		return false;
 	}
 
+/*
+	dbus_bool_t _tmp = static_cast<dbus_bool_t>(enable);
+
+	//NOTE: the kernel only allow 1/0 for the related sysfs entry
+	if (!dbus_HAL->dbusSystemMethodCall( HAL_SERVICE, HAL_COMPUTER_UDI,
+					    HAL_CPUFREQ_IFACE,
+					    "SetCPUFreqPerformance", 
+					    DBUS_TYPE_BOOLEAN, &_tmp,
+					    DBUS_TYPE_INVALID)) {
+		kdWarning() << "Could not call SetSchedPowerSavings() " << endl;
+		return false;
+	}
+*/
+
 	kdDebugFuncOut(trace);
-	return retval;
+	return true;
 }
 
 
@@ -1367,7 +1381,8 @@ void HardwareInfo::emitPowerButtonPressed() {
 	if (sessionIsActive) {
 		emit powerButtonPressed();
 	} else {
-		kdWarning() << "Session is not active, don't react on power button event!" << endl;
+		kdWarning() << "Session is not active, don't react on power "
+			"button event!" << endl;
 	}
 }
 
@@ -1378,7 +1393,8 @@ void HardwareInfo::emitSleepButtonPressed() {
 	if (sessionIsActive) {
 		emit sleepButtonPressed();
 	} else {
-		kdWarning() << "Session is not active, don't react on sleep button event!" << endl;
+		kdWarning() << "Session is not active, don't react on sleep "
+			"button event!" << endl;
 	}
 }
 
@@ -1389,7 +1405,8 @@ void HardwareInfo::emitS2diskButtonPressed() {
 	if (sessionIsActive) {
 		emit s2diskButtonPressed();
 	} else {
-		kdWarning() << "Session is not active, don't react on suspend2disk button event!" << endl;
+		kdWarning() << "Session is not active, don't react on "
+			"suspend2disk button event!" << endl;
 	}
 }
 
@@ -1420,41 +1437,41 @@ void HardwareInfo::emitSessionActiveState() {
 bool HardwareInfo::setBrightnessUp(int percentageStep) {
 	kdDebugFuncIn(trace);
 	
-	bool retval = false;
-	
 	checkCurrentBrightness();
 
-	if (supportBrightness() && (getCurrentBrightnessLevel() >= 0) && 
-            (getCurrentBrightnessLevel() != (getMaxBrightnessLevel()-1))) {
-		int setTo = 0;
-		int minPercStep = 10;
-		int currentPerc = (int)(((float)getCurrentBrightnessLevel()/(float)(getMaxBrightnessLevel()-1))*100.0);
-
-		if (percentageStep > 0 && (percentageStep <= (100-currentPerc))) {
-			minPercStep = percentageStep;
-		} 
-
-		if ((currentPerc + minPercStep) > 100) {
-			// set to 100 %
-			setTo = getMaxBrightnessLevel() -1;
-		} else {
-			setTo = (int)(((float)(getMaxBrightnessLevel()-1))*(((float)(currentPerc + minPercStep))/100.0));
-			if ((setTo == getCurrentBrightnessLevel()) && (setTo <  (getMaxBrightnessLevel() -1))) {
-				setTo++;
-			}
-		}
-
-		if (trace) {
-			kdDebug() << "Max: " << getMaxBrightnessLevel() 
-				  << " Current: " << getCurrentBrightnessLevel() 
-				  << " minPercStep: " << minPercStep
-				  << " currentPerc: " << currentPerc
-				  << " setTo: " << setTo << endl;
-		}
-	
-		retval = setBrightness(setTo, -1);
+	if (!supportBrightness() || getCurrentBrightnessLevel() < 0 || 
+            getMaxBrightnessLevel() - 1 == getCurrentBrightnessLevel()) {
+		kdDebugFuncOut(trace);
+		return false;
 	}
- 
+
+	int setTo = 0;
+	int minPercStep = 10;
+	int currentPerc = 100.0 * getCurrentBrightnessLevel() /
+		(getMaxBrightnessLevel() - 1);
+
+	if (percentageStep > 0 && percentageStep <= 100 - currentPerc)
+		minPercStep = percentageStep;
+
+	if (currentPerc + minPercStep > 100)
+		// set to 100 %
+		setTo = getMaxBrightnessLevel() -1;
+	else {
+		setTo = (getMaxBrightnessLevel() - 1) *
+			(currentPerc + minPercStep) / 100.0;
+		if (setTo == getCurrentBrightnessLevel() &&
+		    setTo < getMaxBrightnessLevel() - 1)
+			++setTo;
+	}
+	
+	if (trace)
+		kdDebug() << "Max: " << getMaxBrightnessLevel() 
+			  << " Current: " << getCurrentBrightnessLevel() 
+			  << " minPercStep: " << minPercStep
+			  << " currentPerc: " << currentPerc
+			  << " setTo: " << setTo << endl;
+	
+	bool retval = setBrightness(setTo, -1);
 	kdDebugFuncOut(trace);
 	return retval;
 }
@@ -1466,42 +1483,42 @@ bool HardwareInfo::setBrightnessUp(int percentageStep) {
  * \retval true		if could get set 
  * \retval false	else
  */
-bool HardwareInfo::setBrightnessDown(int percentageStep) {
+bool
+HardwareInfo::setBrightnessDown(int percentageStep) {
 	kdDebugFuncIn(trace);
-
-	bool retval = false;
 
 	checkCurrentBrightness();
 
-	if (supportBrightness() && (getCurrentBrightnessLevel() > 0)) {
-		int setTo = 0;
-		int minPercStep = 10;
-		int currentPerc = (int)(((float)getCurrentBrightnessLevel()/(float)(getMaxBrightnessLevel()-1))*100.0);
-
-		if (percentageStep > 0 && (percentageStep < currentPerc)) {
-			minPercStep = percentageStep;
-		}
-
-		if ((currentPerc - minPercStep) < 0) {
-			setTo = 0;
-		} else {
-			setTo = (int)(((float)(getMaxBrightnessLevel()-1))*(((float)(currentPerc - minPercStep))/100.0));
-			if ((setTo == getCurrentBrightnessLevel()) && (setTo > 0)) {
-				setTo--;
-			}
-		}
-
-		if (trace) {
-			kdDebug() << "Max: " << getMaxBrightnessLevel() 
-				  << " Current: " << getCurrentBrightnessLevel() 
-				  << " minPercStep: " << minPercStep
-				  << " currentPerc: " << currentPerc
-				  << " setTo: " << setTo << endl;
-		}
-
-		retval = setBrightness(setTo, -1);
+	if (!supportBrightness() || getCurrentBrightnessLevel() <= 0) {
+		kdDebugFuncOut(trace);
+		return false;
 	}
 
+	int setTo = 0;
+	int minPercStep = 10;
+	int currentPerc = 100.0 * getCurrentBrightnessLevel() /
+		(getMaxBrightnessLevel() - 1);
+	
+	if (percentageStep > 0 && percentageStep < currentPerc)
+		minPercStep = percentageStep;
+	
+	if (currentPerc - minPercStep < 0)
+		setTo = 0;
+	else {
+		setTo = (getMaxBrightnessLevel() - 1) *
+			(currentPerc - minPercStep) / 100.0;
+		if (setTo == getCurrentBrightnessLevel() && setTo > 0)
+			--setTo;
+	}
+	
+	if (trace)
+		kdDebug() << "Max: " << getMaxBrightnessLevel() 
+			  << " Current: " << getCurrentBrightnessLevel() 
+			  << " minPercStep: " << minPercStep
+			  << " currentPerc: " << currentPerc
+			  << " setTo: " << setTo << endl;
+	
+	bool retval = setBrightness(setTo, -1);
 	kdDebugFuncOut(trace);
 	return retval;
 }
@@ -1509,40 +1526,58 @@ bool HardwareInfo::setBrightnessDown(int percentageStep) {
 /*!
  * Function to handle the signal for the brightness up button/key
  */
-void HardwareInfo::brightnessUpPressed() {
+void
+HardwareInfo::brightnessUpPressed() {
 	kdDebugFuncIn(trace);
 	
-	if (brightness) {
-		if (!sessionIsActive) {
-			kdWarning() << "Session is not active, don't react on brightness up key event!" << endl;
-		} else {
-			if (currentBrightnessLevel < availableBrightnessLevels) {
-				setBrightnessUp();
-			} else {
-				kdWarning() << "Could not set brightness to higher level, it's already set to max." << endl;
-			}
-		}
+	if (!brightness) {
+		kdDebugFuncOut(trace);
+		return;
 	}
+	if (!sessionIsActive) {
+		kdWarning() << "Session is not active, don't react on "
+			"brightness up key event!" << endl;
+		kdDebugFuncOut(trace);
+		return;
+	}
+	if (currentBrightnessLevel >= availableBrightnessLevels) {
+		kdWarning() << "Could not set brightness to higher level, "
+			"it's already set to max." << endl;
+		kdDebugFuncOut(trace);
+		return;
+	}
+
+	setBrightnessUp();
+
 	kdDebugFuncOut(trace);
 }
 
 /*!
  * Function to handle the signal for the brightness down button/key
  */
-void HardwareInfo::brightnessDownPressed() {
+void
+HardwareInfo::brightnessDownPressed() {
 	kdDebugFuncIn(trace);
 
-	if (brightness) {
-		if (!sessionIsActive) {
-			kdWarning() << "Session is not active, don't react on brightness down key event!" << endl;
-		} else {
-			if (currentBrightnessLevel > 0) {
-				setBrightnessDown();
-			} else {
-				kdWarning() << "Could not set brightness to lower level, it's already set to min." << endl;
-			}
-		}
+	if (!brightness) {
+		kdDebugFuncOut(trace);
+		return;
 	}
+	if (!sessionIsActive) {
+		kdWarning() << "Session is not active, don't react on brightness down key event!" << endl;
+		kdDebugFuncOut(trace);
+		return;
+	}
+	if (currentBrightnessLevel <= 0) {
+		kdWarning() << "Could not set brightness to lower level, "
+			"it's already set to min." << endl;
+		kdDebugFuncOut(trace);
+		return;
+	}
+
+	setBrightnessDown();
+
+	kdDebugFuncOut(trace);
 }
 
 // --> private helper slots to forward/handle events -- END <--
@@ -1574,10 +1609,7 @@ bool HardwareInfo::getLidclose() const {
  * \return Integer with max level or -1 if not supported
  */
 int HardwareInfo::getMaxBrightnessLevel() const {
-	if (brightness)
-		return availableBrightnessLevels;
-	else
-		return -1;
+	return brightness ? availableBrightnessLevels : -1;
 }
 
 /*!
@@ -1585,10 +1617,7 @@ int HardwareInfo::getMaxBrightnessLevel() const {
  * \return Integer with max level or -1 if not supported or unkown
  */
 int HardwareInfo::getCurrentBrightnessLevel() const {
-	if (brightness)
-		return currentBrightnessLevel;
-	else
-		return -1;
+	return brightness ? currentBrightnessLevel : -1;
 }
 
 /*!
@@ -1644,7 +1673,7 @@ bool HardwareInfo::isLaptop() const {
  * \retval false 	if not connected
  */
 bool HardwareInfo::isOnline() const {
-	return (!dbus_terminated && !hal_terminated);
+	return !dbus_terminated;
 }
 
 /*!
@@ -1715,8 +1744,11 @@ bool HardwareInfo::currentSessionIsActive() const {
  * \retval	1 not allowed
  * \retval	-1 unknown
  */
-int HardwareInfo::isCpuFreqAllowed () {
+int HardwareInfo::isCpuFreqAllowed() {
+/*
 	cpuFreqAllowed = dbus_HAL->isUserPrivileged( PRIV_CPUFREQ, HAL_COMPUTER_UDI);
+*/
+	cpuFreqAllowed = false;
 	return cpuFreqAllowed;
 }
 
@@ -1725,11 +1757,82 @@ int HardwareInfo::isCpuFreqAllowed () {
  * \retval true 	if there is a owner
  * \retval false 	else
  */
-bool HardwareInfo::isPolicyPowerIfaceOwned () {
+bool HardwareInfo::isPolicyPowerIfaceOwned() {
 	return dbus_HAL->isPolicyPowerIfaceOwned();
 }
 
 
 // --> get private members section -- END <---
+
+bool
+HardwareInfo::isBattery(const char *udi) {
+	DBusConnection *conn = dbus_HAL->get_DBUS_connection();
+	if (!conn) {
+		kdError() << "isBattery: null dbus connection" << endl;
+		kdDebugFuncOut(trace);
+		return false;
+	}
+	return isBattery(kps::upower_get_all_props(conn, udi));
+}
+
+bool
+HardwareInfo::isBattery(const dict_type& props) const {
+	dict_type::const_iterator i = props.find("Type");
+	if (props.end() == i) {
+		kdError() << "Properties contain no 'Type' property"
+			  << endl;
+		return false;
+	}
+	const uint32_t *n = std::any_cast<uint32_t>(&i->second);
+	if (!n) {
+		kdError() << "'Type' property is not a uint32"
+			  << endl;
+		return false;
+	}
+	switch (*n) {
+	case 2: // battery
+	case 3: // ups
+	case 5: // mouse
+	case 6: // keyboard
+	case 8: // phone
+		return true;
+	case 0: // unknown
+	case 1: // line power, not a battery
+	case 4: // monitor
+	case 7: // pda
+	default:
+		return false;
+	}
+}
+
+bool
+HardwareInfo::isPrimary(const dict_type& props) const {
+	dict_type::const_iterator i = props.find("Type");
+	if (props.end() == i) {
+		kdError() << "Properties contain no 'Type' property"
+			  << endl;
+		return false;
+	}
+	const uint32_t *n = std::any_cast<uint32_t>(&i->second);
+	if (!n) {
+		kdError() << "'Type' property is not a uint32"
+			  << endl;
+		return false;
+	}
+	switch (*n) {
+	case 2:
+		return true;
+	case 0: // unknown
+	case 1: // line power, not a battery
+	case 3:
+	case 4: // monitor
+	case 5:
+	case 6:
+	case 8: // phone
+	case 7: // pda
+	default:
+		return false;
+	}
+}
 
 #include "hardware.moc"

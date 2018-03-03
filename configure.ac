@@ -10,8 +10,8 @@ AC_PROG_LIBTOOL
 
 AC_ARG_ENABLE(debug,
 	[AS_HELP_STRING([--enable-debug], [enable debug @<:@default=no@:>@])],
-	[ if test "${enable_debug:-no}" != no; then CXXFLAGS="${CXXFLAGS} -std=c++11 -Wall -Wnon-virtual-dtor -g -O0 -fno-inline"; fi ],
-	[CXXFLAGS="${CXXFLAGS} -std=c++11 -Wall -Wnon-virtual-dtor -O3"])
+	[ if test "${enable_debug:-no}" != no; then CXXFLAGS="${CXXFLAGS} -std=c++17 -Wall -Wnon-virtual-dtor -g -O0 -fno-inline"; fi ],
+	[CXXFLAGS="${CXXFLAGS} -std=c++17 -Wall -Wnon-virtual-dtor -O3"])
 
 AC_PREFIX_DEFAULT([/usr])
 AC_CONFIG_COMMANDS_PRE([

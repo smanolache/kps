@@ -1,0 +1,74 @@
+dbusHAL.cpp: filterFunction
+   if there's a Disconnected signal on the DBUS_INTERFACE_LOCAL intf =>
+       emit DBUS_EVENT, dbus.terminate => handler tries to reconnect later
+       return, not handled
+   if the message is not a signal => return, not handled
+   if the intf of the msg is null => return, not handled
+*mine*
+   if intf == DBus.Properties
+       if signal PropertiesChanged => handle, return, handled
+       else return, not handled
+*end mine*
+   if intf startsWith DBus
+       if signal NameAcquired => nop, return, handled
+       if signal NameOwnerChanged =>
+           if service == Hal =>
+                emit DBUS_EVENT, hal.terminate or hal.started
+           if service == Policy.Power =>
+                changes dbusHAL::aquiredPolicyPower
+                emit POLICY_POWER_OWNER_CHANGED, NOW_OWNER or OTHER_OWNER
+*mine*
+   if intf == UPower =>
+       if signal DeviceRemoved => return, handled
+       if signal DeviceAdded => return handled
+*end mine*
+   if intf startsWith Hal.Manager
+       if signal DeviceAdded|Removed =>
+           emit HAL_DEVICE, DeviceAdded|Removed, udi
+           return, handled
+   if intf startsWith Hal.Device
+       if signal PropertyModified =>
+           emit HAL_PROPERTY_CHANGED, udi, key
+       if signal Condition =>
+           emit HAL_CONDITION, name, detail
+   if intf startsWith ConsoleKit.Session
+       if signal ActiveChanged =>
+           emit CONSOLEKIT_SESSION_ACTIVE, 1/0
+
+hardware.cpp:processMessage
+   DBUS_EVENT:
+       dbus.terminate => reconnect 4 seconds later
+       hal.terminate => emit halRunning, emit generalDataChanged
+       hal.started => reinit, emit halRunning, emit generalDataChanged
+   HAL_DEVICE:
+       DeviceAdded => handled battery and brightness for laptop panel
+       DeviceRemoved
+   HAL_PROPERTY_CHANGED:
+       ac_adapter.present
+       battery.*
+       button.state.value (lidclose)
+   HAL_CONDITION:
+       ButtonPressed
+           lid
+	   power
+	   sleep
+	   hibernate
+	   brightness-*
+   CONSOLEKIT_SESSION_ACTIVE:
+       if session becomes active => acquires the Policy.Power interface
+       if session becomes inactive => releases the Policy.Power interface
+       emits desktopSessionIsActive
+   POLICY_POWER_OWNER_CHANGED:
+       nop
+       
+
+HardwareInfo::checkPowermanagement
+checkIsLaptop
+checkBrightness
+checkCPUFreq
+checkSuspend
+initialiseHWInfo
+checkLidcloseState
+
+checkIfHandleDevice
+checkACAdapterState

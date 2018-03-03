@@ -42,7 +42,34 @@
 #include <qstringlist.h>
 #include <qobject.h>
 
-#include "dbusHAL.h"
+// #include "dbusHAL.h"
+
+#include "dbus_properties.hpp"
+#include <optional>
+
+enum BAT_TYPE {
+	BAT_PRIMARY,
+	BAT_MOUSE,
+	BAT_KEYBOARD,
+	BAT_KEY_MOUSE,
+	BAT_UPS,
+	BAT_CAMERA,
+	BAT_UNKNOWN,
+	LINE_POWER
+};
+enum BAT_CHARG_STATE {
+	CHARGING,
+	DISCHARGING,
+	UNKNOWN_STATE
+};
+enum BAT_STATE {
+	BAT_NONE,
+	BAT_WARN,
+	BAT_LOW,
+	BAT_CRIT,
+	BAT_NORM,
+	BAT_HAL_ERROR
+};
 
 class Battery : public QObject {
 
@@ -50,7 +77,7 @@ class Battery : public QObject {
 
 private:
 	//! Internal reference to dbusHAL for communication with HAL daemon
-	dbusHAL* dbus_HAL;
+//	dbusHAL* dbus_HAL;
 
 	//! HAL udi of the battery to represent
 	/*!
@@ -86,14 +113,14 @@ private:
 	* \li true: 	if battery object is now intialised
 	* \li false: 	if not
 	*/
-	bool 	initialized;
+	// bool 	initialized;
 	//! Boolean which tells if the battery is present/connected
 	/*!
 	* When the battery (represented by the object) is available this is true.
 	* \li true: battery is available
 	* \li false: battery is disconnected/not available
 	*/
-	bool 	present;
+	// bool 	present;
 
 	//! Roletype of battery
 	/*!
@@ -178,33 +205,41 @@ private:
 
 	// private functions
 	//! function to set initial values for a battery
-	void initDefault();
+	// void initDefault();
 
 	//! to check battery.present
-	bool checkBatteryPresent();
+	// bool checkBatteryPresent();
 	//! to check battery.type
-	bool checkBatteryType();
+	// bool checkBatteryType();
 	//! to check battery.technology
-	bool checkBatteryTechnology();
+	// bool checkBatteryTechnology();
 	//! to check battery.charge_level.capacity_state
-	bool checkCapacityState();
+	// bool checkCapacityState();
 	//! to check battery.charge_level.current
-	bool checkChargeLevelCurrent();
+	// bool checkChargeLevelCurrent();
 	//! to check battery.charge_level.last_full
-	bool checkChargeLevelLastfull();
+	// bool checkChargeLevelLastfull();
 	//! to check battery.charge_level.rate
-	bool checkChargeLevelRate();
+	// bool checkChargeLevelRate();
 	//! to check battery.charge_level.unit
-	bool checkChargeLevelUnit();
+	// bool checkChargeLevelUnit();
 	//! to check battery.charge_level.design
-	bool checkChargeLevelDesign();
+	// bool checkChargeLevelDesign();
 	//! to check battery.charge_level.percentage
-	bool checkRemainingPercentage();
+	// bool checkRemainingPercentage();
 	//! to check battery.remaining_time
-	bool checkRemainingTime();
+	// bool checkRemainingTime();
 	//! to check battery.rechargeable.is_*
-	bool checkChargingState();
+	// bool checkChargingState();
 
+	static enum BAT_STATE get_state(double, int crit, int low, int warn);
+	bool update_charging_state(const std::optional<uint32_t>&);
+	bool update_percentage(const std::optional<double>&);
+	bool update_state();
+	bool update_present_rate(const std::optional<double>&);
+	bool update_remaining_time(const std::optional<int64_t>&);
+
+	kps::dict_type props;
 signals:
 	//! emitted if the remaining percentage changed
 	void changedBatteryPercentage();
@@ -222,24 +257,36 @@ signals:
 	void changedBattery();
 	
 public:
+	static enum BAT_CHARG_STATE get_charging_state(uint32_t s);
+	static enum BAT_TYPE get_type(uint32_t t);
 
 	//! default constructor
+/*
 	Battery( dbusHAL* _dbus_HAL, QString _udi );
+*/
 	//! default constructor
+	Battery(const std::string& udi__, const kps::dict_type&);
+	//! default constructor
+/*
 	Battery( dbusHAL* _dbus_HAL );
 	//! this constructor forces the use of init with dbuHAL pointer set!
 	Battery();
 	//! default destructor
-	~Battery();
+*/
+	// ~Battery();
 
 	//! initialize this battery object with values from HAL
-	void init( dbusHAL* _dbus_HAL = NULL );
+//	void init();
 	//! recheck all properties of the battery
-	void recheck();
+	// void recheck();
 	//! rechecks only minimalistic set properties
+/*
 	void minRecheck();
+*/
 	//! update a property on HAL event
-	bool updateProperty(QString _udi, QString _property);
+	// bool updateProperty(QString _udi, QString _property);
+	//! merge new values
+	void update(const kps::dict_type&);
 
 	//ro-Interface to internal data
 	//! reports the HAL udi of this battery
@@ -288,7 +335,7 @@ public:
 	* \li returns TRUE: if reset was successfull
 	* \li returns FALSE: if reset couldn't be applied
 	*/
-	bool resetUdi(QString);
+//	bool resetUdi(QString);
 
 	//! sets the chargelevel in percent when battery should go into state warning
 	void setWarnLevel(int _warn_level);
@@ -314,28 +361,5 @@ public:
 	bool isCritical();
 };
 
-
-enum BAT_TYPE {
-	BAT_PRIMARY,
-	BAT_MOUSE,
-	BAT_KEYBOARD,
-	BAT_KEY_MOUSE,
-	BAT_UPS,
-	BAT_CAMERA,
-	BAT_UNKNOWN
-};
-enum BAT_CHARG_STATE {
-	CHARGING,
-	DISCHARGING,
-	UNKNOWN_STATE
-};
-enum BAT_STATE {
-	BAT_NONE,
-	BAT_WARN,
-	BAT_LOW,
-	BAT_CRIT,
-	BAT_NORM,
-	BAT_HAL_ERROR
-};
 
 #endif

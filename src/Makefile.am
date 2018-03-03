@@ -26,7 +26,6 @@ kpowersave_LDADD = \
 	-lqt-mt \
 	-lXss \
 	-lXtst \
-	-lhal \
 	-ldbus-1
 
 kpowersave_CXXFLAGS = \
@@ -36,7 +35,6 @@ kpowersave_CXXFLAGS = \
 	-I/usr/share/qt3/include \
 	-I/usr/include/dbus-1.0 \
 	-I/usr/lib/x86_64-linux-gnu/dbus-1.0/include \
-	-I/usr/include/hal \
 	-DDBUS_API_SUBJECT_TO_CHANGE \
 	-DQT_THREAD_SUPPORT \
 	-D_REENTRANT
@@ -48,7 +46,6 @@ libkdeinit_kpowersave_la_CXXFLAGS = \
 	-I/usr/share/qt3/include \
 	-I/usr/include/dbus-1.0 \
 	-I/usr/lib/x86_64-linux-gnu/dbus-1.0/include \
-	-I/usr/include/hal \
 	-DDBUS_API_SUBJECT_TO_CHANGE \
 	-DQT_THREAD_SUPPORT \
 	-D_REENTRANT
@@ -93,7 +90,19 @@ libkdeinit_kpowersave_la_SOURCES =                      \
 	privileges.h			\
 	screen.h                        \
 	settings.h                      \
-	suspenddialog.h
+	suspenddialog.h                 \
+	QuoteJSON.hpp                   \
+	QuoteJSON.cpp                   \
+	UPowerProperties.hpp            \
+	UPowerProperties.cpp            \
+	error_codes.hpp                 \
+	error_codes.cpp                 \
+	Exception.hpp                   \
+	Exception.cpp                   \
+	dbus_wrappers.hpp               \
+	dbus_properties.hpp             \
+	dbus_properties.cpp             \
+	#
 
 BUILT_SOURCES = \
 	autodimm.moc \

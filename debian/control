@@ -3,8 +3,7 @@ Section: kde
 Priority: optional
 Maintainer: Debian KDE Extras Team <pkg-kde-extras@lists.alioth.debian.org>
 Uploaders: Michael Biebl <biebl@debian.org>
-Build-Depends: cdbs, debhelper (>= 6.0.7), automake1.9, autoconf, libtool, kdelibs4-dev, libxss-dev, libhal-dev (>= 0.5.6), libdbus-1-dev (>= 0.6), libdbus-qt-1-dev (>= 0.6), libxtst-dev, quilt
-Build-Conflicts: autoconf2.13
+Build-Depends: debhelper (>= 6.0.7), automake, autoconf, libtool, libxss-dev, libdbus-1-dev (>= 0.6), libxtst-dev, quilt
 Standards-Version: 3.8.0
 Vcs-Svn: svn://svn.debian.org/svn/pkg-kde/kde-extras/kpowersave/trunk
 Vcs-Browser: http://svn.debian.org/wsvn/pkg-kde/kde-extras/kpowersave/trunk
@@ -12,16 +11,15 @@ Homepage: http://sourceforge.net/projects/powersave/
 
 Package: kpowersave
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}, hal (>= 0.5.8.1)
-Description: HAL based power management applet for KDE
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Power management applet for KDE
  KPowersave is a KDE systray applet which allows to control the power 
  management settings and policies of your computer.
- It relies on HAL to do the heavy lifting.
  .
  Current feature list:
   * support for ACPI, APM and PMU
   * trigger suspend to disk/ram and standby
-  * switch cpu frequency policy (between: performance, dynamic and powersave)
+  * switch cpu frequency policy (between: performance and powersave)
   * applet icon with information about AC state, battery fill and battery
     (warning) states
   * applet tooltip with information about battery fill and remaining battery 

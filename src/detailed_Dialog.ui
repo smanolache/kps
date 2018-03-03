@@ -341,7 +341,7 @@
                                         <cstring>tl_powerConsDesc</cstring>
                                     </property>
                                     <property name="text">
-                                        <string>Power Consumtion: </string>
+                                        <string>Power Consumption: </string>
                                     </property>
                                 </widget>
                                 <widget class="QLabel">

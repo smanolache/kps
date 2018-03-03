@@ -102,7 +102,6 @@ kpowersave::kpowersave( bool force_acpi_check, bool trace_func ) : KSystemTray(0
 
 	// connect to error mesages
 	connect(autoSuspend, SIGNAL(displayErrorMsg(QString)), this, SLOT(showErrorMessage(QString)));	
-	connect(hwinfo, SIGNAL(halRunning(bool)), this, SLOT(showHalErrorMsg()));
 	connect(hwinfo, SIGNAL(dbusRunning(int)), this, SLOT(showDBusErrorMsg(int)));
 
 	// connect to events
@@ -310,7 +309,7 @@ void kpowersave::loadIcon(){
 
 	BatteryCollection *primary = hwinfo->getPrimaryBatteries();
 
-	if (hwinfo->hal_terminated || !hwinfo->isOnline() ) {
+	if (!hwinfo->isOnline() ) {
 		pixmap_name_tmp = QString("ERROR");
 	}
 	else if (hwinfo->getAcAdapter() || primary->getBatteryState() == BAT_NONE) {
@@ -452,10 +451,7 @@ void kpowersave::updateTooltip(){
 	num3.setNum(minutes % 60);
 	num3 = num3.rightJustify(2, '0');
 
-	if (hwinfo->hal_terminated){
-		tmp = i18n("No information about battery and AC status available");
-	} 
-	else if (hwinfo->getAcAdapter()) {
+	if (hwinfo->getAcAdapter()) {
 		if (percent == 100) tmp = i18n("Plugged in -- fully charged");
 		// assume that no battery is there
 		else {
@@ -1070,6 +1066,7 @@ bool kpowersave::handleMounts( bool suspend ) {
 			}
 		} else {
 			kdWarning() << "Could not umount external storage partitions." << endl;
+			kdDebug() << "Could not umount external storage partitions. dcop_ref.call result is not valid." << endl;
 		}
 
 	} else {
@@ -1692,25 +1689,8 @@ void kpowersave::showHalErrorMsg() {
 		update();
 	}
 	if (!hwinfo->dbus_terminated) {
-		if(hal_error_shown && !DISPLAY_HAL_ERROR_Timer->isActive() && hwinfo->hal_terminated){
-			KPassivePopup::message( i18n("ERROR"),
-						i18n("Could not get information from HAL. The haldaemon is "
-						     "maybe not running."),
-						SmallIcon("messagebox_warning", 20), this, 
-						i18n("Error"), 5000);
-		}
-		else if (hwinfo->hal_terminated && !hal_error_shown && !DISPLAY_HAL_ERROR_Timer->isActive()) {
-			hal_error_shown = true;
-			DISPLAY_HAL_ERROR_Timer->start(HAL_ERROR_MSG_intervall, true);
-		}
-		else if (!hwinfo->hal_terminated) {
-			hal_error_shown = false;
-			DISPLAY_HAL_ERROR_Timer->stop();
-		}
-	} else {
-		// only for the case that HAL is also down with dbus and not back after restart
-		if (hwinfo->hal_terminated && !hal_error_shown && !DISPLAY_HAL_ERROR_Timer->isActive())
-			DISPLAY_HAL_ERROR_Timer->start(HAL_ERROR_MSG_intervall, true);
+		hal_error_shown = false;
+		DISPLAY_HAL_ERROR_Timer->stop();
 	}
 
 	kdDebugFuncOut(trace);

@@ -45,12 +45,11 @@
 #include <qptrlist.h>
 #include <qdict.h>
 
-// HAL Library
-#include <hal/libhal.h>
-
 #include "dbusHAL.h"
 #include "hardware_battery.h"
 #include "hardware_batteryCollection.h"
+
+#include "dbus_properties.hpp"
 
 enum suspend_type {
 	SUSPEND2DISK,
@@ -315,7 +314,9 @@ private:
 	//! to check the current ConsoleKit session
 	bool checkConsoleKitSession();
 	//! to check if we should handle a device
+/*
 	bool checkIfHandleDevice ( QString _udi, int *type );
+*/
 	//! to set the CPUFreq governor
 	bool setCPUFreqGovernor( const char *governor );
 	//! to get the state of SchedPowerSave setting of kernel/HAL
@@ -324,20 +325,41 @@ private:
 	bool setSchedPowerSavings( bool enable );
 
 	//! find and update a battery information
+/*
 	void updateBatteryValues (QString udi, QString property);
+*/
+	void updateBatteryValues(const char *, const kps::dict_type&);
+
+	bool isBattery(const char *);
+	bool isBattery(const kps::dict_type&) const;
+	bool isPrimary(const kps::dict_type&) const;
+
+	void handle_upower_changed_props(const char *,
+					 const kps::modified_props_type&);
+	void handle_ac_props_change(const kps::modified_props_type&);
+	void signal_ac_change(const kps::dict_type&);
+	void handle_battery_props_change(const char *,
+					 const kps::modified_props_type&);
+	void handle_display_device_props_change(const kps::modified_props_type&);
+
+	bool add_battery(const std::string& uid, bool, const kps::dict_type&);
+	bool add_ac(const std::string& uid, const kps::dict_type&);
+	bool add_device(const char *udi);
+	bool remove_device(const char *udi);
 
 private slots:
 
 	//! to fetch events from D-Bus and handle them
 	void processMessage (msg_type type, QString message, QString value);
+	//! to fetch events from D-Bus and handle them
+	void process_changed_props(msg_type type, const char *udi,
+				   const kps::modified_props_type&);
 	//! to update \ref primaryBatteries
-	void updatePrimaryBatteries ();
+	void updatePrimaryBatteries();
 	//! to set \ref update_info_primBattery_changed
-	void setPrimaryBatteriesChanges ();
+	void setPrimaryBatteriesChanges();
 	//! check the state of the lidclose button
 	void checkLidcloseState();
-	//! check the state of the AC adapter
-	void checkACAdapterState();
 	//! check if brightness change is possible
 	void checkBrightness();
 	
@@ -345,13 +367,13 @@ private slots:
 	void reconnectDBUS(); 
 
 	//! SLOT to forward signal about changed battery warning state
-	void emitBatteryWARNState (int type, int state);
+	void emitBatteryWARNState(int type, int state);
 	
 	//! SLOT to handle resume and forward a signal for resume
-	void handleResumeSignal (int result);
+	void handleResumeSignal(int result);
 
 	//! SLOT to handle device remove and add events
-	void handleDeviceRemoveAdd ();
+	/* void handleDeviceRemoveAdd (); */
 
 	//! to emit signal for power button
 	void emitPowerButtonPressed();
@@ -374,15 +396,15 @@ signals:
 	void currentCPUFreqPolicyChanged();
 
 	//! signal the AC adapter
-	void ACStatus( bool );
+	void ACStatus(bool);
 	//! signal for the lidclose button
-	void lidcloseStatus ( bool );
+	void lidcloseStatus(bool);
 	//! signal for pressed the power button
-	void powerButtonPressed ();
+	void powerButtonPressed();
 	//! signal for pressed sleep (suspend2ram) button
-	void sleepButtonPressed ();
+	void sleepButtonPressed();
 	//! signal for pressed the suspend2disk (hibernate) button
-	void s2diskButtonPressed ();
+	void s2diskButtonPressed();
 
 	//  battery related signals
 	//! signal if the primary battery collection changed
@@ -393,16 +415,14 @@ signals:
 	void batteryWARNState(int type, int state);
 
 	// Error signals
-	//! signal if the HAL daemon terminate and restart
-	void halRunning( bool );
 	//! signal if the D-Bus daemon terminate and restart
-	void dbusRunning( int );
+	void dbusRunning(int);
 
 	//! signal if the IsActive state of 
-	void desktopSessionIsActive (bool);
+	void desktopSessionIsActive(bool);
 
 	//! signal if we are back from resume
-	void resumed ( int success );
+	void resumed(int success);
 
 public:
 
@@ -437,14 +457,6 @@ public:
 	* \li false: If D-Bus not terminated
 	*/
 	bool dbus_terminated;
-	//! boolean which tell us if the HAL daemon was terminated
-	/*!
-	* This boolean contains information if the HAL daemon terminated and
-	* we recieved "hal.terminate"
-	* \li true:  If HAL terminated
-	* \li false: If HAL not terminated
-	*/
-	bool hal_terminated;
 
 	// --> functions
 	//! default constructor
@@ -470,7 +482,7 @@ public:
 	//! get currently CPU Frequency Policy
 	int getCurrentCPUFreqPolicy() const;
 	//! if the user is allowed to change CPU Freq PolicyKit
-	int isCpuFreqAllowed ();
+	int isCpuFreqAllowed();
 
 	//! if org.freedesktop.Policy.Power has a owner
 	bool isPolicyPowerIfaceOwned();
@@ -498,20 +510,21 @@ public:
 
 	// --> functions to call a HAL interface and trigger an action 
 	//! execute/trigger a suspend via the HAL interface
-	bool suspend ( suspend_type suspend );
+	bool suspend(suspend_type suspend);
 	//! set the brightness via HAL interface	
-	bool setBrightness ( int level, int percent = -1);
+	bool setBrightness(int level, int percent = -1);
 	//! to set the brightness down
 	bool setBrightnessDown(int percentageStep = -1);
 	//! to set the brightness up
 	bool setBrightnessUp(int percentageStep = -1);
 	//! set the CPU frequency policy/speed
-	bool setCPUFreq ( cpufreq_type cpufreq, int limit = 51 );
+	bool setCPUFreq(cpufreq_type cpufreq, int limit = 51 );
 	//! call SetPowerSave method on HAL.
-	bool setPowerSave( bool on );
+	bool setPowerSave(bool on);
 
 	//! function to set warning states for the primary battery collection
-	void setPrimaryBatteriesWarningLevel (int _warn = -1, int _low = -1, int _crit = -1 );
+	void setPrimaryBatteriesWarningLevel(int _warn = -1, int _low = -1,
+					     int _crit = -1 );
 };
 
 #endif
