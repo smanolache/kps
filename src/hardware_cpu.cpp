@@ -86,7 +86,8 @@ int CPUInfo::getCPUNum() {
 		tmp_path = tmp_dir.absFilePath(cpu_path, true);
         }
 
-	kdDebug() << "getCPUNum() return: '" << cpu_id << "'" << endl;
+	kdDebug(debug_area) << "getCPUNum() return: '" << cpu_id << "'"
+			    << endl;
 	kdDebugFuncOut(trace);
 	return cpu_id;
 }
@@ -240,7 +241,9 @@ bool CPUInfo::getCPUThrottlingState() {
 		QString throttling_device = d_throttling.absPath();
 		throttling_device.append("/").append(cpu_dirname).append("/throttling");
 
-		kdDebug() << "Throttling state file for CPU" << id << " will be: " << throttling_device << endl;
+		kdDebug(debug_area) << "Throttling state file for CPU" << id
+				    << " will be: " << throttling_device
+				    << endl;
 
 		QFile throttling(throttling_device);
 
@@ -257,8 +260,9 @@ bool CPUInfo::getCPUThrottlingState() {
 				line = line.right(3);
 				line.remove("%");
 				cpu_throttling.append(line.toInt());
-				kdDebug () << "CPU " << id 
-					   << ": cpu_throttling is set to: " << cpu_throttling[id] << endl;
+				kdDebug(debug_area) << "CPU " << id 
+						    << ": cpu_throttling is set"
+					" to: " << cpu_throttling[id] << endl;
 			} else {
 				cpu_throttling.append(0);
 			}

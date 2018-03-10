@@ -351,9 +351,12 @@ void detaileddialog::setProcessor() {
 	cpuInfo->checkCPUSpeed();
 
 	for (int i=0; i < numOfCPUs; i++) {
-		kdDebug() << "ID: " << i << "(" << cpuInfo->cpufreq_speed.count()
-			  << ") cur_freq: " << cpuInfo->cpufreq_speed[i] << " max_freq: "
-			  << cpuInfo->cpufreq_max_speed[i] << endl; 
+		// kdDebug(debug_area) << "ID: " << i << "("
+		// 		    << cpuInfo->cpufreq_speed.count()
+		// 		    << ") cur_freq: "
+		// 		    << cpuInfo->cpufreq_speed[i]
+		// 		    << " max_freq: "
+		// 		    << cpuInfo->cpufreq_max_speed[i] << endl; 
 
 		//ProcessorPBar[i]->setTextEnabled(true);
 		if (cpuInfo->cpufreq_speed[i] > 0) {
@@ -392,10 +395,16 @@ void detaileddialog::setProcessorThrottling() {
 
 	for (int i=0; i < numOfCPUs; i++) { 
 		if (throttling)
-			kdDebug() << "Throttling CPU : " << i << " - freq: " << cpuInfo->cpufreq_speed[i]
-				  << " - throttling state: " << cpuInfo->cpu_throttling[i] << "%" << endl;
+			kdDebug(debug_area) << "Throttling CPU : " << i
+					    << " - freq: "
+					    << cpuInfo->cpufreq_speed[i]
+					    << " - throttling state: "
+					    << cpuInfo->cpu_throttling[i]
+					    << "%" << endl;
 		else
-			kdDebug() << "CPU - freq: " << cpuInfo->cpufreq_speed[i] << endl;
+			kdDebug(debug_area) << "CPU - freq: "
+					    << cpuInfo->cpufreq_speed[i]
+					    << endl;
 	
 		if (throttling && cpuInfo->cpufreq_speed[i] > 0 && cpuInfo->cpu_throttling[i] >= 0) {
 			// get max cpu freq and set it to the max of the progressbar
@@ -454,7 +463,7 @@ void detaileddialog::setInfos() {
 	QString display;
 	QString displayValue;
 
-	if(!config->currentScheme.isEmpty())
+	if(!config->currentScheme.isEmpty()) {
 		display += i18n("Current Scheme: ") + "\n";
 		displayValue += i18n(config->currentScheme) + "\n";
 		if(config->currentScheme == config->ac_scheme)
@@ -469,7 +478,7 @@ void detaileddialog::setInfos() {
 			InfoPictogram->setPixmap(SmallIcon("scheme_advanced_powersave", 22));
 		else
 			InfoPictogram->setPixmap(SmallIcon("kpowersave", 22));
-
+	}
 	if(hwinfo->isOnline()) {
 		if (hwinfo->supportCPUFreq()) {
 			display += i18n("Current CPU Frequency Policy:") + "\n";
@@ -524,11 +533,11 @@ void detaileddialog::setInfos() {
 			displayValue += i18n("no") + "\n";
 		}
 
-		display += i18n("HAL Daemon:");
+		display += i18n("DBus Daemon:");
 		displayValue += i18n("running");
 	}
 	else {
-		display += i18n("HAL Daemon:");
+		display += i18n("DBus Daemon:");
 		displayValue += i18n("not running");
 	}
 

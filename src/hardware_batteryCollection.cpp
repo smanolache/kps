@@ -107,13 +107,14 @@ bool BatteryCollection::refreshInfo(QPtrList<Battery> BatteryList, bool force_le
 			if (UNKNOWN_STATE == _charging_state)
 				_charging_state = bat->getChargingState();
 			else if (UNKNOWN_STATE == bat->getChargingState()) {
-				kdWarning()  << "found battery with unknown state,"
-					     << " do nothing" << endl;
+				kdWarning(debug_area) << "found battery with "
+					"unknown state, do nothing" << endl;
 			} else {
 				if (_charging_state != bat->getChargingState()) {
 					// This should only happen if one is in 
 					// state CHARGING and the other in DISCHARGING
-					kdWarning() << "Unexpected chargingstates" << endl;
+					kdWarning(debug_area) << "Unexpected "
+						"charging states" << endl;
 					_charging_state = UNKNOWN_STATE;
 				}
 			}
@@ -256,8 +257,9 @@ bool BatteryCollection::setWarnLevel(int _warn_level) {
 	kdDebugFuncIn(trace);
 
 	if (_warn_level < low_level) {
-		kdError() << "Refuse: " << _warn_level 
-			  << " as it is smaller than the LowLevel: " << low_level << endl;
+		kdWarning(debug_area) << "Refuse: " << _warn_level 
+				      << " as it is smaller than the LowLevel: "
+				      << low_level << '.' << endl;
 		kdDebugFuncOut(trace);
 		return false;
 	} else {
@@ -277,9 +279,11 @@ bool BatteryCollection::setLowLevel(int _low_level) {
 	kdDebugFuncIn(trace);
 
 	if (_low_level < crit_level || _low_level > warn_level) {
-		kdError() << "Refuses: " << _low_level
- 			  << " as it is not between WarnLevel: " << warn_level
-			  << " and CritLevel: " << crit_level << endl; 
+		kdWarning(debug_area) << "Refuses: " << _low_level
+				      << " as it is not between WarnLevel: "
+				      << warn_level
+				      << " and CritLevel: " << crit_level
+				      << '.' << endl;
 		kdDebugFuncOut(trace);
 		return false;
 	} else {
@@ -299,8 +303,9 @@ bool BatteryCollection::setCritLevel(int _crit_level) {
 	kdDebugFuncIn(trace);
 
 	if (_crit_level > low_level) {
-		kdError() << "Refuses " << _crit_level 
-			  << " as it is bigger than LowLevel: " << low_level << endl;
+		kdError(debug_area) << "Refuses " << _crit_level 
+				    << " as it is bigger than LowLevel: "
+				    << low_level << '.' << endl;
 		kdDebugFuncOut(trace);
 		return false;
 	} else {

@@ -334,7 +334,7 @@ QString ConfigureDialog::getSchemeRealName(QString s_scheme) {
  *		   scheme in the QListBox and within the pdaemon-list.
  */
 void ConfigureDialog::setConfigToDialog( int schemeID ){
-	if (trace) kdDebug() << funcinfo << "IN , scheme: " << schemeID << endl;
+	if (trace) kdDebug(debug_area) << funcinfo << "IN , scheme: " << schemeID << endl;
 
 	initalised = false;
 	
@@ -625,7 +625,7 @@ void ConfigureDialog::setConfigToDialog( int schemeID ){
 		} else if (cpuFreqPolicy.startsWith("POWERSAVE")) {
 			comboB_cpuFreq->setCurrentItem(2);
 		} else {
-			kdWarning() << "Could not read/map CPU Freq Policy, set to dynamic" << endl;
+			kdWarning(debug_area) << "Could not read/map CPU Freq Policy, set to dynamic" << endl;
 			comboB_cpuFreq->setCurrentItem(1);
 		}
 	}

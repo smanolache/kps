@@ -148,7 +148,8 @@ void inactivity::check( bool recheck ) {
 		}
 		else checkInactivity->start(CHECK_for_INACTIVITY, true);
 	} else {
-		kdWarning() <<  "timeToInactivity <= 0, stoped autosuspend checks!" << endl;
+		kdWarning(debug_area) << "timeToInactivity <= 0, stoped "
+			"autosuspend checks!" << endl;
 	}
 
 	kdDebugFuncOut(trace);
@@ -181,7 +182,8 @@ void inactivity::checkXInactivity(){
 	kdDebugFuncIn(trace);
 
 	idleTime = getXInactivity();
-	kdDebug() << "autosuspend::checkXInactivity - idleTime: " << idleTime << endl;
+	kdDebug(debug_area) << "autosuspend::checkXInactivity - idleTime: "
+			    << idleTime << endl;
 
 	kdDebugFuncOut(trace);
 }
@@ -233,43 +235,50 @@ unsigned long inactivity::workaroundCreepyXServer( unsigned long _idleTime ){
 
 	Display *dpy = qt_xdisplay();
 
-	kdDebug() << "Current idleTime: " << _idleTime << endl;
+	kdDebug(debug_area) << "Current idleTime: " << _idleTime << endl;
 
-	if (DPMSQueryExtension(dpy, &dummy, &dummy)) {
-		if (DPMSCapable(dpy)) {
-			DPMSGetTimeouts(dpy, &standby, &suspend, &off);
-			DPMSInfo(dpy, &state, &onoff);
+	if (!DPMSQueryExtension(dpy, &dummy, &dummy)) {
+		kdDebugFuncOut(trace);
+		return _idleTime;
+	}
+	if (!DPMSCapable(dpy)) {
+		kdDebugFuncOut(trace);
+		return _idleTime;
+	}
+	DPMSGetTimeouts(dpy, &standby, &suspend, &off);
+	DPMSInfo(dpy, &state, &onoff);
 
-			if (onoff) {
-				switch (state) {
-					case DPMSModeStandby:
-						kdDebug() << "DPMS enabled. Monitor in Standby. Standby: "
-							  << standby << " sec" << endl;
-						// this check is a littlebit paranoid, but be sure
-						if (_idleTime < (unsigned) (standby * 1000))
-							_idleTime += (standby * 1000);
-						break;
-					case DPMSModeSuspend:
-						kdDebug() << "DPMS enabled. Monitor in Suspend. Suspend: "
-							  << suspend << " sec" << endl;
-						if (_idleTime < (unsigned) ((suspend + standby) * 1000))
-							_idleTime += ((suspend + standby) * 1000);
-						break;
-					case DPMSModeOff:
-						kdDebug() << "DPMS enabled. Monitor is Off. Off: "
-							  << off << " sec" << endl;
-						if (_idleTime < (unsigned) ((off + suspend + standby) * 1000))
-							_idleTime += ((off + suspend + standby) * 1000);
-						break;
-					case DPMSModeOn:
-					default:
-						break;
-				}
-			}
-		} 
+	if (!onoff) {
+		kdDebugFuncOut(trace);
+		return _idleTime;
 	}
 
-	kdDebug() << "Corrected idleTime: " << _idleTime << endl;
+	switch (state) {
+	case DPMSModeStandby:
+		kdDebug(debug_area) << "DPMS enabled. Monitor in Standby. "
+			"Standby: " << standby << " sec" << endl;
+		// this check is a littlebit paranoid, but be sure
+		if (_idleTime < (unsigned) (standby * 1000))
+			_idleTime += (standby * 1000);
+		break;
+	case DPMSModeSuspend:
+		kdDebug(debug_area) << "DPMS enabled. Monitor in Suspend. "
+			"Suspend: " << suspend << " sec" << endl;
+		if (_idleTime < (unsigned) ((suspend + standby) * 1000))
+			_idleTime += ((suspend + standby) * 1000);
+		break;
+	case DPMSModeOff:
+		kdDebug(debug_area) << "DPMS enabled. Monitor is Off. Off: "
+				    << off << " sec" << endl;
+		if (_idleTime < (unsigned) ((off + suspend + standby) * 1000))
+			_idleTime += ((off + suspend + standby) * 1000);
+		break;
+	case DPMSModeOn:
+	default:
+		break;
+	}
+
+	kdDebug(debug_area) << "Corrected idleTime: " << _idleTime << endl;
 	kdDebugFuncOut(trace);
 	return _idleTime;
 }
@@ -321,17 +330,18 @@ void inactivity::getPIDs(KProcess */*proc*/, char *buffer, int /*lenght*/) {
 	QString pids(buffer);
 	pids.remove(" ");
 	if(pids.isEmpty() || pids == "\n" ) {
-		kdDebug() << "NO! BLACKLISTED IS RUNNING" << endl;
+		kdDebug(debug_area) << "NO! BLACKLISTED IS RUNNING" << endl;
 		blacklisted_running = false;
 	} 
 	else {
 		if (pids.contains(QRegExp("[0-9]"))) {
-			kdDebug() << "BLACKLISTED IS RUNNING" << endl;
+			kdDebug(debug_area) << "BLACKLISTED IS RUNNING" << endl;
 			blacklisted_running = true;
 			blacklisted_running_last = idleTime;
 		}
 		else {
-			kdError() << "GET BLACKLISTED FAILED - WRONG RETURN" << endl;
+			kdError(debug_area) << "GET BLACKLISTED FAILED - WRONG"
+				" RETURN" << endl;
 			blacklisted_running = false;
 			pidof_call_failed = true;
 		}

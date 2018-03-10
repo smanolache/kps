@@ -58,8 +58,8 @@ dbusHAL::dbusHAL(){
 	aquiredPolicyPower = false;
 
 	// init connection to dbus
-	if(!initDBUS()) {
-		kdError() << "Can't connect to D-Bus" << endl;
+	if (!initDBUS()) {
+		kdError(debug_area) << "Can't connect to D-Bus" << endl;
 		m_dBusQtConnection = NULL;
 	}
 
@@ -146,15 +146,15 @@ bool dbusHAL::initDBUS() {
 	dbus_connection = dbus_bus_get(DBUS_BUS_SYSTEM, &error);
 
 	if (nullptr == dbus_connection) {
-		kdError() << "Failed to open connection to system message "
-			"bus: " << error.message << endl;
+		kdError(debug_area) << "Failed to open connection to system "
+			"message bus: " << error.message << endl;
 		dbus_error_free(&error);
 		return false;
 	}
 
 	if (dbus_error_is_set(&error)) {
-		kdError() << "Failed to register connection with system "
-			"message bus: " << error.message << endl;
+		kdError(debug_area) << "Failed to register connection with "
+			"system message bus: " << error.message << endl;
 		return false;
 	}
 
@@ -168,8 +168,8 @@ bool dbusHAL::initDBUS() {
 		    dbus_connection,
 		    reinterpret_cast<DBusHandleMessageFunction>(
 			    &dbusHAL::filterFunction), this, NULL)) {
-                kdFatal() << "Error: Not enough memory to add filter to dbus "
-			"connection" << endl;
+                kdFatal(debug_area) << "Error: Not enough memory to add filter"
+			"to dbus connection" << endl;
                 exit(EXIT_FAILURE);
         }
 
@@ -229,20 +229,19 @@ bool dbusHAL::aquirePolicyPowerIface() {
 				       DBUS_NAME_FLAG_REPLACE_EXISTING, &error);
 	switch (rc) {
 	case DBUS_REQUEST_NAME_REPLY_PRIMARY_OWNER:
-		kdDebug() << "Acquired org.freedesktop.Policy.Power interface"
-			  << endl;
+		kdDebug(debug_area) << "Acquired org.freedesktop.Policy.Power "
+			"interface" << endl;
 		aquiredPolicyPower = true;
 		break;
 	case DBUS_REQUEST_NAME_REPLY_IN_QUEUE:
-		kdDebug() << "Queued to aquire org.freedesktop.Policy.Power "
-			"interface" << endl;
-		kdWarning() << "Queued to aquire org.freedesktop.Policy.Power "
-			"interface" << endl;
+		kdWarning(debug_area) << "Queued to aquire org.freedesktop"
+			".Policy.Power interface" << endl;
 		aquiredPolicyPower = false;
 		break;
 	default:
-		kdWarning() << "Error while aquire org.freedesktop.Policy.Power"
-			" interface: " << rc << ": " << error.message << endl;
+		kdWarning(debug_area) << "Error while aquire org.freedesktop"
+			".Policy.Power interface: " << rc << ": "
+				      << error.message << endl;
 		aquiredPolicyPower = false;
 		break;
 	}
@@ -272,8 +271,8 @@ bool dbusHAL::releasePolicyPowerIface() {
 		dbus_connection, "org.freedesktop.Policy.Power", &error);
 
 	if (dbus_error_is_set(&error)) {
-		kdError() << "Failed to release org.freedesktop.Policy.Power: "
-			  << error.message << endl;
+		kdError(debug_area) << "Failed to release org.freedesktop"
+			".Policy.Power: " << error.message << endl;
 		dbus_error_free(&error);
 		kdDebugFuncOut(trace);
 		return false;
@@ -281,24 +280,24 @@ bool dbusHAL::releasePolicyPowerIface() {
 
 	switch (result) {
 	case DBUS_RELEASE_NAME_REPLY_RELEASED:
-		kdDebug() << "Released org.freedesktop.Policy.Power interface"
-			  << endl;
+		kdDebug(debug_area) << "Released org.freedesktop.Policy.Power "
+			"interface" << endl;
 		aquiredPolicyPower = false;
 		kdDebugFuncOut(trace);
 		return true;
 	case DBUS_RELEASE_NAME_REPLY_NOT_OWNER:
-		kdWarning() << "Couldn't release org.freedesktop.Policy.Power,"
-			" not the owner" << endl;
+		kdWarning(debug_area) << "Couldn't release org.freedesktop."
+			"Policy.Power, not the owner" << endl;
 		kdDebugFuncOut(trace);
 		return false;
 	case DBUS_RELEASE_NAME_REPLY_NON_EXISTENT:
-		kdWarning() << "Couldn't release org.freedesktop.Policy.Power,"
-			" Iface not existing" << endl;
+		kdWarning(debug_area) << "Couldn't release org.freedesktop."
+			"Policy.Power, Iface not existing" << endl;
 		kdDebugFuncOut(trace);
 		return false;
 	default:
-		kdWarning() << "Couldn't release org.freedesktop.Policy.Power,"
-			" unknown error" << endl;
+		kdWarning(debug_area) << "Couldn't release org.freedesktop."
+			"Policy.Power, unknown error" << endl;
 		kdDebugFuncOut(trace);
 		return false;
 	}
@@ -326,8 +325,8 @@ bool dbusHAL::isPolicyPowerIfaceOwned(){
 		dbus_connection, "org.freedesktop.Policy.Power", &error);
 
 	if (dbus_error_is_set(&error)) {
-		kdError() << "Failed to check if org.freedesktop.Policy.Power "
-			"has an owner: " << error.message << endl;
+		kdError(debug_area) << "Failed to check if org.freedesktop"
+			".Policy.Power has an owner: " << error.message << endl;
 		dbus_error_free(&error);
 		kdDebugFuncOut(trace);
 		return false;
@@ -422,8 +421,8 @@ dbusHAL::dbusMethodCall(QString interface, QString path, QString object,
 
 	dbus_connection = dbus_bus_get(dbus_type, &error);
 	if (dbus_error_is_set(&error)) {
-		kdError() << "Could not get dbus connection: " << error.message
-			  << endl;
+		kdError(debug_area) << "Could not get dbus connection: "
+				    << error.message << endl;
 		dbus_error_free(&error);
 		kdDebugFuncOut(trace);
 		return false;
@@ -435,8 +434,9 @@ dbusHAL::dbusMethodCall(QString interface, QString path, QString object,
 
 	if (nullptr == retvalue) {
 		if (!dbus_connection_send(dbus_connection, message, NULL)) {
-			kdError() << "Could not send method call." << endl;
-			dbus_message_unref( message );
+			kdError(debug_area) << "Could not send method call."
+					    << endl;
+			dbus_message_unref(message);
 			kdDebugFuncOut(trace);
 			return false;
 		}
@@ -451,8 +451,8 @@ dbusHAL::dbusMethodCall(QString interface, QString path, QString object,
 		dbus_connection, message, -1, &error);
 
 	if (dbus_error_is_set(&error)) {
-		kdError() << "Could not send dbus message: " << error.message
-			  << endl;
+		kdError(debug_area) << "Could not send dbus message: "
+				    << error.message << endl;
 		dbus_message_unref(message);
 		dbus_error_free(&error);
 		kdDebugFuncOut(trace);
@@ -461,9 +461,9 @@ dbusHAL::dbusMethodCall(QString interface, QString path, QString object,
 
 	int type = dbus_message_get_type(reply);
 	if (type != DBUS_MESSAGE_TYPE_METHOD_RETURN) {
-		kdError() << "Revieved invalid DBUS_MESSAGE_TYPE: " << type 
-			  << ". Expected: " << DBUS_MESSAGE_TYPE_METHOD_RETURN
-			  << endl;
+		kdError(debug_area) << "Revieved invalid DBUS_MESSAGE_TYPE: "
+				    << type << ". Expected: "
+				    << DBUS_MESSAGE_TYPE_METHOD_RETURN << endl;
 		dbus_message_unref(reply);
 		dbus_message_unref(message);
 		dbus_error_free(&error);
@@ -474,8 +474,8 @@ dbusHAL::dbusMethodCall(QString interface, QString path, QString object,
 	if (!dbus_message_get_args(reply, &error, retval_type, retvalue,
 				   DBUS_TYPE_INVALID)) {
 		if (dbus_error_is_set(&error)) {
-			kdError() << "Could not get argument from reply: "
-				  << error.message << endl;
+			kdError(debug_area) << "Could not get argument from "
+				"reply: "  << error.message << endl;
 			dbus_error_free(&error);
 		}
 		dbus_message_unref(reply);
@@ -505,23 +505,21 @@ dbusHAL::dbusMethodCallSuspend(const char *suspend) {
 	dbus_connection = dbus_bus_get(DBUS_BUS_SYSTEM, &error);
 	
 	if (dbus_error_is_set(&error)) {
-		kdError() << "Could not get dbus connection: "
-			  << error.message << endl;
+		kdError(debug_area) << "Could not get dbus connection: "
+				    << error.message << endl;
 		dbus_error_free(&error);
 		kdDebugFuncOut(trace);
 		return false;
 	}
 
-	kdDebug() << "Calling org.freedesktop.login1.Manager" << suspend
-		  << endl;
+	kdDebug(debug_area) << "Calling org.freedesktop.login1.Manager"
+			    << suspend << endl;
 	DBusMessage *message =
 		dbus_message_new_method_call(
 			"org.freedesktop.login1", "/org/freedesktop/login1",
 			"org.freedesktop.login1.Manager", suspend);
 	if (nullptr == message) {
-		kdDebug() << "Error building org.freedesktop.login1."
-			"Manager." << suspend << " call." << endl;
-		kdError() << "Error building org.freedesktop.login1."
+		kdError(debug_area) << "Error building org.freedesktop.login1."
 			"Manager." << suspend << " call." << endl;
 		kdDebugFuncOut(trace);
 		return false;
@@ -529,10 +527,9 @@ dbusHAL::dbusMethodCallSuspend(const char *suspend) {
 	dbus_bool_t interactive = false;
 	if (!dbus_message_append_args(message, DBUS_TYPE_BOOLEAN, &interactive,
 				      DBUS_TYPE_INVALID)) {
-		kdDebug() << "Error appending 'false' to org.freedesktop."
-			"login1.Manager." << suspend << "." << endl;
-		kdError() << "Error appending 'false' to org.freedesktop."
-			"login1.Manager." << suspend << "." << endl;
+		kdError(debug_area) << "Error appending 'false' to org"
+			".freedesktop.login1.Manager." << suspend << "."
+				    << endl;
 		dbus_message_unref(message);
 		kdDebugFuncOut(trace);
 		return false;
@@ -542,17 +539,19 @@ dbusHAL::dbusMethodCallSuspend(const char *suspend) {
 	dbus_connection_send_with_reply(
 		dbus_connection, message, &pcall, INT_MAX);
 	if (pcall) {
-		kdDebug() << "org.freedesktop.login1.Manager." << suspend
-			  << ": pcall is not null." << endl;
+		kdDebug(debug_area) << "org.freedesktop.login1.Manager."
+				    << suspend << ": pcall is not null."
+				    << endl;
 		dbus_pending_call_ref(pcall); // really needed?
 		dbus_pending_call_set_notify(
 			pcall,
 			reinterpret_cast<DBusPendingCallNotifyFunction>(
 				&dbusHAL::callBackSuspend),
 			this, NULL);
-	} else
-		kdDebug() << "org.freedesktop.login1.Manager." << suspend
-			  << ": pcall is null." << endl;
+	} else {
+		kdDebug(debug_area) << "org.freedesktop.login1.Manager."
+				    << suspend << ": pcall is null." << endl;
+	}
 	dbus_message_unref(message);
 
 	kdDebugFuncOut(trace);
@@ -568,16 +567,16 @@ dbusHAL::callBackSuspend(DBusPendingCall* pcall, dbusHAL *instance) {
 	kdDebugFuncIn(trace);
 
         if (nullptr == pcall) {
-		kdError() << "dbusHAL::callBackSuspend - DBusPendingCall not "
-			"set, return" << endl;
+		kdError(debug_area) << "dbusHAL::callBackSuspend - "
+			"DBusPendingCall not set, return" << endl;
 		kdDebugFuncOut(trace);
 		return;
         }
 
 	DBusMessage *reply = dbus_pending_call_steal_reply(pcall);
 	if (reply == NULL) {
-		kdError() << "dbusHAL::callBackSuspend - Got no reply, return"
-			  << endl;
+		kdError(debug_area) << "dbusHAL::callBackSuspend - Got no "
+			"reply, return" << endl;
 	} else
 		dbus_message_unref(reply);
 
@@ -617,48 +616,6 @@ dbusHAL::isUserPrivileged(QString privilege, QString udi, QString ressource,
 	const char *_unique_name = dbus_bus_get_unique_name(dbus_connection);
 	const char *_privilege = privilege.latin1();
 
-#ifdef USE_LIBHAL_POLICYCHECK
-	if (udi.isEmpty()) {
-		kdError() << "No UDI given ... could not lookup privileges"
-			  << endl;
-		kdDebugFuncOut(trace);
-		return -1;
-	} 
-
-	if (!hal_is_connected) {
-		kdError() << "HAL not running, could not call libhal for "
-			"lookup privileges" << endl;
-		kdDebugFuncOut(trace);
-		return -1;
-	}
-
-	DBusError error;
-	dbus_error_init(&error);
-	char *result = libhal_device_is_caller_privileged(
-		hal_ctx, udi.latin1(), _privilege, _unique_name, &error);
-	
-	if (dbus_error_is_set(&error)) {
-		kdWarning() << "Error while lookup privileges: "
-			    << error.message << endl;
-		dbus_error_free(&error);
-		libhal_free_string(result);
-		kdDebugFuncOut(trace);
-		return -1;
-	}
-	if (0 == strcmp(result, "yes")) {
-		libhal_free_string(result);
-		kdDebugFuncOut(trace);
-		return 1;
-	}
-	if (0 == strcmp(result, "no")) {
-		libhal_free_string(result);
-		kdDebugFuncOut(trace);
-		return 0;
-	}
-	libhal_free_string(result);
-	kdDebugFuncOut(trace);
-	return -1;
-#else
 	// not sure if we need this, but to avoid problems
 	const char *_resource = ressource.latin1();
 
@@ -679,7 +636,6 @@ dbusHAL::isUserPrivileged(QString privilege, QString udi, QString ressource,
 
 	kdDebugFuncOut(trace);
 	return static_cast<int>(_retval);
-#endif
 }
 
 /* ---> PolicyKit method call section :: END   <--- */
@@ -733,20 +689,19 @@ dbusHAL::filterFunction(DBusConnection *connection, DBusMessage *message,
 
         if (dbus_message_get_type(message) != DBUS_MESSAGE_TYPE_SIGNAL) {
                 if (trace)
-			kdDebug() << "recieved message, but wasn't from type "
-				"DBUS_MESSAGE_TYPE_SIGNAL" << endl;
+			kdDebug(debug_area) << "recieved message, but wasn't "
+				"from type DBUS_MESSAGE_TYPE_SIGNAL" << endl;
 		kdDebugFuncOut(trace);
 		return DBUS_HANDLER_RESULT_NOT_YET_HANDLED;
         }
 
 	QString ifaceType = dbus_message_get_interface(message);
         if (nullptr == ifaceType) {
-                kdDebug() << "Received message from invalid interface" << endl;
+                kdDebug(debug_area) << "Received message from invalid "
+			"interface" << endl;
                 kdDebugFuncOut(trace);
 		return DBUS_HANDLER_RESULT_NOT_YET_HANDLED;
         }
-
-	bool reply_wanted = !dbus_message_get_no_reply(message);
 
 	if (0 == strcmp("org.freedesktop.DBus.Properties", ifaceType)) {
 		const char *signal = dbus_message_get_member(message);
@@ -763,8 +718,8 @@ dbusHAL::filterFunction(DBusConnection *connection, DBusMessage *message,
 
 	if (ifaceType.startsWith(DBUS_INTERFACE_DBUS)) {
 		if (trace)
-			kdDebug() << "Received from DBUS_INTERFACE_DBUS"
-				  << endl;
+			kdDebug(debug_area) << "Received from "
+				"DBUS_INTERFACE_DBUS" << endl;
 		/* get the name of the signal */
 		const char *signal = dbus_message_get_member(message);
 		
@@ -776,16 +731,18 @@ dbusHAL::filterFunction(DBusConnection *connection, DBusMessage *message,
 				      &value, DBUS_TYPE_INVALID);
 	
 		if (dbus_error_is_set(&error)) {
-			kdWarning() << "Received signal " << error.message
-				    << " but no string argument" << endl;
+			kdWarning(debug_area) << "Received signal "
+					      << error.message << " but no "
+				"string argument" << endl;
 			dbus_error_free(&error);
 			kdDebugFuncOut(trace);
 			return DBUS_HANDLER_RESULT_HANDLED;
 		}
 	
 		if (trace)
-			kdDebug() << "filter_function::SIGNAL=" << signal
-				  << " VALUE=" << value << endl;
+			kdDebug(debug_area) << "filter_function::SIGNAL="
+					    << signal << " VALUE=" << value
+					    << endl;
 	
 		/* our name is... */
 		if (0 == strcmp(signal, "NameAcquired")) {
@@ -814,18 +771,18 @@ dbusHAL::filterFunction(DBusConnection *connection, DBusMessage *message,
 			const char *own_name = dbus_bus_get_unique_name(
 				instance->get_DBUS_connection());
 			if (0 == strcmp(new_owner, own_name)) {
-				kdDebug() << "=== now owner of "
+				kdDebug(debug_area) << "=== now owner of "
 					"org.freedesktop.Policy.Power ==="
-					  << endl;
+						    << endl;
 				// we have now again the ower of the name!
 				instance->emitMsgReceived(
 					POLICY_POWER_OWNER_CHANGED, "NOW_OWNER",
 					NULL);
 			} else {
 				// some other has now the interface
-				kdDebug() << "=== someone else owner of "
-					"org.freedesktop.Policy.Power ==="
-					  << endl;
+				kdDebug(debug_area) << "=== someone else owner"
+					" of org.freedesktop.Policy.Power ==="
+						    << endl;
 				instance->emitMsgReceived(
 					POLICY_POWER_OWNER_CHANGED,
 					"OTHER_OWNER", NULL);
@@ -839,12 +796,13 @@ dbusHAL::filterFunction(DBusConnection *connection, DBusMessage *message,
 
 	if (0 == strcmp(ifaceType, "org.freedesktop.UPower")) {
 		const char *signal = dbus_message_get_member(message);
-		kdDebug() << "Received from org.freedesktop.UPower: "
-			  << (nullptr == signal ? "null" : signal) << endl;
+		kdDebug(debug_area) << "Received from org.freedesktop.UPower: "
+				    << (nullptr == signal ? "null" : signal)
+				    << endl;
 		if (0 != strcmp(signal, "DeviceRemoved") &&
 		    0 != strcmp(signal, "DeviceAdded")) {
-			kdDebug() << "Neither DeviceAdded nor DeviceRemoved."
-				  << endl;
+			kdDebug(debug_area) << "Neither DeviceAdded nor "
+				"DeviceRemoved." << endl;
 			kdDebugFuncOut(trace);
 			return DBUS_HANDLER_RESULT_HANDLED;
 		}
@@ -854,8 +812,9 @@ dbusHAL::filterFunction(DBusConnection *connection, DBusMessage *message,
 		if (!dbus_message_get_args(
 			    message, &error, DBUS_TYPE_OBJECT_PATH, &udi,
 			    DBUS_TYPE_INVALID)) {
-			kdError() << "No object path argument for " << signal
-				  << ": " <<  error.message << endl;
+			kdError(debug_area) << "No object path argument for "
+					    << signal << ": " <<  error.message
+					    << endl;
 			dbus_error_free(&error);
 			kdDebugFuncOut(trace);
 			return DBUS_HANDLER_RESULT_HANDLED;
@@ -868,16 +827,16 @@ dbusHAL::filterFunction(DBusConnection *connection, DBusMessage *message,
 	}
 
 	if (ifaceType.startsWith("org.freedesktop.ConsoleKit.Session")) {
-		kdDebug() << "Received from org.freedesktop.ConsoleKit.Session"
-			  << endl;
+		kdDebug(debug_area) << "Received from org.freedesktop"
+			".ConsoleKit.Session" << endl;
 
 		const char *session = dbus_message_get_path(message);
 		const char *signal = dbus_message_get_member(message);
 		
 		if (0 != strcmp(signal, "ActiveChanged")) {
-			kdDebug() << "Received unknown signal from "
+			kdDebug(debug_area) << "Received unknown signal from "
 				"org.freedesktop.ConsoleKit.Session: "
-				  << signal << endl;
+					    << signal << endl;
 			kdDebugFuncOut(trace);
 			return DBUS_HANDLER_RESULT_HANDLED;
 		}
@@ -887,12 +846,18 @@ dbusHAL::filterFunction(DBusConnection *connection, DBusMessage *message,
 		dbus_bool_t active;
 		if (!dbus_message_get_args(message, &error, DBUS_TYPE_BOOLEAN,
 					  &active, DBUS_TYPE_INVALID)) {
+			kdError(debug_area) << "Could not get args for signal "
+				"ActiveChanged of org.freedesktop.ConsoleKit"
+				".Session: " << error.message << endl;
 			if (dbus_error_is_set(&error))
 				dbus_error_free(&error);
 			kdDebugFuncOut(trace);
 			return DBUS_HANDLER_RESULT_HANDLED;
 		}
 		if (dbus_error_is_set(&error)) {
+			kdError(debug_area) << "Could not get args for signal "
+				"ActiveChanged of org.freedesktop.ConsoleKit"
+				".Session: " << error.message << endl;
 			dbus_error_free(&error);
 			kdDebugFuncOut(trace);
 			return DBUS_HANDLER_RESULT_HANDLED;
@@ -927,8 +892,9 @@ dbusHAL::check_auth(const char *action) {
 		"/org/freedesktop/PolicyKit1/Authority",
 		"org.freedesktop.PolicyKit1.Authority", "CheckAuthorization");
 	if (nullptr == msg) {
-		kdDebug() << "Cannot build the org.freedesktop.PolicyKit1."
-			"Authority.CheckAuthorization call." << endl;
+		kdError(debug_area) << "Cannot build the org.freedesktop"
+			".PolicyKit1.Authority.CheckAuthorization call."
+				    << endl;
 		kdDebugFuncIn(trace);
 		return -1;
 	}
@@ -940,16 +906,16 @@ dbusHAL::check_auth(const char *action) {
 	DBusMessageIter j;
 	if (!dbus_message_iter_open_container(
 		    &i, DBUS_TYPE_STRUCT, nullptr, &j)) {
-		kdDebug() << "dbus_message_iter_open_container returns false."
-			  << endl;
+		kdError(debug_area) << "dbus_message_iter_open_container "
+			"returns false." << endl;
 		dbus_message_unref(msg);
 		kdDebugFuncIn(trace);
 		return -1;
 	}
 	const char *kind = "unix-process";
 	if (!dbus_message_iter_append_basic(&j, DBUS_TYPE_STRING, &kind)) {
-		kdDebug() << "dbus_message_iter_append_basic returns false."
-			  << endl;
+		kdError(debug_area) << "dbus_message_iter_append_basic returns"
+			"false." << endl;
 		dbus_message_unref(msg);
 		kdDebugFuncIn(trace);
 		return -1;
@@ -958,8 +924,8 @@ dbusHAL::check_auth(const char *action) {
 	DBusMessageIter k;
 	if (!dbus_message_iter_open_container(
 		    &j, DBUS_TYPE_ARRAY, "{sv}", &k)) {
-		kdDebug() << "dbus_message_iter_open_container returns false."
-			  << endl;
+		kdError(debug_area) << "dbus_message_iter_open_container "
+			"returns false." << endl;
 		dbus_message_unref(msg);
 		kdDebugFuncIn(trace);
 		return -1;
@@ -968,8 +934,8 @@ dbusHAL::check_auth(const char *action) {
 	DBusMessageIter l;
 	if (!dbus_message_iter_open_container(
 		    &k, DBUS_TYPE_DICT_ENTRY, nullptr, &l)) {
-		kdDebug() << "dbus_message_iter_open_container returns false."
-			  << endl;
+		kdError(debug_area) << "dbus_message_iter_open_container "
+			"returns false." << endl;
 		dbus_message_unref(msg);
 		kdDebugFuncIn(trace);
 		return -1;
@@ -978,8 +944,8 @@ dbusHAL::check_auth(const char *action) {
 	static const char *pid_key = "pid";
 	if (!dbus_message_iter_append_basic(&l, DBUS_TYPE_STRING,
 					    &pid_key)) {
-		kdDebug() << "dbus_message_iter_append_basic returns false."
-			  << endl;
+		kdError(debug_area) << "dbus_message_iter_append_basic returns"
+			" false." << endl;
 		dbus_message_unref(msg);
 		kdDebugFuncIn(trace);
 		return -1;
@@ -987,8 +953,8 @@ dbusHAL::check_auth(const char *action) {
 	DBusMessageIter m;
 	if (!dbus_message_iter_open_container(
 		    &l, DBUS_TYPE_VARIANT, "u", &m)) {
-		kdDebug() << "dbus_message_iter_open_container returns false."
-			  << endl;
+		kdError(debug_area) << "dbus_message_iter_open_container "
+			"returns false." << endl;
 		dbus_message_unref(msg);
 		kdDebugFuncIn(trace);
 		return -1;
@@ -996,24 +962,24 @@ dbusHAL::check_auth(const char *action) {
 	uint32_t pid = getpid();
 	if (!dbus_message_iter_append_basic(&m, DBUS_TYPE_UINT32,
 					    &pid)) {
-		kdDebug() << "dbus_message_iter_append_basic returns false."
-			  << endl;
+		kdError(debug_area) << "dbus_message_iter_append_basic returns"
+			" false." << endl;
 		dbus_message_unref(msg);
 		kdDebugFuncIn(trace);
 		return -1;
 	}
 	// close the variant
 	if (!dbus_message_iter_close_container(&l, &m)) {
-		kdDebug() << "dbus_message_iter_append_basic returns false."
-			  << endl;
+		kdError(debug_area) << "dbus_message_iter_close_container "
+			"returns false." << endl;
 		dbus_message_unref(msg);
 		kdDebugFuncIn(trace);
 		return -1;
 	}
 	// close the dict entry
 	if (!dbus_message_iter_close_container(&k, &l)) {
-		kdDebug() << "dbus_message_iter_append_basic returns false."
-			  << endl;
+		kdError(debug_area) << "dbus_message_iter_close_container "
+			"returns false." << endl;
 		dbus_message_unref(msg);
 		kdDebugFuncIn(trace);
 		return -1;
@@ -1021,8 +987,8 @@ dbusHAL::check_auth(const char *action) {
 	// open the dict entry
 	if (!dbus_message_iter_open_container(
 		    &k, DBUS_TYPE_DICT_ENTRY, nullptr, &l)) {
-		kdDebug() << "dbus_message_iter_open_container returns false."
-			  << endl;
+		kdError(debug_area) << "dbus_message_iter_open_container "
+			"returns false." << endl;
 		dbus_message_unref(msg);
 		kdDebugFuncIn(trace);
 		return -1;
@@ -1030,8 +996,8 @@ dbusHAL::check_auth(const char *action) {
 	static const char *start_time_key = "start-time";
 	if (!dbus_message_iter_append_basic(&l, DBUS_TYPE_STRING,
 					    &start_time_key)) {
-		kdDebug() << "dbus_message_iter_append_basic returns false."
-			  << endl;
+		kdError(debug_area) << "dbus_message_iter_append_basic returns"
+			" false." << endl;
 		dbus_message_unref(msg);
 		kdDebugFuncIn(trace);
 		return -1;
@@ -1039,48 +1005,48 @@ dbusHAL::check_auth(const char *action) {
 	// open the variant
 	if (!dbus_message_iter_open_container(
 		    &l, DBUS_TYPE_VARIANT, "t", &m)) {
-		kdDebug() << "dbus_message_iter_open_container returns false."
-			  << endl;
+		kdError(debug_area) << "dbus_message_iter_open_container "
+			"returns false." << endl;
 		dbus_message_unref(msg);
 		kdDebugFuncIn(trace);
 		return -1;
 	}
 	uint64_t ts = 0;
 	if (!dbus_message_iter_append_basic(&m, DBUS_TYPE_UINT64, &ts)) {
-		kdDebug() << "dbus_message_iter_append_basic returns false."
-			  << endl;
+		kdError(debug_area) << "dbus_message_iter_append_basic returns"
+			" false." << endl;
 		dbus_message_unref(msg);
 		kdDebugFuncIn(trace);
 		return -1;
 	}
 	// close the variant
 	if (!dbus_message_iter_close_container(&l, &m)) {
-		kdDebug() << "dbus_message_iter_append_basic returns false."
-			  << endl;
+		kdError(debug_area) << "dbus_message_iter_close_container "
+			"returns false." << endl;
 		dbus_message_unref(msg);
 		kdDebugFuncIn(trace);
 		return -1;
 	}
 	// close the dict entry
 	if (!dbus_message_iter_close_container(&k, &l)) {
-		kdDebug() << "dbus_message_iter_append_basic returns false."
-			  << endl;
+		kdError(debug_area) << "dbus_message_iter_close_container "
+			"returns false." << endl;
 		dbus_message_unref(msg);
 		kdDebugFuncIn(trace);
 		return -1;
 	}
 	// close the dictionary
 	if (!dbus_message_iter_close_container(&j, &k)) {
-		kdDebug() << "dbus_message_iter_append_basic returns false."
-			  << endl;
+		kdError(debug_area) << "dbus_message_iter_close_container "
+			"returns false." << endl;
 		dbus_message_unref(msg);
 		kdDebugFuncIn(trace);
 		return -1;
 	}
 	// close the subject struct
 	if (!dbus_message_iter_close_container(&i, &j)) {
-		kdDebug() << "dbus_message_iter_append_basic returns false."
-			  << endl;
+		kdError(debug_area) << "dbus_message_iter_close_container "
+			"returns false." << endl;
 		dbus_message_unref(msg);
 		kdDebugFuncIn(trace);
 		return -1;
@@ -1088,8 +1054,8 @@ dbusHAL::check_auth(const char *action) {
 
 	// append action
 	if (!dbus_message_iter_append_basic(&i, DBUS_TYPE_STRING, &action)) {
-		kdDebug() << "dbus_message_iter_append_basic returns false."
-			  << endl;
+		kdError(debug_area) << "dbus_message_iter_append_basic returns"
+			" false." << endl;
 		dbus_message_unref(msg);
 		kdDebugFuncIn(trace);
 		return -1;
@@ -1098,15 +1064,15 @@ dbusHAL::check_auth(const char *action) {
 	// append details dictionary
 	if (!dbus_message_iter_open_container(
 		    &i, DBUS_TYPE_ARRAY, "{ss}", &j)) {
-		kdDebug() << "dbus_message_iter_open_container returns false."
-			  << endl;
+		kdError(debug_area) << "dbus_message_iter_open_container "
+			"returns false." << endl;
 		dbus_message_unref(msg);
 		kdDebugFuncIn(trace);
 		return -1;
 	}
 	if (!dbus_message_iter_close_container(&i, &j)) {
-		kdDebug() << "dbus_message_iter_append_basic returns false."
-			  << endl;
+		kdError(debug_area) << "dbus_message_iter_close_container "
+			"returns false." << endl;
 		dbus_message_unref(msg);
 		kdDebugFuncIn(trace);
 		return -1;
@@ -1115,8 +1081,8 @@ dbusHAL::check_auth(const char *action) {
 	// append flags
 	uint32_t flags = 0;
 	if (!dbus_message_iter_append_basic(&i, DBUS_TYPE_UINT32, &flags)) {
-		kdDebug() << "dbus_message_iter_append_basic returns false."
-			  << endl;
+		kdError(debug_area) << "dbus_message_iter_append_basic returns"
+			" false." << endl;
 		dbus_message_unref(msg);
 		kdDebugFuncIn(trace);
 		return -1;
@@ -1125,8 +1091,8 @@ dbusHAL::check_auth(const char *action) {
 	static const char *cancellation_id = "";
 	if (!dbus_message_iter_append_basic(&i, DBUS_TYPE_STRING,
 					    &cancellation_id)) {
-		kdDebug() << "dbus_message_iter_append_basic returns false."
-			  << endl;
+		kdError(debug_area) << "dbus_message_iter_append_basic returns"
+			" false." << endl;
 		dbus_message_unref(msg);
 		kdDebugFuncIn(trace);
 		return -1;
@@ -1137,8 +1103,8 @@ dbusHAL::check_auth(const char *action) {
 	DBusMessage *reply = dbus_connection_send_with_reply_and_block(
 		dbus_connection, msg, -1, &error);
 	if (dbus_error_is_set(&error)) {
-		kdDebug() << "Could not send dbus message: " << error.message
-			  << endl;
+		kdError(debug_area) << "Could not send dbus message: "
+				    << error.message << endl;
 		dbus_message_unref(msg);
 		dbus_error_free(&error);
 		kdDebugFuncOut(trace);
@@ -1147,9 +1113,9 @@ dbusHAL::check_auth(const char *action) {
 
 	int type = dbus_message_get_type(reply);
 	if (type != DBUS_MESSAGE_TYPE_METHOD_RETURN) {
-		kdDebug() << "Revieved invalid DBUS_MESSAGE_TYPE: " << type 
-			  << ". Expected: " << DBUS_MESSAGE_TYPE_METHOD_RETURN
-			  << endl;
+		kdError(debug_area) << "Received invalid DBUS_MESSAGE_TYPE: "
+				    << type << ". Expected: "
+				    << DBUS_MESSAGE_TYPE_METHOD_RETURN << endl;
 		dbus_message_unref(reply);
 		dbus_message_unref(msg);
 		dbus_error_free(&error);
@@ -1158,8 +1124,8 @@ dbusHAL::check_auth(const char *action) {
 	}
 
 	if (!dbus_message_iter_init(reply, &i)) {
-		kdDebug() << "dbus_message_iter_init returns false."
-			  << endl;
+		kdError(debug_area) << "dbus_message_iter_init returns false."
+				    << endl;
 		dbus_message_unref(reply);
 		dbus_message_unref(msg);
 		dbus_error_free(&error);
@@ -1169,9 +1135,8 @@ dbusHAL::check_auth(const char *action) {
 
 	type = dbus_message_iter_get_arg_type(&i);
 	if (DBUS_TYPE_STRUCT != type) {
-		kdDebug() << "org.freedesktop.PolicyKit1.Authority."
-			"CheckAuthorization: expected a struct."
-			  << endl;
+		kdError(debug_area) << "org.freedesktop.PolicyKit1.Authority."
+			"CheckAuthorization: expected a struct." << endl;
 		dbus_message_unref(reply);
 		dbus_message_unref(msg);
 		dbus_error_free(&error);
@@ -1183,9 +1148,8 @@ dbusHAL::check_auth(const char *action) {
 
 	type = dbus_message_iter_get_arg_type(&j);
 	if (DBUS_TYPE_BOOLEAN != type) {
-		kdDebug() << "org.freedesktop.PolicyKit1.Authority."
-			"CheckAuthorization: expected a boolean."
-			  << endl;
+		kdError(debug_area) << "org.freedesktop.PolicyKit1.Authority."
+			"CheckAuthorization: expected a boolean." << endl;
 		dbus_message_unref(reply);
 		dbus_message_unref(msg);
 		dbus_error_free(&error);
@@ -1201,188 +1165,12 @@ dbusHAL::check_auth(const char *action) {
 	dbus_error_free(&error);
 
 	if (trace)
-		kdDebug() << action << " is "
-			  << (is_authorised ? "authorised" : "not authorised")
-			  << endl;
+		kdDebug(debug_area) << action << " is "
+				    << (is_authorised ? "authorised" :
+					"not authorised")
+				    << endl;
 
 	kdDebugFuncOut(trace);
 
 	return is_authorised ? 1 : 0;
 }
-
-// bool
-// dbusHAL::isBattery(const char *name) {
-// 	const char *dev = &UPOWER_DEVICE_PATH[0];
-// 	Dict props = call_dbusP("org.freedesktop.UPower", name,
-// 				"org.freedesktop.DBus.Properties", "GetAll",
-// 				DBUS_TYPE_STRING, &dev, DBUS_TYPE_INVALID);
-// 	Dict::const_iterator i = props.find("Type");
-// 	return props.end() != i && 2 == std::any_cast<uint32_t>(i->second);
-// }
-
-// dbusHAL::Dict
-// dbusHAL::call_dbusP(const char *addr, const char *path, const char *intf,
-// 		const char *fnc, int first_arg_type, ...) {
-// 	va_list args;
-// 	va_start(args, first_arg_type);
-// 	Dict props = call_dbusP(addr, path, intf, fnc, first_arg_type, args);
-// 	va_end(args);
-// 	return props;
-// }
-
-// dbusHAL::Dict
-// dbusHAL::call_dbusP(const char *addr, const char *path, const char *intf,
-// 		const char *fnc, int first_arg_type, va_list args) {
-// 	DBusMessage *msg = dbus_message_new_method_call(addr, path, intf, fnc);
-// 	if (nullptr == msg)
-// 		throw std::runtime_error("new method");
-// 	DBusMsg __msg(msg, &dbus_message_unref);
-// 	if (!dbus_message_append_args_valist(msg, first_arg_type, args))
-// 		throw std::runtime_error("append args");
-
-// 	DBusError err;
-// 	dbus_error_init(&err);
-// 	DBusErr __err(&err, &dbus_error_free);
-
-// 	DBusMessage *reply =
-// 		dbus_connection_send_with_reply_and_block(dbus_connection, msg,
-// 							  -1, &err);
-// 	if (nullptr == reply)
-// 		throw std::runtime_error("call method");
-// 	DBusMsg __reply(reply, &dbus_message_unref);
-// 	if (dbus_error_is_set(&err))
-// 		throw std::runtime_error("method call error");
-// 	int type = dbus_message_get_type(reply);
-// 	switch (type) {
-// 	case DBUS_MESSAGE_TYPE_METHOD_RETURN:
-// 		return get_all(reply);
-// 	default:
-// 		throw std::runtime_error(
-// 			"expected DBUS_MESSAGE_TYPE_METHOD_RETURN");
-// 	}
-// }
-
-// dbusHAL::Dict
-// dbusHAL::get_all(DBusMessage *reply) {
-// 	DBusMessageIter i;
-// 	if (!dbus_message_iter_init(reply, &i))
-// 		return Dict();
-// 	int type;
-// 	do {
-// 		type = dbus_message_iter_get_arg_type(&i);
-// 		switch (type) {
-// 		case DBUS_TYPE_ARRAY:
-// 			return get_props_array(&i);
-// 		case DBUS_TYPE_INVALID:
-// 			throw std::runtime_error("expected array");
-// 		default:
-// 			throw std::runtime_error("expected array");
-// 		}
-// 	} while (dbus_message_iter_next(&i));
-// }
-
-// dbusHAL::Dict
-// dbusHAL::get_props_array(DBusMessageIter *i) {
-// 	DBusMessageIter j;
-// 	dbus_message_iter_recurse(i, &j);
-// 	Dict dict;
-// 	do {
-// 		int type;
-// 		type = dbus_message_iter_get_arg_type(&j);
-// 		switch (type) {
-// 		case DBUS_TYPE_DICT_ENTRY:
-// 			dict.insert(get_dict_entry(&j));
-// 			break;
-// 		case DBUS_TYPE_INVALID:
-// 			break;
-// 		default:
-// 			std::cout << "type: " << type << std::endl;
-// 			break;
-// 		}
-// 	} while (dbus_message_iter_next(&j));
-// 	return dict;
-// }
-
-// dbusHAL::Dict::value_type
-// dbusHAL::get_dict_entry(DBusMessageIter *i) {
-// 	DBusMessageIter j;
-// 	dbus_message_iter_recurse(i, &j);
-// 	const char *key = nullptr;
-// 	std::any value;
-// 	do {
-// 		int type;
-// 		type = dbus_message_iter_get_arg_type(&j);
-// 		switch (type) {
-// 		case DBUS_TYPE_STRING:
-// 			dbus_message_iter_get_basic(&j, &key);
-// 			break;
-// 		case DBUS_TYPE_VARIANT:
-// 			value = get_variant(&j, key);
-// 			break;
-// 		case DBUS_TYPE_INVALID:
-// 			break;
-// 		default:
-// 			std::cout << "type: " << type << std::endl;
-// 			break;
-// 		}
-// 	} while (dbus_message_iter_next(&j));
-// 	if (nullptr == key || !value.has_value())
-// 		throw std::runtime_error("expected valid dict entry");
-// 	return Dict::value_type(key, value);
-// }
-
-// std::any
-// dbusHAL::get_variant(DBusMessageIter *i, const char *key) {
-// 	DBusMessageIter j;
-// 	dbus_message_iter_recurse(i, &j);
-// 	char *sign = dbus_message_iter_get_signature(&j);
-// 	if (nullptr == sign)
-// 		return std::any();
-// 	DBusString __sign(sign, &dbus_free);
-
-// 	char *s;
-// 	bool flag;
-// 	uint64_t u64;
-// 	uint32_t u32;
-// 	int64_t s64;
-// 	double d;
-	
-// 	for (const char *v = sign; '\0' != *v;) {
-// 		switch (static_cast<int>(*v)) {
-// 		case DBUS_TYPE_STRING: // s
-// 			dbus_message_iter_get_basic(&j, &s);
-// 			std::cout << key << ": " << s << std::endl;
-// 			return std::any(std::string(s));
-// 		case DBUS_TYPE_BOOLEAN: // b
-// 			dbus_message_iter_get_basic(&j, &flag);
-// 			std::cout << key << ": " << (flag ? "true": "false")
-// 				  << std::endl;
-// 			return std::any(flag);
-// 		case DBUS_TYPE_UINT64: // t
-// 			dbus_message_iter_get_basic(&j, &u64);
-// 			std::cout << key << ": " << u64 << std::endl;
-// 			return std::any(u64);
-// 		case DBUS_TYPE_UINT32: // u
-// 			dbus_message_iter_get_basic(&j, &u32);
-// 			std::cout << key << ": " << u32 << std::endl;
-// 			return std::any(u32);
-// 		case DBUS_TYPE_INT64: // x
-// 			dbus_message_iter_get_basic(&j, &s64);
-// 			std::cout << key << ": " << s64 << std::endl;
-// 			return std::any(s64);
-// 		case DBUS_TYPE_DOUBLE: // d
-// 			dbus_message_iter_get_basic(&j, &d);
-// 			std::cout << key << ": " << d << std::endl;
-// 			return std::any(d);
-// 		default:
-// 			throw std::runtime_error("unknown type");
-// 		}
-// 		++v;
-// 		if ('\0' == *v)
-// 			break;
-// 		if (!dbus_message_iter_next(&j))
-// 			break;
-// 	}
-// 	return std::any();
-// }
-

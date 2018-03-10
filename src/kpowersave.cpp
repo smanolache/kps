@@ -77,8 +77,9 @@ kpowersave::kpowersave( bool force_acpi_check, bool trace_func ) : KSystemTray(0
 		    !hwinfo->supportCPUFreq() && !suspend.suspend2disk && !suspend.suspend2ram){
 			config->writeEntry("Autostart", false);
 			config->sync();
-			kdError() << "This machine does not support ACPI, APM, PMU, CPUFreq, Suspend2Disk nor "
-			          << "Suspend2RAM. Close KPowersave now." << endl;
+			kdError(debug_area) << "This machine does not support"
+				"ACPI, APM, PMU, CPUFreq, Suspend2Disk nor "
+				"Suspend2RAM. Close KPowersave now." << endl;
 			exit(-1);
 		}
 	}
@@ -439,12 +440,14 @@ quit:
 *	should implement this.\n If it is possible we should update the tooltip permanently 
 *	while the mouse cursor is over the widget
 */
-void kpowersave::updateTooltip(){
+void kpowersave::updateTooltip() {
 	kdDebugFuncIn(trace);
 
 	BatteryCollection *primary = hwinfo->getPrimaryBatteries();
 	int percent = primary->getRemainingPercent();
 	int minutes = primary->getRemainingMinutes();
+	kdDebug(debug_area) << "updateToolTip: remaining minutes: " << minutes
+			    << endl;
 	int charging_state = primary->getChargingState();
 
 	QString tmp, num3;
@@ -452,36 +455,36 @@ void kpowersave::updateTooltip(){
 	num3 = num3.rightJustify(2, '0');
 
 	if (hwinfo->getAcAdapter()) {
-		if (percent == 100) tmp = i18n("Plugged in -- fully charged");
+		if (percent == 100)
+			tmp = i18n("Plugged in -- fully charged");
 		// assume that no battery is there
 		else {
-			if ((percent < 0 && minutes < 0) || primary->getBatteryState() == BAT_NONE) {
+			if ((percent < 0 && minutes < 0) ||
+			    BAT_NONE == primary->getBatteryState())
 				tmp = i18n("Plugged in");
-			} 
-			else if (minutes > 0){
+			else if (minutes > 0) {
+				// BAT_NONE != getBatteryState() && minutes > 0
 				if (charging_state == CHARGING)
 					tmp = i18n("Plugged in -- %1% charged (%2:%3 h until full "
 						   "charged)").arg(percent).arg(minutes / 60).arg(num3);
 				else
 					tmp = i18n("Plugged in -- %1% charged (%2:%3 remaining hours)")
 						   .arg(percent).arg(minutes / 60).arg(num3);
-			}
-			else if (charging_state == CHARGING && hwinfo->hasAPM()) {
+			} else if (charging_state == CHARGING && hwinfo->hasAPM())
 				tmp = i18n("Plugged in -- %1% charged").arg(percent);
-			}
-			else{
-				if (percent == -1) tmp = i18n("Plugged in -- no battery");
-				else tmp = i18n("Plugged in -- %1% charged").arg(percent);
+			else {
+				if (percent == -1)
+					tmp = i18n("Plugged in -- no battery");
+				else
+					tmp = i18n("Plugged in -- %1% charged").arg(percent);
 			}
 		}
-	} else{
-		if (minutes >= 0){
+	} else {
+		if (minutes >= 0)
 			tmp = i18n("Running on batteries -- %1% charged (%2:%3 hours remaining)")
 				   .arg(percent).arg(minutes / 60).arg(num3);
-		}
-		else {
+		else
 			tmp = i18n("Running on batteries -- %1% charged").arg(percent);
-		}
 	}
 	// add string whether battery is charging, but only if < 100% to avoid
 	// stupid tooltip message on machines which always with 100% and on AC 
@@ -502,7 +505,7 @@ void kpowersave::updateTooltip(){
 void kpowersave::do_config(){
 	kdDebugFuncIn(trace);
 	
-	#ifdef ENABLE_YAST_ENTRY
+#ifdef ENABLE_YAST_ENTRY
 	delete yast2;
 	
 	yast2 = new KProcess;
@@ -510,17 +513,12 @@ void kpowersave::do_config(){
 
 	connect(yast2, SIGNAL(processExited(KProcess *)),
 	         SLOT(slotConfigProcessExited(KProcess *)));
-	if(!yast2->start(KProcess::NotifyOnExit))
-	{
+	if(!yast2->start(KProcess::NotifyOnExit)) {
 		delete yast2;
 		yast2 = NULL;
 	}
-
+#endif
 	kdDebugFuncOut(trace);
-	#else
-	kdDebugFuncOut(trace);
-	return;
-	#endif
 }
 
 /*!
@@ -641,7 +639,7 @@ void kpowersave::observeConfigDlg(){
 void kpowersave::slotConfigProcessExited(KProcess *proc){
 	kdDebugFuncIn(trace);
 
-	#ifdef ENABLE_YAST_ENTRY
+#ifdef ENABLE_YAST_ENTRY
 	if (proc->normalExit()){
 		if (proc->exitStatus() != 0 && proc->exitStatus() != 16){
 			KPassivePopup::message( i18n("WARNING"),
@@ -657,12 +655,8 @@ void kpowersave::slotConfigProcessExited(KProcess *proc){
 					     "Check if it is installed."),
 					SmallIcon("messagebox_warning", 20), this, i18n("Warning"), 15000);
 	}
-
+#endif
 	kdDebugFuncOut(trace);
-	#else
-	kdDebugFuncOut(trace);
-	return;
-	#endif
 }
 
 /*!
@@ -677,48 +671,46 @@ bool kpowersave::do_suspend2disk(){
 	kdDebugFuncIn(trace);
 
 	if (suspend.suspend2disk) {
-		if (suspend.suspend2disk_allowed || suspend.suspend2disk_allowed == -1) {
-			calledSuspend = SUSPEND2DISK;
-			if (!handleMounts(true)) {
-				kdWarning() << "Could not umount ..." << endl;
-				calledSuspend = -1;
-				kdDebugFuncOut(trace);
-				return false;
-			}
-
-			if(settings->lockOnSuspend) {
-				display->lockScreen( settings->lockmethod );
-			}
-
-			autoSuspend->stop();
-			autoDimm->stop();
-			notifySuspend(calledSuspend);
-			bool ret = hwinfo->suspend(SUSPEND2DISK);
-
-			if (ret) {
-				kdDebugFuncOut(trace);
-				return true;
-			} else {
-				KPassivePopup::message( i18n("WARNING"),i18n("Suspend to disk failed"),
-							SmallIcon("messagebox_warning", 20), this,
-							i18n("Warning"), 15000);
-				kdDebugFuncOut(trace);
-				return false;
-			}
-		} else {
-			KPassivePopup::message( i18n("WARNING"),
-						i18n("Suspend to disk disabled by administrator."),
-						SmallIcon("messagebox_warning", 20), 
-						this, i18n("Warning"), 15000);
-			this->contextMenu()->setItemEnabled(SUSPEND2DISK_MENU_ID, false);
-			kdDebugFuncOut(trace);
-			return false;
-		}
-	} else {
-		kdWarning() << "This machine does not provide suspend2disk via HAL" << endl;
+		kdWarning(debug_area) << "This machine does not provide "
+			"suspend2disk via HAL" << endl;
 		kdDebugFuncOut(trace);
 		return false;
 	}
+	if (0 == suspend.suspend2disk_allowed) {
+		KPassivePopup::message( i18n("WARNING"),
+					i18n("Suspend to disk disabled by administrator."),
+					SmallIcon("messagebox_warning", 20), 
+					this, i18n("Warning"), 15000);
+		this->contextMenu()->setItemEnabled(SUSPEND2DISK_MENU_ID, false);
+		kdDebugFuncOut(trace);
+		return false;
+	}
+
+	calledSuspend = SUSPEND2DISK;
+	if (!handleMounts(true)) {
+		kdWarning(debug_area) << "Could not umount ..." << endl;
+		calledSuspend = -1;
+		kdDebugFuncOut(trace);
+		return false;
+	}
+	
+	if(settings->lockOnSuspend) {
+		display->lockScreen( settings->lockmethod );
+	}
+	
+	autoSuspend->stop();
+	autoDimm->stop();
+	notifySuspend(calledSuspend);
+	if (!hwinfo->suspend(SUSPEND2DISK)) {
+		KPassivePopup::message( i18n("WARNING"),i18n("Suspend to disk failed"),
+					SmallIcon("messagebox_warning", 20), this,
+					i18n("Warning"), 15000);
+		kdDebugFuncOut(trace);
+		return false;
+	}
+	
+	kdDebugFuncOut(trace);
+	return true;
 }
 
 /*!
@@ -732,49 +724,48 @@ bool kpowersave::do_suspend2disk(){
 bool kpowersave::do_suspend2ram(){
 	kdDebugFuncIn(trace);
 
-	if (suspend.suspend2ram) {
-		if (suspend.suspend2ram_allowed || suspend.suspend2ram_allowed == -1) {
-			calledSuspend = SUSPEND2RAM;
-			if (!handleMounts(true)) {
-				kdWarning() << "Could not umount ..." << endl;
-				calledSuspend = -1;
-				kdDebugFuncOut(trace);
-				return false;
-			}
-
-			if(settings->lockOnSuspend) {
-				display->lockScreen( settings->lockmethod );
-			}
-
-			autoSuspend->stop();
-			autoDimm->stop();
-			notifySuspend(calledSuspend);
-			bool ret = hwinfo->suspend(SUSPEND2RAM);
-
-			if (ret) {
-				kdDebugFuncOut(trace);
-				return true;
-			} else {
-				KPassivePopup::message( i18n("WARNING"),i18n("Suspend to RAM failed"),
-							SmallIcon("messagebox_warning", 20), this,
-							i18n("Warning"), 15000);
-				kdDebugFuncOut(trace);
-				return false;
-			}
-		} else {
-			KPassivePopup::message( i18n("WARNING"),
-						i18n("Suspend to RAM disabled by administrator."),
-						SmallIcon("messagebox_warning", 20), this, 
-						i18n("Warning"), 15000);
-			this->contextMenu()->setItemEnabled(SUSPEND2RAM_MENU_ID, false);
-			kdDebugFuncOut(trace);
-			return false;
-		}
-	} else {
-		kdWarning() << "This machine does not provide suspend2ram via HAL" << endl;
+	if (!suspend.suspend2ram) {
+		kdWarning(debug_area) << "This machine does not provide "
+			"suspend2ram." << endl;
 		kdDebugFuncOut(trace);
 		return false;
 	}
+
+	if (0 == suspend.suspend2ram_allowed) {
+		KPassivePopup::message( i18n("WARNING"),
+					i18n("Suspend to RAM disabled by administrator."),
+					SmallIcon("messagebox_warning", 20), this, 
+					i18n("Warning"), 15000);
+		this->contextMenu()->setItemEnabled(SUSPEND2RAM_MENU_ID, false);
+		kdDebugFuncOut(trace);
+		return false;
+	}
+
+	calledSuspend = SUSPEND2RAM;
+	if (!handleMounts(true)) {
+		kdWarning(debug_area) << "Could not umount ..." << endl;
+		calledSuspend = -1;
+		kdDebugFuncOut(trace);
+		return false;
+	}
+	
+	if(settings->lockOnSuspend) {
+		display->lockScreen( settings->lockmethod );
+	}
+	
+	autoSuspend->stop();
+	autoDimm->stop();
+	notifySuspend(calledSuspend);
+	if (!hwinfo->suspend(SUSPEND2RAM)) {
+		KPassivePopup::message( i18n("WARNING"),i18n("Suspend to RAM failed"),
+					SmallIcon("messagebox_warning", 20), this,
+					i18n("Warning"), 15000);
+		kdDebugFuncOut(trace);
+		return false;
+	}
+
+	kdDebugFuncOut(trace);
+	return true;
 }
 
 /*!
@@ -788,48 +779,47 @@ bool kpowersave::do_suspend2ram(){
 bool kpowersave::do_standby(){
 	kdDebugFuncIn(trace);
 
-	if (suspend.standby) {
-		if (suspend.standby_allowed || suspend.standby_allowed == -1) {
-			calledSuspend = STANDBY;
-			if (!handleMounts(true)) {
-				kdWarning() << "Could not umount ..." << endl;
-				calledSuspend = -1;
-				kdDebugFuncOut(trace);
-				return false;
-			}
-
-			if(settings->lockOnSuspend) {
-				display->lockScreen( settings->lockmethod );
-			}
-
-			autoSuspend->stop();
-			autoDimm->stop();
-			notifySuspend(calledSuspend);
-			bool ret = hwinfo->suspend(STANDBY);
-
-			if (ret) {
-				kdDebugFuncOut(trace);
-				return true;
-			} else {
-				KPassivePopup::message( i18n("WARNING"),i18n("Standby failed"),
-							SmallIcon("messagebox_warning", 20), this,
-							i18n("Warning"), 15000);
-				kdDebugFuncOut(trace);
-				return false;
-			}
-		} else {
-			KPassivePopup::message( i18n("WARNING"),i18n("Standby disabled by administrator."),
-						SmallIcon("messagebox_warning", 20), this, 
-						i18n("Warning"), 15000);
-			this->contextMenu()->setItemEnabled(STANDBY_MENU_ID, false);
-			kdDebugFuncOut(trace);
-			return false;
-		}
-	} else {
-		kdWarning() << "This machine does not provide suspend2ram via HAL" << endl;
+	if (!suspend.standby) {
+		kdWarning(debug_area) << "This machine does not provide "
+			"suspend2ram via HAL" << endl;
 		kdDebugFuncOut(trace);
 		return false;
 	}
+
+	if (0 == suspend.standby_allowed) {
+		KPassivePopup::message( i18n("WARNING"),i18n("Standby disabled by administrator."),
+					SmallIcon("messagebox_warning", 20), this, 
+					i18n("Warning"), 15000);
+		this->contextMenu()->setItemEnabled(STANDBY_MENU_ID, false);
+		kdDebugFuncOut(trace);
+		return false;
+	}
+
+	calledSuspend = STANDBY;
+	if (!handleMounts(true)) {
+		kdWarning(debug_area) << "Could not umount ..." << endl;
+		calledSuspend = -1;
+		kdDebugFuncOut(trace);
+		return false;
+	}
+
+	if(settings->lockOnSuspend) {
+		display->lockScreen( settings->lockmethod );
+	}
+
+	autoSuspend->stop();
+	autoDimm->stop();
+	notifySuspend(calledSuspend);
+	if (!hwinfo->suspend(STANDBY)) {
+		KPassivePopup::message( i18n("WARNING"),i18n("Standby failed"),
+					SmallIcon("messagebox_warning", 20), this,
+					i18n("Warning"), 15000);
+		kdDebugFuncOut(trace);
+		return false;
+	}
+	
+	kdDebugFuncOut(trace);
+	return true;
 }
 
 /*!
@@ -890,30 +880,30 @@ bool kpowersave::do_autosuspend(bool chancel) {
 	// TODO: check if this is really needed, it get called also on the suspend methodes
 	autoSuspend->stop();
 
-	if (!chancel) { 
-		if(!settings->disableNotifications) {
-			KNotifyClient::event( this->winId(), "autosuspend_event", 
-					i18n("System is going into suspend mode now"));
-		}
-	
-		if(settings->autoSuspend && !contextMenu()->isItemChecked(AUTOSUSPEND_MENU_ID)) {
-			if(settings->autoInactiveAction == "Suspend to Disk") {
-				return do_suspend2disk();
-			} else if (settings->autoInactiveAction == "Suspend to RAM") {
-				return do_suspend2ram();
-			} else if (settings->autoInactiveAction == "Standby") {
-				return do_standby();
-			} else {
-				return false;
-			}
-		} else {
-			return false;
-		}
-	} else {
-		kdDebug() << "The autosuspend was chanceled (via the chancel dialog), start again." << endl;
+	if (chancel) {
+		kdDebug(debug_area) << "The autosuspend was cancelled (via the"
+			" cancel dialog), start again." << endl;
 		setAutoSuspend(false);
 		return false;
 	}
+
+	if(!settings->disableNotifications) {
+		KNotifyClient::event( this->winId(), "autosuspend_event", 
+				      i18n("System is going into suspend mode now"));
+	}
+	
+	if(!settings->autoSuspend ||
+	   contextMenu()->isItemChecked(AUTOSUSPEND_MENU_ID)) {
+		return false;
+	}
+
+	if(settings->autoInactiveAction == "Suspend to Disk")
+		return do_suspend2disk();
+	if (settings->autoInactiveAction == "Suspend to RAM")
+		return do_suspend2ram();
+	if (settings->autoInactiveAction == "Standby")
+		return do_standby();
+	return false;
 }
 
 /*!
@@ -942,7 +932,7 @@ void kpowersave::do_downDimm() {
 				connect(AUTODIMM_Timer, SIGNAL(timeout()), this, SLOT(do_dimm()));
 				AUTODIMM_Timer->start(timePerStep, false);
 			} else {
-				kdWarning() << "Don't dimm down, current level is already lower than requested Level" << endl;
+				kdWarning(debug_area) << "Don't dimm down, current level is already lower than requested Level" << endl;
 			}
 		} else {
 			// wait until the timer is stopped, try later!
@@ -984,7 +974,7 @@ void kpowersave::do_upDimm() {
 				// start autodimm again
 				setAutoDimm(false);
 			} else {
-				kdWarning() << "Don't dimm up, current level is already above requested Level" << endl;
+				kdWarning(debug_area) << "Don't dimm up, current level is already above requested Level" << endl;
 			}
 		} else {
 			// wait until the timer is stopped, try later!
@@ -1041,7 +1031,7 @@ void kpowersave::do_dimm() {
  * \retval false	if not
  */
 bool kpowersave::handleMounts( bool suspend ) {
-	if (trace) kdDebug() << funcinfo << "IN: " << "called suspend: " << suspend << endl;
+	if (trace) kdDebug(debug_area) << funcinfo << "IN: " << "called suspend: " << suspend << endl;
 
 	bool _ret = false;
 	QString _errormsg;
@@ -1062,11 +1052,10 @@ bool kpowersave::handleMounts( bool suspend ) {
 				kdDebugFuncOut(trace);
 				return true;
 			} else {
-				kdError() << "ERROR while umount/remount partitions: " << _errormsg << endl;
+				kdError(debug_area) << "ERROR while umount/remount partitions: " << _errormsg << endl;
 			}
 		} else {
-			kdWarning() << "Could not umount external storage partitions." << endl;
-			kdDebug() << "Could not umount external storage partitions. dcop_ref.call result is not valid." << endl;
+			kdWarning(debug_area) << "Could not umount external storage partitions." << endl;
 		}
 
 	} else {
@@ -1161,7 +1150,7 @@ void kpowersave::handleS2DiskButtonEvent(){
  * \param closed 	boolean with info if the lid is closed or not
  */
 void kpowersave::handleLidEvent( bool closed ){
-	if (trace) kdDebug() << funcinfo << "IN: " << "Lid closed? " << closed << endl;
+	if (trace) kdDebug(debug_area) << funcinfo << "IN: " << "Lid closed? " << closed << endl;
 	
 	if (closed) {
 		// get new general settings! This could maybe removed if we 
@@ -1189,7 +1178,7 @@ void kpowersave::handleLidEvent( bool closed ){
 			if (hwinfo->currentSessionIsActive()) {
 				handleActionCall(settings->lidcloseAction, settings->lidcloseActionValue);
 			} else {
-				kdWarning() << "Session is not active, don't react on lidclose "
+				kdWarning(debug_area) << "Session is not active, don't react on lidclose "
 					    << "event with a action call (like e.g. Suspend)!" << endl;
 			}
 		}
@@ -1290,7 +1279,7 @@ void kpowersave::_quit (){
  * \b SLOT called if the user select a 'CPU Frequency Policy' from the menu ( \ref CPUFREQ_MENU_ID ). 
  */
 void kpowersave::do_setSpeedPolicy(int menu_id){
-	if (trace) kdDebug() << funcinfo << "IN: " << "menu_id/set policy to: " << menu_id << endl;
+	if (trace) kdDebug(debug_area) << funcinfo << "IN: " << "menu_id/set policy to: " << menu_id << endl;
 
 	if(!hwinfo->setCPUFreq((cpufreq_type)menu_id, settings->cpuFreqDynamicPerformance)) {
 		KPassivePopup::message(i18n("WARNING"),
@@ -1309,7 +1298,7 @@ void kpowersave::do_setSpeedPolicy(int menu_id){
  * while try to set the selected scheme, the user get a messagebox with info.
  */
 void kpowersave::do_setActiveScheme( int i ){
-	if (trace) kdDebug() << funcinfo << "IN: " << "set scheme to: " << i << endl;
+	if (trace) kdDebug(debug_area) << funcinfo << "IN: " << "set scheme to: " << i << endl;
 
 	if(settings->schemes[i] && (settings->schemes[i] != settings->currentScheme)) {
 		for (int x = 0; x < (int) scheme_menu->count(); x++){
@@ -1845,7 +1834,7 @@ void kpowersave::setSchemeSettings(){
  *		  currently back from suspend/standby
  */
 void kpowersave::setAutoSuspend( bool resumed ){
-	if (trace) kdDebug() << funcinfo << "IN: " << "resumed? " << resumed << endl;
+	if (trace) kdDebug(debug_area) << funcinfo << "IN: " << "resumed? " << resumed << endl;
 
 	if(settings->autoInactiveActionAfter > 0 && settings->autoSuspend) {
 		int autoInactiveActionAfter = 0;
@@ -1897,12 +1886,12 @@ void kpowersave::setAutoSuspend( bool resumed ){
  *		  currently back from suspend/standby
  */
 void kpowersave::setAutoDimm( bool resumed ){
-	if (trace) kdDebug() << funcinfo << "IN: " << "resumed? " << resumed << endl;
+	if (trace) kdDebug(debug_area) << funcinfo << "IN: " << "resumed? " << resumed << endl;
 
 	if(settings->autoDimmAfter > 0 && settings->autoDimm) { 
 		if(settings->autoDimmTo < 0) {
 			autoDimm->stop();
-			kdWarning() << "Not allowed or set level for dimm" << endl;
+			kdWarning(debug_area) << "Not allowed or set level for dimm" << endl;
 		} else {
 			if (resumed) {
 				// setup again
@@ -1936,7 +1925,7 @@ void kpowersave::setAutoDimm( bool resumed ){
  * \param state integer represent the reached battery state
  */
 void kpowersave::notifyBatteryStatusChange ( int type, int state ) {
-	if (trace) kdDebug() << funcinfo << "IN: " << "type: " << type << "state: " << state << endl;
+	if (trace) kdDebug(debug_area) << funcinfo << "IN: " << "type: " << type << "state: " << state << endl;
 
 
 	if (type == BAT_PRIMARY) {
@@ -1944,14 +1933,14 @@ void kpowersave::notifyBatteryStatusChange ( int type, int state ) {
 		int min = primary->getRemainingMinutes();
 
 		if (primary->getChargingState() == CHARGING) {
-			kdDebug() << "kpowersave::notifyBatteryStatusChange: Battery is charging, ignore event" << endl;
+			kdDebug(debug_area) << "kpowersave::notifyBatteryStatusChange: Battery is charging, ignore event" << endl;
 			return;
 		}
 		if (hwinfo->getAcAdapter()) {
 			// the machine is on AC, no need to inform about battery state,
 			// this is maybe only a race condition with not directly actuall
 			// charge state
-			kdDebug() << "kpowersave::notifyBatteryStatusChange: Machine is on AC, ignore event" << endl;
+			kdDebug(debug_area) << "kpowersave::notifyBatteryStatusChange: Machine is on AC, ignore event" << endl;
 			kdDebugFuncOut(trace);
 			return;
 		}
@@ -2032,7 +2021,7 @@ void kpowersave::handleCriticalBatteryActionCall () {
  * \param checkAC	bool if there should be a check for AC state befor call the action
  */
 void kpowersave::handleActionCall ( action action, int value , bool checkAC, bool batWarnCall ) {
-	if (trace) kdDebug() << funcinfo << "IN: " << "action: " << action << "value: " << value 
+	if (trace) kdDebug(debug_area) << funcinfo << "IN: " << "action: " << action << "value: " << value 
 						   << "checkAC: " << checkAC << endl;
 
 	if (hwinfo->currentSessionIsActive()) {
@@ -2072,7 +2061,7 @@ void kpowersave::handleActionCall ( action action, int value , bool checkAC, boo
 			case UNKNOWN_ACTION:
 			case NONE:
 			default:
-				kdError() << "Could not set the requested Action: " << action << endl;
+				kdError(debug_area) << "Could not set the requested Action: " << action << endl;
 				break;
 		}
 	} else if (batWarnCall) {
@@ -2086,12 +2075,12 @@ void kpowersave::handleActionCall ( action action, int value , bool checkAC, boo
 					}
 					break;
 				default:
-					kdError() << "Could not call requested action, inactive session: " << action << endl;
+					kdError(debug_area) << "Could not call requested action, inactive session: " << action << endl;
 					break;
 			}
 		}
 	} else {
-		kdError() << "Could not set the requested action, session is inactiv: " << action << endl;
+		kdError(debug_area) << "Could not set the requested action, session is inactiv: " << action << endl;
 	}
 	kdDebugFuncOut(trace);
 }
@@ -2102,7 +2091,7 @@ void kpowersave::handleActionCall ( action action, int value , bool checkAC, boo
  * \param acstate boolean represent the state of AC (true == AC plugged in ...)
  */
 void kpowersave::handleACStatusChange ( bool acstate , bool notifyEvent ) {
-	if (trace) kdDebug() << funcinfo << "IN: " << "acstate: " << acstate << "notifyEvent: " << notifyEvent << endl;
+	if (trace) kdDebug(debug_area) << funcinfo << "IN: " << "acstate: " << acstate << "notifyEvent: " << notifyEvent << endl;
 
 	int index;
 
@@ -2195,7 +2184,7 @@ void kpowersave::notifySuspend( int suspendType ) {
  * to avoid problems with the QT3 D-Bus bindings
  */
 void kpowersave::forwardResumeSignal( int result ) {
-	if (trace) kdDebug() << funcinfo << "IN: " << "result: " << result << endl;
+	if (trace) kdDebug(debug_area) << funcinfo << "IN: " << "result: " << result << endl;
 	
 	resume_result = result;
 
@@ -2243,7 +2232,7 @@ void kpowersave::handleResumeSignal() {
 						      i18n("Standby")));
 				break;
 			default:
-				kdError() << "called suspend type unknown" << endl;
+				kdError(debug_area) << "called suspend type unknown" << endl;
 				break;
 		
 		}
@@ -2252,7 +2241,7 @@ void kpowersave::handleResumeSignal() {
 	// handle result of the resume/suspend
 	if (resume_result == 0 || resume_result == INT_MAX) {
 		if ( resume_result == INT_MAX )
-			kdWarning() << "Unknown if we successful resumed, look like a D-Bus timeout since "
+			kdWarning(debug_area) << "Unknown if we successful resumed, look like a D-Bus timeout since "
 				    << "elapsed time between suspend and resume is higher than 6 hours" << endl;
 
 		// successful resumed ... remount only in this case
@@ -2263,7 +2252,7 @@ void kpowersave::handleResumeSignal() {
 						this, i18n("Warning"), 15000);
 		}
 	} else {
-		kdError() << "Unknown error while suspend. Errorcode: " << resume_result << endl;
+		kdError(debug_area) << "Unknown error while suspend. Errorcode: " << resume_result << endl;
 		QString msg;
 
 		msg = i18n("An unknown error occurred while %1. The errorcode is: '%2'").
@@ -2459,7 +2448,7 @@ QStringList kpowersave::listCPUFreqPolicies() {
  * \retval false if not supported or any other failure
  */
 bool kpowersave::do_setCPUFreqPolicy( QString policy ) {
-	if (trace) kdDebug() << funcinfo << "IN: " << "policy: " << policy << endl;
+	if (trace) kdDebug(debug_area) << funcinfo << "IN: " << "policy: " << policy << endl;
 
 	
 	bool ret = true;
@@ -2708,10 +2697,8 @@ bool kpowersave::openConfigureDialog (){
  */
 bool kpowersave::currentSchemeManagesDPMS () {
 	kdDebugFuncIn(trace);
-
-	return settings->specPMSettings;
-	
 	kdDebugFuncOut(trace);
+	return settings->specPMSettings;
 }
 
 

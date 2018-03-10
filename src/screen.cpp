@@ -440,7 +440,7 @@ bool screen::lockScreen(){
 		if ( reply.isValid() ) {
 			return true;
 		} else {
-			kdWarning() << "Could not lock KScreensaver, try XScreensaver as fallback." << endl;
+			kdWarning(debug_area) << "Could not lock KScreensaver, try XScreensaver as fallback." << endl;
 			goto xscreensaver;
 		}
 	}
@@ -557,7 +557,7 @@ bool screen::lockScreen( QString lock_withMethod ) {
 				if ( reply.isValid() ) {
 					return true;
 				} else {
-					kdWarning() << "Could not call lock for KScreensaver, try XScreensaver "
+					kdWarning(debug_area) << "Could not call lock for KScreensaver, try XScreensaver "
 						    << "as fallback." << endl;
 					goto xscreensaver;
 				}
@@ -629,7 +629,7 @@ bool screen::resetKDEScreensaver(){
 			kdDebugFuncOut(trace);
 			return true;
 		} else {
-			kdWarning() << "Could not call configure() for the KDE screensaver." << endl;
+			kdWarning(debug_area) << "Could not call configure() for the KDE screensaver." << endl;
 			kdDebugFuncOut(trace);
 			return false;
 		}

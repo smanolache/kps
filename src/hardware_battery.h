@@ -76,9 +76,6 @@ class Battery : public QObject {
 	Q_OBJECT
 
 private:
-	//! Internal reference to dbusHAL for communication with HAL daemon
-//	dbusHAL* dbus_HAL;
-
 	//! HAL udi of the battery to represent
 	/*!
 	* This QString holds the HAL udi adress of the battery.
@@ -105,22 +102,6 @@ private:
 	//! Serialnumber of the the battery
 	/*! Identifies the currently installed battery uniquely. */
 	QString	serial;
-
-	//! Boolean which tells if the battery is initalized first time
-	/*!
-	* When the battery (represented by the object) is intialised the first time
-	* (via recheck() or init()) this value is true.
-	* \li true: 	if battery object is now intialised
-	* \li false: 	if not
-	*/
-	// bool 	initialized;
-	//! Boolean which tells if the battery is present/connected
-	/*!
-	* When the battery (represented by the object) is available this is true.
-	* \li true: battery is available
-	* \li false: battery is disconnected/not available
-	*/
-	// bool 	present;
 
 	//! Roletype of battery
 	/*!
@@ -203,35 +184,6 @@ private:
 	//! charge_level in percent that will put battery into critical state
 	int crit_level;
 
-	// private functions
-	//! function to set initial values for a battery
-	// void initDefault();
-
-	//! to check battery.present
-	// bool checkBatteryPresent();
-	//! to check battery.type
-	// bool checkBatteryType();
-	//! to check battery.technology
-	// bool checkBatteryTechnology();
-	//! to check battery.charge_level.capacity_state
-	// bool checkCapacityState();
-	//! to check battery.charge_level.current
-	// bool checkChargeLevelCurrent();
-	//! to check battery.charge_level.last_full
-	// bool checkChargeLevelLastfull();
-	//! to check battery.charge_level.rate
-	// bool checkChargeLevelRate();
-	//! to check battery.charge_level.unit
-	// bool checkChargeLevelUnit();
-	//! to check battery.charge_level.design
-	// bool checkChargeLevelDesign();
-	//! to check battery.charge_level.percentage
-	// bool checkRemainingPercentage();
-	//! to check battery.remaining_time
-	// bool checkRemainingTime();
-	//! to check battery.rechargeable.is_*
-	// bool checkChargingState();
-
 	static enum BAT_STATE get_state(double, int crit, int low, int warn);
 	bool update_charging_state(const std::optional<uint32_t>&);
 	bool update_percentage(const std::optional<double>&);
@@ -261,28 +213,8 @@ public:
 	static enum BAT_TYPE get_type(uint32_t t);
 
 	//! default constructor
-/*
-	Battery( dbusHAL* _dbus_HAL, QString _udi );
-*/
-	//! default constructor
 	Battery(const std::string& udi__, const kps::dict_type&);
-	//! default constructor
-/*
-	Battery( dbusHAL* _dbus_HAL );
-	//! this constructor forces the use of init with dbuHAL pointer set!
-	Battery();
-	//! default destructor
-*/
-	// ~Battery();
 
-	//! initialize this battery object with values from HAL
-//	void init();
-	//! recheck all properties of the battery
-	// void recheck();
-	//! rechecks only minimalistic set properties
-/*
-	void minRecheck();
-*/
 	//! update a property on HAL event
 	// bool updateProperty(QString _udi, QString _property);
 	//! merge new values
@@ -327,16 +259,6 @@ public:
 	//! reports the chargelevel in percent when battery goes to state critical
 	int getCritLevel() const;
 
-	//writeable access to internals
-	//! Resets the current HAL udi used by the one given
-	/*!
-	* The given QString will be (checked and) used as new HAL udi for the battery.
-	* But don't forget to do a recheck of the battery afterwards.
-	* \li returns TRUE: if reset was successfull
-	* \li returns FALSE: if reset couldn't be applied
-	*/
-//	bool resetUdi(QString);
-
 	//! sets the chargelevel in percent when battery should go into state warning
 	void setWarnLevel(int _warn_level);
 	//! sets the chargelevel in percent when battery should go into state low
@@ -346,19 +268,19 @@ public:
 
 	//some convenience methods
 	//! check if the battery is currently charged
-	bool isCharging();
+	bool isCharging() const;
 	//! check if the battery gets currently discharged
-	bool isDischarging();
+	bool isDischarging() const;
 	//! check it this is a primary battery
 	bool isPrimary() const;
 	//! check if the battery state is ok/normal
-	bool isOk();
+	bool isOk() const;
 	//! check if the battery is in warning level/state
-	bool isWarning();
+	bool isWarning() const;
 	//! check if the battery is in a low chargingstate
-	bool isLow();
+	bool isLow() const;
 	//! check if the battery level is critical
-	bool isCritical();
+	bool isCritical() const;
 };
 
 

@@ -48,6 +48,7 @@ KCmdLineOptions options[] = { { "force-acpi-check", I18N_NOOP("Force a new check
 
 static const char version[] = "0.7.x (0.7.3)";
 bool trace = false;
+const int debug_area = 10137;
 
 extern "C"
 int main(int argc, char **argv)

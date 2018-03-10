@@ -314,10 +314,6 @@ private:
 	bool reinitHardwareInfos();
 	//! to check the current ConsoleKit session
 	bool checkConsoleKitSession();
-	//! to check if we should handle a device
-/*
-	bool checkIfHandleDevice ( QString _udi, int *type );
-*/
 	//! to set the CPUFreq governor
 	bool setCPUFreqGovernor( const char *governor );
 	//! to get the state of SchedPowerSave setting of kernel/HAL
@@ -326,9 +322,6 @@ private:
 	bool setSchedPowerSavings( bool enable );
 
 	//! find and update a battery information
-/*
-	void updateBatteryValues (QString udi, QString property);
-*/
 	void updateBatteryValues(const char *, const kps::dict_type&);
 
 	bool isBattery(const char *);

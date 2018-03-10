@@ -70,12 +70,12 @@ void autodimm::pollActivity() {
 
 	idletime = getXInactivity();
 	if (idletime < lastIdleTime) {
-		kdDebug() << "Looks as if the user is active again (lastIdleTime:" << lastIdleTime 
+		kdDebug(debug_area) << "Looks as if the user is active again (lastIdleTime:" << lastIdleTime 
 			  << " , current idletime: " << idletime << ")" << endl;
 
 		// The user is/was active ...
 		if (idletime <= 1000) 
-			kdDebug() << "Looks as if the user was active within the last second" << endl;
+			kdDebug(debug_area) << "Looks as if the user was active within the last second" << endl;
 
 		// stop the timer ... no need to let run ... start again if needed
 		if (checkActivity->isActive()) checkActivity->stop();

@@ -44,6 +44,7 @@
 
 // to store the value over the different classes
 extern bool trace;
+extern const int debug_area;
 
 /*
  * macro to collect time and k_funcinfo information for kdDebug()
@@ -54,14 +55,14 @@ extern bool trace;
 /*
  * macros to trace function entry and leave points
  */
-#define kdDebugFuncIn(traceinfo) do {							\
-	if (traceinfo == true)								\
-		kdDebug() << funcinfo << "IN " << endl;					\
+#define kdDebugFuncIn(traceinfo) do {\
+	if (traceinfo == true)\
+		kdDebug(debug_area) << funcinfo << "IN " << endl;\
 } while (0)
 
-#define kdDebugFuncOut(traceinfo) do {							\
-	if (traceinfo == true) 								\
-		kdDebug() << funcinfo << "OUT " << endl;				\
+#define kdDebugFuncOut(traceinfo) do {\
+	if (traceinfo)\
+		kdDebug(debug_area) << funcinfo << "OUT " << endl;\
 } while (0)
 
 
