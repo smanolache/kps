@@ -670,7 +670,7 @@ void kpowersave::slotConfigProcessExited(KProcess *proc){
 bool kpowersave::do_suspend2disk(){
 	kdDebugFuncIn(trace);
 
-	if (suspend.suspend2disk) {
+	if (!suspend.suspend2disk) {
 		kdWarning(debug_area) << "This machine does not provide "
 			"suspend2disk via HAL" << endl;
 		kdDebugFuncOut(trace);
